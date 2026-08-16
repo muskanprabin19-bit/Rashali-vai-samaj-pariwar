@@ -158,6 +158,27 @@ nav a{padding:9px 8px;font-size:14px}
 <p>© 2026 रसाली भाई समाज परिवार</p>
 <p>एकता • सहयोग • भाइचारा</p>
 </footer>
+<!-- Admin Login -->
+<div id="adminLogin" style="max-width:400px;margin:30px auto;padding:20px;text-align:center;border:1px solid #ddd;border-radius:12px;">
+  <h2>Admin Login</h2>
+  <input id="adminEmail" type="email" placeholder="Admin Email" style="width:90%;padding:10px;margin:8px;">
+  <input id="adminPassword" type="password" placeholder="Password" style="width:90%;padding:10px;margin:8px;">
+  <button onclick="adminLogin()" style="padding:10px 25px;">Login</button>
+  <p id="loginMessage"></p>
+</div>
 
+<script>
+function adminLogin() {
+  const email = document.getElementById("adminEmail").value;
+  const password = document.getElementById("adminPassword").value;
+  const message = document.getElementById("loginMessage");
+
+  if (email && password) {
+    message.innerText = "Login details received.";
+  } else {
+    message.innerText = "Please enter email and password.";
+  }
+}
+</script>
 </body>
 </html>
