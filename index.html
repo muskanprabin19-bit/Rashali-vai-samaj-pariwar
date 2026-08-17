@@ -9,123 +9,88 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#eef6ff;color:#172033;line-height:1.6
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#eef6ff;color:#172033;line-height:1.6
 }
 header{
-  background:linear-gradient(135deg,#0756a8,#1598ed);
-  color:white;text-align:center;padding:22px 12px 28px;
-  box-shadow:0 4px 15px rgba(0,0,0,.18)
+background:linear-gradient(135deg,#0756a8,#1598ed);
+color:white;text-align:center;padding:22px 12px 28px;
+box-shadow:0 4px 15px rgba(0,0,0,.18)
 }
-.namaskar{font-size:35px;margin-bottom:4px}
+.namaskar{font-size:35px}
 .logo{
-  width:82px;height:82px;border-radius:50%;background:white;
-  color:#0756a8;border:5px solid #dceeff;
-  display:flex;align-items:center;justify-content:center;
-  margin:5px auto 9px;font-size:24px;font-weight:bold;
-  box-shadow:0 4px 12px rgba(0,0,0,.2)
+width:82px;height:82px;border-radius:50%;background:white;
+color:#0756a8;border:5px solid #dceeff;
+display:flex;align-items:center;justify-content:center;
+margin:6px auto 9px;font-size:24px;font-weight:bold
 }
 header h1{font-size:25px}
-.estd{font-weight:bold;font-size:16px;margin:4px 0}
-header p{font-size:14px}
-
-.hero{
-  background:white;text-align:center;padding:22px 14px
-}
-.hero h2{color:#0756a8;margin-bottom:6px}
-
+.estd{font-weight:bold;font-size:16px}
+.hero{background:white;text-align:center;padding:22px 14px}
+.hero h2{color:#0756a8}
 .icons{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:10px;padding:16px 10px;max-width:700px;margin:auto
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:10px;padding:16px 10px;max-width:700px;margin:auto
 }
 .icon-box{
-  background:white;border-radius:16px;padding:12px 5px;
-  text-align:center;text-decoration:none;color:#172033;
-  box-shadow:0 4px 12px rgba(20,70,130,.12);
-  border:1px solid #d8eaff
+background:white;border-radius:16px;padding:12px 5px;
+text-align:center;text-decoration:none;color:#172033;
+box-shadow:0 4px 12px rgba(20,70,130,.12);
+border:1px solid #d8eaff
 }
 .icon{
-  width:51px;height:51px;border-radius:50%;
-  background:#e7f3ff;display:flex;align-items:center;
-  justify-content:center;margin:auto auto 6px;font-size:27px
+width:51px;height:51px;border-radius:50%;
+background:#e7f3ff;display:flex;align-items:center;
+justify-content:center;margin:auto auto 6px;font-size:27px
 }
 .icon-box b{font-size:13px}
-
 .section{
-  background:white;margin:13px 10px;padding:19px 14px;
-  border-radius:16px;box-shadow:0 4px 12px rgba(20,70,130,.10);
-  scroll-margin-top:10px
+background:white;margin:13px 10px;padding:19px 14px;
+border-radius:16px;box-shadow:0 4px 12px rgba(20,70,130,.10)
 }
-.section h2{
-  text-align:center;color:#0756a8;font-size:21px;margin-bottom:13px
+.section h2{text-align:center;color:#0756a8;font-size:21px;margin-bottom:13px}
+.notice,.record{
+background:#f2f8ff;border-left:5px solid #1598ed;
+padding:12px;border-radius:8px;margin:8px 0
 }
-.notice{
-  background:#f2f8ff;border-left:5px solid #1598ed;
-  padding:12px;border-radius:8px;margin-bottom:9px
-}
-.notice strong{color:#0756a8}
-
-.member{
-  padding:10px 4px;border-bottom:1px solid #e7edf5
-}
+.member{padding:10px 4px;border-bottom:1px solid #e7edf5}
 .member strong{color:#0756a8}
-
-.calendar{
-  text-align:center;background:#f2f8ff;padding:18px;border-radius:14px
-}
+.calendar{text-align:center;background:#f2f8ff;padding:18px;border-radius:14px}
 .calendar-icon{font-size:45px}
 input,textarea,select{
-  width:100%;padding:11px;margin:6px 0;
-  border:1px solid #bfd5ec;border-radius:8px;font-size:15px
+width:100%;padding:11px;margin:6px 0;
+border:1px solid #bfd5ec;border-radius:8px;font-size:15px
 }
-button{
-  width:100%;padding:12px;border:0;border-radius:9px;
-  background:#0756a8;color:white;font-size:15px;font-weight:bold;
-  margin-top:7px
+button,.btn{
+width:100%;padding:12px;border:0;border-radius:9px;
+background:#0756a8;color:white;font-size:15px;font-weight:bold;
+margin-top:7px;text-decoration:none;display:block;text-align:center
 }
-button.logout{background:#555}
-.btn{
-  display:block;text-align:center;text-decoration:none;
-  color:white;padding:12px;border-radius:9px;margin-top:9px;
-  font-weight:bold
-}
+.logout{background:#555}
 .call{background:#16803c}
 .whatsapp{background:#20b957}
-
-.founder{text-align:center;background:#f2f8ff;padding:18px;border-radius:14px}
-.founder-icon{
-  width:70px;height:70px;border-radius:50%;background:#0756a8;
-  color:white;display:flex;align-items:center;justify-content:center;
-  margin:auto;font-size:30px
-}
-
 .admin-box{
-  max-width:500px;margin:auto;background:#f2f8ff;
-  padding:15px;border-radius:13px
+max-width:500px;margin:auto;background:#f2f8ff;
+padding:15px;border-radius:13px
 }
 .admin-panel{display:none}
-.record{
-  background:#f8fbff;border:1px solid #dcecff;
-  padding:10px;border-radius:9px;margin-top:8px
-}
+.hidden{display:none}
 .total{
-  text-align:center;background:#0756a8;color:white;
-  padding:12px;border-radius:10px;margin-bottom:10px
+text-align:center;background:#0756a8;color:white;
+padding:12px;border-radius:10px;margin-bottom:10px
 }
-
-.bottom-text{
-  text-align:center;font-weight:bold;color:#0756a8;
-  padding:20px 10px 8px;font-size:16px
+.founder{text-align:center;background:#f2f8ff;padding:18px;border-radius:14px}
+.founder-icon{
+width:70px;height:70px;border-radius:50%;background:#0756a8;
+color:white;display:flex;align-items:center;justify-content:center;
+margin:auto;font-size:30px
 }
-footer{
-  background:#0756a8;color:white;text-align:center;
-  padding:20px 10px;margin-top:5px;font-size:14px
-}
-
+.bottom-text{text-align:center;font-weight:bold;color:#0756a8;padding:20px 10px 8px}
+footer{background:#0756a8;color:white;text-align:center;padding:20px 10px}
 @media(max-width:430px){
-  header h1{font-size:22px}
-  .icons{gap:7px}
-  .icon{width:47px;height:47px;font-size:24px}
+header h1{font-size:22px}
+.icons{gap:7px}
+.icon{width:47px;height:47px;font-size:24px}
 }
 </style>
 </head>
@@ -133,20 +98,19 @@ footer{
 <body>
 
 <header id="home">
-  <div class="namaskar">🙏 🙏</div>
-  <div class="logo">PBK</div>
-  <h1>रसाली भाई समाज परिवार</h1>
-  <div class="estd">स्थापना २०८२</div>
-  <p>एकता • सहयोग • भाइचारा</p>
+<div class="namaskar">🙏 🙏</div>
+<div class="logo">PBK</div>
+<h1>रसाली भाई समाज परिवार</h1>
+<div class="estd">स्थापना २०८२</div>
+<p>एकता • सहयोग • भाइचारा</p>
 </header>
 
 <section class="hero">
-  <h2>हार्दिक स्वागत छ 🙏</h2>
-  <p>रसाली भाई समाज परिवारको आधिकारिक वेबसाइटमा यहाँलाई हार्दिक स्वागत छ।</p>
+<h2>हार्दिक स्वागत छ 🙏</h2>
+<p>रसाली भाई समाज परिवारको आधिकारिक वेबसाइटमा यहाँलाई हार्दिक स्वागत छ।</p>
 </section>
 
 <div class="icons">
-
 <a href="#home" class="icon-box"><div class="icon">🏠</div><b>Home</b></a>
 <a href="#notice" class="icon-box"><div class="icon">🔔</div><b>सूचना</b></a>
 <a href="tel:+9779766850626" class="icon-box"><div class="icon">📞</div><b>Call</b></a>
@@ -159,83 +123,81 @@ footer{
 <a href="#about" class="icon-box"><div class="icon">ℹ️</div><b>हाम्रो बारेमा</b></a>
 <a href="#founder" class="icon-box"><div class="icon">👤</div><b>संस्थापक</b></a>
 <a href="#admin" class="icon-box"><div class="icon">🔐</div><b>Admin</b></a>
-
 </div>
 
 <section class="section" id="notice">
 <h2>🔔 सूचना</h2>
-<div class="notice">
-<strong>महत्वपूर्ण सूचना</strong><br>
-समाज परिवारसँग सम्बन्धित नयाँ सूचना तथा कार्यक्रमहरू यहाँ राखिनेछन्।
+<div id="noticeList">
+<div class="notice">सूचना loading हुँदैछ...</div>
 </div>
-<div class="notice">
-<strong>समाजको जानकारी</strong><br>
-सबै सदस्यहरूलाई एकता र सहयोगका साथ अगाडि बढ्न हार्दिक अनुरोध।
+
+<div class="admin-panel" id="noticeAdmin">
+<input id="noticeTitle" placeholder="सूचनाको शीर्षक">
+<textarea id="noticeMessage" placeholder="सूचना लेख्नुहोस्"></textarea>
+<button onclick="addNotice()">सूचना थप्नुहोस्</button>
 </div>
 </section>
 
 <section class="section" id="about">
 <h2>ℹ️ हाम्रो बारेमा</h2>
-<textarea placeholder="समाजको बारेमा आफ्नो परिचय, उद्देश्य तथा जानकारी यहाँ लेख्न सकिन्छ।"></textarea>
+<p>
+रसाली भाई समाज परिवार एकता, सहयोग, भाइचारा र सामाजिक सद्भावका लागि
+स्थापित समाज परिवार हो। समाजका सदस्यहरूबीच आपसी सहयोग र सहकार्यलाई
+प्राथमिकता दिइनेछ।
+</p>
 </section>
 
 <section class="section" id="members">
 <h2>👥 समाजका सदस्यहरू</h2>
+<div id="memberList">सदस्यहरूको विवरण loading हुँदैछ...</div>
 
-<div class="member"><strong>१.</strong> अध्यक्ष — दीपक रसाली</div>
-<div class="member"><strong>२.</strong> उपाध्यक्ष — पदम रसाली</div>
-<div class="member"><strong>३.</strong> प्रस्तावक — गोपि रसाली</div>
-<div class="member"><strong>४.</strong> कोषाध्यक्ष — नरेश रसाली</div>
-
-<div class="member"><strong>५.</strong> सदस्य — __________________</div>
-<div class="member"><strong>६.</strong> सदस्य — __________________</div>
-<div class="member"><strong>७.</strong> सदस्य — __________________</div>
-<div class="member"><strong>८.</strong> सदस्य — __________________</div>
-<div class="member"><strong>९.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१०.</strong> सदस्य — __________________</div>
-<div class="member"><strong>११.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१२.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१३.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१४.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१५.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१६.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१७.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१८.</strong> सदस्य — __________________</div>
-<div class="member"><strong>१९.</strong> सदस्य — __________________</div>
-<div class="member"><strong>२०.</strong> सदस्य — __________________</div>
-<div class="member"><strong>२१.</strong> सदस्य — __________________</div>
-<div class="member"><strong>२२.</strong> सदस्य — __________________</div>
-<div class="member"><strong>२३.</strong> सदस्य — __________________</div>
-<div class="member"><strong>२४.</strong> सदस्य — __________________</div>
-<div class="member"><strong>२५.</strong> सदस्य — __________________</div>
+<div class="admin-panel" id="memberAdmin">
+<input id="memberName" placeholder="सदस्यको नाम">
+<input id="memberPosition" placeholder="पद">
+<input id="memberPhone" placeholder="फोन नम्बर">
+<button onclick="addMember()">सदस्य थप्नुहोस्</button>
+</div>
 </section>
 
 <section class="section" id="calendar">
 <h2>📅 Calendar</h2>
-<div class="calendar">
-<div class="calendar-icon">📅</div>
-<h3>कार्यक्रम तथा मिति</h3>
-<p>समाजका बैठक तथा कार्यक्रमका मितिहरू यहाँ राख्न सकिनेछ।</p>
-<input type="date">
+<div id="eventList">
+<div class="record">कार्यक्रमहरू loading हुँदैछन्...</div>
+</div>
+
+<div class="admin-panel" id="eventAdmin">
+<input id="eventTitle" placeholder="कार्यक्रमको नाम">
+<input id="eventDate" type="date">
+<input id="eventDescription" placeholder="विवरण">
+<button onclick="addEvent()">कार्यक्रम थप्नुहोस्</button>
 </div>
 </section>
 
 <section class="section" id="gallery">
 <h2>🖼️ Gallery</h2>
-<div style="text-align:center;padding:18px;background:#f2f8ff;border-radius:12px">
-<div style="font-size:48px">🖼️</div>
-<p>समाजका फोटो तथा कार्यक्रमका तस्वीरहरू यहाँ राखिनेछन्।</p>
+<div class="record">
+फोटोहरू यहाँ राखिनेछन्।
 </div>
+
+<div class="admin-panel" id="galleryAdmin">
+<input id="galleryTitle" placeholder="फोटोको नाम">
+<input id="galleryUrl" placeholder="Photo URL">
+<button onclick="addGallery()">Gallery मा राख्नुहोस्</button>
+</div>
+
+<div id="galleryList"></div>
 </section>
 
 <section class="section" id="documents">
 <h2>📄 Document</h2>
-<p>समाजका आवश्यक document तथा कागजातहरू राख्ने भाग।</p>
-<div class="admin-box">
-<input type="text" placeholder="Document को नाम">
-<input type="text" placeholder="Document Link">
+<div id="documentList">
+<div class="record">Documents loading हुँदैछन्...</div>
+</div>
+
+<div class="admin-panel" id="documentAdmin">
+<input id="documentTitle" placeholder="Document को नाम">
+<input id="documentUrl" placeholder="Document URL">
 <button onclick="addDocument()">Document थप्नुहोस्</button>
-<div id="documentList"></div>
 </div>
 </section>
 
@@ -248,19 +210,22 @@ footer{
 बाँकी: रु. <span id="balance">0</span>
 </div>
 
-<div class="admin-box">
+<div id="moneyList" class="admin-panel"></div>
+
+<div class="admin-panel" id="moneyAdmin">
 <select id="moneyType">
 <option value="income">पैसा लिएको / आम्दानी</option>
 <option value="expense">पैसा दिएको / खर्च</option>
 </select>
-
-<input id="person" type="text" placeholder="कसबाट / कसलाई">
+<input id="person" placeholder="कसबाट / कसलाई">
 <input id="amount" type="number" placeholder="रकम">
 <input id="moneyDate" type="date">
-<input id="description" type="text" placeholder="विवरण">
-
+<input id="description" placeholder="विवरण">
 <button onclick="addMoney()">हिसाब थप्नुहोस्</button>
-<div id="moneyList"></div>
+</div>
+
+<div id="moneyPublic" class="record">
+💰 पैसा सम्बन्धी विवरण Admin Login गरेपछि मात्र देखिन्छ।
 </div>
 </section>
 
@@ -269,11 +234,11 @@ footer{
 <div class="founder">
 <div class="founder-icon">👤</div>
 <h3>संस्थापक</h3>
-<p>संस्थापकको नाम तथा फोटो यहाँ पछि राख्न सकिनेछ।</p>
+<p>संस्थापकको नाम तथा फोटो यहाँ राखिनेछ।</p>
 </div>
 </section>
 
-<section class="section" id="contact">
+<section class="section">
 <h2>📞 सम्पर्क</h2>
 <a href="tel:+9779766850626" class="btn call">📞 फोन गर्नुहोस्</a>
 <a href="https://wa.me/9779766850626" class="btn whatsapp">💬 WhatsApp गर्नुहोस्</a>
@@ -283,15 +248,15 @@ footer{
 <h2>🔐 Admin Login</h2>
 
 <div class="admin-box" id="loginBox">
-<input id="adminUser" type="text" placeholder="Admin username">
-<input id="adminPass" type="password" placeholder="Admin password">
+<input id="adminUser" type="email" placeholder="Admin Email">
+<input id="adminPass" type="password" placeholder="Password">
 <button onclick="login()">Login</button>
 <p id="loginMessage" style="text-align:center;margin-top:8px"></p>
 </div>
 
-<div class="admin-panel" id="adminPanel">
-<h3 style="text-align:center;color:#0756a8">Admin Panel</h3>
-<p style="text-align:center">Admin login सफल भयो।</p>
+<div class="admin-box admin-panel" id="adminPanel">
+<h3 style="text-align:center;color:#0756a8">🔐 Admin Panel</h3>
+<p style="text-align:center">Admin Login सफल भयो।</p>
 <button class="logout" onclick="logout()">Logout</button>
 </div>
 </section>
@@ -305,96 +270,577 @@ footer{
 PBK • सबैको साथ, सबैको सहयोग ❤️
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-/*
-  अहिलेको login demo:
-  Username: admin
-  Password: 2082
 
-  वास्तविक सुरक्षित Admin Login र database का लागि
-  Supabase Authentication जोड्नुपर्छ।
-*/
+/* =====================================================
+   SUPABASE CONNECTION
+   ===================================================== */
 
-function login(){
-  const user=document.getElementById("adminUser").value;
-  const pass=document.getElementById("adminPass").value;
-  const msg=document.getElementById("loginMessage");
+const https://hvcalffbwvbwekysukdo.supabase.co/rest/v1/
+const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
 
-  if(user==="admin" && pass==="2082"){
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("adminPanel").style.display="block";
-    msg.innerHTML="";
-  }else{
-    msg.innerHTML="Username वा Password गलत छ।";
-    msg.style.color="red";
-  }
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+async function login(){
+
+const email=document.getElementById("adminUser").value.trim();
+const password=document.getElementById("adminPass").value;
+const msg=document.getElementById("loginMessage");
+
+if(!email || !password){
+msg.innerText="Email र Password लेख्नुहोस्।";
+msg.style.color="red";
+return;
 }
 
-function logout(){
-  document.getElementById("loginBox").style.display="block";
-  document.getElementById("adminPanel").style.display="none";
-  document.getElementById("adminUser").value="";
-  document.getElementById("adminPass").value="";
+const {data,error}=await supabaseClient.auth.signInWithPassword({
+email:email,
+password:password
+});
+
+if(error){
+msg.innerText="Login असफल भयो। Email/Password जाँच गर्नुहोस्।";
+msg.style.color="red";
+return;
 }
+
+showAdmin();
+loadPrivateData();
+
+msg.innerText="";
+}
+
+
+/* =====================================================
+   ADMIN SHOW
+   ===================================================== */
+
+function showAdmin(){
+
+document.getElementById("loginBox").style.display="none";
+document.getElementById("adminPanel").style.display="block";
+
+document.querySelectorAll(".admin-panel").forEach(x=>{
+x.style.display="block";
+});
+
+document.getElementById("moneyPublic").style.display="none";
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+async function logout(){
+
+await supabaseClient.auth.signOut();
+
+document.getElementById("loginBox").style.display="block";
+document.getElementById("adminPanel").style.display="none";
+
+document.querySelectorAll(".admin-panel").forEach(x=>{
+x.style.display="none";
+});
+
+document.getElementById("moneyPublic").style.display="block";
+}
+
+
+/* =====================================================
+   SESSION CHECK
+   ===================================================== */
+
+async function checkLogin(){
+
+const {data}=await supabaseClient.auth.getSession();
+
+if(data.session){
+showAdmin();
+loadPrivateData();
+}
+
+}
+
+
+/* =====================================================
+   MEMBERS
+   ===================================================== */
+
+async function loadMembers(){
+
+const {data,error}=await supabaseClient
+.from("members")
+.select("*")
+.order("id",{ascending:true});
+
+const box=document.getElementById("memberList");
+
+if(error){
+box.innerHTML="<div class='record'>सदस्य loading समस्या भयो।</div>";
+return;
+}
+
+if(!data.length){
+box.innerHTML="<div class='record'>अहिले सदस्य विवरण राखिएको छैन।</div>";
+return;
+}
+
+box.innerHTML="";
+
+data.forEach((m,i)=>{
+
+box.innerHTML+=`
+<div class="member">
+<strong>${i+1}.</strong>
+${escapeHTML(m.position || "सदस्य")} —
+${escapeHTML(m.name)}
+${m.phone ? "<br>📞 "+escapeHTML(m.phone) : ""}
+</div>
+`;
+
+});
+
+}
+
+
+async function addMember(){
+
+const name=document.getElementById("memberName").value.trim();
+const position=document.getElementById("memberPosition").value.trim();
+const phone=document.getElementById("memberPhone").value.trim();
+
+if(!name){
+alert("सदस्यको नाम लेख्नुहोस्।");
+return;
+}
+
+const {error}=await supabaseClient
+.from("members")
+.insert({
+name:name,
+position:position,
+phone:phone
+});
+
+if(error){
+alert("सदस्य थप्न सकिएन।");
+return;
+}
+
+document.getElementById("memberName").value="";
+document.getElementById("memberPosition").value="";
+document.getElementById("memberPhone").value="";
+
+loadMembers();
+
+}
+
+
+/* =====================================================
+   NOTICES
+   ===================================================== */
+
+async function loadNotices(){
+
+const {data,error}=await supabaseClient
+.from("notices")
+.select("*")
+.order("created_at",{ascending:false});
+
+const box=document.getElementById("noticeList");
+
+if(error){
+box.innerHTML="<div class='notice'>सूचना loading समस्या भयो।</div>";
+return;
+}
+
+if(!data.length){
+box.innerHTML="<div class='notice'>अहिले नयाँ सूचना छैन।</div>";
+return;
+}
+
+box.innerHTML="";
+
+data.forEach(n=>{
+box.innerHTML+=`
+<div class="notice">
+<strong>${escapeHTML(n.title)}</strong><br>
+${escapeHTML(n.message)}
+</div>
+`;
+});
+
+}
+
+
+async function addNotice(){
+
+const title=document.getElementById("noticeTitle").value.trim();
+const message=document.getElementById("noticeMessage").value.trim();
+
+if(!title || !message){
+alert("शीर्षक र सूचना लेख्नुहोस्।");
+return;
+}
+
+const {error}=await supabaseClient
+.from("notices")
+.insert({
+title:title,
+message:message
+});
+
+if(error){
+alert("सूचना थप्न सकिएन।");
+return;
+}
+
+document.getElementById("noticeTitle").value="";
+document.getElementById("noticeMessage").value="";
+
+loadNotices();
+
+}
+
+
+/* =====================================================
+   EVENTS / CALENDAR
+   ===================================================== */
+
+async function loadEvents(){
+
+const {data,error}=await supabaseClient
+.from("events")
+.select("*")
+.order("event_date",{ascending:true});
+
+const box=document.getElementById("eventList");
+
+if(error){
+box.innerHTML="<div class='record'>Calendar loading समस्या भयो।</div>";
+return;
+}
+
+if(!data.length){
+box.innerHTML="<div class='record'>अहिले कुनै कार्यक्रम राखिएको छैन।</div>";
+return;
+}
+
+box.innerHTML="";
+
+data.forEach(e=>{
+box.innerHTML+=`
+<div class="record">
+📅 <strong>${escapeHTML(e.title)}</strong><br>
+मिति: ${escapeHTML(e.event_date)}
+${e.description ? "<br>"+escapeHTML(e.description) : ""}
+</div>
+`;
+});
+
+}
+
+
+async function addEvent(){
+
+const title=document.getElementById("eventTitle").value.trim();
+const date=document.getElementById("eventDate").value;
+const description=document.getElementById("eventDescription").value.trim();
+
+if(!title || !date){
+alert("कार्यक्रम र मिति लेख्नुहोस्।");
+return;
+}
+
+const {error}=await supabaseClient
+.from("events")
+.insert({
+title:title,
+event_date:date,
+description:description
+});
+
+if(error){
+alert("कार्यक्रम थप्न सकिएन।");
+return;
+}
+
+document.getElementById("eventTitle").value="";
+document.getElementById("eventDate").value="";
+document.getElementById("eventDescription").value="";
+
+loadEvents();
+
+}
+
+
+/* =====================================================
+   MONEY
+   ===================================================== */
+
+async function loadMoney(){
+
+const {data,error}=await supabaseClient
+.from("money_records")
+.select("*")
+.order("record_date",{ascending:false});
+
+if(error)return;
 
 let income=0;
 let expense=0;
 
-function addMoney(){
-  const type=document.getElementById("moneyType").value;
-  const person=document.getElementById("person").value;
-  const amount=Number(document.getElementById("amount").value);
-  const date=document.getElementById("moneyDate").value;
-  const desc=document.getElementById("description").value;
+const box=document.getElementById("moneyList");
+box.innerHTML="";
 
-  if(!amount){
-    alert("रकम लेख्नुहोस्।");
-    return;
-  }
+data.forEach(r=>{
 
-  if(type==="income") income+=amount;
-  else expense+=amount;
+if(r.record_type==="income") income+=Number(r.amount);
+else expense+=Number(r.amount);
 
-  document.getElementById("income").innerText=income;
-  document.getElementById("expense").innerText=expense;
-  document.getElementById("balance").innerText=income-expense;
+box.innerHTML+=`
+<div class="record">
+<b>${r.record_type==="income"?"आम्दानी":"खर्च"}</b><br>
+व्यक्ति: ${escapeHTML(r.person || "")}<br>
+रकम: रु. ${Number(r.amount).toLocaleString()}<br>
+मिति: ${escapeHTML(r.record_date || "")}<br>
+${escapeHTML(r.description || "")}
+</div>
+`;
 
-  const div=document.createElement("div");
-  div.className="record";
-  div.innerHTML=
-    "<b>"+(type==="income"?"आम्दानी":"खर्च")+"</b><br>"+
-    "व्यक्ति: "+person+"<br>"+
-    "रकम: रु. "+amount+"<br>"+
-    "मिति: "+date+"<br>"+
-    "विवरण: "+desc;
+});
 
-  document.getElementById("moneyList").appendChild(div);
+document.getElementById("income").innerText=income.toLocaleString();
+document.getElementById("expense").innerText=expense.toLocaleString();
+document.getElementById("balance").innerText=(income-expense).toLocaleString();
 
-  document.getElementById("person").value="";
-  document.getElementById("amount").value="";
-  document.getElementById("moneyDate").value="";
-  document.getElementById("description").value="";
 }
 
-function addDocument(){
-  const inputs=document.querySelectorAll("#documents input");
-  const name=inputs[0].value;
-  const link=inputs[1].value;
 
-  if(!name || !link){
-    alert("Document को नाम र link लेख्नुहोस्।");
-    return;
-  }
+async function addMoney(){
 
-  const div=document.createElement("div");
-  div.className="record";
-  div.innerHTML="<b>"+name+"</b><br><a href='"+link+"' target='_blank'>📄 Document खोल्नुहोस्</a>";
+const type=document.getElementById("moneyType").value;
+const person=document.getElementById("person").value.trim();
+const amount=Number(document.getElementById("amount").value);
+const date=document.getElementById("moneyDate").value;
+const description=document.getElementById("description").value.trim();
 
-  document.getElementById("documentList").appendChild(div);
-
-  inputs[0].value="";
-  inputs[1].value="";
+if(!amount){
+alert("रकम लेख्नुहोस्।");
+return;
 }
+
+const {error}=await supabaseClient
+.from("money_records")
+.insert({
+record_type:type,
+person:person,
+amount:amount,
+record_date:date || null,
+description:description
+});
+
+if(error){
+alert("हिसाब save गर्न सकिएन।");
+return;
+}
+
+document.getElementById("person").value="";
+document.getElementById("amount").value="";
+document.getElementById("moneyDate").value="";
+document.getElementById("description").value="";
+
+loadMoney();
+
+}
+
+
+/* =====================================================
+   DOCUMENTS
+   ===================================================== */
+
+async function loadDocuments(){
+
+const {data,error}=await supabaseClient
+.from("documents")
+.select("*")
+.order("created_at",{ascending:false});
+
+const box=document.getElementById("documentList");
+
+if(error){
+box.innerHTML="<div class='record'>Document loading समस्या भयो।</div>";
+return;
+}
+
+if(!data.length){
+box.innerHTML="<div class='record'>अहिले Document राखिएको छैन।</div>";
+return;
+}
+
+box.innerHTML="";
+
+data.forEach(d=>{
+box.innerHTML+=`
+<div class="record">
+📄 <strong>${escapeHTML(d.title)}</strong><br>
+<a href="${escapeAttribute(d.file_url || "#")}" target="_blank">
+Document खोल्नुहोस्
+</a>
+</div>
+`;
+});
+
+}
+
+
+async function addDocument(){
+
+const title=document.getElementById("documentTitle").value.trim();
+const url=document.getElementById("documentUrl").value.trim();
+
+if(!title || !url){
+alert("Document को नाम र URL लेख्नुहोस्।");
+return;
+}
+
+const {error}=await supabaseClient
+.from("documents")
+.insert({
+title:title,
+file_url:url
+});
+
+if(error){
+alert("Document थप्न सकिएन।");
+return;
+}
+
+document.getElementById("documentTitle").value="";
+document.getElementById("documentUrl").value="";
+
+loadDocuments();
+
+}
+
+
+/* =====================================================
+   GALLERY
+   ===================================================== */
+
+async function loadGallery(){
+
+const {data,error}=await supabaseClient
+.from("gallery")
+.select("*")
+.order("created_at",{ascending:false});
+
+const box=document.getElementById("galleryList");
+
+if(error)return;
+
+box.innerHTML="";
+
+data.forEach(g=>{
+box.innerHTML+=`
+<div class="record">
+<strong>${escapeHTML(g.title || "")}</strong><br>
+<img src="${escapeAttribute(g.image_url || "")}"
+style="width:100%;border-radius:10px;margin-top:8px"
+onerror="this.style.display='none'">
+</div>
+`;
+});
+
+}
+
+
+async function addGallery(){
+
+const title=document.getElementById("galleryTitle").value.trim();
+const url=document.getElementById("galleryUrl").value.trim();
+
+if(!url){
+alert("Photo URL लेख्नुहोस्।");
+return;
+}
+
+const {error}=await supabaseClient
+.from("gallery")
+.insert({
+title:title,
+image_url:url
+});
+
+if(error){
+alert("Gallery मा राख्न सकिएन।");
+return;
+}
+
+document.getElementById("galleryTitle").value="";
+document.getElementById("galleryUrl").value="";
+
+loadGallery();
+
+}
+
+
+/* =====================================================
+   PRIVATE DATA
+   ===================================================== */
+
+function loadPrivateData(){
+loadMoney();
+loadDocuments();
+}
+
+
+/* =====================================================
+   SECURITY HELPERS
+   ===================================================== */
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function escapeAttribute(value){
+
+return String(value ?? "")
+.replace(/"/g,"%22")
+.replace(/'/g,"%27");
+
+}
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+loadMembers();
+loadNotices();
+loadEvents();
+loadGallery();
+checkLogin();
+
 </script>
 
 </body>
