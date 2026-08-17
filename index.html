@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
   <meta charset="UTF-8">
@@ -13,40 +13,67 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, "Noto Sans Devanagari", sans-serif;
-      background: #f4f6f8;
-      color: #222;
+      background: #eef5ff;
+      color: #172033;
       line-height: 1.6;
     }
 
+    /* HEADER */
     header {
-      background: linear-gradient(135deg, #7b1113, #b22222);
+      background: linear-gradient(135deg, #0756a8, #168ee8);
       color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 22px 15px 28px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .top-logo {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: white;
+      color: #0756a8;
+      border: 5px solid rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.20);
     }
 
     header h1 {
-      font-size: 27px;
-      margin-bottom: 5px;
+      font-size: 26px;
+      margin-bottom: 4px;
     }
 
     header p {
       font-size: 15px;
+      opacity: 0.95;
     }
 
+    /* HERO */
     .hero {
-      padding: 25px 15px;
-      text-align: center;
       background: white;
+      text-align: center;
+      padding: 24px 15px;
     }
 
     .hero h2 {
-      color: #8b0000;
-      margin-bottom: 8px;
+      color: #0756a8;
+      margin-bottom: 6px;
     }
 
+    /* ICON GRID */
     .icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -58,50 +85,71 @@
 
     .icon-box {
       background: white;
-      border-radius: 14px;
-      padding: 17px 8px;
+      border-radius: 16px;
+      padding: 15px 6px 13px;
       text-align: center;
       text-decoration: none;
-      color: #222;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+      color: #172033;
+      box-shadow: 0 4px 12px rgba(20,70,130,0.12);
+      border: 1px solid #dcecff;
       transition: 0.2s;
     }
 
     .icon-box:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
     }
 
     .icon {
-      font-size: 32px;
-      display: block;
-      margin-bottom: 5px;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 7px;
+      border-radius: 50%;
+      background: #e7f2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
     }
 
+    .icon-box span:last-child {
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* SECTIONS */
     .section {
       background: white;
       margin: 14px 12px;
       padding: 20px 15px;
-      border-radius: 14px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(20,70,130,0.10);
+      scroll-margin-top: 15px;
     }
 
     .section h2 {
-      color: #8b0000;
-      margin-bottom: 12px;
+      color: #0756a8;
       text-align: center;
+      margin-bottom: 14px;
+      font-size: 21px;
     }
 
+    /* NOTICE */
     .notice {
-      background: #fff7d6;
-      border-left: 5px solid #d49b00;
+      background: #f3f8ff;
+      border-left: 5px solid #168ee8;
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 9px;
       margin-bottom: 10px;
     }
 
+    .notice strong {
+      color: #0756a8;
+    }
+
+    /* MEMBERS */
     .member {
-      border-bottom: 1px solid #eee;
-      padding: 10px 0;
+      padding: 11px 5px;
+      border-bottom: 1px solid #e7edf5;
     }
 
     .member:last-child {
@@ -109,9 +157,67 @@
     }
 
     .member strong {
-      color: #8b0000;
+      color: #0756a8;
     }
 
+    /* CALENDAR */
+    .calendar-card {
+      text-align: center;
+      background: #f3f8ff;
+      border-radius: 14px;
+      padding: 18px 10px;
+    }
+
+    .calendar-icon {
+      font-size: 45px;
+      margin-bottom: 5px;
+    }
+
+    .calendar-card h3 {
+      color: #0756a8;
+      margin-bottom: 5px;
+    }
+
+    .date-box {
+      margin: 14px auto 0;
+      max-width: 300px;
+    }
+
+    .date-box input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #bcd5ef;
+      border-radius: 9px;
+      font-size: 15px;
+    }
+
+    /* FOUNDER */
+    .founder {
+      text-align: center;
+      padding: 15px;
+      background: #f3f8ff;
+      border-radius: 14px;
+    }
+
+    .founder-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      margin: auto;
+      background: #0756a8;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .founder h3 {
+      color: #0756a8;
+      margin-top: 10px;
+    }
+
+    /* BUTTONS */
     .contact-btn {
       display: block;
       text-decoration: none;
@@ -128,39 +234,56 @@
     }
 
     .whatsapp {
-      background: #25d366;
+      background: #20b957;
     }
 
     .facebook {
       background: #1877f2;
     }
 
+    /* GALLERY */
+    .gallery-box {
+      text-align: center;
+      padding: 22px 10px;
+      background: #f3f8ff;
+      border-radius: 14px;
+    }
+
+    .gallery-box .big-icon {
+      font-size: 48px;
+      margin-bottom: 5px;
+    }
+
+    /* FOOTER */
     footer {
-      background: #222;
+      background: #0756a8;
       color: white;
       text-align: center;
-      padding: 20px 10px;
+      padding: 22px 10px;
       margin-top: 20px;
       font-size: 14px;
     }
 
+    /* MOBILE */
     @media (max-width: 430px) {
       header h1 {
-        font-size: 23px;
+        font-size: 22px;
       }
 
       .icons {
-        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
+        padding-left: 9px;
+        padding-right: 9px;
       }
 
       .icon-box {
-        padding: 13px 5px;
-        font-size: 13px;
+        padding: 12px 4px;
       }
 
       .icon {
-        font-size: 28px;
+        width: 48px;
+        height: 48px;
+        font-size: 25px;
       }
     }
   </style>
@@ -168,68 +291,92 @@
 
 <body>
 
-  <header>
+  <!-- HEADER / LOGO -->
+  <header id="home">
+
+    <div class="top-logo">PBK</div>
+
     <h1>रसाली भाई समाज परिवार</h1>
     <p>एकता • सहयोग • भाइचारा</p>
+
   </header>
 
+  <!-- WELCOME -->
   <section class="hero">
     <h2>हार्दिक स्वागत छ 🙏</h2>
-    <p>रसाली भाई समाज परिवारको आधिकारिक वेबसाइटमा यहाँलाई स्वागत छ।</p>
+    <p>
+      रसाली भाई समाज परिवारको आधिकारिक वेबसाइटमा यहाँलाई हार्दिक स्वागत छ।
+    </p>
   </section>
 
-  <!-- मुख्य ICON हरू -->
+  <!-- MAIN ICONS -->
   <div class="icons">
 
     <a href="#home" class="icon-box">
-      <span class="icon">🏠</span>
-      Home
+      <div class="icon">🏠</div>
+      <span>Home</span>
     </a>
 
     <a href="#notice" class="icon-box">
-      <span class="icon">🔔</span>
-      सूचना
+      <div class="icon">🔔</div>
+      <span>सूचना</span>
     </a>
 
-    <a href="tel:+966000000000" class="icon-box">
-      <span class="icon">📞</span>
-      Call
+    <a href="tel:+9779766850626" class="icon-box">
+      <div class="icon">📞</div>
+      <span>Call</span>
     </a>
 
-    <a href="https://wa.me/966000000000" class="icon-box">
-      <span class="icon">💬</span>
-      WhatsApp
+    <a href="https://wa.me/9779766850626" class="icon-box">
+      <div class="icon">💬</div>
+      <span>WhatsApp</span>
     </a>
 
     <a href="#members" class="icon-box">
-      <span class="icon">👥</span>
-      सदस्य
+      <div class="icon">👥</div>
+      <span>सदस्य</span>
     </a>
 
     <a href="#gallery" class="icon-box">
-      <span class="icon">🖼️</span>
-      Gallery
+      <div class="icon">🖼️</div>
+      <span>Gallery</span>
+    </a>
+
+    <a href="#calendar" class="icon-box">
+      <div class="icon">📅</div>
+      <span>Calendar</span>
     </a>
 
     <a href="#contact" class="icon-box">
-      <span class="icon">📍</span>
-      सम्पर्क
+      <div class="icon">📍</div>
+      <span>सम्पर्क</span>
     </a>
 
     <a href="#about" class="icon-box">
-      <span class="icon">ℹ️</span>
-      हाम्रो बारेमा
+      <div class="icon">ℹ️</div>
+      <span>हाम्रो बारेमा</span>
+    </a>
+
+    <a href="#founder" class="icon-box">
+      <div class="icon">👤</div>
+      <span>संस्थापक</span>
     </a>
 
     <a href="#menu" class="icon-box">
-      <span class="icon">☰</span>
-      Menu
+      <div class="icon">☰</div>
+      <span>Menu</span>
+    </a>
+
+    <a href="#home" class="icon-box">
+      <div class="icon">🔵</div>
+      <span>PBK</span>
     </a>
 
   </div>
 
-  <!-- सूचना -->
+  <!-- NOTICE -->
   <section class="section" id="notice">
+
     <h2>🔔 सूचना</h2>
 
     <div class="notice">
@@ -241,10 +388,12 @@
       <strong>समाजको जानकारी</strong><br>
       सबै सदस्यहरूलाई एकता र सहयोगका साथ अगाडि बढ्न हार्दिक अनुरोध।
     </div>
+
   </section>
 
-  <!-- सदस्य -->
+  <!-- MEMBERS -->
   <section class="section" id="members">
+
     <h2>👥 समाजका पदाधिकारी</h2>
 
     <div class="member">
@@ -262,54 +411,122 @@
     <div class="member">
       <strong>कोषाध्यक्ष</strong> — नरेश रसाली
     </div>
+
   </section>
 
-  <!-- हाम्रो बारेमा -->
+  <!-- CALENDAR -->
+  <section class="section" id="calendar">
+
+    <h2>📅 Calendar</h2>
+
+    <div class="calendar-card">
+
+      <div class="calendar-icon">📅</div>
+
+      <h3>कार्यक्रम तथा मिति</h3>
+
+      <p>
+        समाजका बैठक, कार्यक्रम तथा विशेष दिनहरूको मिति
+        पछि यहाँ राख्न सकिनेछ।
+      </p>
+
+      <div class="date-box">
+        <input type="date">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
   <section class="section" id="about">
+
     <h2>ℹ️ हाम्रो बारेमा</h2>
+
     <p>
-      रसाली भाई समाज परिवार आपसी भाइचारा, एकता, सहयोग र सामाजिक
-      सम्बन्धलाई अझ मजबुत बनाउने उद्देश्यले अघि बढिरहेको परिवार हो।
+      रसाली भाई समाज परिवार आपसी भाइचारा, एकता, सहयोग र
+      सामाजिक सम्बन्धलाई अझ मजबुत बनाउने उद्देश्यले अघि
+      बढिरहेको परिवार हो।
     </p>
+
   </section>
 
-  <!-- Gallery -->
+  <!-- GALLERY -->
   <section class="section" id="gallery">
+
     <h2>🖼️ Gallery</h2>
-    <p style="text-align:center;">
-      समाजका फोटो तथा कार्यक्रमका तस्वीरहरू यहाँ राखिनेछन्।
-    </p>
+
+    <div class="gallery-box">
+
+      <div class="big-icon">🖼️</div>
+
+      <p>
+        समाजका फोटो तथा कार्यक्रमका तस्वीरहरू
+        यहाँ राखिनेछन्।
+      </p>
+
+    </div>
+
   </section>
 
-  <!-- सम्पर्क -->
+  <!-- FOUNDER -->
+  <section class="section" id="founder">
+
+    <h2>👤 संस्थापक</h2>
+
+    <div class="founder">
+
+      <div class="founder-icon">👤</div>
+
+      <h3>संस्थापक</h3>
+
+      <p>
+        संस्थापकको नाम तथा फोटो यहाँ पछि राख्न सकिनेछ।
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
   <section class="section" id="contact">
+
     <h2>📞 सम्पर्क गर्नुहोस्</h2>
 
-    <a href="tel:+977-9766850626" class="contact-btn call">
-      📞 फोन गर्नुहोस्
+    <a href="tel:+9779766850626" class="contact-btn call">
+      📞  फोन गर्नुहोस्
     </a>
 
-    <a href="https://wa.me/00977-9766850626" class="contact-btn whatsapp">
-      💬 WhatsApp गर्नुहोस्
+    <a href="https://wa.me/9779766850626" class="contact-btn whatsapp">
+      💬  WhatsApp गर्नुहोस्
     </a>
 
-    <a href="#" class="contact-btn facebook">
-      f Facebook Page
-    </a>
   </section>
 
+  <!-- MENU -->
   <section class="section" id="menu">
+
     <h2>☰ Menu</h2>
+
     <p style="text-align:center;">
-      Home &nbsp; | &nbsp; सूचना &nbsp; | &nbsp; सदस्य &nbsp; | &nbsp;
-      Gallery &nbsp; | &nbsp; सम्पर्क
+      Home &nbsp; | &nbsp;
+      सूचना &nbsp; | &nbsp;
+      सदस्य &nbsp; | &nbsp;
+      Calendar &nbsp; | &nbsp;
+      Gallery &nbsp; | &nbsp;
+      सम्पर्क
     </p>
+
   </section>
 
+  <!-- FOOTER -->
   <footer>
+
     © 2026 रसाली भाई समाज परिवार<br>
-    सबैको साथ, सबैको सहयोग ❤️
+
+    <strong>PBK</strong> • सबैको साथ, सबैको सहयोग ❤️
+
   </footer>
 
 </body>
-</html> 
+</html>
