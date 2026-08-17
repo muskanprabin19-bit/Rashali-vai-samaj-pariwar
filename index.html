@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>रसाली भाई समाज परिवार</title>
 
   <style>
@@ -13,85 +14,125 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+      background: #f4f6f8;
       color: #222;
       line-height: 1.6;
     }
 
     header {
-      background: #7b0000;
+      background: linear-gradient(135deg, #7b1113, #b22222);
       color: white;
       text-align: center;
       padding: 25px 15px;
     }
 
     header h1 {
-      font-size: 28px;
-      margin-bottom: 8px;
+      font-size: 27px;
+      margin-bottom: 5px;
     }
 
     header p {
-      font-size: 16px;
+      font-size: 15px;
     }
 
-    nav {
-      background: #222;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 13px 18px;
-      display: block;
-    }
-
-    nav a:hover {
-      background: #7b0000;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 25px auto;
-      padding: 25px 18px;
+    .hero {
+      padding: 25px 15px;
+      text-align: center;
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
-    h2 {
-      text-align: center;
-      color: #7b0000;
-      margin-bottom: 18px;
+    .hero h2 {
+      color: #8b0000;
+      margin-bottom: 8px;
     }
 
-    .welcome {
-      text-align: center;
-      font-size: 17px;
-    }
-
-    .members {
+    .icons {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 18px 12px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .icon-box {
+      background: white;
+      border-radius: 14px;
+      padding: 17px 8px;
+      text-align: center;
+      text-decoration: none;
+      color: #222;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+      transition: 0.2s;
+    }
+
+    .icon-box:active {
+      transform: scale(0.96);
+    }
+
+    .icon {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .section {
+      background: white;
+      margin: 14px 12px;
+      padding: 20px 15px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      color: #8b0000;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .notice {
+      background: #fff7d6;
+      border-left: 5px solid #d49b00;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
 
     .member {
-      background: #fafafa;
-      padding: 18px;
-      text-align: center;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+
+    .member:last-child {
+      border-bottom: none;
     }
 
     .member strong {
+      color: #8b0000;
+    }
+
+    .contact-btn {
       display: block;
-      color: #7b0000;
-      font-size: 18px;
-      margin-bottom: 5px;
+      text-decoration: none;
+      text-align: center;
+      color: white;
+      padding: 13px;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .call {
+      background: #16803c;
+    }
+
+    .whatsapp {
+      background: #25d366;
+    }
+
+    .facebook {
+      background: #1877f2;
     }
 
     footer {
@@ -99,16 +140,27 @@
       color: white;
       text-align: center;
       padding: 20px 10px;
-      margin-top: 30px;
+      margin-top: 20px;
+      font-size: 14px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 430px) {
       header h1 {
         font-size: 23px;
       }
 
-      section {
-        margin: 15px 10px;
+      .icons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .icon-box {
+        padding: 13px 5px;
+        font-size: 13px;
+      }
+
+      .icon {
+        font-size: 28px;
       }
     }
   </style>
@@ -121,67 +173,142 @@
     <p>एकता • सहयोग • भाइचारा</p>
   </header>
 
-  <nav>
-    <a href="#home">गृहपृष्ठ</a>
-    <a href="#about">हाम्रो बारेमा</a>
-    <a href="#members">समिति</a>
-    <a href="#contact">सम्पर्क</a>
-  </nav>
-
-  <section id="home">
-    <h2>रसाली भाई समाज परिवारमा स्वागत छ</h2>
-    <p class="welcome">
-      सम्पूर्ण रसाली भाईहरूको एकता, सहयोग र भाइचारालाई अझ बलियो बनाउने
-      उद्देश्यले यो समाज परिवारको वेबसाइट तयार गरिएको हो।
-    </p>
+  <section class="hero">
+    <h2>हार्दिक स्वागत छ 🙏</h2>
+    <p>रसाली भाई समाज परिवारको आधिकारिक वेबसाइटमा यहाँलाई स्वागत छ।</p>
   </section>
 
-  <section id="about">
-    <h2>हाम्रो बारेमा</h2>
-    <p>
-      रसाली भाई समाज परिवार आपसी सहयोग, सद्भाव, एकता र सामाजिक सेवाका
-      लागि समर्पित परिवार हो।
-    </p>
-  </section>
+  <!-- मुख्य ICON हरू -->
+  <div class="icons">
 
-  <section id="members">
-    <h2>समिति सदस्यहरू</h2>
+    <a href="#home" class="icon-box">
+      <span class="icon">🏠</span>
+      Home
+    </a>
 
-    <div class="members">
+    <a href="#notice" class="icon-box">
+      <span class="icon">🔔</span>
+      सूचना
+    </a>
 
-      <div class="member">
-        <strong>अध्यक्ष</strong>
-        दीपक रसाली
-      </div>
+    <a href="tel:+966000000000" class="icon-box">
+      <span class="icon">📞</span>
+      Call
+    </a>
 
-      <div class="member">
-        <strong>उपाध्यक्ष</strong>
-        पदम रसाली
-      </div>
+    <a href="https://wa.me/966000000000" class="icon-box">
+      <span class="icon">💬</span>
+      WhatsApp
+    </a>
 
-      <div class="member">
-        <strong>प्रस्तावक</strong>
-        गोपि रसाली
-      </div>
+    <a href="#members" class="icon-box">
+      <span class="icon">👥</span>
+      सदस्य
+    </a>
 
-      <div class="member">
-        <strong>कोषाध्यक्ष</strong>
-        नरेश रसाली
-      </div>
+    <a href="#gallery" class="icon-box">
+      <span class="icon">🖼️</span>
+      Gallery
+    </a>
 
+    <a href="#contact" class="icon-box">
+      <span class="icon">📍</span>
+      सम्पर्क
+    </a>
+
+    <a href="#about" class="icon-box">
+      <span class="icon">ℹ️</span>
+      हाम्रो बारेमा
+    </a>
+
+    <a href="#menu" class="icon-box">
+      <span class="icon">☰</span>
+      Menu
+    </a>
+
+  </div>
+
+  <!-- सूचना -->
+  <section class="section" id="notice">
+    <h2>🔔 सूचना</h2>
+
+    <div class="notice">
+      <strong>महत्वपूर्ण सूचना</strong><br>
+      समाज परिवारसँग सम्बन्धित नयाँ सूचना तथा कार्यक्रमहरू यहाँ राखिनेछ।
+    </div>
+
+    <div class="notice">
+      <strong>समाजको जानकारी</strong><br>
+      सबै सदस्यहरूलाई एकता र सहयोगका साथ अगाडि बढ्न हार्दिक अनुरोध।
     </div>
   </section>
 
-  <section id="contact">
-    <h2>सम्पर्क</h2>
+  <!-- सदस्य -->
+  <section class="section" id="members">
+    <h2>👥 समाजका पदाधिकारी</h2>
+
+    <div class="member">
+      <strong>अध्यक्ष</strong> — दीपक रसाली
+    </div>
+
+    <div class="member">
+      <strong>उपाध्यक्ष</strong> — पदम रसाली
+    </div>
+
+    <div class="member">
+      <strong>प्रस्तावक</strong> — गोपि रसाली
+    </div>
+
+    <div class="member">
+      <strong>कोषाध्यक्ष</strong> — नरेश रसाली
+    </div>
+  </section>
+
+  <!-- हाम्रो बारेमा -->
+  <section class="section" id="about">
+    <h2>ℹ️ हाम्रो बारेमा</h2>
+    <p>
+      रसाली भाई समाज परिवार आपसी भाइचारा, एकता, सहयोग र सामाजिक
+      सम्बन्धलाई अझ मजबुत बनाउने उद्देश्यले अघि बढिरहेको परिवार हो।
+    </p>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <h2>🖼️ Gallery</h2>
     <p style="text-align:center;">
-      रसाली भाई समाज परिवार<br>
-      एकता र भाइचाराका लागि सधैं एकजुट।
+      समाजका फोटो तथा कार्यक्रमका तस्वीरहरू यहाँ राखिनेछन्।
+    </p>
+  </section>
+
+  <!-- सम्पर्क -->
+  <section class="section" id="contact">
+    <h2>📞 सम्पर्क गर्नुहोस्</h2>
+
+    <a href="tel:+977-9766850626" class="contact-btn call">
+      📞 फोन गर्नुहोस्
+    </a>
+
+    <a href="https://wa.me/00977-9766850626" class="contact-btn whatsapp">
+      💬 WhatsApp गर्नुहोस्
+    </a>
+
+    <a href="#" class="contact-btn facebook">
+      f Facebook Page
+    </a>
+  </section>
+
+  <section class="section" id="menu">
+    <h2>☰ Menu</h2>
+    <p style="text-align:center;">
+      Home &nbsp; | &nbsp; सूचना &nbsp; | &nbsp; सदस्य &nbsp; | &nbsp;
+      Gallery &nbsp; | &nbsp; सम्पर्क
     </p>
   </section>
 
   <footer>
-    <p>© 2082 रसाली भाई समाज परिवार</p>
+    © 2026 रसाली भाई समाज परिवार<br>
+    सबैको साथ, सबैको सहयोग ❤️
   </footer>
 
 </body>
