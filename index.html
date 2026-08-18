@@ -382,5 +382,39 @@ return;
 message.innerText="Login system तयार छ।";
 }
 </script>
+  <section class="section" id="admin">
+<h2>🔐 Admin Login</h2>
+
+<input id="adminEmail" type="email" placeholder="Admin Email">
+
+<input id="adminPassword" type="password" placeholder="Password">
+
+<button type="button" onclick="adminLogin()">
+Login
+</button>
+
+<p id="adminMessage"></p>
+</section>
+
+<script>
+function adminLogin(){
+
+const email =
+document.getElementById("adminEmail").value.trim();
+
+const password =
+document.getElementById("adminPassword").value;
+
+const message =
+document.getElementById("adminMessage");
+
+if(!email || !password){
+message.innerText="Email र Password लेख्नुहोस्।";
+return;
+}
+
+message.innerText="Login system तयार छ।";
+}
+</script>
 </body>
 </html> 
