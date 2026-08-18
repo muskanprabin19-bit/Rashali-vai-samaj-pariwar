@@ -348,6 +348,39 @@ Admin Login प्रणाली अर्को चरणमा जोडि�
 PBK • सबैको साथ, सबैको सहयोग ❤️
 
 </footer>
+<section class="section" id="admin">
+<h2>🔐 Admin Login</h2>
 
+<input id="adminEmail" type="email" placeholder="Admin Email">
+
+<input id="adminPassword" type="password" placeholder="Password">
+
+<button onclick="adminLogin()">
+Login
+</button>
+
+<p id="adminMessage" style="text-align:center;margin-top:10px"></p>
+</section>
+
+<script>
+function adminLogin(){
+
+const email =
+document.getElementById("adminEmail").value.trim();
+
+const password =
+document.getElementById("adminPassword").value;
+
+const message =
+document.getElementById("adminMessage");
+
+if(!email || !password){
+message.innerText="Email र Password लेख्नुहोस्।";
+return;
+}
+
+message.innerText="Login system तयार छ।";
+}
+</script>
 </body>
 </html> 
