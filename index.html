@@ -1,4 +1,6 @@
- <!DOCTYPE html>
+रसाली भाई समाज परिवार — Base Website
+
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -6,11 +8,6 @@
 <title>रसाली भाई समाज परिवार चौराठा</title>
 
 <style>
- #loginBox button{
-  position:relative;
-  z-index:9999;
-  pointer-events:auto;
-}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -23,19 +20,23 @@ header{
 background:linear-gradient(135deg,#0756a8,#1598ed);
 color:white;
 text-align:center;
-padding:22px 12px 28px
+padding:24px 12px 28px
 }
-.namaskar{font-size:35px}
+.namaskar{font-size:34px}
 .logo{
-width:82px;height:82px;border-radius:50%;
+width:82px;height:82px;
+border-radius:50%;
 background:white;color:#0756a8;
 border:5px solid #dceeff;
-display:flex;align-items:center;justify-content:center;
-margin:6px auto 9px;
-font-size:24px;font-weight:bold
+display:flex;
+align-items:center;
+justify-content:center;
+margin:7px auto 9px;
+font-size:24px;
+font-weight:bold
 }
 header h1{font-size:25px}
-.estd{font-weight:bold;font-size:16px}
+.estd{font-weight:bold}
 
 .hero{
 background:white;
@@ -52,7 +53,6 @@ padding:16px 10px;
 max-width:700px;
 margin:auto
 }
-
 .icon-box{
 background:white;
 border-radius:16px;
@@ -60,10 +60,9 @@ padding:12px 5px;
 text-align:center;
 text-decoration:none;
 color:#172033;
-box-shadow:0 4px 12px rgba(20,70,130,.12);
+box-shadow:0 4px 12px #1446821f;
 border:1px solid #d8eaff
 }
-
 .icon{
 width:51px;height:51px;
 border-radius:50%;
@@ -74,7 +73,6 @@ justify-content:center;
 margin:auto auto 6px;
 font-size:27px
 }
-
 .icon-box b{font-size:13px}
 
 .section{
@@ -82,16 +80,14 @@ background:white;
 margin:13px 10px;
 padding:19px 14px;
 border-radius:16px;
-box-shadow:0 4px 12px rgba(20,70,130,.10)
+box-shadow:0 4px 12px #1446821a
 }
-
 .section h2{
 text-align:center;
 color:#0756a8;
 font-size:21px;
 margin-bottom:13px
 }
-
 .notice,.record{
 background:#f2f8ff;
 border-left:5px solid #1598ed;
@@ -99,14 +95,6 @@ padding:12px;
 border-radius:8px;
 margin:8px 0
 }
-
-.member{
-padding:10px 4px;
-border-bottom:1px solid #e7edf5
-}
-
-.member strong{color:#0756a8}
-
 .officer{
 background:#f2f8ff;
 border-left:5px solid #0756a8;
@@ -114,19 +102,9 @@ padding:14px;
 border-radius:10px;
 margin:9px 0
 }
-
 .officer strong{color:#0756a8}
 
-input,textarea,select{
-width:100%;
-padding:11px;
-margin:6px 0;
-border:1px solid #bfd5ec;
-border-radius:8px;
-font-size:15px
-}
-
-button,.btn{
+.btn{
 width:100%;
 padding:12px;
 border:0;
@@ -140,61 +118,15 @@ text-decoration:none;
 display:block;
 text-align:center
 }
-
-.logout{background:#555}
 .call{background:#16803c}
 .whatsapp{background:#20b957}
-
-.admin-box{
-max-width:500px;
-margin:auto;
-background:#f2f8ff;
-padding:15px;
-border-radius:13px
-}
-
-.admin-panel{display:none}
-
-.total{
-text-align:center;
-background:#0756a8;
-color:white;
-padding:12px;
-border-radius:10px;
-margin-bottom:10px
-}
-
-.founder{
-text-align:center;
-background:#f2f8ff;
-padding:18px;
-border-radius:14px
-}
-
-.founder-icon{
-width:70px;height:70px;
-border-radius:50%;
-background:#0756a8;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:auto;
-font-size:30px
-}
-
-.bottom-text{
-text-align:center;
-font-weight:bold;
-color:#0756a8;
-padding:20px 10px 8px
-}
 
 footer{
 background:#0756a8;
 color:white;
 text-align:center;
-padding:20px 10px
+padding:20px 10px;
+margin-top:15px
 }
 
 @media(max-width:430px){
@@ -213,74 +145,96 @@ font-size:24px
 
 <header id="home">
 <div class="namaskar">🙏 🙏</div>
+
 <div class="logo">PBK</div>
+
 <h1>रसाली भाई समाज परिवार</h1>
+
 <div class="estd">स्थापना २०८२</div>
+
 <p>एकता • सहयोग • भाइचारा</p>
 </header>
 
 <section class="hero">
+
 <h2>हार्दिक स्वागत छ 🙏</h2>
+
 <p>
 रसाली भाई समाज परिवारको आधिकारिक वेबसाइटमा
 यहाँलाई हार्दिक स्वागत छ।
 </p>
+
 </section>
 
 <div class="icons">
 
 <a href="#home" class="icon-box">
-<div class="icon">🏠</div><b>Home</b>
+<div class="icon">🏠</div>
+<b>Home</b>
 </a>
 
 <a href="#notice" class="icon-box">
-<div class="icon">🔔</div><b>सूचना</b>
-</a>
-
-<a href="tel:+9779766850626" class="icon-box">
-<div class="icon">📞</div><b>Call</b>
-</a>
-
-<a href="https://wa.me/9779766850626" class="icon-box">
-<div class="icon">💬</div><b>WhatsApp</b>
+<div class="icon">🔔</div>
+<b>सूचना</b>
 </a>
 
 <a href="#members" class="icon-box">
-<div class="icon">👥</div><b>सदस्य</b>
+<div class="icon">👥</div>
+<b>सदस्य</b>
 </a>
 
 <a href="#officers" class="icon-box">
-<div class="icon">🏅</div><b>पदाधिकारी</b>
+<div class="icon">🏅</div>
+<b>पदाधिकारी</b>
 </a>
 
 <a href="#gallery" class="icon-box">
-<div class="icon">🖼️</div><b>Gallery</b>
+<div class="icon">🖼️</div>
+<b>Gallery</b>
 </a>
 
 <a href="#calendar" class="icon-box">
-<div class="icon">📅</div><b>Calendar</b>
+<div class="icon">📅</div>
+<b>Calendar</b>
 </a>
 
 <a href="#documents" class="icon-box">
-<div class="icon">📄</div><b>Document</b>
+<div class="icon">📄</div>
+<b>Document</b>
 </a>
 
 <a href="#money" class="icon-box">
-<div class="icon">💰</div><b>हिसाब</b>
+<div class="icon">💰</div>
+<b>हिसाब</b>
 </a>
 
 <a href="#about" class="icon-box">
-<div class="icon">ℹ️</div><b>हाम्रो बारेमा</b>
+<div class="icon">ℹ️</div>
+<b>हाम्रो बारेमा</b>
 </a>
 
 <a href="#admin" class="icon-box">
-<div class="icon">🔐</div><b>Admin</b>
+<div class="icon">🔐</div>
+<b>Admin</b>
 </a>
 
 </div>
 
+<section class="section" id="notice">
+<h2>🔔 सूचना</h2>
 
-<!-- पदाधिकारी -->
+<div class="notice">
+अहिले नयाँ सूचना राखिएको छैन।
+</div>
+</section>
+
+<section class="section" id="members">
+<h2>👥 समाजका सदस्यहरू</h2>
+
+<div class="record">
+सदस्यहरूको विवरण पछि Admin बाट थपिनेछ।
+</div>
+</section>
 
 <section class="section" id="officers">
 
@@ -308,37 +262,45 @@ font-size:24px
 
 </section>
 
+<section class="section" id="gallery">
 
-<!-- सूचना -->
+<h2>🖼️ Gallery</h2>
 
-<section class="section" id="notice">
-
-<h2>🔔 सूचना</h2>
-
-<div id="noticeList">
-<div class="notice">
-सूचना loading हुँदैछ...
-</div>
-</div>
-
-<div class="admin-panel">
-
-<input id="noticeTitle"
-placeholder="सूचनाको शीर्षक">
-
-<textarea id="noticeMessage"
-placeholder="सूचना लेख्नुहोस्"></textarea>
-
-<button onclick="addNotice()">
-सूचना थप्नुहोस्
-</button>
-
+<div class="record">
+फोटोहरू Admin बाट पछि थपिनेछन्।
 </div>
 
 </section>
 
+<section class="section" id="calendar">
 
-<!-- हाम्रो बारेमा -->
+<h2>📅 Calendar</h2>
+
+<div class="record">
+कार्यक्रमहरूको विवरण पछि थपिनेछ।
+</div>
+
+</section>
+
+<section class="section" id="documents">
+
+<h2>📄 Documents</h2>
+
+<div class="record">
+Documents पछि Admin बाट थपिनेछन्।
+</div>
+
+</section>
+
+<section class="section" id="money">
+
+<h2>💰 पैसा हिसाब</h2>
+
+<div class="record">
+हिसाब सम्बन्धी विवरण Admin Login पछि मात्र व्यवस्थापन गरिनेछ।
+</div>
+
+</section>
 
 <section class="section" id="about">
 
@@ -353,1305 +315,39 @@ placeholder="सूचना लेख्नुहोस्"></textarea>
 
 </section>
 
+<section class="section" id="admin">
 
-<!-- सदस्य -->
+<h2>🔐 Admin</h2>
 
-<section class="section" id="members">
-
-<h2>👥 समाजका सदस्यहरू</h2>
-
-<div id="memberList">
-सदस्यहरूको विवरण loading हुँदैछ...
-</div>
-
-<div class="admin-panel">
-
-<input id="memberName"
-placeholder="सदस्यको नाम">
-
-<input id="memberPosition"
-placeholder="पद">
-
-<input id="memberPhone"
-placeholder="फोन नम्बर">
-
-<button onclick="addMember()">
-सदस्य थप्नुहोस्
-</button>
-
-</div>
-
-</section>
-
-
-<!-- Calendar -->
-
-<section class="section" id="calendar">
-
-<h2>📅 Calendar</h2>
-
-<div id="eventList">
 <div class="record">
-कार्यक्रमहरू loading हुँदैछन्...
-</div>
-</div>
-
-<div class="admin-panel">
-
-<input id="eventTitle"
-placeholder="कार्यक्रमको नाम">
-
-<input id="eventDate"
-type="date">
-
-<input id="eventDescription"
-placeholder="विवरण">
-
-<button onclick="addEvent()">
-कार्यक्रम थप्नुहोस्
-</button>
-
+Admin Login प्रणाली अर्को चरणमा जोडिनेछ।
 </div>
 
 </section>
-
-
-<!-- Gallery -->
-
-<section class="section" id="gallery">
-
-<h2>🖼️ Gallery</h2>
-
-<div id="galleryList">
-<div class="record">
-फोटोहरू यहाँ राखिनेछन्।
-</div>
-</div>
-
-<div class="admin-panel">
-
-<input id="galleryTitle"
-placeholder="फोटोको नाम">
-
-<input id="galleryUrl"
-placeholder="Photo URL">
-
-<button onclick="addGallery()">
-Gallery मा राख्नुहोस्
-</button>
-
-</div>
-
-</section>
-
-
-<!-- Documents -->
-
-<section class="section" id="documents">
-
-<h2>📄 Document</h2>
-
-<div id="documentList">
-<div class="record">
-Documents loading हुँदैछन्...
-</div>
-</div>
-
-<div class="admin-panel">
-
-<input id="documentTitle"
-placeholder="Document को नाम">
-
-<input id="documentUrl"
-placeholder="Document URL">
-
-<button onclick="addDocument()">
-Document थप्नुहोस्
-</button>
-
-</div>
-
-</section>
-
-
-<!-- पैसा हिसाब -->
-
-<section class="section" id="money">
-
-<h2>💰 पैसा लिने–दिने हिसाब</h2>
-
-<div class="total">
-
-कुल आम्दानी: रु.
-<span id="income">0</span>
-
-<br>
-
-कुल खर्च: रु.
-<span id="expense">0</span>
-
-<br>
-
-बाँकी: रु.
-<span id="balance">0</span>
-
-</div>
-
-<div id="moneyList" class="admin-panel"></div>
-
-<div class="admin-panel">
-
-<select id="moneyType">
-
-<option value="income">
-पैसा लिएको / आम्दानी
-</option>
-
-<option value="expense">
-पैसा दिएको / खर्च
-</option>
-
-</select>
-
-<input id="person"
-placeholder="कसबाट / कसलाई">
-
-<input id="amount"
-type="number"
-placeholder="रकम">
-
-<input id="moneyDate"
-type="date">
-
-<input id="description"
-placeholder="विवरण">
-
-<button onclick="addMoney()">
-हिसाब थप्नुहोस्
-</button>
-
-</div>
-
-<div id="moneyPublic" class="record">
-💰 पैसा सम्बन्धी विवरण Admin Login गरेपछि मात्र देखिन्छ।
-</div>
-
-</section>
-
-
-<!-- संस्थापक -->
-
-<section class="section" id="founder">
-
-<h2>👤 संस्थापक</h2>
-
-<div class="founder">
-
-<div class="founder-icon">
-👤
-</div>
-
-<h3>संस्थापक</h3>
-
-<p>
-संस्थापकको नाम तथा फोटो यहाँ राखिनेछ।
-</p>
-
-</div>
-
-</section>
-
-
-<!-- सम्पर्क -->
 
 <section class="section">
 
 <h2>📞 सम्पर्क</h2>
 
-<a href="tel:+9779766850626"
-class="btn call">
+<a href="tel:+9779766850626" class="btn call">
 📞 फोन गर्नुहोस्
 </a>
 
-<a href="https://wa.me/9779766850626"
-class="btn whatsapp">
+<a href="https://wa.me/9779766850626" class="btn whatsapp">
 💬 WhatsApp गर्नुहोस्
 </a>
 
 </section>
 
-
-<!-- ADMIN LOGIN -->
-
-<section class="section" id="admin">
-
-<h2>🔐 Admin Login</h2>
-
-<div class="admin-box" id="loginBox">
-
-<input
-id="adminUser"
-type="email"
-placeholder="Admin Email">
-
-<input
-id="adminPass"
-type="password"
-placeholder="Password">
-
-<button onclick="login()">
-Login
-</button>
-
-<p id="loginMessage"
-style="text-align:center;margin-top:8px">
-</p>
-
-</div>
-
-
-<div
-class="admin-box admin-panel"
-id="adminPanel">
-
-<h3
-style="text-align:center;color:#0756a8">
-
-🔐 Admin Panel
-
-</h3>
-
-<p style="text-align:center">
-Admin Login सफल भयो।
-</p>
-
-<button
-class="logout"
-onclick="logout()">
-
-Logout
-
-</button>
-
-</div>
-
-</section>
-
-
-<div class="bottom-text">
-कुल देवता माबै र भाबसैनीका सन्तान
-</div>
-
-
 <footer>
 
 © 2026 रसाली भाई समाज परिवार
+
 <br>
 
 PBK • सबैको साथ, सबैको सहयोग ❤️
 
 </footer>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
-<script>
-
-/* ===============================
-SUPABASE
-=============================== */
-
-const SUPABASE_URL =
-"https://hvcalffbwvbwekysukdo.supabase.co";
-
-const SUPABASE_KEY =
-const SUPABASE_KEY =
-"तपाईंको Publishable Key";
-
-const supabaseClient =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-
-/* ===============================
-LOGIN
-=============================== */
-
-async function login(){
-
-const email =
-document.getElementById("adminUser")
-.value.trim();
-
-const password =
-document.getElementById("adminPass")
-.value;
-
-const msg =
-document.getElementById("loginMessage");
-
-if(!email || !password){
-
-msg.innerText =
-"Email र Password लेख्नुहोस्।";
-
-msg.style.color="red";
-
-return;
-}
-
-const {data,error} =
-await supabaseClient.auth.signInWithPassword({
-
-email:email,
-password:password
-
-});
-
-if(error){
-
-msg.innerText =
-"Login असफल भयो। Email/Password जाँच गर्नुहोस्।";
-
-msg.style.color="red";
-
-return;
-}
-
-showAdmin();
-
-loadPrivateData();
-
-msg.innerText="";
-
-}
-
-
-/* ===============================
-SHOW ADMIN
-=============================== */
-
-function showAdmin(){
-
-document.getElementById(
-"loginBox"
-).style.display="none";
-
-document.getElementById(
-"adminPanel"
-).style.display="block";
-
-document.querySelectorAll(
-".admin-panel"
-).forEach(function(x){
-
-x.style.display="block";
-
-});
-
-document.getElementById(
-"moneyPublic"
-).style.display="none";
-
-}
-
-
-/* ===============================
-LOGOUT
-=============================== */
-
-async function logout(){
-
-await supabaseClient.auth.signOut();
-
-document.getElementById(
-"loginBox"
-).style.display="block";
-
-document.getElementById(
-"adminPanel"
-).style.display="none";
-
-document.querySelectorAll(
-".admin-panel"
-).forEach(function(x){
-
-x.style.display="none";
-
-});
-
-document.getElementById(
-"moneyPublic"
-).style.display="block";
-
-}
-
-
-/* ===============================
-SESSION
-=============================== */
-
-async function checkLogin(){
-
-const {data} =
-await supabaseClient.auth.getSession();
-
-if(data.session){
-
-showAdmin();
-
-loadPrivateData();
-
-}
-
-}
-
-
-/* ===============================
-MEMBERS
-=============================== */
-
-async function loadMembers(){
-
-const {data,error} =
-await supabaseClient
-.from("members")
-.select("*")
-.order("id",{ascending:true});
-
-const box =
-document.getElementById("memberList");
-
-if(error){
-
-box.innerHTML =
-"<div class='record'>सदस्य loading समस्या भयो।</div>";
-
-return;
-
-}
-
-if(!data || !data.length){
-
-box.innerHTML =
-"<div class='record'>अहिले सदस्य विवरण राखिएको छैन।</div>";
-
-return;
-
-}
-
-box.innerHTML="";
-
-data.forEach(function(m,i){
-
-box.innerHTML += `
-
-<div class="member">
-
-<strong>${i+1}.</strong>
-
-${escapeHTML(m.position || "सदस्य")}
-
-—
-
-${escapeHTML(m.name)}
-
-${m.phone ?
-"<br>📞 "+escapeHTML(m.phone)
-:""}
-
-</div>
-
-`;
-
-});
-
-}
-
-
-async function addMember(){
-
-const name =
-document.getElementById(
-"memberName"
-).value.trim();
-
-const position =
-document.getElementById(
-"memberPosition"
-).value.trim();
-
-const phone =
-document.getElementById(
-"memberPhone"
-).value.trim();
-
-if(!name){
-
-alert("सदस्यको नाम लेख्नुहोस्।");
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("members")
-.insert({
-
-name:name,
-position:position,
-phone:phone
-
-});
-
-if(error){
-
-alert("सदस्य थप्न सकिएन।");
-
-return;
-
-}
-
-document.getElementById(
-"memberName"
-).value="";
-
-document.getElementById(
-"memberPosition"
-).value="";
-
-document.getElementById(
-"memberPhone"
-).value="";
-
-loadMembers();
-
-}
-
-
-/* ===============================
-NOTICE
-=============================== */
-
-async function loadNotices(){
-
-const {data,error} =
-await supabaseClient
-.from("notices")
-.select("*")
-.order("created_at",{ascending:false});
-
-const box =
-document.getElementById("noticeList");
-
-if(error){
-
-box.innerHTML =
-"<div class='notice'>सूचना loading समस्या भयो।</div>";
-
-return;
-
-}
-
-if(!data || !data.length){
-
-box.innerHTML =
-"<div class='notice'>अहिले नयाँ सूचना छैन।</div>";
-
-return;
-
-}
-
-box.innerHTML="";
-
-data.forEach(function(n){
-
-box.innerHTML += `
-
-<div class="notice">
-
-<strong>
-${escapeHTML(n.title)}
-</strong>
-
-<br>
-
-${escapeHTML(n.message)}
-
-</div>
-
-`;
-
-});
-
-}
-
-
-async function addNotice(){
-
-const title =
-document.getElementById(
-"noticeTitle"
-).value.trim();
-
-const message =
-document.getElementById(
-"noticeMessage"
-).value.trim();
-
-if(!title || !message){
-
-alert(
-"शीर्षक र सूचना लेख्नुहोस्।"
-);
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("notices")
-.insert({
-
-title:title,
-message:message
-
-});
-
-if(error){
-
-alert(
-"सूचना थप्न सकिएन।"
-);
-
-return;
-
-}
-
-document.getElementById(
-"noticeTitle"
-).value="";
-
-document.getElementById(
-"noticeMessage"
-).value="";
-
-loadNotices();
-
-}
-
-
-/* ===============================
-EVENTS
-=============================== */
-
-async function loadEvents(){
-
-const {data,error} =
-await supabaseClient
-.from("events")
-.select("*")
-.order("event_date",{ascending:true});
-
-const box =
-document.getElementById(
-"eventList"
-);
-
-if(error){
-
-box.innerHTML =
-"<div class='record'>Calendar loading समस्या भयो।</div>";
-
-return;
-
-}
-
-if(!data || !data.length){
-
-box.innerHTML =
-"<div class='record'>अहिले कुनै कार्यक्रम राखिएको छैन।</div>";
-
-return;
-
-}
-
-box.innerHTML="";
-
-data.forEach(function(e){
-
-box.innerHTML += `
-
-<div class="record">
-
-📅
-
-<strong>
-${escapeHTML(e.title)}
-</strong>
-
-<br>
-
-मिति:
-${escapeHTML(e.event_date)}
-
-${e.description ?
-"<br>"+escapeHTML(e.description)
-:""}
-
-</div>
-
-`;
-
-});
-
-}
-
-
-async function addEvent(){
-
-const title =
-document.getElementById(
-"eventTitle"
-).value.trim();
-
-const date =
-document.getElementById(
-"eventDate"
-).value;
-
-const description =
-document.getElementById(
-"eventDescription"
-).value.trim();
-
-if(!title || !date){
-
-alert(
-"कार्यक्रम र मिति लेख्नुहोस्।"
-);
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("events")
-.insert({
-
-title:title,
-event_date:date,
-description:description
-
-});
-
-if(error){
-
-alert(
-"कार्यक्रम थप्न सकिएन।"
-);
-
-return;
-
-}
-
-document.getElementById(
-"eventTitle"
-).value="";
-
-document.getElementById(
-"eventDate"
-).value="";
-
-document.getElementById(
-"eventDescription"
-).value="";
-
-loadEvents();
-
-}
-
-
-/* ===============================
-MONEY
-=============================== */
-
-async function loadMoney(){
-
-const {data,error} =
-await supabaseClient
-.from("money_records")
-.select("*")
-.order("record_date",{ascending:false});
-
-if(error) return;
-
-let income=0;
-let expense=0;
-
-const box =
-document.getElementById(
-"moneyList"
-);
-
-box.innerHTML="";
-
-data.forEach(function(r){
-
-if(r.record_type==="income")
-income += Number(r.amount);
-
-else
-expense += Number(r.amount);
-
-box.innerHTML += `
-
-<div class="record">
-
-<b>
-${r.record_type==="income"
-?"आम्दानी"
-:"खर्च"}
-</b>
-
-<br>
-
-व्यक्ति:
-${escapeHTML(r.person || "")}
-
-<br>
-
-रकम:
-रु. ${Number(r.amount).toLocaleString()}
-
-<br>
-
-मिति:
-${escapeHTML(r.record_date || "")}
-
-<br>
-
-${escapeHTML(r.description || "")}
-
-</div>
-
-`;
-
-});
-
-document.getElementById(
-"income"
-).innerText =
-income.toLocaleString();
-
-document.getElementById(
-"expense"
-).innerText =
-expense.toLocaleString();
-
-document.getElementById(
-"balance"
-).innerText =
-(income-expense).toLocaleString();
-
-}
-
-
-async function addMoney(){
-
-const type =
-document.getElementById(
-"moneyType"
-).value;
-
-const person =
-document.getElementById(
-"person"
-).value.trim();
-
-const amount =
-Number(
-document.getElementById(
-"amount"
-).value
-);
-
-const date =
-document.getElementById(
-"moneyDate"
-).value;
-
-const description =
-document.getElementById(
-"description"
-).value.trim();
-
-if(!amount){
-
-alert("रकम लेख्नुहोस्।");
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("money_records")
-.insert({
-
-record_type:type,
-person:person,
-amount:amount,
-record_date:date || null,
-description:description
-
-});
-
-if(error){
-
-alert(
-"हिसाब save गर्न सकिएन।"
-);
-
-return;
-
-}
-
-document.getElementById(
-"person"
-).value="";
-
-document.getElementById(
-"amount"
-).value="";
-
-document.getElementById(
-"moneyDate"
-).value="";
-
-document.getElementById(
-"description"
-).value="";
-
-loadMoney();
-
-}
-
-
-/* ===============================
-DOCUMENTS
-=============================== */
-
-async function loadDocuments(){
-
-const {data,error} =
-await supabaseClient
-.from("documents")
-.select("*")
-.order("created_at",{ascending:false});
-
-const box =
-document.getElementById(
-"documentList"
-);
-
-if(error){
-
-box.innerHTML =
-"<div class='record'>Document loading समस्या भयो।</div>";
-
-return;
-
-}
-
-if(!data || !data.length){
-
-box.innerHTML =
-"<div class='record'>अहिले Document राखिएको छैन।</div>";
-
-return;
-
-}
-
-box.innerHTML="";
-
-data.forEach(function(d){
-
-box.innerHTML += `
-
-<div class="record">
-
-📄
-
-<strong>
-${escapeHTML(d.title)}
-</strong>
-
-<br>
-
-<a
-href="${escapeAttribute(d.file_url || "#")}"
-target="_blank">
-
-Document खोल्नुहोस्
-
-</a>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-async function addDocument(){
-
-const title =
-document.getElementById(
-"documentTitle"
-).value.trim();
-
-const url =
-document.getElementById(
-"documentUrl"
-).value.trim();
-
-if(!title || !url){
-
-alert(
-"Document को नाम र URL लेख्नुहोस्।"
-);
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("documents")
-.insert({
-
-title:title,
-file_url:url
-
-});
-
-if(error){
-
-alert(
-"Document थप्न सकिएन।"
-);
-
-return;
-
-}
-
-document.getElementById(
-"documentTitle"
-).value="";
-
-document.getElementById(
-"documentUrl"
-).value="";
-
-loadDocuments();
-
-}
-
-
-/* ===============================
-GALLERY
-=============================== */
-
-async function loadGallery(){
-
-const {data,error} =
-await supabaseClient
-.from("gallery")
-.select("*")
-.order("created_at",{ascending:false});
-
-const box =
-document.getElementById(
-"galleryList"
-);
-
-if(error) return;
-
-box.innerHTML="";
-
-data.forEach(function(g){
-
-box.innerHTML += `
-
-<div class="record">
-
-<strong>
-${escapeHTML(g.title || "")}
-</strong>
-
-<br>
-
-<img
-src="${escapeAttribute(g.image_url || "")}"
-style="width:100%;border-radius:10px;margin-top:8px"
-onerror="this.style.display='none'">
-
-</div>
-
-`;
-
-});
-
-}
-
-
-async function addGallery(){
-
-const title =
-document.getElementById(
-"galleryTitle"
-).value.trim();
-
-const url =
-document.getElementById(
-"galleryUrl"
-).value.trim();
-
-if(!url){
-
-alert(
-"Photo URL लेख्नुहोस्।"
-);
-
-return;
-
-}
-
-const {error} =
-await supabaseClient
-.from("gallery")
-.insert({
-
-title:title,
-image_url:url
-
-});
-
-if(error){
-
-alert(
-"Gallery मा राख्न सकिएन।"
-);
-
-return;
-
-}
-
-document.getElementById(
-"galleryTitle"
-).value="";
-
-document.getElementById(
-"galleryUrl"
-).value="";
-
-loadGallery();
-
-}
-
-
-/* ===============================
-PRIVATE DATA
-=============================== */
-
-function loadPrivateData(){
-
-loadMoney();
-
-loadDocuments();
-
-}
-
-
-/* ===============================
-SECURITY HELPERS
-=============================== */
-
-function escapeHTML(value){
-
-return String(value ?? "")
-
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-function escapeAttribute(value){
-
-return String(value ?? "")
-
-.replace(/"/g,"%22")
-.replace(/'/g,"%27");
-
-}
-
-
-/* ===============================
-START
-=============================== */
-
-loadMembers();
-loadNotices();
-loadEvents();
-loadGallery();
-checkLogin();
-
-</script>
-<!-- ADMIN LOGIN -->
-<div id="loginBox" style="max-width:400px;margin:40px auto;padding:25px;text-align:center;">
-  <h2>Admin Login</h2>
-  <input id="email" type="email" placeholder="Email"
-    style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box;">
-  <input id="password" type="password" placeholder="Password"
-    style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box;">
-  <button onclick="adminLogin()" style="padding:12px 25px;">
-    Login
-  </button>
-  <p id="loginMessage"></p>
-</div>
-
-<script>
-function adminLogin() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  if (!email || !password) {
-    document.getElementById("loginMessage").textContent =
-      "Email र Password हाल्नुहोस्।";
-    return;
-  }
-
-  // अहिले temporary login check
-  if (email === "admin@rashali.com" && password === "123456") {
-    document.getElementById("loginMessage").textContent =
-      "Login सफल भयो!";
-  } else {
-    document.getElementById("loginMessage").textContent =
-      "Email वा Password गलत छ।";
-  }
-}
-</script>
 </body>
-</html>
+</html> 
