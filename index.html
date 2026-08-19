@@ -1,261 +1,491 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>रसाली भाई समाज परिवार</title>
+<title>रसाली भाई समाज परिवार</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body {
-      font-family: Arial, "Noto Sans Devanagari", sans-serif;
-      background: #f5f7fa;
-      color: #222;
-      line-height: 1.6;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    header {
-      background: linear-gradient(135deg, #7b0000, #c62828);
-      color: white;
-      text-align: center;
-      padding: 35px 15px;
-    }
+body{
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f4f6f8;
+  color:#222;
+}
 
-    header h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#650000,#c62828);
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+}
 
-    header p {
-      font-size: 17px;
-    }
+.logo{
+  width:90px;
+  height:90px;
+  margin:auto;
+  border-radius:50%;
+  background:white;
+  color:#a00000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  font-weight:bold;
+  border:5px solid #ffd54f;
+  box-shadow:0 4px 15px rgba(0,0,0,.3);
+}
 
-    nav {
-      background: #222;
-      text-align: center;
-      padding: 12px 5px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+header h1{
+  margin-top:12px;
+  font-size:29px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-      font-size: 15px;
-    }
+header p{
+  margin-top:5px;
+}
 
-    nav a:hover {
-      color: #ffd54f;
-    }
+/* NAVIGATION */
+nav{
+  background:#222;
+  padding:13px 5px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
 
-    .hero {
-      text-align: center;
-      padding: 55px 20px;
-      background: white;
-    }
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+  font-size:15px;
+  font-weight:bold;
+}
 
-    .hero h2 {
-      color: #9b0000;
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
+nav a:hover{
+  color:#ffd54f;
+}
 
-    .hero p {
-      max-width: 750px;
-      margin: auto;
-      font-size: 17px;
-    }
+/* HERO */
+.hero{
+  background:white;
+  text-align:center;
+  padding:55px 20px;
+}
 
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 45px 20px;
-    }
+.hero h2{
+  color:#a00000;
+  font-size:28px;
+  margin-bottom:15px;
+}
 
-    section h2 {
-      text-align: center;
-      color: #9b0000;
-      margin-bottom: 30px;
-      font-size: 26px;
-    }
+.hero p{
+  max-width:750px;
+  margin:auto;
+  font-size:17px;
+}
 
-    .members {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+/* GENERAL */
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:45px 20px;
+}
 
-    .card {
-      background: white;
-      padding: 25px 15px;
-      text-align: center;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.10);
-    }
+section h2{
+  text-align:center;
+  color:#a00000;
+  margin-bottom:28px;
+}
 
-    .card h3 {
-      color: #9b0000;
-      margin-bottom: 8px;
-    }
+/* ICON BOXES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
+}
 
-    .card p {
-      font-size: 16px;
-    }
+.feature{
+  background:white;
+  text-align:center;
+  padding:28px 15px;
+  border-radius:15px;
+  box-shadow:0 4px 14px rgba(0,0,0,.1);
+}
 
-    .welcome {
-      background: white;
-      border-radius: 18px;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
+.icon{
+  font-size:42px;
+  margin-bottom:10px;
+}
 
-    .welcome h3 {
-      color: #b00000;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
+.feature h3{
+  color:#a00000;
+  margin-bottom:8px;
+}
 
-    .contact {
-      background: #eeeeee;
-      text-align: center;
-      border-radius: 18px;
-      padding: 30px 20px;
-    }
+/* ABOUT */
+.about-box{
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
 
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 20px;
-    }
+.about-box p{
+  font-size:17px;
+}
 
-    footer p {
-      margin: 5px 0;
-    }
+/* MEMBERS */
+.members{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 24px;
-      }
+.member{
+  background:white;
+  text-align:center;
+  padding:25px 15px;
+  border-radius:16px;
+  box-shadow:0 4px 14px rgba(0,0,0,.1);
+}
 
-      nav a {
-        display: inline-block;
-        margin: 5px 7px;
-        font-size: 14px;
-      }
+.member-photo{
+  width:75px;
+  height:75px;
+  margin:auto;
+  border-radius:50%;
+  background:#a00000;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+}
 
-      .hero h2 {
-        font-size: 23px;
-      }
+.member h3{
+  margin-top:12px;
+  color:#a00000;
+}
 
-      section {
-        padding: 35px 15px;
-      }
-    }
-  </style>
+.member p{
+  margin-top:5px;
+}
+
+/* NEW YEAR */
+.greeting{
+  background:white;
+  padding:35px 20px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+.greeting h3{
+  color:#b00000;
+  font-size:25px;
+  margin-bottom:15px;
+}
+
+/* LOGIN */
+.login-box{
+  max-width:420px;
+  margin:auto;
+  background:white;
+  padding:30px 25px;
+  border-radius:18px;
+  box-shadow:0 5px 18px rgba(0,0,0,.12);
+}
+
+.login-box h3{
+  text-align:center;
+  color:#a00000;
+  margin-bottom:20px;
+  font-size:24px;
+}
+
+.login-box input{
+  width:100%;
+  padding:13px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+.login-box button{
+  width:100%;
+  padding:13px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  background:#a00000;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.login-box button:hover{
+  background:#700000;
+}
+
+#loginMessage{
+  text-align:center;
+  margin-top:12px;
+  font-weight:bold;
+}
+
+/* CONTACT */
+.contact{
+  background:#eee;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+}
+
+/* FOOTER */
+footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  margin-top:20px;
+}
+
+footer p{
+  margin:5px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  header h1{
+    font-size:24px;
+  }
+
+  nav a{
+    display:inline-block;
+    margin:5px 6px;
+    font-size:14px;
+  }
+
+  .hero h2{
+    font-size:23px;
+  }
+
+  section{
+    padding:35px 15px;
+  }
+
+  .logo{
+    width:78px;
+    height:78px;
+    font-size:32px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>रसाली भाई समाज परिवार</h1>
-    <p>एकता • भाइचारा • सहयोग</p>
-  </header>
+<!-- HEADER -->
+<header>
+  <div class="logo">र</div>
+  <h1>रसाली भाई समाज परिवार</h1>
+  <p>एकता • भाइचारा • सहयोग</p>
+</header>
 
-  <nav>
-    <a href="#home">गृहपृष्ठ</a>
-    <a href="#about">हाम्रो बारेमा</a>
-    <a href="#members">सदस्यहरू</a>
-    <a href="#contact">सम्पर्क</a>
-  </nav>
+<!-- MENU -->
+<nav>
+  <a href="#home">🏠 गृहपृष्ठ</a>
+  <a href="#about">👥 हाम्रो बारेमा</a>
+  <a href="#members">⭐ सदस्यहरू</a>
+  <a href="#greeting">🎉 शुभकामना</a>
+  <a href="#login">🔐 Login</a>
+  <a href="#contact">📞 सम्पर्क</a>
+</nav>
 
-  <div class="hero" id="home">
-    <h2>रसाली भाई समाज परिवारमा हार्दिक स्वागत छ</h2>
+<!-- HOME -->
+<div class="hero" id="home">
+  <h2>रसाली भाई समाज परिवारमा हार्दिक स्वागत छ</h2>
+  <p>
+    एकता, भाइचारा, सहयोग र आपसी सद्भावलाई अझ बलियो बनाउँदै
+    हामी सबै एकसाथ अगाडि बढौँ।
+  </p>
+</div>
+
+<!-- FEATURES -->
+<section>
+  <h2>हाम्रो उद्देश्य</h2>
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="icon">🤝</div>
+      <h3>एकता</h3>
+      <p>सबै सदस्यबीच एकता र भाइचारा कायम गर्ने।</p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">❤️</div>
+      <h3>सहयोग</h3>
+      <p>आवश्यक समयमा एकअर्कालाई सहयोग गर्ने।</p>
+    </div>
+
+    <div class="feature">
+      <div class="icon">👨‍👩‍👧‍👦</div>
+      <h3>समाज</h3>
+      <p>समाज र परिवारबीचको सम्बन्ध अझ मजबुत बनाउने।</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>हाम्रो बारेमा</h2>
+
+  <div class="about-box">
     <p>
-      हाम्रो समाज परिवार एकता, भाइचारा, सहयोग र आपसी सद्भावलाई
-      अझ बलियो बनाउने उद्देश्यले अघि बढिरहेको छ।
+      रसाली भाई समाज परिवार आपसी प्रेम, सद्भाव, सहयोग र
+      भाइचारालाई प्राथमिकता दिँदै अघि बढिरहेको साझा परिवार हो।
+    </p>
+
+    <br>
+
+    <p><strong>स्थापना: २०८२</strong></p>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <h2>समाजका पदाधिकारीहरू</h2>
+
+  <div class="members">
+
+    <div class="member">
+      <div class="member-photo">अ</div>
+      <h3>अध्यक्ष</h3>
+      <p>दीपक रसाली</p>
+    </div>
+
+    <div class="member">
+      <div class="member-photo">उ</div>
+      <h3>उपाध्यक्ष</h3>
+      <p>पदम रसाली</p>
+    </div>
+
+    <div class="member">
+      <div class="member-photo">प्र</div>
+      <h3>प्रस्तावक</h3>
+      <p>गोपि रसाली</p>
+    </div>
+
+    <div class="member">
+      <div class="member-photo">को</div>
+      <h3>कोषाध्यक्ष</h3>
+      <p>नरेश रसाली</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- GREETING -->
+<section id="greeting">
+  <h2>नयाँ वर्ष २०८३</h2>
+
+  <div class="greeting">
+    <h3>हार्दिक मंगलमय शुभकामना 🎉</h3>
+
+    <p>
+      रसाली भाई समाज परिवारका सम्पूर्ण सदस्यहरूमा
+      सुख, शान्ति, समृद्धि, सफलता तथा उत्तरोत्तर प्रगतिको
+      हार्दिक मंगलमय शुभकामना।
     </p>
   </div>
+</section>
 
-  <section id="about">
-    <h2>हाम्रो बारेमा</h2>
+<!-- LOGIN -->
+<section id="login">
+  <h2>Admin Login</h2>
 
-    <div class="welcome">
-      <h3>एकता नै हाम्रो शक्ति हो</h3>
-      <p>
-        रसाली भाई समाज परिवार सबै सदस्यहरूबीच आपसी सम्बन्ध,
-        सहयोग र भाइचारालाई मजबुत बनाउँदै अगाडि बढ्ने साझा परिवार हो।
-      </p>
-      <br>
-      <p><strong>स्थापना: 2082</strong></p>
-    </div>
-  </section>
+  <div class="login-box">
 
-  <section id="members">
-    <h2>समाजका पदाधिकारीहरू</h2>
+    <h3>🔐 Login</h3>
 
-    <div class="members">
+    <input
+      type="email"
+      id="email"
+      placeholder="Email"
+    >
 
-      <div class="card">
-        <h3>अध्यक्ष</h3>
-        <p>दीपक रसाली</p>
-      </div>
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
 
-      <div class="card">
-        <h3>उपाध्यक्ष</h3>
-        <p>पदम रसाली</p>
-      </div>
+    <button onclick="login()">
+      Login
+    </button>
 
-      <div class="card">
-        <h3>प्रस्तावक</h3>
-        <p>गोपि रसाली</p>
-      </div>
+    <p id="loginMessage"></p>
 
-      <div class="card">
-        <h3>कोषाध्यक्ष</h3>
-        <p>नरेश रसाली</p>
-      </div>
+  </div>
+</section>
 
-    </div>
-  </section>
+<!-- CONTACT -->
+<section id="contact">
+  <h2>सम्पर्क</h2>
 
-  <section>
-    <h2>शुभकामना</h2>
+  <div class="contact">
+    <p>📞 रसाली भाई समाज परिवार</p>
+    <p>🤝 एकता र भाइचाराका लागि सधैं एकसाथ</p>
+  </div>
+</section>
 
-    <div class="welcome">
-      <h3>नयाँ वर्ष २०८३ को हार्दिक शुभकामना</h3>
-      <p>
-        रसाली भाई समाज परिवारका सम्पूर्ण सदस्यहरूमा
-        सुख, शान्ति, समृद्धि, सफलता तथा उत्तरोत्तर प्रगतिको
-        हार्दिक मंगलमय शुभकामना।
-      </p>
-    </div>
-  </section>
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 रसाली भाई समाज परिवार</p>
+  <p>All Rights Reserved.</p>
+</footer>
 
-  <section id="contact">
-    <h2>सम्पर्क</h2>
+<script>
+function login(){
 
-    <div class="contact">
-      <p>रसाली भाई समाज परिवार</p>
-      <p>एकता र भाइचाराका लागि सधैं एकसाथ</p>
-    </div>
-  </section>
+  const email =
+    document.getElementById("email").value;
 
-  <footer>
-    <p>© 2026 रसाली भाई समाज परिवार</p>
-    <p>All Rights Reserved.</p>
-  </footer>
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+  if(email === "" || password === ""){
+    message.textContent =
+      "कृपया Email र Password भर्नुहोस्।";
+    return;
+  }
+
+  message.textContent =
+    "Login system जोड्न बाँकी छ।";
+}
+</script>
 
 </body>
-</html> 
+</html>
