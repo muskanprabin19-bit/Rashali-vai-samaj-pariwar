@@ -75,6 +75,16 @@ button{
   color:white;
   font-size:16px;
   font-weight:bold;
+  cursor:pointer;
+}
+
+.forgot{
+  display:block;
+  margin-top:15px;
+  color:#b30000;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
 }
 
 .message{
@@ -127,6 +137,10 @@ button{
 
   </form>
 
+  <a class="forgot" id="forgotPassword">
+    🔑 Forgot Password?
+  </a>
+
   <div id="message" class="message"></div>
 
   <a class="back" href="index.html">
@@ -142,8 +156,17 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt"
 
-const loginForm = document.getElementById("loginForm");
-const message = document.getElementById("message");
+const loginForm =
+document.getElementById("loginForm");
+
+const forgotPassword =
+document.getElementById("forgotPassword");
+
+const message =
+document.getElementById("message");
+
+
+/* LOGIN */
 
 loginForm.addEventListener("submit", async function(e){
 
@@ -161,7 +184,8 @@ loginForm.addEventListener("submit", async function(e){
   try{
 
     const response = await fetch(
-      SUPABASE_URL + "/auth/v1/token?grant_type=password",
+      SUPABASE_URL +
+      "/auth/v1/token?grant_type=password",
       {
         method:"POST",
 
@@ -214,7 +238,79 @@ loginForm.addEventListener("submit", async function(e){
 
     message.innerText =
       "Internet वा Login connection मा समस्या भयो।";
+  }
 
+});
+
+
+/* FORGOT PASSWORD */
+
+forgotPassword.addEventListener("click", async function(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  if(!email){
+
+    message.style.color = "#b30000";
+
+    message.innerText =
+      "पहिले आफ्नो Email लेख्नुहोस्।";
+
+    document.getElementById("email").focus();
+
+    return;
+  }
+
+  message.style.color = "#555";
+  message.innerText =
+    "Password reset email पठाउँदैछ...";
+
+  try{
+
+    const response = await fetch(
+      SUPABASE_URL + "/auth/v1/recover",
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":"application/json",
+          "apikey":SUPABASE_KEY
+        },
+
+        body:JSON.stringify({
+          email:email,
+          redirect_to:
+          "https://muskanprabin19-bit.github.io/Rashali-vai-samaj-pariwar/reset-password.html"
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if(!response.ok){
+
+      message.style.color = "#b30000";
+
+      message.innerText =
+        data.msg ||
+        data.error_description ||
+        "Password reset email पठाउन सकिएन।";
+
+      return;
+    }
+
+    message.style.color = "green";
+
+    message.innerText =
+      "Password reset email पठाइयो। आफ्नो Email जाँच गर्नुहोस्।";
+
+  }catch(error){
+
+    message.style.color = "#b30000";
+
+    message.innerText =
+      "Internet वा connection मा समस्या भयो।";
   }
 
 });
