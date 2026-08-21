@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>रसाली भाई समाज परिवार चौराठा</title>
 
 <style>
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
 }
 
@@ -22,12 +23,12 @@ header{
   background:linear-gradient(135deg,#b30000,#e63946);
   color:white;
   text-align:center;
-  padding:28px 15px;
+  padding:25px 15px;
 }
 
 .logo{
-  width:90px;
-  height:90px;
+  width:95px;
+  height:95px;
   border-radius:50%;
   background:white;
   margin:auto;
@@ -36,16 +37,29 @@ header{
   justify-content:center;
   font-size:42px;
   box-shadow:0 4px 15px #0004;
+  overflow:hidden;
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 header h1{
-  margin-top:15px;
-  font-size:28px;
+  margin-top:14px;
+  font-size:27px;
 }
 
 header p{
-  margin-top:8px;
+  margin-top:7px;
   font-size:15px;
+}
+
+.established{
+  margin-top:10px;
+  font-weight:bold;
+  font-size:16px;
 }
 
 nav{
@@ -65,9 +79,9 @@ nav a{
   text-decoration:none;
   color:#333;
   background:#f1f1f1;
-  padding:9px 14px;
+  padding:9px 13px;
   border-radius:20px;
-  font-size:14px;
+  font-size:13px;
 }
 
 nav a:hover{
@@ -97,13 +111,13 @@ nav a:hover{
 }
 
 .hero p{
-  line-height:1.8;
+  line-height:1.9;
   color:#555;
 }
 
 .section-title{
   text-align:center;
-  margin:28px 0 18px;
+  margin:30px 0 18px;
   color:#b30000;
   font-size:23px;
 }
@@ -125,7 +139,6 @@ nav a:hover{
 
 .card:hover{
   transform:translateY(-4px);
-  box-shadow:0 6px 18px #0002;
 }
 
 .icon{
@@ -141,17 +154,81 @@ nav a:hover{
 .card p{
   font-size:13px;
   color:#777;
+  line-height:1.6;
 }
 
-.contact{
+.deity{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 3px 12px #0001;
+}
+
+.deity-photo{
+  width:180px;
+  height:180px;
+  margin:auto;
+  border-radius:18px;
+  overflow:hidden;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+}
+
+.deity-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.deity h3{
+  margin-top:14px;
+  color:#b30000;
+}
+
+.members{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:15px;
 }
 
-.contact a{
-  text-decoration:none;
-  color:#222;
+.person{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 3px 12px #0001;
+}
+
+.person .person-icon{
+  font-size:40px;
+}
+
+.person h3{
+  margin-top:8px;
+}
+
+.person p{
+  color:#777;
+  margin-top:5px;
+}
+
+.family{
+  background:linear-gradient(135deg,#b30000,#e63946);
+  color:white;
+  padding:30px 15px;
+  border-radius:18px;
+  text-align:center;
+  margin-top:25px;
+  box-shadow:0 4px 15px #0002;
+}
+
+.family h2{
+  font-size:23px;
+  line-height:1.6;
 }
 
 .notice{
@@ -159,8 +236,13 @@ nav a:hover{
   border-left:5px solid #e63946;
   border-radius:12px;
   padding:18px;
-  box-shadow:0 3px 10px #0001;
   margin-bottom:12px;
+  box-shadow:0 3px 10px #0001;
+}
+
+.notice h3{
+  margin-bottom:7px;
+  color:#b30000;
 }
 
 .calendar{
@@ -173,7 +255,7 @@ nav a:hover{
 
 .calendar h3{
   color:#b30000;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .login{
@@ -185,13 +267,9 @@ nav a:hover{
   margin-top:25px;
 }
 
-.login h2{
-  margin-bottom:10px;
-}
-
 .login button{
   margin-top:18px;
-  padding:12px 28px;
+  padding:12px 30px;
   border:0;
   border-radius:25px;
   background:#e63946;
@@ -199,13 +277,50 @@ nav a:hover{
   font-size:16px;
 }
 
+.contact{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.contact a{
+  text-decoration:none;
+  color:#222;
+}
+
+.print-box{
+  background:white;
+  border:2px solid #ddd;
+  padding:25px;
+  text-align:center;
+  border-radius:15px;
+  box-shadow:0 3px 10px #0001;
+}
+
+.print-box h2{
+  color:#b30000;
+}
+
+.print-box p{
+  margin-top:7px;
+}
+
+.print-btn{
+  margin-top:15px;
+  padding:10px 22px;
+  border:0;
+  border-radius:20px;
+  background:#b30000;
+  color:white;
+}
+
 footer{
   margin-top:30px;
   background:#222;
   color:white;
   text-align:center;
-  padding:25px 15px;
-  line-height:1.8;
+  padding:28px 15px;
+  line-height:1.9;
 }
 
 .small{
@@ -214,6 +329,7 @@ footer{
 }
 
 @media(max-width:600px){
+
   header h1{
     font-size:22px;
   }
@@ -224,7 +340,30 @@ footer{
 
   nav a{
     font-size:12px;
-    padding:8px 11px;
+    padding:8px 10px;
+  }
+
+  .deity-photo{
+    width:150px;
+    height:150px;
+  }
+}
+
+@media print{
+
+  body{
+    background:white;
+  }
+
+  nav,
+  footer,
+  .print-btn{
+    display:none;
+  }
+
+  .print-box{
+    box-shadow:none;
+    border:2px solid #000;
   }
 }
 </style>
@@ -233,32 +372,74 @@ footer{
 <body>
 
 <header>
-  <div class="logo">🤝</div>
+
+  <div class="logo">
+    <!-- यहाँ पछि समाजको Logo राख्न सकिन्छ -->
+    🤝
+  </div>
+
   <h1>रसाली भाई समाज परिवार चौराठा</h1>
+
   <p>एकता • सहयोग • सेवा • भाइचारा</p>
+
+  <div class="established">
+    स्थापना: २०८२
+  </div>
+
 </header>
 
 <nav>
+
   <a href="#home">🏠 Home</a>
   <a href="#member">👥 सदस्य</a>
   <a href="#official">👔 पदाधिकारी</a>
   <a href="#services">🛠️ सेवा</a>
   <a href="#calendar">📅 Calendar</a>
   <a href="#complaint">📢 गुनासो</a>
-  <a href="#login">🔐 Admin</a>
+  <a href="#contact">📞 सम्पर्क</a>
+  <a href="#login">🔐 Login</a>
+
 </nav>
 
 <div class="container">
 
+<!-- HOME -->
+
 <section id="home" class="hero">
+
   <h2>रसाली भाई समाज परिवार चौराठा</h2>
+
   <p>
     हाम्रो समाजका सम्पूर्ण सदस्यहरूलाई एउटै डिजिटल प्लेटफर्ममा
     जोड्ने उद्देश्यले यो वेबसाइट तयार गरिएको हो।
     समाज, सदस्य, सूचना, सेवा तथा आपसी सहयोगलाई
     अझ सजिलो र व्यवस्थित बनाउने हाम्रो प्रयास हो।
   </p>
+
 </section>
+
+
+<!-- DEITY PHOTO -->
+
+<h2 class="section-title">🙏 हाम्रो आस्था</h2>
+
+<section class="deity">
+
+  <div class="deity-photo">
+    <!-- देवताको फोटो यहाँ राख्न सकिन्छ -->
+    🙏
+  </div>
+
+  <h3>समाजको आस्था तथा सम्मान</h3>
+
+  <p style="margin-top:8px;color:#666;">
+    देवताको फोटो पछि यहाँ सजिलै राख्न सकिनेछ।
+  </p>
+
+</section>
+
+
+<!-- SERVICES -->
 
 <h2 class="section-title">🌟 हाम्रो मुख्य सेवा</h2>
 
@@ -273,7 +454,7 @@ footer{
   <div class="card">
     <div class="icon">📸</div>
     <h3>Photo Upload</h3>
-    <p>आफ्नो फोटो र विवरण राख्न सकिने</p>
+    <p>सदस्यले आफ्नो फोटो राख्न सक्ने</p>
   </div>
 
   <div class="card">
@@ -303,7 +484,7 @@ footer{
   <div class="card">
     <div class="icon">🖼️</div>
     <h3>Gallery</h3>
-    <p>समाजका फोटोहरू</p>
+    <p>समाजका फोटोहरू राख्ने ठाउँ</p>
   </div>
 
   <div class="card">
@@ -314,91 +495,248 @@ footer{
 
 </section>
 
-<h2 class="section-title">👥 सदस्य तथा पदाधिकारी</h2>
+
+<!-- OFFICIALS -->
+
+<h2 class="section-title">👔 पदाधिकारी</h2>
+
+<section id="official" class="members">
+
+  <div class="person">
+    <div class="person-icon">👤</div>
+    <h3>दीपक रसाली</h3>
+    <p>अध्यक्ष</p>
+  </div>
+
+  <div class="person">
+    <div class="person-icon">👤</div>
+    <h3>पदम रसाली</h3>
+    <p>उपाध्यक्ष</p>
+  </div>
+
+  <div class="person">
+    <div class="person-icon">👤</div>
+    <h3>गोपि रसाली</h3>
+    <p>प्रस्तावक</p>
+  </div>
+
+  <div class="person">
+    <div class="person-icon">👤</div>
+    <h3>नरेश रसाली</h3>
+    <p>कोषाध्यक्ष</p>
+  </div>
+
+</section>
+
+
+<!-- FOUNDER -->
+
+<h2 class="section-title">🏛️ संस्थापक</h2>
+
+<section class="person">
+
+  <div class="person-icon">👤</div>
+
+  <h3>PBK</h3>
+
+  <p>संस्थापक</p>
+
+</section>
+
+
+<!-- FAMILY LINE -->
+
+<section class="family">
+
+  <h2>
+    ❤️ हामी मबै र भामसैनीका सन्तान ❤️
+  </h2>
+
+  <p style="margin-top:8px;">
+    एकता, भाइचारा र आपसी सहयोग हाम्रो पहिचान हो।
+  </p>
+
+</section>
+
+
+<!-- MEMBER -->
+
+<h2 class="section-title">👥 सदस्य</h2>
 
 <section id="member" class="grid">
 
   <div class="card">
     <div class="icon">👥</div>
     <h3>सदस्यहरू</h3>
-    <p>समाजका सम्पूर्ण सदस्यहरूको विवरण</p>
+    <p>समाजका सदस्यहरूको विवरण</p>
   </div>
 
-  <div id="official" class="card">
-    <div class="icon">👔</div>
-    <h3>पदाधिकारी</h3>
-    <p>समाजका पदाधिकारीहरूको विवरण</p>
+  <div class="card">
+    <div class="icon">🪪</div>
+    <h3>ID Card Maker</h3>
+    <p>Login गरेपछि आफ्नो ID Card बनाउन सकिने</p>
   </div>
 
 </section>
+
+
+<!-- CALENDAR -->
 
 <h2 class="section-title">📅 Calendar</h2>
 
 <section id="calendar" class="calendar">
+
   <h3>नेपाली तथा English Calendar</h3>
-  <p>नेपाली र English मिति हेर्न सकिने सुविधा यहाँ रहनेछ।</p>
-  <br>
-  <p>🇳🇵 नेपाली Calendar &nbsp; | &nbsp; 🌍 English Calendar</p>
+
+  <p>
+    🇳🇵 नेपाली Calendar
+  </p>
+
+  <p style="margin-top:8px;">
+    🌍 English Calendar
+  </p>
+
+  <p style="margin-top:15px;color:#777;">
+    Calendar को पूर्ण सुविधा Login पछि थपिनेछ।
+  </p>
+
 </section>
 
-<h2 class="section-title">📢 गुनासो तथा सहयोग</h2>
+
+<!-- MONEY / COMPLAINT -->
+
+<h2 class="section-title">💰 पैसा तथा गुनासो</h2>
 
 <section id="complaint">
+
   <div class="notice">
-    <h3>💰 पैसा सम्बन्धी गुनासो</h3>
-    <p>पैसा दिएको वा लिएको सम्बन्धी समस्या तथा विवरण समाजमा पठाउन सकिनेछ।</p>
+
+    <h3>💰 पैसा दिएको / लिएको विवरण</h3>
+
+    <p>
+      समाजमा पैसा दिएको वा लिएको सम्बन्धी विवरण
+      सुरक्षित रूपमा व्यवस्थापन गर्ने सुविधा।
+    </p>
+
   </div>
 
   <div class="notice">
-    <h3>📢 समाजको गुनासो समूह</h3>
-    <p>सदस्यहरूले आफ्नो समस्या वा गुनासो सम्बन्धित व्यक्तिसम्म पुर्‍याउन सक्नेछन्।</p>
+
+    <h3>📢 गुनासो समूह</h3>
+
+    <p>
+      सदस्यहरूले आफ्नो समस्या तथा गुनासो
+      सम्बन्धित व्यक्तिसम्म पठाउन सक्ने सुविधा।
+    </p>
+
   </div>
+
 </section>
+
+
+<!-- PRINT -->
+
+<h2 class="section-title">📄 समाजको Paper / Print</h2>
+
+<section class="print-box">
+
+  <h2>रसाली भाई समाज परिवार</h2>
+
+  <p>चौराठा</p>
+
+  <p><strong>स्थापना: २०८२</strong></p>
+
+  <p style="margin-top:12px;">
+    समाजका आवश्यक कागजात तथा विवरण Print गर्दा
+    यही नाम र स्थापना वर्ष प्रयोग गरिनेछ।
+  </p>
+
+  <button class="print-btn" onclick="window.print()">
+    🖨️ Print
+  </button>
+
+</section>
+
+
+<!-- CONTACT -->
 
 <h2 class="section-title">📞 सम्पर्क</h2>
 
-<section class="contact">
+<section id="contact" class="contact">
 
   <a href="tel:+0000000000">
+
     <div class="card">
       <div class="icon">📞</div>
       <h3>Call</h3>
-      <p>हामीलाई फोन गर्नुहोस्</p>
+      <p>फोनबाट सम्पर्क</p>
     </div>
+
   </a>
 
+
   <a href="https://wa.me/0000000000">
+
     <div class="card">
       <div class="icon">💬</div>
       <h3>WhatsApp</h3>
-      <p>WhatsApp मा सम्पर्क गर्नुहोस्</p>
+      <p>WhatsApp बाट सम्पर्क</p>
     </div>
+
   </a>
 
+
   <a href="mailto:example@email.com">
+
     <div class="card">
       <div class="icon">✉️</div>
       <h3>Email</h3>
       <p>Email पठाउनुहोस्</p>
     </div>
+
   </a>
 
 </section>
 
+
+<!-- LOGIN -->
+
 <section id="login" class="login">
+
   <h2>🔐 Admin / Member Login</h2>
-  <p>सदस्य तथा Admin का लागि सुरक्षित Login सुविधा</p>
-  <button>Login</button>
+
+  <p style="margin-top:8px;">
+    सदस्य तथा Admin का लागि सुरक्षित Login सुविधा
+  </p>
+
+  <button>
+    Login
+  </button>
+
 </section>
 
 </div>
 
+
+<!-- FOOTER -->
+
 <footer>
+
   <strong>रसाली भाई समाज परिवार चौराठा</strong>
+
   <br>
-  एकता • सहयोग • सेवा • भाइचारा
-  <p class="small">© 2026 Rasali Vai Samaj Pariwar</p>
+
+  स्थापना: २०८२
+
+  <br>
+
+  हामी मबै र भामसैनीका सन्तान
+
+  <p class="small">
+    © 2026 Rasali Vai Samaj Pariwar
+  </p>
+
 </footer>
 
 </body>
-</html> 
+</html>
