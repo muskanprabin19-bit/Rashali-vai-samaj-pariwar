@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -77,10 +77,6 @@ button{
   font-weight:bold;
 }
 
-button:active{
-  transform:scale(.98);
-}
-
 .message{
   margin-top:15px;
   font-size:14px;
@@ -140,17 +136,85 @@ button:active{
 </div>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", function(e){
+const SUPABASE_URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
+
+const SUPABASE_KEY =
+"YOUR_PUBLISHABLE_KEY";
+
+const loginForm = document.getElementById("loginForm");
+const message = document.getElementById("message");
+
+loginForm.addEventListener("submit", async function(e){
 
   e.preventDefault();
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const message = document.getElementById("message");
+  const email =
+    document.getElementById("email").value.trim();
 
-  if(email && password){
+  const password =
+    document.getElementById("password").value;
+
+  message.style.color = "#555";
+  message.innerText = "Login हुँदैछ...";
+
+  try{
+
+    const response = await fetch(
+      SUPABASE_URL + "/auth/v1/token?grant_type=password",
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":"application/json",
+          "apikey":SUPABASE_KEY
+        },
+
+        body:JSON.stringify({
+          email:email,
+          password:password
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if(!response.ok){
+
+      message.style.color = "#b30000";
+
+      message.innerText =
+        data.msg ||
+        data.error_description ||
+        "Email वा Password गलत छ।";
+
+      return;
+    }
+
+    localStorage.setItem(
+      "rasali_access_token",
+      data.access_token
+    );
+
+    localStorage.setItem(
+      "rasali_user",
+      JSON.stringify(data.user)
+    );
+
+    message.style.color = "green";
+    message.innerText = "Login सफल भयो।";
+
+    setTimeout(function(){
+      window.location.href = "index.html";
+    },1000);
+
+  }catch(error){
+
     message.style.color = "#b30000";
-    message.innerText = "Login प्रणाली तयार हुँदैछ...";
+
+    message.innerText =
+      "Internet वा Login connection मा समस्या भयो।";
+
   }
 
 });
