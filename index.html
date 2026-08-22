@@ -746,6 +746,31 @@ footer{
   </p>
 
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://hvcalffbwvbwekysukdo.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
 
+  const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  async function loadNotices() {
+    const { data, error } = await supabaseClient
+      .from("Notices")
+      .select("id, title, content")
+      .order("id", { ascending: false });
+
+    if (error) {
+      console.log("Notices error:", error);
+      return;
+    }
+
+    console.log("Notices:", data);
+  }
+
+  loadNotices();
+</script>
 </body>
 </html>
