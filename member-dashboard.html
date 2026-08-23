@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -54,6 +54,11 @@ body{
   font-size:20px;
 }
 
+.welcome p{
+  margin-top:8px;
+  color:#666;
+}
+
 .cards{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -84,6 +89,18 @@ body{
   margin-top:6px;
 }
 
+.card a{
+  display:inline-block;
+  margin-top:12px;
+  padding:9px 16px;
+  background:#e63946;
+  color:white;
+  text-decoration:none;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:bold;
+}
+
 .money{
   border-top:3px solid #e63946;
 }
@@ -98,6 +115,10 @@ body{
 
 .photo{
   border-top:3px solid #e63946;
+}
+
+.idcard{
+  border-top:3px solid #b30000;
 }
 
 .footer{
@@ -115,9 +136,11 @@ body{
 }
 
 @media(max-width:500px){
+
   .cards{
     grid-template-columns:1fr;
   }
+
 }
 </style>
 </head>
@@ -139,7 +162,7 @@ body{
 
     <h2>🙏 स्वागत छ</h2>
 
-    <p style="margin-top:8px;color:#666;">
+    <p>
       रसाली भाई समाज परिवार चौराठा
     </p>
 
@@ -147,6 +170,28 @@ body{
 
 
   <div class="cards">
+
+
+    <!-- MEMBER ID CARD -->
+
+    <div class="card idcard">
+
+      <div class="icon">🪪</div>
+
+      <h3>Member ID Card</h3>
+
+      <p>
+        आफ्नो ID Card हेर्नुहोस्
+      </p>
+
+      <a href="member-id-card.html">
+        🪪 ID Card खोल्नुहोस्
+      </a>
+
+    </div>
+
+
+    <!-- PHOTO -->
 
     <div class="card photo">
 
@@ -161,6 +206,8 @@ body{
     </div>
 
 
+    <!-- MONEY -->
+
     <div class="card money">
 
       <div class="icon">💰</div>
@@ -173,6 +220,8 @@ body{
 
     </div>
 
+
+    <!-- COMPLAINT -->
 
     <div class="card complaint">
 
@@ -187,6 +236,8 @@ body{
     </div>
 
 
+    <!-- NOTICE -->
+
     <div class="card notice">
 
       <div class="icon">📢</div>
@@ -198,6 +249,7 @@ body{
       </p>
 
     </div>
+
 
   </div>
 
