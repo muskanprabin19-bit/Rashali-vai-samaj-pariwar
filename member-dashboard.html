@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Member Dashboard - रसाली भाई समाज परिवार</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:#f5f5f5;
+}
+
+.header{
+  background:linear-gradient(135deg,#b30000,#e63946);
+  color:white;
+  padding:25px 20px;
+  text-align:center;
+}
+
+.header h1{
+  font-size:23px;
+}
+
+.header p{
+  margin-top:8px;
+  font-size:14px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:20px;
+}
+
+.welcome{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  box-shadow:0 4px 15px #0002;
+}
+
+.welcome h2{
+  color:#b30000;
+  font-size:20px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.card{
+  background:white;
+  padding:22px 15px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 4px 15px #0002;
+}
+
+.icon{
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  color:#333;
+  font-size:16px;
+}
+
+.card p{
+  color:#777;
+  font-size:13px;
+  margin-top:6px;
+}
+
+.money{
+  border-top:3px solid #e63946;
+}
+
+.complaint{
+  border-top:3px solid #b30000;
+}
+
+.notice{
+  border-top:3px solid #555;
+}
+
+.photo{
+  border-top:3px solid #e63946;
+}
+
+.footer{
+  text-align:center;
+  padding:25px 10px;
+  color:#777;
+  font-size:13px;
+}
+
+.back{
+  display:inline-block;
+  margin-top:10px;
+  color:#b30000;
+  text-decoration:none;
+}
+
+@media(max-width:500px){
+  .cards{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+  <h1>🤝 रसाली भाई समाज परिवार</h1>
+
+  <p>Member Dashboard</p>
+
+</div>
+
+
+<div class="container">
+
+  <div class="welcome">
+
+    <h2>🙏 स्वागत छ</h2>
+
+    <p style="margin-top:8px;color:#666;">
+      रसाली भाई समाज परिवार चौराठा
+    </p>
+
+  </div>
+
+
+  <div class="cards">
+
+    <div class="card photo">
+
+      <div class="icon">📸</div>
+
+      <h3>मेरो फोटो</h3>
+
+      <p>
+        आफ्नो फोटो हेर्नुहोस्
+      </p>
+
+    </div>
+
+
+    <div class="card money">
+
+      <div class="icon">💰</div>
+
+      <h3>पैसाको हिसाब</h3>
+
+      <p>
+        हिसाब हेर्न मात्र
+      </p>
+
+    </div>
+
+
+    <div class="card complaint">
+
+      <div class="icon">📝</div>
+
+      <h3>गुनासो</h3>
+
+      <p>
+        आफ्नो गुनासो पठाउनुहोस्
+      </p>
+
+    </div>
+
+
+    <div class="card notice">
+
+      <div class="icon">📢</div>
+
+      <h3>सूचना</h3>
+
+      <p>
+        समाजका सूचना हेर्नुहोस्
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+
+    रसाली भाई समाज परिवार चौराठा
+
+    <br>
+
+    <a class="back" href="index.html">
+      ← Home मा फर्कनुहोस्
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+</html>
