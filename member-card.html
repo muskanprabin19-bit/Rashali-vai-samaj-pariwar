@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>रसाली भाई समाज परिवार - Member Card</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f1f3f5;
+  color:#222;
+  padding:20px;
+}
+
+.page-title{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.editor{
+  max-width:700px;
+  margin:0 auto 25px;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.12);
+}
+
+.editor h2{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.form-group{
+  margin-bottom:12px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.form-group input{
+  width:100%;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:7px;
+  font-size:15px;
+}
+
+.card{
+  width:360px;
+  max-width:100%;
+  min-height:520px;
+  margin:20px auto;
+  background:white;
+  border:3px solid #222;
+  border-radius:18px;
+  padding:18px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:8px;
+  background:#222;
+}
+
+.logo{
+  width:85px;
+  height:85px;
+  margin:10px auto;
+  border:2px solid #222;
+  border-radius:50%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eee;
+  font-size:35px;
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photo{
+  width:125px;
+  height:145px;
+  margin:12px auto;
+  border:2px solid #222;
+  border-radius:8px;
+  overflow:hidden;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.card h2{
+  font-size:21px;
+  margin:8px 0;
+}
+
+.card h3{
+  font-size:16px;
+  margin-bottom:15px;
+}
+
+.details{
+  text-align:left;
+  margin-top:12px;
+  line-height:1.8;
+  border-top:1px solid #ddd;
+  padding-top:10px;
+}
+
+.details p{
+  margin:2px 0;
+}
+
+.footer-logo{
+  margin-top:15px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.buttons{
+  text-align:center;
+  margin:20px auto;
+}
+
+button{
+  padding:11px 18px;
+  margin:5px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+  background:#222;
+  color:white;
+}
+
+button:hover{
+  opacity:.85;
+}
+
+.print-paper{
+  width:794px;
+  min-height:1123px;
+  max-width:100%;
+  margin:30px auto;
+  background:white;
+  padding:40px;
+  border:1px solid #ddd;
+}
+
+.paper-header{
+  text-align:center;
+  border-bottom:2px solid #222;
+  padding-bottom:15px;
+  margin-bottom:20px;
+}
+
+.paper-logo{
+  width:70px;
+  height:70px;
+  border:2px solid #222;
+  border-radius:50%;
+  margin:0 auto 8px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+}
+
+.paper-logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.paper-header h2{
+  margin-bottom:5px;
+}
+
+.paper-content{
+  min-height:800px;
+  padding:20px;
+  line-height:2;
+}
+
+.paper-footer{
+  border-top:1px solid #222;
+  padding-top:12px;
+  text-align:center;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+  body{
+    padding:10px;
+  }
+
+  .editor{
+    padding:15px;
+  }
+
+  .print-paper{
+    padding:15px;
+  }
+}
+
+@media print{
+  body{
+    background:white;
+    padding:0;
+  }
+
+  .page-title,
+  .editor,
+  .buttons{
+    display:none !important;
+  }
+
+  .card{
+    margin:0 auto;
+    box-shadow:none;
+    page-break-after:always;
+  }
+
+  .print-paper{
+    width:100%;
+    min-height:100vh;
+    margin:0;
+    border:0;
+    padding:25px;
+  }
+
+  .paper-content{
+    min-height:800px;
+  }
+
+  @page{
+    size:A4;
+    margin:10mm;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="page-title">रसाली भाई समाज परिवार</h1>
+
+<!-- EDIT SECTION -->
+<div class="editor">
+
+<h2>सदस्य विवरण Edit गर्नुहोस्</h2>
+
+<div class="form-group">
+<label>सदस्यको नाम</label>
+<input type="text" id="memberName" value="प्रबिन रसाली"
+oninput="updateCard()">
+</div>
+
+<div class="form-group">
+<label>सदस्य नम्बर</label>
+<input type="text" id="memberId" value="RS-001"
+oninput="updateCard()">
+</div>
+
+<div class="form-group">
+<label>ठेगाना</label>
+<input type="text" id="memberAddress" value="चौराठा"
+oninput="updateCard()">
+</div>
+
+<div class="form-group">
+<label>सम्पर्क नम्बर</label>
+<input type="text" id="memberPhone" value=""
+oninput="updateCard()">
+</div>
+
+<div class="form-group">
+<label>सदस्यको फोटो</label>
+<input type="file" accept="image/*" onchange="loadMemberPhoto(event)">
+</div>
+
+<div class="form-group">
+<label>समाजको Logo</label>
+<input type="file" accept="image/*" onchange="loadLogo(event)">
+</div>
+
+</div>
+
+
+<!-- MEMBER CARD -->
+
+<div class="card">
+
+<div class="logo">
+<img id="cardLogo"
+src=""
+alt="समाज Logo"
+style="display:none;">
+<span id="logoPlaceholder">🌹</span>
+</div>
+
+<h2>रसाली भाई समाज परिवार</h2>
+
+<h3>सदस्य परिचय पत्र</h3>
+
+<div class="photo">
+
+<img id="memberPhoto"
+src=""
+alt="सदस्यको फोटो"
+style="display:none;">
+
+<span id="photoPlaceholder">👤</span>
+
+</div>
+
+<div class="details">
+
+<p><strong>नाम:</strong>
+<span id="showName">प्रबिन रसाली</span></p>
+
+<p><strong>सदस्य नं.:</strong>
+<span id="showId">RS-001</span></p>
+
+<p><strong>ठेगाना:</strong>
+<span id="showAddress">चौराठा</span></p>
+
+<p><strong>सम्पर्क:</strong>
+<span id="showPhone">________________</span></p>
+
+</div>
+
+<div class="footer-logo">
+एकता • सहयोग • सेवा • भाइचारा
+</div>
+
+</div>
+
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<button onclick="window.print()">
+🖨️ Card Print
+</button>
+
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+✏️ Edit
+</button>
+
+</div>
+
+
+<!-- A4 PAPER -->
+
+<div class="print-paper">
+
+<div class="paper-header">
+
+<div class="paper-logo">
+
+<img id="paperLogo"
+src=""
+alt="समाज Logo"
+style="display:none;">
+
+<span id="paperLogoPlaceholder">🌹</span>
+
+</div>
+
+<h2>रसाली भाई समाज परिवार</h2>
+
+<p>चौराठा</p>
+
+<p><strong>एकता • सहयोग • सेवा • भाइचारा</strong></p>
+
+</div>
+
+<div class="paper-content">
+
+<h3 style="text-align:center;margin-bottom:20px;">
+समाजको आधिकारिक कागजात
+</h3>
+
+<p>
+यस कागजातमा रसाली भाई समाज परिवारको विवरण तथा आवश्यक
+जानकारी राख्न सकिनेछ।
+</p>
+
+<br>
+
+<p>
+सदस्यको नाम:
+<strong id="paperName">प्रबिन रसाली</strong>
+</p>
+
+<p>
+सदस्य नम्बर:
+<strong id="paperId">RS-001</strong>
+</p>
+
+<p>
+ठेगाना:
+<strong id="paperAddress">चौराठा</strong>
+</p>
+
+<p>
+सम्पर्क:
+<strong id="paperPhone">________________</strong>
+</p>
+
+</div>
+
+<div class="paper-footer">
+रसाली भाई समाज परिवार © २०८२
+</div>
+
+</div>
+
+
+<div class="buttons">
+
+<button onclick="window.print()">
+🖨️ Paper Print
+</button>
+
+</div>
+
+
+<script>
+
+function updateCard(){
+
+const name =
+document.getElementById("memberName").value;
+
+const id =
+document.getElementById("memberId").value;
+
+const address =
+document.getElementById("memberAddress").value;
+
+const phone =
+document.getElementById("memberPhone").value;
+
+document.getElementById("showName").textContent =
+name || "________________";
+
+document.getElementById("showId").textContent =
+id || "________________";
+
+document.getElementById("showAddress").textContent =
+address || "________________";
+
+document.getElementById("showPhone").textContent =
+phone || "________________";
+
+
+document.getElementById("paperName").textContent =
+name || "________________";
+
+document.getElementById("paperId").textContent =
+id || "________________";
+
+document.getElementById("paperAddress").textContent =
+address || "________________";
+
+document.getElementById("paperPhone").textContent =
+phone || "________________";
+
+}
+
+
+function loadMemberPhoto(event){
+
+const file = event.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img =
+document.getElementById("memberPhoto");
+
+img.src = e.target.result;
+img.style.display = "block";
+
+document.getElementById("photoPlaceholder")
+.style.display = "none";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+
+function loadLogo(event){
+
+const file = event.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const logo =
+document.getElementById("cardLogo");
+
+logo.src = e.target.result;
+logo.style.display = "block";
+
+document.getElementById("logoPlaceholder")
+.style.display = "none";
+
+
+const paperLogo =
+document.getElementById("paperLogo");
+
+paperLogo.src = e.target.result;
+paperLogo.style.display = "block";
+
+document.getElementById("paperLogoPlaceholder")
+.style.display = "none";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
