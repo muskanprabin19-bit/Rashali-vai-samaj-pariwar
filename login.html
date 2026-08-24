@@ -150,11 +150,12 @@ button{
 </div>
 
 <script>
+
 const SUPABASE_URL =
 "https://hvcalffbwvbwekysukdo.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt"
+"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
 const loginForm =
 document.getElementById("loginForm");
@@ -229,7 +230,9 @@ loginForm.addEventListener("submit", async function(e){
     message.innerText = "Login सफल भयो।";
 
     setTimeout(function(){
-      window.location.href = "member-dashboard.html";
+
+      window.location.href = "dashboard.html";
+
     },1000);
 
   }catch(error){
@@ -263,6 +266,7 @@ forgotPassword.addEventListener("click", async function(){
   }
 
   message.style.color = "#555";
+
   message.innerText =
     "Password reset email पठाउँदैछ...";
 
@@ -314,6 +318,7 @@ forgotPassword.addEventListener("click", async function(){
   }
 
 });
+
 </script>
 
 </body>
