@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>पैसाको हिसाब - रसाली भाई समाज परिवार</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f5f5f5;
+  color:#222;
+  padding:15px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+}
+
+.header{
+  background:linear-gradient(135deg,#b30000,#e63946);
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+.header h1{
+  font-size:22px;
+}
+
+.header p{
+  margin-top:7px;
+}
+
+.summary{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.box{
+  background:white;
+  padding:18px 8px;
+  text-align:center;
+  border-radius:12px;
+  box-shadow:0 3px 12px #0002;
+}
+
+.box h3{
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.box p{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.form{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px #0002;
+  margin-bottom:20px;
+}
+
+.form h2{
+  color:#b30000;
+  margin-bottom:15px;
+  text-align:center;
+}
+
+.form label{
+  display:block;
+  font-weight:bold;
+  margin:10px 0 6px;
+}
+
+.form input,
+.form select{
+  width:100%;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  border:0;
+  border-radius:8px;
+  background:#b30000;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.history{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px #0002;
+}
+
+.history h2{
+  color:#b30000;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.entry{
+  border-bottom:1px solid #ddd;
+  padding:12px 0;
+}
+
+.entry:last-child{
+  border-bottom:0;
+}
+
+.entry strong{
+  color:#b30000;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin:20px 0;
+  color:#b30000;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+@media(max-width:500px){
+  .summary{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>💰 पैसाको हिसाब</h1>
+    <p>रसाली भाई समाज परिवार चौराठा</p>
+  </div>
+
+  <div class="summary">
+
+    <div class="box">
+      <h3>जम्मा रकम</h3>
+      <p id="totalIn">रु. 0</p>
+    </div>
+
+    <div class="box">
+      <h3>निकालेको रकम</h3>
+      <p id="totalOut">रु. 0</p>
+    </div>
+
+    <div class="box">
+      <h3>बाँकी रकम</h3>
+      <p id="balance">रु. 0</p>
+    </div>
+
+  </div>
+
+  <div class="form">
+
+    <h2>नयाँ हिसाब राख्नुहोस्</h2>
+
+    <label>मिति</label>
+    <input type="date" id="date">
+
+    <label>प्रकार</label>
+    <select id="type">
+      <option value="in">जम्मा रकम</option>
+      <option value="out">निकालेको रकम</option>
+    </select>
+
+    <label>रकम</label>
+    <input type="number" id="amount" placeholder="रकम लेख्नुहोस्">
+
+    <label>विवरण</label>
+    <input type="text" id="description" placeholder="के को हिसाब हो?">
+
+    <button onclick="addEntry()">
+      ➕ हिसाब थप्नुहोस्
+    </button>
+
+  </div>
+
+  <div class="history">
+
+    <h2>📋 हिसाब विवरण</h2>
+
+    <div id="entries">
+      <p style="text-align:center;color:#777;">
+        अहिलेसम्म कुनै हिसाब छैन।
+      </p>
+    </div>
+
+  </div>
+
+  <a class="back" href="dashboard.html">
+    ← Dashboard मा फर्कनुहोस्
+  </a>
+
+</div>
+
+<script>
+
+let entries = [];
+
+function addEntry(){
+
+  const date =
+    document.getElementById("date").value;
+
+  const type =
+    document.getElementById("type").value;
+
+  const amount =
+    Number(document.getElementById("amount").value);
+
+  const description =
+    document.getElementById("description").value;
+
+  if(!date || !amount || !description){
+    alert("कृपया सबै विवरण भर्नुहोस्।");
+    return;
+  }
+
+  entries.push({
+    date:date,
+    type:type,
+    amount:amount,
+    description:description
+  });
+
+  document.getElementById("amount").value="";
+  document.getElementById("description").value="";
+
+  showEntries();
+}
+
+function showEntries(){
+
+  let totalIn=0;
+  let totalOut=0;
+
+  const box =
+    document.getElementById("entries");
+
+  box.innerHTML="";
+
+  entries.forEach(function(item){
+
+    if(item.type==="in"){
+      totalIn += item.amount;
+    }else{
+      totalOut += item.amount;
+    }
+
+    const div =
+      document.createElement("div");
+
+    div.className="entry";
+
+    div.innerHTML=
+      "<strong>मिति:</strong> "+item.date+
+      "<br><strong>प्रकार:</strong> "+
+      (item.type==="in" ? "जम्मा रकम" : "निकालेको रकम")+
+      "<br><strong>रकम:</strong> रु. "+
+      item.amount.toLocaleString()+
+      "<br><strong>विवरण:</strong> "+
+      item.description;
+
+    box.appendChild(div);
+
+  });
+
+  document.getElementById("totalIn").textContent =
+    "रु. "+totalIn.toLocaleString();
+
+  document.getElementById("totalOut").textContent =
+    "रु. "+totalOut.toLocaleString();
+
+  document.getElementById("balance").textContent =
+    "रु. "+(totalIn-totalOut).toLocaleString();
+
+}
+
+</script>
+
+</body>
+</html>
