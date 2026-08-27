@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -216,6 +216,8 @@ loginForm.addEventListener("submit", async function(e){
       return;
     }
 
+    /* LOGIN TOKEN SAVE */
+
     localStorage.setItem(
       "rasali_access_token",
       data.access_token
@@ -226,12 +228,23 @@ loginForm.addEventListener("submit", async function(e){
       JSON.stringify(data.user)
     );
 
+    /*
+      अहिले Padam Rasali को Member ID = 1
+      भएकाले login पछि ID सुरक्षित गरिन्छ।
+    */
+
+    localStorage.setItem(
+      "rasali_member_id",
+      "1"
+    );
+
     message.style.color = "green";
     message.innerText = "Login सफल भयो।";
 
     setTimeout(function(){
 
-      window.location.href = "dashboard.html";
+      window.location.href =
+        "dashboard.html";
 
     },1000);
 
@@ -241,6 +254,7 @@ loginForm.addEventListener("submit", async function(e){
 
     message.innerText =
       "Internet वा Login connection मा समस्या भयो।";
+
   }
 
 });
@@ -248,78 +262,83 @@ loginForm.addEventListener("submit", async function(e){
 
 /* FORGOT PASSWORD */
 
-forgotPassword.addEventListener("click", async function(){
+forgotPassword.addEventListener(
+  "click",
+  async function(){
 
-  const email =
-    document.getElementById("email").value.trim();
+    const email =
+      document.getElementById("email").value.trim();
 
-  if(!email){
-
-    message.style.color = "#b30000";
-
-    message.innerText =
-      "पहिले आफ्नो Email लेख्नुहोस्।";
-
-    document.getElementById("email").focus();
-
-    return;
-  }
-
-  message.style.color = "#555";
-
-  message.innerText =
-    "Password reset email पठाउँदैछ...";
-
-  try{
-
-    const response = await fetch(
-      SUPABASE_URL + "/auth/v1/recover",
-      {
-        method:"POST",
-
-        headers:{
-          "Content-Type":"application/json",
-          "apikey":SUPABASE_KEY
-        },
-
-        body:JSON.stringify({
-          email:email,
-          redirect_to:
-          "https://muskanprabin19-bit.github.io/Rashali-vai-samaj-pariwar/reset-password.html"
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    if(!response.ok){
+    if(!email){
 
       message.style.color = "#b30000";
 
       message.innerText =
-        data.msg ||
-        data.error_description ||
-        "Password reset email पठाउन सकिएन।";
+        "पहिले आफ्नो Email लेख्नुहोस्।";
+
+      document.getElementById("email").focus();
 
       return;
     }
 
-    message.style.color = "green";
+    message.style.color = "#555";
 
     message.innerText =
-      "Password reset email पठाइयो। आफ्नो Email जाँच गर्नुहोस्।";
+      "Password reset email पठाउँदैछ...";
 
-  }catch(error){
+    try{
 
-    message.style.color = "#b30000";
+      const response = await fetch(
+        SUPABASE_URL +
+        "/auth/v1/recover",
+        {
+          method:"POST",
 
-    message.innerText =
-      "Internet वा connection मा समस्या भयो।";
+          headers:{
+            "Content-Type":"application/json",
+            "apikey":SUPABASE_KEY
+          },
+
+          body:JSON.stringify({
+            email:email,
+            redirect_to:
+            "https://muskanprabin19-bit.github.io/Rashali-vai-samaj-pariwar/reset-password.html"
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if(!response.ok){
+
+        message.style.color = "#b30000";
+
+        message.innerText =
+          data.msg ||
+          data.error_description ||
+          "Password reset email पठाउन सकिएन।";
+
+        return;
+      }
+
+      message.style.color = "green";
+
+      message.innerText =
+        "Password reset email पठाइयो। आफ्नो Email जाँच गर्नुहोस्।";
+
+    }catch(error){
+
+      message.style.color = "#b30000";
+
+      message.innerText =
+        "Internet वा connection मा समस्या भयो।";
+
+    }
+
   }
-
-});
+);
 
 </script>
 
 </body>
-</html>
+</html> 
