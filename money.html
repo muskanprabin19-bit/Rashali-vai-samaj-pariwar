@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +7,11 @@
 <title>मेरो पैसाको हिसाब - रसाली भाई समाज परिवार</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
@@ -16,7 +20,10 @@ body{
   padding:15px;
 }
 
-.container{max-width:700px;margin:auto}
+.container{
+  max-width:700px;
+  margin:auto;
+}
 
 .header{
   background:linear-gradient(135deg,#b30000,#e63946);
@@ -27,8 +34,13 @@ body{
   margin-bottom:20px;
 }
 
-.header h1{font-size:22px}
-.header p{margin-top:7px}
+.header h1{
+  font-size:22px;
+}
+
+.header p{
+  margin-top:7px;
+}
 
 .member{
   background:white;
@@ -54,8 +66,15 @@ body{
   box-shadow:0 3px 12px #0002;
 }
 
-.box h3{font-size:14px;margin-bottom:8px}
-.box p{font-size:20px;font-weight:bold}
+.box h3{
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.box p{
+  font-size:20px;
+  font-weight:bold;
+}
 
 .history{
   background:white;
@@ -75,8 +94,13 @@ body{
   padding:12px 0;
 }
 
-.entry:last-child{border-bottom:0}
-.entry strong{color:#b30000}
+.entry:last-child{
+  border-bottom:0;
+}
+
+.entry strong{
+  color:#b30000;
+}
 
 .back{
   display:block;
@@ -93,8 +117,14 @@ body{
   color:#555;
 }
 
+.error{
+  color:#b30000;
+}
+
 @media(max-width:500px){
-  .summary{grid-template-columns:1fr}
+  .summary{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -160,44 +190,41 @@ const SUPABASE_KEY =
 const entriesBox =
 document.getElementById("entries");
 
+
 async function loadMoney(){
 
   try{
 
-    /*
-      पहिले URL बाट member_id खोज्छ।
-      उदाहरण:
-      money.html?member_id=1
-    */
+    /* LOGIN TOKEN */
 
-    const params =
-      new URLSearchParams(window.location.search);
+    const accessToken =
+      localStorage.getItem("rasali_access_token");
 
-    let memberId =
-      params.get("member_id");
+    /* MEMBER ID */
 
-    /*
-      URL मा member_id नभए localStorage मा
-      राखिएको member_id प्रयोग गर्छ।
-    */
+    const memberId =
+      localStorage.getItem("rasali_member_id");
 
-    if(!memberId){
+    if(!accessToken){
 
-      memberId =
-        localStorage.getItem("rasali_member_id");
+      entriesBox.innerHTML =
+        '<div class="message error">पहिले Login गर्नुहोस्।</div>';
 
+      return;
     }
 
     if(!memberId){
 
       entriesBox.innerHTML =
-        '<div class="message">सदस्य ID भेटिएन।</div>';
+        '<div class="message error">सदस्य ID भेटिएन।</div>';
 
       return;
     }
 
+
     document.getElementById("memberId").textContent =
       "Member ID: " + memberId;
+
 
     /* MEMBER NAME */
 
@@ -210,13 +237,24 @@ async function loadMoney(){
         {
           headers:{
             "apikey":SUPABASE_KEY,
-            "Authorization":"Bearer " + SUPABASE_KEY
+            "Authorization":"Bearer " + accessToken
           }
         }
       );
 
+
     const members =
       await memberResponse.json();
+
+
+    if(!memberResponse.ok){
+
+      entriesBox.innerHTML =
+        '<div class="message error">सदस्य विवरण निकाल्न सकिएन।</div>';
+
+      return;
+    }
+
 
     if(members.length > 0){
 
@@ -224,6 +262,7 @@ async function loadMoney(){
         members[0].name || "सदस्य";
 
     }
+
 
     /* MONEY RECORDS */
 
@@ -236,26 +275,30 @@ async function loadMoney(){
         {
           headers:{
             "apikey":SUPABASE_KEY,
-            "Authorization":"Bearer " + SUPABASE_KEY
+            "Authorization":"Bearer " + accessToken
           }
         }
       );
 
+
     const records =
       await response.json();
+
 
     if(!response.ok){
 
       entriesBox.innerHTML =
-        '<div class="message">हिसाब निकाल्न समस्या भयो।</div>';
+        '<div class="message error">हिसाब निकाल्न समस्या भयो।</div>';
 
       return;
     }
+
 
     let totalIn = 0;
     let totalOut = 0;
 
     entriesBox.innerHTML = "";
+
 
     if(records.length === 0){
 
@@ -264,63 +307,77 @@ async function loadMoney(){
 
     }
 
+
     records.forEach(function(item){
 
       const amount =
         Number(item.amount) || 0;
 
+
       if(item.record_type === "income"){
         totalIn += amount;
       }
 
+
       if(item.record_type === "expense"){
         totalOut += amount;
       }
+
 
       const div =
         document.createElement("div");
 
       div.className = "entry";
 
+
       div.innerHTML =
         "<strong>मिति:</strong> " +
         (item.record_date || "-") +
 
         "<br><strong>प्रकार:</strong> " +
+
         (item.record_type === "income"
           ? "जम्मा रकम"
           : "निकालेको रकम") +
 
         "<br><strong>रकम:</strong> रु. " +
+
         amount.toLocaleString() +
 
         "<br><strong>विवरण:</strong> " +
+
         (item.description || "-");
+
 
       entriesBox.appendChild(div);
 
     });
 
+
     document.getElementById("totalIn").textContent =
       "रु. " + totalIn.toLocaleString();
 
+
     document.getElementById("totalOut").textContent =
       "रु. " + totalOut.toLocaleString();
+
 
     document.getElementById("balance").textContent =
       "रु. " +
       (totalIn - totalOut).toLocaleString();
 
+
   }catch(error){
 
     entriesBox.innerHTML =
-      '<div class="message">Internet वा Supabase connection मा समस्या भयो।</div>';
+      '<div class="message error">Internet वा Supabase connection मा समस्या भयो।</div>';
 
     console.log(error);
 
   }
 
 }
+
 
 loadMoney();
 
