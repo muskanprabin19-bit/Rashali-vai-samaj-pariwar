@@ -1,17 +1,13 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>पैसाको हिसाब - रसाली भाई समाज परिवार</title>
+<title>मेरो पैसाको हिसाब - रसाली भाई समाज परिवार</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
@@ -20,10 +16,7 @@ body{
   padding:15px;
 }
 
-.container{
-  max-width:700px;
-  margin:auto;
-}
+.container{max-width:700px;margin:auto}
 
 .header{
   background:linear-gradient(135deg,#b30000,#e63946);
@@ -34,12 +27,16 @@ body{
   margin-bottom:20px;
 }
 
-.header h1{
-  font-size:22px;
-}
+.header h1{font-size:22px}
+.header p{margin-top:7px}
 
-.header p{
-  margin-top:7px;
+.member{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
+  text-align:center;
+  box-shadow:0 3px 12px #0002;
 }
 
 .summary{
@@ -57,57 +54,8 @@ body{
   box-shadow:0 3px 12px #0002;
 }
 
-.box h3{
-  font-size:14px;
-  margin-bottom:8px;
-}
-
-.box p{
-  font-size:20px;
-  font-weight:bold;
-}
-
-.form{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 3px 12px #0002;
-  margin-bottom:20px;
-}
-
-.form h2{
-  color:#b30000;
-  margin-bottom:15px;
-  text-align:center;
-}
-
-.form label{
-  display:block;
-  font-weight:bold;
-  margin:10px 0 6px;
-}
-
-.form input,
-.form select{
-  width:100%;
-  padding:11px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:16px;
-}
-
-button{
-  width:100%;
-  margin-top:15px;
-  padding:12px;
-  border:0;
-  border-radius:8px;
-  background:#b30000;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
+.box h3{font-size:14px;margin-bottom:8px}
+.box p{font-size:20px;font-weight:bold}
 
 .history{
   background:white;
@@ -127,13 +75,8 @@ button{
   padding:12px 0;
 }
 
-.entry:last-child{
-  border-bottom:0;
-}
-
-.entry strong{
-  color:#b30000;
-}
+.entry:last-child{border-bottom:0}
+.entry strong{color:#b30000}
 
 .back{
   display:block;
@@ -144,10 +87,14 @@ button{
   font-weight:bold;
 }
 
+.message{
+  text-align:center;
+  padding:15px;
+  color:#555;
+}
+
 @media(max-width:500px){
-  .summary{
-    grid-template-columns:1fr;
-  }
+  .summary{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -157,8 +104,14 @@ button{
 <div class="container">
 
   <div class="header">
-    <h1>💰 पैसाको हिसाब</h1>
+    <h1>💰 मेरो पैसाको हिसाब</h1>
     <p>रसाली भाई समाज परिवार चौराठा</p>
+  </div>
+
+  <div class="member">
+    <strong id="memberName">सदस्यको हिसाब</strong>
+    <br>
+    <small id="memberId"></small>
   </div>
 
   <div class="summary">
@@ -180,39 +133,12 @@ button{
 
   </div>
 
-  <div class="form">
-
-    <h2>नयाँ हिसाब राख्नुहोस्</h2>
-
-    <label>मिति</label>
-    <input type="date" id="date">
-
-    <label>प्रकार</label>
-    <select id="type">
-      <option value="in">जम्मा रकम</option>
-      <option value="out">निकालेको रकम</option>
-    </select>
-
-    <label>रकम</label>
-    <input type="number" id="amount" placeholder="रकम लेख्नुहोस्">
-
-    <label>विवरण</label>
-    <input type="text" id="description" placeholder="के को हिसाब हो?">
-
-    <button onclick="addEntry()">
-      ➕ हिसाब थप्नुहोस्
-    </button>
-
-  </div>
-
   <div class="history">
 
-    <h2>📋 हिसाब विवरण</h2>
+    <h2>📋 मेरो हिसाब विवरण</h2>
 
     <div id="entries">
-      <p style="text-align:center;color:#777;">
-        अहिलेसम्म कुनै हिसाब छैन।
-      </p>
+      <div class="message">हिसाब खोजिँदैछ...</div>
     </div>
 
   </div>
@@ -225,86 +151,178 @@ button{
 
 <script>
 
-let entries = [];
+const SUPABASE_URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
 
-function addEntry(){
+const SUPABASE_KEY =
+"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
-  const date =
-    document.getElementById("date").value;
+const entriesBox =
+document.getElementById("entries");
 
-  const type =
-    document.getElementById("type").value;
+async function loadMoney(){
 
-  const amount =
-    Number(document.getElementById("amount").value);
+  try{
 
-  const description =
-    document.getElementById("description").value;
+    /*
+      पहिले URL बाट member_id खोज्छ।
+      उदाहरण:
+      money.html?member_id=1
+    */
 
-  if(!date || !amount || !description){
-    alert("कृपया सबै विवरण भर्नुहोस्।");
-    return;
-  }
+    const params =
+      new URLSearchParams(window.location.search);
 
-  entries.push({
-    date:date,
-    type:type,
-    amount:amount,
-    description:description
-  });
+    let memberId =
+      params.get("member_id");
 
-  document.getElementById("amount").value="";
-  document.getElementById("description").value="";
+    /*
+      URL मा member_id नभए localStorage मा
+      राखिएको member_id प्रयोग गर्छ।
+    */
 
-  showEntries();
-}
+    if(!memberId){
 
-function showEntries(){
+      memberId =
+        localStorage.getItem("rasali_member_id");
 
-  let totalIn=0;
-  let totalOut=0;
-
-  const box =
-    document.getElementById("entries");
-
-  box.innerHTML="";
-
-  entries.forEach(function(item){
-
-    if(item.type==="in"){
-      totalIn += item.amount;
-    }else{
-      totalOut += item.amount;
     }
 
-    const div =
-      document.createElement("div");
+    if(!memberId){
 
-    div.className="entry";
+      entriesBox.innerHTML =
+        '<div class="message">सदस्य ID भेटिएन।</div>';
 
-    div.innerHTML=
-      "<strong>मिति:</strong> "+item.date+
-      "<br><strong>प्रकार:</strong> "+
-      (item.type==="in" ? "जम्मा रकम" : "निकालेको रकम")+
-      "<br><strong>रकम:</strong> रु. "+
-      item.amount.toLocaleString()+
-      "<br><strong>विवरण:</strong> "+
-      item.description;
+      return;
+    }
 
-    box.appendChild(div);
+    document.getElementById("memberId").textContent =
+      "Member ID: " + memberId;
 
-  });
+    /* MEMBER NAME */
 
-  document.getElementById("totalIn").textContent =
-    "रु. "+totalIn.toLocaleString();
+    const memberResponse =
+      await fetch(
+        SUPABASE_URL +
+        "/rest/v1/members?id=eq." +
+        encodeURIComponent(memberId) +
+        "&select=id,name,position",
+        {
+          headers:{
+            "apikey":SUPABASE_KEY,
+            "Authorization":"Bearer " + SUPABASE_KEY
+          }
+        }
+      );
 
-  document.getElementById("totalOut").textContent =
-    "रु. "+totalOut.toLocaleString();
+    const members =
+      await memberResponse.json();
 
-  document.getElementById("balance").textContent =
-    "रु. "+(totalIn-totalOut).toLocaleString();
+    if(members.length > 0){
+
+      document.getElementById("memberName").textContent =
+        members[0].name || "सदस्य";
+
+    }
+
+    /* MONEY RECORDS */
+
+    const response =
+      await fetch(
+        SUPABASE_URL +
+        "/rest/v1/money_records?member_id=eq." +
+        encodeURIComponent(memberId) +
+        "&select=id,record_type,person,amount,record_date,description&order=record_date.desc",
+        {
+          headers:{
+            "apikey":SUPABASE_KEY,
+            "Authorization":"Bearer " + SUPABASE_KEY
+          }
+        }
+      );
+
+    const records =
+      await response.json();
+
+    if(!response.ok){
+
+      entriesBox.innerHTML =
+        '<div class="message">हिसाब निकाल्न समस्या भयो।</div>';
+
+      return;
+    }
+
+    let totalIn = 0;
+    let totalOut = 0;
+
+    entriesBox.innerHTML = "";
+
+    if(records.length === 0){
+
+      entriesBox.innerHTML =
+        '<div class="message">यस सदस्यको अहिलेसम्म कुनै हिसाब छैन।</div>';
+
+    }
+
+    records.forEach(function(item){
+
+      const amount =
+        Number(item.amount) || 0;
+
+      if(item.record_type === "income"){
+        totalIn += amount;
+      }
+
+      if(item.record_type === "expense"){
+        totalOut += amount;
+      }
+
+      const div =
+        document.createElement("div");
+
+      div.className = "entry";
+
+      div.innerHTML =
+        "<strong>मिति:</strong> " +
+        (item.record_date || "-") +
+
+        "<br><strong>प्रकार:</strong> " +
+        (item.record_type === "income"
+          ? "जम्मा रकम"
+          : "निकालेको रकम") +
+
+        "<br><strong>रकम:</strong> रु. " +
+        amount.toLocaleString() +
+
+        "<br><strong>विवरण:</strong> " +
+        (item.description || "-");
+
+      entriesBox.appendChild(div);
+
+    });
+
+    document.getElementById("totalIn").textContent =
+      "रु. " + totalIn.toLocaleString();
+
+    document.getElementById("totalOut").textContent =
+      "रु. " + totalOut.toLocaleString();
+
+    document.getElementById("balance").textContent =
+      "रु. " +
+      (totalIn - totalOut).toLocaleString();
+
+  }catch(error){
+
+    entriesBox.innerHTML =
+      '<div class="message">Internet वा Supabase connection मा समस्या भयो।</div>';
+
+    console.log(error);
+
+  }
 
 }
+
+loadMoney();
 
 </script>
 
