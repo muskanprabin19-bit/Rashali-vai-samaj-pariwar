@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -6,99 +6,17 @@
 <title>Login - रसाली भाई समाज परिवार</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-}
-
-body{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#b30000,#e63946);
-  padding:20px;
-}
-
-.login-box{
-  width:100%;
-  max-width:400px;
-  background:white;
-  padding:30px 22px;
-  border-radius:20px;
-  box-shadow:0 8px 30px #0004;
-  text-align:center;
-}
-
-.logo{
-  width:85px;
-  height:85px;
-  margin:auto;
-  border-radius:50%;
-  background:#f5f5f5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:40px;
-}
-
-h1{
-  color:#b30000;
-  font-size:23px;
-  margin-top:15px;
-}
-
-.subtitle{
-  color:#777;
-  margin:8px 0 22px;
-  font-size:14px;
-}
-
-input{
-  width:100%;
-  padding:13px;
-  margin:7px 0;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:15px;
-}
-
-button{
-  width:100%;
-  padding:13px;
-  margin-top:12px;
-  border:0;
-  border-radius:25px;
-  background:#e63946;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.forgot{
-  display:block;
-  margin-top:15px;
-  color:#b30000;
-  text-decoration:none;
-  font-size:14px;
-  cursor:pointer;
-}
-
-.message{
-  margin-top:15px;
-  font-size:14px;
-}
-
-.back{
-  display:inline-block;
-  margin-top:18px;
-  text-decoration:none;
-  color:#b30000;
-  font-size:14px;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#b30000,#e63946);padding:20px}
+.login-box{width:100%;max-width:400px;background:white;padding:30px 22px;border-radius:20px;box-shadow:0 8px 30px #0004;text-align:center}
+.logo{width:85px;height:85px;margin:auto;border-radius:50%;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:40px}
+h1{color:#b30000;font-size:23px;margin-top:15px}
+.subtitle{color:#777;margin:8px 0 22px;font-size:14px}
+input{width:100%;padding:13px;margin:7px 0;border:1px solid #ddd;border-radius:10px;font-size:15px}
+button{width:100%;padding:13px;margin-top:12px;border:0;border-radius:25px;background:#e63946;color:white;font-size:16px;font-weight:bold}
+.forgot{display:block;margin-top:15px;color:#b30000;text-decoration:none;font-size:14px;cursor:pointer}
+.message{margin-top:15px;font-size:14px}
+.back{display:inline-block;margin-top:18px;text-decoration:none;color:#b30000;font-size:14px}
 </style>
 </head>
 
@@ -106,46 +24,30 @@ button{
 
 <div class="login-box">
 
-  <div class="logo">🤝</div>
+<div class="logo">🤝</div>
 
-  <h1>रसाली भाई समाज परिवार</h1>
+<h1>रसाली भाई समाज परिवार</h1>
 
-  <div class="subtitle">
-    स्थापना: २०८२<br>
-    Member / Admin Login
-  </div>
+<div class="subtitle">
+स्थापना: २०८२<br>
+Member / Admin Login
+</div>
 
-  <form id="loginForm">
+<form id="loginForm">
 
-    <input
-      type="email"
-      id="email"
-      placeholder="Email"
-      required
-    >
+<input type="email" id="email" placeholder="Email" required>
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Password"
-      required
-    >
+<input type="password" id="password" placeholder="Password" required>
 
-    <button type="submit">
-      🔐 Login
-    </button>
+<button type="submit">🔐 Login</button>
 
-  </form>
+</form>
 
-  <a class="forgot" id="forgotPassword">
-    🔑 Forgot Password?
-  </a>
+<a class="forgot" id="forgotPassword">🔑 Forgot Password?</a>
 
-  <div id="message" class="message"></div>
+<div id="message" class="message"></div>
 
-  <a class="back" href="index.html">
-    ← Home मा फर्कनुहोस्
-  </a>
+<a class="back" href="index.html">← Home मा फर्कनुहोस्</a>
 
 </div>
 
@@ -167,95 +69,135 @@ const message =
 document.getElementById("message");
 
 
-/* LOGIN */
-
 loginForm.addEventListener("submit", async function(e){
 
-  e.preventDefault();
+e.preventDefault();
 
-  const email =
-    document.getElementById("email").value.trim();
+const email =
+document.getElementById("email").value.trim();
 
-  const password =
-    document.getElementById("password").value;
+const password =
+document.getElementById("password").value;
 
-  message.style.color = "#555";
-  message.innerText = "Login हुँदैछ...";
+message.style.color="#555";
+message.innerText="Login हुँदैछ...";
 
-  try{
+try{
 
-    const response = await fetch(
-      SUPABASE_URL +
-      "/auth/v1/token?grant_type=password",
-      {
-        method:"POST",
+const response = await fetch(
+SUPABASE_URL +
+"/auth/v1/token?grant_type=password",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({
+email:email,
+password:password
+})
+}
+);
 
-        headers:{
-          "Content-Type":"application/json",
-          "apikey":SUPABASE_KEY
-        },
+const data = await response.json();
 
-        body:JSON.stringify({
-          email:email,
-          password:password
-        })
-      }
-    );
+if(!response.ok){
 
-    const data = await response.json();
+message.style.color="#b30000";
+message.innerText =
+data.msg ||
+data.error_description ||
+"Email वा Password गलत छ।";
 
-    if(!response.ok){
+return;
+}
 
-      message.style.color = "#b30000";
 
-      message.innerText =
-        data.msg ||
-        data.error_description ||
-        "Email वा Password गलत छ।";
+const accessToken =
+data.access_token;
 
-      return;
-    }
 
-    /* LOGIN TOKEN SAVE */
+localStorage.setItem(
+"rasali_access_token",
+accessToken
+);
 
-    localStorage.setItem(
-      "rasali_access_token",
-      data.access_token
-    );
+localStorage.setItem(
+"rasali_user",
+JSON.stringify(data.user)
+);
 
-    localStorage.setItem(
-      "rasali_user",
-      JSON.stringify(data.user)
-    );
 
-    /*
-      अहिले Padam Rasali को Member ID = 1
-      भएकाले login पछि ID सुरक्षित गरिन्छ।
-    */
+/* LOGIN EMAIL बाट MEMBER खोज्ने */
 
-    localStorage.setItem(
-      "rasali_member_id",
-      "1"
-    );
+const memberResponse =
+await fetch(
+SUPABASE_URL +
+"/rest/v1/members?email=eq." +
+encodeURIComponent(email) +
+"&select=id,name,position",
+{
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer " + accessToken
+}
+}
+);
 
-    message.style.color = "green";
-    message.innerText = "Login सफल भयो।";
+const members =
+await memberResponse.json();
 
-    setTimeout(function(){
 
-      window.location.href =
-        "dashboard.html";
+if(!memberResponse.ok){
 
-    },1000);
+message.style.color="#b30000";
+message.innerText=
+"Member विवरण निकाल्न सकिएन।";
 
-  }catch(error){
+return;
+}
 
-    message.style.color = "#b30000";
 
-    message.innerText =
-      "Internet वा Login connection मा समस्या भयो।";
+if(members.length === 0){
 
-  }
+message.style.color="#b30000";
+message.innerText=
+"यो Email कुनै Member सँग जोडिएको छैन।";
+
+return;
+}
+
+
+const memberId =
+members[0].id;
+
+
+localStorage.setItem(
+"rasali_member_id",
+String(memberId)
+);
+
+
+message.style.color="green";
+message.innerText=
+"Login सफल भयो।";
+
+
+setTimeout(function(){
+
+window.location.href="dashboard.html";
+
+},1000);
+
+
+}catch(error){
+
+message.style.color="#b30000";
+message.innerText=
+"Internet वा Supabase connection मा समस्या भयो।";
+
+}
 
 });
 
@@ -263,82 +205,76 @@ loginForm.addEventListener("submit", async function(e){
 /* FORGOT PASSWORD */
 
 forgotPassword.addEventListener(
-  "click",
-  async function(){
+"click",
+async function(){
 
-    const email =
-      document.getElementById("email").value.trim();
+const email =
+document.getElementById("email").value.trim();
 
-    if(!email){
+if(!email){
 
-      message.style.color = "#b30000";
+message.style.color="#b30000";
+message.innerText=
+"पहिले आफ्नो Email लेख्नुहोस्।";
 
-      message.innerText =
-        "पहिले आफ्नो Email लेख्नुहोस्।";
+document.getElementById("email").focus();
 
-      document.getElementById("email").focus();
+return;
+}
 
-      return;
-    }
+message.style.color="#555";
+message.innerText=
+"Password reset email पठाउँदैछ...";
 
-    message.style.color = "#555";
+try{
 
-    message.innerText =
-      "Password reset email पठाउँदैछ...";
-
-    try{
-
-      const response = await fetch(
-        SUPABASE_URL +
-        "/auth/v1/recover",
-        {
-          method:"POST",
-
-          headers:{
-            "Content-Type":"application/json",
-            "apikey":SUPABASE_KEY
-          },
-
-          body:JSON.stringify({
-            email:email,
-            redirect_to:
-            "https://muskanprabin19-bit.github.io/Rashali-vai-samaj-pariwar/reset-password.html"
-          })
-        }
-      );
-
-      const data = await response.json();
-
-      if(!response.ok){
-
-        message.style.color = "#b30000";
-
-        message.innerText =
-          data.msg ||
-          data.error_description ||
-          "Password reset email पठाउन सकिएन।";
-
-        return;
-      }
-
-      message.style.color = "green";
-
-      message.innerText =
-        "Password reset email पठाइयो। आफ्नो Email जाँच गर्नुहोस्।";
-
-    }catch(error){
-
-      message.style.color = "#b30000";
-
-      message.innerText =
-        "Internet वा connection मा समस्या भयो।";
-
-    }
-
-  }
+const response =
+await fetch(
+SUPABASE_URL +
+"/auth/v1/recover",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":SUPABASE_KEY
+},
+body:JSON.stringify({
+email:email,
+redirect_to:
+"https://muskanprabin19-bit.github.io/Rashali-vai-samaj-pariwar/reset-password.html"
+})
+}
 );
+
+const data =
+await response.json();
+
+if(!response.ok){
+
+message.style.color="#b30000";
+message.innerText=
+data.msg ||
+data.error_description ||
+"Password reset email पठाउन सकिएन।";
+
+return;
+}
+
+message.style.color="green";
+message.innerText=
+"Password reset email पठाइयो। आफ्नो Email जाँच गर्नुहोस्।";
+
+}catch(error){
+
+message.style.color="#b30000";
+message.innerText=
+"Internet वा connection मा समस्या भयो।";
+
+}
+
+});
 
 </script>
 
 </body>
-</html> 
+</html>
