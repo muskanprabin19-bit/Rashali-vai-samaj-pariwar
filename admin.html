@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard - रसाली भाई समाज परिवार</title>
+</head>
+
+<body>
+
+<h1>🤝 रसाली भाई समाज परिवार</h1>
+<h2>🔐 Admin Dashboard</h2>
+
+<p>स्वागत छ Admin</p>
+<style>
+body{
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f5f5f5;
+padding:20px;
+text-align:center;
+}
+h1{color:#b30000;}
+h2{color:#333;}
+.admin-box{
+max-width:500px;
+margin:25px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 15px #0002;
+}
+input,select,button{
+width:100%;
+padding:12px;
+margin:7px 0;
+border:1px solid #ddd;
+border-radius:8px;
+}
+button{
+background:#b30000;
+color:white;
+font-weight:bold;
+}
+</style>
+  <div class="admin-box">
+
+<h3>💰 सदस्यको पैसा हिसाब</h3>
+
+<select id="member">
+<option value="">सदस्य छान्नुहोस्</option>
+</select>
+
+<select id="type">
+<option value="income">जम्मा रकम</option>
+<option value="expense">निकालेको रकम</option>
+</select>
+
+<input type="number" id="amount" placeholder="रकम">
+
+<input type="text" id="description" placeholder="विवरण">
+
+<button onclick="saveMoney()">💾 Save</button>
+
+<div id="msg"></div>
+
+</div>
+  <script>
+const URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+
+async function loadMembers(){
+const r=await fetch(URL+"/rest/v1/members?select=id,name",{
+headers:{apikey:KEY}
+});
+const data=await r.json();
+const box=document.getElementById("member");
+
+data.forEach(m=>{
+const o=document.createElement("option");
+o.value=m.id;
+o.textContent=m.name+" (ID: "+m.id+")";
+box.appendChild(o);
+});
+}
+
+loadMembers();
+</script>
+</body>
+</html>
