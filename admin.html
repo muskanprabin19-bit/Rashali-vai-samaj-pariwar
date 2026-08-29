@@ -146,5 +146,29 @@ document.getElementById("msg").innerText =
 
 }
 </script>
+  <div style="margin:20px 0;">
+<a href="index.html"
+style="display:inline-block;padding:12px 20px;
+background:#b30000;color:white;
+text-decoration:none;border-radius:25px;">
+🏠 Home मा फर्कनुहोस्
+</a>
+
+<button onclick="logout()"
+style="width:auto;padding:12px 20px;
+margin-left:8px;">
+🚪 Logout
+</button>
+</div>
+
+<script>
+function logout(){
+localStorage.removeItem("rasali_access_token");
+localStorage.removeItem("rasali_user");
+localStorage.removeItem("rasali_member_id");
+localStorage.removeItem("rasali_role");
+window.location.href="index.html";
+}
+</script>
 </body>
 </html>
