@@ -34,6 +34,10 @@ body{
   margin-bottom:20px;
 }
 
+.header h2{
+  margin-bottom:8px;
+}
+
 .photo-box{
   background:white;
   padding:25px;
@@ -53,7 +57,6 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:60px;
 }
 
 .photo img{
@@ -62,10 +65,16 @@ body{
   object-fit:cover;
 }
 
+#placeholder{
+  font-size:60px;
+}
+
 input{
   width:100%;
   padding:12px;
   margin-top:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
 }
 
 button{
@@ -76,6 +85,11 @@ button{
   background:#e63946;
   color:white;
   font-weight:bold;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.97);
 }
 
 .back{
@@ -83,6 +97,42 @@ button{
   margin-top:20px;
   color:#b30000;
   text-decoration:none;
+  font-weight:bold;
+}
+
+@media(max-width:400px){
+  body{
+    padding:12px;
+  }
+
+  .photo{
+    width:200px;
+    height:240px;
+  }
+}
+
+@media print{
+  body{
+    background:white;
+    padding:0;
+  }
+
+  .header,
+  input,
+  button,
+  .back,
+  .photo-box h3{
+    display:none;
+  }
+
+  .photo-box{
+    box-shadow:none;
+    padding:0;
+  }
+
+  .photo{
+    margin:auto;
+  }
 }
 </style>
 </head>
@@ -91,36 +141,37 @@ button{
 
 <div class="container">
 
-<div class="header">
-<h2>📸 मेरो फोटो</h2>
-<p>रसाली भाई समाज परिवार चौराठा</p>
-</div>
+  <div class="header">
+    <h2>📸 मेरो फोटो</h2>
+    <p>रसाली भाई समाज परिवार चौराठा</p>
+  </div>
 
-<div class="photo-box">
+  <div class="photo-box">
 
-<h3>आफ्नो फोटो</h3>
+    <h3>आफ्नो फोटो</h3>
 
-<div class="photo">
-<img id="photo" src="" style="display:none;">
-<span id="placeholder">👤</span>
-</div>
+    <div class="photo">
+      <img id="photo" src="" style="display:none;">
+      <span id="placeholder">👤</span>
+    </div>
 
-<input
-type="file"
-accept="image/*"
-onchange="loadPhoto(event)">
+    <input
+      type="file"
+      accept="image/*"
+      onchange="loadPhoto(event)"
+    >
 
-<button onclick="window.print()">
-🖨️ Photo Print
-</button>
+    <button onclick="window.print()">
+      🖨️ Photo Print
+    </button>
 
-<br>
+    <br>
 
-<a class="back" href="dashboard.html">
-← Dashboard मा फर्कनुहोस्
-</a>
+    <a class="back" href="dashboard.html">
+      ← Dashboard मा फर्कनुहोस्
+    </a>
 
-</div>
+  </div>
 
 </div>
 
@@ -128,29 +179,29 @@ onchange="loadPhoto(event)">
 
 function loadPhoto(event){
 
-const file = event.target.files[0];
+  const file = event.target.files[0];
 
-if(!file) return;
+  if(!file) return;
 
-const reader = new FileReader();
+  const reader = new FileReader();
 
-reader.onload = function(e){
+  reader.onload = function(e){
 
-const photo = document.getElementById("photo");
+    const photo = document.getElementById("photo");
 
-photo.src = e.target.result;
-photo.style.display = "block";
+    photo.src = e.target.result;
+    photo.style.display = "block";
 
-document.getElementById("placeholder")
-.style.display = "none";
+    document.getElementById("placeholder")
+      .style.display = "none";
 
-};
+  };
 
-reader.readAsDataURL(file);
+  reader.readAsDataURL(file);
 
 }
 
 </script>
 
 </body>
-</html>
+</html> 
