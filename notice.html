@@ -1,209 +1,101 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>सूचना - रसाली भाई समाज परिवार</title>
 
-<title>सूचना व्यवस्थापन - रसाली भाई समाज परिवार</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-}
-
 body{
-  background:#f5f7fb;
-  color:#222;
-  padding:20px 12px;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f5f5f5;
+  margin:0;
+  padding:20px;
 }
-
-.container{
+.box{
   max-width:700px;
   margin:auto;
-}
-
-.box{
   background:white;
-  padding:22px;
-  border-radius:18px;
-  box-shadow:0 3px 15px #0002;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 2px 10px #ccc;
 }
-
 h1{
   text-align:center;
   color:#b30000;
-  margin-bottom:20px;
-  font-size:25px;
 }
-
-label{
-  display:block;
-  margin-top:12px;
-  margin-bottom:6px;
-  font-weight:bold;
-}
-
-input,
-textarea{
+input,textarea{
   width:100%;
-  padding:13px;
+  padding:12px;
+  margin:8px 0;
   border:1px solid #ccc;
-  border-radius:10px;
+  border-radius:8px;
+  box-sizing:border-box;
   font-size:16px;
-  outline:none;
 }
-
 textarea{
-  min-height:140px;
-  resize:vertical;
+  min-height:120px;
 }
-
-.buttons{
-  margin-top:15px;
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-button,
-.home{
+button{
+  padding:10px 18px;
   border:0;
-  border-radius:20px;
-  padding:11px 18px;
-  font-size:15px;
-  cursor:pointer;
-  text-decoration:none;
-}
-
-.save{
-  background:#198754;
+  border-radius:8px;
+  background:#007bff;
   color:white;
+  font-size:16px;
+  margin:5px;
 }
-
-.clear{
-  background:#777;
-  color:white;
+.delete{
+  background:#d00;
 }
-
-.home{
-  background:#b30000;
-  color:white;
+.edit{
+  background:#e69500;
 }
-
-.status{
+.notice{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:15px;
   margin-top:15px;
+  background:#fafafa;
+}
+.notice h3{
+  margin-top:0;
+  color:#333;
+}
+#message{
   text-align:center;
   font-weight:bold;
-  min-height:22px;
-}
-
-.list-title{
-  text-align:center;
-  color:#b30000;
-  margin:25px 0 15px;
-}
-
-.notice{
-  background:white;
-  margin-bottom:15px;
-  padding:18px;
-  border-left:5px solid #e63946;
-  border-radius:12px;
-  box-shadow:0 2px 10px #0001;
-}
-
-.notice h3{
-  color:#b30000;
-  margin-bottom:8px;
-}
-
-.notice p{
-  line-height:1.8;
-  white-space:pre-wrap;
-}
-
-.notice-buttons{
-  margin-top:12px;
-}
-
-.edit{
-  background:#ffc107;
-}
-
-.delete{
-  background:#dc3545;
-  color:white;
-}
-
-.loading{
-  text-align:center;
-  padding:20px;
-  color:#777;
+  margin:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
 <div class="box">
 
-<h1>📢 सूचना व्यवस्थापन</h1>
+<h1>📢 सूचना</h1>
 
-<label>सूचनाको शीर्षक</label>
+<input id="title" type="text" placeholder="सूचनाको शीर्षक">
 
-<input
-  type="text"
-  id="title"
-  placeholder="सूचनाको शीर्षक लेख्नुहोस्"
->
+<textarea id="content" placeholder="सूचना लेख्नुहोस्..."></textarea>
 
-<label>सूचनाको विवरण</label>
-
-<textarea
-  id="content"
-  placeholder="यहाँ सूचना लेख्नुहोस्..."
-></textarea>
-
-<div class="buttons">
-
-<button class="save" onclick="saveNotice()">
-💾 Save सूचना
-</button>
-
-<button class="clear" onclick="clearForm()">
-❌ खाली गर्नुहोस्
-</button>
-
-<a class="home" href="index.html">
-🏠 Home
-</a>
-
+<div style="text-align:center;">
+<button onclick="saveNotice()">💾 Save</button>
+<button onclick="clearForm()">✖ Clear</button>
 </div>
 
-<div id="status" class="status"></div>
+<div id="message"></div>
+
+<hr>
+
+<h2>📋 प्रकाशित सूचनाहरू</h2>
+
+<div id="noticeList">सूचना लोड हुँदैछ...</div>
 
 </div>
-
-
-<h2 class="list-title">
-📋 पहिले राखिएका सूचना
-</h2>
-
-<div id="notice-list">
-<div class="loading">
-सूचना लोड हुँदैछ...
-</div>
-</div>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
@@ -214,154 +106,62 @@ const SUPABASE_KEY =
 "sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
 
 const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
+supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let editId = null;
 
 
-/* सूचना देखाउने */
-
+// सूचना लोड गर्ने
 async function loadNotices(){
 
-  const box =
-    document.getElementById("notice-list");
+  const list = document.getElementById("noticeList");
 
-  box.innerHTML =
-    '<div class="loading">सूचना लोड हुँदैछ...</div>';
-
-
-  const result =
+  const { data, error } =
     await supabaseClient
     .from("Notices")
-    .select("*")
-    .order("id", { ascending:false });
+    .select('"Id","Title","Content"')
+    .order("Id", { ascending:false });
 
-
-  if(result.error){
-
-    console.log("NOTICE ERROR:",result.error);
-
-    box.innerHTML =
-    `
-    <div class="notice">
-      <h3>⚠️ सूचना लोड हुन सकेन</h3>
-      <p>Supabase बाट सूचना प्राप्त गर्न समस्या भयो।</p>
-    </div>
-    `;
-
+  if(error){
+    list.innerHTML =
+      "❌ सूचना लोड हुन सकेन।";
+    console.log(error);
     return;
   }
-
-
-  const data = result.data;
-
-
-  box.innerHTML = "";
-
 
   if(!data || data.length === 0){
-
-    box.innerHTML =
-    `
-    <div class="notice">
-      <h3>📢 सूचना</h3>
-      <p>हाल कुनै नयाँ सूचना छैन।</p>
-    </div>
-    `;
-
+    list.innerHTML = "अहिले कुनै सूचना छैन।";
     return;
   }
 
+  list.innerHTML = "";
 
-  data.forEach(function(notice){
+  data.forEach(item => {
 
-    const item =
-      document.createElement("div");
+    const div = document.createElement("div");
+    div.className = "notice";
 
-    item.className = "notice";
+    div.innerHTML = `
+      <h3>${escapeHtml(item.Title)}</h3>
+      <p>${escapeHtml(item.Content)}</p>
 
+      <button class="edit"
+        onclick='editNotice(${JSON.stringify(item)})'>
+        ✏️ Edit
+      </button>
 
-    const title =
-      document.createElement("h3");
+      <button class="delete"
+        onclick="deleteNotice(${item.Id})">
+        🗑️ Delete
+      </button>
+    `;
 
-    title.textContent =
-      "📢 " + (notice.title || "");
-
-
-    const content =
-      document.createElement("p");
-
-    content.textContent =
-      notice.content || "";
-
-
-    const buttons =
-      document.createElement("div");
-
-    buttons.className =
-      "notice-buttons";
-
-
-    const editButton =
-      document.createElement("button");
-
-    editButton.className =
-      "edit";
-
-    editButton.textContent =
-      "✏️ Edit";
-
-
-    editButton.onclick =
-      function(){
-
-        editNotice(
-          notice.id,
-          notice.title || "",
-          notice.content || ""
-        );
-
-      };
-
-
-    const deleteButton =
-      document.createElement("button");
-
-    deleteButton.className =
-      "delete";
-
-    deleteButton.textContent =
-      "🗑️ Delete";
-
-
-    deleteButton.onclick =
-      function(){
-
-        deleteNotice(notice.id);
-
-      };
-
-
-    buttons.appendChild(editButton);
-    buttons.appendChild(deleteButton);
-
-    item.appendChild(title);
-    item.appendChild(content);
-    item.appendChild(buttons);
-
-    box.appendChild(item);
-
+    list.appendChild(div);
   });
-
 }
 
 
-/* नयाँ सूचना Save / पुरानो Edit */
-
+// Save / Update
 async function saveNotice(){
 
   const title =
@@ -370,210 +170,136 @@ async function saveNotice(){
   const content =
     document.getElementById("content").value.trim();
 
+  const message =
+    document.getElementById("message");
 
-  if(title === "" || content === ""){
-
-    showStatus(
-      "⚠️ शीर्षक र विवरण दुवै लेख्नुहोस्।"
-    );
-
+  if(!title || !content){
+    message.innerHTML =
+      "⚠️ Title र सूचना दुवै लेख्नुहोस्।";
     return;
   }
 
+  message.innerHTML = "⏳ Save हुँदैछ...";
 
-  /* EDIT */
+  let result;
 
-  if(editId !== null){
+  if(editId === null){
 
-    const result =
-      await supabaseClient
-      .from("Notices")
-      .update({
-        title:title,
-        content:content
-      })
-      .eq("id",editId);
-
-
-    if(result.error){
-
-      console.log(
-        "EDIT ERROR:",
-        result.error
-      );
-
-      showStatus(
-        "❌ सूचना Edit हुन सकेन।"
-      );
-
-      return;
-    }
-
-
-    showStatus(
-      "✅ सूचना सफलतापूर्वक Edit भयो।"
-    );
-
-
-  }
-
-
-  /* NEW SAVE */
-
-  else{
-
-    const result =
+    result =
       await supabaseClient
       .from("Notices")
       .insert([
         {
-          title:title,
-          content:content
+          "Title": title,
+          "Content": content
         }
       ]);
 
+  }else{
 
-    if(result.error){
-
-      console.log(
-        "SAVE ERROR:",
-        result.error
-      );
-
-      showStatus(
-        "❌ सूचना Save हुन सकेन।"
-      );
-
-      return;
-    }
-
-
-    showStatus(
-      "✅ सूचना सफलतापूर्वक Save भयो।"
-    );
-
+    result =
+      await supabaseClient
+      .from("Notices")
+      .update({
+        "Title": title,
+        "Content": content
+      })
+      .eq("Id", editId);
   }
-
-
-  clearForm();
-
-  await loadNotices();
-
-}
-
-
-/* Edit */
-
-function editNotice(
-  id,
-  title,
-  content
-){
-
-  editId = id;
-
-
-  document.getElementById("title").value =
-    title;
-
-
-  document.getElementById("content").value =
-    content;
-
-
-  document.getElementById("title").focus();
-
-
-  showStatus(
-    "✏️ सूचना Edit गर्न तयार छ।"
-  );
-
-}
-
-
-/* Delete */
-
-async function deleteNotice(id){
-
-  const answer =
-    confirm(
-      "यो सूचना Delete गर्ने हो?"
-    );
-
-
-  if(!answer){
-
-    return;
-  }
-
-
-  const result =
-    await supabaseClient
-    .from("Notices")
-    .delete()
-    .eq("id",id);
-
 
   if(result.error){
 
-    console.log(
-      "DELETE ERROR:",
-      result.error
-    );
+    console.log(result.error);
 
-    showStatus(
-      "❌ सूचना Delete हुन सकेन।"
-    );
+    message.innerHTML =
+      "❌ सूचना Save हुन सकेन।";
 
     return;
   }
 
+  message.innerHTML =
+    editId === null
+    ? "✅ सूचना सफलतापूर्वक Save भयो।"
+    : "✅ सूचना सफलतापूर्वक Update भयो।";
 
-  showStatus(
-    "🗑️ सूचना Delete भयो।"
-  );
-
-
-  await loadNotices();
-
+  clearForm();
+  loadNotices();
 }
 
 
-/* Form खाली */
-
-function clearForm(){
-
-  editId = null;
-
+// Edit
+function editNotice(item){
 
   document.getElementById("title").value =
-    "";
-
+    item.Title;
 
   document.getElementById("content").value =
-    "";
+    item.Content;
 
+  editId = item.Id;
 
-  showStatus("");
+  document.getElementById("message").innerHTML =
+    "✏️ Edit mode मा हुनुहुन्छ। Save थिच्नुहोस्।";
 
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 
-/* Message */
+// Delete
+async function deleteNotice(id){
 
-function showStatus(message){
+  if(!confirm("यो सूचना Delete गर्ने हो?")){
+    return;
+  }
 
-  document.getElementById("status").textContent =
-    message;
+  const { error } =
+    await supabaseClient
+    .from("Notices")
+    .delete()
+    .eq("Id", id);
 
+  if(error){
+
+    console.log(error);
+
+    document.getElementById("message").innerHTML =
+      "❌ सूचना Delete हुन सकेन।";
+
+    return;
+  }
+
+  document.getElementById("message").innerHTML =
+    "✅ सूचना Delete भयो।";
+
+  loadNotices();
 }
 
 
-/* सुरुमा सूचना लोड */
+// Clear
+function clearForm(){
+
+  document.getElementById("title").value = "";
+  document.getElementById("content").value = "";
+
+  editId = null;
+}
+
+
+// HTML सुरक्षित देखाउने
+function escapeHtml(text){
+
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 
 loadNotices();
 
 </script>
 
 </body>
-</html> 
+</html>
