@@ -1,10 +1,12 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>रसाली भाई समाज परिवार चौराठा</title>
+
+<meta name="google-site-verification" content="icK5EiiPhVS7FPlMgAXuZuyJoTqJJMnMNVHILkI-8vI" />
 
 <style>
 *{
@@ -203,12 +205,28 @@ nav a:hover{
   box-shadow:0 3px 12px #0001;
 }
 
-.person .person-icon{
-  font-size:40px;
+.person-photo{
+  width:150px;
+  height:150px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  overflow:hidden;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+}
+
+.person-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .person h3{
   margin-top:8px;
+  font-size:18px;
 }
 
 .person p{
@@ -265,16 +283,6 @@ nav a:hover{
   padding:30px 20px;
   text-align:center;
   margin-top:25px;
-}
-
-.login button{
-  margin-top:18px;
-  padding:12px 30px;
-  border:0;
-  border-radius:25px;
-  background:#e63946;
-  color:white;
-  font-size:16px;
 }
 
 .contact{
@@ -347,6 +355,11 @@ footer{
     width:150px;
     height:150px;
   }
+
+  .person-photo{
+    width:130px;
+    height:130px;
+  }
 }
 
 @media print{
@@ -367,7 +380,6 @@ footer{
   }
 }
 </style>
- <meta name="google-site-verification" content="icK5EiiPhVS7FPlMgAXuZuyJoTqJJMnMNVHILkI-8vI" />
 </head>
 
 <body>
@@ -375,7 +387,6 @@ footer{
 <header>
 
   <div class="logo">
-    <!-- यहाँ पछि समाजको Logo राख्न सकिन्छ -->
     🤝
   </div>
 
@@ -390,7 +401,6 @@ footer{
 </header>
 
 <nav>
-
   <a href="#home">🏠 Home</a>
   <a href="#member">👥 सदस्य</a>
   <a href="#official">👔 पदाधिकारी</a>
@@ -399,12 +409,9 @@ footer{
   <a href="#complaint">📢 गुनासो</a>
   <a href="#contact">📞 सम्पर्क</a>
   <a href="#login">🔐 Login</a>
-
 </nav>
 
 <div class="container">
-
-<!-- HOME -->
 
 <section id="home" class="hero">
 
@@ -420,27 +427,22 @@ footer{
 </section>
 
 
-<!-- DEITY PHOTO -->
-
 <h2 class="section-title">🙏 हाम्रो आस्था</h2>
 
 <section class="deity">
 
   <div class="deity-photo">
-    <!-- देवताको फोटो यहाँ राख्न सकिन्छ -->
     🙏
   </div>
 
   <h3>समाजको आस्था तथा सम्मान</h3>
 
   <p style="margin-top:8px;color:#666;">
-    देवताको फोटो पछि यहाँ सजिलै राख्न सकिनेछ।
+    समाजको आस्था तथा सम्मान।
   </p>
 
 </section>
 
-
-<!-- SERVICES -->
 
 <h2 class="section-title">🌟 हाम्रो मुख्य सेवा</h2>
 
@@ -504,48 +506,72 @@ footer{
 <section id="official" class="members">
 
   <div class="person">
-    <div class="person-icon">👤</div>
+
+    <div class="person-photo">
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_20260904_045403.jpg"
+           alt="दीपक रसाली">
+    </div>
+
     <h3>दीपक रसाली</h3>
     <p>अध्यक्ष</p>
+
   </div>
 
+
   <div class="person">
-    <div class="person-icon">👤</div>
+
+    <div class="person-photo">
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_1773455769208.jpg"
+           alt="पदम रसाली">
+    </div>
+
     <h3>पदम रसाली</h3>
     <p>उपाध्यक्ष</p>
+
   </div>
 
+
   <div class="person">
-    <div class="person-icon">👤</div>
+
+    <div class="person-photo">
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/file_00000000b2c481f489f232fcef69e926.png"
+           alt="गोपि रसाली">
+    </div>
+
     <h3>गोपि रसाली</h3>
     <p>प्रस्तावक</p>
+
   </div>
 
+
   <div class="person">
-    <div class="person-icon">👤</div>
+
+    <div class="person-photo">
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_20260904_045928.jpg"
+           alt="नरेश रसाली">
+    </div>
+
     <h3>नरेश रसाली</h3>
     <p>कोषाध्यक्ष</p>
+
   </div>
 
 </section>
 
-
-<!-- FOUNDER -->
 
 <h2 class="section-title">🏛️ संस्थापक</h2>
 
 <section class="person">
 
-  <div class="person-icon">👤</div>
+  <div class="person-photo">
+    👤
+  </div>
 
   <h3>PBK</h3>
-
   <p>संस्थापक</p>
 
 </section>
 
-
-<!-- FAMILY LINE -->
 
 <section class="family">
 
@@ -559,8 +585,6 @@ footer{
 
 </section>
 
-
-<!-- MEMBER -->
 
 <h2 class="section-title">👥 सदस्य</h2>
 
@@ -581,7 +605,17 @@ footer{
 </section>
 
 
-<!-- CALENDAR -->
+<h2 class="section-title">📢 समाजका सूचना</h2>
+
+<section id="notice-list">
+
+  <div class="notice">
+    <h3>सूचना</h3>
+    <p>नयाँ सूचना यहाँ देखिनेछ।</p>
+  </div>
+
+</section>
+
 
 <h2 class="section-title">📅 Calendar</h2>
 
@@ -589,9 +623,7 @@ footer{
 
   <h3>नेपाली तथा English Calendar</h3>
 
-  <p>
-    🇳🇵 नेपाली Calendar
-  </p>
+  <p>🇳🇵 नेपाली Calendar</p>
 
   <p style="margin-top:8px;">
     🌍 English Calendar
@@ -603,8 +635,6 @@ footer{
 
 </section>
 
-
-<!-- MONEY / COMPLAINT -->
 
 <h2 class="section-title">💰 पैसा तथा गुनासो</h2>
 
@@ -635,8 +665,6 @@ footer{
 </section>
 
 
-<!-- PRINT -->
-
 <h2 class="section-title">📄 समाजको Paper / Print</h2>
 
 <section class="print-box">
@@ -658,8 +686,6 @@ footer{
 
 </section>
 
-
-<!-- CONTACT -->
 
 <h2 class="section-title">📞 सम्पर्क</h2>
 
@@ -700,8 +726,6 @@ footer{
 </section>
 
 
-<!-- LOGIN -->
-
 <section id="login" class="login">
 
   <h2>🔐 Admin / Member Login</h2>
@@ -719,16 +743,14 @@ footer{
   background:#e63946;
   color:white;
   font-size:16px;
-">
+  ">
   🔐 Login
-</a>
+  </a>
 
 </section>
 
 </div>
 
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -747,70 +769,79 @@ footer{
   </p>
 
 </footer>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://hvcalffbwvbwekysukdo.supabase.co";
-const SUPABASE_KEY = "sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
 
-const supabaseClient = supabase.createClient(
+const SUPABASE_URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
+
+const supabaseClient =
+supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
 
-async function loadNotices() {
 
-  const { data, error } = await supabaseClient
+async function loadNotices(){
+
+  const { data, error } =
+    await supabaseClient
     .from("Notices")
     .select("id, title, content")
-    .order("id", { ascending: false });
+    .order("id", { ascending:false });
 
-  if (error) {
-    console.log("Notices error:", error);
+  if(error){
+    console.log("Notices error:",error);
     return;
   }
 
-  const noticeCard = [...document.querySelectorAll(".card")]
-    .find(card =>
-      card.querySelector("h3")?.textContent.trim() === "सूचना"
-    );
+  const box =
+    document.getElementById("notice-list");
 
-  if (!noticeCard) return;
+  if(!box) return;
 
-  const oldNotice =
-    noticeCard.querySelector(".database-notices");
+  box.innerHTML = "";
 
-  if (oldNotice) oldNotice.remove();
+  if(!data || data.length === 0){
 
-  const noticeBox =
-    document.createElement("div");
+    box.innerHTML = `
+      <div class="notice">
+        <h3>📢 सूचना</h3>
+        <p>हाल कुनै नयाँ सूचना छैन।</p>
+      </div>
+    `;
 
-  noticeBox.className = "database-notices";
+    return;
+  }
 
   data.forEach(notice => {
 
     const item =
       document.createElement("div");
 
-    item.style.marginTop = "12px";
-    item.style.padding = "10px";
-    item.style.borderRadius = "8px";
-    item.style.background = "#f5f5f5";
+    item.className = "notice";
 
     item.innerHTML = `
-      <strong>${notice.title || ""}</strong>
-      <p style="margin:5px 0 0;">
-        ${notice.content || ""}
-      </p>
+      <h3>📢 ${notice.title || ""}</h3>
+      <p>${notice.content || ""}</p>
     `;
 
-    noticeBox.appendChild(item);
+    box.appendChild(item);
+
   });
 
-  noticeCard.appendChild(noticeBox);
 }
 
+
 loadNotices();
+
 </script>
+
 </body>
-</html>
+</html> 
