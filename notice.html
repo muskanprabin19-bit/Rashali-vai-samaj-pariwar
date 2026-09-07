@@ -3,71 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>सूचना - रसाली भाई समाज परिवार</title>
+<title>सूचना व्यवस्थापन</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 body{
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#f5f5f5;
-  margin:0;
-  padding:20px;
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+background:#f5f5f5;
+margin:0;
+padding:20px;
 }
 .box{
-  max-width:700px;
-  margin:auto;
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 2px 10px #ccc;
+max-width:700px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px #ccc;
 }
-h1{
-  text-align:center;
-  color:#b30000;
-}
+h1{text-align:center;color:#b30000;}
 input,textarea{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border:1px solid #ccc;
-  border-radius:8px;
-  box-sizing:border-box;
-  font-size:16px;
+width:100%;
+padding:12px;
+margin:8px 0;
+box-sizing:border-box;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
 }
-textarea{
-  min-height:120px;
-}
+textarea{height:120px;}
 button{
-  padding:10px 18px;
-  border:0;
-  border-radius:8px;
-  background:#007bff;
-  color:white;
-  font-size:16px;
-  margin:5px;
+padding:10px 18px;
+border:0;
+border-radius:8px;
+background:#007bff;
+color:white;
+font-size:16px;
+margin:5px;
 }
-.delete{
-  background:#d00;
-}
-.edit{
-  background:#e69500;
-}
+.edit{background:#e69500;}
+.delete{background:#d00000;}
 .notice{
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:15px;
-  margin-top:15px;
-  background:#fafafa;
-}
-.notice h3{
-  margin-top:0;
-  color:#333;
-}
-#message{
-  text-align:center;
-  font-weight:bold;
-  margin:10px;
+border:1px solid #ddd;
+padding:15px;
+margin-top:15px;
+border-radius:10px;
 }
 </style>
 </head>
@@ -76,224 +57,196 @@ button{
 
 <div class="box">
 
-<h1>📢 सूचना</h1>
+<h1>📢 सूचना व्यवस्थापन</h1>
 
-<input id="title" type="text" placeholder="सूचनाको शीर्षक">
+<input id="title" placeholder="सूचनाको शीर्षक">
 
-<textarea id="content" placeholder="सूचना लेख्नुहोस्..."></textarea>
+<textarea id="content" placeholder="सूचनाको विवरण"></textarea>
 
-<div style="text-align:center;">
-<button onclick="saveNotice()">💾 Save</button>
-<button onclick="clearForm()">✖ Clear</button>
+<div style="text-align:center">
+<button onclick="saveNotice()">💾 Save सूचना</button>
+<button onclick="clearForm()">❌ खाली गर्नुहोस्</button>
 </div>
 
-<div id="message"></div>
+<p id="message"></p>
 
 <hr>
 
-<h2>📋 प्रकाशित सूचनाहरू</h2>
+<h2>📋 पहिले राखिएका सूचना</h2>
 
 <div id="noticeList">सूचना लोड हुँदैछ...</div>
+
+<br>
+
+<a href="index.html">🏠 Home</a>
 
 </div>
 
 <script>
 
-const SUPABASE_URL =
-"https://hvcalffbwvbwekysukdo.supabase.co";
+const URL="https://hvcalffbwvbwekysukdo.supabase.co";
 
-const SUPABASE_KEY =
-"sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
+const KEY="sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
 
-const supabaseClient =
-supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const db=supabase.createClient(URL,KEY);
 
-let editId = null;
+let editId=null;
 
 
-// सूचना लोड गर्ने
+// LOAD
 async function loadNotices(){
 
-  const list = document.getElementById("noticeList");
+const list=document.getElementById("noticeList");
 
-  const { data, error } =
-    await supabaseClient
-    .from("Notices")
-    .select('"Id","Title","Content"')
-    .order("Id", { ascending:false });
+const {data,error}=await db
+.from("Notices")
+.select("*")
+.order("Id",{ascending:false});
 
-  if(error){
-    list.innerHTML =
-      "❌ सूचना लोड हुन सकेन।";
-    console.log(error);
-    return;
-  }
+if(error){
+console.log(error);
+list.innerHTML="❌ सूचना लोड हुन सकेन";
+return;
+}
 
-  if(!data || data.length === 0){
-    list.innerHTML = "अहिले कुनै सूचना छैन।";
-    return;
-  }
+if(!data.length){
+list.innerHTML="अहिले कुनै सूचना छैन।";
+return;
+}
 
-  list.innerHTML = "";
+list.innerHTML="";
 
-  data.forEach(item => {
+data.forEach(n=>{
 
-    const div = document.createElement("div");
-    div.className = "notice";
+const div=document.createElement("div");
+div.className="notice";
 
-    div.innerHTML = `
-      <h3>${escapeHtml(item.Title)}</h3>
-      <p>${escapeHtml(item.Content)}</p>
+div.innerHTML=`
+<h3>${n.Title}</h3>
+<p>${n.Content}</p>
 
-      <button class="edit"
-        onclick='editNotice(${JSON.stringify(item)})'>
-        ✏️ Edit
-      </button>
+<button class="edit"
+onclick="editNotice(${n.Id},${JSON.stringify(n.Title)},${JSON.stringify(n.Content)})">
+✏️ Edit
+</button>
 
-      <button class="delete"
-        onclick="deleteNotice(${item.Id})">
-        🗑️ Delete
-      </button>
-    `;
+<button class="delete"
+onclick="deleteNotice(${n.Id})">
+🗑️ Delete
+</button>
+`;
 
-    list.appendChild(div);
-  });
+list.appendChild(div);
+
+});
+
 }
 
 
-// Save / Update
+// SAVE / UPDATE
 async function saveNotice(){
 
-  const title =
-    document.getElementById("title").value.trim();
+const title=document.getElementById("title").value.trim();
+const content=document.getElementById("content").value.trim();
+const msg=document.getElementById("message");
 
-  const content =
-    document.getElementById("content").value.trim();
+if(!title || !content){
+msg.innerHTML="⚠️ Title र विवरण लेख्नुहोस्।";
+return;
+}
 
-  const message =
-    document.getElementById("message");
+msg.innerHTML="⏳ Save हुँदैछ...";
 
-  if(!title || !content){
-    message.innerHTML =
-      "⚠️ Title र सूचना दुवै लेख्नुहोस्।";
-    return;
-  }
+let result;
 
-  message.innerHTML = "⏳ Save हुँदैछ...";
+if(editId===null){
 
-  let result;
+result=await db
+.from("Notices")
+.insert({
+Title:title,
+Content:content
+});
 
-  if(editId === null){
+}else{
 
-    result =
-      await supabaseClient
-      .from("Notices")
-      .insert([
-        {
-          "Title": title,
-          "Content": content
-        }
-      ]);
+result=await db
+.from("Notices")
+.update({
+Title:title,
+Content:content
+})
+.eq("Id",editId);
 
-  }else{
+}
 
-    result =
-      await supabaseClient
-      .from("Notices")
-      .update({
-        "Title": title,
-        "Content": content
-      })
-      .eq("Id", editId);
-  }
+if(result.error){
 
-  if(result.error){
+console.log(result.error);
 
-    console.log(result.error);
+msg.innerHTML="❌ Save हुन सकेन: "+result.error.message;
+return;
 
-    message.innerHTML =
-      "❌ सूचना Save हुन सकेन।";
+}
 
-    return;
-  }
+msg.innerHTML="✅ सूचना सफल भयो।";
 
-  message.innerHTML =
-    editId === null
-    ? "✅ सूचना सफलतापूर्वक Save भयो।"
-    : "✅ सूचना सफलतापूर्वक Update भयो।";
+clearForm();
+loadNotices();
 
-  clearForm();
-  loadNotices();
 }
 
 
-// Edit
-function editNotice(item){
+// EDIT
+function editNotice(id,title,content){
 
-  document.getElementById("title").value =
-    item.Title;
+editId=id;
 
-  document.getElementById("content").value =
-    item.Content;
+document.getElementById("title").value=title;
+document.getElementById("content").value=content;
 
-  editId = item.Id;
+document.getElementById("message").innerHTML=
+"✏️ Edit गर्नुहोस् अनि Save थिच्नुहोस्।";
 
-  document.getElementById("message").innerHTML =
-    "✏️ Edit mode मा हुनुहुन्छ। Save थिच्नुहोस्।";
+window.scrollTo(0,0);
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
 }
 
 
-// Delete
+// DELETE
 async function deleteNotice(id){
 
-  if(!confirm("यो सूचना Delete गर्ने हो?")){
-    return;
-  }
+if(!confirm("यो सूचना Delete गर्ने?")) return;
 
-  const { error } =
-    await supabaseClient
-    .from("Notices")
-    .delete()
-    .eq("Id", id);
+const {error}=await db
+.from("Notices")
+.delete()
+.eq("Id",id);
 
-  if(error){
+if(error){
 
-    console.log(error);
+document.getElementById("message").innerHTML=
+"❌ Delete हुन सकेन: "+error.message;
 
-    document.getElementById("message").innerHTML =
-      "❌ सूचना Delete हुन सकेन।";
+return;
 
-    return;
-  }
+}
 
-  document.getElementById("message").innerHTML =
-    "✅ सूचना Delete भयो।";
+document.getElementById("message").innerHTML=
+"✅ सूचना Delete भयो।";
 
-  loadNotices();
+loadNotices();
+
 }
 
 
-// Clear
+// CLEAR
 function clearForm(){
 
-  document.getElementById("title").value = "";
-  document.getElementById("content").value = "";
+document.getElementById("title").value="";
+document.getElementById("content").value="";
+editId=null;
 
-  editId = null;
-}
-
-
-// HTML सुरक्षित देखाउने
-function escapeHtml(text){
-
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 
