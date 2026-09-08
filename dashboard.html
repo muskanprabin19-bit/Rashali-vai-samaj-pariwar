@@ -75,39 +75,30 @@ body{
   color:#666;
 }
 
-/* संस्थापक */
+/* सदस्य जानकारी */
 
-.founder{
+.member-info{
   background:white;
   padding:20px;
   border-radius:15px;
   margin-bottom:20px;
-  text-align:center;
   box-shadow:0 4px 15px #0002;
   border-top:3px solid #b30000;
+  text-align:center;
 }
 
-.founder img{
-  width:120px;
-  height:120px;
-  object-fit:cover;
-  border-radius:50%;
-  border:4px solid #e63946;
-}
-
-.founder h2{
-  margin-top:12px;
+.member-info h2{
   color:#b30000;
 }
 
-.founder p{
-  margin-top:5px;
+.member-info p{
+  margin-top:7px;
   color:#666;
 }
 
-/* सदस्य थप्ने */
+/* पैसा हिसाब */
 
-.add-member{
+.money-box{
   background:white;
   padding:20px;
   border-radius:15px;
@@ -116,32 +107,64 @@ body{
   border-top:3px solid #e63946;
 }
 
-.add-member h2{
+.money-box h2{
   color:#b30000;
-  font-size:19px;
+  font-size:20px;
   margin-bottom:15px;
 }
 
-.add-member input{
-  width:100%;
-  padding:12px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:16px;
-  outline:none;
+.summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
 }
 
-.add-member button{
-  width:100%;
-  margin-top:12px;
-  padding:12px;
-  border:0;
+.summary div{
+  background:#f5f5f5;
+  padding:12px 5px;
   border-radius:10px;
-  background:#e63946;
-  color:white;
+  text-align:center;
+  font-weight:bold;
+  font-size:13px;
+}
+
+.summary span{
+  display:block;
+  margin-top:6px;
   font-size:16px;
+}
+
+.records-title{
+  margin-top:20px;
+  color:#333;
+}
+
+.record{
+  border:1px solid #ddd;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+}
+
+.income{
+  border-left:5px solid green;
+}
+
+.expense{
+  border-left:5px solid red;
+}
+
+.incomeText{
+  color:green;
   font-weight:bold;
 }
+
+.expenseText{
+  color:red;
+  font-weight:bold;
+}
+
+/* Cards */
 
 .cards{
   display:grid;
@@ -219,9 +242,33 @@ body{
   text-decoration:none;
 }
 
+.logout{
+  text-align:center;
+  margin-top:20px;
+}
+
+.logout button{
+  padding:12px 25px;
+  border:0;
+  border-radius:20px;
+  background:#555;
+  color:white;
+  font-weight:bold;
+}
+
+#moneyMsg{
+  text-align:center;
+  margin-top:12px;
+  font-weight:bold;
+}
+
 @media(max-width:500px){
 
   .cards{
+    grid-template-columns:1fr;
+  }
+
+  .summary{
     grid-template-columns:1fr;
   }
 
@@ -247,6 +294,8 @@ body{
 
 <div class="container">
 
+  <!-- स्वागत -->
+
   <div class="welcome">
 
     <h2>🙏 स्वागत छ</h2>
@@ -258,38 +307,67 @@ body{
   </div>
 
 
-  <!-- संस्थापक -->
+  <!-- MEMBER INFO -->
 
-  <div class="founder">
+  <div class="member-info">
 
-    <img src="IMG_20250421_021339.jpg"
-         alt="संस्थापक पदम रसाली">
+    <h2 id="memberName">
+      सदस्य विवरण खोजिँदै...
+    </h2>
 
-    <h2>पदम रसाली</h2>
+    <p>
+      Member ID:
+      <strong id="memberId">—</strong>
+    </p>
 
-    <p>संस्थापक</p>
+  </div>
+
+
+  <!-- MEMBER MONEY -->
+
+  <div class="money-box">
+
+    <h2>💰 मेरो पैसाको हिसाब</h2>
+
+    <div class="summary">
+
+      <div>
+        जम्मा
+        <span id="totalIncome">
+          रु. 0
+        </span>
+      </div>
+
+      <div>
+        निकालेको
+        <span id="totalExpense">
+          रु. 0
+        </span>
+      </div>
+
+      <div>
+        बाँकी
+        <span id="balance">
+          रु. 0
+        </span>
+      </div>
+
+    </div>
+
+    <div id="moneyMsg"></div>
+
+    <h3 class="records-title">
+      📋 मेरो कारोबार विवरण
+    </h3>
+
+    <div id="moneyRecords">
+      हिसाब निकालिँदै...
+    </div>
 
   </div>
 
 
-  <!-- सदस्य थप्ने -->
-
-  <div class="add-member">
-
-    <h2>👤 नयाँ सदस्य थप्नुहोस्</h2>
-
-    <input
-      type="text"
-      id="memberName"
-      placeholder="सदस्यको नाम लेख्नुहोस्"
-    >
-
-    <button onclick="addMember()">
-      ➕ सदस्य थप्नुहोस्
-    </button>
-
-  </div>
-
+  <!-- CARDS -->
 
   <div class="cards">
 
@@ -380,6 +458,16 @@ body{
 
     </div>
 
+  </div>
+
+
+  <!-- LOGOUT -->
+
+  <div class="logout">
+
+    <button onclick="logout()">
+      🚪 Logout
+    </button>
 
   </div>
 
@@ -401,24 +489,243 @@ body{
 
 <script>
 
-function addMember(){
+/* SUPABASE */
 
-  const name =
-    document.getElementById("memberName").value.trim();
+const URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
 
-  if(name === ""){
-    alert("कृपया सदस्यको नाम लेख्नुहोस्।");
-    return;
-  }
+const KEY =
+"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
-  alert(
-    "सदस्यको नाम तयार भयो: " + name +
-    "\nअब Supabase मा सुरक्षित गर्ने भाग जोडिन्छ।"
-  );
 
-  document.getElementById("memberName").value = "";
+/* LOGIN DATA */
+
+const token =
+localStorage.getItem("rasali_access_token");
+
+const memberId =
+localStorage.getItem("rasali_member_id");
+
+
+/* LOGIN CHECK */
+
+if(!token || !memberId){
+
+  alert("🔐 कृपया पहिले Login गर्नुहोस्।");
+
+  window.location.href="login.html";
 
 }
+
+
+/* LOAD MEMBER */
+
+async function loadMember(){
+
+  const response =
+  await fetch(
+    URL+
+    "/rest/v1/members?id=eq."+
+    memberId+
+    "&select=id,name,position",
+    {
+      headers:{
+        "apikey":KEY,
+        "Authorization":"Bearer "+token
+      }
+    }
+  );
+
+  const data =
+  await response.json();
+
+  if(!response.ok || !data.length){
+
+    document.getElementById("memberName").innerText =
+      "सदस्य भेटिएन";
+
+    return;
+
+  }
+
+  const member=data[0];
+
+  document.getElementById("memberName").innerText =
+    member.name || "सदस्य";
+
+  document.getElementById("memberId").innerText =
+    member.id;
+
+}
+
+
+/* LOAD OWN MONEY */
+
+async function loadMoney(){
+
+  const records =
+    document.getElementById("moneyRecords");
+
+  const response =
+  await fetch(
+    URL+
+    "/rest/v1/money_records?member_id=eq."+
+    memberId+
+    "&select=id,record_type,amount,record_date,description&order=record_date.desc,id.desc",
+    {
+      headers:{
+        "apikey":KEY,
+        "Authorization":"Bearer "+token
+      }
+    }
+  );
+
+  const data =
+    await response.json();
+
+
+  if(!response.ok){
+
+    records.innerHTML =
+      "❌ पैसा हिसाब निकाल्न सकिएन।";
+
+    return;
+
+  }
+
+
+  let income=0;
+  let expense=0;
+
+
+  data.forEach(r=>{
+
+    const amount =
+      Number(r.amount)||0;
+
+    if(r.record_type==="income"){
+      income+=amount;
+    }
+
+    if(r.record_type==="expense"){
+      expense+=amount;
+    }
+
+  });
+
+
+  const balance =
+    income-expense;
+
+
+  document.getElementById("totalIncome").innerText =
+    "रु. "+income.toLocaleString();
+
+  document.getElementById("totalExpense").innerText =
+    "रु. "+expense.toLocaleString();
+
+  document.getElementById("balance").innerText =
+    "रु. "+balance.toLocaleString();
+
+
+  if(!data.length){
+
+    records.innerHTML =
+      "<p style='text-align:center;padding:15px;'>अहिलेसम्म कुनै पैसा कारोबार छैन।</p>";
+
+    return;
+
+  }
+
+
+  records.innerHTML="";
+
+
+  data.forEach(r=>{
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "record "+
+      (
+        r.record_type==="income"
+        ? "income"
+        : "expense"
+      );
+
+
+    const title =
+      r.record_type==="income"
+      ? "🟢 जम्मा"
+      : "🔴 निकालेको";
+
+
+    const amountText =
+      (
+        r.record_type==="income"
+        ? "+ "
+        : "- "
+      )+
+      "रु. "+
+      Number(r.amount).toLocaleString();
+
+
+    div.innerHTML=`
+
+      <strong>${title}</strong>
+
+      <br>
+
+      📅 मिति:
+      ${r.record_date || "—"}
+
+      <br>
+
+      💰 रकम:
+
+      <span class="${
+        r.record_type==="income"
+        ? "incomeText"
+        : "expenseText"
+      }">
+
+      ${amountText}
+
+      </span>
+
+      <br>
+
+      📝 विवरण:
+      ${r.description || "—"}
+
+    `;
+
+    records.appendChild(div);
+
+  });
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+  localStorage.removeItem("rasali_access_token");
+  localStorage.removeItem("rasali_user");
+  localStorage.removeItem("rasali_member_id");
+  localStorage.removeItem("rasali_role");
+
+  window.location.href="login.html";
+
+}
+
+
+/* START */
+
+loadMember();
+loadMoney();
 
 </script>
 
