@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -21,7 +21,7 @@ body{
 }
 
 .container{
-  max-width:700px;
+  max-width:900px;
   margin:auto;
 }
 
@@ -45,10 +45,10 @@ body{
 .member{
   background:white;
   padding:15px;
-  border-radius:12px;
+  border:1px solid #999;
+  border-radius:10px;
   margin-bottom:15px;
   text-align:center;
-  box-shadow:0 3px 12px #0002;
 }
 
 .summary{
@@ -60,10 +60,10 @@ body{
 
 .box{
   background:white;
-  padding:18px 8px;
+  padding:15px 8px;
   text-align:center;
-  border-radius:12px;
-  box-shadow:0 3px 12px #0002;
+  border:1px solid #999;
+  border-radius:8px;
 }
 
 .box h3{
@@ -78,9 +78,9 @@ body{
 
 .history{
   background:white;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 3px 12px #0002;
+  padding:15px;
+  border:1px solid #888;
+  border-radius:10px;
 }
 
 .history h2{
@@ -89,26 +89,32 @@ body{
   margin-bottom:15px;
 }
 
-.entry{
-  border-bottom:1px solid #ddd;
-  padding:12px 0;
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
 }
 
-.entry:last-child{
-  border-bottom:0;
+table{
+  width:100%;
+  min-width:650px;
+  border-collapse:collapse;
+  background:white;
 }
 
-.entry strong{
-  color:#b30000;
-}
-
-.back{
-  display:block;
+th,
+td{
+  border:1px solid #777;
+  padding:10px 8px;
   text-align:center;
-  margin:20px 0;
-  color:#b30000;
-  text-decoration:none;
+}
+
+th{
+  background:#eeeeee;
   font-weight:bold;
+}
+
+td{
+  font-size:14px;
 }
 
 .message{
@@ -121,10 +127,27 @@ body{
   color:#b30000;
 }
 
-@media(max-width:500px){
+.back{
+  display:block;
+  text-align:center;
+  margin:20px 0;
+  color:#b30000;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+@media(max-width:600px){
+
   .summary{
     grid-template-columns:1fr;
   }
+
+  th,
+  td{
+    padding:8px 6px;
+    font-size:13px;
+  }
+
 }
 </style>
 </head>
@@ -167,8 +190,32 @@ body{
 
     <h2>📋 मेरो हिसाब विवरण</h2>
 
-    <div id="entries">
-      <div class="message">हिसाब खोजिँदैछ...</div>
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>सदस्य</th>
+            <th>प्रकार</th>
+            <th>रकम</th>
+            <th>मिति</th>
+            <th>विवरण</th>
+          </tr>
+        </thead>
+
+        <tbody id="entries">
+
+          <tr>
+            <td colspan="5" class="message">
+              हिसाब खोजिँदैछ...
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
     </div>
 
   </div>
@@ -195,28 +242,26 @@ async function loadMoney(){
 
   try{
 
-    /* LOGIN TOKEN */
-
     const accessToken =
       localStorage.getItem("rasali_access_token");
-
-    /* MEMBER ID */
 
     const memberId =
       localStorage.getItem("rasali_member_id");
 
+
     if(!accessToken){
 
       entriesBox.innerHTML =
-        '<div class="message error">पहिले Login गर्नुहोस्।</div>';
+      '<tr><td colspan="5" class="message error">पहिले Login गर्नुहोस्।</td></tr>';
 
       return;
     }
 
+
     if(!memberId){
 
       entriesBox.innerHTML =
-        '<div class="message error">सदस्य ID भेटिएन।</div>';
+      '<tr><td colspan="5" class="message error">सदस्य ID भेटिएन।</td></tr>';
 
       return;
     }
@@ -250,17 +295,21 @@ async function loadMoney(){
     if(!memberResponse.ok){
 
       entriesBox.innerHTML =
-        '<div class="message error">सदस्य विवरण निकाल्न सकिएन।</div>';
+      '<tr><td colspan="5" class="message error">सदस्य विवरण निकाल्न सकिएन।</td></tr>';
 
       return;
     }
 
 
+    let memberName = "सदस्य";
+
     if(members.length > 0){
 
-      document.getElementById("memberName").textContent =
+      memberName =
         members[0].name || "सदस्य";
 
+      document.getElementById("memberName").textContent =
+        memberName;
     }
 
 
@@ -288,7 +337,7 @@ async function loadMoney(){
     if(!response.ok){
 
       entriesBox.innerHTML =
-        '<div class="message error">हिसाब निकाल्न समस्या भयो।</div>';
+      '<tr><td colspan="5" class="message error">हिसाब निकाल्न समस्या भयो।</td></tr>';
 
       return;
     }
@@ -297,13 +346,14 @@ async function loadMoney(){
     let totalIn = 0;
     let totalOut = 0;
 
+
     entriesBox.innerHTML = "";
 
 
     if(records.length === 0){
 
       entriesBox.innerHTML =
-        '<div class="message">यस सदस्यको अहिलेसम्म कुनै हिसाब छैन।</div>';
+      '<tr><td colspan="5" class="message">यस सदस्यको अहिलेसम्म कुनै हिसाब छैन।</td></tr>';
 
     }
 
@@ -324,32 +374,38 @@ async function loadMoney(){
       }
 
 
-      const div =
-        document.createElement("div");
-
-      div.className = "entry";
+      const row =
+        document.createElement("tr");
 
 
-      div.innerHTML =
-        "<strong>मिति:</strong> " +
-        (item.record_date || "-") +
+      row.innerHTML = `
 
-        "<br><strong>प्रकार:</strong> " +
+        <td>${memberName}</td>
 
-        (item.record_type === "income"
-          ? "जम्मा रकम"
-          : "निकालेको रकम") +
+        <td>
+          ${
+            item.record_type === "income"
+            ? "जम्मा"
+            : "निकालेको"
+          }
+        </td>
 
-        "<br><strong>रकम:</strong> रु. " +
+        <td>
+          रु. ${amount.toLocaleString()}
+        </td>
 
-        amount.toLocaleString() +
+        <td>
+          ${item.record_date || "-"}
+        </td>
 
-        "<br><strong>विवरण:</strong> " +
+        <td>
+          ${item.description || "-"}
+        </td>
 
-        (item.description || "-");
+      `;
 
 
-      entriesBox.appendChild(div);
+      entriesBox.appendChild(row);
 
     });
 
@@ -370,7 +426,7 @@ async function loadMoney(){
   }catch(error){
 
     entriesBox.innerHTML =
-      '<div class="message error">Internet वा Supabase connection मा समस्या भयो।</div>';
+    '<tr><td colspan="5" class="message error">Internet वा Supabase connection मा समस्या भयो।</td></tr>';
 
     console.log(error);
 
