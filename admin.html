@@ -1,9 +1,109 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Admin Dashboard - रसाली भाई समाज परिवार</title>
+
+<style>
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
+
+body{
+background:#f5f5f5;
+padding:20px;
+}
+
+h1,h2{
+text-align:center;
+color:#b30000;
+}
+
+h1{margin-bottom:8px;}
+h2{color:#333;margin-bottom:20px;}
+
+.box{
+max-width:650px;
+margin:18px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 15px #0002;
+}
+
+h3{
+margin-bottom:12px;
+color:#b30000;
+}
+
+input,select,button{
+width:100%;
+padding:12px;
+margin:6px 0;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:15px;
+}
+
+button{
+background:#b30000;
+color:white;
+font-weight:bold;
+border:0;
+cursor:pointer;
+}
+
+.edit{
+background:#2563eb;
+}
+
+.delete{
+background:#555;
+}
+
+.member{
+border:1px solid #ddd;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+}
+
+.member strong{
+font-size:17px;
+}
+
+.actions{
+display:flex;
+gap:8px;
+margin-top:8px;
+}
+
+.actions button{
+margin:0;
+}
+
+#msg,#memberMsg,#moneyMsg{
+margin-top:10px;
+text-align:center;
+font-weight:bold;
+}
+
+.logout{
+max-width:650px;
+margin:20px auto;
+text-align:center;
+}
+
+.logout button{
+width:auto;
+padding:12px 25px;
+}
+</style>
 </head>
 
 <body>
@@ -11,38 +111,57 @@
 <h1>🤝 रसाली भाई समाज परिवार</h1>
 <h2>🔐 Admin Dashboard</h2>
 
-<p>स्वागत छ Admin</p>
-<style>
-body{
-font-family:Arial,"Noto Sans Devanagari",sans-serif;
-background:#f5f5f5;
-padding:20px;
-text-align:center;
-}
-h1{color:#b30000;}
-h2{color:#333;}
-.admin-box{
-max-width:500px;
-margin:25px auto;
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 4px 15px #0002;
-}
-input,select,button{
-width:100%;
-padding:12px;
-margin:7px 0;
-border:1px solid #ddd;
-border-radius:8px;
-}
-button{
-background:#b30000;
-color:white;
-font-weight:bold;
-}
-</style>
-  <div class="admin-box">
+<!-- MEMBER MANAGEMENT -->
+
+<div class="box">
+
+<h3>👥 सदस्य व्यवस्थापन</h3>
+
+<input
+id="search"
+type="text"
+placeholder="🔍 नाम वा Member ID खोज्नुहोस्"
+oninput="loadMembers()">
+
+<input
+id="name"
+type="text"
+placeholder="सदस्यको नाम">
+
+<input
+id="position"
+type="text"
+placeholder="पद">
+
+<input
+id="phone"
+type="text"
+placeholder="फोन नम्बर">
+
+<input
+id="email"
+type="email"
+placeholder="Email">
+
+<input
+id="document_url"
+type="text"
+placeholder="Document URL (यदि छ भने)">
+
+<button onclick="saveMember()">
+➕ सदस्य थप्नुहोस्
+</button>
+
+<div id="memberMsg"></div>
+
+<div id="membersList"></div>
+
+</div>
+
+
+<!-- MONEY MANAGEMENT -->
+
+<div class="box">
 
 <h3>💰 सदस्यको पैसा हिसाब</h3>
 
@@ -55,37 +174,369 @@ font-weight:bold;
 <option value="expense">निकालेको रकम</option>
 </select>
 
-<input type="number" id="amount" placeholder="रकम">
+<input
+type="number"
+id="amount"
+placeholder="रकम">
 
-<input type="text" id="description" placeholder="विवरण">
+<input
+type="text"
+id="description"
+placeholder="विवरण">
 
-<button onclick="saveMoney()">💾 Save</button>
+<button onclick="saveMoney()">
+💾 पैसा Save गर्नुहोस्
+</button>
 
-<div id="msg"></div>
+<div id="moneyMsg"></div>
 
 </div>
-  <script>
-const URL="https://hvcalffbwvbwekysukdo.supabase.co";
-const KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
-async function loadMembers(){
-const r=await fetch(URL+"/rest/v1/members?select=id,name",{
-headers:{apikey:KEY}
-});
-const data=await r.json();
-const box=document.getElementById("member");
 
-data.forEach(m=>{
-const o=document.createElement("option");
-o.value=m.id;
-o.textContent=m.name+" (ID: "+m.id+")";
-box.appendChild(o);
-});
+<div class="logout">
+
+<button onclick="logout()">
+🚪 Logout
+</button>
+
+</div>
+
+
+<script>
+
+const URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
+
+const KEY =
+"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+
+let editId = null;
+
+
+/* ADMIN CHECK */
+
+const token =
+localStorage.getItem("rasali_access_token");
+
+const role =
+localStorage.getItem("rasali_role");
+
+if(!token || role !== "admin"){
+
+alert("🔐 Admin मात्रलाई अनुमति छ।");
+
+window.location.href="login.html";
+
 }
 
+
+/* LOAD MEMBERS */
+
+async function loadMembers(){
+
+const search =
+document.getElementById("search").value
+.trim()
+.toLowerCase();
+
+const response =
+await fetch(
+URL +
+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",
+{
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token
+}
+});
+
+const data =
+await response.json();
+
+if(!response.ok){
+
+document.getElementById("memberMsg").innerText =
+"❌ सदस्य निकाल्न सकिएन।";
+
+return;
+}
+
+const list =
+document.getElementById("membersList");
+
+list.innerHTML="";
+
+const select =
+document.getElementById("member");
+
+select.innerHTML =
+'<option value="">सदस्य छान्नुहोस्</option>';
+
+data.forEach(m=>{
+
+const text =
+(
+String(m.id)+" "+
+(m.name||"")+" "+
+(m.position||"")
+).toLowerCase();
+
+if(search && !text.includes(search)){
+return;
+}
+
+
+/* MEMBER LIST */
+
+const div =
+document.createElement("div");
+
+div.className="member";
+
+div.innerHTML=`
+<strong>${m.name||""}</strong>
+<br>
+Member ID: ${m.id}
+<br>
+${m.position||""}
+<br>
+📞 ${m.phone||"—"}
+<br>
+✉️ ${m.email||"—"}
+
+<div class="actions">
+
+<button class="edit"
+onclick="editMember(${m.id})">
+✏️ Edit
+</button>
+
+<button class="delete"
+onclick="deleteMember(${m.id})">
+🗑️ Delete
+</button>
+
+</div>
+`;
+
+list.appendChild(div);
+
+
+/* MONEY SELECT */
+
+const option =
+document.createElement("option");
+
+option.value=m.id;
+
+option.textContent =
+m.name+" (ID: "+m.id+")";
+
+select.appendChild(option);
+
+});
+
+}
+
+
+/* SAVE MEMBER */
+
+async function saveMember(){
+
+const name =
+document.getElementById("name").value.trim();
+
+const position =
+document.getElementById("position").value.trim();
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const email =
+document.getElementById("email").value.trim();
+
+const document_url =
+document.getElementById("document_url").value.trim();
+
+if(!name){
+
+document.getElementById("memberMsg").innerText =
+"❗ सदस्यको नाम लेख्नुहोस्।";
+
+return;
+}
+
+const body={
+name:name,
+position:position,
+phone:phone,
+email:email,
+document_url:document_url
+};
+
+let response;
+
+if(editId){
+
+response =
+await fetch(
+URL+"/rest/v1/members?id=eq."+editId,
+{
+method:"PATCH",
+headers:{
+"Content-Type":"application/json",
+"apikey":KEY,
+"Authorization":"Bearer "+token,
+"Prefer":"return=minimal"
+},
+body:JSON.stringify(body)
+});
+
+}else{
+
+response =
+await fetch(
+URL+"/rest/v1/members",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"apikey":KEY,
+"Authorization":"Bearer "+token,
+"Prefer":"return=minimal"
+},
+body:JSON.stringify(body)
+});
+
+}
+
+if(response.ok){
+
+document.getElementById("memberMsg").innerText =
+editId
+? "✅ सदस्य विवरण Update भयो।"
+: "✅ नयाँ सदस्य सफलतापूर्वक थपियो।";
+
+clearForm();
+
+editId=null;
+
+document.querySelector(
+'button[onclick="saveMember()"]'
+).innerText="➕ सदस्य थप्नुहोस्";
+
 loadMembers();
-</script>
-  <script>
+
+}else{
+
+const error =
+await response.text();
+
+document.getElementById("memberMsg").innerText =
+"❌ समस्या: "+error;
+
+}
+
+}
+
+
+/* EDIT MEMBER */
+
+async function editMember(id){
+
+const response =
+await fetch(
+URL+
+"/rest/v1/members?id=eq."+id+
+"&select=id,name,position,phone,email,document_url",
+{
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token
+}
+});
+
+const data =
+await response.json();
+
+if(!data.length)return;
+
+const m=data[0];
+
+document.getElementById("name").value=m.name||"";
+document.getElementById("position").value=m.position||"";
+document.getElementById("phone").value=m.phone||"";
+document.getElementById("email").value=m.email||"";
+document.getElementById("document_url").value=m.document_url||"";
+
+editId=id;
+
+document.querySelector(
+'button[onclick="saveMember()"]'
+).innerText="💾 Update सदस्य";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* DELETE MEMBER */
+
+async function deleteMember(id){
+
+if(!confirm(
+"यो सदस्य Delete गर्ने हो?"
+))return;
+
+const response =
+await fetch(
+URL+"/rest/v1/members?id=eq."+id,
+{
+method:"DELETE",
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token
+}
+});
+
+if(response.ok){
+
+document.getElementById("memberMsg").innerText =
+"🗑️ सदस्य Delete भयो।";
+
+loadMembers();
+
+}else{
+
+const error =
+await response.text();
+
+document.getElementById("memberMsg").innerText =
+"❌ Delete हुन सकेन: "+error;
+
+}
+
+}
+
+
+/* CLEAR FORM */
+
+function clearForm(){
+
+document.getElementById("name").value="";
+document.getElementById("position").value="";
+document.getElementById("phone").value="";
+document.getElementById("email").value="";
+document.getElementById("document_url").value="";
+
+}
+
+
+/* SAVE MONEY */
+
 async function saveMoney(){
 
 const member_id =
@@ -100,37 +551,41 @@ document.getElementById("amount").value;
 const description =
 document.getElementById("description").value;
 
-const token =
-localStorage.getItem("rasali_access_token");
-
 if(!member_id || !amount){
-document.getElementById("msg").innerText =
-"सदस्य र रकम छान्नुहोस्।";
+
+document.getElementById("moneyMsg").innerText =
+"❗ सदस्य र रकम छान्नुहोस्।";
+
 return;
 }
 
-const response = await fetch(
-URL + "/rest/v1/money_records",
+const response =
+await fetch(
+URL+"/rest/v1/money_records",
 {
 method:"POST",
 headers:{
 "Content-Type":"application/json",
 "apikey":KEY,
-"Authorization":"Bearer " + token,
+"Authorization":"Bearer "+token,
 "Prefer":"return=minimal"
 },
 body:JSON.stringify({
+
 member_id:Number(member_id),
+
 record_type:record_type,
+
 amount:Number(amount),
+
 description:description
+
 })
-}
-);
+});
 
 if(response.ok){
 
-document.getElementById("msg").innerText =
+document.getElementById("moneyMsg").innerText =
 "✅ रकम सफलतापूर्वक Save भयो।";
 
 document.getElementById("amount").value="";
@@ -138,37 +593,36 @@ document.getElementById("description").value="";
 
 }else{
 
-const error = await response.text();
+const error =
+await response.text();
 
-document.getElementById("msg").innerText =
-"❌ Save हुन सकेन: " + error;
+document.getElementById("moneyMsg").innerText =
+"❌ Save हुन सकेन: "+error;
+
 }
 
 }
-</script>
-  <div style="margin:20px 0;">
-<a href="index.html"
-style="display:inline-block;padding:12px 20px;
-background:#b30000;color:white;
-text-decoration:none;border-radius:25px;">
-🏠 Home मा फर्कनुहोस्
-</a>
 
-<button onclick="logout()"
-style="width:auto;padding:12px 20px;
-margin-left:8px;">
-🚪 Logout
-</button>
-</div>
 
-<script>
+/* LOGOUT */
+
 function logout(){
+
 localStorage.removeItem("rasali_access_token");
 localStorage.removeItem("rasali_user");
 localStorage.removeItem("rasali_member_id");
 localStorage.removeItem("rasali_role");
-window.location.href="index.html";
+
+window.location.href="login.html";
+
 }
+
+
+/* START */
+
+loadMembers();
+
 </script>
+
 </body>
 </html>
