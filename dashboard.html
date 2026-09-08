@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -73,6 +73,74 @@ body{
 .welcome p{
   margin-top:8px;
   color:#666;
+}
+
+/* संस्थापक */
+
+.founder{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  text-align:center;
+  box-shadow:0 4px 15px #0002;
+  border-top:3px solid #b30000;
+}
+
+.founder img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #e63946;
+}
+
+.founder h2{
+  margin-top:12px;
+  color:#b30000;
+}
+
+.founder p{
+  margin-top:5px;
+  color:#666;
+}
+
+/* सदस्य थप्ने */
+
+.add-member{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  box-shadow:0 4px 15px #0002;
+  border-top:3px solid #e63946;
+}
+
+.add-member h2{
+  color:#b30000;
+  font-size:19px;
+  margin-bottom:15px;
+}
+
+.add-member input{
+  width:100%;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+}
+
+.add-member button{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  border:0;
+  border-radius:10px;
+  background:#e63946;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
 }
 
 .cards{
@@ -190,6 +258,39 @@ body{
   </div>
 
 
+  <!-- संस्थापक -->
+
+  <div class="founder">
+
+    <img src="IMG_20250421_021339.jpg"
+         alt="संस्थापक पदम रसाली">
+
+    <h2>पदम रसाली</h2>
+
+    <p>संस्थापक</p>
+
+  </div>
+
+
+  <!-- सदस्य थप्ने -->
+
+  <div class="add-member">
+
+    <h2>👤 नयाँ सदस्य थप्नुहोस्</h2>
+
+    <input
+      type="text"
+      id="memberName"
+      placeholder="सदस्यको नाम लेख्नुहोस्"
+    >
+
+    <button onclick="addMember()">
+      ➕ सदस्य थप्नुहोस्
+    </button>
+
+  </div>
+
+
   <div class="cards">
 
 
@@ -297,5 +398,29 @@ body{
 
 </div>
 
+
+<script>
+
+function addMember(){
+
+  const name =
+    document.getElementById("memberName").value.trim();
+
+  if(name === ""){
+    alert("कृपया सदस्यको नाम लेख्नुहोस्।");
+    return;
+  }
+
+  alert(
+    "सदस्यको नाम तयार भयो: " + name +
+    "\nअब Supabase मा सुरक्षित गर्ने भाग जोडिन्छ।"
+  );
+
+  document.getElementById("memberName").value = "";
+
+}
+
+</script>
+
 </body>
-</html> 
+</html>
