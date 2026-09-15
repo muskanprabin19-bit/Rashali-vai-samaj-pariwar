@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Admin Dashboard - रसाली भाई समाज परिवार</title>
+<title>Admin Control Center - रसाली भाई समाज परिवार</title>
 
 <style>
 *{
@@ -15,30 +15,104 @@ font-family:Arial,"Noto Sans Devanagari",sans-serif;
 }
 
 body{
-background:#f5f5f5;
-padding:20px;
+background:linear-gradient(135deg,#fff7f7,#f1f5f9);
+color:#222;
+padding:15px;
 }
 
-h1,h2{
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.header{
+background:linear-gradient(135deg,#8b0000,#c62828);
+color:white;
+padding:25px 15px;
+border-radius:20px;
 text-align:center;
-color:#b30000;
+box-shadow:0 8px 25px #0003;
+margin-bottom:18px;
 }
 
-h1{margin-bottom:8px;}
-h2{color:#333;margin-bottom:20px;}
+.header h1{
+font-size:25px;
+margin-bottom:7px;
+}
+
+.header p{
+font-size:14px;
+opacity:.95;
+}
+
+.admin-badge{
+display:inline-block;
+margin-top:12px;
+background:#ffffff22;
+border:1px solid #ffffff55;
+padding:7px 15px;
+border-radius:30px;
+font-weight:bold;
+}
+
+/* CONTROL CARDS */
+
+.control-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:18px;
+}
+
+.control{
+background:white;
+border-radius:16px;
+padding:18px 10px;
+text-align:center;
+box-shadow:0 4px 15px #0001;
+border:1px solid #eee;
+text-decoration:none;
+color:#222;
+transition:.2s;
+}
+
+.control:active{
+transform:scale(.97);
+}
+
+.control .icon{
+font-size:30px;
+display:block;
+margin-bottom:8px;
+}
+
+.control strong{
+font-size:14px;
+}
+
+.control small{
+display:block;
+margin-top:5px;
+color:#777;
+}
 
 .box{
-max-width:700px;
-margin:18px auto;
 background:white;
 padding:20px;
-border-radius:15px;
-box-shadow:0 4px 15px #0002;
+border-radius:18px;
+box-shadow:0 4px 18px #0002;
+margin:18px auto;
+}
+
+h2{
+color:#8b0000;
+font-size:20px;
+margin-bottom:15px;
 }
 
 h3{
+color:#a00000;
 margin-bottom:12px;
-color:#b30000;
 }
 
 input,select,button{
@@ -46,16 +120,26 @@ width:100%;
 padding:12px;
 margin:6px 0;
 border:1px solid #ddd;
-border-radius:8px;
+border-radius:9px;
 font-size:15px;
 }
 
+input:focus,select:focus{
+outline:none;
+border-color:#b30000;
+box-shadow:0 0 0 3px #b3000015;
+}
+
 button{
-background:#b30000;
+background:#a00000;
 color:white;
 font-weight:bold;
 border:0;
 cursor:pointer;
+}
+
+button:active{
+transform:scale(.98);
 }
 
 .edit{
@@ -68,9 +152,10 @@ background:#555;
 
 .member{
 border:1px solid #ddd;
-padding:12px;
+padding:14px;
 margin-top:10px;
-border-radius:10px;
+border-radius:12px;
+background:#fafafa;
 }
 
 .member strong{
@@ -80,14 +165,14 @@ font-size:17px;
 .actions{
 display:flex;
 gap:8px;
-margin-top:8px;
+margin-top:10px;
 }
 
 .actions button{
 margin:0;
 }
 
-#msg,#memberMsg,#moneyMsg{
+#memberMsg,#moneyMsg{
 margin-top:10px;
 text-align:center;
 font-weight:bold;
@@ -101,9 +186,9 @@ margin-top:15px;
 }
 
 .summary div{
-background:#f5f5f5;
-padding:12px;
-border-radius:10px;
+background:#f7f7f7;
+padding:13px;
+border-radius:12px;
 text-align:center;
 font-weight:bold;
 }
@@ -112,13 +197,15 @@ font-weight:bold;
 display:block;
 font-size:18px;
 margin-top:5px;
+color:#8b0000;
 }
 
 .record{
 border:1px solid #ddd;
-padding:12px;
+padding:13px;
 margin-top:10px;
-border-radius:10px;
+border-radius:12px;
+background:#fafafa;
 }
 
 .income{
@@ -139,36 +226,143 @@ color:red;
 font-weight:bold;
 }
 
+.footer-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin:20px 0;
+}
+
+.footer-actions a{
+text-decoration:none;
+text-align:center;
+padding:13px;
+border-radius:10px;
+font-weight:bold;
+background:#333;
+color:white;
+}
+
 .logout{
-max-width:700px;
 margin:20px auto;
 text-align:center;
 }
 
 .logout button{
 width:auto;
-padding:12px 25px;
+padding:12px 30px;
+background:#222;
 }
 
-@media(max-width:500px){
+@media(max-width:600px){
+
+.control-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
 .summary{
 grid-template-columns:1fr;
 }
+
+.header h1{
+font-size:21px;
+}
+
+.box{
+padding:16px;
+}
+
+.actions{
+flex-direction:column;
+}
+
+.footer-actions{
+grid-template-columns:1fr;
+}
+
 }
 </style>
 </head>
 
 <body>
 
-<h1>🤝 रसाली भाई समाज परिवार</h1>
-<h2>🔐 Admin Dashboard</h2>
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header">
+
+<h1>🤝 रसाली भाई समाज परिवार चौराठा</h1>
+
+<p>एकता • सहयोग • सेवा • भाइचारा</p>
+
+<div class="admin-badge">
+🔐 ADMIN CONTROL CENTER
+</div>
+
+</div>
+
+
+<!-- MAIN CONTROL -->
+
+<div class="control-grid">
+
+<a class="control" href="index.html">
+<span class="icon">🏠</span>
+<strong>Website</strong>
+<small>मुख्य साइट</small>
+</a>
+
+<a class="control" href="#members">
+<span class="icon">👥</span>
+<strong>सदस्य</strong>
+<small>Add / Edit / Delete</small>
+</a>
+
+<a class="control" href="#money">
+<span class="icon">💰</span>
+<strong>पैसा हिसाब</strong>
+<small>जम्मा / खर्च</small>
+</a>
+
+<a class="control" href="notice.html">
+<span class="icon">📢</span>
+<strong>सूचना</strong>
+<small>Notice Management</small>
+</a>
+
+<a class="control" href="Photo.html">
+<span class="icon">📸</span>
+<strong>फोटो</strong>
+<small>Gallery / Photo</small>
+</a>
+
+<a class="control" href="member-card.html">
+<span class="icon">🪪</span>
+<strong>Member Card</strong>
+<small>ID Card</small>
+</a>
+
+<a class="control" href="dashboard.html">
+<span class="icon">📊</span>
+<strong>Dashboard</strong>
+<small>Member Dashboard</small>
+</a>
+
+<a class="control" href="login.html">
+<span class="icon">🔑</span>
+<strong>Login</strong>
+<small>Login Page</small>
+</a>
+
+</div>
 
 
 <!-- MEMBER MANAGEMENT -->
 
-<div class="box">
+<div class="box" id="members">
 
-<h3>👥 सदस्य व्यवस्थापन</h3>
+<h2>👥 सदस्य व्यवस्थापन</h2>
 
 <input
 id="search"
@@ -214,17 +408,24 @@ placeholder="Document URL (यदि छ भने)">
 
 <!-- MONEY MANAGEMENT -->
 
-<div class="box">
+<div class="box" id="money">
 
-<h3>💰 सदस्यको पैसा हिसाब</h3>
+<h2>💰 सदस्यको पैसा हिसाब</h2>
 
 <select id="member" onchange="loadMoney()">
 <option value="">सदस्य छान्नुहोस्</option>
 </select>
 
 <select id="type">
-<option value="income">जम्मा रकम</option>
-<option value="expense">निकालेको रकम</option>
+
+<option value="income">
+जम्मा रकम
+</option>
+
+<option value="expense">
+निकालेको रकम
+</option>
+
 </select>
 
 <input
@@ -248,9 +449,9 @@ placeholder="विवरण">
 <div id="moneyMsg"></div>
 
 
-<!-- SUMMARY -->
-
-<div id="summary" class="summary" style="display:none;">
+<div id="summary"
+class="summary"
+style="display:none;">
 
 <div>
 जम्मा
@@ -270,18 +471,49 @@ placeholder="विवरण">
 </div>
 
 
-<!-- MONEY RECORDS -->
-
 <div id="moneyRecords"></div>
 
 </div>
 
 
+<!-- QUICK LINKS -->
+
+<div class="box">
+
+<h2>⚙️ अन्य Admin काम</h2>
+
+<div class="footer-actions">
+
+<a href="notice.html">
+📢 सूचना व्यवस्थापन
+</a>
+
+<a href="Photo.html">
+📸 फोटो व्यवस्थापन
+</a>
+
+<a href="member-card.html">
+🪪 Member Card
+</a>
+
+<a href="index.html">
+🏠 Website हेर्नुहोस्
+</a>
+
+</div>
+
+</div>
+
+
+<!-- LOGOUT -->
+
 <div class="logout">
 
 <button onclick="logout()">
-🚪 Logout
+🚪 Admin Logout
 </button>
+
+</div>
 
 </div>
 
@@ -314,7 +546,7 @@ window.location.href="login.html";
 }
 
 
-/* TODAY DATE */
+/* TODAY */
 
 document.getElementById("record_date").value =
 new Date().toISOString().split("T")[0];
@@ -359,7 +591,8 @@ list.innerHTML="";
 const select =
 document.getElementById("member");
 
-const oldValue=select.value;
+const oldValue =
+select.value;
 
 select.innerHTML =
 '<option value="">सदस्य छान्नुहोस्</option>';
@@ -377,23 +610,29 @@ if(search && !text.includes(search)){
 return;
 }
 
-
-/* MEMBER LIST */
-
 const div =
 document.createElement("div");
 
 div.className="member";
 
 div.innerHTML=`
+
 <strong>${m.name||""}</strong>
+
 <br>
+
 Member ID: ${m.id}
+
 <br>
+
 ${m.position||""}
+
 <br>
+
 📞 ${m.phone||"—"}
+
 <br>
+
 ✉️ ${m.email||"—"}
 
 <div class="actions">
@@ -409,12 +648,11 @@ onclick="deleteMember(${m.id})">
 </button>
 
 </div>
+
 `;
 
 list.appendChild(div);
 
-
-/* MONEY SELECT */
 
 const option =
 document.createElement("option");
@@ -455,6 +693,7 @@ document.getElementById("email").value.trim();
 const document_url =
 document.getElementById("document_url").value.trim();
 
+
 if(!name){
 
 document.getElementById("memberMsg").innerText =
@@ -462,6 +701,7 @@ document.getElementById("memberMsg").innerText =
 
 return;
 }
+
 
 const body={
 name:name,
@@ -471,7 +711,9 @@ email:email,
 document_url:document_url
 };
 
+
 let response;
+
 
 if(editId){
 
@@ -507,6 +749,7 @@ body:JSON.stringify(body)
 
 }
 
+
 if(response.ok){
 
 document.getElementById("memberMsg").innerText =
@@ -520,7 +763,8 @@ editId=null;
 
 document.querySelector(
 'button[onclick="saveMember()"]'
-).innerText="➕ सदस्य थप्नुहोस्";
+).innerText =
+"➕ सदस्य थप्नुहोस्";
 
 loadMembers();
 
@@ -570,10 +814,11 @@ editId=id;
 
 document.querySelector(
 'button[onclick="saveMember()"]'
-).innerText="💾 Update सदस्य";
+).innerText =
+"💾 Update सदस्य";
 
-window.scrollTo({
-top:0,
+document.getElementById("members")
+.scrollIntoView({
 behavior:"smooth"
 });
 
@@ -588,6 +833,7 @@ if(!confirm(
 "यो सदस्य Delete गर्ने हो?"
 ))return;
 
+
 const response =
 await fetch(
 URL+"/rest/v1/members?id=eq."+id,
@@ -598,6 +844,7 @@ headers:{
 "Authorization":"Bearer "+token
 }
 });
+
 
 if(response.ok){
 
@@ -619,7 +866,7 @@ document.getElementById("memberMsg").innerText =
 }
 
 
-/* CLEAR FORM */
+/* CLEAR */
 
 function clearForm(){
 
@@ -787,7 +1034,9 @@ Number(r.amount)||0;
 
 if(r.record_type==="income"){
 income+=amount;
-}else if(r.record_type==="expense"){
+}
+
+if(r.record_type==="expense"){
 expense+=amount;
 }
 
