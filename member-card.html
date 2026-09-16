@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>रसाली भाई समाज परिवार चौराठा - Member ID Card</title>
+<title>रसाली भाई समाज परिवार चौराठा - Member ID</title>
 
 <style>
 *{
@@ -15,34 +15,32 @@
 
 body{
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:linear-gradient(135deg,#eef2f7,#dfe7ef);
-  color:#202938;
+  background:#e9eef4;
+  color:#182536;
   padding:15px;
 }
 
-/* TOP TITLE */
 .page-title{
   text-align:center;
+  color:#173d68;
   margin:10px 0 20px;
-  color:#17365d;
-  font-size:25px;
+  font-size:24px;
 }
 
 /* EDITOR */
 .editor{
   max-width:700px;
-  margin:0 auto 25px;
-  background:#fff;
+  margin:auto;
+  background:white;
   padding:20px;
-  border-radius:18px;
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
-  border:1px solid #d9e0e8;
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(0,0,0,.12);
 }
 
 .editor h2{
   text-align:center;
-  color:#17365d;
-  margin-bottom:17px;
+  color:#173d68;
+  margin-bottom:18px;
 }
 
 .form-group{
@@ -53,86 +51,69 @@ body{
   display:block;
   font-weight:bold;
   margin-bottom:6px;
-  color:#27364a;
 }
 
 .form-group input{
   width:100%;
-  padding:12px;
-  border:1px solid #cbd3dd;
-  border-radius:9px;
+  padding:11px;
+  border:1px solid #ccd4df;
+  border-radius:8px;
   font-size:16px;
-  background:#fafbfd;
 }
 
-/* ID CARD */
-.card{
+/* CARD AREA */
+.cards{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:25px;
+  margin:30px auto;
+}
+
+/* COMMON CARD */
+.id-card{
   width:380px;
   max-width:100%;
-  min-height:590px;
-  margin:25px auto;
-  background:linear-gradient(150deg,#ffffff,#f4f8fc);
-  border:2px solid #17365d;
-  border-radius:22px;
-  padding:18px;
-  text-align:center;
+  height:570px;
   position:relative;
   overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  border-radius:22px;
+  border:3px solid #173d68;
+  background:white;
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
 }
 
-/* Decorative top */
-.card::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:72px;
-  background:linear-gradient(135deg,#17365d,#285f91);
-  z-index:0;
+/* FRONT */
+.front{
+  text-align:center;
 }
 
-.card::after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  border:25px solid rgba(255,255,255,.07);
-  right:-70px;
-  top:-70px;
+.front-top{
+  height:105px;
+  background:linear-gradient(135deg,#173d68,#2871a5);
+  color:white;
+  padding-top:10px;
 }
 
-/* HEADER */
-.card-header{
-  position:relative;
-  z-index:2;
-  color:#fff;
-  padding-bottom:7px;
-}
-
-.card-header .estd{
-  font-size:12px;
-  margin-top:3px;
-  opacity:.95;
+.front-top .estd{
+  font-size:13px;
 }
 
 .logo{
-  width:92px;
-  height:92px;
-  margin:12px auto 9px;
-  border:4px solid #fff;
+  width:105px;
+  height:105px;
+  margin:-45px auto 8px;
+  background:#fff;
+  border:5px solid white;
   border-radius:50%;
   overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#edf1f5;
-  font-size:37px;
-  box-shadow:0 4px 12px rgba(0,0,0,.2);
   position:relative;
   z-index:3;
+  box-shadow:0 5px 14px rgba(0,0,0,.22);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
 }
 
 .logo img{
@@ -141,48 +122,41 @@ body{
   object-fit:cover;
 }
 
-.card h2{
-  position:relative;
-  z-index:2;
+.front h2{
   font-size:21px;
-  margin:8px 0 3px;
-  color:#17365d;
+  color:#173d68;
+  margin:7px 0 3px;
 }
 
 .location{
-  position:relative;
-  z-index:2;
-  font-size:14px;
+  font-size:13px;
   font-weight:bold;
-  color:#4b596b;
+  color:#536477;
 }
 
-.card h3{
-  position:relative;
-  z-index:2;
+.card-title{
   display:inline-block;
-  margin:13px auto 8px;
-  padding:6px 18px;
+  margin:10px 0;
+  padding:6px 20px;
+  background:#173d68;
+  color:white;
   border-radius:20px;
-  background:#17365d;
-  color:#fff;
-  font-size:15px;
+  font-size:14px;
 }
 
-/* MEMBER PHOTO */
 .photo{
-  width:128px;
-  height:148px;
-  margin:10px auto 13px;
-  border:4px solid #fff;
-  border-radius:12px;
+  width:120px;
+  height:145px;
+  margin:2px auto 10px;
+  border:4px solid white;
+  border-radius:10px;
   overflow:hidden;
-  background:#e9edf2;
+  background:#e8edf3;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:46px;
-  box-shadow:0 4px 13px rgba(0,0,0,.18);
+  font-size:45px;
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
 }
 
 .photo img{
@@ -191,180 +165,160 @@ body{
   object-fit:cover;
 }
 
-/* DETAILS */
 .details{
+  width:88%;
+  margin:auto;
+  padding:8px 12px;
   text-align:left;
-  margin-top:8px;
-  padding:11px 14px;
-  line-height:1.8;
-  background:#fff;
-  border:1px solid #dbe2ea;
-  border-radius:11px;
-  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  background:#f7f9fb;
+  border:1px solid #d8e0e8;
+  border-radius:9px;
+  font-size:13px;
+  line-height:1.65;
 }
 
 .details p{
-  margin:2px 0;
-  border-bottom:1px dashed #e0e5eb;
-  padding-bottom:2px;
+  border-bottom:1px dashed #d5dce4;
 }
 
 .details p:last-child{
-  border-bottom:0;
+  border:0;
 }
 
 .details strong{
-  color:#17365d;
+  color:#173d68;
 }
 
-.footer-logo{
-  margin-top:13px;
-  font-size:13px;
+.motto{
+  margin-top:9px;
+  color:#173d68;
+  font-size:12px;
   font-weight:bold;
-  color:#17365d;
 }
 
-/* OFFICIAL SIGNATURE AREA */
-.signature-area{
-  margin-top:13px;
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  font-size:11px;
+/* BACK */
+.back{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(40,113,165,.12),transparent 25%),
+    linear-gradient(145deg,#ffffff,#eef4f9);
+  padding:24px;
 }
 
-.signature-box{
-  flex:1;
-  border-top:1px solid #596675;
-  padding-top:5px;
-  color:#3c4652;
-}
-
-/* BUTTONS */
-.buttons{
+.back-header{
   text-align:center;
-  margin:20px auto;
+  border-bottom:2px solid #173d68;
+  padding-bottom:12px;
 }
 
-button{
-  padding:11px 18px;
-  margin:5px;
-  border:0;
-  border-radius:9px;
-  cursor:pointer;
-  font-size:15px;
-  background:#17365d;
-  color:#fff;
-  box-shadow:0 3px 8px rgba(0,0,0,.15);
+.back-header h2{
+  color:#173d68;
+  font-size:20px;
 }
 
-button:hover{
-  opacity:.88;
+.back-header p{
+  font-size:13px;
+  margin-top:5px;
 }
 
-/* A4 PAPER */
-.print-paper{
-  width:794px;
-  min-height:1123px;
-  max-width:100%;
-  margin:30px auto;
-  background:#fff;
-  padding:40px;
-  border:1px solid #d8dee6;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
-}
-
-.paper-header{
-  text-align:center;
-  border-bottom:2px solid #17365d;
-  padding-bottom:15px;
-  margin-bottom:20px;
-}
-
-.paper-logo{
-  width:78px;
-  height:78px;
-  border:3px solid #17365d;
+.back-logo{
+  width:65px;
+  height:65px;
+  border:3px solid #173d68;
   border-radius:50%;
-  margin:0 auto 8px;
   overflow:hidden;
+  margin:0 auto 8px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
+  font-size:27px;
 }
 
-.paper-logo img{
+.back-logo img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-.paper-header h2{
-  color:#17365d;
-}
-
-.paper-header p{
-  margin-top:4px;
-}
-
-.paper-content{
-  min-height:800px;
-  padding:20px;
-  line-height:2;
-}
-
-.paper-content h3{
-  color:#17365d;
-}
-
-.paper-footer{
-  border-top:1px solid #222;
-  padding-top:12px;
-  text-align:center;
+.back-content{
+  margin-top:18px;
   font-size:13px;
+  line-height:1.8;
 }
 
-.paper-signatures{
+.back-content h3{
+  color:#173d68;
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.rules{
+  margin-top:12px;
+  padding:10px 14px;
+  background:white;
+  border:1px solid #d6dee7;
+  border-radius:10px;
+}
+
+.officials{
   display:flex;
   justify-content:space-between;
-  margin-top:80px;
+  gap:10px;
+  margin-top:30px;
   text-align:center;
-  gap:40px;
+  font-size:11px;
 }
 
-.paper-signature{
-  width:220px;
-  border-top:1px solid #333;
-  padding-top:7px;
+.official{
+  flex:1;
+  padding-top:38px;
+  border-top:1px solid #555;
+}
+
+.official strong{
+  color:#173d68;
+  font-size:12px;
+}
+
+.back-footer{
+  position:absolute;
+  bottom:16px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#173d68;
+  font-size:11px;
+  font-weight:bold;
+}
+
+/* BUTTONS */
+.buttons{
+  text-align:center;
+  margin:20px;
+}
+
+button{
+  background:#173d68;
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:11px 18px;
+  margin:5px;
+  font-size:15px;
+  cursor:pointer;
 }
 
 /* MOBILE */
-@media(max-width:600px){
-
+@media(max-width:450px){
   body{
-    padding:9px;
+    padding:8px;
   }
 
-  .page-title{
-    font-size:21px;
+  .id-card{
+    height:560px;
   }
 
-  .editor{
-    padding:15px;
-  }
-
-  .card{
-    width:100%;
-    min-height:570px;
-  }
-
-  .print-paper{
-    padding:15px;
-  }
-
-  .paper-signatures{
-    gap:15px;
+  .front h2{
+    font-size:19px;
   }
 }
 
@@ -372,29 +326,31 @@ button:hover{
 @media print{
 
   body{
-    background:#fff;
+    background:white;
     padding:0;
   }
 
   .page-title,
   .editor,
   .buttons{
-    display:none !important;
+    display:none!important;
   }
 
-  .card{
-    margin:0 auto;
+  .cards{
+    display:block;
+    margin:0;
+  }
+
+  .id-card{
+    width:86mm;
+    height:130mm;
+    margin:0 auto 10mm;
     box-shadow:none;
     page-break-after:always;
   }
 
-  .print-paper{
-    width:100%;
-    min-height:100vh;
-    margin:0;
-    border:0;
-    box-shadow:none;
-    padding:25px;
+  .back{
+    page-break-after:auto;
   }
 
   @page{
@@ -415,71 +371,75 @@ button:hover{
 
 <div class="editor">
 
-<h2>🪪 सदस्य विवरण Edit गर्नुहोस्</h2>
+<h2>🪪 सदस्य विवरण</h2>
 
 <div class="form-group">
 <label>सदस्यको नाम</label>
-<input type="text" id="memberName"
+<input id="memberName"
 value="प्रबिन रसाली"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>सदस्य नम्बर</label>
-<input type="text" id="memberId"
+<input id="memberId"
 value="RS-001"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>पद</label>
-<input type="text" id="memberPost"
+<input id="memberPost"
 value="सदस्य"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>ठेगाना</label>
-<input type="text" id="memberAddress"
+<input id="memberAddress"
 value="चौराठा, दैलेख, नेपाल"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>सम्पर्क नम्बर</label>
-<input type="text" id="memberPhone"
+<input id="memberPhone"
 value=""
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>सदस्यको फोटो</label>
-<input type="file" accept="image/*"
+<input type="file"
+accept="image/*"
 onchange="loadMemberPhoto(event)">
 </div>
 
 <div class="form-group">
 <label>समाजको Original Logo</label>
-<input type="file" accept="image/*"
+<input type="file"
+accept="image/*"
 onchange="loadLogo(event)">
 </div>
 
 </div>
 
 
-<!-- MEMBER CARD -->
+<!-- BOTH SIDES -->
 
-<div class="card">
+<div class="cards">
 
-<div class="card-header">
-  <div class="estd">स्थापना: २०८२</div>
+<!-- FRONT SIDE -->
+
+<div class="id-card front">
+
+<div class="front-top">
+<div class="estd">स्थापना: २०८२</div>
 </div>
 
 <div class="logo">
 
 <img id="cardLogo"
-src=""
-alt="समाज Logo"
 style="display:none;">
 
 <span id="logoPlaceholder">🌹</span>
@@ -492,13 +452,13 @@ style="display:none;">
 📍 चौराठा, दैलेख, नेपाल
 </div>
 
-<h3>सदस्य परिचय पत्र</h3>
+<div class="card-title">
+सदस्य परिचय पत्र
+</div>
 
 <div class="photo">
 
 <img id="memberPhoto"
-src=""
-alt="सदस्यको फोटो"
 style="display:none;">
 
 <span id="photoPlaceholder">👤</span>
@@ -524,28 +484,93 @@ style="display:none;">
 
 <p>
 <strong>ठेगाना:</strong>
-<span id="showAddress">चौराठा, दैलेख, नेपाल</span>
+<span id="showAddress">
+चौराठा, दैलेख, नेपाल
+</span>
 </p>
 
 <p>
 <strong>सम्पर्क:</strong>
-<span id="showPhone">________________</span>
+<span id="showPhone">
+________________
+</span>
 </p>
 
 </div>
 
-<div class="footer-logo">
+<div class="motto">
 एकता • सहयोग • सेवा • भाइचारा
 </div>
 
-<div class="signature-area">
+</div>
 
-<div class="signature-box">
+
+<!-- BACK SIDE -->
+
+<div class="id-card back">
+
+<div class="back-header">
+
+<div class="back-logo">
+
+<img id="backLogo"
+style="display:none;">
+
+<span id="backLogoPlaceholder">🌹</span>
+
+</div>
+
+<h2>रसाली भाई समाज परिवार</h2>
+
+<p>चौराठा, दैलेख, नेपाल</p>
+
+<p>स्थापना: २०८२</p>
+
+</div>
+
+<div class="back-content">
+
+<h3>🤝 हाम्रो परिचय</h3>
+
+<p>
+रसाली भाई समाज परिवार चौराठा एकता, सहयोग,
+सेवा र भाइचाराको भावनाले संगठित सामाजिक परिवार हो।
+</p>
+
+<div class="rules">
+
+<h3>📌 सदस्यको पहिचान</h3>
+
+<p>
+यो परिचयपत्र समाजको सदस्यको पहिचानका लागि
+प्रयोग गरिने आधिकारिक कार्ड हो।
+</p>
+
+<p>
+कार्ड हराएमा समाजको सम्बन्धित पदाधिकारीलाई
+जानकारी गराउनु पर्नेछ।
+</p>
+
+</div>
+
+<div class="rules">
+
+<h3>🏛️ समाजको मूल भावना</h3>
+
+<p>
+एकता • सहयोग • सेवा • भाइचारा
+</p>
+
+</div>
+
+<div class="officials">
+
+<div class="official">
 अध्यक्ष<br>
 <strong>दिपक रसाली</strong>
 </div>
 
-<div class="signature-box">
+<div class="official">
 संस्थापक<br>
 <strong>पदम रसाली</strong>
 </div>
@@ -554,13 +579,19 @@ style="display:none;">
 
 </div>
 
+<div class="back-footer">
+रसाली भाई समाज परिवार © २०८२
+</div>
 
-<!-- CARD BUTTON -->
+</div>
+
+</div>
+
 
 <div class="buttons">
 
 <button onclick="window.print()">
-🖨️ Card Print
+🖨️ Double-Side Card Print
 </button>
 
 <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -570,125 +601,15 @@ style="display:none;">
 </div>
 
 
-<!-- A4 OFFICIAL PAPER -->
-
-<div class="print-paper">
-
-<div class="paper-header">
-
-<div class="paper-logo">
-
-<img id="paperLogo"
-src=""
-alt="समाज Logo"
-style="display:none;">
-
-<span id="paperLogoPlaceholder">🌹</span>
-
-</div>
-
-<h2>रसाली भाई समाज परिवार चौराठा</h2>
-
-<p><strong>चौराठा, दैलेख, नेपाल</strong></p>
-
-<p>स्थापना: २०८२</p>
-
-<p>
-<strong>एकता • सहयोग • सेवा • भाइचारा</strong>
-</p>
-
-</div>
-
-<div class="paper-content">
-
-<h3 style="text-align:center;margin-bottom:20px;">
-समाजको आधिकारिक कागजात
-</h3>
-
-<p>
-यस कागजातमा रसाली भाई समाज परिवारको विवरण तथा आवश्यक
-जानकारी राख्न सकिनेछ।
-</p>
-
-<br>
-
-<p>
-सदस्यको नाम:
-<strong id="paperName">प्रबिन रसाली</strong>
-</p>
-
-<p>
-सदस्य नम्बर:
-<strong id="paperId">RS-001</strong>
-</p>
-
-<p>
-पद:
-<strong id="paperPost">सदस्य</strong>
-</p>
-
-<p>
-ठेगाना:
-<strong id="paperAddress">चौराठा, दैलेख, नेपाल</strong>
-</p>
-
-<p>
-सम्पर्क:
-<strong id="paperPhone">________________</strong>
-</p>
-
-<div class="paper-signatures">
-
-<div class="paper-signature">
-अध्यक्ष<br>
-<strong>दिपक रसाली</strong>
-</div>
-
-<div class="paper-signature">
-संस्थापक<br>
-<strong>पदम रसाली</strong>
-</div>
-
-</div>
-
-</div>
-
-<div class="paper-footer">
-रसाली भाई समाज परिवार © २०८२
-</div>
-
-</div>
-
-
-<!-- PAPER BUTTON -->
-
-<div class="buttons">
-
-<button onclick="window.print()">
-🖨️ Paper Print
-</button>
-
-</div>
-
-
 <script>
 
 function updateCard(){
 
-const name =
-document.getElementById("memberName").value;
-
-const id =
-document.getElementById("memberId").value;
-
-const post =
-document.getElementById("memberPost").value;
-
-const address =
-document.getElementById("memberAddress").value;
-
-const phone =
-document.getElementById("memberPhone").value;
+const name=document.getElementById("memberName").value;
+const id=document.getElementById("memberId").value;
+const post=document.getElementById("memberPost").value;
+const address=document.getElementById("memberAddress").value;
+const phone=document.getElementById("memberPhone").value;
 
 document.getElementById("showName").textContent =
 name || "________________";
@@ -704,105 +625,66 @@ address || "________________";
 
 document.getElementById("showPhone").textContent =
 phone || "________________";
-
-document.getElementById("paperName").textContent =
-name || "________________";
-
-document.getElementById("paperId").textContent =
-id || "________________";
-
-document.getElementById("paperPost").textContent =
-post || "________________";
-
-document.getElementById("paperAddress").textContent =
-address || "________________";
-
-document.getElementById("paperPhone").textContent =
-phone || "________________";
-
 }
 
 
 function loadMemberPhoto(event){
 
-const file =
-event.target.files[0];
+const file=event.target.files[0];
 
 if(!file) return;
 
-const reader =
-new FileReader();
+const reader=new FileReader();
 
-reader.onload =
-function(e){
+reader.onload=function(e){
 
-const img =
-document.getElementById("memberPhoto");
+const img=document.getElementById("memberPhoto");
 
-img.src =
-e.target.result;
-
-img.style.display =
-"block";
+img.src=e.target.result;
+img.style.display="block";
 
 document.getElementById("photoPlaceholder")
-.style.display =
-"none";
+.style.display="none";
 
 };
 
 reader.readAsDataURL(file);
-
 }
 
 
 function loadLogo(event){
 
-const file =
-event.target.files[0];
+const file=event.target.files[0];
 
 if(!file) return;
 
-const reader =
-new FileReader();
+const reader=new FileReader();
 
-reader.onload =
-function(e){
+reader.onload=function(e){
 
-const logo =
-document.getElementById("cardLogo");
+const logo=document.getElementById("cardLogo");
 
-logo.src =
-e.target.result;
-
-logo.style.display =
-"block";
+logo.src=e.target.result;
+logo.style.display="block";
 
 document.getElementById("logoPlaceholder")
-.style.display =
-"none";
+.style.display="none";
 
 
-const paperLogo =
-document.getElementById("paperLogo");
+const backLogo=document.getElementById("backLogo");
 
-paperLogo.src =
-e.target.result;
+backLogo.src=e.target.result;
+backLogo.style.display="block";
 
-paperLogo.style.display =
-"block";
-
-document.getElementById("paperLogoPlaceholder")
-.style.display =
-"none";
+document.getElementById("backLogoPlaceholder")
+.style.display="none";
 
 };
 
 reader.readAsDataURL(file);
-
 }
 
 </script>
 
 </body>
-</html> 
+</html>
