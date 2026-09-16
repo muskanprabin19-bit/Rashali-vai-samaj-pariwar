@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>रसाली भाई समाज परिवार - Member Card</title>
+<title>रसाली भाई समाज परिवार चौराठा - Member ID Card</title>
 
 <style>
 *{
@@ -15,28 +15,34 @@
 
 body{
   font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#f1f3f5;
-  color:#222;
+  background:linear-gradient(135deg,#eef2f7,#dfe7ef);
+  color:#202938;
   padding:15px;
 }
 
+/* TOP TITLE */
 .page-title{
   text-align:center;
   margin:10px 0 20px;
+  color:#17365d;
+  font-size:25px;
 }
 
+/* EDITOR */
 .editor{
   max-width:700px;
   margin:0 auto 25px;
   background:#fff;
   padding:20px;
-  border-radius:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.12);
+  border-radius:18px;
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+  border:1px solid #d9e0e8;
 }
 
 .editor h2{
   text-align:center;
-  margin-bottom:15px;
+  color:#17365d;
+  margin-bottom:17px;
 }
 
 .form-group{
@@ -47,52 +53,86 @@ body{
   display:block;
   font-weight:bold;
   margin-bottom:6px;
+  color:#27364a;
 }
 
 .form-group input{
   width:100%;
-  padding:11px;
-  border:1px solid #ccc;
-  border-radius:8px;
+  padding:12px;
+  border:1px solid #cbd3dd;
+  border-radius:9px;
   font-size:16px;
+  background:#fafbfd;
 }
 
+/* ID CARD */
 .card{
-  width:360px;
+  width:380px;
   max-width:100%;
-  min-height:540px;
-  margin:20px auto;
-  background:#fff;
-  border:3px solid #222;
-  border-radius:18px;
+  min-height:590px;
+  margin:25px auto;
+  background:linear-gradient(150deg,#ffffff,#f4f8fc);
+  border:2px solid #17365d;
+  border-radius:22px;
   padding:18px;
   text-align:center;
   position:relative;
   overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
 }
 
+/* Decorative top */
 .card::before{
   content:"";
   position:absolute;
   top:0;
   left:0;
   right:0;
-  height:8px;
-  background:#222;
+  height:72px;
+  background:linear-gradient(135deg,#17365d,#285f91);
+  z-index:0;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:25px solid rgba(255,255,255,.07);
+  right:-70px;
+  top:-70px;
+}
+
+/* HEADER */
+.card-header{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  padding-bottom:7px;
+}
+
+.card-header .estd{
+  font-size:12px;
+  margin-top:3px;
+  opacity:.95;
 }
 
 .logo{
-  width:85px;
-  height:85px;
-  margin:10px auto;
-  border:2px solid #222;
+  width:92px;
+  height:92px;
+  margin:12px auto 9px;
+  border:4px solid #fff;
   border-radius:50%;
   overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:#eee;
-  font-size:35px;
+  background:#edf1f5;
+  font-size:37px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+  position:relative;
+  z-index:3;
 }
 
 .logo img{
@@ -102,27 +142,47 @@ body{
 }
 
 .card h2{
+  position:relative;
+  z-index:2;
   font-size:21px;
-  margin:8px 0;
+  margin:8px 0 3px;
+  color:#17365d;
+}
+
+.location{
+  position:relative;
+  z-index:2;
+  font-size:14px;
+  font-weight:bold;
+  color:#4b596b;
 }
 
 .card h3{
-  font-size:16px;
-  margin-bottom:12px;
+  position:relative;
+  z-index:2;
+  display:inline-block;
+  margin:13px auto 8px;
+  padding:6px 18px;
+  border-radius:20px;
+  background:#17365d;
+  color:#fff;
+  font-size:15px;
 }
 
+/* MEMBER PHOTO */
 .photo{
-  width:125px;
-  height:145px;
-  margin:12px auto;
-  border:2px solid #222;
-  border-radius:8px;
+  width:128px;
+  height:148px;
+  margin:10px auto 13px;
+  border:4px solid #fff;
+  border-radius:12px;
   overflow:hidden;
-  background:#eee;
+  background:#e9edf2;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:45px;
+  font-size:46px;
+  box-shadow:0 4px 13px rgba(0,0,0,.18);
 }
 
 .photo img{
@@ -131,24 +191,56 @@ body{
   object-fit:cover;
 }
 
+/* DETAILS */
 .details{
   text-align:left;
-  margin-top:12px;
+  margin-top:8px;
+  padding:11px 14px;
   line-height:1.8;
-  border-top:1px solid #ddd;
-  padding-top:10px;
+  background:#fff;
+  border:1px solid #dbe2ea;
+  border-radius:11px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
 .details p{
   margin:2px 0;
+  border-bottom:1px dashed #e0e5eb;
+  padding-bottom:2px;
+}
+
+.details p:last-child{
+  border-bottom:0;
+}
+
+.details strong{
+  color:#17365d;
 }
 
 .footer-logo{
-  margin-top:15px;
+  margin-top:13px;
   font-size:13px;
   font-weight:bold;
+  color:#17365d;
 }
 
+/* OFFICIAL SIGNATURE AREA */
+.signature-area{
+  margin-top:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:11px;
+}
+
+.signature-box{
+  flex:1;
+  border-top:1px solid #596675;
+  padding-top:5px;
+  color:#3c4652;
+}
+
+/* BUTTONS */
 .buttons{
   text-align:center;
   margin:20px auto;
@@ -158,17 +250,19 @@ button{
   padding:11px 18px;
   margin:5px;
   border:0;
-  border-radius:8px;
+  border-radius:9px;
   cursor:pointer;
   font-size:15px;
-  background:#222;
+  background:#17365d;
   color:#fff;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);
 }
 
 button:hover{
-  opacity:.85;
+  opacity:.88;
 }
 
+/* A4 PAPER */
 .print-paper{
   width:794px;
   min-height:1123px;
@@ -176,20 +270,21 @@ button:hover{
   margin:30px auto;
   background:#fff;
   padding:40px;
-  border:1px solid #ddd;
+  border:1px solid #d8dee6;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
 .paper-header{
   text-align:center;
-  border-bottom:2px solid #222;
+  border-bottom:2px solid #17365d;
   padding-bottom:15px;
   margin-bottom:20px;
 }
 
 .paper-logo{
-  width:70px;
-  height:70px;
-  border:2px solid #222;
+  width:78px;
+  height:78px;
+  border:3px solid #17365d;
   border-radius:50%;
   margin:0 auto 8px;
   overflow:hidden;
@@ -205,10 +300,22 @@ button:hover{
   object-fit:cover;
 }
 
+.paper-header h2{
+  color:#17365d;
+}
+
+.paper-header p{
+  margin-top:4px;
+}
+
 .paper-content{
   min-height:800px;
   padding:20px;
   line-height:2;
+}
+
+.paper-content h3{
+  color:#17365d;
 }
 
 .paper-footer{
@@ -218,10 +325,29 @@ button:hover{
   font-size:13px;
 }
 
+.paper-signatures{
+  display:flex;
+  justify-content:space-between;
+  margin-top:80px;
+  text-align:center;
+  gap:40px;
+}
+
+.paper-signature{
+  width:220px;
+  border-top:1px solid #333;
+  padding-top:7px;
+}
+
+/* MOBILE */
 @media(max-width:600px){
 
   body{
-    padding:10px;
+    padding:9px;
+  }
+
+  .page-title{
+    font-size:21px;
   }
 
   .editor{
@@ -230,13 +356,19 @@ button:hover{
 
   .card{
     width:100%;
+    min-height:570px;
   }
 
   .print-paper{
     padding:15px;
   }
+
+  .paper-signatures{
+    gap:15px;
+  }
 }
 
+/* PRINT */
 @media print{
 
   body{
@@ -261,6 +393,7 @@ button:hover{
     min-height:100vh;
     margin:0;
     border:0;
+    box-shadow:none;
     padding:25px;
   }
 
@@ -275,73 +408,59 @@ button:hover{
 <body>
 
 <h1 class="page-title">
-रसाली भाई समाज परिवार
+🤝 रसाली भाई समाज परिवार चौराठा
 </h1>
 
 <!-- EDITOR -->
 
 <div class="editor">
 
-<h2>सदस्य विवरण Edit गर्नुहोस्</h2>
+<h2>🪪 सदस्य विवरण Edit गर्नुहोस्</h2>
 
 <div class="form-group">
 <label>सदस्यको नाम</label>
-<input
-type="text"
-id="memberName"
+<input type="text" id="memberName"
 value="प्रबिन रसाली"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>सदस्य नम्बर</label>
-<input
-type="text"
-id="memberId"
+<input type="text" id="memberId"
 value="RS-001"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>पद</label>
-<input
-type="text"
-id="memberPost"
+<input type="text" id="memberPost"
 value="सदस्य"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>ठेगाना</label>
-<input
-type="text"
-id="memberAddress"
-value="चौराठा"
+<input type="text" id="memberAddress"
+value="चौराठा, दैलेख, नेपाल"
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>सम्पर्क नम्बर</label>
-<input
-type="text"
-id="memberPhone"
+<input type="text" id="memberPhone"
 value=""
 oninput="updateCard()">
 </div>
 
 <div class="form-group">
 <label>सदस्यको फोटो</label>
-<input
-type="file"
-accept="image/*"
+<input type="file" accept="image/*"
 onchange="loadMemberPhoto(event)">
 </div>
 
 <div class="form-group">
-<label>समाजको Logo</label>
-<input
-type="file"
-accept="image/*"
+<label>समाजको Original Logo</label>
+<input type="file" accept="image/*"
 onchange="loadLogo(event)">
 </div>
 
@@ -352,10 +471,13 @@ onchange="loadLogo(event)">
 
 <div class="card">
 
+<div class="card-header">
+  <div class="estd">स्थापना: २०८२</div>
+</div>
+
 <div class="logo">
 
-<img
-id="cardLogo"
+<img id="cardLogo"
 src=""
 alt="समाज Logo"
 style="display:none;">
@@ -364,18 +486,17 @@ style="display:none;">
 
 </div>
 
-<h2>
-रसाली भाई समाज परिवार
-</h2>
+<h2>रसाली भाई समाज परिवार</h2>
 
-<h3>
-सदस्य परिचय पत्र
-</h3>
+<div class="location">
+📍 चौराठा, दैलेख, नेपाल
+</div>
+
+<h3>सदस्य परिचय पत्र</h3>
 
 <div class="photo">
 
-<img
-id="memberPhoto"
+<img id="memberPhoto"
 src=""
 alt="सदस्यको फोटो"
 style="display:none;">
@@ -403,7 +524,7 @@ style="display:none;">
 
 <p>
 <strong>ठेगाना:</strong>
-<span id="showAddress">चौराठा</span>
+<span id="showAddress">चौराठा, दैलेख, नेपाल</span>
 </p>
 
 <p>
@@ -415,6 +536,20 @@ style="display:none;">
 
 <div class="footer-logo">
 एकता • सहयोग • सेवा • भाइचारा
+</div>
+
+<div class="signature-area">
+
+<div class="signature-box">
+अध्यक्ष<br>
+<strong>दिपक रसाली</strong>
+</div>
+
+<div class="signature-box">
+संस्थापक<br>
+<strong>पदम रसाली</strong>
+</div>
+
 </div>
 
 </div>
@@ -435,7 +570,7 @@ style="display:none;">
 </div>
 
 
-<!-- A4 PAPER -->
+<!-- A4 OFFICIAL PAPER -->
 
 <div class="print-paper">
 
@@ -443,8 +578,7 @@ style="display:none;">
 
 <div class="paper-logo">
 
-<img
-id="paperLogo"
+<img id="paperLogo"
 src=""
 alt="समाज Logo"
 style="display:none;">
@@ -453,18 +587,14 @@ style="display:none;">
 
 </div>
 
-<h2>
-रसाली भाई समाज परिवार
-</h2>
+<h2>रसाली भाई समाज परिवार चौराठा</h2>
+
+<p><strong>चौराठा, दैलेख, नेपाल</strong></p>
+
+<p>स्थापना: २०८२</p>
 
 <p>
-चौराठा
-</p>
-
-<p>
-<strong>
-एकता • सहयोग • सेवा • भाइचारा
-</strong>
+<strong>एकता • सहयोग • सेवा • भाइचारा</strong>
 </p>
 
 </div>
@@ -484,38 +614,42 @@ style="display:none;">
 
 <p>
 सदस्यको नाम:
-<strong id="paperName">
-प्रबिन रसाली
-</strong>
+<strong id="paperName">प्रबिन रसाली</strong>
 </p>
 
 <p>
 सदस्य नम्बर:
-<strong id="paperId">
-RS-001
-</strong>
+<strong id="paperId">RS-001</strong>
 </p>
 
 <p>
 पद:
-<strong id="paperPost">
-सदस्य
-</strong>
+<strong id="paperPost">सदस्य</strong>
 </p>
 
 <p>
 ठेगाना:
-<strong id="paperAddress">
-चौराठा
-</strong>
+<strong id="paperAddress">चौराठा, दैलेख, नेपाल</strong>
 </p>
 
 <p>
 सम्पर्क:
-<strong id="paperPhone">
-________________
-</strong>
+<strong id="paperPhone">________________</strong>
 </p>
+
+<div class="paper-signatures">
+
+<div class="paper-signature">
+अध्यक्ष<br>
+<strong>दिपक रसाली</strong>
+</div>
+
+<div class="paper-signature">
+संस्थापक<br>
+<strong>पदम रसाली</strong>
+</div>
+
+</div>
 
 </div>
 
@@ -556,7 +690,6 @@ document.getElementById("memberAddress").value;
 const phone =
 document.getElementById("memberPhone").value;
 
-
 document.getElementById("showName").textContent =
 name || "________________";
 
@@ -571,7 +704,6 @@ address || "________________";
 
 document.getElementById("showPhone").textContent =
 phone || "________________";
-
 
 document.getElementById("paperName").textContent =
 name || "________________";
