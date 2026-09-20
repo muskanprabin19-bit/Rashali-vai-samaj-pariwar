@@ -3,52 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>सूचना व्यवस्थापन</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 body{
-font-family:Arial,"Noto Sans Devanagari",sans-serif;
-background:#f5f5f5;
-margin:0;
-padding:20px;
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
 }
+
 .box{
-max-width:700px;
-margin:auto;
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 2px 10px #ccc;
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px #ccc;
 }
-h1{text-align:center;color:#b30000;}
+
+h1{
+    text-align:center;
+    color:#b30000;
+}
+
 input,textarea{
-width:100%;
-padding:12px;
-margin:8px 0;
-box-sizing:border-box;
-border:1px solid #ccc;
-border-radius:8px;
-font-size:16px;
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    box-sizing:border-box;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
 }
-textarea{height:120px;}
+
+textarea{
+    height:120px;
+}
+
 button{
-padding:10px 18px;
-border:0;
-border-radius:8px;
-background:#007bff;
-color:white;
-font-size:16px;
-margin:5px;
+    padding:10px 18px;
+    border:0;
+    border-radius:8px;
+    background:#007bff;
+    color:white;
+    font-size:16px;
+    margin:5px;
+    cursor:pointer;
 }
-.edit{background:#e69500;}
-.delete{background:#d00000;}
+
+.edit{
+    background:#e69500;
+}
+
+.delete{
+    background:#d00000;
+}
+
 .notice{
-border:1px solid #ddd;
-padding:15px;
-margin-top:15px;
-border-radius:10px;
+    border:1px solid #ddd;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+    background:#fff;
+}
+
+.notice h3{
+    margin-top:0;
+    color:#b30000;
+}
+
+#message{
+    padding:10px;
+    border-radius:8px;
+}
+
+.loading{
+    text-align:center;
+    padding:20px;
+}
+
+.home{
+    display:inline-block;
+    margin-top:15px;
+    text-decoration:none;
+    font-size:16px;
 }
 </style>
 </head>
@@ -59,13 +101,27 @@ border-radius:10px;
 
 <h1>📢 सूचना व्यवस्थापन</h1>
 
-<input id="title" placeholder="सूचनाको शीर्षक">
+<input
+    id="title"
+    type="text"
+    placeholder="सूचनाको शीर्षक"
+>
 
-<textarea id="content" placeholder="सूचनाको विवरण"></textarea>
+<textarea
+    id="content"
+    placeholder="सूचनाको विवरण"
+></textarea>
 
 <div style="text-align:center">
-<button onclick="saveNotice()">💾 Save सूचना</button>
-<button onclick="clearForm()">❌ खाली गर्नुहोस्</button>
+
+<button onclick="saveNotice()">
+💾 Save सूचना
+</button>
+
+<button onclick="clearForm()">
+❌ खाली गर्नुहोस्
+</button>
+
 </div>
 
 <p id="message"></p>
@@ -74,181 +130,418 @@ border-radius:10px;
 
 <h2>📋 पहिले राखिएका सूचना</h2>
 
-<div id="noticeList">सूचना लोड हुँदैछ...</div>
+<div id="noticeList" class="loading">
+⏳ सूचना लोड हुँदैछ...
+</div>
 
-<br>
-
-<a href="index.html">🏠 Home</a>
+<a class="home" href="index.html">
+🏠 Home
+</a>
 
 </div>
 
+
 <script>
 
-const URL="https://hvcalffbwvbwekysukdo.supabase.co";
+// ================================
+// SUPABASE CONNECTION
+// ================================
 
-const KEY="sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
+const SUPABASE_URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
 
-const db=supabase.createClient(URL,KEY);
+const SUPABASE_KEY =
+"sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
 
-let editId=null;
+const db =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+let editId = null;
 
 
-// LOAD
+// ================================
+// MESSAGE
+// ================================
+
+function showMessage(text, type="normal"){
+
+    const msg =
+    document.getElementById("message");
+
+    msg.innerHTML = text;
+
+    if(type === "success"){
+        msg.style.background = "#d4edda";
+        msg.style.color = "#155724";
+    }
+
+    else if(type === "error"){
+        msg.style.background = "#f8d7da";
+        msg.style.color = "#721c24";
+    }
+
+    else{
+        msg.style.background = "#eee";
+        msg.style.color = "#333";
+    }
+}
+
+
+// ================================
+// LOAD NOTICES
+// ================================
+
 async function loadNotices(){
 
-const list=document.getElementById("noticeList");
+    const list =
+    document.getElementById("noticeList");
 
-const {data,error}=await db
-.from("Notices")
-.select("*")
-.order("Id",{ascending:false});
+    list.innerHTML =
+    "⏳ सूचना लोड हुँदैछ...";
 
-if(error){
-console.log(error);
-list.innerHTML="❌ सूचना लोड हुन सकेन";
-return;
+    try{
+
+        const result =
+        await db
+        .from("Notices")
+        .select("*")
+        .order("Id", {
+            ascending:false
+        });
+
+        console.log("NOTICE RESULT:", result);
+
+        const data = result.data;
+        const error = result.error;
+
+        if(error){
+
+            console.error(
+                "SUPABASE NOTICE ERROR:",
+                error
+            );
+
+            list.innerHTML =
+            `<div style="color:red">
+            ❌ सूचना लोड हुन सकेन।<br><br>
+            ${error.message}
+            </div>`;
+
+            return;
+        }
+
+        if(!data || data.length === 0){
+
+            list.innerHTML =
+            "📭 अहिले कुनै सूचना छैन।";
+
+            return;
+        }
+
+        list.innerHTML = "";
+
+        data.forEach(function(n){
+
+            const div =
+            document.createElement("div");
+
+            div.className = "notice";
+
+            const title =
+            document.createElement("h3");
+
+            title.textContent =
+            n.Title || "";
+
+            const content =
+            document.createElement("p");
+
+            content.textContent =
+            n.Content || "";
+
+            div.appendChild(title);
+            div.appendChild(content);
+
+            const editButton =
+            document.createElement("button");
+
+            editButton.className = "edit";
+
+            editButton.textContent =
+            "✏️ Edit";
+
+            editButton.onclick =
+            function(){
+
+                editNotice(
+                    n.Id,
+                    n.Title || "",
+                    n.Content || ""
+                );
+
+            };
+
+            const deleteButton =
+            document.createElement("button");
+
+            deleteButton.className = "delete";
+
+            deleteButton.textContent =
+            "🗑️ Delete";
+
+            deleteButton.onclick =
+            function(){
+
+                deleteNotice(n.Id);
+
+            };
+
+            div.appendChild(editButton);
+            div.appendChild(deleteButton);
+
+            list.appendChild(div);
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(
+            "NOTICE LOAD EXCEPTION:",
+            error
+        );
+
+        list.innerHTML =
+        `<div style="color:red">
+        ❌ सूचना लोड गर्दा समस्या आयो।<br><br>
+        ${error.message}
+        </div>`;
+    }
 }
 
-if(!data.length){
-list.innerHTML="अहिले कुनै सूचना छैन।";
-return;
-}
 
-list.innerHTML="";
-
-data.forEach(n=>{
-
-const div=document.createElement("div");
-div.className="notice";
-
-div.innerHTML=`
-<h3>${n.Title}</h3>
-<p>${n.Content}</p>
-
-<button class="edit"
-onclick="editNotice(${n.Id},${JSON.stringify(n.Title)},${JSON.stringify(n.Content)})">
-✏️ Edit
-</button>
-
-<button class="delete"
-onclick="deleteNotice(${n.Id})">
-🗑️ Delete
-</button>
-`;
-
-list.appendChild(div);
-
-});
-
-}
-
-
+// ================================
 // SAVE / UPDATE
+// ================================
+
 async function saveNotice(){
 
-const title=document.getElementById("title").value.trim();
-const content=document.getElementById("content").value.trim();
-const msg=document.getElementById("message");
+    const title =
+    document.getElementById("title")
+    .value.trim();
 
-if(!title || !content){
-msg.innerHTML="⚠️ Title र विवरण लेख्नुहोस्।";
-return;
+    const content =
+    document.getElementById("content")
+    .value.trim();
+
+    if(!title || !content){
+
+        showMessage(
+            "⚠️ Title र विवरण लेख्नुहोस्।",
+            "error"
+        );
+
+        return;
+    }
+
+    showMessage(
+        "⏳ Save हुँदैछ..."
+    );
+
+    try{
+
+        let result;
+
+        if(editId === null){
+
+            result =
+            await db
+            .from("Notices")
+            .insert([
+                {
+                    Title:title,
+                    Content:content
+                }
+            ]);
+
+        }
+
+        else{
+
+            result =
+            await db
+            .from("Notices")
+            .update({
+                Title:title,
+                Content:content
+            })
+            .eq("Id",editId);
+
+        }
+
+        console.log(
+            "SAVE RESULT:",
+            result
+        );
+
+        if(result.error){
+
+            console.error(
+                result.error
+            );
+
+            showMessage(
+                "❌ Save हुन सकेन: " +
+                result.error.message,
+                "error"
+            );
+
+            return;
+        }
+
+        showMessage(
+            editId === null
+            ? "✅ सूचना सफलतापूर्वक Save भयो।"
+            : "✅ सूचना Update भयो।",
+            "success"
+        );
+
+        clearForm();
+
+        await loadNotices();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "❌ समस्या आयो: " +
+            error.message,
+            "error"
+        );
+    }
 }
 
-msg.innerHTML="⏳ Save हुँदैछ...";
 
-let result;
-
-if(editId===null){
-
-result=await db
-.from("Notices")
-.insert({
-Title:title,
-Content:content
-});
-
-}else{
-
-result=await db
-.from("Notices")
-.update({
-Title:title,
-Content:content
-})
-.eq("Id",editId);
-
-}
-
-if(result.error){
-
-console.log(result.error);
-
-msg.innerHTML="❌ Save हुन सकेन: "+result.error.message;
-return;
-
-}
-
-msg.innerHTML="✅ सूचना सफल भयो।";
-
-clearForm();
-loadNotices();
-
-}
-
-
+// ================================
 // EDIT
-function editNotice(id,title,content){
+// ================================
 
-editId=id;
+function editNotice(
+    id,
+    title,
+    content
+){
 
-document.getElementById("title").value=title;
-document.getElementById("content").value=content;
+    editId = id;
 
-document.getElementById("message").innerHTML=
-"✏️ Edit गर्नुहोस् अनि Save थिच्नुहोस्।";
+    document.getElementById("title")
+    .value = title;
 
-window.scrollTo(0,0);
+    document.getElementById("content")
+    .value = content;
 
+    showMessage(
+        "✏️ सूचना Edit हुँदैछ। परिवर्तन गरेर Save थिच्नुहोस्।"
+    );
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
 
+// ================================
 // DELETE
+// ================================
+
 async function deleteNotice(id){
 
-if(!confirm("यो सूचना Delete गर्ने?")) return;
+    if(
+        !confirm(
+            "यो सूचना Delete गर्ने?"
+        )
+    ){
+        return;
+    }
 
-const {error}=await db
-.from("Notices")
-.delete()
-.eq("Id",id);
+    showMessage(
+        "⏳ Delete हुँदैछ..."
+    );
 
-if(error){
+    try{
 
-document.getElementById("message").innerHTML=
-"❌ Delete हुन सकेन: "+error.message;
+        const result =
+        await db
+        .from("Notices")
+        .delete()
+        .eq("Id",id);
 
-return;
+        console.log(
+            "DELETE RESULT:",
+            result
+        );
 
+        if(result.error){
+
+            showMessage(
+                "❌ Delete हुन सकेन: " +
+                result.error.message,
+                "error"
+            );
+
+            return;
+        }
+
+        showMessage(
+            "✅ सूचना Delete भयो।",
+            "success"
+        );
+
+        await loadNotices();
+
+    }
+
+    catch(error){
+
+        showMessage(
+            "❌ समस्या आयो: " +
+            error.message,
+            "error"
+        );
+    }
 }
 
-document.getElementById("message").innerHTML=
-"✅ सूचना Delete भयो।";
 
-loadNotices();
+// ================================
+// CLEAR FORM
+// ================================
 
-}
-
-
-// CLEAR
 function clearForm(){
 
-document.getElementById("title").value="";
-document.getElementById("content").value="";
-editId=null;
+    document.getElementById("title")
+    .value = "";
 
+    document.getElementById("content")
+    .value = "";
+
+    editId = null;
+
+    document.getElementById("message")
+    .innerHTML = "";
 }
 
+
+// ================================
+// START
+// ================================
 
 loadNotices();
 
