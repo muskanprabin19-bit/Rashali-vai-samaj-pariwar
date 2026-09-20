@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -21,7 +21,7 @@ padding:15px;
 }
 
 .container{
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 }
 
@@ -138,6 +138,18 @@ background:#2563eb;
 background:#555;
 }
 
+.danger{
+background:#991b1b;
+}
+
+.green{
+background:#166534;
+}
+
+.orange{
+background:#b45309;
+}
+
 .member{
 border:1px solid #ddd;
 padding:14px;
@@ -168,7 +180,7 @@ font-weight:bold;
 
 .summary{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(4,1fr);
 gap:10px;
 margin-top:15px;
 }
@@ -188,32 +200,6 @@ margin-top:5px;
 color:#8b0000;
 }
 
-.record{
-border:1px solid #ddd;
-padding:13px;
-margin-top:10px;
-border-radius:12px;
-background:#fafafa;
-}
-
-.income{
-border-left:5px solid green;
-}
-
-.expense{
-border-left:5px solid red;
-}
-
-.incomeText{
-color:green;
-font-weight:bold;
-}
-
-.expenseText{
-color:red;
-font-weight:bold;
-}
-
 .money-extra{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -231,6 +217,7 @@ width:100%;
 border-collapse:collapse;
 background:white;
 font-size:14px;
+min-width:900px;
 }
 
 .money-sheet th,
@@ -248,8 +235,20 @@ font-weight:bold;
 .money-sheet td:nth-child(5),
 .money-sheet td:nth-child(6),
 .money-sheet td:nth-child(7),
-.money-sheet td:nth-child(8){
+.money-sheet td:nth-child(8),
+.money-sheet td:nth-child(9){
 text-align:right;
+}
+
+.table-btn{
+padding:7px 9px;
+margin:2px;
+width:auto;
+font-size:12px;
+}
+
+.record-actions{
+white-space:nowrap;
 }
 
 .print-area{
@@ -305,6 +304,19 @@ font-size:17px;
 font-weight:bold;
 }
 
+.total-line{
+display:flex;
+justify-content:space-between;
+border-bottom:1px solid #ddd;
+padding:5px 0;
+}
+
+.total-final{
+font-size:20px;
+color:#8b0000;
+margin-top:8px;
+}
+
 .print-button{
 background:#166534;
 margin-top:12px;
@@ -338,14 +350,32 @@ padding:12px 30px;
 background:#222;
 }
 
-@media(max-width:600px){
+.help{
+background:#fff8e1;
+border:1px solid #f0c36d;
+padding:12px;
+border-radius:10px;
+margin-top:12px;
+font-size:14px;
+line-height:1.7;
+}
+
+.zero-box{
+background:#fee2e2;
+border:1px solid #ef4444;
+padding:12px;
+border-radius:10px;
+margin-top:15px;
+}
+
+@media(max-width:700px){
 
 .control-grid{
 grid-template-columns:repeat(2,1fr);
 }
 
 .summary{
-grid-template-columns:1fr;
+grid-template-columns:1fr 1fr;
 }
 
 .header h1{
@@ -375,6 +405,15 @@ grid-template-columns:1fr;
 .money-sheet{
 font-size:12px;
 }
+
+}
+
+@media(max-width:450px){
+
+.summary{
+grid-template-columns:1fr;
+}
+
 }
 
 /* PRINT */
@@ -410,7 +449,8 @@ display:none !important;
 }
 
 .money-sheet{
-font-size:12px;
+font-size:11px;
+min-width:0;
 }
 
 .member-photo{
@@ -491,7 +531,8 @@ height:100px;
 
 <h2>👥 सदस्य व्यवस्थापन</h2>
 
-<input id="search" type="text"
+<input id="search"
+type="text"
 placeholder="🔍 नाम वा Member ID खोज्नुहोस्"
 oninput="loadMembers()">
 
@@ -499,7 +540,8 @@ oninput="loadMembers()">
 <input id="position" type="text" placeholder="पद">
 <input id="phone" type="text" placeholder="फोन नम्बर">
 <input id="email" type="email" placeholder="Email">
-<input id="document_url" type="text"
+<input id="document_url"
+type="text"
 placeholder="Photo / Document URL">
 
 <button onclick="saveMember()">
@@ -516,22 +558,50 @@ placeholder="Photo / Document URL">
 
 <div class="box no-print" id="money">
 
-<h2>💰 सदस्यको Excel-जस्तो पैसा हिसाब</h2>
+<h2>💰 सदस्यको पैसा हिसाब</h2>
 
 <select id="member" onchange="loadMoney()">
 <option value="">सदस्य छान्नुहोस्</option>
 </select>
 
-<select id="type">
-<option value="income">जम्मा रकम</option>
-<option value="expense">निकालेको रकम</option>
+
+<h3 style="margin-top:15px;">
+➕ नयाँ पैसा हिसाब थप्नुहोस्
+</h3>
+
+<select id="moneyCategory">
+
+<option value="income">
+पैसा जम्मा गरेको
+</option>
+
+<option value="expense">
+पैसा निकालेको
+</option>
+
+<option value="penalty">
+जरिवाना तिरेको
+</option>
+
+<option value="installment">
+महिनाको किस्ता हालेको
+</option>
+
 </select>
 
-<input type="number" id="amount" placeholder="रकम">
+<input
+type="number"
+id="amount"
+placeholder="रकम">
 
-<input type="date" id="record_date">
+<input
+type="date"
+id="record_date">
 
-<input type="text" id="description" placeholder="विवरण">
+<input
+type="text"
+id="description"
+placeholder="विवरण">
 
 <button onclick="saveMoney()">
 💾 पैसा Save गर्नुहोस्
@@ -539,7 +609,50 @@ placeholder="Photo / Document URL">
 
 <div id="moneyMsg"></div>
 
-<div id="summary" class="summary" style="display:none;">
+
+<!-- FINAL EDIT -->
+
+<div id="extraBox"
+style="display:none;margin-top:18px;">
+
+<h3>✏️ अन्तिम ब्याज / जरिवाना मिलाउने</h3>
+
+<div class="money-extra">
+
+<div>
+<label><b>⚠️ अतिरिक्त जरिवाना</b></label>
+<input
+type="number"
+id="penalty"
+value="0"
+min="0"
+oninput="updateSheet()">
+</div>
+
+<div>
+<label><b>📝 ब्याज</b></label>
+<input
+type="number"
+id="interest"
+value="0"
+min="0"
+oninput="updateSheet()">
+</div>
+
+</div>
+
+<p style="font-size:13px;color:#666;margin-top:5px;">
+जरिवाना र ब्याज Admin ले आवश्यक परेको बेला आफैं Edit गर्न सक्नुहुन्छ।
+</p>
+
+</div>
+
+
+<!-- SUMMARY -->
+
+<div id="summary"
+class="summary"
+style="display:none;">
 
 <div>
 जम्मा
@@ -552,44 +665,53 @@ placeholder="Photo / Document URL">
 </div>
 
 <div>
+जरिवाना
+<span id="totalPenalty">रु. 0</span>
+</div>
+
+<div>
+किस्ता
+<span id="totalInstallment">रु. 0</span>
+</div>
+
+<div>
 बाँकी
 <span id="balance">रु. 0</span>
 </div>
 
 </div>
 
-<!-- EDITABLE -->
 
-<div id="extraBox" style="display:none;margin-top:18px;">
-
-<h3>✏️ अन्तिम हिसाब मिलाउने</h3>
-
-<div class="money-extra">
-
-<div>
-<label><b>⚠️ जरिवाना</b></label>
-<input type="number" id="penalty"
-value="0"
-min="0"
-oninput="updateSheet()">
+<div class="help">
+<b>हिसाब कसरी राख्ने?</b><br>
+पैसा आएको भए <b>पैसा जम्मा गरेको</b> छान्नुहोस्।<br>
+पैसा निकाल्दा <b>पैसा निकालेको</b> छान्नुहोस्।<br>
+जरिवाना तिरेको रकमका लागि <b>जरिवाना तिरेको</b> छान्नुहोस्।<br>
+हरेक महिनाको रकमका लागि <b>महिनाको किस्ता हालेको</b> छान्नुहोस्।<br>
+ब्याज चाहिँ माथिको <b>ब्याज Edit</b> बाट Admin ले आफैं राख्न सक्नुहुन्छ।
 </div>
 
-<div>
-<label><b>📝 ब्याज</b></label>
-<input type="number" id="interest"
-value="0"
-min="0"
-oninput="updateSheet()">
-</div>
 
-</div>
+<!-- DELETE OLD TEST -->
 
-<p style="font-size:13px;color:#666;margin-top:5px;">
-ब्याज र जरिवाना Admin ले आवश्यक परेको बेला edit गर्न सक्नुहुन्छ।
+<div class="zero-box">
+
+<b>🗑️ पुरानो Test हिसाब हटाउने</b>
+
+<p style="margin-top:5px;">
+हाल छानिएको सदस्यको सबै पैसा record हटाएर ० बाट नयाँ हिसाब सुरु गर्न सकिन्छ।
 </p>
 
+<button
+class="danger"
+onclick="deleteAllMoney()">
+🗑️ यो सदस्यको सबै पैसा हिसाब Delete गर्नुहोस्
+</button>
+
 </div>
 
+
+<!-- MONEY TABLE -->
 
 <div id="moneyRecords"></div>
 
@@ -614,87 +736,105 @@ style="display:none;">
 
 <div class="member-info">
 
-<img id="printPhoto"
+<img
+id="printPhoto"
 class="member-photo"
 src=""
 alt="सदस्यको फोटो">
 
 <div class="member-data">
 
-<div><b>सदस्यको नाम:</b>
-<span id="printName">—</span></div>
+<div>
+<b>सदस्यको नाम:</b>
+<span id="printName">—</span>
+</div>
 
-<div><b>Member ID:</b>
-<span id="printId">—</span></div>
+<div>
+<b>Member ID:</b>
+<span id="printId">—</span>
+</div>
 
-<div><b>पद:</b>
-<span id="printPosition">—</span></div>
+<div>
+<b>पद:</b>
+<span id="printPosition">—</span>
+</div>
 
-<div><b>फोन:</b>
-<span id="printPhone">—</span></div>
-
+<div>
+<b>फोन:</b>
+<span id="printPhone">—</span>
 </div>
 
 </div>
+
+</div>
+
 
 <div class="sheet-wrap">
 
 <table class="money-sheet">
 
 <thead>
+
 <tr>
 <th>क्र.सं.</th>
 <th>मिति</th>
 <th>विवरण</th>
-<th>प्रकार</th>
 <th>जम्मा</th>
 <th>निकालेको</th>
-<th>बाँकी</th>
 <th>जरिवाना</th>
+<th>किस्ता</th>
 <th>ब्याज</th>
+<th>बाँकी</th>
 </tr>
+
 </thead>
 
-<tbody id="printTableBody">
-</tbody>
+<tbody id="printTableBody"></tbody>
 
 </table>
 
 </div>
 
+
 <div class="final-total">
 
-<div>
-जम्मा रकम:
+<div class="total-line">
+<span>जम्मा रकम:</span>
 <span id="printIncome">रु. 0</span>
 </div>
 
-<div>
-निकालेको रकम:
+<div class="total-line">
+<span>निकालेको रकम:</span>
 <span id="printExpense">रु. 0</span>
 </div>
 
-<div>
-बाँकी:
-<span id="printBalance">रु. 0</span>
-</div>
-
-<div>
-जरिवाना:
+<div class="total-line">
+<span>जरिवाना:</span>
 <span id="printPenalty">रु. 0</span>
 </div>
 
-<div>
-ब्याज:
+<div class="total-line">
+<span>किस्ता:</span>
+<span id="printInstallment">रु. 0</span>
+</div>
+
+<div class="total-line">
+<span>ब्याज:</span>
 <span id="printInterest">रु. 0</span>
 </div>
 
-<div style="margin-top:8px;">
-अन्तिम बाँकी:
+<div class="total-line">
+<span>बाँकी:</span>
+<span id="printBalance">रु. 0</span>
+</div>
+
+<div class="total-line total-final">
+<span>अन्तिम बाँकी:</span>
 <span id="printFinal">रु. 0</span>
 </div>
 
 </div>
+
 
 <p style="margin-top:25px;font-size:13px;">
 रसाली भाई समाज परिवार चौराठा
@@ -702,9 +842,11 @@ alt="सदस्यको फोटो">
 
 </div>
 
+
 <div class="no-print" style="margin-top:12px;">
 
-<button class="print-button"
+<button
+class="print-button"
 onclick="printMoneySheet()">
 🖨️ पैसा हिसाब Print गर्नुहोस्
 </button>
@@ -720,10 +862,21 @@ onclick="printMoneySheet()">
 
 <div class="footer-actions">
 
-<a href="notice.html">📢 सूचना व्यवस्थापन</a>
-<a href="Photo.html">📸 फोटो व्यवस्थापन</a>
-<a href="member-card.html">🪪 Member Card</a>
-<a href="index.html">🏠 Website हेर्नुहोस्</a>
+<a href="notice.html">
+📢 सूचना व्यवस्थापन
+</a>
+
+<a href="Photo.html">
+📸 फोटो व्यवस्थापन
+</a>
+
+<a href="member-card.html">
+🪪 Member Card
+</a>
+
+<a href="index.html">
+🏠 Website हेर्नुहोस्
+</a>
 
 </div>
 
@@ -732,7 +885,9 @@ onclick="printMoneySheet()">
 
 <div class="logout no-print">
 
-<button onclick="logout()">🚪 Admin Logout</button>
+<button onclick="logout()">
+🚪 Admin Logout
+</button>
 
 </div>
 
@@ -851,12 +1006,14 @@ ${m.position||""}
 
 <div class="actions">
 
-<button class="edit"
+<button
+class="edit"
 onclick="editMember(${m.id})">
 ✏️ Edit
 </button>
 
-<button class="delete"
+<button
+class="delete"
 onclick="deleteMember(${m.id})">
 🗑️ Delete
 </button>
@@ -1029,7 +1186,7 @@ document.getElementById("members")
 }
 
 
-/* DELETE */
+/* DELETE MEMBER */
 
 async function deleteMember(id){
 
@@ -1066,7 +1223,7 @@ document.getElementById("memberMsg").innerText =
 }
 
 
-/* CLEAR */
+/* CLEAR MEMBER FORM */
 
 function clearForm(){
 
@@ -1079,6 +1236,76 @@ document.getElementById("document_url").value="";
 }
 
 
+/* CATEGORY TEXT */
+
+function categoryLabel(category){
+
+if(category==="income") return "पैसा जम्मा";
+if(category==="expense") return "पैसा निकालेको";
+if(category==="penalty") return "जरिवाना";
+if(category==="installment") return "किस्ता";
+
+return "पैसा";
+}
+
+
+/*
+Existing database has record_type = income / expense.
+To avoid changing the existing Supabase structure,
+special categories are saved inside description using a marker.
+*/
+
+function encodeDescription(category, description){
+
+const clean =
+(description||"").trim();
+
+if(category==="income"){
+return clean;
+}
+
+return "["+
+category.toUpperCase()+
+"] "+
+clean;
+}
+
+
+function detectCategory(record){
+
+const text =
+(record.description||"").trim();
+
+if(text.startsWith("[PENALTY]")){
+return "penalty";
+}
+
+if(text.startsWith("[INSTALLMENT]")){
+return "installment";
+}
+
+if(record.record_type==="expense"){
+return "expense";
+}
+
+return "income";
+}
+
+
+function cleanDescription(record){
+
+let text =
+(record.description||"").trim();
+
+text=text.replace(
+/^\[(PENALTY|INSTALLMENT)\]\s*/i,
+""
+);
+
+return text;
+}
+
+
 /* SAVE MONEY */
 
 async function saveMoney(){
@@ -1086,8 +1313,8 @@ async function saveMoney(){
 const member_id =
 document.getElementById("member").value;
 
-const record_type =
-document.getElementById("type").value;
+const category =
+document.getElementById("moneyCategory").value;
 
 const amount =
 document.getElementById("amount").value;
@@ -1122,6 +1349,23 @@ document.getElementById("moneyMsg").innerText =
 return;
 }
 
+
+/*
+Income:
+पैसा जम्मा + जरिवाना + किस्ता are money received.
+
+Expense:
+पैसा निकालेको is money taken out.
+*/
+
+const record_type =
+category==="expense"
+? "expense"
+: "income";
+
+const finalDescription =
+encodeDescription(category,description);
+
 const response =
 await fetch(
 URL+"/rest/v1/money_records",
@@ -1139,7 +1383,7 @@ member_id:Number(member_id),
 record_type,
 amount:Number(amount),
 record_date,
-description
+description:finalDescription
 
 })
 });
@@ -1147,7 +1391,7 @@ description
 if(response.ok){
 
 document.getElementById("moneyMsg").innerText =
-"✅ रकम सफलतापूर्वक Save भयो।";
+"✅ "+categoryLabel(category)+" सफलतापूर्वक Save भयो।";
 
 document.getElementById("amount").value="";
 document.getElementById("description").value="";
@@ -1171,21 +1415,29 @@ document.getElementById("moneyMsg").innerText =
 
 function getExtra(id){
 
-const key="rasali_money_extra_"+id;
+const key =
+"rasali_money_extra_"+id;
 
 try{
-return JSON.parse(localStorage.getItem(key)) || {
+
+return JSON.parse(
+localStorage.getItem(key)
+) || {
 penalty:0,
 interest:0
 };
+
 }catch(e){
+
 return {
 penalty:0,
 interest:0
 };
+
 }
 
 }
+
 
 function saveExtra(id){
 
@@ -1202,6 +1454,280 @@ penalty,
 interest
 })
 );
+
+}
+
+
+/* DELETE ONE RECORD */
+
+async function deleteMoneyRecord(id){
+
+if(!confirm(
+"यो पैसा हिसाब Delete गर्ने हो?"
+)){
+return;
+}
+
+const response =
+await fetch(
+URL+
+"/rest/v1/money_records?id=eq."+id,
+{
+method:"DELETE",
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token
+}
+});
+
+if(response.ok){
+
+document.getElementById("moneyMsg").innerText =
+"🗑️ पैसा record Delete भयो।";
+
+loadMoney();
+
+}else{
+
+const error =
+await response.text();
+
+document.getElementById("moneyMsg").innerText =
+"❌ Delete हुन सकेन: "+error;
+
+}
+
+}
+
+
+/* EDIT ONE RECORD */
+
+async function editMoneyRecord(id){
+
+const response =
+await fetch(
+URL+
+"/rest/v1/money_records?id=eq."+id+
+"&select=id,record_type,amount,record_date,description",
+{
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token
+}
+});
+
+const data =
+await response.json();
+
+if(!data.length){
+return;
+}
+
+const r=data[0];
+
+const category =
+detectCategory(r);
+
+document.getElementById("moneyCategory").value =
+category;
+
+document.getElementById("amount").value =
+r.amount||"";
+
+document.getElementById("record_date").value =
+r.record_date||"";
+
+document.getElementById("description").value =
+cleanDescription(r);
+
+const saveButton =
+document.querySelector(
+'button[onclick="saveMoney()"]'
+);
+
+saveButton.innerText =
+"💾 Update पैसा हिसाब";
+
+saveButton.onclick =
+function(){
+updateMoneyRecord(id);
+};
+
+document.getElementById("money")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* UPDATE RECORD */
+
+async function updateMoneyRecord(id){
+
+const category =
+document.getElementById("moneyCategory").value;
+
+const amount =
+Number(document.getElementById("amount").value)||0;
+
+const record_date =
+document.getElementById("record_date").value;
+
+const description =
+document.getElementById("description").value.trim();
+
+if(amount<=0){
+
+document.getElementById("moneyMsg").innerText =
+"❗ सही रकम लेख्नुहोस्।";
+
+return;
+}
+
+const record_type =
+category==="expense"
+? "expense"
+: "income";
+
+const finalDescription =
+encodeDescription(
+category,
+description
+);
+
+const response =
+await fetch(
+URL+
+"/rest/v1/money_records?id=eq."+id,
+{
+method:"PATCH",
+headers:{
+"Content-Type":"application/json",
+"apikey":KEY,
+"Authorization":"Bearer "+token,
+"Prefer":"return=minimal"
+},
+body:JSON.stringify({
+
+record_type,
+amount,
+record_date,
+description:finalDescription
+
+})
+});
+
+if(response.ok){
+
+document.getElementById("moneyMsg").innerText =
+"✅ पैसा हिसाब Update भयो।";
+
+resetMoneyButton();
+
+document.getElementById("amount").value="";
+document.getElementById("description").value="";
+
+loadMoney();
+
+}else{
+
+const error =
+await response.text();
+
+document.getElementById("moneyMsg").innerText =
+"❌ Update हुन सकेन: "+error;
+
+}
+
+}
+
+
+/* RESET MONEY BUTTON */
+
+function resetMoneyButton(){
+
+const button =
+document.querySelector(
+'button[onclick="updateMoneyRecord(id)"]'
+);
+
+const allButtons =
+document.querySelectorAll("button");
+
+allButtons.forEach(btn=>{
+
+if(btn.innerText.includes("Update पैसा हिसाब")){
+
+btn.innerText =
+"💾 पैसा Save गर्नुहोस्";
+
+btn.onclick =
+saveMoney;
+
+}
+
+});
+
+}
+
+
+/* DELETE ALL MEMBER MONEY */
+
+async function deleteAllMoney(){
+
+const member_id =
+document.getElementById("member").value;
+
+if(!member_id){
+
+alert("पहिले सदस्य छान्नुहोस्।");
+
+return;
+}
+
+if(!confirm(
+"⚠️ यस सदस्यको सबै पैसा हिसाब Delete गरेर ० बाट सुरु गर्ने हो?"
+)){
+
+return;
+}
+
+const response =
+await fetch(
+URL+
+"/rest/v1/money_records?member_id=eq."+member_id,
+{
+method:"DELETE",
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token
+}
+});
+
+if(response.ok){
+
+localStorage.removeItem(
+"rasali_money_extra_"+member_id
+);
+
+document.getElementById("moneyMsg").innerText =
+"✅ सबै पुरानो test हिसाब हटाइयो। अब ० बाट सुरु हुन्छ।";
+
+document.getElementById("penalty").value=0;
+document.getElementById("interest").value=0;
+
+loadMoney();
+
+}else{
+
+const error =
+await response.text();
+
+document.getElementById("moneyMsg").innerText =
+"❌ सबै record हटाउन सकिएन: "+error;
+
+}
 
 }
 
@@ -1235,6 +1761,9 @@ return;
 
 }
 
+
+/* MEMBER */
+
 const memberResponse =
 await fetch(
 URL+
@@ -1251,7 +1780,12 @@ const members =
 await memberResponse.json();
 
 currentMember =
-members.length ? members[0] : null;
+members.length
+? members[0]
+: null;
+
+
+/* MONEY */
 
 const response =
 await fetch(
@@ -1279,26 +1813,50 @@ return;
 
 currentMoneyData=data;
 
+
+/* TOTALS */
+
 let income=0;
 let expense=0;
+let penaltyRecords=0;
+let installment=0;
 
 data.forEach(r=>{
 
 const amount =
 Number(r.amount)||0;
 
-if(r.record_type==="income"){
+const category =
+detectCategory(r);
+
+if(category==="income"){
 income+=amount;
 }
 
-if(r.record_type==="expense"){
+if(category==="expense"){
 expense+=amount;
+}
+
+if(category==="penalty"){
+penaltyRecords+=amount;
+}
+
+if(category==="installment"){
+installment+=amount;
 }
 
 });
 
+
+/*
+जरिवाना र किस्ता society ले पाएको रकम भएकाले
+बाँकी रकममा add हुन्छ।
+निकालेको रकम subtract हुन्छ।
+*/
+
 const balance =
-income-expense;
+income+penaltyRecords+installment-expense;
+
 
 const extra =
 getExtra(member_id);
@@ -1309,11 +1867,20 @@ extra.penalty;
 document.getElementById("interest").value =
 extra.interest;
 
+
+/* SUMMARY */
+
 document.getElementById("totalIncome").innerText =
 "रु. "+income.toLocaleString();
 
 document.getElementById("totalExpense").innerText =
 "रु. "+expense.toLocaleString();
+
+document.getElementById("totalPenalty").innerText =
+"रु. "+penaltyRecords.toLocaleString();
+
+document.getElementById("totalInstallment").innerText =
+"रु. "+installment.toLocaleString();
 
 document.getElementById("balance").innerText =
 "रु. "+balance.toLocaleString();
@@ -1322,13 +1889,15 @@ summary.style.display="grid";
 extraBox.style.display="block";
 
 
+/* TABLE */
+
 records.innerHTML =
 "<h3 style='margin-top:20px;'>📋 Excel-जस्तो पैसा कारोबार</h3>";
 
 if(!data.length){
 
 records.innerHTML +=
-"<p style='text-align:center;padding:15px;'>अहिलेसम्म कुनै कारोबार छैन।</p>";
+"<p style='text-align:center;padding:15px;'>अहिलेसम्म कुनै कारोबार छैन। सबै हिसाब ० बाट सुरु हुन्छ।</p>";
 
 }else{
 
@@ -1344,13 +1913,18 @@ table.innerHTML=`
 <thead>
 
 <tr>
+
 <th>क्र.सं.</th>
 <th>मिति</th>
 <th>विवरण</th>
 <th>प्रकार</th>
 <th>जम्मा</th>
 <th>निकालेको</th>
+<th>जरिवाना</th>
+<th>किस्ता</th>
 <th>बाँकी</th>
+<th>Action</th>
+
 </tr>
 
 </thead>
@@ -1368,16 +1942,48 @@ let running=0;
 const body =
 document.getElementById("adminMoneyBody");
 
+
 data.forEach((r,index)=>{
 
 const amount =
 Number(r.amount)||0;
 
-if(r.record_type==="income"){
+const category =
+detectCategory(r);
+
+let incomeAmount=0;
+let expenseAmount=0;
+let penaltyAmount=0;
+let installmentAmount=0;
+
+if(category==="income"){
+
+incomeAmount=amount;
 running+=amount;
-}else{
-running-=amount;
+
 }
+
+else if(category==="expense"){
+
+expenseAmount=amount;
+running-=amount;
+
+}
+
+else if(category==="penalty"){
+
+penaltyAmount=amount;
+running+=amount;
+
+}
+
+else if(category==="installment"){
+
+installmentAmount=amount;
+running+=amount;
+
+}
+
 
 const tr =
 document.createElement("tr");
@@ -1388,28 +1994,52 @@ tr.innerHTML=`
 
 <td>${r.record_date||"—"}</td>
 
-<td>${r.description||"—"}</td>
+<td>${cleanDescription(r)||"—"}</td>
+
+<td>${categoryLabel(category)}</td>
 
 <td>
-${r.record_type==="income"
-?"जम्मा"
-:"निकालेको"}
-</td>
-
-<td>
-${r.record_type==="income"
-?"रु. "+amount.toLocaleString()
+${incomeAmount
+?"रु. "+incomeAmount.toLocaleString()
 :"—"}
 </td>
 
 <td>
-${r.record_type==="expense"
-?"रु. "+amount.toLocaleString()
+${expenseAmount
+?"रु. "+expenseAmount.toLocaleString()
+:"—"}
+</td>
+
+<td>
+${penaltyAmount
+?"रु. "+penaltyAmount.toLocaleString()
+:"—"}
+</td>
+
+<td>
+${installmentAmount
+?"रु. "+installmentAmount.toLocaleString()
 :"—"}
 </td>
 
 <td>
 रु. ${running.toLocaleString()}
+</td>
+
+<td class="record-actions">
+
+<button
+class="edit table-btn"
+onclick="editMoneyRecord(${r.id})">
+✏️ Edit
+</button>
+
+<button
+class="delete table-btn"
+onclick="deleteMoneyRecord(${r.id})">
+🗑️ Delete
+</button>
+
 </td>
 
 `;
@@ -1419,6 +2049,7 @@ body.appendChild(tr);
 });
 
 }
+
 
 updateSheet();
 
@@ -1436,32 +2067,82 @@ if(!member_id || !currentMember){
 return;
 }
 
-const income =
-currentMoneyData
-.filter(r=>r.record_type==="income")
-.reduce((a,r)=>a+(Number(r.amount)||0),0);
 
-const expense =
-currentMoneyData
-.filter(r=>r.record_type==="expense")
-.reduce((a,r)=>a+(Number(r.amount)||0),0);
+let income=0;
+let expense=0;
+let penaltyRecords=0;
+let installment=0;
 
-const balance =
-income-expense;
 
-const penalty =
-Number(document.getElementById("penalty").value)||0;
+currentMoneyData.forEach(r=>{
+
+const amount =
+Number(r.amount)||0;
+
+const category =
+detectCategory(r);
+
+if(category==="income"){
+income+=amount;
+}
+
+else if(category==="expense"){
+expense+=amount;
+}
+
+else if(category==="penalty"){
+penaltyRecords+=amount;
+}
+
+else if(category==="installment"){
+installment+=amount;
+}
+
+});
+
+
+const editablePenalty =
+Number(
+document.getElementById("penalty").value
+)||0;
 
 const interest =
-Number(document.getElementById("interest").value)||0;
+Number(
+document.getElementById("interest").value
+)||0;
 
-const finalBalance =
-balance-penalty-interest;
-
-
-/* save editable values */
 
 saveExtra(member_id);
+
+
+/*
+Penalty record र editable extra penalty
+दुवै देखाउने।
+*/
+
+const totalPenalty =
+penaltyRecords+editablePenalty;
+
+
+/*
+बाँकी:
+जम्मा + जरिवाना + किस्ता - निकालेको
+*/
+
+const balance =
+income+
+penaltyRecords+
+installment-
+expense;
+
+
+/*
+ब्याजलाई Admin ले अन्तिममा edit गरेर राख्ने।
+*/
+
+const finalBalance =
+balance+
+interest;
 
 
 /* MEMBER INFO */
@@ -1483,7 +2164,8 @@ const photo =
 currentMember.document_url;
 
 document.getElementById("printPhoto").src =
-photo && (
+photo &&
+(
 photo.startsWith("http://") ||
 photo.startsWith("https://")
 )
@@ -1491,7 +2173,7 @@ photo.startsWith("https://")
 : "";
 
 
-/* TABLE */
+/* PRINT TABLE */
 
 const body =
 document.getElementById("printTableBody");
@@ -1500,21 +2182,49 @@ body.innerHTML="";
 
 let running=0;
 
+
 currentMoneyData.forEach((r,index)=>{
 
 const amount =
 Number(r.amount)||0;
 
+const category =
+detectCategory(r);
+
 let incomeAmount=0;
 let expenseAmount=0;
+let penaltyAmount=0;
+let installmentAmount=0;
 
-if(r.record_type==="income"){
+
+if(category==="income"){
+
 incomeAmount=amount;
 running+=amount;
-}else{
+
+}
+
+else if(category==="expense"){
+
 expenseAmount=amount;
 running-=amount;
+
 }
+
+else if(category==="penalty"){
+
+penaltyAmount=amount;
+running+=amount;
+
+}
+
+else if(category==="installment"){
+
+installmentAmount=amount;
+running+=amount;
+
+}
+
 
 const tr =
 document.createElement("tr");
@@ -1525,33 +2235,29 @@ tr.innerHTML=`
 
 <td>${r.record_date||"—"}</td>
 
-<td>${r.description||"—"}</td>
+<td>${cleanDescription(r)||"—"}</td>
 
-<td>
-${r.record_type==="income"
-?"जम्मा"
-:"निकालेको"}
-</td>
-
-<td>
-${incomeAmount
+<td>${incomeAmount
 ?"रु. "+incomeAmount.toLocaleString()
-:"—"}
-</td>
+:"—"}</td>
 
-<td>
-${expenseAmount
+<td>${expenseAmount
 ?"रु. "+expenseAmount.toLocaleString()
-:"—"}
-</td>
+:"—"}</td>
+
+<td>${penaltyAmount
+?"रु. "+penaltyAmount.toLocaleString()
+:"—"}</td>
+
+<td>${installmentAmount
+?"रु. "+installmentAmount.toLocaleString()
+:"—"}</td>
+
+<td>—</td>
 
 <td>
 रु. ${running.toLocaleString()}
 </td>
-
-<td>—</td>
-
-<td>—</td>
 
 `;
 
@@ -1568,14 +2274,17 @@ document.getElementById("printIncome").innerText =
 document.getElementById("printExpense").innerText =
 "रु. "+expense.toLocaleString();
 
-document.getElementById("printBalance").innerText =
-"रु. "+balance.toLocaleString();
-
 document.getElementById("printPenalty").innerText =
-"रु. "+penalty.toLocaleString();
+"रु. "+totalPenalty.toLocaleString();
+
+document.getElementById("printInstallment").innerText =
+"रु. "+installment.toLocaleString();
 
 document.getElementById("printInterest").innerText =
 "रु. "+interest.toLocaleString();
+
+document.getElementById("printBalance").innerText =
+"रु. "+balance.toLocaleString();
 
 document.getElementById("printFinal").innerText =
 "रु. "+finalBalance.toLocaleString();
@@ -1631,4 +2340,4 @@ loadMembers();
 </script>
 
 </body>
-</html>
+</html> 
