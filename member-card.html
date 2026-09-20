@@ -1,76 +1,71 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>सदस्य परिचय पत्र - रसाली भाई समाज परिवार चौराठा</title>
+<title>Rashali Member ID Maker</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  background:#eee8df;
-  font-family:"Noto Sans Devanagari","Arial",sans-serif;
-  color:#321b18;
+  background:#eee9e1;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  color:#281614;
 }
 
-.page{
-  padding:25px 12px 40px;
-}
-
-.cards{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:25px;
+.wrapper{
+  padding:25px 12px 45px;
 }
 
 /* =========================
-   PVC CARD
+   ID MAKER AREA
 ========================= */
 
-.card{
-  width:85.6mm;
-  height:54mm;
-  min-width:85.6mm;
-  min-height:54mm;
-  max-width:85.6mm;
-  max-height:54mm;
-  position:relative;
-  overflow:hidden;
-  border-radius:4mm;
-  background:#fffaf0;
-  border:1px solid #b98a38;
-  box-shadow:0 8px 25px rgba(0,0,0,.22);
-  page-break-inside:avoid;
+.id-maker{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
 }
 
-/* decorative borders */
+/* =========================
+   REAL PVC CARD
+========================= */
 
-.card::before{
+.id-card{
+  width:85.6mm;
+  height:54mm;
+  position:relative;
+  overflow:hidden;
+  border-radius:3.5mm;
+  background:#fffaf0;
+  border:1px solid #b38a3d;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  flex:none;
+}
+
+.id-card:before{
   content:"";
   position:absolute;
   inset:1.5mm;
-  border:0.45mm solid rgba(130,25,31,.35);
-  border-radius:3mm;
+  border:.35mm solid rgba(126,25,31,.35);
+  border-radius:2.7mm;
+  z-index:10;
   pointer-events:none;
-  z-index:5;
 }
 
-.card::after{
+.id-card:after{
   content:"";
   position:absolute;
-  width:38mm;
-  height:38mm;
+  width:45mm;
+  height:45mm;
   border-radius:50%;
-  right:-17mm;
-  bottom:-20mm;
-  border:5mm solid rgba(130,25,31,.06);
-  pointer-events:none;
+  right:-25mm;
+  bottom:-28mm;
+  border:7mm solid rgba(126,25,31,.045);
+  z-index:0;
 }
 
 /* =========================
@@ -78,130 +73,146 @@ body{
 ========================= */
 
 .front{
-  padding:4mm 4.5mm 3.5mm;
+  padding:3.5mm 4mm;
 }
 
-.top{
+.front-head{
+  height:13mm;
   display:flex;
   align-items:center;
   justify-content:center;
+  gap:2.5mm;
   position:relative;
-  z-index:3;
+  z-index:2;
 }
 
 .logo{
-  width:12mm;
-  height:12mm;
+  width:11mm;
+  height:11mm;
   object-fit:contain;
   border-radius:50%;
-  background:white;
-  border:0.5mm solid #b98a38;
-  padding:1mm;
+  background:#fff;
+  border:.45mm solid #b38a3d;
+  padding:.7mm;
+  flex:none;
 }
 
 .brand{
   text-align:center;
-  margin-left:2.5mm;
-  line-height:1.05;
 }
 
-.brand-main{
+.brand-name{
   font-family:Georgia,serif;
-  font-size:3.25mm;
-  font-weight:800;
-  color:#82191f;
-  letter-spacing:.15mm;
+  color:#7e191f;
+  font-size:3.15mm;
+  font-weight:bold;
+  letter-spacing:.1mm;
+  white-space:nowrap;
 }
 
 .estd{
   display:inline-block;
-  margin-top:1mm;
-  padding:.5mm 2mm;
+  margin-top:.8mm;
+  padding:.45mm 2mm;
   border-radius:5mm;
-  background:#82191f;
+  background:#7e191f;
   color:#fff8e8;
-  font-size:2.05mm;
+  font-size:1.9mm;
   font-weight:bold;
   letter-spacing:.3mm;
 }
 
-.title{
-  text-align:center;
-  margin-top:2mm;
-  color:#82191f;
-  font-size:2.75mm;
-  font-weight:900;
-  border-top:.3mm solid #b98a38;
-  border-bottom:.3mm solid #b98a38;
-  padding:1mm 0;
+.card-title{
   position:relative;
-  z-index:3;
+  z-index:2;
+  text-align:center;
+  color:#7e191f;
+  font-size:2.6mm;
+  font-weight:bold;
+  border-top:.3mm solid #b38a3d;
+  border-bottom:.3mm solid #b38a3d;
+  padding:.8mm 0;
 }
 
-.content{
+.front-body{
+  position:relative;
+  z-index:2;
   display:flex;
   gap:3mm;
-  margin-top:2.5mm;
-  position:relative;
-  z-index:3;
+  margin-top:2.3mm;
 }
 
-.photo-box{
+.photo-frame{
   width:22mm;
+  height:27mm;
   flex:none;
-  text-align:center;
+  border:.65mm solid #b38a3d;
+  border-radius:2mm;
+  background:#f1e7d7;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.photo{
-  width:21mm;
-  height:25mm;
+.member-photo{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:2mm;
-  border:.7mm solid #b98a38;
-  background:#f4ead8;
+  display:block;
+}
+
+.photo-empty{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:2mm;
+  color:#9b8c7a;
+  font-weight:bold;
 }
 
 .details{
   flex:1;
   min-width:0;
-  padding-top:.2mm;
 }
 
-.row{
+.detail{
   display:flex;
+  margin-bottom:1.05mm;
+  font-size:2.3mm;
   line-height:1.15;
-  margin-bottom:1.15mm;
-  font-size:2.45mm;
 }
 
-.label{
-  width:15mm;
+.detail-label{
+  width:14.5mm;
   flex:none;
-  font-weight:800;
-  color:#82191f;
+  color:#7e191f;
+  font-weight:bold;
 }
 
-.value{
+.detail-value{
   flex:1;
-  font-weight:700;
-  color:#291816;
+  font-weight:bold;
   word-break:break-word;
 }
 
-.name-value{
-  font-size:2.7mm;
+.member-name{
+  font-size:2.55mm;
   text-transform:uppercase;
 }
 
-.footer-front{
+.front-bottom{
   position:absolute;
+  z-index:3;
   left:5mm;
   right:5mm;
-  bottom:2.5mm;
+  bottom:2.4mm;
   display:flex;
   justify-content:space-between;
   align-items:end;
-  z-index:4;
 }
 
 .signature{
@@ -210,16 +221,16 @@ body{
 }
 
 .signature-line{
-  border-top:.3mm solid #5c3b2d;
-  padding-top:.7mm;
-  font-size:1.9mm;
-  font-weight:700;
+  border-top:.3mm solid #50362d;
+  padding-top:.55mm;
+  font-size:1.7mm;
+  font-weight:bold;
 }
 
 .signature-name{
-  font-size:2.2mm;
-  font-weight:900;
-  color:#82191f;
+  color:#7e191f;
+  font-size:2.1mm;
+  font-weight:bold;
 }
 
 /* =========================
@@ -227,126 +238,116 @@ body{
 ========================= */
 
 .back{
-  padding:4mm 5mm 3.5mm;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  padding:4mm;
   text-align:center;
 }
 
-.back-logo{
-  width:15mm;
-  height:15mm;
-  object-fit:contain;
-  border-radius:50%;
-  border:.6mm solid #b98a38;
-  padding:1mm;
-  background:white;
-  margin-top:.5mm;
-  position:relative;
-  z-index:3;
-}
-
-.back-brand{
-  margin-top:1.5mm;
-  font-family:Georgia,serif;
-  color:#82191f;
-  font-size:3.3mm;
-  font-weight:900;
-  position:relative;
-  z-index:3;
-}
-
-.location{
-  font-size:2.15mm;
-  font-weight:700;
-  margin-top:1mm;
-  position:relative;
-  z-index:3;
-}
-
-.tagline{
-  margin-top:1.5mm;
-  color:#82191f;
-  font-size:2.5mm;
-  font-weight:900;
-  letter-spacing:.2mm;
-  position:relative;
-  z-index:3;
-}
-
-.info-box{
-  width:68mm;
-  margin-top:2mm;
-  padding:2mm 3mm;
-  border:.35mm solid #c8a25b;
-  border-radius:2mm;
-  background:rgba(255,255,255,.58);
-  text-align:left;
-  position:relative;
-  z-index:3;
-}
-
-.info-title{
-  text-align:center;
-  font-size:2.5mm;
-  font-weight:900;
-  color:#82191f;
-  margin-bottom:1mm;
-}
-
-.info-text{
-  font-size:1.9mm;
-  line-height:1.35;
-  font-weight:600;
-}
-
-.back-bottom{
-  position:absolute;
-  left:5mm;
-  right:5mm;
-  bottom:2.7mm;
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  z-index:3;
-}
-
-.contact{
-  text-align:left;
-  font-size:1.75mm;
-  line-height:1.35;
-  font-weight:700;
-}
-
-.president{
-  text-align:center;
-  min-width:26mm;
-}
-
-.president-line{
-  border-top:.3mm solid #5c3b2d;
-  padding-top:.7mm;
-  font-size:1.8mm;
-  font-weight:700;
-}
-
-.president-name{
-  font-size:2.2mm;
-  color:#82191f;
-  font-weight:900;
-}
-
-.watermark{
+.back-watermark{
   position:absolute;
   width:38mm;
   height:38mm;
   object-fit:contain;
-  opacity:.045;
   left:50%;
-  top:50%;
-  transform:translate(-50%,-45%);
+  top:52%;
+  transform:translate(-50%,-50%);
+  opacity:.055;
   z-index:1;
+}
+
+.back-content{
+  position:relative;
+  z-index:2;
+}
+
+.back-logo{
+  width:13mm;
+  height:13mm;
+  object-fit:contain;
+  border-radius:50%;
+  border:.5mm solid #b38a3d;
+  padding:.8mm;
+  background:#fff;
+}
+
+.back-title{
+  margin-top:1.3mm;
+  color:#7e191f;
+  font-family:Georgia,serif;
+  font-size:3.1mm;
+  font-weight:bold;
+}
+
+.back-location{
+  margin-top:.8mm;
+  font-size:2mm;
+  font-weight:bold;
+}
+
+.tagline{
+  margin-top:1.2mm;
+  color:#7e191f;
+  font-size:2.3mm;
+  font-weight:bold;
+}
+
+.about{
+  width:68mm;
+  margin:2.2mm auto 0;
+  padding:1.8mm 2.5mm;
+  border:.3mm solid #c6a45d;
+  border-radius:2mm;
+  background:rgba(255,255,255,.65);
+  text-align:left;
+}
+
+.about-title{
+  text-align:center;
+  color:#7e191f;
+  font-size:2.35mm;
+  font-weight:bold;
+  margin-bottom:1mm;
+}
+
+.about-text{
+  font-size:1.75mm;
+  line-height:1.35;
+  font-weight:600;
+}
+
+.back-footer{
+  position:absolute;
+  left:5mm;
+  right:5mm;
+  bottom:2.4mm;
+  z-index:3;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+}
+
+.back-note{
+  text-align:left;
+  font-size:1.6mm;
+  line-height:1.35;
+  font-weight:bold;
+}
+
+.president{
+  text-align:center;
+  min-width:24mm;
+}
+
+.president-line{
+  border-top:.3mm solid #50362d;
+  padding-top:.5mm;
+  font-size:1.65mm;
+  font-weight:bold;
+}
+
+.president-name{
+  color:#7e191f;
+  font-size:2mm;
+  font-weight:bold;
 }
 
 /* =========================
@@ -354,18 +355,18 @@ body{
 ========================= */
 
 .editor{
-  width:min(95%,520px);
-  margin:25px auto 0;
+  width:min(94%,520px);
+  margin:5px auto 0;
   background:white;
-  border-radius:14px;
+  border-radius:15px;
   padding:20px;
   box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .editor h2{
-  margin-top:0;
   text-align:center;
-  color:#82191f;
+  color:#7e191f;
+  margin:0 0 18px;
 }
 
 .field{
@@ -388,28 +389,27 @@ body{
 
 .buttons{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
-  margin-top:15px;
+  gap:9px;
+  margin-top:16px;
 }
 
 button{
   border:0;
   border-radius:8px;
-  padding:11px 16px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  background:#82191f;
+  padding:11px 15px;
+  background:#7e191f;
   color:white;
+  font-size:14px;
+  font-weight:bold;
 }
 
-button.secondary{
+button.gold{
+  background:#92702c;
+}
+
+button.gray{
   background:#555;
-}
-
-button.home{
-  background:#8a6a25;
 }
 
 /* =========================
@@ -420,35 +420,30 @@ button.home{
 
   @page{
     size:A4;
-    margin:10mm;
+    margin:12mm;
   }
 
   body{
-    background:white;
+    background:#fff;
   }
 
-  .page{
+  .wrapper{
     padding:0;
   }
 
-  .cards{
-    display:flex;
+  .id-maker{
     flex-direction:row;
     justify-content:center;
     align-items:flex-start;
     gap:8mm;
   }
 
-  .card{
-    box-shadow:none;
-  }
-
   .editor{
-    display:none !important;
+    display:none!important;
   }
 
-  button{
-    display:none;
+  .id-card{
+    box-shadow:none;
   }
 }
 </style>
@@ -456,23 +451,22 @@ button.home{
 
 <body>
 
-<div class="page">
+<div class="wrapper">
 
-  <div class="cards">
+  <div class="id-maker">
 
-    <!-- ================= FRONT ================= -->
+    <!-- ================= FRONT CARD ================= -->
 
-    <div class="card front">
+    <div class="id-card front">
 
-      <div class="top">
+      <div class="front-head">
 
-        <img id="frontLogo"
+        <img id="logoFront"
              class="logo"
-             src=""
-             alt="Logo">
+             style="display:none">
 
         <div class="brand">
-          <div class="brand-main">
+          <div class="brand-name">
             RASHALI BHAI SAMAJ PARIWAR
           </div>
 
@@ -483,59 +477,71 @@ button.home{
 
       </div>
 
-      <div class="title">
+      <div class="card-title">
         सदस्य परिचय पत्र
       </div>
 
-      <div class="content">
+      <div class="front-body">
 
-        <div class="photo-box">
-          <img id="memberPhoto"
-               class="photo"
-               src=""
-               alt="Member Photo">
+        <div class="photo-frame">
+
+          <img id="photoPreview"
+               class="member-photo"
+               style="display:none">
+
+          <div id="photoEmpty"
+               class="photo-empty">
+            फोटो
+          </div>
+
         </div>
 
         <div class="details">
 
-          <div class="row">
-            <div class="label">नाम</div>
-            <div class="value name-value" id="showName">
+          <div class="detail">
+            <div class="detail-label">नाम</div>
+            <div id="showName"
+                 class="detail-value member-name">
               PADAM RASHALI
             </div>
           </div>
 
-          <div class="row">
-            <div class="label">सदस्य नं.</div>
-            <div class="value" id="showNumber">
+          <div class="detail">
+            <div class="detail-label">सदस्य नं.</div>
+            <div id="showNumber"
+                 class="detail-value">
               RS-001
             </div>
           </div>
 
-          <div class="row">
-            <div class="label">पद</div>
-            <div class="value" id="showPosition">
+          <div class="detail">
+            <div class="detail-label">पद</div>
+            <div id="showPosition"
+                 class="detail-value">
               सदस्य
             </div>
           </div>
 
-          <div class="row">
-            <div class="label">Email</div>
-            <div class="value" id="showEmail">
+          <div class="detail">
+            <div class="detail-label">Email</div>
+            <div id="showEmail"
+                 class="detail-value">
               —
             </div>
           </div>
 
-          <div class="row">
-            <div class="label">सम्पर्क</div>
-            <div class="value" id="showPhone">
+          <div class="detail">
+            <div class="detail-label">सम्पर्क</div>
+            <div id="showPhone"
+                 class="detail-value">
               0599706249
             </div>
           </div>
 
-          <div class="row">
-            <div class="label">ठेगाना</div>
-            <div class="value" id="showAddress">
+          <div class="detail">
+            <div class="detail-label">ठेगाना</div>
+            <div id="showAddress"
+                 class="detail-value">
               चौराठा, दैलेख, नेपाल
             </div>
           </div>
@@ -544,12 +550,13 @@ button.home{
 
       </div>
 
-      <div class="footer-front">
+      <div class="front-bottom">
 
         <div class="signature">
           <div class="signature-line">
             संस्थापक
           </div>
+
           <div class="signature-name">
             पदम रसाली
           </div>
@@ -566,65 +573,69 @@ button.home{
     </div>
 
 
-    <!-- ================= BACK ================= -->
+    <!-- ================= BACK CARD ================= -->
 
-    <div class="card back">
+    <div class="id-card back">
 
-      <img id="backWatermark"
-           class="watermark"
-           src=""
-           alt="">
+      <img id="watermark"
+           class="back-watermark"
+           style="display:none">
 
-      <img id="backLogo"
-           class="back-logo"
-           src=""
-           alt="Logo">
+      <div class="back-content">
 
-      <div class="back-brand">
-        RASHALI BHAI SAMAJ PARIWAR
-      </div>
+        <img id="logoBack"
+             class="back-logo"
+             style="display:none">
 
-      <div class="location">
-        चौराठा, दैलेख, नेपाल • ESTD 2082
-      </div>
-
-      <div class="tagline">
-        एकता • सहयोग • सेवा
-      </div>
-
-      <div class="info-box">
-
-        <div class="info-title">
-          समाजको परिचय
+        <div class="back-title">
+          RASHALI BHAI SAMAJ PARIWAR
         </div>
 
-        <div class="info-text">
-          रसाली भाई समाज परिवार चौराठा
-          एकता, सहयोग र सेवाको उद्देश्यले
-          संगठित सामाजिक परिवार हो।
+        <div class="back-location">
+          चौराठा, दैलेख, नेपाल • ESTD 2082
         </div>
 
-        <div class="info-title" style="margin-top:1.5mm;">
-          कार्ड सम्बन्धी सूचना
+        <div class="tagline">
+          एकता • सहयोग • सेवा
         </div>
 
-        <div class="info-text">
-          यो कार्ड समाजको सदस्यको आधिकारिक
-          पहिचानका लागि प्रयोग गरिन्छ।
-          कार्ड हराएमा वा विवरण परिवर्तन भएमा
-          सम्बन्धित पदाधिकारीलाई जानकारी गराउनु पर्नेछ।
+        <div class="about">
+
+          <div class="about-title">
+            समाजको परिचय
+          </div>
+
+          <div class="about-text">
+            रसाली भाई समाज परिवार चौराठा
+            एकता, सहयोग र सेवाको उद्देश्यले
+            संगठित सामाजिक परिवार हो।
+          </div>
+
+          <div class="about-title"
+               style="margin-top:1.4mm">
+            कार्ड सम्बन्धी सूचना
+          </div>
+
+          <div class="about-text">
+            यो कार्ड समाजको सदस्यको आधिकारिक
+            पहिचानका लागि प्रयोग गरिन्छ।
+            कार्ड हराएमा वा विवरण परिवर्तन भएमा
+            सम्बन्धित पदाधिकारीलाई जानकारी गराउनु पर्नेछ।
+          </div>
+
         </div>
 
       </div>
 
-      <div class="back-bottom">
+      <div class="back-footer">
 
-        <div class="contact">
+        <div class="back-note">
           रसाली भाई समाज परिवार चौराठा<br>
           सदस्य परिचय पत्र • २०८२
         </div>
 
         <div class="president">
+
           <div class="president-line">
             अध्यक्ष
           </div>
@@ -632,6 +643,7 @@ button.home{
           <div class="president-name">
             दीपक रसाली
           </div>
+
         </div>
 
       </div>
@@ -645,31 +657,36 @@ button.home{
 
   <div class="editor">
 
-    <h2>✏️ सदस्य विवरण Edit / Save</h2>
+    <h2>🪪 सदस्य ID Maker</h2>
 
     <div class="field">
       <label>सदस्यको नाम</label>
-      <input id="nameInput" value="PADAM RASHALI">
+      <input id="nameInput"
+             value="PADAM RASHALI">
     </div>
 
     <div class="field">
       <label>सदस्य नम्बर</label>
-      <input id="numberInput" value="RS-001">
+      <input id="numberInput"
+             value="RS-001">
     </div>
 
     <div class="field">
       <label>पद</label>
-      <input id="positionInput" value="सदस्य">
+      <input id="positionInput"
+             value="सदस्य">
     </div>
 
     <div class="field">
       <label>Email</label>
-      <input id="emailInput" placeholder="member@email.com">
+      <input id="emailInput"
+             placeholder="member@email.com">
     </div>
 
     <div class="field">
       <label>सम्पर्क नम्बर</label>
-      <input id="phoneInput" value="0599706249">
+      <input id="phoneInput"
+             value="0599706249">
     </div>
 
     <div class="field">
@@ -679,13 +696,17 @@ button.home{
     </div>
 
     <div class="field">
-      <label>सदस्यको फोटो</label>
-      <input id="photoInput" type="file" accept="image/*">
+      <label>📷 सदस्यको फोटो छान्नुहोस्</label>
+      <input id="photoInput"
+             type="file"
+             accept="image/*">
     </div>
 
     <div class="field">
-      <label>समाजको Original Logo</label>
-      <input id="logoInput" type="file" accept="image/*">
+      <label>🏛️ Original Logo छान्नुहोस्</label>
+      <input id="logoInput"
+             type="file"
+             accept="image/*">
     </div>
 
     <div class="buttons">
@@ -694,11 +715,12 @@ button.home{
         💾 Save
       </button>
 
-      <button onclick="window.print()">
+      <button class="gold"
+              onclick="window.print()">
         🖨️ Print / PDF
       </button>
 
-      <button class="home"
+      <button class="gray"
               onclick="location.href='index.html'">
         🏠 Home
       </button>
@@ -713,31 +735,44 @@ button.home{
 <script>
 
 /* =========================
-   DEFAULT IMAGES
+   DATA
 ========================= */
 
-const defaultLogo =
-"data:image/svg+xml;charset=UTF-8," +
-encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
-<rect width="300" height="300" fill="#fffaf0"/>
-<circle cx="150" cy="150" r="120"
- fill="none" stroke="#82191f" stroke-width="18"/>
-<text x="150" y="145"
- text-anchor="middle"
- font-size="42"
- font-family="Arial"
- font-weight="bold"
- fill="#82191f">RSP</text>
-<text x="150" y="190"
- text-anchor="middle"
- font-size="22"
- font-family="Arial"
- fill="#8a6a25">2082</text>
-</svg>
-`);
+const STORAGE_KEY =
+  "rashali_id_maker_final";
 
-const defaultPhoto =
-"data:image/svg+xml;charset=UTF-8," +
-encodeURIComponent(`
-<svg xmlns="http://www.w3.org/200
+const nameInput =
+  document.getElementById("nameInput");
+
+const numberInput =
+  document.getElementById("numberInput");
+
+const positionInput =
+  document.getElementById("positionInput");
+
+const emailInput =
+  document.getElementById("emailInput");
+
+const phoneInput =
+  document.getElementById("phoneInput");
+
+const addressInput =
+  document.getElementById("addressInput");
+
+const photoInput =
+  document.getElementById("photoInput");
+
+const logoInput =
+  document.getElementById("logoInput");
+
+
+/* =========================
+   UPDATE TEXT
+========================= */
+
+function updateText(){
+
+  document.getElementById("showName").textContent =
+    nameInput.value || "—";
+
+  document 
