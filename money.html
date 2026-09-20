@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>पैसाको हिसाब - रसाली भाई समाज परिवार</title>
+<title>सदस्य आर्थिक हिसाब - रसाली भाई समाज परिवार चौराठा</title>
 
 <style>
 *{
@@ -21,14 +21,12 @@ body{
 }
 
 .container{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
 }
 
-/* MAIN PAPER */
-
 .paper{
-  background:white;
+  background:#fff;
   border:1px solid #aaa;
   box-shadow:0 4px 18px #0002;
 }
@@ -37,21 +35,20 @@ body{
 
 .header{
   text-align:center;
-  padding:20px 15px 15px;
+  padding:16px 10px;
   border-bottom:3px solid #b30000;
 }
 
 .logo-box{
-  width:85px;
-  height:85px;
+  width:75px;
+  height:75px;
   margin:auto;
   border:2px solid #b30000;
   border-radius:50%;
+  overflow:hidden;
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
-  background:#fafafa;
 }
 
 .logo-box img{
@@ -61,44 +58,44 @@ body{
 }
 
 .logo-placeholder{
-  font-size:38px;
+  font-size:32px;
 }
 
 .header h1{
   color:#b30000;
-  font-size:24px;
-  margin-top:10px;
+  font-size:23px;
+  margin-top:7px;
 }
 
 .header h2{
   font-size:17px;
-  margin-top:5px;
+  margin-top:4px;
 }
 
 .header p{
-  margin-top:5px;
-  color:#555;
+  margin-top:4px;
+  font-size:13px;
 }
 
-/* MEMBER PROFILE */
+/* MEMBER */
 
 .member-profile{
   display:flex;
   align-items:center;
-  gap:20px;
-  padding:18px;
-  border-bottom:1px solid #aaa;
+  gap:15px;
+  padding:12px;
+  border-bottom:1px solid #888;
 }
 
 .member-photo{
-  width:105px;
-  height:125px;
+  width:82px;
+  height:100px;
   border:2px solid #555;
   overflow:hidden;
-  background:#eee;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:#eee;
   flex-shrink:0;
 }
 
@@ -109,7 +106,7 @@ body{
 }
 
 .member-photo span{
-  font-size:45px;
+  font-size:35px;
 }
 
 .member-info{
@@ -118,36 +115,27 @@ body{
 
 .member-info h2{
   color:#b30000;
-  margin-bottom:8px;
+  margin-bottom:5px;
+  font-size:19px;
 }
 
 .member-info p{
-  margin:5px 0;
-}
-
-.photo-btn{
-  display:inline-block;
-  margin-top:8px;
-  padding:7px 13px;
-  background:#333;
-  color:white;
-  text-decoration:none;
-  border-radius:5px;
-  font-size:13px;
+  margin:3px 0;
+  font-size:14px;
 }
 
 /* SUMMARY */
 
 .summary{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-bottom:1px solid #888;
+  grid-template-columns:repeat(6,1fr);
+  border-bottom:1px solid #777;
 }
 
 .summary-box{
-  padding:15px 8px;
   text-align:center;
-  border-right:1px solid #888;
+  padding:10px 4px;
+  border-right:1px solid #777;
 }
 
 .summary-box:last-child{
@@ -155,12 +143,12 @@ body{
 }
 
 .summary-box h3{
-  font-size:13px;
-  margin-bottom:7px;
+  font-size:11px;
+  margin-bottom:5px;
 }
 
 .summary-box p{
-  font-size:19px;
+  font-size:15px;
   font-weight:bold;
 }
 
@@ -168,96 +156,77 @@ body{
 
 .table-title{
   text-align:center;
-  padding:15px 5px 10px;
   color:#b30000;
-  font-size:20px;
+  font-size:18px;
+  padding:10px 5px 7px;
 }
 
 .table-wrap{
   width:100%;
   overflow-x:auto;
-  padding:0 10px 15px;
+  padding:0 7px 10px;
 }
 
 table{
   width:100%;
-  min-width:850px;
+  min-width:950px;
   border-collapse:collapse;
 }
 
 th,td{
-  border:1px solid #555;
-  padding:9px 7px;
+  border:1px solid #444;
+  padding:6px 5px;
   text-align:center;
-  font-size:13px;
+  font-size:12px;
 }
 
 th{
-  background:#e9e9e9;
+  background:#e8e8e8;
   font-weight:bold;
 }
 
-.income{
+.amount{
   font-weight:bold;
 }
 
-.expense{
+.edit-input{
+  width:75px;
+  padding:4px;
+  text-align:center;
+  border:1px solid #aaa;
+  border-radius:4px;
+  font-size:12px;
+}
+
+.save-small{
+  background:#087f23;
+  color:white;
+  border:0;
+  border-radius:4px;
+  padding:5px 7px;
+  cursor:pointer;
+  font-size:11px;
+}
+
+.type-income{
   font-weight:bold;
 }
 
-/* TOTAL */
+.type-expense{
+  font-weight:bold;
+}
+
+.type-loan{
+  font-weight:bold;
+}
 
 .total-row{
-  background:#f4f4f4;
+  background:#f1f1f1;
   font-weight:bold;
 }
 
 .total-row td{
-  border-top:2px solid #333;
-}
-
-/* FOOTER */
-
-.document-footer{
-  padding:20px;
-  border-top:1px solid #999;
-  margin-top:5px;
-}
-
-.signature{
-  display:flex;
-  justify-content:space-between;
-  text-align:center;
-  margin-top:45px;
-}
-
-.signature div{
-  width:40%;
-}
-
-.line{
-  border-top:1px solid #333;
-  margin-bottom:6px;
-}
-
-/* LOGO UPLOAD */
-
-.logo-upload{
-  margin:15px;
-  padding:15px;
-  background:#f7f7f7;
-  border:1px dashed #888;
-  text-align:center;
-}
-
-.logo-upload label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:8px;
-}
-
-.logo-upload input{
-  max-width:100%;
+  border-top:2px solid #222;
 }
 
 /* MESSAGE */
@@ -265,7 +234,6 @@ th{
 .message{
   padding:20px;
   text-align:center;
-  color:#555;
 }
 
 .error{
@@ -273,22 +241,43 @@ th{
   font-weight:bold;
 }
 
+/* FOOTER */
+
+.document-footer{
+  padding:14px;
+  border-top:1px solid #888;
+}
+
+.signature{
+  display:flex;
+  justify-content:space-between;
+  text-align:center;
+  margin-top:35px;
+}
+
+.signature div{
+  width:38%;
+}
+
+.line{
+  border-top:1px solid #222;
+  margin-bottom:5px;
+}
+
 /* BUTTONS */
 
 .buttons{
   text-align:center;
-  margin:18px 0;
+  margin:15px 0;
 }
 
 .btn{
-  display:inline-block;
   border:0;
-  padding:11px 20px;
+  padding:10px 18px;
   border-radius:6px;
-  margin:5px;
+  margin:4px;
   background:#b30000;
   color:white;
-  text-decoration:none;
   font-size:14px;
   cursor:pointer;
 }
@@ -297,27 +286,29 @@ th{
   background:#333;
 }
 
+.btn-green{
+  background:#087f23;
+}
+
 /* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
-  .member-profile{
-    flex-direction:column;
-    text-align:center;
+  body{
+    padding:7px;
   }
 
   .summary{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(3,1fr);
   }
 
-  .summary-box{
-    border-bottom:1px solid #888;
+  .member-profile{
+    align-items:flex-start;
   }
 
   .header h1{
-    font-size:20px;
+    font-size:19px;
   }
-
 }
 
 /* PRINT */
@@ -325,7 +316,7 @@ th{
 @media print{
 
   body{
-    background:white;
+    background:#fff;
     padding:0;
   }
 
@@ -334,14 +325,14 @@ th{
     box-shadow:none;
   }
 
-  .buttons,
-  .logo-upload,
-  .photo-btn{
+  .buttons{
     display:none;
   }
 
-  .table-wrap{
-    overflow:visible;
+  .edit-input,
+  .save-small{
+    border:0;
+    background:transparent;
     padding:0;
   }
 
@@ -351,18 +342,55 @@ th{
   }
 
   th,td{
-    font-size:11px;
-    padding:6px 4px;
+    font-size:8.5px;
+    padding:4px 3px;
   }
 
   .member-photo{
-    width:85px;
-    height:105px;
+    width:65px;
+    height:80px;
+  }
+
+  .header{
+    padding:8px;
+  }
+
+  .logo-box{
+    width:55px;
+    height:55px;
+  }
+
+  .header h1{
+    font-size:18px;
+  }
+
+  .header h2{
+    font-size:13px;
+  }
+
+  .summary-box{
+    padding:6px 2px;
+  }
+
+  .summary-box h3{
+    font-size:8px;
+  }
+
+  .summary-box p{
+    font-size:11px;
+  }
+
+  .document-footer{
+    padding:8px;
+  }
+
+  .signature{
+    margin-top:25px;
   }
 
   @page{
     size:A4 portrait;
-    margin:10mm;
+    margin:7mm;
   }
 }
 </style>
@@ -382,18 +410,17 @@ th{
 
     <img id="societyLogo"
          src=""
-         alt="समाज Logo"
-         style="display:none;">
+         style="display:none;"
+         alt="समाज Logo">
 
-    <span id="logoPlaceholder" class="logo-placeholder">
-      🏛️
-    </span>
+    <span id="logoPlaceholder"
+          class="logo-placeholder">🏛️</span>
 
   </div>
 
   <h1>रसाली भाई समाज परिवार चौराठा</h1>
 
-  <h2>पैसाको आधिकारिक हिसाब-किताब</h2>
+  <h2>सदस्य आर्थिक हिसाब–किताब</h2>
 
   <p>एकता • सहयोग • सेवा • भाइचारा</p>
 
@@ -410,12 +437,10 @@ th{
 
     <img id="memberPhoto"
          src=""
-         alt="सदस्य फोटो"
-         style="display:none;">
+         style="display:none;"
+         alt="सदस्य फोटो">
 
-    <span id="photoPlaceholder">
-      👤
-    </span>
+    <span id="photoPlaceholder">👤</span>
 
   </div>
 
@@ -440,10 +465,6 @@ th{
       <span id="memberPhone">-</span>
     </p>
 
-    <a href="Photo.html" class="photo-btn">
-      📸 आफ्नो फोटो राख्नुहोस् / बदल्नुहोस्
-    </a>
-
   </div>
 
 </div>
@@ -454,13 +475,23 @@ th{
 <div class="summary">
 
   <div class="summary-box">
-    <h3>💰 जम्मा रकम</h3>
+    <h3>💰 जम्मा</h3>
     <p id="totalIn">रु. 0</p>
   </div>
 
   <div class="summary-box">
-    <h3>💸 निकालेको रकम</h3>
+    <h3>💸 निकासा</h3>
     <p id="totalOut">रु. 0</p>
+  </div>
+
+  <div class="summary-box">
+    <h3>🏦 ऋण</h3>
+    <p id="totalLoan">रु. 0</p>
+  </div>
+
+  <div class="summary-box">
+    <h3>💵 बचत/बाँकी</h3>
+    <p id="balance">रु. 0</p>
   </div>
 
   <div class="summary-box">
@@ -469,35 +500,17 @@ th{
   </div>
 
   <div class="summary-box">
-    <h3>💵 बाँकी रकम</h3>
-    <p id="balance">रु. 0</p>
+    <h3>⚠️ जरिवाना</h3>
+    <p id="totalFine">रु. 0</p>
   </div>
 
 </div>
 
 
-<!-- LOGO UPLOAD -->
-
-<div class="logo-upload">
-
-  <label>🏛️ समाजको Logo राख्नुहोस्</label>
-
-  <input
-    type="file"
-    id="logoInput"
-    accept="image/*">
-
-  <p style="font-size:12px;margin-top:7px;color:#666;">
-    Logo छानेपछि यो हिसाबको माथि देखिनेछ।
-  </p>
-
-</div>
-
-
-<!-- HISTORY -->
+<!-- TABLE -->
 
 <h2 class="table-title">
-  📋 सदस्यको पैसा हिसाब विवरण
+  📋 कारोबार विवरण
 </h2>
 
 <div class="table-wrap">
@@ -510,10 +523,13 @@ th{
   <th>क्र.सं.</th>
   <th>मिति</th>
   <th>प्रकार</th>
-  <th>रकम</th>
+  <th>जम्मा</th>
+  <th>निकासा</th>
+  <th>ऋण</th>
   <th>ब्याज</th>
   <th>जरिवाना</th>
-  <th>विवरण</th>
+  <th>बाँकी</th>
+  <th class="no-print">Save</th>
 </tr>
 
 </thead>
@@ -521,7 +537,7 @@ th{
 <tbody id="entries">
 
 <tr>
-  <td colspan="7" class="message">
+  <td colspan="10" class="message">
     हिसाब खोजिँदैछ...
   </td>
 </tr>
@@ -533,10 +549,18 @@ th{
 <tr class="total-row">
 
   <td colspan="3">
-    जम्मा
+    कुल
   </td>
 
-  <td id="tableTotal">
+  <td id="tableIncome">
+    रु. 0
+  </td>
+
+  <td id="tableExpense">
+    रु. 0
+  </td>
+
+  <td id="tableLoan">
     रु. 0
   </td>
 
@@ -548,7 +572,11 @@ th{
     रु. 0
   </td>
 
-  <td>
+  <td id="tableBalance">
+    रु. 0
+  </td>
+
+  <td class="no-print">
     —
   </td>
 
@@ -561,7 +589,7 @@ th{
 </div>
 
 
-<!-- OFFICIAL FOOTER -->
+<!-- FOOTER -->
 
 <div class="document-footer">
 
@@ -569,7 +597,7 @@ th{
     <strong>रसाली भाई समाज परिवार चौराठा</strong>
   </p>
 
-  <p style="text-align:center;margin-top:5px;">
+  <p style="text-align:center;margin-top:4px;">
     हामी माबै र भामसैनीका सन्तान
   </p>
 
@@ -600,11 +628,18 @@ th{
 
 <div class="buttons">
 
-  <button class="btn" onclick="window.print()">
+  <button class="btn"
+          onclick="window.print()">
     🖨️ Print / PDF
   </button>
 
-  <a href="dashboard.html" class="btn btn-dark">
+  <button class="btn btn-green"
+          onclick="loadMoney()">
+    🔄 हिसाब Refresh
+  </button>
+
+  <a href="dashboard.html"
+     class="btn btn-dark">
     ← Dashboard
   </a>
 
@@ -623,20 +658,21 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
-const supabaseClient =
+const db =
 supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
 
-
 const entriesBox =
 document.getElementById("entries");
 
+let records = [];
 
-/* =========================
-   LOGO
-========================= */
+
+// ================================
+// LOGO
+// ================================
 
 const savedLogo =
 localStorage.getItem("rasali_society_logo");
@@ -654,46 +690,30 @@ if(savedLogo){
 }
 
 
-document.getElementById("logoInput")
-.addEventListener("change", function(){
+// ================================
+// NUMBER FORMAT
+// ================================
 
-  const file = this.files[0];
+function money(value){
 
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    const logo =
-      e.target.result;
-
-    localStorage.setItem(
-      "rasali_society_logo",
-      logo
+  return "रु. " +
+    Number(value || 0).toLocaleString(
+      "en-IN",
+      {
+        maximumFractionDigits:2
+      }
     );
-
-    document.getElementById("societyLogo").src =
-      logo;
-
-    document.getElementById("societyLogo").style.display =
-      "block";
-
-    document.getElementById("logoPlaceholder").style.display =
-      "none";
-
-  };
-
-  reader.readAsDataURL(file);
-
-});
+}
 
 
-/* =========================
-   MONEY
-========================= */
+// ================================
+// LOAD MONEY
+// ================================
 
 async function loadMoney(){
+
+  entriesBox.innerHTML =
+  '<tr><td colspan="10" class="message">⏳ हिसाब खोजिँदैछ...</td></tr>';
 
   try{
 
@@ -711,7 +731,7 @@ async function loadMoney(){
     if(!accessToken){
 
       entriesBox.innerHTML =
-      '<tr><td colspan="7" class="message error">पहिले Login गर्नुहोस्।</td></tr>';
+      '<tr><td colspan="10" class="message error">पहिले Login गर्नुहोस्।</td></tr>';
 
       return;
     }
@@ -720,7 +740,7 @@ async function loadMoney(){
     if(!memberId){
 
       entriesBox.innerHTML =
-      '<tr><td colspan="7" class="message error">सदस्य ID भेटिएन।</td></tr>';
+      '<tr><td colspan="10" class="message error">सदस्य ID भेटिएन।</td></tr>';
 
       return;
     }
@@ -730,48 +750,40 @@ async function loadMoney(){
       .textContent = memberId;
 
 
-    /* MEMBER */
+    // MEMBER
 
-    const memberResponse =
-      await fetch(
-        SUPABASE_URL +
-        "/rest/v1/members?id=eq." +
-        encodeURIComponent(memberId) +
-        "&select=id,name,position,phone,document_url",
-        {
-          headers:{
-            "apikey":SUPABASE_KEY,
-            "Authorization":
-              "Bearer " + accessToken
-          }
-        }
-      );
+    const memberResult =
+      await db
+      .from("members")
+      .select(
+        "id,name,position,phone,document_url"
+      )
+      .eq("id",memberId)
+      .maybeSingle();
 
 
-    const members =
-      await memberResponse.json();
+    if(memberResult.error){
 
-
-    if(!memberResponse.ok){
+      console.log(memberResult.error);
 
       entriesBox.innerHTML =
-      '<tr><td colspan="7" class="message error">सदस्य विवरण निकाल्न सकिएन।</td></tr>';
-
-      return;
-    }
-
-
-    if(!members.length){
-
-      entriesBox.innerHTML =
-      '<tr><td colspan="7" class="message error">सदस्य भेटिएन।</td></tr>';
+      '<tr><td colspan="10" class="message error">सदस्य विवरण निकाल्न सकिएन।</td></tr>';
 
       return;
     }
 
 
     const member =
-      members[0];
+      memberResult.data;
+
+
+    if(!member){
+
+      entriesBox.innerHTML =
+      '<tr><td colspan="10" class="message error">सदस्य भेटिएन।</td></tr>';
+
+      return;
+    }
 
 
     document.getElementById("memberName")
@@ -789,8 +801,6 @@ async function loadMoney(){
       member.phone || "-";
 
 
-    /* MEMBER PHOTO */
-
     if(member.document_url){
 
       document.getElementById("memberPhoto").src =
@@ -801,84 +811,87 @@ async function loadMoney(){
 
       document.getElementById("photoPlaceholder").style.display =
         "none";
-
     }
 
 
-    /* MONEY RECORDS */
+    // MONEY RECORDS
 
-    let response =
-      await fetch(
-        SUPABASE_URL +
-        "/rest/v1/money_records?member_id=eq." +
-        encodeURIComponent(memberId) +
-        "&select=id,record_type,person,amount,record_date,description,interest,jarimana&order=record_date.desc",
-        {
-          headers:{
-            "apikey":SUPABASE_KEY,
-            "Authorization":
-              "Bearer " + accessToken
-          }
-        }
+    let result =
+      await db
+      .from("money_records")
+      .select("*")
+      .eq("member_id",memberId)
+      .order(
+        "record_date",
+        {ascending:true}
       );
 
 
-    /*
-      यदि jarimana column छैन भने
-      पुरानो structure बाट फेरि निकाल्ने
-    */
+    if(result.error){
 
-    if(!response.ok){
-
-      response =
-      await fetch(
-        SUPABASE_URL +
-        "/rest/v1/money_records?member_id=eq." +
-        encodeURIComponent(memberId) +
-        "&select=id,record_type,person,amount,record_date,description,interest&order=record_date.desc",
-        {
-          headers:{
-            "apikey":SUPABASE_KEY,
-            "Authorization":
-              "Bearer " + accessToken
-          }
-        }
-      );
-
-    }
-
-
-    const records =
-      await response.json();
-
-
-    if(!response.ok){
+      console.log(result.error);
 
       entriesBox.innerHTML =
-      '<tr><td colspan="7" class="message error">हिसाब निकाल्न समस्या भयो।</td></tr>';
+      '<tr><td colspan="10" class="message error">' +
+      result.error.message +
+      '</td></tr>';
 
       return;
     }
 
 
-    let totalIn = 0;
-    let totalOut = 0;
-    let totalInterest = 0;
-    let totalFine = 0;
+    records =
+      result.data || [];
 
 
-    entriesBox.innerHTML = "";
+    drawTable();
+
+  }
+
+  catch(error){
+
+    console.log(error);
+
+    entriesBox.innerHTML =
+    '<tr><td colspan="10" class="message error">Internet वा Supabase connection मा समस्या भयो।</td></tr>';
+
+  }
+
+}
 
 
-    if(records.length === 0){
+// ================================
+// DRAW TABLE
+// ================================
 
-      entriesBox.innerHTML =
-      '<tr><td colspan="7" class="message">यस सदस्यको अहिलेसम्म कुनै हिसाब छैन।</td></tr>';
+function drawTable(){
 
-    }
+  entriesBox.innerHTML = "";
+
+  let totalIn = 0;
+  let totalOut = 0;
+  let totalLoan = 0;
+  let totalInterest = 0;
+  let totalFine = 0;
+
+  let runningBalance = 0;
 
 
-    records.forEach(function(item,index){
+  if(records.length === 0){
+
+    entriesBox.innerHTML =
+    '<tr><td colspan="10" class="message">📭 यस सदस्यको अहिलेसम्म कुनै हिसाब छैन।</td></tr>';
+
+    updateSummary(
+      0,0,0,0,0,0
+    );
+
+    return;
+  }
+
+
+  records.forEach(
+    function(item,index){
 
       const amount =
         Number(item.amount) || 0;
@@ -894,16 +907,47 @@ async function loadMoney(){
         ) || 0;
 
 
-      if(item.record_type === "income"){
+      const type =
+        String(
+          item.record_type || ""
+        ).toLowerCase();
 
+
+      let income = 0;
+      let expense = 0;
+      let loan = 0;
+
+
+      if(
+        type === "income" ||
+        type === "jamma" ||
+        type === "deposit"
+      ){
+
+        income = amount;
         totalIn += amount;
+        runningBalance += amount;
 
       }
 
+      else if(
+        type === "loan" ||
+        type === "rin"
+      ){
 
-      if(item.record_type === "expense"){
+        loan = amount;
+        totalLoan += amount;
 
+        runningBalance -= amount;
+
+      }
+
+      else{
+
+        expense = amount;
         totalOut += amount;
+
+        runningBalance -= amount;
 
       }
 
@@ -916,16 +960,15 @@ async function loadMoney(){
         document.createElement("tr");
 
 
-      const type =
-        item.record_type === "income"
-        ? "जम्मा"
-        : "निकालेको";
+      let typeText =
+        "निकासा";
 
 
-      const amountClass =
-        item.record_type === "income"
-        ? "income"
-        : "expense";
+      if(income > 0)
+        typeText = "जम्मा";
+
+      if(loan > 0)
+        typeText = "ऋण";
 
 
       row.innerHTML = `
@@ -937,23 +980,55 @@ async function loadMoney(){
         </td>
 
         <td>
-          ${type}
+          ${typeText}
         </td>
 
-        <td class="${amountClass}">
-          रु. ${amount.toLocaleString()}
+        <td class="amount">
+          ${income ? money(income) : "—"}
+        </td>
+
+        <td class="amount">
+          ${expense ? money(expense) : "—"}
+        </td>
+
+        <td class="amount">
+          ${loan ? money(loan) : "—"}
         </td>
 
         <td>
-          रु. ${interest.toLocaleString()}
+          <input
+            class="edit-input"
+            id="interest-${item.id}"
+            type="number"
+            step="0.01"
+            value="${interest}"
+          >
         </td>
 
         <td>
-          रु. ${fine.toLocaleString()}
+          <input
+            class="edit-input"
+            id="fine-${item.id}"
+            type="number"
+            step="0.01"
+            value="${fine}"
+          >
         </td>
 
-        <td>
-          ${item.description || "-"}
+        <td class="amount">
+          ${money(
+            runningBalance
+          )}
+        </td>
+
+        <td class="no-print">
+
+          <button
+            class="save-small"
+            onclick="saveRow(${item.id})">
+            💾 Save
+          </button>
+
         </td>
 
       `;
@@ -961,66 +1036,177 @@ async function loadMoney(){
 
       entriesBox.appendChild(row);
 
-    });
+    }
+  );
 
 
-    const balance =
-      totalIn - totalOut;
+  const balance =
+    totalIn -
+    totalOut -
+    totalLoan;
 
 
-    document.getElementById("totalIn")
-      .textContent =
-      "रु. " +
-      totalIn.toLocaleString();
+  updateSummary(
+    totalIn,
+    totalOut,
+    totalLoan,
+    balance,
+    totalInterest,
+    totalFine
+  );
+
+}
 
 
-    document.getElementById("totalOut")
-      .textContent =
-      "रु. " +
-      totalOut.toLocaleString();
+// ================================
+// UPDATE SUMMARY
+// ================================
+
+function updateSummary(
+  income,
+  expense,
+  loan,
+  balance,
+  interest,
+  fine
+){
+
+  document.getElementById("totalIn")
+    .textContent =
+    money(income);
+
+  document.getElementById("totalOut")
+    .textContent =
+    money(expense);
+
+  document.getElementById("totalLoan")
+    .textContent =
+    money(loan);
+
+  document.getElementById("balance")
+    .textContent =
+    money(balance);
+
+  document.getElementById("totalInterest")
+    .textContent =
+    money(interest);
+
+  document.getElementById("totalFine")
+    .textContent =
+    money(fine);
 
 
-    document.getElementById("totalInterest")
-      .textContent =
-      "रु. " +
-      totalInterest.toLocaleString();
+  document.getElementById("tableIncome")
+    .textContent =
+    money(income);
+
+  document.getElementById("tableExpense")
+    .textContent =
+    money(expense);
+
+  document.getElementById("tableLoan")
+    .textContent =
+    money(loan);
+
+  document.getElementById("tableInterest")
+    .textContent =
+    money(interest);
+
+  document.getElementById("tableFine")
+    .textContent =
+    money(fine);
+
+  document.getElementById("tableBalance")
+    .textContent =
+    money(balance);
+
+}
 
 
-    document.getElementById("balance")
-      .textContent =
-      "रु. " +
-      balance.toLocaleString();
+// ================================
+// SAVE INTEREST + FINE
+// ================================
+
+async function saveRow(id){
+
+  const interestInput =
+    document.getElementById(
+      "interest-" + id
+    );
+
+  const fineInput =
+    document.getElementById(
+      "fine-" + id
+    );
 
 
-    document.getElementById("tableTotal")
-      .textContent =
-      "रु. " +
-      (totalIn + totalOut).toLocaleString();
+  const interest =
+    Number(
+      interestInput.value
+    ) || 0;
+
+  const fine =
+    Number(
+      fineInput.value
+    ) || 0;
 
 
-    document.getElementById("tableInterest")
-      .textContent =
-      "रु. " +
-      totalInterest.toLocaleString();
+  /*
+    interest column पुरानो
+    database मा प्रयोग भइरहेको छ।
+  */
+
+  const updateData = {
+    interest:interest,
+    jarimana:fine
+  };
 
 
-    document.getElementById("tableFine")
-      .textContent =
-      "रु. " +
-      totalFine.toLocaleString();
+  try{
+
+    const result =
+      await db
+      .from("money_records")
+      .update(updateData)
+      .eq("id",id);
 
 
-  }catch(error){
+    if(result.error){
 
-    console.log(error);
+      alert(
+        "❌ Save हुन सकेन:\n\n" +
+        result.error.message +
+        "\n\nSupabase money_records मा 'jarimana' column नभएको हुन सक्छ।"
+      );
 
-    entriesBox.innerHTML =
-    '<tr><td colspan="7" class="message error">Internet वा Supabase connection मा समस्या भयो।</td></tr>';
+      return;
+    }
+
+
+    alert(
+      "✅ ब्याज र जरिवाना Save भयो।"
+    );
+
+
+    await loadMoney();
+
+  }
+
+  catch(error){
+
+    alert(
+      "❌ समस्या आयो:\n" +
+      error.message
+    );
 
   }
 
 }
 
+
+// ================================
+// START
+// ================================
 
 loadMoney();
 
