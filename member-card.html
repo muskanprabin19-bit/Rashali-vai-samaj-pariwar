@@ -7,9 +7,7 @@
 <title>रसाली भाई समाज परिवार चौराठा - सदस्य परिचय पत्र</title>
 
 <style>
-*{
- box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
  margin:0;
@@ -21,7 +19,7 @@ body{
 .page{
  max-width:1000px;
  margin:auto;
- padding:24px 15px 40px;
+ padding:25px 15px 40px;
 }
 
 .title{
@@ -37,11 +35,11 @@ body{
 
 .title p{
  margin:7px 0 0;
- color:#8d6b28;
+ color:#96732b;
  font-weight:bold;
 }
 
-/* ================= CARD AREA ================= */
+/* CARD */
 
 .cards{
  display:flex;
@@ -51,15 +49,13 @@ body{
  flex-wrap:wrap;
 }
 
-/* ================= PVC CARD ================= */
-
 .idcard{
  width:85.6mm;
  height:54mm;
  min-width:85.6mm;
  min-height:54mm;
  background:#fffaf2;
- border:1px solid #9c782e;
+ border:1px solid #a47d2c;
  border-radius:4mm;
  position:relative;
  overflow:hidden;
@@ -72,7 +68,7 @@ body{
  width:42mm;
  height:42mm;
  border-radius:50%;
- background:rgba(118,21,40,.055);
+ background:rgba(118,21,40,.05);
  right:-18mm;
  top:-18mm;
 }
@@ -83,23 +79,22 @@ body{
  width:32mm;
  height:32mm;
  border-radius:50%;
- background:rgba(156,120,46,.06);
+ background:rgba(164,125,44,.06);
  left:-15mm;
  bottom:-17mm;
 }
 
-/* ================= WATERMARK ================= */
+/* WATERMARK */
 
 .watermark{
  position:absolute;
  left:50%;
- top:58%;
+ top:55%;
  transform:translate(-50%,-50%);
  width:42mm;
  height:42mm;
- opacity:.055;
+ opacity:.045;
  z-index:1;
- pointer-events:none;
 }
 
 .watermark img{
@@ -108,29 +103,29 @@ body{
  object-fit:contain;
 }
 
-/* ================= FRONT ================= */
+/* FRONT */
 
 .front{
  position:relative;
  z-index:3;
  height:100%;
- padding:3.5mm 4mm 3mm;
+ padding:2.8mm 4mm 3mm;
  text-align:center;
 }
 
-/* TOP LOGO */
+/* LOGO */
 
 .topLogo{
- width:13mm;
- height:13mm;
- margin:0 auto 1mm;
- background:white;
+ width:12mm;
+ height:12mm;
+ margin:0 auto .8mm;
  border:1px solid #c39a3d;
  border-radius:50%;
+ background:white;
+ overflow:hidden;
  display:flex;
  align-items:center;
  justify-content:center;
- overflow:hidden;
 }
 
 .topLogo img{
@@ -139,48 +134,42 @@ body{
  object-fit:contain;
 }
 
-/* SOCIETY NAME */
-
 .societyName{
- font-size:10px;
+ color:#761528;
+ font-size:9px;
  font-weight:900;
  letter-spacing:.35px;
- color:#761528;
- text-transform:uppercase;
  white-space:nowrap;
 }
 
 .estd{
- margin-top:1px;
- font-size:7px;
+ color:#96732b;
+ font-size:6.5px;
  font-weight:bold;
- color:#9a7628;
- letter-spacing:1.2px;
+ letter-spacing:1px;
+ margin-top:.5mm;
 }
 
-/* DIVIDER */
-
 .goldLine{
- width:62%;
+ width:70%;
  height:1px;
- background:#c29a43;
- margin:2mm auto 2.5mm;
+ background:#c39a3d;
+ margin:1.5mm auto 2mm;
 }
 
 /* PHOTO */
 
 .photoBox{
- width:23mm;
- height:25mm;
- margin:0 auto 2mm;
- background:#f5f1eb;
- border:1.2mm solid #761528;
- border-radius:2.5mm;
+ width:20mm;
+ height:21mm;
+ margin:0 auto 1.5mm;
+ border:1mm solid #761528;
+ border-radius:2mm;
+ background:#f4f0ea;
  display:flex;
  align-items:center;
  justify-content:center;
  overflow:hidden;
- position:relative;
 }
 
 .photoBox img{
@@ -191,20 +180,20 @@ body{
 }
 
 .photoText{
- font-size:7px;
- color:#81777a;
- line-height:1.4;
+ font-size:6.5px;
+ color:#777;
+ line-height:1.35;
 }
 
-/* MEMBER BADGE */
+/* BADGE */
 
 .memberBadge{
  display:inline-block;
  background:#761528;
  color:white;
- padding:1.2mm 3.5mm;
+ padding:1mm 3mm;
  border-radius:5mm;
- font-size:7px;
+ font-size:6.5px;
  font-weight:bold;
  margin-bottom:1.5mm;
 }
@@ -212,97 +201,98 @@ body{
 /* DETAILS */
 
 .details{
- width:72%;
+ width:88%;
  margin:auto;
  text-align:left;
 }
 
 .row{
  display:flex;
- margin:1mm 0;
- font-size:7.2px;
- line-height:1.15;
- border-bottom:1px solid rgba(118,21,40,.10);
+ align-items:center;
+ min-height:3.4mm;
+ border-bottom:1px solid rgba(118,21,40,.12);
+ margin:.5mm 0;
  padding-bottom:.5mm;
+ font-size:6.8px;
 }
 
 .label{
- width:18mm;
- color:#75696a;
- font-weight:bold;
+ width:17mm;
  flex-shrink:0;
+ color:#766a6c;
+ font-weight:bold;
 }
 
 .value{
  flex:1;
- color:#251b1e;
+ color:#21191b;
  font-weight:bold;
  overflow:hidden;
  white-space:nowrap;
  text-overflow:ellipsis;
 }
 
-/* FRONT SIGNATURE */
+/* SIGNATURE FRONT */
 
 .frontSignature{
  position:absolute;
  left:4mm;
- bottom:3mm;
- width:25mm;
+ bottom:2.5mm;
+ width:23mm;
  text-align:center;
  z-index:5;
 }
 
 .signatureSpace{
- height:4mm;
- font-size:6px;
+ height:3mm;
+ font-size:5px;
  color:#9a8e8e;
 }
 
 .signatureLine{
- border-top:1px solid #675b5d;
- margin-bottom:1mm;
+ border-top:1px solid #655b5d;
+ margin-bottom:.7mm;
 }
 
-.frontSignature small{
- font-size:5.5px;
+.frontSignature small,
+.backSignature small{
+ display:block;
+ font-size:5px;
  color:#716466;
 }
 
-.frontSignature b{
+.frontSignature b,
+.backSignature b{
  display:block;
- font-size:6.5px;
  color:#761528;
+ font-size:6px;
 }
-
-/* TAGLINE */
 
 .motto{
  position:absolute;
  right:4mm;
- bottom:4mm;
- color:#9a7628;
- font-size:6.5px;
+ bottom:3mm;
+ color:#96732b;
+ font-size:5.8px;
  font-weight:bold;
- z-index:4;
 }
 
-/* ================= BACK ================= */
+/* BACK */
 
 .back{
  position:relative;
  z-index:3;
  height:100%;
- padding:5mm 6mm 3mm;
+ padding:3.5mm 6mm;
  text-align:center;
 }
 
 .backLogo{
- width:15mm;
- height:15mm;
- margin:0 auto 1.5mm;
- border-radius:50%;
+ width:12mm;
+ height:12mm;
+ margin:0 auto 1mm;
  border:1px solid #c39a3d;
+ border-radius:50%;
  background:white;
  overflow:hidden;
 }
@@ -315,99 +305,85 @@ body{
 
 .backTitle{
  color:#761528;
- font-size:10px;
+ font-size:9px;
  font-weight:900;
- letter-spacing:.4px;
+ letter-spacing:.3px;
 }
 
 .backEstd{
- color:#9a7628;
- font-size:6.5px;
+ color:#96732b;
+ font-size:6px;
  font-weight:bold;
- letter-spacing:1px;
- margin-top:1px;
+ margin-top:.5mm;
 }
 
 .backLine{
- width:65%;
+ width:70%;
  height:1px;
- background:#c29a43;
- margin:2mm auto 2.5mm;
+ background:#c39a3d;
+ margin:1.5mm auto 2mm;
 }
 
 .back h4{
- margin:2mm 0 1mm;
  color:#761528;
- font-size:7.5px;
+ font-size:6.8px;
+ margin:1.5mm 0 .7mm;
 }
 
 .back p{
- margin:0 auto;
- max-width:67mm;
- font-size:6.5px;
- line-height:1.35;
+ max-width:68mm;
+ margin:auto;
+ font-size:5.8px;
+ line-height:1.3;
  color:#51484a;
 }
 
 .identityBox{
- margin:2.5mm auto 0;
- width:82%;
- border:1px solid rgba(118,21,40,.22);
+ width:84%;
+ margin:1.8mm auto 0;
+ padding:1.2mm;
+ border:1px solid rgba(118,21,40,.2);
  border-radius:2mm;
- padding:1.5mm;
- background:rgba(255,255,255,.5);
+ background:rgba(255,255,255,.55);
 }
 
 .identityBox b{
  color:#761528;
- font-size:7px;
+ font-size:6.5px;
+}
+
+.identityBox p{
+ margin-top:.5mm;
 }
 
 .backMotto{
- margin-top:2mm;
- color:#9a7628;
- font-size:7px;
+ margin-top:1.5mm;
+ color:#96732b;
+ font-size:6px;
  font-weight:bold;
 }
 
-/* BACK SIGNATURE */
-
 .backSignature{
  position:absolute;
- right:6mm;
+ right:5mm;
  bottom:3mm;
- width:28mm;
+ width:25mm;
  text-align:center;
 }
 
-.backSignature .signatureSpace{
- height:4mm;
-}
-
-.backSignature small{
- font-size:5.5px;
- color:#716466;
-}
-
-.backSignature b{
- display:block;
- font-size:6.5px;
- color:#761528;
-}
-
-/* COPYRIGHT */
+/* FOOTER */
 
 .footer{
  position:absolute;
+ bottom:1.2mm;
  left:0;
- bottom:1.5mm;
  width:100%;
  text-align:center;
- font-size:5px;
+ font-size:4.5px;
  color:#958b8d;
 }
 
-/* ================= EDITOR ================= */
+/* EDITOR */
 
 .editor{
  max-width:700px;
@@ -441,11 +417,6 @@ body{
  border:1px solid #d0c9c5;
  border-radius:8px;
  font-size:14px;
- outline:none;
-}
-
-.field input:focus{
- border-color:#9a7628;
 }
 
 .buttons{
@@ -462,25 +433,10 @@ button{
  font-weight:bold;
 }
 
-.editBtn{
- background:#761528;
- color:white;
-}
-
-.saveBtn{
- background:#198754;
- color:white;
-}
-
-.printBtn{
- background:#333;
- color:white;
-}
-
-.homeBtn{
- background:#666;
- color:white;
-}
+.editBtn{background:#761528;color:white}
+.saveBtn{background:#198754;color:white}
+.printBtn{background:#333;color:white}
+.homeBtn{background:#666;color:white}
 
 .fileBtn{
  background:#1769aa;
@@ -500,7 +456,7 @@ input[type=file]{
  display:none;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -516,17 +472,13 @@ input[type=file]{
   gap:20px;
  }
 
- .idcard{
-  transform:none;
- }
-
  .editor{
   margin:25px 5px 0;
   padding:18px 14px;
  }
 }
 
-/* ================= PRINT ================= */
+/* PRINT */
 
 @media print{
 
@@ -535,7 +487,7 @@ input[type=file]{
   margin:12mm;
  }
 
- html,body{
+ body{
   background:white;
  }
 
@@ -546,7 +498,6 @@ input[type=file]{
 
  .page{
   padding:0;
-  max-width:none;
  }
 
  .cards{
@@ -559,11 +510,8 @@ input[type=file]{
  .idcard{
   width:85.6mm;
   height:54mm;
-  min-width:85.6mm;
-  min-height:54mm;
   box-shadow:none;
   page-break-inside:avoid;
-  break-inside:avoid;
  }
 }
 </style>
@@ -574,304 +522,287 @@ input[type=file]{
 <div class="page">
 
 <div class="title">
- <h1>🤝 रसाली भाई समाज परिवार चौराठा</h1>
- <p>एकता • सहयोग • सेवा</p>
+<h1>🤝 रसाली भाई समाज परिवार चौराठा</h1>
+<p>एकता • सहयोग • सेवा</p>
 </div>
 
 <div class="cards">
 
-<!-- =====================================================
-     FRONT SIDE
-===================================================== -->
+<!-- ================= FRONT ================= -->
 
 <div class="idcard">
 
- <div class="watermark">
-  <img id="watermarkFront" alt="">
- </div>
+<div class="watermark">
+<img id="watermarkFront">
+</div>
 
- <div class="front">
+<div class="front">
 
-  <!-- ORIGINAL LOGO TOP CENTER -->
-  <div class="topLogo">
-   <img id="logoFront" alt="Original Logo">
-  </div>
+<div class="topLogo">
+<img id="logoFront" alt="Original Logo">
+</div>
 
-  <!-- SOCIETY NAME -->
-  <div class="societyName">
-   RASHALI BHAI SAMAJ PARIWAR
-  </div>
+<div class="societyName">
+RASHALI BHAI SAMAJ PARIWAR
+</div>
 
-  <div class="estd">
-   ESTD 2082
-  </div>
+<div class="estd">
+ESTD 2082
+</div>
 
-  <div class="goldLine"></div>
+<div class="goldLine"></div>
 
-  <!-- MEMBER PHOTO CENTER -->
-  <div class="photoBox">
+<div class="photoBox">
 
-   <img id="photoFront" alt="सदस्यको फोटो">
+<img id="photoFront" alt="सदस्यको फोटो">
 
-   <div class="photoText" id="photoPlaceholder">
-    📷<br>
-    सदस्यको फोटो
-   </div>
+<div class="photoText" id="photoPlaceholder">
+📷<br>
+सदस्यको फोटो
+</div>
 
-  </div>
+</div>
 
-  <div class="memberBadge">
-   🪪 सदस्य परिचय पत्र
-  </div>
+<div class="memberBadge">
+🪪 सदस्य परिचय पत्र
+</div>
 
-  <!-- MEMBER DETAILS -->
-  <div class="details">
+<div class="details">
 
-   <div class="row">
-    <div class="label">नाम:</div>
-    <div class="value" id="showName">प्रबिन रसाली</div>
-   </div>
+<div class="row">
+<div class="label">नाम:</div>
+<div class="value" id="showName">PADAM RASHALI</div>
+</div>
 
-   <div class="row">
-    <div class="label">सदस्य नं.:</div>
-    <div class="value" id="showId">RS-001</div>
-   </div>
+<div class="row">
+<div class="label">सदस्य नं.:</div>
+<div class="value" id="showId">RS-001</div>
+</div>
 
-   <div class="row">
-    <div class="label">पद:</div>
-    <div class="value" id="showPosition">सदस्य</div>
-   </div>
+<div class="row">
+<div class="label">पद:</div>
+<div class="value" id="showPosition">सदस्य</div>
+</div>
 
-   <div class="row">
-    <div class="label">ठेगाना:</div>
-    <div class="value" id="showAddress">
-     चौराठा, दैलेख, नेपाल
-    </div>
-   </div>
+<div class="row">
+<div class="label">Email:</div>
+<div class="value" id="showEmail">—</div>
+</div>
 
-   <div class="row">
-    <div class="label">सम्पर्क:</div>
-    <div class="value" id="showPhone">
-     __________________
-    </div>
-   </div>
+<div class="row">
+<div class="label">सम्पर्क:</div>
+<div class="value" id="showPhone">0599706249</div>
+</div>
 
-   <div class="row">
-    <div class="label">Email:</div>
-    <div class="value" id="showEmail">
-     __________________
-    </div>
-   </div>
+<div class="row">
+<div class="label">ठेगाना:</div>
+<div class="value" id="showAddress">
+चौराठा, दैलेख, नेपाल
+</div>
+</div>
 
-  </div>
+</div>
 
-  <!-- PADAM SIGNATURE FRONT -->
-  <div class="frontSignature">
+<!-- PADAM SIGNATURE -->
 
-   <div class="signatureSpace">
-    ✍️
-   </div>
+<div class="frontSignature">
 
-   <div class="signatureLine"></div>
+<div class="signatureSpace">✍️</div>
 
-   <small>संस्थापक</small>
-   <b>पदम रसाली</b>
+<div class="signatureLine"></div>
 
-  </div>
+<small>संस्थापक</small>
+<b>पदम रसाली</b>
 
-  <div class="motto">
-   एकता • सहयोग • सेवा
-  </div>
+</div>
 
- </div>
+<div class="motto">
+एकता • सहयोग • सेवा
+</div>
+
+</div>
 
 </div>
 
 
-<!-- =====================================================
-     BACK SIDE
-===================================================== -->
+<!-- ================= BACK ================= -->
 
 <div class="idcard">
 
- <div class="watermark">
-  <img id="watermarkBack" alt="">
- </div>
+<div class="watermark">
+<img id="watermarkBack">
+</div>
 
- <div class="back">
+<div class="back">
 
-  <!-- LOGO -->
-  <div class="backLogo">
-   <img id="logoBack" alt="Original Logo">
-  </div>
+<div class="backLogo">
+<img id="logoBack" alt="Original Logo">
+</div>
 
-  <div class="backTitle">
-   RASHALI BHAI SAMAJ PARIWAR
-  </div>
+<div class="backTitle">
+RASHALI BHAI SAMAJ PARIWAR
+</div>
 
-  <div class="backEstd">
-   चौराठा, दैलेख, नेपाल • ESTD 2082
-  </div>
+<div class="backEstd">
+चौराठा, दैलेख, नेपाल • ESTD 2082
+</div>
 
-  <div class="backLine"></div>
+<div class="backLine"></div>
 
-  <h4>समाजको परिचय</h4>
+<h4>समाजको परिचय</h4>
 
-  <p>
-   रसाली भाई समाज परिवार चौराठा
-   एकता, सहयोग र सेवाको उद्देश्यले
-   संगठित सामाजिक परिवार हो।
-  </p>
+<p>
+रसाली भाई समाज परिवार चौराठा
+एकता, सहयोग र सेवाको उद्देश्यले
+संगठित सामाजिक परिवार हो।
+</p>
 
-  <div class="identityBox">
+<div class="identityBox">
 
-   <b>सदस्य परिचय पत्र</b>
+<b>सदस्य परिचय पत्र</b>
 
-   <p>
-    यो कार्ड समाजको सदस्यको
-    आधिकारिक पहिचानका लागि प्रयोग गरिन्छ।
-   </p>
+<p>
+यो कार्ड समाजको सदस्यको
+आधिकारिक पहिचानका लागि प्रयोग गरिन्छ।
+</p>
 
-  </div>
+</div>
 
-  <h4>कार्ड सम्बन्धी सूचना</h4>
+<h4>कार्ड सम्बन्धी सूचना</h4>
 
-  <p>
-   कार्ड हराएमा वा विवरण परिवर्तन भएमा
-   समाजका सम्बन्धित पदाधिकारीलाई जानकारी
-   गराउनु पर्नेछ।
-  </p>
+<p>
+कार्ड हराएमा वा विवरण परिवर्तन भएमा
+सम्बन्धित पदाधिकारीलाई जानकारी
+गराउनु पर्नेछ।
+</p>
 
-  <div class="backMotto">
-   एकता • सहयोग • सेवा
-  </div>
+<div class="backMotto">
+एकता • सहयोग • सेवा
+</div>
 
-  <!-- DEEPAK SIGNATURE BACK -->
-  <div class="backSignature">
+<!-- DEEPAK SIGNATURE -->
 
-   <div class="signatureSpace">
-    ✍️
-   </div>
+<div class="backSignature">
 
-   <div class="signatureLine"></div>
+<div class="signatureSpace">✍️</div>
 
-   <small>अध्यक्ष</small>
-   <b>दीपक रसाली</b>
+<div class="signatureLine"></div>
 
-  </div>
-
- </div>
-
- <div class="footer">
-  रसाली भाई समाज परिवार © २०८२
- </div>
+<small>अध्यक्ष</small>
+<b>दीपक रसाली</b>
 
 </div>
 
 </div>
 
+<div class="footer">
+रसाली भाई समाज परिवार © २०८२
+</div>
 
-<!-- =====================================================
-     EDITOR
-===================================================== -->
+</div>
+
+</div>
+
+
+<!-- ================= EDITOR ================= -->
 
 <div class="editor">
 
- <h2>✏️ सदस्य विवरण Edit / Save</h2>
+<h2>✏️ सदस्य विवरण Edit / Save</h2>
 
- <div class="buttons">
+<div class="buttons">
 
-  <button class="editBtn" onclick="openEditor()">
-   ✏️ Edit
-  </button>
+<button class="editBtn" onclick="openEditor()">
+✏️ Edit
+</button>
 
-  <button class="printBtn" onclick="window.print()">
-   🖨️ Print / PDF
-  </button>
+<button class="printBtn" onclick="window.print()">
+🖨️ Print / PDF
+</button>
 
-  <button class="homeBtn" onclick="location.href='index.html'">
-   🏠 Home
-  </button>
+<button class="homeBtn" onclick="location.href='index.html'">
+🏠 Home
+</button>
 
- </div>
+</div>
 
- <div id="editorBox">
+<div id="editorBox">
 
-  <div class="field">
-   <label>सदस्यको नाम</label>
-   <input id="nameInput" value="प्रबिन रसाली">
-  </div>
+<div class="field">
+<label>सदस्यको नाम</label>
+<input id="nameInput" value="PADAM RASHALI">
+</div>
 
-  <div class="field">
-   <label>सदस्य नम्बर</label>
-   <input id="idInput" value="RS-001">
-  </div>
+<div class="field">
+<label>सदस्य नम्बर</label>
+<input id="idInput" value="RS-001">
+</div>
 
-  <div class="field">
-   <label>पद</label>
-   <input id="positionInput" value="सदस्य">
-  </div>
+<div class="field">
+<label>पद</label>
+<input id="positionInput" value="सदस्य">
+</div>
 
-  <div class="field">
-   <label>ठेगाना</label>
-   <input id="addressInput" value="चौराठा, दैलेख, नेपाल">
-  </div>
+<div class="field">
+<label>ठेगाना</label>
+<input id="addressInput" value="चौराठा, दैलेख, नेपाल">
+</div>
 
-  <div class="field">
-   <label>सम्पर्क नम्बर</label>
-   <input id="phoneInput" value="">
-  </div>
+<div class="field">
+<label>सम्पर्क नम्बर</label>
+<input id="phoneInput" value="0599706249">
+</div>
 
-  <div class="field">
-   <label>Email</label>
-   <input id="emailInput" type="email" value="">
-  </div>
+<div class="field">
+<label>Email</label>
+<input id="emailInput" type="email" value="">
+</div>
 
-  <div class="field">
+<div class="field">
 
-   <label>📷 सदस्यको Original Photo</label>
+<label>📷 सदस्यको Original Photo</label>
 
-   <label class="fileBtn">
+<label class="fileBtn">
 
-    फोटो छान्नुहोस्
+फोटो छान्नुहोस्
 
-    <input
-     type="file"
-     accept="image/*"
-     onchange="loadPhoto(event)"
-    >
+<input
+type="file"
+accept="image/*"
+onchange="loadPhoto(event)"
+>
 
-   </label>
+</label>
 
-  </div>
+</div>
 
-  <div class="field">
+<div class="field">
 
-   <label>🤝 समाजको Original Logo</label>
+<label>🤝 समाजको Original Logo</label>
 
-   <label class="fileBtn">
+<label class="fileBtn">
 
-    Logo छान्नुहोस्
+Logo छान्नुहोस्
 
-    <input
-     type="file"
-     accept="image/*"
-     onchange="loadLogo(event)"
-    >
+<input
+type="file"
+accept="image/*"
+onchange="loadLogo(event)"
+>
 
-   </label>
+</label>
 
-  </div>
+</div>
 
-  <div class="buttons">
+<div class="buttons">
 
-   <button class="saveBtn" onclick="saveCard()">
-    💾 Save गर्नुहोस्
-   </button>
+<button class="saveBtn" onclick="saveCard()">
+💾 Save गर्नुहोस्
+</button>
 
-  </div>
+</div>
 
- </div>
+</div>
 
 </div>
 
@@ -880,161 +811,155 @@ input[type=file]{
 
 <script>
 
-/* ================= OPEN EDITOR ================= */
-
 function openEditor(){
 
- const box=document.getElementById("editorBox");
+const box=document.getElementById("editorBox");
 
- box.style.display =
- box.style.display==="block"
- ? "none"
- : "block";
+box.style.display=
+box.style.display==="block"
+?"none"
+:"block";
 
 }
 
 
-/* ================= SAVE ================= */
+/* SAVE */
 
 function saveCard(){
 
- const name=document.getElementById("nameInput").value.trim();
- const id=document.getElementById("idInput").value.trim();
- const position=document.getElementById("positionInput").value.trim();
- const address=document.getElementById("addressInput").value.trim();
- const phone=document.getElementById("phoneInput").value.trim();
- const email=document.getElementById("emailInput").value.trim();
+const name=document.getElementById("nameInput").value.trim();
+const id=document.getElementById("idInput").value.trim();
+const position=document.getElementById("positionInput").value.trim();
+const address=document.getElementById("addressInput").value.trim();
+const phone=document.getElementById("phoneInput").value.trim();
+const email=document.getElementById("emailInput").value.trim();
 
- document.getElementById("showName").textContent=name || "—";
- document.getElementById("showId").textContent=id || "—";
- document.getElementById("showPosition").textContent=position || "—";
- document.getElementById("showAddress").textContent=address || "—";
- document.getElementById("showPhone").textContent=phone || "—";
- document.getElementById("showEmail").textContent=email || "—";
+document.getElementById("showName").textContent=name||"—";
+document.getElementById("showId").textContent=id||"—";
+document.getElementById("showPosition").textContent=position||"—";
+document.getElementById("showAddress").textContent=address||"—";
+document.getElementById("showPhone").textContent=phone||"—";
+document.getElementById("showEmail").textContent=email||"—";
 
- localStorage.setItem("rasali_name",name);
- localStorage.setItem("rasali_id",id);
- localStorage.setItem("rasali_position",position);
- localStorage.setItem("rasali_address",address);
- localStorage.setItem("rasali_phone",phone);
- localStorage.setItem("rasali_email",email);
+localStorage.setItem("rasali_name",name);
+localStorage.setItem("rasali_id",id);
+localStorage.setItem("rasali_position",position);
+localStorage.setItem("rasali_address",address);
+localStorage.setItem("rasali_phone",phone);
+localStorage.setItem("rasali_email",email);
 
- alert("✅ सदस्य विवरण सफलतापूर्वक Save भयो!");
+alert("✅ सदस्य विवरण सफलतापूर्वक Save भयो!");
 
 }
 
 
-/* ================= PHOTO ================= */
+/* PHOTO */
 
 function loadPhoto(event){
 
- const file=event.target.files[0];
+const file=event.target.files[0];
 
- if(!file)return;
+if(!file)return;
 
- const reader=new FileReader();
+const reader=new FileReader();
 
- reader.onload=function(e){
+reader.onload=function(e){
 
-  const photo=e.target.result;
+const photo=e.target.result;
 
-  document.getElementById("photoFront").src=photo;
-  document.getElementById("photoFront").style.display="block";
-  document.getElementById("photoPlaceholder").style.display="none";
+document.getElementById("photoFront").src=photo;
+document.getElementById("photoFront").style.display="block";
+document.getElementById("photoPlaceholder").style.display="none";
 
-  localStorage.setItem("rasali_photo",photo);
+localStorage.setItem("rasali_photo",photo);
 
- };
+};
 
- reader.readAsDataURL(file);
+reader.readAsDataURL(file);
 
 }
 
 
-/* ================= LOGO ================= */
+/* LOGO */
 
 function loadLogo(event){
 
- const file=event.target.files[0];
+const file=event.target.files[0];
 
- if(!file)return;
+if(!file)return;
 
- const reader=new FileReader();
+const reader=new FileReader();
 
- reader.onload=function(e){
+reader.onload=function(e){
 
-  const logo=e.target.result;
+const logo=e.target.result;
 
-  document.getElementById("logoFront").src=logo;
-  document.getElementById("logoBack").src=logo;
+document.getElementById("logoFront").src=logo;
+document.getElementById("logoBack").src=logo;
 
-  document.getElementById("watermarkFront").src=logo;
-  document.getElementById("watermarkBack").src=logo;
+document.getElementById("watermarkFront").src=logo;
+document.getElementById("watermarkBack").src=logo;
 
-  localStorage.setItem("rasali_logo",logo);
+localStorage.setItem("rasali_logo",logo);
 
- };
+};
 
- reader.readAsDataURL(file);
+reader.readAsDataURL(file);
 
 }
 
 
-/* ================= LOAD SAVED DATA ================= */
+/* LOAD SAVED DATA */
 
 window.onload=function(){
 
- const data=[
+const data=[
 
-  ["rasali_name","nameInput","showName"],
-  ["rasali_id","idInput","showId"],
-  ["rasali_position","positionInput","showPosition"],
-  ["rasali_address","addressInput","showAddress"],
-  ["rasali_phone","phoneInput","showPhone"],
-  ["rasali_email","emailInput","showEmail"]
+["rasali_name","nameInput","showName"],
+["rasali_id","idInput","showId"],
+["rasali_position","positionInput","showPosition"],
+["rasali_address","addressInput","showAddress"],
+["rasali_phone","phoneInput","showPhone"],
+["rasali_email","emailInput","showEmail"]
 
- ];
+];
 
- data.forEach(function(item){
+data.forEach(function(item){
 
-  const saved=localStorage.getItem(item[0]);
+const saved=localStorage.getItem(item[0]);
 
-  if(saved !== null){
+if(saved!==null){
 
-   document.getElementById(item[1]).value=saved;
-   document.getElementById(item[2]).textContent=saved || "—";
+document.getElementById(item[1]).value=saved;
+document.getElementById(item[2]).textContent=saved||"—";
 
-  }
+}
 
- });
-
-
- /* SAVED PHOTO */
-
- const photo=localStorage.getItem("rasali_photo");
-
- if(photo){
-
-  document.getElementById("photoFront").src=photo;
-  document.getElementById("photoFront").style.display="block";
-  document.getElementById("photoPlaceholder").style.display="none";
-
- }
+});
 
 
- /* SAVED LOGO */
+const photo=localStorage.getItem("rasali_photo");
 
- const logo=localStorage.getItem("rasali_logo");
+if(photo){
 
- if(logo){
+document.getElementById("photoFront").src=photo;
+document.getElementById("photoFront").style.display="block";
+document.getElementById("photoPlaceholder").style.display="none";
 
-  document.getElementById("logoFront").src=logo;
-  document.getElementById("logoBack").src=logo;
+}
 
-  document.getElementById("watermarkFront").src=logo;
-  document.getElementById("watermarkBack").src=logo;
 
- }
+const logo=localStorage.getItem("rasali_logo");
+
+if(logo){
+
+document.getElementById("logoFront").src=logo;
+document.getElementById("logoBack").src=logo;
+
+document.getElementById("watermarkFront").src=logo;
+document.getElementById("watermarkBack").src=logo;
+
+}
 
 };
 
