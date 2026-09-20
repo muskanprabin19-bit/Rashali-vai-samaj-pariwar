@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>रसाली भाई समाज परिवार - सदस्य परिचय पत्र</title>
+
+<title>रसाली भाई समाज परिवार चौराठा - सदस्य परिचय पत्र</title>
 
 <style>
 *{box-sizing:border-box}
@@ -25,13 +26,15 @@ body{
  text-align:center;
  margin-bottom:25px;
 }
+
 .title h1{
  margin:0;
  color:#7d1728;
- font-size:27px;
+ font-size:28px;
 }
+
 .title p{
- margin:6px 0;
+ margin:7px 0;
  font-weight:bold;
  color:#555;
 }
@@ -41,54 +44,76 @@ body{
  display:flex;
  justify-content:center;
  align-items:flex-start;
- gap:28px;
+ gap:30px;
  flex-wrap:wrap;
 }
 
-/* ID CARD */
+/* MAIN CARD */
 .idcard{
  width:440px;
- height:280px;
+ height:285px;
  background:#fff;
- border-radius:20px;
+ border-radius:18px;
  position:relative;
  overflow:hidden;
  box-shadow:0 12px 30px rgba(0,0,0,.18);
  border:2px solid #8b1e2d;
 }
 
-/* decorative top */
+/* LOGO WATERMARK */
+.watermark{
+ position:absolute;
+ left:50%;
+ top:53%;
+ transform:translate(-50%,-50%);
+ width:190px;
+ height:190px;
+ opacity:.055;
+ z-index:1;
+ pointer-events:none;
+}
+
+.watermark img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+}
+
+/* DECORATION */
 .idcard:before{
  content:"";
  position:absolute;
- width:180px;
- height:180px;
+ width:170px;
+ height:170px;
  border-radius:50%;
- background:rgba(139,30,45,.07);
- right:-70px;
- top:-70px;
+ background:rgba(139,30,45,.06);
+ right:-65px;
+ top:-65px;
+ z-index:0;
 }
+
 .idcard:after{
  content:"";
  position:absolute;
- width:130px;
- height:130px;
+ width:120px;
+ height:120px;
  border-radius:50%;
- background:rgba(139,30,45,.05);
- left:-55px;
- bottom:-55px;
+ background:rgba(139,30,45,.04);
+ left:-50px;
+ bottom:-50px;
+ z-index:0;
 }
 
 /* HEADER */
 .header{
- height:67px;
+ height:66px;
  background:linear-gradient(135deg,#741323,#a92237);
  color:white;
  display:flex;
  align-items:center;
  padding:8px 15px;
  position:relative;
- z-index:2;
+ z-index:3;
 }
 
 .logoBox{
@@ -103,116 +128,125 @@ body{
  overflow:hidden;
  flex-shrink:0;
 }
+
 .logoBox img{
  width:100%;
  height:100%;
  object-fit:contain;
 }
+
 .logoText{
  margin-left:11px;
 }
+
 .logoText h2{
  margin:0;
- font-size:18px;
+ font-size:17px;
 }
+
 .logoText small{
  font-size:10px;
 }
 
-/* FRONT */
+/* FRONT CONTENT */
 .front{
- padding:15px;
- display:flex;
- gap:16px;
  position:relative;
- z-index:2;
+ z-index:3;
+ text-align:center;
+ padding:12px 15px 0;
 }
 
+/* CENTER PHOTO */
 .photoBox{
  width:105px;
- height:135px;
+ height:125px;
+ margin:0 auto 7px;
  border:3px solid #8b1e2d;
- border-radius:11px;
+ border-radius:12px;
  background:linear-gradient(145deg,#f5f5f5,#ddd);
  display:flex;
  align-items:center;
  justify-content:center;
  overflow:hidden;
- flex-shrink:0;
+ position:relative;
 }
+
 .photoBox img{
  width:100%;
  height:100%;
  object-fit:cover;
+ display:none;
 }
 
 .photoText{
  text-align:center;
- font-size:11px;
- color:#777;
-}
-
-.details{
- flex:1;
-}
-.cardTitle{
- font-size:14px;
- font-weight:bold;
- color:#8b1e2d;
- margin-bottom:8px;
-}
-.row{
- display:flex;
- margin:6px 0;
  font-size:12px;
- line-height:1.2;
-}
-.label{
- width:72px;
- font-weight:bold;
- color:#555;
-}
-.value{
- flex:1;
- font-weight:bold;
+ color:#777;
+ line-height:1.5;
 }
 
+/* MEMBER INFO */
 .memberBadge{
  display:inline-block;
  background:#8b1e2d;
  color:white;
- padding:4px 10px;
+ padding:4px 12px;
  border-radius:20px;
  font-size:11px;
  margin-bottom:5px;
 }
 
+.details{
+ text-align:left;
+ max-width:300px;
+ margin:auto;
+}
+
+.row{
+ display:flex;
+ margin:3px 0;
+ font-size:11px;
+ line-height:1.2;
+}
+
+.label{
+ width:75px;
+ font-weight:bold;
+ color:#555;
+}
+
+.value{
+ flex:1;
+ font-weight:bold;
+}
+
 .motto{
  position:absolute;
- bottom:9px;
+ bottom:7px;
  left:0;
  width:100%;
  text-align:center;
  color:#8b1e2d;
- font-size:11px;
+ font-size:10px;
  font-weight:bold;
- z-index:3;
+ z-index:4;
 }
 
 /* BACK */
 .back{
  text-align:center;
- padding:13px 20px;
+ padding:14px 22px;
  position:relative;
- z-index:2;
+ z-index:3;
 }
 
 .back h3{
  color:#8b1e2d;
- margin:2px 0 6px;
+ margin:2px 0 7px;
  font-size:17px;
 }
-.back .estd{
+
+.estd{
  display:inline-block;
  background:#8b1e2d;
  color:white;
@@ -220,13 +254,15 @@ body{
  border-radius:20px;
  font-weight:bold;
  font-size:12px;
- margin-bottom:7px;
+ margin-bottom:8px;
 }
+
 .back h4{
  margin:7px 0 3px;
  color:#8b1e2d;
  font-size:12px;
 }
+
 .back p{
  margin:3px 0;
  font-size:10px;
@@ -236,35 +272,42 @@ body{
 .signatures{
  display:flex;
  justify-content:space-around;
- margin-top:12px;
+ gap:20px;
+ margin-top:13px;
 }
+
 .sign{
  width:150px;
  font-size:10px;
 }
+
+.sigSpace{
+ height:18px;
+ color:#777;
+ font-size:9px;
+}
+
 .signLine{
  border-top:1px solid #555;
  margin-bottom:4px;
 }
+
 .sign b{
  font-size:11px;
-}
-.sigSpace{
- height:16px;
- font-size:10px;
- color:#777;
 }
 
 .footer{
  position:absolute;
- bottom:8px;
+ bottom:7px;
  width:100%;
  left:0;
+ text-align:center;
  font-size:9px;
  color:#777;
+ z-index:4;
 }
 
-/* EDIT PANEL */
+/* EDITOR */
 .editor{
  max-width:700px;
  margin:30px auto 0;
@@ -273,20 +316,24 @@ body{
  border-radius:16px;
  box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
+
 .editor h2{
  margin-top:0;
  color:#7d1728;
  text-align:center;
 }
+
 .field{
  margin-bottom:11px;
 }
+
 .field label{
  display:block;
  font-weight:bold;
  font-size:13px;
  margin-bottom:5px;
 }
+
 .field input{
  width:100%;
  padding:10px;
@@ -294,10 +341,12 @@ body{
  border-radius:8px;
  font-size:14px;
 }
+
 .buttons{
  text-align:center;
  margin-top:15px;
 }
+
 button{
  border:0;
  padding:11px 17px;
@@ -306,10 +355,12 @@ button{
  cursor:pointer;
  font-weight:bold;
 }
+
 .editBtn{background:#7d1728;color:white}
 .saveBtn{background:#198754;color:white}
 .printBtn{background:#333;color:white}
 .homeBtn{background:#666;color:white}
+
 .fileBtn{
  background:#0d6efd;
  color:white;
@@ -320,29 +371,58 @@ button{
  font-size:12px;
  margin-top:5px;
 }
-input[type=file]{display:none}
 
-#editorBox{display:none}
+input[type=file]{
+ display:none;
+}
+
+#editorBox{
+ display:none;
+}
 
 @media(max-width:600px){
- .page{padding:10px}
+
+ .page{
+  padding:10px;
+ }
+
  .idcard{
   width:100%;
   max-width:440px;
-  height:auto;
-  min-height:280px;
+  height:285px;
  }
- .cards{gap:20px}
+
+ .cards{
+  gap:20px;
+ }
 }
 
 /* PRINT */
 @media print{
- body{background:white}
- .title,.editor{display:none}
- .page{padding:0}
+
+ @page{
+  size:A4;
+  margin:10mm;
+ }
+
+ body{
+  background:white;
+ }
+
+ .title,
+ .editor{
+  display:none !important;
+ }
+
+ .page{
+  padding:0;
+  max-width:none;
+ }
+
  .cards{
   display:block;
  }
+
  .idcard{
   margin:0 auto 12mm;
   box-shadow:none;
@@ -358,36 +438,52 @@ input[type=file]{display:none}
 
 <div class="title">
 <h1>🤝 रसाली भाई समाज परिवार चौराठा</h1>
-<p>एकता • सहयोग • सेवा • भाइचारा</p>
+<p>एकता • सहयोग • सेवा</p>
 </div>
 
 <div class="cards">
 
-<!-- FRONT CARD -->
+<!-- ================= FRONT ================= -->
+
 <div class="idcard">
 
+<!-- WATERMARK -->
+<div class="watermark">
+ <img id="watermarkFront" alt="">
+</div>
+
 <div class="header">
+
  <div class="logoBox">
   <img id="logoFront" alt="Original Logo">
  </div>
+
  <div class="logoText">
-  <h2>रसाली भाई समाज परिवार</h2>
+  <h2>रसाली भाई समाज परिवार चौराठा</h2>
   <small>चौराठा, दैलेख, नेपाल</small>
  </div>
+
 </div>
 
 <div class="front">
 
+ <!-- CENTER MEMBER PHOTO -->
  <div class="photoBox">
+
   <img id="photoFront" alt="सदस्यको फोटो">
+
   <div class="photoText" id="photoPlaceholder">
-   सदस्यको<br>फोटो
+   📷<br>
+   सदस्यको फोटो
   </div>
+
+ </div>
+
+ <div class="memberBadge">
+  🪪 सदस्य परिचय पत्र
  </div>
 
  <div class="details">
-
-  <div class="memberBadge">🪪 सदस्य परिचय पत्र</div>
 
   <div class="row">
    <div class="label">नाम:</div>
@@ -406,71 +502,104 @@ input[type=file]{display:none}
 
   <div class="row">
    <div class="label">ठेगाना:</div>
-   <div class="value" id="showAddress">चौराठा, दैलेख</div>
+   <div class="value" id="showAddress">
+    चौराठा, दैलेख, नेपाल
+   </div>
   </div>
 
   <div class="row">
    <div class="label">सम्पर्क:</div>
-   <div class="value" id="showPhone">________________</div>
+   <div class="value" id="showPhone">
+    __________________
+   </div>
   </div>
 
  </div>
+
 </div>
 
 <div class="motto">
-🌹 एकता • सहयोग • सेवा • भाइचारा 🌹
+ 🌹 एकता • सहयोग • सेवा 🌹
 </div>
 
 </div>
 
 
-<!-- BACK CARD -->
+<!-- ================= BACK ================= -->
+
 <div class="idcard">
 
+<!-- WATERMARK -->
+<div class="watermark">
+ <img id="watermarkBack" alt="">
+</div>
+
 <div class="header">
+
  <div class="logoBox">
   <img id="logoBack" alt="Original Logo">
  </div>
+
  <div class="logoText">
-  <h2>रसाली भाई समाज परिवार</h2>
+  <h2>रसाली भाई समाज परिवार चौराठा</h2>
   <small>चौराठा, दैलेख, नेपाल</small>
  </div>
+
 </div>
 
 <div class="back">
 
- <div class="estd">स्थापना: २०८२</div>
+ <div class="estd">
+  स्थापना: २०८२
+ </div>
 
  <h4>🤝 हाम्रो परिचय</h4>
+
  <p>
- रसाली भाई समाज परिवार चौराठा एकता, सहयोग, सेवा र
- भाइचाराको भावनाले संगठित सामाजिक परिवार हो।
+ रसाली भाई समाज परिवार चौराठा एकता, सहयोग र
+ सेवाको उद्देश्यले संगठित सामाजिक परिवार हो।
  </p>
 
  <h4>📌 सदस्यको पहिचान</h4>
+
  <p>
- यो परिचयपत्र समाजको सदस्यको पहिचानका लागि प्रयोग गरिने
- आधिकारिक कार्ड हो। कार्ड हराएमा समाजका सम्बन्धित
+ यो परिचयपत्र समाजको सदस्यको आधिकारिक पहिचानका
+ लागि प्रयोग गरिनेछ। कार्ड हराएमा सम्बन्धित
  पदाधिकारीलाई जानकारी गराउनु पर्नेछ।
  </p>
 
  <h4>🏛️ समाजको मूल भावना</h4>
- <p><b>एकता • सहयोग • सेवा • भाइचारा</b></p>
+
+ <p>
+ <b>एकता • सहयोग • सेवा</b>
+ </p>
 
  <div class="signatures">
 
   <div class="sign">
-   <div class="sigSpace"></div>
+
+   <div class="sigSpace">
+    ✍️
+   </div>
+
    <div class="signLine"></div>
+
    अध्यक्ष<br>
-   <b>दिपक रसाली</b>
+   <b>दीपक रसाली</b>
+
   </div>
 
   <div class="sign">
-   <div class="sigSpace">✍️ Signature</div>
+
+   <div class="sigSpace">
+    ✍️
+   </div>
+
    <div class="signLine"></div>
+
    संस्थापक<br>
    <b>पदम रसाली</b>
+
   </div>
 
  </div>
@@ -478,7 +607,7 @@ input[type=file]{display:none}
 </div>
 
 <div class="footer">
-रसाली भाई समाज परिवार © २०८२
+ रसाली भाई समाज परिवार © २०८२
 </div>
 
 </div>
@@ -486,16 +615,28 @@ input[type=file]{display:none}
 </div>
 
 
-<!-- EDITOR -->
+<!-- ================= EDITOR ================= -->
+
 <div class="editor">
 
 <h2>✏️ सदस्य विवरण Edit / Save</h2>
 
 <div class="buttons">
-<button class="editBtn" onclick="openEditor()">✏️ Edit</button>
-<button class="printBtn" onclick="window.print()">🖨️ Print / PDF</button>
-<button class="homeBtn" onclick="location.href='index.html'">🏠 Home</button>
+
+<button class="editBtn" onclick="openEditor()">
+ ✏️ Edit
+</button>
+
+<button class="printBtn" onclick="window.print()">
+ 🖨️ Print / PDF
+</button>
+
+<button class="homeBtn" onclick="location.href='index.html'">
+ 🏠 Home
+</button>
+
 </div>
+
 
 <div id="editorBox">
 
@@ -516,7 +657,7 @@ input[type=file]{display:none}
 
 <div class="field">
 <label>ठेगाना</label>
-<input id="addressInput" value="चौराठा, दैलेख">
+<input id="addressInput" value="चौराठा, दैलेख, नेपाल">
 </div>
 
 <div class="field">
@@ -525,37 +666,77 @@ input[type=file]{display:none}
 </div>
 
 <div class="field">
-<label>📷 सदस्यको Original Photo</label>
-<label class="fileBtn">
-फोटो छान्नुहोस्
-<input type="file" accept="image/*" onchange="loadPhoto(event)">
+
+<label>
+ 📷 सदस्यको Original Photo
 </label>
+
+<label class="fileBtn">
+
+ फोटो छान्नुहोस्
+
+<input
+ type="file"
+ accept="image/*"
+ onchange="loadPhoto(event)"
+>
+
+</label>
+
 </div>
+
 
 <div class="field">
-<label>🤝 समाजको Original Logo</label>
-<label class="fileBtn">
-Logo छान्नुहोस्
-<input type="file" accept="image/*" onchange="loadLogo(event)">
+
+<label>
+ 🤝 समाजको Original Logo
 </label>
+
+<label class="fileBtn">
+
+ Logo छान्नुहोस्
+
+<input
+ type="file"
+ accept="image/*"
+ onchange="loadLogo(event)"
+>
+
+</label>
+
 </div>
+
 
 <div class="buttons">
-<button class="saveBtn" onclick="saveCard()">💾 Save गर्नुहोस्</button>
+
+<button class="saveBtn" onclick="saveCard()">
+ 💾 Save गर्नुहोस्
+</button>
+
 </div>
 
 </div>
+
 </div>
 
 </div>
+
 
 <script>
 
 function openEditor(){
+
  const box=document.getElementById("editorBox");
+
  box.style.display =
- box.style.display==="block" ? "none" : "block";
+ box.style.display==="block"
+ ? "none"
+ : "block";
+
 }
+
+
+/* SAVE MEMBER DETAILS */
 
 function saveCard(){
 
@@ -578,52 +759,86 @@ function saveCard(){
  localStorage.setItem("rasali_phone",phone);
 
  alert("✅ सदस्य विवरण सफलतापूर्वक Save भयो!");
+
 }
+
+
+/* LOAD PHOTO */
 
 function loadPhoto(event){
 
  const file=event.target.files[0];
+
  if(!file)return;
 
  const reader=new FileReader();
 
  reader.onload=function(e){
 
-  document.getElementById("photoFront").src=e.target.result;
+  const photo=e.target.result;
+
+  document.getElementById("photoFront").src=photo;
+
+  document.getElementById("photoFront").style.display="block";
+
   document.getElementById("photoPlaceholder").style.display="none";
 
-  localStorage.setItem("rasali_photo",e.target.result);
+  localStorage.setItem("rasali_photo",photo);
+
  };
 
  reader.readAsDataURL(file);
+
 }
+
+
+/* LOAD LOGO */
 
 function loadLogo(event){
 
  const file=event.target.files[0];
+
  if(!file)return;
 
  const reader=new FileReader();
 
  reader.onload=function(e){
 
-  document.getElementById("logoFront").src=e.target.result;
-  document.getElementById("logoBack").src=e.target.result;
+  const logo=e.target.result;
 
-  localStorage.setItem("rasali_logo",e.target.result);
+  document.getElementById("logoFront").src=logo;
+
+  document.getElementById("logoBack").src=logo;
+
+  document.getElementById("watermarkFront").src=logo;
+
+  document.getElementById("watermarkBack").src=logo;
+
+  localStorage.setItem("rasali_logo",logo);
+
  };
 
  reader.readAsDataURL(file);
+
 }
+
+
+/* LOAD SAVED DATA */
 
 window.onload=function(){
 
  const data=[
+
   ["rasali_name","nameInput","showName"],
+
   ["rasali_id","idInput","showId"],
+
   ["rasali_position","positionInput","showPosition"],
+
   ["rasali_address","addressInput","showAddress"],
+
   ["rasali_phone","phoneInput","showPhone"]
+
  ];
 
  data.forEach(function(item){
@@ -631,23 +846,45 @@ window.onload=function(){
   const saved=localStorage.getItem(item[0]);
 
   if(saved){
+
    document.getElementById(item[1]).value=saved;
+
    document.getElementById(item[2]).textContent=saved;
+
   }
+
  });
+
+
+ /* SAVED PHOTO */
 
  const photo=localStorage.getItem("rasali_photo");
 
  if(photo){
+
   document.getElementById("photoFront").src=photo;
+
+  document.getElementById("photoFront").style.display="block";
+
   document.getElementById("photoPlaceholder").style.display="none";
+
  }
+
+
+ /* SAVED LOGO */
 
  const logo=localStorage.getItem("rasali_logo");
 
  if(logo){
+
   document.getElementById("logoFront").src=logo;
+
   document.getElementById("logoBack").src=logo;
+
+  document.getElementById("watermarkFront").src=logo;
+
+  document.getElementById("watermarkBack").src=logo;
+
  }
 
 };
@@ -655,4 +892,4 @@ window.onload=function(){
 </script>
 
 </body>
-</html> 
+</html>
