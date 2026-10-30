@@ -4,190 +4,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>रसाली भाई समाज परिवार चौराठा | भौचर</title>
+<title>रसाली समाज परिवार - भौचर</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#eaf0f8;font-family:Arial,sans-serif;color:#18365f}
-.page{max-width:1000px;margin:15px auto;padding:20px;background:white;border:2px solid #244d80}
-header{text-align:center;border-bottom:3px solid #244d80;padding-bottom:12px}
-header h2{margin:5px;color:#183d70}
-header p{margin:5px}
-h3{text-align:center;color:#183d70}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-label{display:block;font-weight:bold;font-size:14px;margin-bottom:5px}
-input,select,textarea{width:100%;padding:9px;border:1px solid #9aacc4;border-radius:4px;font-size:15px}
-textarea{min-height:60px}
-.section{margin-top:16px;padding:12px;border:1px solid #9aacc4}
-table{width:100%;border-collapse:collapse;margin-top:10px}
-th,td{border:1px solid #8fa4c0;padding:7px;text-align:left}
-th{background:#e5edf8}
-td input{border:0;padding:4px;min-width:50px}
-button{padding:10px 13px;margin:4px;border:0;border-radius:5px;background:#244d80;color:white;font-weight:bold}
-.secondary{background:#526980}
-.danger{background:#a22}
-.actions{text-align:center;margin:15px 0}
-.totals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
-.signatures{display:flex;justify-content:space-between;text-align:center;margin-top:50px;gap:20px}
-.signatures div{width:45%;border-top:1px solid #333;padding-top:8px}
-@media(max-width:600px){.page{margin:4px;padding:10px}.grid,.totals{grid-template-columns:1fr}table{font-size:12px}th,td{padding:4px}}
-@media print{body{background:white}.page{margin:0;border:1px solid #244d80;padding:10px}.no-print{display:none!important}input,textarea,select{border:0;padding:3px}.section{break-inside:avoid}}
+body{margin:0;background:#e8eef5;font-family:"Noto Sans Devanagari",Arial,sans-serif;color:#073c70}
+button,input,select{font:inherit}
+.toolbar{padding:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+button{border:0;border-radius:7px;padding:10px 15px;background:#07518a;color:white;font-weight:bold;cursor:pointer}
+button.secondary{background:#526579}
+button.danger{background:#b52c36}
+.sheet{width:min(100%,1100px);margin:0 auto 25px;position:relative;aspect-ratio:1536/1024;background:white}
+.sheet img{width:100%;height:100%;display:block}
+.field{position:absolute;border:0;background:transparent;color:#073c70;font-weight:600;outline:none;padding:2px;min-width:0}
+.field:focus{background:#fff9d9;outline:1px dashed #1766a2}
+.type{position:absolute;left:37%;top:28.5%;width:26%;height:9%;text-align:center;border:0;background:#07518a;color:white;font-size:clamp(13px,2.2vw,25px);font-weight:bold;border-radius:5px}
+.vno{left:81.2%;top:29.8%;width:15%;height:3%;font-size:clamp(9px,1.2vw,15px)}
+.date{left:81.2%;top:34.2%;width:15%;height:3%;font-size:clamp(9px,1.2vw,15px)}
+.name{left:10.5%;top:41.5%;width:50%;height:3%;font-size:clamp(9px,1.1vw,14px)}
+.position{left:78%;top:41.5%;width:18%;height:3%;font-size:clamp(9px,1.1vw,14px)}
+.address{left:10.5%;top:45.5%;width:50%;height:3%;font-size:clamp(9px,1.1vw,14px)}
+.phone{left:78%;top:45.5%;width:18%;height:3%;font-size:clamp(9px,1.1vw,14px)}
+.rows{position:absolute;left:9.6%;top:53.5%;width:87.5%;height:21.4%;display:grid;grid-template-rows:repeat(5,1fr)}
+.entry{display:grid;grid-template-columns:44.5% 18.5% 18.5% 18.5%;min-height:0}
+.entry input{border:0;background:transparent;text-align:center;width:100%;min-width:0;color:#073c70;font-size:clamp(8px,1vw,13px);padding:0 3px}
+.entry input:focus{background:#fff9d9;outline:1px dashed #1766a2}
+.totaltext{position:absolute;left:38%;top:72.5%;width:34%;height:4%;font-size:clamp(8px,1vw,13px)}
+.totalnumber{position:absolute;left:80%;top:72.5%;width:16%;height:4%;font-size:clamp(9px,1.2vw,15px)}
+.payment{position:absolute;left:15%;top:77.5%;width:53%;height:3%;display:flex;gap:3%;align-items:center;font-size:clamp(8px,1vw,13px)}
+.payment label{display:flex;align-items:center;white-space:nowrap}
+.payment input{accent-color:#07518a}
+.other{width:25%;border:0;border-bottom:1px dotted #07518a;background:transparent;min-width:30px}
+.sig1{position:absolute;left:5%;top:87.5%;width:21%;height:3%;text-align:center}
+.sig2{position:absolute;left:27%;top:87.5%;width:21%;height:3%;text-align:center}
+.sig3{position:absolute;left:51%;top:87.5%;width:21%;height:3%;text-align:center}
+.sign{background:transparent;border:0;border-bottom:1px dotted #07518a;width:85%;text-align:center;font-size:clamp(8px,1vw,12px)}
+.records{max-width:1100px;margin:15px auto;background:white;padding:15px;border-radius:10px}
+.records h3{margin:4px 0 12px}
+.record{display:flex;justify-content:space-between;gap:8px;padding:8px;border-bottom:1px solid #ddd;align-items:center}
+.record button{padding:6px 10px}
+@media print{
+ @page{size:A4 landscape;margin:0}
+ body{background:white}
+ .toolbar,.records{display:none!important}
+ .sheet{width:297mm;height:198mm;margin:7mm auto 0;break-inside:avoid}
+ .field:focus{background:transparent;outline:none}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
-<div class="page">
-<header>
-<h2>रसाली भाई समाज परिवार चौराठा</h2>
-<p>चौराठा, दैलेख, नेपाल</p>
-<p>एकता • सहयोग • सेवा • भाइचारा</p>
-<p>स्थापना: २०८२</p>
-</header>
 
-<h3>आम्दानी / खर्च भौचर</h3>
-<div class="grid">
-<div><label>भौचर नम्बर</label><input id="no" placeholder="V-001"></div>
-<div><label>मिति</label><input id="date" type="date"></div>
-<div><label>प्रकार</label><select id="type"><option>आम्दानी</option><option>खर्च</option><option>जम्मा</option><option>निकासा</option></select></div>
-<div><label>सदस्यको नाम</label><input id="member" placeholder="पूरा नाम"></div>
-<div><label>फोन नम्बर</label><input id="phone" placeholder="फोन नम्बर"></div>
-<div><label>रकम (रु.)</label><input id="amount" type="number" min="0" value="0"></div>
-<div><label>ब्याज (रु.)</label><input id="interest" type="number" min="0" value="0"></div>
-<div><label>जरिवाना (रु.)</label><input id="penalty" type="number" min="0" value="0"></div>
+<div class="toolbar">
+<button onclick="newVoucher()">＋ नयाँ भौचर</button>
+<button onclick="saveVoucher()">💾 सुरक्षित गर्नुहोस्</button>
+<button onclick="showRecords()">📂 पुरानो खोल्नुहोस्</button>
+<button onclick="window.print()">🖨️ Print / PDF</button>
+<button class="secondary" onclick="exportCSV()">Excel / CSV</button>
+<button class="danger" onclick="clearForm()">खाली गर्नुहोस्</button>
 </div>
 
-<div class="section">
-<label>विवरण / प्रयोजन</label>
-<textarea id="description" placeholder="रकमको विवरण"></textarea>
-<div class="grid" style="margin-top:10px">
-<div><label>रकम बुझाउने</label><input id="payer"></div>
-<div><label>रकम बुझ्ने</label><input id="receiver"></div>
-</div>
+<div class="sheet" id="sheet">
+<img src="voucher-bg.png" alt="रसाली भाई समाज परिवारको मूल भौचर डिजाइन">
+
+<select class="type" id="voucherType">
+<option value="आम्दानी">आम्दानी भौचर</option>
+<option value="खर्च">खर्च भौचर</option>
+</select>
+
+<input class="field vno" id="vno" placeholder="भौचर नं.">
+<input class="field date" id="date" type="date">
+
+<input class="field name" id="name" placeholder="सदस्यको नाम">
+<input class="field position" id="position" placeholder="पद">
+<input class="field address" id="address" placeholder="ठेगाना">
+<input class="field phone" id="phone" placeholder="सम्पर्क नं.">
+
+<div class="rows" id="rows">
+<script>
+for(let i=0;i<5;i++){
+ document.write(`
+ <div class="entry">
+ <input placeholder="विवरण">
+ <input class="deposit" type="number" min="0" step="0.01" placeholder="0">
+ <input class="withdraw" type="number" min="0" step="0.01" placeholder="0">
+ <input placeholder="कैफियत">
+ </div>`);
+}
+</script>
 </div>
 
-<div class="section">
-<h3>हिसाब किताब</h3>
-<div class="grid">
-<div><label>सुरुको बाँकी</label><input id="opening" type="number" min="0" value="0"></div>
-<div><label>थप जम्मा</label><input id="deposit" type="number" min="0" value="0"></div>
-<div><label>थप निकासा</label><input id="withdrawal" type="number" min="0" value="0"></div>
-</div>
-<table>
-<thead><tr><th>मिति</th><th>विवरण</th><th>जम्मा</th><th>निकासा</th><th class="no-print">कार्य</th></tr></thead>
-<tbody id="ledger"></tbody>
-</table>
-<button class="no-print" onclick="addRow()">+ हिसाब थप्नुहोस्</button>
-<div class="totals">
-<div><label>कुल जम्मा</label><input id="totalDeposit" readonly value="0"></div>
-<div><label>कुल निकासा</label><input id="totalWithdrawal" readonly value="0"></div>
-<div><label>कुल ब्याज</label><input id="totalInterest" readonly value="0"></div>
-<div><label>कुल जरिवाना</label><input id="totalPenalty" readonly value="0"></div>
-<div><label>अन्तिम बाँकी</label><input id="balance" readonly value="0"></div>
-</div>
+<input class="field totaltext" id="words" placeholder="अक्षरमा जम्मा रकम">
+<input class="field totalnumber" id="total" readonly placeholder="0.00">
+
+<div class="payment">
+<label><input type="checkbox" name="pay" value="नगद"> नगद</label>
+<label><input type="checkbox" name="pay" value="बैंक ट्रान्सफर"> बैंक ट्रान्सफर</label>
+<label><input type="checkbox" name="pay" value="अन्य"> अन्य</label>
+<input class="other" id="otherPayment" placeholder="अन्य माध्यम">
 </div>
 
-<div class="actions no-print">
-<button onclick="saveRecord()">रेकर्ड सुरक्षित गर्नुहोस्</button>
-<button class="secondary" onclick="newRecord()">नयाँ भौचर</button>
-<button class="secondary" onclick="window.print()">Print / PDF</button>
+<input class="field sign sig1" id="prepared" placeholder="नाम / हस्ताक्षर">
+<input class="field sign sig2" id="treasurer" placeholder="नाम / हस्ताक्षर">
+<input class="field sign sig3" id="chairman" value="दीपक रसाली">
 </div>
 
-<div class="section no-print">
-<h3>सुरक्षित भौचरहरू</h3>
-<table>
-<thead><tr><th>नम्बर</th><th>मिति</th><th>सदस्य</th><th>प्रकार</th><th>कार्य</th></tr></thead>
-<tbody id="records"></tbody>
-</table>
-<button class="secondary" onclick="backup()">ब्याकअप डाउनलोड</button>
-</div>
-
-<div class="signatures">
-<div>संस्थापक<br><b>पदम रसाली</b></div>
-<div>अध्यक्ष<br><b>दीपक रसाली</b></div>
-</div>
+<div class="records" id="records" style="display:none">
+<h3>📂 सुरक्षित भौचरहरू</h3>
+<div id="recordList"></div>
 </div>
 
 <script>
 const $=id=>document.getElementById(id);
-const fields=['no','date','type','member','phone','amount','interest','penalty','description','payer','receiver','opening','deposit','withdrawal'];
-let ledger=[],editing=null,db={};
-try{db=JSON.parse(localStorage.getItem('rasaliVouchers')||'{}')}catch(e){}
-$('date').value=new Date().toISOString().slice(0,10);
-const n=id=>Math.max(0,Number($(id).value)||0);
 
-function addRow(r={}){
-ledger.push({date:r.date||$('date').value,description:r.description||'',deposit:+r.deposit||0,withdrawal:+r.withdrawal||0});
-renderLedger();
+function amount(){
+ let d=[...document.querySelectorAll('.deposit')]
+   .reduce((s,e)=>s+(Number(e.value)||0),0);
+ let w=[...document.querySelectorAll('.withdraw')]
+   .reduce((s,e)=>s+(Number(e.value)||0),0);
+ $('total').value=(d+w).toFixed(2);
+ return {deposit:d,withdraw:w,total:d+w};
 }
-function renderLedger(){
-$('ledger').innerHTML='';
-ledger.forEach((r,i)=>{
-let tr=document.createElement('tr');
-[['date','date'],['description','text'],['deposit','number'],['withdrawal','number']].forEach(([k,t])=>{
-let td=document.createElement('td'),el=document.createElement('input');
-el.type=t;el.value=r[k];if(t==='number')el.min='0';
-el.oninput=()=>{ledger[i][k]=t==='number'?Math.max(0,+el.value||0):el.value;calculate()};
-td.append(el);tr.append(td);
+
+document.addEventListener('input',e=>{
+ if(e.target.matches('.deposit,.withdraw')) amount();
 });
-let td=document.createElement('td'),b=document.createElement('button');
-b.textContent='हटाउनुहोस्';b.className='danger';
-b.onclick=()=>{ledger.splice(i,1);renderLedger()};
-td.className='no-print';td.append(b);tr.append(td);$('ledger').append(tr);
-});
-calculate();
+
+function getData(){
+ return {
+ type:$('voucherType').value,
+ vno:$('vno').value,
+ date:$('date').value,
+ name:$('name').value,
+ position:$('position').value,
+ address:$('address').value,
+ phone:$('phone').value,
+ rows:[...document.querySelectorAll('.entry')].map(row=>
+ [...row.querySelectorAll('input')].map(x=>x.value)),
+ words:$('words').value,
+ payment:[...document.querySelectorAll('input[name="pay"]:checked')].map(x=>x.value),
+ otherPayment:$('otherPayment').value,
+ prepared:$('prepared').value,
+ treasurer:$('treasurer').value,
+ chairman:$('chairman').value
+ };
 }
-function calculate(){
-let d=n('deposit'),w=n('withdrawal');
-ledger.forEach(r=>{d+=+r.deposit||0;w+=+r.withdrawal||0});
-$('totalDeposit').value=d.toFixed(2);
-$('totalWithdrawal').value=w.toFixed(2);
-$('totalInterest').value=n('interest').toFixed(2);
-$('totalPenalty').value=n('penalty').toFixed(2);
-$('balance').value=(n('opening')+d-w).toFixed(2);
+
+function setData(d){
+ $('voucherType').value=d.type||'आम्दानी';
+ ['vno','date','name','position','address','phone','words',
+ 'otherPayment','prepared','treasurer','chairman'].forEach(k=>{
+ $(k).value=d[k]||'';
+ });
+ document.querySelectorAll('.entry').forEach((row,i)=>{
+ [...row.querySelectorAll('input')].forEach((x,j)=>{
+ x.value=d.rows?.[i]?.[j]||'';
+ });
+ });
+ document.querySelectorAll('input[name="pay"]').forEach(x=>{
+ x.checked=(d.payment||[]).includes(x.value);
+ });
+ amount();
 }
-fields.forEach(id=>$(id).addEventListener('input',calculate));
-function getRecord(){
-let o={};fields.forEach(id=>o[id]=$(id).value);
-o.ledger=ledger.map(r=>({...r}));return o;
+
+function newVoucher(){
+ if(!confirm('नयाँ भौचर खोल्ने? पहिले सुरक्षित गर्नुहोस्।'))return;
+ clearForm(false);
+ $('date').value=new Date().toISOString().slice(0,10);
+ $('vno').value='RS-'+Date.now().toString().slice(-6);
 }
-function saveRecord(){
-let key=$('no').value.trim();
-if(!key){alert('भौचर नम्बर लेख्नुहोस्');return}
-if(editing&&editing!==key)delete db[editing];
-db[key]=getRecord();
-try{localStorage.setItem('rasaliVouchers',JSON.stringify(db));editing=key;renderRecords();alert('रेकर्ड सुरक्षित भयो')}
-catch(e){alert('रेकर्ड सुरक्षित भएन। ब्याकअप निकाल्नुहोस्।')}
+
+function clearForm(ask=true){
+ if(ask&&!confirm('सबै विवरण खाली गर्ने?'))return;
+ setData({});
+ $('date').value=new Date().toISOString().slice(0,10);
+ $('vno').value='RS-'+Date.now().toString().slice(-6);
 }
-function loadRecord(key){
-let o=db[key];if(!o)return;
-editing=key;fields.forEach(id=>$(id).value=o[id]??'');
-ledger=(o.ledger||[]).map(r=>({...r}));renderLedger();
-window.scrollTo({top:0,behavior:'smooth'});
+
+function saveVoucher(){
+ if(!$('vno').value){alert('भौचर नम्बर राख्नुहोस्।');return;}
+ let data=getData();
+ let list=JSON.parse(localStorage.getItem('rasali_vouchers')||'[]');
+ let index=list.findIndex(x=>x.vno===data.vno);
+ if(index>=0)list[index]=data;
+ else list.push(data);
+ localStorage.setItem('rasali_vouchers',JSON.stringify(list));
+ alert('भौचर सुरक्षित भयो।');
 }
-function renderRecords(){
-$('records').innerHTML='';
-Object.keys(db).forEach(key=>{
-let o=db[key],tr=document.createElement('tr');
-[key,o.date||'',o.member||'',o.type||''].forEach(v=>{
-let td=document.createElement('td');td.textContent=v;tr.append(td);
-});
-let td=document.createElement('td'),b=document.createElement('button');
-b.textContent='सम्पादन';b.onclick=()=>loadRecord(key);td.append(b);
-let del=document.createElement('button');del.textContent='हटाउने';del.className='danger';
-del.onclick=()=>{if(confirm('यो रेकर्ड हटाउने?')){delete db[key];localStorage.setItem('rasaliVouchers',JSON.stringify(db));if(editing===key)newRecord();renderRecords()}};
-td.append(del);tr.append(td);$('records').append(tr);
-});
+
+function showRecords(){
+ let list=JSON.parse(localStorage.getItem('rasali_vouchers')||'[]');
+ $('records').style.display='block';
+ $('recordList').innerHTML='';
+ if(!list.length){
+ $('recordList').textContent='अहिलेसम्म कुनै भौचर सुरक्षित गरिएको छैन।';
+ return;
+ }
+ list.forEach((d,i)=>{
+ let div=document.createElement('div');
+ div.className='record';
+ let title=document.createElement('span');
+ title.textContent=`${d.vno} | ${d.name} | ${d.date} | रु. ${d.total||0}`;
+ let open=document.createElement('button');
+ open.textContent='खोल्नुहोस्';
+ open.onclick=()=>{setData(d);window.scrollTo(0,0);};
+ let del=document.createElement('button');
+ del.className='danger';
+ del.textContent='हटाउनुहोस्';
+ del.onclick=()=>{
+ if(confirm('यो भौचर हटाउने?')){
+ list.splice(i,1);
+ localStorage.setItem('rasali_vouchers',JSON.stringify(list));
+ showRecords();
+ }
+ };
+ div.append(title,open,del);
+ $('recordList').append(div);
+ });
 }
-function newRecord(){
-fields.forEach(id=>$(id).value='');
-$('date').value=new Date().toISOString().slice(0,10);
-['amount','interest','penalty','opening','deposit','withdrawal'].forEach(id=>$(id).value='0');
-editing=null;ledger=[];renderLedger();
+
+function exportCSV(){
+ let list=JSON.parse(localStorage.getItem('rasali_vouchers')||'[]');
+ if(!list.length){alert('पहिले भौचर सुरक्षित गर्नुहोस्।');return;}
+ let csv='\uFEFFभौचर नं,मिति,प्रकार,नाम,पद,ठेगाना,सम्पर्क,जम्मा\n';
+ list.forEach(d=>{
+ csv+=[d.vno,d.date,d.type,d.name,d.position,d.address,d.phone,d.total||0]
+ .map(x=>'"'+String(x||'').replace(/"/g,'""')+'"').join(',')+'\n';
+ });
+ let a=document.createElement('a');
+ a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+ a.download='Rasali-Voucher-Records.csv';
+ a.click();
+ URL.revokeObjectURL(a.href);
 }
-function backup(){
-let a=document.createElement('a');
-a.href=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));
-a.download='rasali-voucher-backup.json';a.click();URL.revokeObjectURL(a.href);
-}
-renderLedger();renderRecords();
+
+newVoucher();
 </script>
 </body>
 </html>
