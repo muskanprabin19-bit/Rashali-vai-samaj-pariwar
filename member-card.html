@@ -3,408 +3,287 @@
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>रसाली भाई समाज परिवार - Member ID</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasali Bhai Samaj Pariwar - Member ID Card</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <style>
 *{box-sizing:border-box}
-:root{--navy:#103c70;--blue:#1767ad;--gold:#d7ad54}
-body{margin:0;background:#edf3f9;color:#172b43;font-family:"Noto Sans Devanagari",Arial,sans-serif}
-.wrap{max-width:1080px;margin:auto;padding:22px 14px 48px}
-h1{text-align:center;color:var(--navy);font-size:25px;margin:4px 0}
-.sub{text-align:center;color:#60758c;margin:0 0 22px;font-size:13px}
-.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
-.card{width:430px;height:270px;position:relative;overflow:hidden;border-radius:17px;background:#fff;border:1px solid #c7d9ec;box-shadow:0 12px 30px #183b6020}
-.front-head{height:78px;background:linear-gradient(115deg,#103c70,#1976bd);color:white;display:flex;align-items:center;gap:11px;padding:9px 13px}
-.logo,.logo-fallback{width:58px;height:58px;flex:none;border-radius:50%;border:2px solid var(--gold);background:#fff;object-fit:contain}
-.logo-fallback{display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:12px}
-.org{min-width:0}
-.org-ne{font-size:16px;font-weight:900;line-height:1.35}
-.org-en{font-size:9px;letter-spacing:.7px;margin-top:2px}
-.estd{font-size:9px;background:var(--gold);color:#263d58;border-radius:20px;padding:2px 8px;display:inline-block;margin-top:4px;font-weight:800}
-.front-body{height:151px;display:flex;gap:12px;padding:11px 13px}
-.photo{width:103px;height:126px;object-fit:cover;border-radius:8px;border:2px solid #c2d8ed;background:#f0f5fa;flex:none}
-.photo-empty{width:103px;height:126px;border:1px dashed #9eb4ca;border-radius:8px;display:grid;place-items:center;text-align:center;color:#8298ad;font-size:12px;flex:none}
-.details{min-width:0;flex:1}
-.kicker{font-size:9px;color:var(--blue);font-weight:900}
-.name{font-size:20px;font-weight:900;color:#173a60;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:1px 0 4px}
-.memberno{display:inline-block;background:#e8f2fc;color:#104b83;border:1px solid #c8def2;border-radius:5px;padding:3px 8px;font-size:10px;font-weight:900;margin-bottom:3px}
-.info{display:flex;font-size:10px;line-height:1.55;gap:5px;min-width:0}
-.info b{width:52px;flex:none;color:#315d86}
-.info span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.front-foot{height:41px;position:absolute;bottom:0;left:0;right:0;background:#f1f7fd;border-top:1px solid #d5e5f4;display:flex;align-items:center;justify-content:space-between;padding:5px 13px}
-.motto{font-size:10px;font-weight:800;color:#174f82}
-.sign{text-align:center;min-width:105px;color:#174f82}
-.signline{width:90px;border-top:1px solid #58728b;margin:0 auto 2px}
-.sign strong{font-size:9px}
-.sign small{display:block;font-size:8px;color:#60758c}
-.back{background:linear-gradient(145deg,#fff,#f4f9ff)}
-.back-head{height:65px;background:linear-gradient(110deg,#103c70,#1976bd);color:#fff;display:flex;align-items:center;gap:10px;padding:8px 14px}
-.back-head .logo,.back-head .logo-fallback{width:45px;height:45px}
-.back-title{font-size:15px;font-weight:900;line-height:1.4}
-.back-title small{display:block;font-size:9px;font-weight:500}
-.back-content{padding:12px 15px 50px;font-size:10px;line-height:1.55}
-.back-content h3{margin:0 0 5px;color:#15558f;font-size:13px}
-.about{padding:7px 9px;background:#edf5fd;border-left:4px solid var(--gold);border-radius:4px;margin-bottom:9px}
-.back-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.back-item b{display:block;color:#315d86;font-size:9px}
-.back-item span{font-size:10px}
-.qr-panel{position:absolute;right:13px;bottom:47px;width:78px;text-align:center}
-#qrcode{width:72px;height:72px;background:white;padding:3px;border:1px solid #d2dfeb;border-radius:5px;display:grid;place-items:center;margin:auto}
-#qrcode img,#qrcode canvas{width:64px!important;height:64px!important}
-.qr-label{font-size:7px;color:#315d86;font-weight:800;margin-top:3px}
-.back-foot{height:39px;position:absolute;bottom:0;left:0;right:0;background:#eaf3fc;border-top:1px solid #d5e5f4;display:flex;align-items:center;justify-content:space-between;padding:5px 14px}
-.back-foot span{font-size:9px;color:#174f82;font-weight:800}
-.editor{max-width:850px;margin:20px auto;background:#fff;border:1px solid #d8e3ee;border-radius:15px;padding:19px;box-shadow:0 7px 22px #183b6010}
-.editor h2{text-align:center;color:var(--navy);font-size:19px;margin:0 0 16px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field{display:flex;flex-direction:column;gap:5px}
-.full{grid-column:1/-1}
-label{font-size:12px;font-weight:800;color:#526b84}
-input{width:100%;padding:10px;border:1px solid #cbd8e5;border-radius:8px;font:14px Arial,sans-serif}
-input[type=file]{font-size:12px;background:#f7faff}
-.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:17px}
-button{border:0;border-radius:8px;padding:11px 18px;font-weight:800;font-size:13px;cursor:pointer}
-.primary{background:#145b99;color:#fff}
-.gold{background:#e5bd68;color:#273d56}
-.light{background:#edf2f7;color:#34495e}
-.hint{text-align:center;color:#718399;font-size:11px;line-height:1.6;margin:12px 0 0}
-.status{text-align:center;color:#155d39;font-size:12px;min-height:18px;margin-top:8px}
-[hidden]{display:none!important}
-
-@media(max-width:500px){
-.wrap{padding:15px 8px 35px}
-.card{width:100%;max-width:430px;height:270px}
-.org-ne{font-size:14px}
-.name{font-size:17px}
-.front-body{gap:8px;padding:10px}
-.photo,.photo-empty{width:91px;height:121px}
-.info{font-size:9px}
-.info b{width:45px}
-.grid{grid-template-columns:1fr}
-.full{grid-column:auto}
-}
+body{margin:0;padding:18px;background:#eef2f8;color:#172b4d;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+h1{text-align:center;color:#103c70;font-size:23px;margin:5px 0}
+.sub{text-align:center;color:#52647a;margin-bottom:20px}
+.editor{max-width:900px;margin:15px auto;background:white;padding:18px;border-radius:12px;box-shadow:0 3px 14px #0001}
+.editor h2{font-size:18px;color:#123e70;margin-top:0}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{font-size:13px;font-weight:bold;color:#29445f}
+input{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;margin-top:5px;font-size:15px}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+button{border:0;border-radius:7px;padding:11px 15px;color:white;background:#124b83;font-weight:bold;font-size:14px}
+button.green{background:#16834b}
+button.red{background:#b83232}
+button.gold{background:#a87816}
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin:25px auto}
+.idcard{width:340px;height:215px;background:#fff;border:2px solid #c69a39;border-radius:12px;overflow:hidden;position:relative;box-shadow:0 5px 16px #0002}
+.top{height:55px;background:#103f75;color:white;display:flex;align-items:center;justify-content:center;gap:9px;padding:5px}
+.logo{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #e5c16a;background:white}
+.org{text-align:center;line-height:1.35}
+.org strong{display:block;font-size:13px;color:#f4d27d}
+.org small{font-size:9px;color:white}
+.goldline{height:3px;background:#c79b3d}
+.frontbody{display:flex;gap:12px;padding:12px 13px}
+.photo{width:91px;height:112px;object-fit:cover;border:2px solid #c69a39;border-radius:5px;background:#edf2f7}
+.details{flex:1;min-width:0;font-size:11px;line-height:1.7}
+.details .name{font-size:16px;font-weight:bold;color:#103f75;margin-bottom:3px;overflow-wrap:anywhere}
+.details b{color:#173c65}
+.cardfoot{position:absolute;bottom:0;left:0;right:0;background:#103f75;color:white;text-align:center;padding:5px;font-size:10px}
+.backbody{padding:12px 14px;font-size:11px}
+.backtitle{text-align:center;color:#103f75;font-size:14px;font-weight:bold;margin-bottom:6px}
+.qrrow{display:flex;align-items:center;gap:12px;margin-top:5px}
+#qrcode{width:85px;height:85px;min-width:85px;padding:4px;background:white;border:1px solid #ddd}
+#qrcode img,#qrcode canvas{width:75px!important;height:75px!important}
+.qrtext{line-height:1.6;color:#29445f}
+.signatures{display:flex;justify-content:space-between;text-align:center;margin-top:13px;gap:10px}
+.sign{width:50%;border-top:1px solid #7d8da0;padding-top:4px;font-size:10px;line-height:1.5}
+.sign b{color:#103f75}
+.backfoot{position:absolute;bottom:0;left:0;right:0;text-align:center;background:#103f75;color:white;padding:5px;font-size:10px}
+.verify{display:none;max-width:500px;margin:35px auto;background:white;border:2px solid #c69a39;border-radius:12px;padding:20px;box-shadow:0 4px 18px #0002}
+.verify h2{text-align:center;color:#103f75}
+.verify p{border-bottom:1px solid #e5eaf0;padding:8px 0;margin:0}
+.note{font-size:12px;color:#68778a;text-align:center;margin:12px}
+@media(max-width:500px){.fields{grid-template-columns:1fr}.idcard{width:100%;max-width:340px}.cards{gap:15px}}
 @media print{
-@page{size:A4;margin:12mm}
-body{background:#fff}
-.wrap{max-width:none;padding:0}
-h1,.sub,.editor{display:none!important}
-.cards{display:flex;flex-wrap:nowrap;gap:8mm;justify-content:center;margin:8mm 0}
-.card{width:85.6mm;height:54mm;box-shadow:none;border-radius:2mm;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+body{background:white;padding:0}
+.editor,h1,.sub,.note,.no-print,.verify{display:none!important}
+.cards{margin:0;gap:8mm;display:flex;flex-direction:column;align-items:center}
+.idcard{box-shadow:none;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4;margin:15mm}
 }
 </style>
 </head>
-
 <body>
-<div class="wrap">
 
 <h1>रसाली भाई समाज परिवार चौराठा</h1>
-<p class="sub">डिजिटल सदस्य परिचयपत्र • ESTD 2082</p>
+<div class="sub">सदस्य परिचयपत्र निर्माण प्रणाली · ESTD 2082</div>
 
-<section class="cards">
-
-<!-- FRONT CARD -->
-<div class="card">
-
-<div class="front-head">
-<div id="logoFallback" class="logo-fallback">LOGO</div>
-<img id="logoFront" class="logo" alt="समाजको लोगो" hidden>
-
-<div class="org">
-<div class="org-ne">रसाली भाई समाज परिवार चौराठा</div>
-<div class="org-en">RASHALI BHAI SAMAJ PARIWAR</div>
-<span class="estd">स्थापना: २०८२ (ESTD 2082)</span>
-</div>
+<div class="verify" id="verifyPanel">
+  <h2>रसाली भाई समाज परिवार चौराठा</h2>
+  <p style="text-align:center;color:#a87816;font-weight:bold">QR Code बाट प्राप्त सदस्य विवरण</p>
+  <div id="verifyDetails"></div>
+  <p style="font-size:12px;color:#9b4b24;margin-top:12px;border:0">
+    सूचना: यो QR मा राखिएको विवरण हो। यो Supabase को आधिकारिक डाटाबेस प्रमाणीकरण होइन।
+  </p>
 </div>
 
-<div class="front-body">
-<div id="photoFallback" class="photo-empty">सदस्यको<br>फोटो</div>
-<img id="memberPhoto" class="photo" alt="सदस्यको फोटो" hidden>
-
-<div class="details">
-<div class="kicker">OFFICIAL MEMBER IDENTITY CARD</div>
-<div class="name" id="vName">प्रबिन रसाली</div>
-<div class="memberno" id="vNo">RS-001</div>
-<div class="info"><b>पद:</b><span id="vPosition">सदस्य</span></div>
-<div class="info"><b>फोन:</b><span id="vPhone">—</span></div>
-<div class="info"><b>Email:</b><span id="vEmail">—</span></div>
-<div class="info"><b>ठेगाना:</b><span id="vAddress">चौराठा, दैलेख, नेपाल</span></div>
-</div>
-</div>
-
-<div class="front-foot">
-<div class="motto">एकता • सहयोग • सेवा • भाइचारा</div>
-<div class="sign">
-<div class="signline"></div>
-<strong>पदम रसाली</strong>
-<small>संस्थापक</small>
-</div>
-</div>
-</div>
-
-<!-- BACK CARD -->
-<div class="card back">
-
-<div class="back-head">
-<div id="logoFallbackBack" class="logo-fallback">LOGO</div>
-<img id="logoBack" class="logo" alt="समाजको लोगो" hidden>
-<div class="back-title">
-रसाली भाई समाज परिवार चौराठा
-<small>RASHALI BHAI SAMAJ PARIWAR • ESTD 2082</small>
-</div>
-</div>
-
-<div class="back-content">
-<h3>सदस्य परिचय तथा समाजको उद्देश्य</h3>
-<div class="about">
-यो परिचयपत्र रसाली भाई समाज परिवार चौराठाका सदस्यको पहिचानका लागि जारी गरिएको हो। समाजको एकता, सहयोग, सेवा र भाइचारा कायम राख्नु हाम्रो उद्देश्य हो।
-</div>
-
-<div class="back-grid">
-<div class="back-item"><b>सदस्यको नाम</b><span id="bName">प्रबिन रसाली</span></div>
-<div class="back-item"><b>सदस्य नम्बर</b><span id="bNo">RS-001</span></div>
-<div class="back-item"><b>पद</b><span id="bPosition">सदस्य</span></div>
-<div class="back-item"><b>ठेगाना</b><span id="bAddress">चौराठा, दैलेख, नेपाल</span></div>
-<div class="back-item"><b>सम्पर्क</b><span id="bPhone">—</span></div>
-<div class="back-item"><b>सदस्यता</b><span>कार्डधारक</span></div>
-</div>
-</div>
-
-<div class="qr-panel">
-<div id="qrcode"></div>
-<div class="qr-label">SCAN FOR MEMBER DETAILS</div>
-</div>
-
-<div class="back-foot">
-<span>एकता • सहयोग • सेवा • भाइचारा</span>
-<div class="sign">
-<div class="signline"></div>
-<strong>दीपक रसाली</strong>
-<small>अध्यक्ष</small>
-</div>
-</div>
-</div>
-</section>
-
-<!-- EDITOR -->
-<section class="editor">
-<h2>🪪 सदस्य विवरण सम्पादन</h2>
-
-<div class="grid">
-<div class="field">
-<label for="name">सदस्यको नाम</label>
-<input id="name" value="प्रबिन रसाली">
-</div>
-
-<div class="field">
-<label for="memberNo">सदस्य नम्बर</label>
-<input id="memberNo" value="RS-001">
-</div>
-
-<div class="field">
-<label for="position">पद</label>
+<div id="mainApp">
+<div class="editor">
+<h2>सदस्यको विवरण भर्नुहोस्</h2>
+<div class="fields">
+<label>सदस्यको पूरा नाम
+<input id="name" placeholder="जस्तै: प्रबिन रसाली">
+</label>
+<label>सदस्य नम्बर
+<input id="memberNo" placeholder="जस्तै: RS-001">
+</label>
+<label>पद
 <input id="position" value="सदस्य">
-</div>
-
-<div class="field">
-<label for="phone">फोन नम्बर</label>
+</label>
+<label>फोन नम्बर
 <input id="phone" placeholder="फोन नम्बर">
-</div>
-
-<div class="field">
-<label for="email">Email</label>
-<input id="email" type="email" placeholder="email@example.com">
-</div>
-
-<div class="field">
-<label for="address">ठेगाना</label>
+</label>
+<label>इमेल
+<input id="email" placeholder="Email">
+</label>
+<label>ठेगाना
 <input id="address" value="चौराठा, दैलेख, नेपाल">
+</label>
+<label>सदस्यको फोटो
+<input id="photoInput" type="file" accept="image/*">
+</label>
+<label>समाजको लोगो
+<input id="logoInput" type="file" accept="image/*">
+</label>
+</div>
+<div class="buttons">
+<button onclick="updateCard()">कार्ड अपडेट</button>
+<button class="green" onclick="saveCard()">💾 सुरक्षित गर्नुहोस्</button>
+<button class="gold" onclick="loadCard()">📂 सुरक्षित विवरण खोल्नुहोस्</button>
+<button onclick="window.print()">🖨️ Print / PDF</button>
+<button class="red" onclick="resetCard()">Reset</button>
+</div>
+<p class="note">फोटो र लोगो छानेपछि कार्डमा देखिन्छ। QR Code मा सदस्यको विवरण राखिन्छ।</p>
 </div>
 
-<div class="field">
-<label for="photoFile">सदस्यको फोटो</label>
-<input id="photoFile" type="file" accept="image/*">
+<div class="cards" id="cards">
+<!-- FRONT -->
+<div class="idcard">
+<div class="top">
+<img id="logoFront" class="logo" alt="Logo">
+<div class="org">
+<strong>रसाली भाई समाज परिवार चौराठा</strong>
+<small>चौराठा, दैलेख, नेपाल</small><br>
+<small>एकता • सहयोग • सेवा • भाइचारा</small>
+</div>
+</div>
+<div class="goldline"></div>
+<div class="frontbody">
+<img id="photoFront" class="photo" alt="Member Photo">
+<div class="details">
+<div class="name" id="showName">सदस्यको नाम</div>
+<div><b>सदस्य नं.:</b> <span id="showNo">RS-001</span></div>
+<div><b>पद:</b> <span id="showPosition">सदस्य</span></div>
+<div><b>फोन:</b> <span id="showPhone">—</span></div>
+<div><b>ठेगाना:</b> <span id="showAddress">चौराठा, दैलेख</span></div>
+</div>
+</div>
+<div class="cardfoot">स्थापना: २०८२ (ESTD 2082) · सदस्य परिचयपत्र</div>
 </div>
 
-<div class="field">
-<label for="logoFile">समाजको Original Logo</label>
-<input id="logoFile" type="file" accept="image/*">
+<!-- BACK -->
+<div class="idcard">
+<div class="top">
+<img id="logoBack" class="logo" alt="Logo">
+<div class="org">
+<strong>RASHALI BHAI SAMAJ PARIWAR</strong>
+<small>CHAURATHA, DAILEKH, NEPAL</small><br>
+<small>UNITY • SUPPORT • SERVICE • BROTHERHOOD</small>
 </div>
 </div>
-
-<div class="actions">
-<button class="primary" id="saveBtn">💾 सुरक्षित गर्नुहोस्</button>
-<button class="gold" id="printBtn">🖨️ Print / PDF</button>
-<button class="light" id="resetBtn">↺ Reset</button>
+<div class="goldline"></div>
+<div class="backbody">
+<div class="backtitle">सदस्य परिचय तथा QR Code</div>
+<div class="qrrow">
+<div id="qrcode"></div>
+<div class="qrtext">
+यो कार्ड रसाली भाई समाज परिवारको सदस्य परिचयका लागि जारी गरिएको हो।<br>
+<strong>इमेल:</strong> <span id="showEmail">—</span><br>
+<strong>स्थापक:</strong> पदम रसाली
 </div>
-
-<p class="hint">
-QR मा यस कार्डमा देखिएका सदस्य विवरण राखिन्छ। QR स्क्यान गर्दा फोनले ती विवरण पढ्न सक्छ। यो संस्करण Supabase को प्रत्यक्ष सदस्यता/सक्रियता जाँचसँग जोडिएको छैन।
-</p>
-<div class="status" id="status" aria-live="polite"></div>
-</section>
+</div>
+<div class="signatures">
+<div class="sign"><b>पदम रसाली</b><br>स्थापक</div>
+<div class="sign"><b>दीपक रसाली</b><br>अध्यक्ष</div>
+</div>
+</div>
+<div class="backfoot">कोषाध्यक्ष: नरेश रसाली · स्थापना २०८२</div>
+</div>
+</div>
 </div>
 
 <script>
-const $ = id => document.getElementById(id);
-let photoData = "";
-let logoData = "";
+const fields=["name","memberNo","position","phone","email","address"];
+let photoData="";
+let logoData="";
 
-const fields = ["name","memberNo","position","phone","email","address"];
-
-function currentData(){
-return {
-name:$("name").value.trim(),
-memberNo:$("memberNo").value.trim(),
-position:$("position").value.trim(),
-phone:$("phone").value.trim(),
-email:$("email").value.trim(),
-address:$("address").value.trim(),
-photo:photoData,
-logo:logoData
-};
+function val(id){
+ return document.getElementById(id).value.trim();
 }
-
-function qrText(d){
-return [
-"RASALI BHAI SAMAJ PARIWAR CHAURATHA",
-"MEMBER IDENTITY DETAILS",
-"Name: "+(d.name||"-"),
-"Member No: "+(d.memberNo||"-"),
-"Position: "+(d.position||"-"),
-"Phone: "+(d.phone||"-"),
-"Email: "+(d.email||"-"),
-"Address: "+(d.address||"-"),
-"ESTD: 2082"
-].join("\n");
+function safeText(value){
+ return String(value||"").replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+ });
 }
-
-function makeQR(d){
-$("qrcode").innerHTML="";
-if(window.QRCode){
-new QRCode($("qrcode"),{
-text:qrText(d),
-width:128,
-height:128,
-colorDark:"#103c70",
-colorLight:"#ffffff",
-correctLevel:QRCode.CorrectLevel.M
-});
-}else{
-$("qrcode").textContent="QR library load भएन";
+function makeQR(){
+ const box=document.getElementById("qrcode");
+ box.innerHTML="";
+ const base=location.href.split("?")[0].split("#")[0];
+ const params=new URLSearchParams();
+ params.set("verify","1");
+ fields.forEach(id=>params.set(id,val(id)));
+ const qrURL=base+"?"+params.toString();
+ new QRCode(box,{
+  text:qrURL,
+  width:75,
+  height:75,
+  correctLevel:QRCode.CorrectLevel.M
+ });
 }
-}
-
 function updateCard(){
-const d=currentData();
-
-$("vName").textContent=d.name||"नाम";
-$("vNo").textContent=d.memberNo||"RS-001";
-$("vPosition").textContent=d.position||"—";
-$("vPhone").textContent=d.phone||"—";
-$("vEmail").textContent=d.email||"—";
-$("vAddress").textContent=d.address||"—";
-
-$("bName").textContent=d.name||"—";
-$("bNo").textContent=d.memberNo||"—";
-$("bPosition").textContent=d.position||"—";
-$("bAddress").textContent=d.address||"—";
-$("bPhone").textContent=d.phone||"—";
-
-makeQR(d);
+ document.getElementById("showName").textContent=val("name")||"सदस्यको नाम";
+ document.getElementById("showNo").textContent=val("memberNo")||"—";
+ document.getElementById("showPosition").textContent=val("position")||"—";
+ document.getElementById("showPhone").textContent=val("phone")||"—";
+ document.getElementById("showAddress").textContent=val("address")||"—";
+ document.getElementById("showEmail").textContent=val("email")||"—";
+ if(photoData)document.getElementById("photoFront").src=photoData;
+ if(logoData){
+  document.getElementById("logoFront").src=logoData;
+  document.getElementById("logoBack").src=logoData;
+ }
+ makeQR();
 }
-
-function readImage(file,callback){
-if(!file)return;
-if(!file.type.startsWith("image/")){
-$("status").textContent="कृपया image file छान्नुहोस्।";
-return;
+function saveCard(){
+ updateCard();
+ const data={};
+ fields.forEach(id=>data[id]=val(id));
+ data.photoData=photoData;
+ data.logoData=logoData;
+ try{
+  localStorage.setItem("rasaliMemberCard",JSON.stringify(data));
+  alert("सदस्य विवरण सुरक्षित भयो।");
+ }catch(e){
+  alert("फोटो ठूलो भएकाले सुरक्षित हुन सकेन। सानो फोटो प्रयोग गर्नुहोस्।");
+ }
 }
-const reader=new FileReader();
-reader.onload=e=>callback(e.target.result);
-reader.readAsDataURL(file);
+function loadCard(){
+ const raw=localStorage.getItem("rasaliMemberCard");
+ if(!raw){alert("सुरक्षित विवरण भेटिएन।");return;}
+ const data=JSON.parse(raw);
+ fields.forEach(id=>document.getElementById(id).value=data[id]||"");
+ photoData=data.photoData||"";
+ logoData=data.logoData||"";
+ updateCard();
+ alert("सुरक्षित विवरण खोलियो।");
 }
-
-$("photoFile").addEventListener("change",e=>{
-readImage(e.target.files[0],src=>{
-photoData=src;
-$("memberPhoto").src=src;
-$("memberPhoto").hidden=false;
-$("photoFallback").hidden=true;
-updateCard();
+function resetCard(){
+ if(!confirm("सबै विवरण खाली गर्ने?"))return;
+ fields.forEach(id=>document.getElementById(id).value=id==="position"?"सदस्य":id==="address"?"चौराठा, दैलेख, नेपाल":"");
+ photoData="";
+ logoData="";
+ document.getElementById("photoFront").removeAttribute("src");
+ document.getElementById("logoFront").removeAttribute("src");
+ document.getElementById("logoBack").removeAttribute("src");
+ updateCard();
+}
+function readImage(input,callback){
+ const file=input.files&&input.files[0];
+ if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{callback(reader.result);updateCard();};
+ reader.readAsDataURL(file);
+}
+document.getElementById("photoInput").addEventListener("change",function(){
+ readImage(this,data=>photoData=data);
 });
+document.getElementById("logoInput").addEventListener("change",function(){
+ readImage(this,data=>logoData=data);
 });
-
-$("logoFile").addEventListener("change",e=>{
-readImage(e.target.files[0],src=>{
-logoData=src;
-$("logoFront").src=src;
-$("logoBack").src=src;
-$("logoFront").hidden=false;
-$("logoBack").hidden=false;
-$("logoFallback").hidden=true;
-$("logoFallbackBack").hidden=true;
-updateCard();
-});
-});
-
 fields.forEach(id=>{
-$(id).addEventListener("input",updateCard);
+ document.getElementById(id).addEventListener("input",updateCard);
 });
 
-$("saveBtn").addEventListener("click",()=>{
-try{
-localStorage.setItem("rashaliMemberCardV2",JSON.stringify(currentData()));
-$("status").textContent="कार्डको विवरण यो डिभाइसमा सुरक्षित भयो।";
-}catch(e){
-$("status").textContent="Save हुन सकेन। फोटोको आकार सानो बनाएर फेरि प्रयास गर्नुहोस्।";
+function showVerification(){
+ const params=new URLSearchParams(location.search);
+ if(params.get("verify")!=="1")return;
+ document.getElementById("mainApp").style.display="none";
+ document.querySelector("h1").style.display="none";
+ document.querySelector(".sub").style.display="none";
+ const panel=document.getElementById("verifyPanel");
+ panel.style.display="block";
+ const labels={
+  name:"सदस्यको नाम",
+  memberNo:"सदस्य नम्बर",
+  position:"पद",
+  phone:"फोन नम्बर",
+  email:"इमेल",
+  address:"ठेगाना"
+ };
+ let html="";
+ Object.keys(labels).forEach(key=>{
+  html+="<p><strong>"+labels[key]+":</strong> "+safeText(params.get(key)||"—")+"</p>";
+ });
+ document.getElementById("verifyDetails").innerHTML=html;
 }
-});
-
-function loadSaved(){
-try{
-const raw=localStorage.getItem("rashaliMemberCardV2");
-if(!raw)return;
-
-const d=JSON.parse(raw);
-fields.forEach(id=>$(id).value=d[id]||"");
-
-if(d.photo){
-photoData=d.photo;
-$("memberPhoto").src=photoData;
-$("memberPhoto").hidden=false;
-$("photoFallback").hidden=true;
-}
-
-if(d.logo){
-logoData=d.logo;
-$("logoFront").src=logoData;
-$("logoBack").src=logoData;
-$("logoFront").hidden=false;
-$("logoBack").hidden=false;
-$("logoFallback").hidden=true;
-$("logoFallbackBack").hidden=true;
-}
-}catch(e){
-console.warn("Saved card could not be loaded",e);
-}
-}
-
-$("printBtn").addEventListener("click",()=>{
 updateCard();
-window.print();
-});
-
-$("resetBtn").addEventListener("click",()=>{
-if(!confirm("यो डिभाइसमा सुरक्षित कार्ड विवरण हटाएर सुरुवात गर्ने?"))return;
-localStorage.removeItem("rashaliMemberCardV2");
-location.reload();
-});
-
-loadSaved();
-updateCard();
+showVerification();
 </script>
 </body>
 </html>
