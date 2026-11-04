@@ -1,1 +1,415 @@
 
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>हाम्रा सदस्यहरू - रसाली भाई समाज परिवार</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+body{background:#f1f5f9;color:#222;padding:15px}
+.container{max-width:1100px;margin:auto}
+.header{background:linear-gradient(135deg,#07528b,#1684c5);color:white;text-align:center;padding:25px 12px;border-radius:17px;margin-bottom:18px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header p{margin-top:5px;font-size:14px}
+.logo{font-size:35px;margin-bottom:8px}
+.count{display:inline-block;background:#ffffff25;padding:8px 17px;border-radius:25px;margin-top:13px}
+.search{background:white;padding:13px;border-radius:13px;margin-bottom:15px;box-shadow:0 2px 10px #0001}
+input,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:15px;margin:5px 0}
+button,.btn{border:0;border-radius:8px;padding:11px 14px;background:#075b96;color:white;font-weight:bold;cursor:pointer;font-size:14px;text-decoration:none;display:inline-block;text-align:center;margin:4px 2px}
+.green{background:#16733c}.red{background:#a21d2b}.gray{background:#555}.orange{background:#a85a09}
+.admin{background:white;padding:17px;border-radius:14px;margin-bottom:18px;box-shadow:0 3px 12px #0001}
+.admin h2{color:#075b96;margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.form-grid input{margin:0}
+.form-buttons{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+#message{text-align:center;font-weight:bold;margin-top:10px}
+#adminTools{display:none}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:white;border:1px solid #dce3eb;border-radius:14px;padding:14px;display:flex;gap:13px;align-items:center;box-shadow:0 3px 12px #0000000b}
+.photo{width:105px;height:125px;object-fit:cover;border-radius:8px;border:1px solid #ddd;background:#eee;flex-shrink:0}
+.details{min-width:0;line-height:1.8;overflow-wrap:anywhere}
+.details h3{font-size:17px;color:#075b96;margin-bottom:3px}
+.details p{font-size:13px;color:#555}
+.member-no{display:inline-block;background:#e8f3fc;color:#075b96;padding:3px 8px;border-radius:20px;font-size:12px;font-weight:bold}
+.card-actions{margin-top:7px}
+.empty{text-align:center;background:white;padding:25px;border-radius:12px;color:#666}
+.footer{text-align:center;color:#777;font-size:12px;margin:25px 0}
+#loading{text-align:center;padding:20px;color:#555}
+@media(max-width:650px){
+.cards{grid-template-columns:1fr}
+.form-grid{grid-template-columns:1fr}
+.card{padding:10px;gap:10px}
+.photo{width:90px;height:110px}
+.header h1{font-size:20px}
+}
+@media print{
+body{background:white;padding:0}
+.no-print{display:none!important}
+.container{max-width:none}
+.cards{grid-template-columns:1fr 1fr;gap:8px}
+.card{break-inside:avoid;box-shadow:none}
+.photo{width:75px;height:90px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+<div class="logo">🤝</div>
+<h1>रसाली भाई समाज परिवार चौराठा</h1>
+<p>चौराठा, दैलेख, नेपाल</p>
+<p>एकता • सहयोग • सेवा • भाइचारा</p>
+<p>स्थापना: २०८२ (ESTD 2082)</p>
+<h2 style="margin-top:15px">हाम्रा सदस्यहरू</h2>
+<div class="count">जम्मा सदस्य: <span id="total">०</span></div>
+</header>
+
+<div class="search no-print">
+<input id="search" type="search" placeholder="🔍 सदस्यको नाम, नम्बर वा पद खोज्नुहोस्..." oninput="renderMembers()">
+</div>
+
+<section class="admin no-print" id="adminTools">
+<h2>🔐 Admin सदस्य व्यवस्थापन</h2>
+
+<div class="form-grid">
+<input id="memberName" placeholder="सदस्यको पूरा नाम *">
+<input id="memberPosition" placeholder="पद / जिम्मेवारी">
+<input id="memberPhone" placeholder="फोन नम्बर">
+<input id="memberEmail" type="email" placeholder="Email">
+<input id="memberPhotoUrl" placeholder="फोटो URL (वैकल्पिक)">
+<input id="memberPhotoFile" type="file" accept="image/*">
+</div>
+
+<p style="font-size:12px;color:#666;margin-top:8px">
+मोबाइलबाट फोटो छानेर Upload गर्न सकिन्छ। फोटो नभए URL पनि राख्न सकिन्छ।
+</p>
+
+<div class="form-buttons">
+<button class="green" onclick="saveMember()">💾 सदस्य सुरक्षित गर्नुहोस्</button>
+<button class="gray" onclick="clearForm()">✖ खाली गर्नुहोस्</button>
+</div>
+
+<hr style="margin:16px 0;border:0;border-top:1px solid #ddd">
+
+<h3>📊 Excel बाट सदस्य Import</h3>
+<p style="font-size:13px;color:#666;margin:7px 0">
+Excel मा नाम, पद, फोन, Email र फोटो URL का Column राखेर CSV UTF-8 मा Save गरी यहाँ छान्नुहोस्। पहिलो Row मा Column शीर्षक हुनुपर्छ।
+</p>
+<input id="csvFile" type="file" accept=".csv,text/csv">
+<button class="orange" onclick="importCSV()">📥 CSV Import गर्नुहोस्</button>
+
+<div id="message"></div>
+</section>
+
+<div class="no-print" style="text-align:right;margin-bottom:12px">
+<button class="gray" onclick="window.print()">🖨️ नामावली Print</button>
+</div>
+
+<div id="loading">सदस्य विवरण लोड हुँदैछ...</div>
+<div class="cards" id="membersList"></div>
+
+<footer class="footer">
+रसाली भाई समाज परिवार चौराठा<br>
+एकता • सहयोग • सेवा • भाइचारा
+</footer>
+
+</div>
+
+<script>
+const URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+
+const token=localStorage.getItem("rasali_access_token");
+const role=localStorage.getItem("rasali_role");
+const isAdmin=!!token && role==="admin";
+
+let members=[];
+let editId=null;
+
+if(isAdmin){
+document.getElementById("adminTools").style.display="block";
+}
+
+function headers(admin=false){
+return {
+"apikey":KEY,
+"Authorization":"Bearer "+(admin?token:KEY),
+"Content-Type":"application/json"
+};
+}
+
+function safe(value){
+return String(value??"").replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+
+function photoURL(value){
+if(!value)return "";
+let u=String(value).trim();
+if(!/^https?:\/\//i.test(u))return "";
+return u;
+}
+
+async function loadMembers(){
+document.getElementById("loading").style.display="block";
+document.getElementById("membersList").innerHTML="";
+try{
+const res=await fetch(
+URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",
+{headers:headers(false)}
+);
+if(!res.ok){
+let err=await res.text();
+throw new Error(err);
+}
+members=await res.json();
+document.getElementById("loading").style.display="none";
+renderMembers();
+}catch(e){
+document.getElementById("loading").innerText=
+"सदस्य सूची लोड भएन। Supabase मा members टेबलको Public SELECT अनुमति जाँच गर्नुपर्छ।";
+console.error(e);
+}
+}
+
+function renderMembers(){
+const q=document.getElementById("search").value.trim().toLowerCase();
+const list=document.getElementById("membersList");
+list.innerHTML="";
+const filtered=members.filter(m=>
+[m.name,m.id,m.position,m.phone].join(" ").toLowerCase().includes(q)
+);
+document.getElementById("total").innerText=members.length;
+
+if(!filtered.length){
+list.innerHTML='<div class="empty">खोजिएको सदस्य भेटिएन।</div>';
+return;
+}
+
+filtered.forEach(m=>{
+const card=document.createElement("article");
+card.className="card";
+
+const pic=document.createElement("img");
+pic.className="photo";
+pic.alt="सदस्यको फोटो";
+pic.src=photoURL(m.document_url)||"";
+pic.onerror=function(){
+this.style.visibility="hidden";
+};
+
+const detail=document.createElement("div");
+detail.className="details";
+detail.innerHTML=`
+<h3>${safe(m.name||"नाम उपलब्ध छैन")}</h3>
+<span class="member-no">सदस्य नं.: RS-${safe(m.id)}</span>
+<p><b>पद:</b> ${safe(m.position||"सदस्य")}</p>
+<p><b>फोन:</b> ${safe(m.phone||"—")}</p>
+<p><b>Email:</b> ${safe(m.email||"—")}</p>
+`;
+
+if(isAdmin){
+const actions=document.createElement("div");
+actions.className="card-actions no-print";
+const edit=document.createElement("button");
+edit.className="edit";
+edit.innerText="✏️ Edit";
+edit.onclick=()=>editMember(m.id);
+const del=document.createElement("button");
+del.className="red";
+del.innerText="🗑️ Delete";
+del.onclick=()=>deleteMember(m.id);
+actions.append(edit,del);
+detail.appendChild(actions);
+}
+card.append(pic,detail);
+list.appendChild(card);
+});
+}
+
+async function uploadPhoto(file){
+if(!file)return "";
+if(!file.type.startsWith("image/"))throw new Error("फोटो फाइल मात्र छान्नुहोस्।");
+if(file.size>5*1024*1024)throw new Error("फोटो ५ MB भन्दा सानो हुनुपर्छ।");
+if(!isAdmin)throw new Error("Admin Login आवश्यक छ।");
+
+const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
+const path="members/"+Date.now()+"-"+Math.random().toString(36).slice(2)+"."+ext;
+const res=await fetch(URL+"/storage/v1/object/Photos/"+path,{
+method:"POST",
+headers:{
+"apikey":KEY,
+"Authorization":"Bearer "+token,
+"Content-Type":file.type,
+"x-upsert":"true"
+},
+body:file
+});
+if(!res.ok)throw new Error("फोटो Upload भएन। Supabase Photos Storage अनुमति जाँच गर्नुहोस्।");
+return URL+"/storage/v1/object/public/Photos/"+path;
+}
+
+function formValue(id){
+return document.getElementById(id).value.trim();
+}
+
+async function saveMember(){
+if(!isAdmin){alert("Admin Login आवश्यक छ।");return;}
+
+const name=formValue("memberName");
+if(!name){alert("सदस्यको नाम लेख्नुहोस्।");return;}
+
+const msg=document.getElementById("message");
+msg.innerText="कृपया पर्खनुहोस्...";
+
+try{
+let photo=formValue("memberPhotoUrl");
+const file=document.getElementById("memberPhotoFile").files[0];
+if(file)photo=await uploadPhoto(file);
+
+const body={
+name:name,
+position:formValue("memberPosition"),
+phone:formValue("memberPhone"),
+email:formValue("memberEmail"),
+document_url:photo
+};
+
+let res;
+if(editId){
+res=await fetch(URL+"/rest/v1/members?id=eq."+encodeURIComponent(editId),{
+method:"PATCH",
+headers:{...headers(true),"Prefer":"return=minimal"},
+body:JSON.stringify(body)
+});
+}else{
+res=await fetch(URL+"/rest/v1/members",{
+method:"POST",
+headers:{...headers(true),"Prefer":"return=minimal"},
+body:JSON.stringify(body)
+});
+}
+if(!res.ok)throw new Error(await res.text());
+
+msg.innerText=editId?"✅ सदस्य विवरण Update भयो।":"✅ नयाँ सदस्य थपियो।";
+clearForm();
+await loadMembers();
+}catch(e){
+msg.innerText="❌ "+e.message;
+}
+}
+
+function editMember(id){
+if(!isAdmin)return;
+const m=members.find(x=>String(x.id)===String(id));
+if(!m)return;
+editId=id;
+document.getElementById("memberName").value=m.name||"";
+document.getElementById("memberPosition").value=m.position||"";
+document.getElementById("memberPhone").value=m.phone||"";
+document.getElementById("memberEmail").value=m.email||"";
+document.getElementById("memberPhotoUrl").value=m.document_url||"";
+document.getElementById("memberPhotoFile").value="";
+document.querySelector("#adminTools h2").innerText="✏️ सदस्य विवरण Edit गर्नुहोस्";
+document.getElementById("adminTools").scrollIntoView({behavior:"smooth"});
+}
+
+async function deleteMember(id){
+if(!isAdmin)return;
+if(!confirm("यो सदस्यको विवरण हटाउने हो?"))return;
+try{
+const res=await fetch(URL+"/rest/v1/members?id=eq."+encodeURIComponent(id),{
+method:"DELETE",
+headers:headers(true)
+});
+if(!res.ok)throw new Error(await res.text());
+document.getElementById("message").innerText="✅ सदस्य हटाइयो।";
+await loadMembers();
+}catch(e){
+document.getElementById("message").innerText="❌ Delete भएन: "+e.message;
+}
+}
+
+function clearForm(){
+editId=null;
+["memberName","memberPosition","memberPhone","memberEmail","memberPhotoUrl","memberPhotoFile"].forEach(id=>{
+document.getElementById(id).value="";
+});
+document.querySelector("#adminTools h2").innerText="🔐 Admin सदस्य व्यवस्थापन";
+}
+
+function parseCSV(text){
+const rows=[];
+let row=[],field="",quoted=false;
+for(let i=0;i<text.length;i++){
+const c=text[i],next=text[i+1];
+if(c==='"'&&quoted&&next==='"'){field+='"';i++;}
+else if(c==='"'){quoted=!quoted;}
+else if(c===","&&!quoted){row.push(field);field="";}
+else if((c==="\n"||c==="\r")&&!quoted){
+if(c==="\r"&&next==="\n")i++;
+row.push(field);rows.push(row);row=[];field="";
+}else{field+=c;}
+}
+if(field.length||row.length){row.push(field);rows.push(row);}
+return rows;
+}
+
+async function importCSV(){
+if(!isAdmin){alert("Admin Login आवश्यक छ।");return;}
+const file=document.getElementById("csvFile").files[0];
+if(!file){alert("पहिले Excel बाट Save गरिएको CSV छान्नुहोस्।");return;}
+if(!confirm("CSV का सदस्यहरू Database मा थप्ने हो? दोहोरिएका नाम पनि थपिन सक्छन्।"))return;
+
+const msg=document.getElementById("message");
+msg.innerText="Import हुँदैछ...";
+try{
+const text=await file.text();
+const rows=parseCSV(text);
+if(rows.length<2)throw new Error("CSV मा सदस्य विवरण भेटिएन।");
+
+const heads=rows[0].map(x=>x.trim().toLowerCase());
+const find=(names)=>heads.findIndex(h=>names.includes(h));
+const ni=find(["name","नाम","सदस्यको नाम"]);
+if(ni<0)throw new Error("CSV मा name वा नाम Column चाहिन्छ।");
+
+const pi=find(["position","पद"]);
+const ph=find(["phone","फोन","सम्पर्क"]);
+const ei=find(["email","इमेल"]);
+const di=find(["document_url","photo","फोटो","फोटो url"]);
+
+const payload=rows.slice(1).filter(r=>(r[ni]||"").trim()).map(r=>({
+name:(r[ni]||"").trim(),
+position:pi>=0?(r[pi]||"").trim():"",
+phone:ph>=0?(r[ph]||"").trim():"",
+email:ei>=0?(r[ei]||"").trim():"",
+document_url:di>=0?(r[di]||"").trim():""
+}));
+
+if(!payload.length)throw new Error("Import गर्न मिल्ने सदस्य भेटिएन।");
+
+for(let i=0;i<payload.length;i+=50){
+const batch=payload.slice(i,i+50);
+const res=await fetch(URL+"/rest/v1/members",{
+method:"POST",
+headers:{...headers(true),"Prefer":"return=minimal"},
+body:JSON.stringify(batch)
+});
+if(!res.ok)throw new Error(await res.text());
+}
+msg.innerText="✅ "+payload.length+" जना सदस्य Import भए।";
+document.getElementById("csvFile").value="";
+await loadMembers();
+}catch(e){
+msg.innerText="❌ Import समस्या: "+e.message;
+}
+}
+
+loadMembers();
+</script>
+</body>
+</html>
+
