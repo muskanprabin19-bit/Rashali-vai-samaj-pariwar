@@ -1,384 +1,90 @@
- <!DOCTYPE html>
+ 
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <meta name="google-site-verification" content="icK5EiiPhVS7FPlMgAXuZuyJoTqJJMnMNVHILkI-8vI">
-
 <title>रसाली भाई समाज परिवार चौराठा</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-
-body{
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#f5f7fb;
-  color:#222;
-  line-height:1.6;
-}
-
+body{font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f5f7fb;color:#222;line-height:1.6}
 a{text-decoration:none}
-
-.topbar{
-  background:#8b0000;
-  color:white;
-  text-align:center;
-  padding:7px;
-  font-size:14px;
-}
-
-header{
-  background:linear-gradient(135deg,#b30000,#6d0000);
-  color:white;
-  padding:20px 15px;
-  text-align:center;
-}
-
-.logo{
-  width:75px;
-  height:75px;
-  margin:auto;
-  border-radius:50%;
-  background:white;
-  color:#8b0000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  border:4px solid #ffd700;
-}
-
-header h1{
-  margin-top:10px;
-  font-size:28px;
-}
-
-.tagline{
-  font-size:17px;
-  margin-top:4px;
-}
-
-.estd{
-  display:inline-block;
-  margin-top:8px;
-  background:#ffd700;
-  color:#650000;
-  padding:5px 14px;
-  border-radius:20px;
-  font-weight:bold;
-}
-
-nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:white;
-  box-shadow:0 2px 8px rgba(0,0,0,.15);
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-nav a{
-  color:#800000;
-  padding:12px 10px;
-  font-weight:bold;
-  font-size:14px;
-}
-
-nav a:hover{
-  background:#800000;
-  color:white;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px 15px;
-}
-
-.hero{
-  background:linear-gradient(135deg,#fff4d6,#ffffff);
-  border-radius:18px;
-  padding:35px 20px;
-  text-align:center;
-  margin-top:20px;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
-
-.hero h2{
-  color:#8b0000;
-  font-size:30px;
-}
-
-.hero p{
-  margin-top:10px;
-  font-size:17px;
-}
-
+.topbar{background:#8b0000;color:white;text-align:center;padding:7px;font-size:14px}
+header{background:linear-gradient(135deg,#b30000,#6d0000);color:white;padding:20px 15px;text-align:center}
+.logo{width:75px;height:75px;margin:auto;border-radius:50%;background:white;color:#8b0000;display:flex;align-items:center;justify-content:center;font-size:38px;border:4px solid #ffd700}
+header h1{margin-top:10px;font-size:28px}
+.tagline{font-size:17px;margin-top:4px}
+.estd{display:inline-block;margin-top:8px;background:#ffd700;color:#650000;padding:5px 14px;border-radius:20px;font-weight:bold}
+nav{position:sticky;top:0;z-index:1000;background:white;box-shadow:0 2px 8px rgba(0,0,0,.15);display:flex;justify-content:center;flex-wrap:wrap}
+nav a{color:#800000;padding:12px 10px;font-weight:bold;font-size:14px}
+nav a:hover{background:#800000;color:white}
+.container{max-width:1100px;margin:auto;padding:20px 15px}
+.hero{background:linear-gradient(135deg,#fff4d6,#fff);border-radius:18px;padding:35px 20px;text-align:center;margin-top:20px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.hero h2{color:#8b0000;font-size:30px}
+.hero p{margin-top:10px;font-size:17px}
 .section{margin-top:30px}
-
-.section-title{
-  text-align:center;
-  color:#8b0000;
-  font-size:27px;
-  margin-bottom:18px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-
-.card{
-  background:white;
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);
-  text-align:center;
-}
-
-.card h3{
-  color:#8b0000;
-  margin-bottom:7px;
-}
-
-.deity{
-  font-size:65px;
-  margin-bottom:8px;
-}
-
-.service-icon{
-  font-size:40px;
-  margin-bottom:8px;
-}
-
+.section-title{text-align:center;color:#8b0000;font-size:27px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border-radius:16px;padding:20px;box-shadow:0 4px 14px rgba(0,0,0,.08);text-align:center}
+.card h3{color:#8b0000;margin-bottom:7px}
+.deity{font-size:65px;margin-bottom:8px}
+.service-icon{font-size:40px;margin-bottom:8px}
 .official-card{overflow:hidden}
-
-.official-card img{
-  width:125px;
-  height:125px;
-  object-fit:cover;
-  border-radius:50%;
-  border:4px solid #ffd700;
-  margin-bottom:10px;
-}
-
-.founder{
-  background:linear-gradient(135deg,#fff7d6,#fff);
-  border:2px solid #e3c34b;
-}
-
-.founder-photo{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#eee;
-  font-size:60px;
-  border:4px solid #ffd700;
-}
-
-.member-count{
-  text-align:center;
-  margin-bottom:15px;
-  color:#555;
-  font-weight:bold;
-}
-
-.member-card{
-  position:relative;
-  overflow:hidden;
-}
-
-.member-avatar{
-  width:85px;
-  height:85px;
-  border-radius:50%;
-  margin:0 auto 12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#8b0000,#d00000);
-  color:white;
-  font-size:34px;
-  font-weight:bold;
-  border:4px solid #ffd700;
-}
-
-.member-id{
-  display:inline-block;
-  background:#fff0c2;
-  color:#7a5200;
-  padding:3px 10px;
-  border-radius:15px;
-  font-size:13px;
-  margin-top:5px;
-}
-
-.position{
-  color:#8b0000;
-  font-weight:bold;
-  margin-top:6px;
-}
-
-.notice{
-  border-left:5px solid #8b0000;
-  text-align:left;
-  margin-bottom:12px;
-}
-
+.official-card img{width:125px;height:125px;object-fit:cover;border-radius:50%;border:4px solid #ffd700;margin-bottom:10px}
+.founder{background:linear-gradient(135deg,#fff7d6,#fff);border:2px solid #e3c34b}
+.founder-photo{width:140px;height:140px;border-radius:50%;margin:0 auto 12px;display:block;object-fit:cover;background:#eee;font-size:60px;border:4px solid #ffd700}
+.member-count{text-align:center;margin-bottom:15px;color:#555;font-weight:bold}
+.member-card{position:relative;overflow:hidden}
+.member-avatar{width:85px;height:85px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#8b0000,#d00000);color:white;font-size:34px;font-weight:bold;border:4px solid #ffd700}
+.member-id{display:inline-block;background:#fff0c2;color:#7a5200;padding:3px 10px;border-radius:15px;font-size:13px;margin-top:5px}
+.position{color:#8b0000;font-weight:bold;margin-top:6px}
+.notice{border-left:5px solid #8b0000;text-align:left;margin-bottom:12px}
 .notice h3{margin-bottom:5px}
-
-.date-box{
-  text-align:center;
-  padding:25px;
-  background:white;
-  border-radius:16px;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);
-}
-
-.complaint-box{
-  background:#fff4f4;
-  border:1px solid #e4b5b5;
-}
-
+.date-box{text-align:center;padding:25px;background:white;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.complaint-box{background:#fff4f4;border:1px solid #e4b5b5}
 .contact-card{text-align:center}
-
 .contact-icon{font-size:35px}
-
-.paper{
-  background:white;
-  padding:30px;
-  border:2px solid #222;
-  text-align:center;
-}
-
+.paper{background:white;padding:30px;border:2px solid #222;text-align:center}
 .signature{display:none}
-
-.login-box{
-  text-align:center;
-  background:linear-gradient(135deg,#8b0000,#b30000);
-  color:white;
-}
-
-.login-box a{
-  display:inline-block;
-  margin-top:12px;
-  background:white;
-  color:#8b0000;
-  padding:10px 25px;
-  border-radius:25px;
-  font-weight:bold;
-}
-
-/* भौचर कार्ड */
-.voucher-card{
-  background:linear-gradient(135deg,#ffffff,#f0f6fc);
-  border:2px solid #d5e3f1;
-}
-
+.login-box{text-align:center;background:linear-gradient(135deg,#8b0000,#b30000);color:white}
+.login-box a{display:inline-block;margin-top:12px;background:white;color:#8b0000;padding:10px 25px;border-radius:25px;font-weight:bold}
+.voucher-card{background:linear-gradient(135deg,#fff,#f0f6fc);border:2px solid #d5e3f1}
 .voucher-card h3{color:#07518a}
-
-.voucher-button{
-  display:inline-block;
-  margin-top:15px;
-  background:#07518a;
-  color:white;
-  padding:12px 25px;
-  border-radius:8px;
-  font-weight:bold;
-}
-
+.voucher-button{display:inline-block;margin-top:15px;background:#07518a;color:white;padding:12px 25px;border-radius:8px;font-weight:bold}
 .voucher-button:hover{background:#063d68}
-
-footer{
-  margin-top:35px;
-  background:#4d0000;
-  color:white;
-  text-align:center;
-  padding:25px 15px;
-}
-
-.loading{
-  text-align:center;
-  padding:25px;
-  color:#777;
-}
-
-.error{
-  background:#fff0f0;
-  color:#a00000;
-  padding:15px;
-  border-radius:10px;
-  text-align:center;
-}
-
-.empty{
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  text-align:center;
-  color:#777;
-}
-
+.certificate-card{background:linear-gradient(135deg,#fff,#fff8e5);border:2px solid #d8bd69}
+.certificate-card h3{color:#805400}
+.certificate-button{display:inline-block;margin-top:15px;background:linear-gradient(135deg,#8b0000,#b30000);color:white;padding:12px 25px;border-radius:8px;font-weight:bold}
+.certificate-button:hover{background:#650000}
+footer{margin-top:35px;background:#4d0000;color:white;text-align:center;padding:25px 15px}
+.loading{text-align:center;padding:25px;color:#777}
+.error{background:#fff0f0;color:#a00000;padding:15px;border-radius:10px;text-align:center}
+.empty{background:white;padding:25px;border-radius:15px;text-align:center;color:#777}
 @media(max-width:600px){
-  header h1{font-size:23px}
-  .hero h2{font-size:24px}
-  nav a{padding:9px 7px;font-size:12px}
+header h1{font-size:23px}
+.hero h2{font-size:24px}
+nav a{padding:9px 7px;font-size:12px}
 }
-
 @media print{
-  body{background:white}
-
-  nav,
-  .topbar,
-  header,
-  footer,
-  .no-print{
-    display:none !important;
-  }
-
-  .signature{
-    display:block;
-    margin-top:70px;
-    text-align:left;
-  }
-
-  .paper{border:2px solid #000}
+body{background:white}
+nav,.topbar,header,footer,.no-print{display:none!important}
+.signature{display:block;margin-top:70px;text-align:left}
+.paper{border:2px solid #000}
 }
 </style>
 </head>
 
 <body>
-
-<div class="topbar">
-🤝 रसाली भाई समाज परिवार चौराठा
-</div>
+<div class="topbar">🤝 रसाली भाई समाज परिवार चौराठा</div>
 
 <header>
   <div class="logo">🤝</div>
-
   <h1>रसाली भाई समाज परिवार चौराठा</h1>
-
-  <div class="tagline">
-  एकता • सहयोग • सेवा • भाइचारा
-  </div>
-
-  <div class="estd">
-  स्थापना: २०८२
-  </div>
+  <div class="tagline">एकता • सहयोग • सेवा • भाइचारा</div>
+  <div class="estd">स्थापना: २०८२</div>
 </header>
 
 <nav>
@@ -390,119 +96,65 @@ footer{
   <a href="#complaint">गुनासो</a>
   <a href="#contact">सम्पर्क</a>
   <a href="voucher.html">📄 भौचर</a>
+  <a href="samman-patra.html">🏅 सम्मानपत्र</a>
   <a href="login.html">Login</a>
 </nav>
 
 <main id="home" class="container">
 
 <section class="hero">
-  <h2>
-  रसाली भाई समाज परिवारमा हार्दिक स्वागत छ 🙏
-  </h2>
-
-  <p>
-  हाम्रो समाजको उद्देश्य एकता, सहयोग, सेवा र भाइचारालाई अझ मजबुत बनाउनु हो।
-  </p>
-
-  <p>
-  स्थापना: <b>२०८२</b>
-  </p>
+  <h2>रसाली भाई समाज परिवारमा हार्दिक स्वागत छ 🙏</h2>
+  <p>हाम्रो समाजको उद्देश्य एकता, सहयोग, सेवा र भाइचारालाई अझ मजबुत बनाउनु हो।</p>
+  <p>स्थापना: <b>२०८२</b></p>
 </section>
 
 <section class="section">
   <h2 class="section-title">🛕 कुल देवता</h2>
-
   <div class="card">
     <div class="deity">🙏</div>
-
     <h3>माबै तथा भामसैनी</h3>
-
     <p>हामी माबै र भामसैनीका सन्तान</p>
   </div>
 </section>
 
 <section id="services" class="section">
   <h2 class="section-title">🌟 हाम्रो सेवा</h2>
-
   <div class="grid">
-
-    <div class="card">
-      <div class="service-icon">🤝</div>
-      <h3>भाइचारा</h3>
-      <p>सम्पूर्ण सदस्यबीच आपसी एकता र भाइचारा कायम गर्ने।</p>
-    </div>
-
-    <div class="card">
-      <div class="service-icon">❤️</div>
-      <h3>सहयोग</h3>
-      <p>आवश्यक परेको समयमा सदस्य तथा परिवारलाई सहयोग गर्ने।</p>
-    </div>
-
-    <div class="card">
-      <div class="service-icon">🛠️</div>
-      <h3>सेवा</h3>
-      <p>समाज र समुदायको हितमा विभिन्न सेवा गर्ने।</p>
-    </div>
-
-    <div class="card">
-      <div class="service-icon">📢</div>
-      <h3>सूचना</h3>
-      <p>समाजका महत्वपूर्ण सूचना सबै सदस्यसम्म पुर्‍याउने।</p>
-    </div>
-
+    <div class="card"><div class="service-icon">🤝</div><h3>भाइचारा</h3><p>सम्पूर्ण सदस्यबीच आपसी एकता र भाइचारा कायम गर्ने।</p></div>
+    <div class="card"><div class="service-icon">❤️</div><h3>सहयोग</h3><p>आवश्यक परेको समयमा सदस्य तथा परिवारलाई सहयोग गर्ने।</p></div>
+    <div class="card"><div class="service-icon">🛠️</div><h3>सेवा</h3><p>समाज र समुदायको हितमा विभिन्न सेवा गर्ने।</p></div>
+    <div class="card"><div class="service-icon">📢</div><h3>सूचना</h3><p>समाजका महत्वपूर्ण सूचना सबै सदस्यसम्म पुर्‍याउने।</p></div>
   </div>
 </section>
 
 <section id="official" class="section">
   <h2 class="section-title">👥 पदाधिकारी</h2>
-
   <div class="grid">
-
     <div class="card official-card">
-      <img
-      src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_20260904_045403.jpg"
-      alt="दिपक रसाली">
-
-      <h3>दिपक रसाली</h3>
-      <p class="position">अध्यक्ष</p>
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_20260904_045403.jpg" alt="दिपक रसाली">
+      <h3>दिपक रसाली</h3><p class="position">अध्यक्ष</p>
     </div>
-
     <div class="card official-card">
-      <img
-      src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_1773455769208.jpg"
-      alt="पदम रसाली">
-
-      <h3>पदम रसाली</h3>
-      <p class="position">उपाध्यक्ष</p>
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_1773455769208.jpg" alt="पदम रसाली">
+      <h3>पदम रसाली</h3><p class="position">उपाध्यक्ष</p>
     </div>
-
     <div class="card official-card">
-      <img
-      src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/file_00000000b2c481f489f232fcef69e926.png"
-      alt="गोपि रसाली">
-
-      <h3>गोपि रसाली</h3>
-      <p class="position">प्रस्तावक</p>
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/file_00000000b2c481f489f232fcef69e926.png" alt="गोपि रसाली">
+      <h3>गोपि रसाली</h3><p class="position">प्रस्तावक</p>
     </div>
-
     <div class="card official-card">
-      <img
-      src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_20260904_045928.jpg"
-      alt="नरेश रसाली">
-
-      <h3>नरेश रसाली</h3>
-      <p class="position">कोषाध्यक्ष</p>
+      <img src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_20260904_045928.jpg" alt="नरेश रसाली">
+      <h3>नरेश रसाली</h3><p class="position">कोषाध्यक्ष</p>
     </div>
-
   </div>
 </section>
 
 <section class="section">
   <h2 class="section-title">🌟 संस्थापक</h2>
-
   <div class="card founder">
-    <div class="founder-photo">👤</div>
-
+    <img class="founder-photo"
+      src="https://hvcalffbwvbwekysukdo.supabase.co/storage/v1/object/public/Photos/IMG_1773455769208.jpg"
+      alt="संस्थापक पदम रसाली">
     <h3>पदम रसाली</h3>
     <p>संस्थापक</p>
   </div>
@@ -510,161 +162,91 @@ footer{
 
 <section id="member" class="section">
   <h2 class="section-title">👥 समाजका सदस्यहरू</h2>
-
-  <div id="memberCount" class="member-count">
-  सदस्यहरू खोजिँदै...
-  </div>
-
+  <div id="memberCount" class="member-count">सदस्यहरू खोजिँदै...</div>
   <div id="membersList" class="grid">
-    <div class="loading">
-    ⏳ सदस्यहरूको विवरण लोड हुँदैछ...
-    </div>
+    <div class="loading">⏳ सदस्यहरूको विवरण लोड हुँदैछ...</div>
   </div>
 </section>
 
 <section id="notice" class="section">
   <h2 class="section-title">📢 सूचना</h2>
-
-  <div id="noticeList">
-    <div class="loading">
-    ⏳ सूचना लोड हुँदैछ...
-    </div>
-  </div>
+  <div id="noticeList"><div class="loading">⏳ सूचना लोड हुँदैछ...</div></div>
 </section>
 
 <section id="calendar" class="section">
   <h2 class="section-title">📅 Calendar</h2>
-
   <div class="date-box">
     <h3>नेपाली तथा अंग्रेजी पात्रो</h3>
-
-    <p>
-    समाजका महत्वपूर्ण कार्यक्रम तथा मिति यहाँ राख्न सकिनेछ।
-    </p>
+    <p>समाजका महत्वपूर्ण कार्यक्रम तथा मिति यहाँ राख्न सकिनेछ।</p>
   </div>
 </section>
 
 <section id="complaint" class="section">
   <h2 class="section-title">📝 गुनासो तथा सुझाव</h2>
-
   <div class="card complaint-box">
     <h3>गुनासो / सुझाव</h3>
-
-    <p>
-    समाजसँग सम्बन्धित कुनै गुनासो वा सुझाव भएमा सम्पर्क गर्नुहोस्।
-    </p>
+    <p>समाजसँग सम्बन्धित कुनै गुनासो वा सुझाव भएमा सम्पर्क गर्नुहोस्।</p>
   </div>
 </section>
 
 <section class="section">
   <h2 class="section-title">💰 पैसा हिसाब</h2>
-
   <div class="card">
     <h3>सदस्यको आर्थिक विवरण</h3>
-
-    <p>
-    सदस्यको व्यक्तिगत पैसा सम्बन्धी विवरण सुरक्षित Login पछि मात्र हेर्न मिल्नेछ।
-    </p>
-
-    <p style="margin-top:10px;">
-    🔐 सुरक्षित Member Login प्रणाली
-    </p>
+    <p>सदस्यको व्यक्तिगत पैसा सम्बन्धी विवरण सुरक्षित Login पछि मात्र हेर्न मिल्नेछ।</p>
+    <p style="margin-top:10px;">🔐 सुरक्षित Member Login प्रणाली</p>
   </div>
 </section>
 
-<!-- भौचर व्यवस्थापनको नयाँ भाग -->
 <section id="voucher" class="section">
   <h2 class="section-title">📄 भौचर व्यवस्थापन</h2>
-
   <div class="card voucher-card">
     <h3>आम्दानी तथा खर्च भौचर</h3>
+    <p>रसाली भाई समाज परिवारको आम्दानी तथा खर्चको भौचर तयार गर्न, विवरण सुरक्षित राख्न र Print / PDF निकाल्न यहाँ जानुहोस्।</p>
+    <a href="voucher.html" class="voucher-button">📄 भौचर खोल्नुहोस्</a>
+  </div>
+</section>
 
-    <p>
-    रसाली भाई समाज परिवारको आम्दानी तथा खर्चको भौचर तयार गर्न,
-    विवरण सुरक्षित राख्न र Print / PDF निकाल्न यहाँ जानुहोस्।
-    </p>
-
-    <a href="voucher.html" class="voucher-button">
-    📄 भौचर खोल्नुहोस्
-    </a>
+<section id="certificate" class="section">
+  <h2 class="section-title">🏅 सम्मानपत्र</h2>
+  <div class="card certificate-card">
+    <h3>रसाली भाई समाज परिवारको सम्मानपत्र</h3>
+    <p>सम्मानित व्यक्तिको नाम, फोटो, विवरण र हस्ताक्षरसहित सम्मानपत्र तयार गर्न यहाँ जानुहोस्।</p>
+    <a href="samman-patra.html" class="certificate-button">🏅 सम्मानपत्र खोल्नुहोस्</a>
   </div>
 </section>
 
 <section class="section">
   <h2 class="section-title">📄 आधिकारिक कागज</h2>
-
   <div class="paper">
     <h2>रसाली भाई समाज परिवार चौराठा</h2>
-
     <p>एकता • सहयोग • सेवा • भाइचारा</p>
-
     <p>स्थापना: <b>२०८२</b></p>
-
     <hr style="margin:20px 0;">
-
-    <p>
-    यस समाजका सदस्यहरूबीच आपसी सहयोग, एकता र भाइचारा कायम राख्ने उद्देश्यले यो समाज स्थापना गरिएको हो।
-    </p>
-
+    <p>यस समाजका सदस्यहरूबीच आपसी सहयोग, एकता र भाइचारा कायम राख्ने उद्देश्यले यो समाज स्थापना गरिएको हो।</p>
     <div class="signature">
       <br><br>
       <p>________________________</p>
       <p><b>पदम रसाली</b></p>
       <p>संस्थापक</p>
     </div>
-
-    <button
-    class="no-print"
-    onclick="window.print()"
-    style="
-    margin-top:20px;
-    padding:10px 22px;
-    border:0;
-    border-radius:20px;
-    background:#8b0000;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    ">
-    🖨️ Print
-    </button>
+    <button class="no-print" onclick="window.print()" style="margin-top:20px;padding:10px 22px;border:0;border-radius:20px;background:#8b0000;color:white;font-weight:bold;cursor:pointer;">🖨️ Print</button>
   </div>
 </section>
 
 <section id="contact" class="section">
   <h2 class="section-title">📞 सम्पर्क</h2>
-
   <div class="grid">
-
-    <div class="card contact-card">
-      <div class="contact-icon">📞</div>
-      <h3>फोन</h3>
-      <a href="tel:+9766850626">+977 96850626</a>
-    </div>
-
-    <div class="card contact-card">
-      <div class="contact-icon">💬</div>
-      <h3>WhatsApp</h3>
-      <a href="https://wa.me/0000000000">WhatsApp</a>
-    </div>
-
-    <div class="card contact-card">
-      <div class="contact-icon">📧</div>
-      <h3>Email</h3>
-      <a href="mailto:example@email.com">Email</a>
-    </div>
-
+    <div class="card contact-card"><div class="contact-icon">📞</div><h3>फोन</h3><a href="tel:+97796850626">+977 96850626</a></div>
+    <div class="card contact-card"><div class="contact-icon">💬</div><h3>WhatsApp</h3><a href="https://wa.me/0000000000">WhatsApp</a></div>
+    <div class="card contact-card"><div class="contact-icon">📧</div><h3>Email</h3><a href="mailto:example@email.com">Email</a></div>
   </div>
 </section>
 
 <section class="section">
   <div class="card login-box">
     <h2>🔐 Member / Admin Login</h2>
-
-    <p>
-    आफ्नो विवरण तथा समाजको व्यवस्थापन प्रणाली प्रयोग गर्न Login गर्नुहोस्।
-    </p>
-
+    <p>आफ्नो विवरण तथा समाजको व्यवस्थापन प्रणाली प्रयोग गर्न Login गर्नुहोस्।</p>
     <a href="login.html">Login गर्नुहोस्</a>
   </div>
 </section>
@@ -673,226 +255,92 @@ footer{
 
 <footer>
   <h3>🤝 रसाली भाई समाज परिवार चौराठा</h3>
-
   <p>एकता • सहयोग • सेवा • भाइचारा</p>
-
   <p>हामी माबै र भामसैनीका सन्तान</p>
-
-  <p style="margin-top:8px;">
-  © २०८२ रसाली भाई समाज परिवार
-  </p>
+  <p style="margin-top:8px;">© २०८२ रसाली भाई समाज परिवार</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-const SUPABASE_URL =
-"https://hvcalffbwvbwekysukdo.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
-
-const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const SUPABASE_KEY="sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
+const supabaseClient=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 function escapeHTML(value){
-  if(value === null || value === undefined){
-    return "";
-  }
-
-  return String(value)
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+  if(value===null||value===undefined)return "";
+  return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 }
 
-/* MEMBER लोड गर्ने */
 async function loadMembers(){
-
-  const list =
-  document.getElementById("membersList");
-
-  const count =
-  document.getElementById("memberCount");
-
+  const list=document.getElementById("membersList");
+  const count=document.getElementById("memberCount");
   try{
-
-    const {data,error} =
-    await supabaseClient
-    .from("members")
-    .select("id,name,position,phone,email,document_url")
-    .order("id",{ascending:true});
-
+    const {data,error}=await supabaseClient.from("members").select("id,name,position,phone,email,document_url").order("id",{ascending:true});
     if(error){
       console.error(error);
-
-      count.innerText =
-      "सदस्य विवरण लोड गर्न समस्या भयो।";
-
-      list.innerHTML = `
-      <div class="error">
-      सदस्यहरूको विवरण अहिले लोड हुन सकेन।
-      </div>
-      `;
-
+      count.innerText="सदस्य विवरण लोड गर्न समस्या भयो।";
+      list.innerHTML='<div class="error">सदस्यहरूको विवरण अहिले लोड हुन सकेन।</div>';
       return;
     }
-
-    if(!data || data.length === 0){
-      count.innerText =
-      "हाल कुनै सदस्य विवरण छैन।";
-
-      list.innerHTML = `
-      <div class="empty">
-      👥 अहिले सदस्य विवरण उपलब्ध छैन।
-      </div>
-      `;
-
+    if(!data||data.length===0){
+      count.innerText="हाल कुनै सदस्य विवरण छैन।";
+      list.innerHTML='<div class="empty">👥 अहिले सदस्य विवरण उपलब्ध छैन।</div>';
       return;
     }
-
-    count.innerText =
-    "जम्मा सदस्य संख्या: " + data.length;
-
-    list.innerHTML =
-    data.map(member => {
-
-      const name =
-      escapeHTML(member.name || "नाम उपलब्ध छैन");
-
-      const position =
-      escapeHTML(member.position || "सदस्य");
-
-      const phone =
-      escapeHTML(member.phone || "");
-
-      let firstLetter = "👤";
-
-      if(member.name){
-        firstLetter =
-        escapeHTML(
-          String(member.name).trim().charAt(0)
-        ) || "👤";
-      }
-
+    count.innerText="जम्मा सदस्य संख्या: "+data.length;
+    list.innerHTML=data.map(member=>{
+      const name=escapeHTML(member.name||"नाम उपलब्ध छैन");
+      const position=escapeHTML(member.position||"सदस्य");
+      const phone=escapeHTML(member.phone||"");
+      let firstLetter="👤";
+      if(member.name)firstLetter=escapeHTML(String(member.name).trim().charAt(0))||"👤";
+      const photo=member.document_url?escapeHTML(member.document_url):"";
       return `
       <div class="card member-card">
-
-        <div class="member-avatar">
-        ${firstLetter}
-        </div>
-
-        <h3>${name}</h3>
-
-        <div class="position">
-        ${position}
-        </div>
-
-        <div class="member-id">
-        सदस्य ID: ${escapeHTML(member.id)}
-        </div>
-
         ${
-          phone
-          ? `<p style="margin-top:10px;">📞 ${phone}</p>`
-          : ""
+          photo
+          ? `<img src="${photo}" alt="${name}" style="width:85px;height:85px;border-radius:50%;object-fit:cover;border:4px solid #ffd700;margin:0 auto 12px;display:block;">`
+          : `<div class="member-avatar">${firstLetter}</div>`
         }
-
-      </div>
-      `;
-
+        <h3>${name}</h3>
+        <div class="position">${position}</div>
+        <div class="member-id">सदस्य ID: ${escapeHTML(member.id)}</div>
+        ${phone?`<p style="margin-top:10px;">📞 ${phone}</p>`:""}
+      </div>`;
     }).join("");
-
   }catch(error){
-
     console.error(error);
-
-    count.innerText =
-    "सदस्य विवरण लोड गर्न समस्या भयो।";
-
-    list.innerHTML = `
-    <div class="error">
-    वेबसाइट र database बीच connection मा समस्या भयो।
-    </div>
-    `;
+    count.innerText="सदस्य विवरण लोड गर्न समस्या भयो।";
+    list.innerHTML='<div class="error">वेबसाइट र database बीच connection मा समस्या भयो।</div>';
   }
 }
 
-/* NOTICE लोड गर्ने */
 async function loadNotices(){
-
-  const list =
-  document.getElementById("noticeList");
-
+  const list=document.getElementById("noticeList");
   try{
-
-    const {data,error} =
-    await supabaseClient
-    .from("Notices")
-    .select("*")
-    .order("Id",{ascending:false});
-
+    const {data,error}=await supabaseClient.from("Notices").select("*").order("Id",{ascending:false});
     if(error){
       console.error(error);
-
-      list.innerHTML = `
-      <div class="error">
-      सूचना लोड गर्न समस्या भयो।
-      </div>
-      `;
-
+      list.innerHTML='<div class="error">सूचना लोड गर्न समस्या भयो।</div>';
       return;
     }
-
-    if(!data || data.length === 0){
-      list.innerHTML = `
-      <div class="empty">
-      📢 हाल कुनै सूचना छैन।
-      </div>
-      `;
-
+    if(!data||data.length===0){
+      list.innerHTML='<div class="empty">📢 हाल कुनै सूचना छैन।</div>';
       return;
     }
-
-    list.innerHTML =
-    data.map(notice => {
-
-      return `
+    list.innerHTML=data.map(notice=>`
       <div class="card notice">
-
-        <h3>
-        📢 ${escapeHTML(notice.Title)}
-        </h3>
-
-        <p>
-        ${escapeHTML(notice.Content)}
-        </p>
-
-      </div>
-      `;
-
-    }).join("");
-
+        <h3>📢 ${escapeHTML(notice.Title)}</h3>
+        <p>${escapeHTML(notice.Content)}</p>
+      </div>`).join("");
   }catch(error){
-
     console.error(error);
-
-    list.innerHTML = `
-    <div class="error">
-    सूचना लोड गर्न समस्या भयो।
-    </div>
-    `;
+    list.innerHTML='<div class="error">सूचना लोड गर्न समस्या भयो।</div>';
   }
 }
 
 loadMembers();
 loadNotices();
 </script>
-
 </body>
 </html>
