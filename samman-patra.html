@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>रसाली भाई समाज परिवार - सम्मान पत्र</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ padding:15px;
+ background:#e8edf5;
+ font-family:"Noto Sans Devanagari",Arial,sans-serif;
+ color:#111;
+}
+.controls{
+ max-width:1100px;
+ margin:0 auto 15px;
+ padding:15px;
+ background:white;
+ border-radius:10px;
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ justify-content:center;
+}
+.controls input,.controls button{
+ padding:10px;
+ border:1px solid #aaa;
+ border-radius:6px;
+}
+button{
+ background:#123b87;
+ color:white;
+ border:0;
+ cursor:pointer;
+ padding:11px 20px;
+ border-radius:6px;
+}
+.certificate{
+ width:100%;
+ max-width:1150px;
+ min-height:790px;
+ margin:auto;
+ padding:13px;
+ background:#fffdf6;
+ border:9px double #c99a24;
+ outline:3px solid #123b87;
+ outline-offset:-17px;
+ position:relative;
+ overflow:hidden;
+}
+.inner{
+ border:2px solid #d6ad48;
+ min-height:750px;
+ padding:22px 30px;
+ position:relative;
+}
+.top{
+ text-align:center;
+ color:#123b87;
+ font-weight:bold;
+}
+.tagline{font-size:22px}
+.org{
+ color:#d21e19;
+ font-size:clamp(25px,4vw,43px);
+ font-weight:900;
+ margin:10px 0 2px;
+}
+.address{font-size:22px;font-weight:bold}
+.estd{
+ display:inline-block;
+ background:#123b87;
+ color:white;
+ padding:7px 25px;
+ border-radius:25px;
+ margin-top:8px;
+}
+.ribbon{
+ margin:22px auto;
+ max-width:580px;
+ text-align:center;
+ padding:12px;
+ background:#c71918;
+ color:white;
+ font-size:clamp(30px,5vw,48px);
+ font-weight:bold;
+ border:5px ridge #e6b744;
+}
+.content{
+ display:grid;
+ grid-template-columns:220px 1fr;
+ gap:25px;
+ align-items:center;
+}
+.photo{
+ width:210px;
+ height:255px;
+ border:6px double #d2a22d;
+ background:#e8f4ff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ overflow:hidden;
+ color:#123b87;
+ text-align:center;
+}
+.photo img{width:100%;height:100%;object-fit:cover}
+.details{font-size:21px;line-height:1.8}
+.recipient{
+ color:#123b87;
+ font-size:34px;
+ font-weight:bold;
+}
+.message{
+ font-size:22px;
+ line-height:1.8;
+ text-align:justify;
+ margin-top:15px;
+}
+.wish{
+ background:#e2f0ff;
+ border:1px solid #78a9dd;
+ border-radius:30px;
+ text-align:center;
+ padding:12px;
+ font-size:20px;
+ font-weight:bold;
+ margin:18px 0;
+}
+.bottom{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+ text-align:center;
+ margin-top:20px;
+}
+.sign{
+ border-top:2px solid #d5a32d;
+ padding-top:35px;
+ color:#123b87;
+ font-size:19px;
+ font-weight:bold;
+}
+.sign small{display:block;font-size:16px}
+.footer{
+ margin:20px -30px -22px;
+ background:#123b87;
+ color:white;
+ text-align:center;
+ padding:12px;
+ font-size:24px;
+ font-weight:bold;
+}
+.editable{outline:none}
+@media(max-width:650px){
+ .certificate{padding:8px}
+ .inner{padding:15px 12px}
+ .content{grid-template-columns:1fr}
+ .photo{margin:auto}
+ .details{text-align:center;font-size:17px}
+ .message{font-size:17px}
+ .bottom{grid-template-columns:1fr}
+ .sign{padding-top:25px}
+ .footer{margin:15px -12px -15px;font-size:18px}
+ .tagline{font-size:16px}
+ .address{font-size:17px}
+}
+@media print{
+ @page{size:A4 landscape;margin:5mm}
+ body{background:white;padding:0}
+ .controls{display:none}
+ .certificate{
+  width:100%;
+  max-width:none;
+  min-height:0;
+  height:190mm;
+  margin:0;
+  print-color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+ }
+ .inner{min-height:0;height:100%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="controls">
+ <label>फोटो छान्नुहोस्:
+ <input type="file" id="photoInput" accept="image/*">
+ </label>
+ <button onclick="window.print()">प्रिन्ट / PDF</button>
+ <button onclick="location.reload()">रिसेट</button>
+</div>
+
+<div class="certificate">
+<div class="inner">
+
+<div class="top">
+ <div class="tagline">“एकता • सहयोग • सेवा • भाइचारा”</div>
+ <div class="org editable" contenteditable="true">
+ रसाली भाई समाज परिवार चौराठा
+ </div>
+ <div class="address editable" contenteditable="true">
+ चौराठा, दैलेख, नेपाल
+ </div>
+ <div class="estd editable" contenteditable="true">
+ स्थापना: २०८२ / ESTD 2082
+ </div>
+</div>
+
+<div class="ribbon">सम्मान पत्र</div>
+
+<div class="content">
+
+ <div class="photo">
+  <img id="personPhoto" alt="सम्मानित व्यक्तिको फोटो"
+  style="display:none">
+  <span id="photoText">यहाँ व्यक्तिको फोटो</span>
+ </div>
+
+ <div class="details">
+  श्री/श्रीमती :
+  <span class="recipient editable" contenteditable="true">
+  प्रबिन रसाली
+  </span>
+  <br>
+  ठेगाना :
+  <span class="editable" contenteditable="true">
+  चौराठा, दैलेख, नेपाल
+  </span>
+  <br>
+  सदस्यता नं. :
+  <span class="recipient editable" contenteditable="true"
+  style="font-size:25px">RS-001</span>
+ </div>
+
+</div>
+
+<div class="message editable" contenteditable="true">
+ <b style="color:#d21e19">
+ रसाली भाई समाज परिवार चौराठा
+ </b>
+ द्वारा समाजको हित, एकता, सहयोग, सेवा र भाइचारा भावनालाई सधैँ जीवन्त राख्न महत्वपूर्ण योगदान पुर्‍याउनुभएको कदर गर्दै यस सम्मान पत्रद्वारा
+ <b style="color:#123b87">सम्मानित</b>
+ गरिएको छ।
+</div>
+
+<div class="wish editable" contenteditable="true">
+ आगामी दिनमा पनि यस्तै सामाजिक सेवामा निरन्तर लागिरहनु हुन हार्दिक शुभकामना व्यक्त गर्दछौँ।
+</div>
+
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;font-size:16px;color:#123b87">
+ <div>
+ मिति: <span contenteditable="true">२०८२/०९/०१</span>
+ <br>
+ प्रमाणपत्र नं.: <span contenteditable="true">RS-001/2082</span>
+ </div>
+</div>
+
+<div class="bottom">
+ <div class="sign">
+ <div contenteditable="true">दीपक रसाली</div>
+ <small>अध्यक्ष</small>
+ </div>
+ <div class="sign">
+ <div contenteditable="true">पदम रसाली</div>
+ <small>संस्थापक</small>
+ </div>
+ <div class="sign">
+ <div contenteditable="true">नरेश रसाली</div>
+ <small>कोषाध्यक्ष</small>
+ </div>
+</div>
+
+<div class="footer">
+ हामी माबै र भामसैनीका सन्तान
+</div>
+
+</div>
+</div>
+
+<script>
+document.getElementById("photoInput").addEventListener("change",function(e){
+ const file=e.target.files[0];
+ if(!file)return;
+ const reader=new FileReader();
+ reader.onload=function(event){
+  const img=document.getElementById("personPhoto");
+  img.src=event.target.result;
+  img.style.display="block";
+  document.getElementById("photoText").style.display="none";
+ };
+ reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>
