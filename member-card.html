@@ -1,193 +1,236 @@
-
+ 
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rasali Bhai Samaj Pariwar - Premium ID Card</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- background:#edf2f8;
- color:#142d4e;
- font-family:"Noto Sans Devanagari",Arial,sans-serif;
+ margin:0;background:#edf3fb;color:#102e57;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
 }
 header{
- background:linear-gradient(120deg,#102f5c,#1762a8);
- color:white;text-align:center;padding:20px 10px;
- border-bottom:5px solid #d62828;
+ background:linear-gradient(120deg,#092d60,#1762ac);
+ color:white;text-align:center;padding:18px 10px;
+ border-bottom:5px solid #d71935;
 }
-header h1{margin:4px;font-size:25px}
-header p{margin:5px;font-size:14px}
-.container{max-width:1100px;margin:20px auto;padding:12px}
+header h1{margin:4px;font-size:23px}
+header p{margin:5px;font-size:13px}
+.container{max-width:1050px;margin:20px auto;padding:12px}
 .panel{
- background:white;padding:20px;border-radius:13px;
- box-shadow:0 4px 18px #0001;margin-bottom:20px;
+ background:white;padding:18px;border-radius:13px;
+ margin-bottom:20px;box-shadow:0 3px 15px #0001;
 }
 h2{color:#123b70;margin-top:0}
 .form-grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;
+ display:grid;grid-template-columns:1fr 1fr;gap:13px;
 }
-.field label{display:block;font-weight:bold;font-size:14px;margin-bottom:6px}
-input,textarea{
+label{display:block;font-size:14px;font-weight:bold;margin-bottom:5px}
+input{
  width:100%;padding:11px;border:1px solid #cbd5e1;
- border-radius:7px;font-size:15px;background:white;
+ border-radius:7px;font-size:15px;
 }
-textarea{min-height:65px;resize:vertical}
-.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}
 button{
- border:0;border-radius:7px;padding:12px 17px;
- color:white;background:#174e91;font-weight:bold;
- font-size:14px;cursor:pointer;
+ border:0;padding:12px 16px;border-radius:7px;
+ color:white;background:#174e91;font-weight:bold;cursor:pointer;
 }
-button:hover{opacity:.88}
 .green{background:#16834b}
 .red{background:#c62828}
 .orange{background:#d97706}
 .gray{background:#526477}
-.preview-title{text-align:center;color:#123b70;margin:22px 0 12px}
+.preview-title{text-align:center;color:#123b70;margin:25px 0 15px}
 .cards{
  display:flex;justify-content:center;align-items:flex-start;
- flex-wrap:wrap;gap:22px;
+ flex-wrap:wrap;gap:24px;
 }
+
+/* COMMON VERTICAL CARD */
 .id-card{
- width:400px;height:252px;
- background:white;border:1px solid #a9b9cc;
- border-radius:13px;overflow:hidden;position:relative;
- box-shadow:0 6px 20px #0002;
+ width:300px;height:480px;
+ position:relative;overflow:hidden;
+ background:white;border:2px solid #174e91;
+ border-radius:16px;box-shadow:0 6px 20px #0002;
 }
-.front-top{
- height:77px;
- background:linear-gradient(110deg,#102f5c,#1762a8);
+.top{
+ height:115px;
+ background:linear-gradient(135deg,#092d60,#1762ac);
  color:white;text-align:center;
- padding:9px 45px 5px;
- border-bottom:4px solid #d62828;
+ padding:15px 7px 7px;
+ border-bottom:6px solid #d71935;
  position:relative;
 }
-.front-top h2{color:white;font-size:18px;margin:2px}
-.front-top p{font-size:10px;margin:3px}
+.top h2{color:white;font-size:19px;margin:5px 0}
+.top p{font-size:10px;margin:4px}
+.top .motto{font-size:10px}
 .logo{
- position:absolute;left:9px;top:12px;
- width:49px;height:49px;border-radius:50%;
- background:white;overflow:hidden;
+ position:absolute;top:12px;left:10px;
+ width:53px;height:53px;border-radius:50%;
+ border:3px solid white;background:white;
  display:flex;align-items:center;justify-content:center;
- border:2px solid #fff;
+ overflow:hidden;
 }
 .logo img{width:100%;height:100%;object-fit:contain}
-.logo span{font-size:8px;color:#123b70}
-.front-body{display:flex;gap:12px;padding:12px 13px 5px}
-.member-photo{
- width:104px;height:119px;flex-shrink:0;
- border:3px solid #174e91;border-radius:7px;
- overflow:hidden;background:#eaf0f7;
+.logo span{font-size:9px;color:#123b70}
+.estd{position:absolute;right:8px;top:5px;font-size:9px}
+
+.photo{
+ width:125px;height:145px;
+ border:4px solid #174e91;border-radius:10px;
+ margin:12px auto 8px;background:#eaf0f7;
  display:flex;align-items:center;justify-content:center;
- color:#456;font-size:10px;text-align:center;
+ overflow:hidden;color:#345;font-size:11px;
 }
-.member-photo img{width:100%;height:100%;object-fit:cover}
-.member-details{flex:1;min-width:0}
-.member-details h3{
- margin:0 0 7px;color:#123b70;font-size:19px;
+.photo img{width:100%;height:100%;object-fit:cover}
+
+.member-name{
+ margin:0 13px;
+ padding:7px 5px;
+ border-radius:20px;
+ background:#103b70;color:white;
+ text-align:center;font-size:19px;font-weight:bold;
  overflow-wrap:anywhere;
 }
-.member-details p{
- font-size:10px;margin:5px 0;
- overflow-wrap:anywhere;
-}
-.member-details strong{color:#123b70}
-.front-footer{
+.details{padding:8px 17px 40px}
+.details p{font-size:11px;margin:7px 0;overflow-wrap:anywhere}
+.details strong{color:#103b70}
+.front-bottom{
  position:absolute;bottom:0;left:0;right:0;
- background:#123b70;color:white;text-align:center;
- font-size:10px;padding:7px;
+ background:#103b70;color:white;
+ border-top:5px solid #d71935;
+ text-align:center;padding:8px 3px;font-size:9px;
 }
-.front-estd{
- position:absolute;right:9px;top:7px;
- font-size:9px;color:white;
-}
+
+/* BACK SIDE */
 .back-top{
- background:linear-gradient(110deg,#102f5c,#1762a8);
- color:white;text-align:center;
- padding:11px 8px;border-bottom:4px solid #d62828;
+ height:83px;
+ background:linear-gradient(135deg,#092d60,#1762ac);
+ color:white;text-align:center;padding:14px 5px;
+ border-bottom:6px solid #d71935;
 }
-.back-top h2{color:white;margin:0;font-size:18px}
-.back-top p{margin:3px;font-size:10px}
-.back-body{display:flex;padding:12px;gap:12px}
-.back-info{flex:1;font-size:10px;line-height:1.8}
-.back-info h3{font-size:12px;color:#123b70;margin:0 0 4px}
-.back-info p{margin:3px 0}
-.qr-area{
- width:92px;flex-shrink:0;text-align:center;
- font-size:9px;color:#123b70;
+.back-top h2{color:white;font-size:18px;margin:3px}
+.back-top p{font-size:10px;margin:4px}
+.back-heading{
+ background:#e4f0ff;text-align:center;
+ color:#103b70;font-weight:bold;
+ padding:7px;margin:10px 12px 6px;
+ border-radius:8px;font-size:14px;
 }
-#qrcode{width:83px;height:83px;margin:auto}
+.back-content{
+ display:flex;gap:9px;padding:3px 12px;
+ align-items:flex-start;
+}
+.back-photo{
+ width:84px;height:103px;flex-shrink:0;
+ border:3px solid #174e91;border-radius:8px;
+ overflow:hidden;background:#eaf0f7;
+}
+.back-photo img{width:100%;height:100%;object-fit:cover}
+.back-details{flex:1;min-width:0}
+.back-details p{
+ font-size:10px;margin:5px 0;overflow-wrap:anywhere;
+}
+.back-details strong{color:#103b70}
+.back-qr-area{
+ display:flex;align-items:center;justify-content:center;
+ gap:13px;margin:8px 12px 4px;
+}
+#qrcode{
+ width:78px;height:78px;flex-shrink:0;
+ display:flex;align-items:center;justify-content:center;
+}
 #qrcode img,#qrcode canvas{
- width:83px!important;height:83px!important;
+ width:78px!important;height:78px!important;
 }
-.back-signatures{
- display:flex;justify-content:space-between;
- gap:12px;padding:0 13px;
- font-size:9px;text-align:center;
+.qr-text{
+ flex:1;text-align:center;font-size:10px;
+ color:#103b70;font-weight:bold;
 }
-.sign{width:48%;border-top:1px solid #123b70;padding-top:4px}
-.back-footer{
+.qr-text p{font-weight:normal;font-size:9px}
+.signatures{
+ display:flex;justify-content:space-around;
+ text-align:center;gap:8px;margin:6px 8px;
+}
+.signature{
+ width:46%;border-top:1px solid #123b70;
+ padding-top:4px;font-size:10px;
+}
+.back-bottom{
  position:absolute;bottom:0;left:0;right:0;
- background:#123b70;color:white;text-align:center;
- padding:6px;font-size:9px;
+ background:#103b70;color:white;
+ border-top:5px solid #d71935;
+ text-align:center;padding:7px 3px;font-size:9px;
 }
-#memberList .member-row{
- display:flex;justify-content:space-between;align-items:center;
- flex-wrap:wrap;gap:8px;padding:12px;
- border-bottom:1px solid #ddd;
+
+/* MEMBER LIST */
+.member-row{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:8px;flex-wrap:wrap;
+ padding:10px;border-bottom:1px solid #ddd;
 }
-@media(max-width:500px){
+
+@media(max-width:650px){
  .container{padding:8px}
- .panel{padding:13px}
+ .panel{padding:12px}
  .form-grid{grid-template-columns:1fr}
- .id-card{width:100%;max-width:400px}
- .front-top h2{font-size:16px}
+ .id-card{width:300px;max-width:100%}
 }
-@page{size:A4 portrait;margin:0}
+
+/* PRINT: FRONT PAGE AND BACK PAGE */
+@page{size:A4;margin:0}
 @media print{
  body{background:white}
- header,.form-panel,.list-panel,.preview-title,.no-print{display:none!important}
- .container{margin:0;padding:0;width:100%;max-width:none}
- .panel{padding:0;margin:0;box-shadow:none}
+ header,.form-panel,.list-panel,.preview-title,.no-print{
+  display:none!important
+ }
+ .container{width:100%;max-width:none;margin:0;padding:0}
+ .panel{margin:0;padding:0;box-shadow:none}
  .cards{display:block}
  .id-card{
-  width:85.6mm;height:54mm;
-  margin:calc((297mm - 54mm)/2) auto;
-  border:0.3mm solid #aaa;
-  border-radius:3mm;
-  box-shadow:none;
+  width:54mm;height:86mm;
+  margin:calc((297mm - 86mm)/2) auto;
+  border:0.4mm solid #174e91;
+  border-radius:3mm;box-shadow:none;
   page-break-after:always;
   break-after:page;
   -webkit-print-color-adjust:exact;
   print-color-adjust:exact;
  }
- .id-card:last-child{page-break-after:auto;break-after:auto}
- .front-top{height:16.5mm;padding-top:2mm}
- .front-top h2{font-size:12px}
- .front-top p{font-size:7px}
- .logo{width:11mm;height:11mm;left:2mm;top:2mm}
- .front-body{padding:2.5mm 3mm;gap:3mm}
- .member-photo{width:22mm;height:29mm}
- .member-details h3{font-size:12px}
- .member-details p{font-size:7px;margin:1mm 0}
- .front-footer{font-size:7px;padding:1.5mm}
- .back-top{padding:2.5mm}
- .back-top h2{font-size:12px}
- .back-top p{font-size:7px}
- .back-body{padding:2mm 3mm;gap:2mm}
- .back-info{font-size:7px;line-height:1.5}
- .back-info h3{font-size:8px}
- .qr-area{width:21mm;font-size:6px}
- #qrcode,#qrcode img,#qrcode canvas{
-  width:19mm!important;height:19mm!important
+ .id-card:last-child{
+  page-break-after:auto;
+  break-after:auto;
  }
- .back-signatures{font-size:6.5px;padding:0 3mm}
- .back-footer{font-size:7px;padding:1.5mm}
+ .top{height:21mm;padding:2mm}
+ .top h2{font-size:11px}
+ .top p{font-size:6px}
+ .top .motto{font-size:6px}
+ .logo{width:11mm;height:11mm;top:2mm;left:2mm}
+ .estd{font-size:5px}
+ .photo{width:24mm;height:28mm;margin:2mm auto}
+ .member-name{font-size:11px;padding:1.5mm}
+ .details{padding:1mm 3mm 8mm}
+ .details p{font-size:6.5px;margin:1.4mm 0}
+ .front-bottom{font-size:5.5px;padding:1.5mm}
+ .back-top{height:15mm;padding:2mm}
+ .back-top h2{font-size:10px}
+ .back-top p{font-size:6px}
+ .back-heading{font-size:8px;margin:2mm 2mm 1mm;padding:1.5mm}
+ .back-content{padding:1mm 2mm;gap:2mm}
+ .back-photo{width:17mm;height:21mm}
+ .back-details p{font-size:6px;margin:1mm 0}
+ .back-qr-area{margin:1mm 2mm;gap:2mm}
+ #qrcode,#qrcode img,#qrcode canvas{
+  width:16mm!important;height:16mm!important
+ }
+ .qr-text{font-size:6px}
+ .qr-text p{font-size:5px}
+ .signatures{font-size:6px;margin:1mm}
+ .signature{font-size:6px}
+ .back-bottom{font-size:5.5px;padding:1.5mm}
 }
 </style>
 </head>
@@ -196,7 +239,7 @@ button:hover{opacity:.88}
 
 <header>
 <h1>रसाली भाई समाज परिवार चौराठा</h1>
-<p>PREMIUM MEMBER ID CARD DESIGN & PRINT CENTER</p>
+<p>PREMIUM VERTICAL MEMBER ID CARD CENTER</p>
 <p>एकता • सहयोग • सेवा • भाइचारा</p>
 <small>चौराठा, दैलेख, नेपाल | ESTD 2082</small>
 </header>
@@ -204,141 +247,170 @@ button:hover{opacity:.88}
 <div class="container">
 
 <div class="panel form-panel">
-<h2>सदस्य विवरण भर्नुहोस्</h2>
+<h2>सदस्य विवरण / फोटो राख्नुहोस्</h2>
 
 <div class="form-grid">
-<div class="field">
-<label>सदस्यको पूरा नाम *</label>
+
+<div>
+<label>सदस्यको नाम *</label>
 <input id="name" placeholder="प्रबिन रसाली">
 </div>
-<div class="field">
+
+<div>
 <label>सदस्य नम्बर *</label>
 <input id="memberNo" placeholder="RS-001">
 </div>
-<div class="field">
+
+<div>
 <label>पद</label>
 <input id="position" value="सदस्य">
 </div>
-<div class="field">
+
+<div>
 <label>सम्पर्क नम्बर</label>
 <input id="phone" placeholder="98XXXXXXXX">
 </div>
-<div class="field">
+
+<div>
 <label>इमेल</label>
 <input id="email" type="email" placeholder="example@gmail.com">
 </div>
-<div class="field">
+
+<div>
 <label>ठेगाना</label>
 <input id="address" value="चौराठा, दैलेख, नेपाल">
 </div>
-<div class="field">
+
+<div>
 <label>सदस्यता मिति</label>
 <input id="joinDate" type="date">
 </div>
-<div class="field">
+
+<div>
 <label>सदस्यको फोटो</label>
 <input id="photoInput" type="file" accept="image/*">
 </div>
-<div class="field">
+
+<div>
 <label>समाजको वास्तविक लोगो</label>
 <input id="logoInput" type="file" accept="image/*">
 </div>
+
 </div>
 
 <div class="buttons">
 <button class="green" onclick="updateCard()">कार्ड अपडेट</button>
-<button onclick="saveMember()">सुरक्षित गर्नुहोस्</button>
-<button class="orange" onclick="printCard()">दुवै साइड Print / PDF</button>
+<button onclick="saveMember()">विवरण सुरक्षित</button>
+<button class="orange" onclick="printCards()">दुवै साइड Print / PDF</button>
 <button class="gray" onclick="newMember()">नयाँ सदस्य</button>
 </div>
 <p style="font-size:12px;color:#64748b">
-नोट: Print गर्दा अगाडिको भाग पहिलो पेज र पछाडिको भाग दोस्रो पेजमा निस्कन्छ।
+प्रिन्ट गर्दा अगाडि पहिलो पेज र पछाडि दोस्रो पेजमा निस्कन्छ।
 </p>
 </div>
 
-<h2 class="preview-title">कार्डको अगाडि र पछाडिको नमुना</h2>
+<h2 class="preview-title">अगाडिको भाग (FRONT SIDE)</h2>
 
 <div class="cards">
 
 <!-- FRONT SIDE -->
-<div class="id-card" id="frontCard">
+<div class="id-card">
 
-<div class="front-top">
+<div class="top">
 <div class="logo">
 <img id="frontLogo" style="display:none" alt="समाज लोगो">
-<span id="frontLogoText">LOGO</span>
+<span id="logoText">LOGO</span>
 </div>
-<div class="front-estd">ESTD 2082</div>
+<div class="estd">ESTD 2082</div>
 <h2>रसाली भाई समाज परिवार</h2>
 <p>चौराठा, दैलेख, नेपाल</p>
-<p>एकता • सहयोग • सेवा • भाइचारा</p>
+<div class="motto">एकता • सहयोग • सेवा • भाइचारा</div>
 </div>
 
-<div class="front-body">
-<div class="member-photo">
+<div class="photo">
 <img id="frontPhoto" style="display:none" alt="सदस्य फोटो">
 <span id="frontPhotoText">MEMBER PHOTO</span>
 </div>
 
-<div class="member-details">
-<h3 id="sName">प्रबिन रसाली</h3>
-<p><strong>सदस्य नं.:</strong> <span id="sNo">RS-001</span></p>
-<p><strong>पद:</strong> <span id="sPosition">सदस्य</span></p>
-<p><strong>सम्पर्क:</strong> <span id="sPhone">-</span></p>
-<p><strong>इमेल:</strong> <span id="sEmail">-</span></p>
-<p><strong>ठेगाना:</strong> <span id="sAddress">चौराठा, दैलेख</span></p>
+<div class="member-name" id="frontName">प्रबिन रसाली</div>
+
+<div class="details">
+<p><strong>सदस्य नं.:</strong> <span id="frontNo">RS-001</span></p>
+<p><strong>पद:</strong> <span id="frontPosition">सदस्य</span></p>
+<p><strong>सम्पर्क:</strong> <span id="frontPhone">-</span></p>
+<p><strong>इमेल:</strong> <span id="frontEmail">-</span></p>
+<p><strong>ठेगाना:</strong> <span id="frontAddress">चौराठा, दैलेख</span></p>
+</div>
+
+<div class="front-bottom">
+OFFICIAL MEMBERSHIP IDENTITY CARD<br>
+RASALI BHAI SAMAJ PARIWAR
 </div>
 </div>
 
-<div class="front-footer">
-OFFICIAL MEMBERSHIP IDENTITY CARD | RASALI BHAI SAMAJ PARIWAR
 </div>
-</div>
+
+<h2 class="preview-title">पछाडिको भाग (BACK SIDE)</h2>
+
+<div class="cards">
 
 <!-- BACK SIDE -->
-<div class="id-card" id="backCard">
+<div class="id-card">
 
 <div class="back-top">
-<h2>रसाली भाई समाज परिवार चौराठा</h2>
+<h2>रसाली भाई समाज परिवार</h2>
+<p>चौराठा, दैलेख, नेपाल</p>
 <p>OFFICIAL MEMBER INFORMATION</p>
 </div>
 
-<div class="back-body">
-<div class="back-info">
-<h3>सदस्यको विवरण</h3>
-<p><strong>नाम:</strong> <span id="bName">प्रबिन रसाली</span></p>
-<p><strong>सदस्य नं.:</strong> <span id="bNo">RS-001</span></p>
-<p><strong>पद:</strong> <span id="bPosition">सदस्य</span></p>
-<p><strong>फोन:</strong> <span id="bPhone">-</span></p>
-<p><strong>इमेल:</strong> <span id="bEmail">-</span></p>
-<p><strong>ठेगाना:</strong> <span id="bAddress">चौराठा, दैलेख</span></p>
-<p><strong>सदस्यता मिति:</strong> <span id="bDate">-</span></p>
+<div class="back-heading">सदस्यको विवरण / MEMBER DETAILS</div>
+
+<div class="back-content">
+<div class="back-photo">
+<img id="backPhoto" alt="सदस्य फोटो">
 </div>
 
-<div class="qr-area">
+<div class="back-details">
+<p><strong>नाम:</strong> <span id="backName">प्रबिन रसाली</span></p>
+<p><strong>सदस्य नं.:</strong> <span id="backNo">RS-001</span></p>
+<p><strong>पद:</strong> <span id="backPosition">सदस्य</span></p>
+<p><strong>फोन:</strong> <span id="backPhone">-</span></p>
+<p><strong>इमेल:</strong> <span id="backEmail">-</span></p>
+<p><strong>ठेगाना:</strong> <span id="backAddress">चौराठा, दैलेख</span></p>
+<p><strong>सदस्यता मिति:</strong> <span id="backDate">-</span></p>
+</div>
+</div>
+
+<div class="back-qr-area">
+<div>
 <div id="qrcode"></div>
-<strong>SCAN FOR DETAILS</strong>
+<div class="qr-text">SCAN FOR DETAILS</div>
+</div>
+<div class="qr-text">
+समाजको उन्नतिका लागि<br>
+हाम्रो प्रतिबद्धता
+<p>ESTABLISHED 2082</p>
 </div>
 </div>
 
-<div class="back-signatures">
-<div class="sign">
+<div class="signatures">
+<div class="signature">
 संस्थापक<br><strong>पदम रसाली</strong>
 </div>
-<div class="sign">
+<div class="signature">
 अध्यक्ष<br><strong>दीपक रसाली</strong>
 </div>
 </div>
 
-<div class="back-footer">
+<div class="back-bottom">
 यो परिचयपत्र रसाली भाई समाज परिवारको सम्पत्ति हो।
 </div>
-
 </div>
+
 </div>
 
 <div class="panel list-panel" style="margin-top:25px">
-<h2>सुरक्षित सदस्यहरू</h2>
+<h2>सुरक्षित सदस्यहरूको सूची</h2>
 <div id="memberList">कुनै सदस्य सुरक्षित गरिएको छैन।</div>
 </div>
 
@@ -351,10 +423,10 @@ let logoData="";
 const $=id=>document.getElementById(id);
 const get=id=>$(id).value.trim();
 
-function imageFile(file,callback){
+function readImage(file,callback){
  if(!file)return;
  const reader=new FileReader();
- reader.onload=e=>{
+ reader.onload=function(e){
   callback(e.target.result);
   updateCard();
  };
@@ -362,14 +434,14 @@ function imageFile(file,callback){
 }
 
 $("photoInput").addEventListener("change",function(){
- imageFile(this.files[0],data=>photoData=data);
+ readImage(this.files[0],data=>photoData=data);
 });
 
 $("logoInput").addEventListener("change",function(){
- imageFile(this.files[0],data=>logoData=data);
+ readImage(this.files[0],data=>logoData=data);
 });
 
-function put(id,value){
+function setText(id,value){
  $(id).textContent=value||"-";
 }
 
@@ -383,38 +455,47 @@ function updateCard(){
  const address=get("address")||"-";
  const date=get("joinDate")||"-";
 
- put("sName",name);
- put("sNo",no);
- put("sPosition",position);
- put("sPhone",phone);
- put("sEmail",email);
- put("sAddress",address);
+ setText("frontName",name);
+ setText("frontNo",no);
+ setText("frontPosition",position);
+ setText("frontPhone",phone);
+ setText("frontEmail",email);
+ setText("frontAddress",address);
 
- put("bName",name);
- put("bNo",no);
- put("bPosition",position);
- put("bPhone",phone);
- put("bEmail",email);
- put("bAddress",address);
- put("bDate",date);
+ setText("backName",name);
+ setText("backNo",no);
+ setText("backPosition",position);
+ setText("backPhone",phone);
+ setText("backEmail",email);
+ setText("backAddress",address);
+ setText("backDate",date);
 
  if(photoData){
   $("frontPhoto").src=photoData;
   $("frontPhoto").style.display="block";
   $("frontPhotoText").style.display="none";
+
+  $("backPhoto").src=photoData;
  }
 
  if(logoData){
   $("frontLogo").src=logoData;
   $("frontLogo").style.display="block";
-  $("frontLogoText").style.display="none";
+  $("logoText").style.display="none";
  }
 
  makeQR();
 }
 
 function makeQR(){
- $("qrcode").innerHTML="";
+
+ const qr=$("qrcode");
+ qr.innerHTML="";
+
+ if(typeof QRCode==="undefined"){
+  qr.textContent="QR unavailable";
+  return;
+ }
 
  const details={
   society:"रसाली भाई समाज परिवार चौराठा",
@@ -427,21 +508,22 @@ function makeQR(){
   membershipDate:get("joinDate")
  };
 
- if(typeof QRCode==="undefined"){
-  $("qrcode").textContent="QR LIBRARY UNAVAILABLE";
-  return;
- }
-
- new QRCode($("qrcode"),{
+ new QRCode(qr,{
   text:JSON.stringify(details),
-  width:83,
-  height:83,
+  width:78,
+  height:78,
   correctLevel:QRCode.CorrectLevel.M
  });
 }
 
-function memberData(){
- return {
+function saveMember(){
+
+ if(!get("name")||!get("memberNo")){
+  alert("सदस्यको नाम र सदस्य नम्बर अनिवार्य छ।");
+  return;
+ }
+
+ const member={
   id:get("memberNo"),
   name:get("name"),
   position:get("position"),
@@ -452,26 +534,17 @@ function memberData(){
   photo:photoData,
   logo:logoData
  };
-}
-
-function saveMember(){
-
- if(!get("name")||!get("memberNo")){
-  alert("सदस्यको नाम र सदस्य नम्बर अनिवार्य छ।");
-  return;
- }
 
  let members=JSON.parse(localStorage.getItem("rasaliMembers")||"[]");
- const m=memberData();
- const index=members.findIndex(x=>x.id===m.id);
+ const index=members.findIndex(m=>m.id===member.id);
 
- if(index>=0)members[index]=m;
- else members.push(m);
+ if(index>=0)members[index]=member;
+ else members.push(member);
 
  try{
   localStorage.setItem("rasaliMembers",JSON.stringify(members));
- }catch(error){
-  alert("फोटो ठूलो भएकाले सुरक्षित हुन सकेन। सानो फोटो प्रयोग गर्नुहोस्।");
+ }catch(e){
+  alert("फोटो ठूलो छ। सानो फोटो राखेर फेरि प्रयास गर्नुहोस्।");
   return;
  }
 
@@ -490,7 +563,7 @@ function renderMembers(){
   return;
  }
 
- members.forEach((m,i)=>{
+ members.forEach((m,index)=>{
   const row=document.createElement("div");
   row.className="member-row";
 
@@ -498,22 +571,23 @@ function renderMembers(){
   info.textContent=m.name+" | "+m.id+" | "+m.position;
 
   const edit=document.createElement("button");
-  edit.textContent="Edit / खोल्नुहोस्";
-  edit.onclick=()=>loadMember(i);
+  edit.textContent="खोल्नुहोस्";
+  edit.onclick=()=>loadMember(index);
 
   const del=document.createElement("button");
-  del.textContent="Delete";
+  del.textContent="हटाउनुहोस्";
   del.className="red";
-  del.onclick=()=>deleteMember(i);
+  del.onclick=()=>deleteMember(index);
 
   row.append(info,edit,del);
   list.appendChild(row);
  });
 }
 
-function loadMember(i){
+function loadMember(index){
+
  const members=JSON.parse(localStorage.getItem("rasaliMembers")||"[]");
- const m=members[i];
+ const m=members[index];
 
  $("name").value=m.name||"";
  $("memberNo").value=m.id||"";
@@ -530,34 +604,38 @@ function loadMember(i){
   $("frontPhoto").src=photoData;
   $("frontPhoto").style.display="block";
   $("frontPhotoText").style.display="none";
+  $("backPhoto").src=photoData;
  }else{
   $("frontPhoto").style.display="none";
   $("frontPhotoText").style.display="block";
+  $("backPhoto").removeAttribute("src");
  }
 
  if(logoData){
   $("frontLogo").src=logoData;
   $("frontLogo").style.display="block";
-  $("frontLogoText").style.display="none";
+  $("logoText").style.display="none";
  }else{
   $("frontLogo").style.display="none";
-  $("frontLogoText").style.display="block";
+  $("logoText").style.display="block";
  }
 
  updateCard();
  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function deleteMember(i){
+function deleteMember(index){
+
  if(!confirm("यो सदस्य हटाउने हो?"))return;
 
  let members=JSON.parse(localStorage.getItem("rasaliMembers")||"[]");
- members.splice(i,1);
+ members.splice(index,1);
  localStorage.setItem("rasaliMembers",JSON.stringify(members));
  renderMembers();
 }
 
 function newMember(){
+
  $("name").value="";
  $("memberNo").value="";
  $("position").value="सदस्य";
@@ -567,16 +645,20 @@ function newMember(){
  $("joinDate").value="";
  $("photoInput").value="";
  $("logoInput").value="";
+
  photoData="";
  logoData="";
+
  $("frontPhoto").style.display="none";
  $("frontPhotoText").style.display="block";
+ $("backPhoto").removeAttribute("src");
  $("frontLogo").style.display="none";
- $("frontLogoText").style.display="block";
+ $("logoText").style.display="block";
+
  updateCard();
 }
 
-function printCard(){
+function printCards(){
  updateCard();
  window.print();
 }
@@ -587,4 +669,3 @@ updateCard();
 
 </body>
 </html>
- 
