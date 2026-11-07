@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -16,6 +16,7 @@ section{background:white;border-radius:14px;padding:18px;margin-bottom:20px;box-
 h3{color:#123b70;margin-top:0}
 input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px}
 button{border:0;border-radius:8px;padding:11px 15px;background:#1263ad;color:white;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6}
 button.danger{background:#c62828}
 button.secondary{background:#64748b}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
@@ -24,7 +25,8 @@ button.secondary{background:#64748b}
 .member-info{flex:1;min-width:150px}
 .member-info strong{font-size:17px}
 .small{font-size:13px;color:#64748b}
-#photoPreview{width:100px;height:100px;object-fit:cover;border-radius:12px;display:none;margin:5px 0 12px}
+.preview{width:100px;height:100px;object-fit:cover;border-radius:12px;display:none;margin:5px 0 12px}
+.header-preview{width:95px;height:95px;object-fit:cover;border-radius:12px;background:#e2e8f0;margin:5px 0 12px}
 .msg{padding:10px;margin:8px 0;border-radius:8px;background:#eff6ff}
 table{width:100%;border-collapse:collapse;min-width:600px}
 th,td{padding:9px;border:1px solid #ddd;text-align:left}
@@ -34,6 +36,7 @@ th{background:#eaf2fb}
 .stat{background:#eaf2fb;padding:14px;border-radius:10px;text-align:center}
 .stat b{display:block;font-size:22px;color:#123b70}
 footer{text-align:center;padding:20px;color:#64748b}
+hr{border:0;border-top:1px solid #e2e8f0;margin:18px 0}
 </style>
 </head>
 <body>
@@ -54,6 +57,69 @@ footer{text-align:center;padding:20px;color:#64748b}
 </nav>
 
 <main>
+
+<section>
+<h3>🎨 वेबसाइटको मुख्य डिजाइन तथा शीर्षक व्यवस्थापन</h3>
+<p class="small">यहाँ परिवर्तन गरेका विवरण Supabase मा सुरक्षित हुनेछन्।</p>
+
+<div class="grid">
+<div>
+<label>माबैको फोटो छान्नुहोस्</label>
+<input type="file" id="mabaiFile" accept="image/*">
+<img id="mabaiPreview" class="header-preview" alt="माबै फोटो">
+<label>माबै फोटो URL</label>
+<input id="mabai_url" placeholder="माबै फोटो URL">
+<label>माबैको नाम</label>
+<input id="mabai_name" placeholder="माबै">
+</div>
+
+<div>
+<label>मुख्य गोलो लोगो छान्नुहोस्</label>
+<input type="file" id="logoFile" accept="image/*">
+<img id="logoPreview" class="header-preview" alt="मुख्य लोगो">
+<label>मुख्य लोगो URL</label>
+<input id="logo_url" placeholder="लोगो URL">
+</div>
+
+<div>
+<label>भामसैनीको फोटो छान्नुहोस्</label>
+<input type="file" id="bhamsainiFile" accept="image/*">
+<img id="bhamsainiPreview" class="header-preview" alt="भामसैनी फोटो">
+<label>भामसैनी फोटो URL</label>
+<input id="bhamsaini_url" placeholder="भामसैनी फोटो URL">
+<label>भामसैनीको नाम</label>
+<input id="bhamsaini_name" placeholder="भामसैनी">
+</div>
+</div>
+
+<hr>
+
+<div class="grid">
+<div>
+<label>नेपाली वेबसाइट शीर्षक</label>
+<input id="site_title" placeholder="रसाली भाई समाज परिवार चौराठा">
+</div>
+<div>
+<label>English Website Title</label>
+<input id="site_title_english" placeholder="RASHALI BHAI SAMAJ PARIWAR">
+</div>
+<div>
+<label>वेबसाइटको नारा</label>
+<input id="tagline" placeholder="एकता • सहयोग • सेवा • भाइचारा">
+</div>
+<div>
+<label>ठेगाना</label>
+<input id="address" placeholder="चौराठा, दैलेख, नेपाल">
+</div>
+<div>
+<label>स्थापना वर्ष</label>
+<input id="estd" placeholder="२०८२">
+</div>
+</div>
+
+<button id="settingsBtn" onclick="saveSettings()">💾 वेबसाइटको विवरण सुरक्षित गर्नुहोस्</button>
+<div id="settingsMsg" class="msg">वेबसाइटको विवरण लोड हुँदैछ...</div>
+</section>
 
 <section>
 <h3>👥 सदस्य व्यवस्थापन</h3>
@@ -78,7 +144,7 @@ footer{text-align:center;padding:20px;color:#64748b}
 
 <label>सदस्यको फोटो छान्नुहोस् (मोबाइल Gallery)</label>
 <input id="photoFile" type="file" accept="image/*" onchange="previewPhoto(event)">
-<img id="photoPreview" alt="फोटो पूर्वावलोकन">
+<img id="photoPreview" class="preview" alt="फोटो पूर्वावलोकन">
 
 <label>फोटो / Document URL (वैकल्पिक)</label>
 <input id="document_url" placeholder="फोटोको URL">
@@ -175,11 +241,114 @@ let members=[];
 let moneyRecords=[];
 let editId=null;
 
-document.getElementById("recordDate").value=
- new Date().toISOString().slice(0,10);
+document.getElementById("recordDate").value=new Date().toISOString().slice(0,10);
 
 function message(id,text){
  document.getElementById(id).textContent=text;
+}
+
+function showPreview(inputId,previewId,url){
+ const file=document.getElementById(inputId).files[0];
+ const img=document.getElementById(previewId);
+ if(file){
+  img.src=URL.createObjectURL(file);
+  img.style.display="inline-block";
+ }else if(url){
+  img.src=url;
+  img.style.display="inline-block";
+ }else{
+  img.removeAttribute("src");
+  img.style.display="none";
+ }
+}
+
+["mabaiFile","logoFile","bhamsainiFile"].forEach(id=>{
+ document.getElementById(id).addEventListener("change",()=>{
+  const map={
+   mabaiFile:["mabaiPreview","mabai_url"],
+   logoFile:["logoPreview","logo_url"],
+   bhamsainiFile:["bhamsainiPreview","bhamsaini_url"]
+  };
+  const [preview,url]=map[id];
+  showPreview(id,preview,document.getElementById(url).value);
+ });
+});
+
+async function uploadPhoto(file,folder){
+ if(!file)return null;
+ if(!file.type.startsWith("image/"))throw new Error("फोटो फाइल मात्र छान्नुहोस्");
+ if(file.size>5*1024*1024)throw new Error("फोटो ५ MB भन्दा सानो हुनुपर्छ");
+ const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+ const path=folder+"/"+Date.now()+"_"+safeName;
+ const encoded=path.split("/").map(encodeURIComponent).join("/");
+ const response=await fetch(SUPABASE_URL+"/storage/v1/object/Photos/"+encoded,{
+  method:"POST",
+  headers:{
+   "apikey":SUPABASE_KEY,
+   "Authorization":"Bearer "+token,
+   "Content-Type":file.type||"image/jpeg",
+   "x-upsert":"false"
+  },
+  body:file
+ });
+ if(!response.ok)throw new Error("फोटो अपलोड भएन: "+await response.text());
+ return SUPABASE_URL+"/storage/v1/object/public/Photos/"+encoded;
+}
+
+async function loadSettings(){
+ try{
+  const response=await fetch(SUPABASE_URL+"/rest/v1/website_settings?id=eq.1&select=*",{headers});
+  if(!response.ok)throw new Error(await response.text());
+  const rows=await response.json();
+  if(!rows.length)throw new Error("website_settings मा id=1 को विवरण भेटिएन");
+  const s=rows[0];
+  ["logo_url","mabai_url","bhamsaini_url","mabai_name","bhamsaini_name","site_title","site_title_english","tagline","address","estd"].forEach(id=>{
+   document.getElementById(id).value=s[id]||"";
+  });
+  showPreview("mabaiFile","mabaiPreview",s.mabai_url);
+  showPreview("logoFile","logoPreview",s.logo_url);
+  showPreview("bhamsainiFile","bhamsainiPreview",s.bhamsaini_url);
+  message("settingsMsg","वेबसाइटको हालको विवरण लोड भयो।");
+ }catch(error){
+  message("settingsMsg","विवरण लोड भएन: "+error.message);
+ }
+}
+
+async function saveSettings(){
+ const btn=document.getElementById("settingsBtn");
+ btn.disabled=true;
+ btn.textContent="सुरक्षित हुँदैछ...";
+ try{
+  const payload={};
+  ["logo_url","mabai_url","bhamsaini_url","mabai_name","bhamsaini_name","site_title","site_title_english","tagline","address","estd"].forEach(id=>{
+   payload[id]=document.getElementById(id).value.trim();
+  });
+
+  const mabai=await uploadPhoto(document.getElementById("mabaiFile").files[0],"header");
+  const logo=await uploadPhoto(document.getElementById("logoFile").files[0],"header");
+  const bhamsaini=await uploadPhoto(document.getElementById("bhamsainiFile").files[0],"header");
+
+  if(mabai)payload.mabai_url=mabai;
+  if(logo)payload.logo_url=logo;
+  if(bhamsaini)payload.bhamsaini_url=bhamsaini;
+
+  const response=await fetch(SUPABASE_URL+"/rest/v1/website_settings?id=eq.1",{
+   method:"PATCH",
+   headers:{...headers,"Prefer":"return=representation"},
+   body:JSON.stringify(payload)
+  });
+  if(!response.ok)throw new Error(await response.text());
+  const result=await response.json();
+  if(!result.length)throw new Error("सेटिङ सुरक्षित भएको पुष्टि भएन।");
+  ["mabaiFile","logoFile","bhamsainiFile"].forEach(id=>document.getElementById(id).value="");
+  await loadSettings();
+  message("settingsMsg","✅ वेबसाइटको विवरण सफलतापूर्वक सुरक्षित भयो।");
+ }catch(error){
+  message("settingsMsg","त्रुटि: "+error.message);
+ }finally{
+  btn.disabled=false;
+  btn.textContent="💾 वेबसाइटको विवरण सुरक्षित गर्नुहोस्";
+ }
 }
 
 function previewPhoto(event){
@@ -196,40 +365,17 @@ function previewPhoto(event){
   event.target.value="";
   return;
  }
- img.src=window.URL.createObjectURL(file);
+ img.src=URL.createObjectURL(file);
  img.style.display="block";
 }
 
 async function uploadMemberPhoto(file){
- const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
- const path="members/"+Date.now()+"_"+safeName;
- const encoded=path.split("/").map(encodeURIComponent).join("/");
- const response=await fetch(
-  SUPABASE_URL+"/storage/v1/object/Photos/"+encoded,
-  {
-   method:"POST",
-   headers:{
-    "apikey":SUPABASE_KEY,
-    "Authorization":"Bearer "+token,
-    "Content-Type":file.type||"image/jpeg",
-    "x-upsert":"false"
-   },
-   body:file
-  }
- );
- if(!response.ok){
-  const error=await response.text();
-  throw new Error("फोटो अपलोड भएन: "+error);
- }
- return SUPABASE_URL+"/storage/v1/object/public/Photos/"+encoded;
+ return await uploadPhoto(file,"members");
 }
 
 async function loadMembers(){
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",
-   {headers}
-  );
+  const response=await fetch(SUPABASE_URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",{headers});
   if(!response.ok)throw new Error(await response.text());
   members=await response.json();
   renderMembers();
@@ -242,14 +388,9 @@ async function loadMembers(){
 function renderMembers(){
  const q=document.getElementById("searchMember").value.toLowerCase();
  const list=document.getElementById("membersList");
- const filtered=members.filter(m=>
-  [m.name,m.position,m.phone,m.email].join(" ").toLowerCase().includes(q)
- );
+ const filtered=members.filter(m=>[m.name,m.position,m.phone,m.email].join(" ").toLowerCase().includes(q));
  list.innerHTML="";
- if(!filtered.length){
-  list.textContent="सदस्य भेटिएन।";
-  return;
- }
+ if(!filtered.length){list.textContent="सदस्य भेटिएन।";return}
  filtered.forEach(m=>{
   const card=document.createElement("div");
   card.className="member";
@@ -295,13 +436,13 @@ async function saveMember(){
  const name=document.getElementById("name").value.trim();
  if(!name){alert("सदस्यको नाम लेख्नुहोस्");return}
  const btn=document.getElementById("saveBtn");
+ const isEdit=editId!==null;
  btn.disabled=true;
  btn.textContent="कृपया पर्खनुहोस्...";
  try{
   let photoUrl=document.getElementById("document_url").value.trim();
   const file=document.getElementById("photoFile").files[0];
   if(file)photoUrl=await uploadMemberPhoto(file);
-
   const payload={
    name,
    position:document.getElementById("position").value.trim(),
@@ -309,24 +450,21 @@ async function saveMember(){
    email:document.getElementById("email").value.trim(),
    document_url:photoUrl
   };
-
-  const endpoint=SUPABASE_URL+"/rest/v1/members"+
-   (editId?("?id=eq."+encodeURIComponent(editId)):"");
+  const endpoint=SUPABASE_URL+"/rest/v1/members"+(isEdit?"?id=eq."+encodeURIComponent(editId):"");
   const response=await fetch(endpoint,{
-   method:editId?"PATCH":"POST",
+   method:isEdit?"PATCH":"POST",
    headers:{...headers,"Prefer":"return=representation"},
    body:JSON.stringify(payload)
   });
   if(!response.ok)throw new Error(await response.text());
-
-  message("memberMsg",editId?"सदस्य विवरण अपडेट भयो।":"नयाँ सदस्य सफलतापूर्वक थपियो।");
+  message("memberMsg",isEdit?"सदस्य विवरण अपडेट भयो।":"नयाँ सदस्य सफलतापूर्वक थपियो।");
   clearForm();
   await loadMembers();
  }catch(error){
   message("memberMsg","त्रुटि: "+error.message);
  }finally{
   btn.disabled=false;
-  btn.textContent=editId?"✏️ परिवर्तन सुरक्षित गर्नुहोस्":"➕ सदस्य थप्नुहोस्";
+  btn.textContent="➕ सदस्य थप्नुहोस्";
  }
 }
 
@@ -350,9 +488,7 @@ function editMember(id){
 
 function clearForm(){
  editId=null;
- ["name","position","phone","email","document_url","photoFile"].forEach(id=>{
-  document.getElementById(id).value="";
- });
+ ["name","position","phone","email","document_url","photoFile"].forEach(id=>document.getElementById(id).value="");
  document.getElementById("photoPreview").style.display="none";
  document.getElementById("saveBtn").textContent="➕ सदस्य थप्नुहोस्";
 }
@@ -360,17 +496,11 @@ function clearForm(){
 async function deleteMember(id){
  if(!confirm("यो सदस्य हटाउने निश्चित हो?"))return;
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/members?id=eq."+encodeURIComponent(id),
-   {method:"DELETE",headers}
-  );
+  const response=await fetch(SUPABASE_URL+"/rest/v1/members?id=eq."+encodeURIComponent(id),{method:"DELETE",headers});
   if(!response.ok)throw new Error(await response.text());
   message("memberMsg","सदस्य हटाइयो।");
   await loadMembers();
- }catch(error){
-  alert("हटाउन सकिएन: "+error.message);
- }
-
+ }catch(error){alert("हटाउन सकिएन: "+error.message)}
 }
 
 async function saveMoney(){
@@ -394,30 +524,20 @@ async function saveMoney(){
   document.getElementById("amount").value="";
   document.getElementById("description").value="";
   await loadMoney();
- }catch(error){
-  message("moneyMsg","त्रुटि: "+error.message);
- }
+ }catch(error){message("moneyMsg","त्रुटि: "+error.message)}
 }
 
 function categoryName(type){
- return {
-  income:"आम्दानी",expense:"खर्च",
-  penalty:"जरिवाना",installment:"किस्ता"
- }[type]||type;
+ return {income:"आम्दानी",expense:"खर्च",penalty:"जरिवाना",installment:"किस्ता"}[type]||type;
 }
 
 async function loadMoney(){
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/money_records?select=id,member_id,record_type,amount,record_date,description&order=record_date.desc",
-   {headers}
-  );
+  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records?select=id,member_id,record_type,amount,record_date,description&order=record_date.desc",{headers});
   if(!response.ok)throw new Error(await response.text());
   moneyRecords=await response.json();
   renderMoney();
- }catch(error){
-  message("moneyMsg","हिसाब लोड भएन: "+error.message);
- }
+ }catch(error){message("moneyMsg","हिसाब लोड भएन: "+error.message)}
 }
 
 function renderMoney(){
@@ -429,14 +549,7 @@ function renderMoney(){
   if(r.record_type==="expense"||r.record_type==="penalty")expense+=Number(r.amount);
   const member=members.find(m=>String(m.id)===String(r.member_id));
   const tr=document.createElement("tr");
-  const values=[
-   r.record_date||"",
-   member?member.name:"—",
-   categoryName(r.record_type),
-   "रु. "+Number(r.amount).toLocaleString("en-IN"),
-   r.description||""
-  ];
-  values.forEach(value=>{
+  [r.record_date||"",member?member.name:"—",categoryName(r.record_type),"रु. "+Number(r.amount).toLocaleString("en-IN"),r.description||""].forEach(value=>{
    const td=document.createElement("td");
    td.textContent=value;
    tr.append(td);
@@ -458,15 +571,10 @@ function renderMoney(){
 async function deleteMoney(id){
  if(!confirm("यो हिसाब हटाउने निश्चित हो?"))return;
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/money_records?id=eq."+encodeURIComponent(id),
-   {method:"DELETE",headers}
-  );
+  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records?id=eq."+encodeURIComponent(id),{method:"DELETE",headers});
   if(!response.ok)throw new Error(await response.text());
   await loadMoney();
- }catch(error){
-  alert("हिसाब हटाउन सकिएन: "+error.message);
- }
+ }catch(error){alert("हिसाब हटाउन सकिएन: "+error.message)}
 }
 
 function logout(){
@@ -477,10 +585,11 @@ function logout(){
 }
 
 async function start(){
+ await loadSettings();
  await loadMembers();
  await loadMoney();
 }
 start();
 </script>
 </body>
-</html>
+</html> 
