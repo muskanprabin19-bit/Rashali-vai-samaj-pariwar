@@ -1,2343 +1,486 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin Control Center - रसाली भाई समाज परिवार</title>
-
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,"Noto Sans Devanagari",sans-serif;
-}
-
-body{
-background:linear-gradient(135deg,#fff7f7,#f1f5f9);
-color:#222;
-padding:15px;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-}
-
-.header{
-background:linear-gradient(135deg,#8b0000,#c62828);
-color:white;
-padding:25px 15px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 8px 25px #0003;
-margin-bottom:18px;
-}
-
-.header h1{
-font-size:25px;
-margin-bottom:7px;
-}
-
-.header p{
-font-size:14px;
-}
-
-.admin-badge{
-display:inline-block;
-margin-top:12px;
-background:#ffffff22;
-border:1px solid #ffffff55;
-padding:7px 15px;
-border-radius:30px;
-font-weight:bold;
-}
-
-.control-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-margin-bottom:18px;
-}
-
-.control{
-background:white;
-border-radius:16px;
-padding:18px 10px;
-text-align:center;
-box-shadow:0 4px 15px #0001;
-border:1px solid #eee;
-text-decoration:none;
-color:#222;
-}
-
-.control .icon{
-font-size:30px;
-display:block;
-margin-bottom:8px;
-}
-
-.control strong{
-font-size:14px;
-}
-
-.control small{
-display:block;
-margin-top:5px;
-color:#777;
-}
-
-.box{
-background:white;
-padding:20px;
-border-radius:18px;
-box-shadow:0 4px 18px #0002;
-margin:18px auto;
-}
-
-h2{
-color:#8b0000;
-font-size:20px;
-margin-bottom:15px;
-}
-
-h3{
-color:#a00000;
-margin-bottom:12px;
-}
-
-input,select,button{
-width:100%;
-padding:12px;
-margin:6px 0;
-border:1px solid #ddd;
-border-radius:9px;
-font-size:15px;
-}
-
-input:focus,select:focus{
-outline:none;
-border-color:#b30000;
-box-shadow:0 0 0 3px #b3000015;
-}
-
-button{
-background:#a00000;
-color:white;
-font-weight:bold;
-border:0;
-cursor:pointer;
-}
-
-.edit{
-background:#2563eb;
-}
-
-.delete{
-background:#555;
-}
-
-.danger{
-background:#991b1b;
-}
-
-.green{
-background:#166534;
-}
-
-.orange{
-background:#b45309;
-}
-
-.member{
-border:1px solid #ddd;
-padding:14px;
-margin-top:10px;
-border-radius:12px;
-background:#fafafa;
-}
-
-.member strong{
-font-size:17px;
-}
-
-.actions{
-display:flex;
-gap:8px;
-margin-top:10px;
-}
-
-.actions button{
-margin:0;
-}
-
-#memberMsg,#moneyMsg{
-margin-top:10px;
-text-align:center;
-font-weight:bold;
-}
-
-.summary{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-top:15px;
-}
-
-.summary div{
-background:#f7f7f7;
-padding:13px;
-border-radius:12px;
-text-align:center;
-font-weight:bold;
-}
-
-.summary span{
-display:block;
-font-size:18px;
-margin-top:5px;
-color:#8b0000;
-}
-
-.money-extra{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:10px;
-}
-
-.sheet-wrap{
-overflow-x:auto;
-margin-top:18px;
-}
-
-.money-sheet{
-width:100%;
-border-collapse:collapse;
-background:white;
-font-size:14px;
-min-width:900px;
-}
-
-.money-sheet th,
-.money-sheet td{
-border:1px solid #777;
-padding:9px 7px;
-text-align:center;
-}
-
-.money-sheet th{
-background:#eee;
-font-weight:bold;
-}
-
-.money-sheet td:nth-child(5),
-.money-sheet td:nth-child(6),
-.money-sheet td:nth-child(7),
-.money-sheet td:nth-child(8),
-.money-sheet td:nth-child(9){
-text-align:right;
-}
-
-.table-btn{
-padding:7px 9px;
-margin:2px;
-width:auto;
-font-size:12px;
-}
-
-.record-actions{
-white-space:nowrap;
-}
-
-.print-area{
-background:white;
-padding:25px;
-margin-top:20px;
-border:1px solid #ddd;
-}
-
-.print-head{
-text-align:center;
-border-bottom:2px solid #8b0000;
-padding-bottom:12px;
-margin-bottom:15px;
-}
-
-.print-head h1{
-font-size:22px;
-color:#8b0000;
-}
-
-.print-head p{
-margin-top:5px;
-}
-
-.member-info{
-display:flex;
-gap:18px;
-align-items:center;
-border:1px solid #aaa;
-padding:12px;
-margin-bottom:15px;
-}
-
-.member-photo{
-width:100px;
-height:115px;
-object-fit:cover;
-border:1px solid #777;
-border-radius:5px;
-background:#eee;
-}
-
-.member-data{
-line-height:1.8;
-}
-
-.final-total{
-margin-top:15px;
-border:2px solid #8b0000;
-padding:14px;
-font-size:17px;
-font-weight:bold;
-}
-
-.total-line{
-display:flex;
-justify-content:space-between;
-border-bottom:1px solid #ddd;
-padding:5px 0;
-}
-
-.total-final{
-font-size:20px;
-color:#8b0000;
-margin-top:8px;
-}
-
-.print-button{
-background:#166534;
-margin-top:12px;
-}
-
-.footer-actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin:20px 0;
-}
-
-.footer-actions a{
-text-decoration:none;
-text-align:center;
-padding:13px;
-border-radius:10px;
-font-weight:bold;
-background:#333;
-color:white;
-}
-
-.logout{
-margin:20px auto;
-text-align:center;
-}
-
-.logout button{
-width:auto;
-padding:12px 30px;
-background:#222;
-}
-
-.help{
-background:#fff8e1;
-border:1px solid #f0c36d;
-padding:12px;
-border-radius:10px;
-margin-top:12px;
-font-size:14px;
-line-height:1.7;
-}
-
-.zero-box{
-background:#fee2e2;
-border:1px solid #ef4444;
-padding:12px;
-border-radius:10px;
-margin-top:15px;
-}
-
-@media(max-width:700px){
-
-.control-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.summary{
-grid-template-columns:1fr 1fr;
-}
-
-.header h1{
-font-size:21px;
-}
-
-.box{
-padding:16px;
-}
-
-.actions{
-flex-direction:column;
-}
-
-.money-extra{
-grid-template-columns:1fr;
-}
-
-.member-info{
-align-items:flex-start;
-}
-
-.footer-actions{
-grid-template-columns:1fr;
-}
-
-.money-sheet{
-font-size:12px;
-}
-
-}
-
-@media(max-width:450px){
-
-.summary{
-grid-template-columns:1fr;
-}
-
-}
-
-/* PRINT */
-
-@media print{
-
-body{
-background:white;
-padding:0;
-}
-
-body *{
-visibility:hidden;
-}
-
-.print-area,
-.print-area *{
-visibility:visible;
-}
-
-.print-area{
-position:absolute;
-left:0;
-top:0;
-width:100%;
-margin:0;
-padding:10mm;
-border:0;
-}
-
-.no-print{
-display:none !important;
-}
-
-.money-sheet{
-font-size:11px;
-min-width:0;
-}
-
-.member-photo{
-width:85px;
-height:100px;
-}
-
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:#123b70;color:white;padding:20px;text-align:center}
+header h2{margin:0 0 6px}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#082b52;padding:12px}
+nav a,nav button{background:#fff;color:#123b70;border:0;border-radius:8px;padding:10px 13px;text-decoration:none;font-weight:bold}
+main{max-width:1050px;margin:20px auto;padding:12px}
+section{background:white;border-radius:14px;padding:18px;margin-bottom:20px;box-shadow:0 3px 12px #0001}
+h3{color:#123b70;margin-top:0}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px}
+button{border:0;border-radius:8px;padding:11px 15px;background:#1263ad;color:white;font-weight:bold;cursor:pointer}
+button.danger{background:#c62828}
+button.secondary{background:#64748b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.member{border:1px solid #dbe3ed;border-radius:12px;padding:12px;margin:9px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.member img{width:65px;height:65px;object-fit:cover;border-radius:50%;background:#e2e8f0}
+.member-info{flex:1;min-width:150px}
+.member-info strong{font-size:17px}
+.small{font-size:13px;color:#64748b}
+#photoPreview{width:100px;height:100px;object-fit:cover;border-radius:12px;display:none;margin:5px 0 12px}
+.msg{padding:10px;margin:8px 0;border-radius:8px;background:#eff6ff}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:9px;border:1px solid #ddd;text-align:left}
+th{background:#eaf2fb}
+.table-wrap{overflow-x:auto}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.stat{background:#eaf2fb;padding:14px;border-radius:10px;text-align:center}
+.stat b{display:block;font-size:22px;color:#123b70}
+footer{text-align:center;padding:20px;color:#64748b}
 </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<div class="header no-print">
-<h1>🤝 रसाली भाई समाज परिवार चौराठा</h1>
+<header>
+<h2>रसाली भाई समाज परिवार चौराठा</h2>
+<p>ADMIN CONTROL CENTER</p>
 <p>एकता • सहयोग • सेवा • भाइचारा</p>
-<div class="admin-badge">🔐 ADMIN CONTROL CENTER</div>
+</header>
+
+<nav>
+<a href="index.html">🏠 Website</a>
+<a href="dashboard.html">📊 Dashboard</a>
+<a href="member-card.html">🪪 Member Card</a>
+<a href="notice.html">📢 सूचना</a>
+<a href="Photo.html">📷 फोटो</a>
+<button onclick="logout()">Logout</button>
+</nav>
+
+<main>
+
+<section>
+<h3>👥 सदस्य व्यवस्थापन</h3>
+<div class="grid">
+<div>
+<label>सदस्यको नाम *</label>
+<input id="name" placeholder="पूरा नाम">
 </div>
-
-<div class="control-grid no-print">
-
-<a class="control" href="index.html">
-<span class="icon">🏠</span>
-<strong>Website</strong>
-<small>मुख्य साइट</small>
-</a>
-
-<a class="control" href="#members">
-<span class="icon">👥</span>
-<strong>सदस्य</strong>
-<small>Add / Edit / Delete</small>
-</a>
-
-<a class="control" href="#money">
-<span class="icon">💰</span>
-<strong>पैसा हिसाब</strong>
-<small>Excel Sheet</small>
-</a>
-
-<a class="control" href="notice.html">
-<span class="icon">📢</span>
-<strong>सूचना</strong>
-<small>Notice Management</small>
-</a>
-
-<a class="control" href="Photo.html">
-<span class="icon">📸</span>
-<strong>फोटो</strong>
-<small>Gallery / Photo</small>
-</a>
-
-<a class="control" href="member-card.html">
-<span class="icon">🪪</span>
-<strong>Member Card</strong>
-<small>ID Card</small>
-</a>
-
-<a class="control" href="dashboard.html">
-<span class="icon">📊</span>
-<strong>Dashboard</strong>
-<small>Member Dashboard</small>
-</a>
-
-<a class="control" href="login.html">
-<span class="icon">🔑</span>
-<strong>Login</strong>
-<small>Login Page</small>
-</a>
-
+<div>
+<label>पद</label>
+<input id="position" placeholder="जस्तै: सदस्य">
 </div>
-
-
-<!-- MEMBERS -->
-
-<div class="box no-print" id="members">
-
-<h2>👥 सदस्य व्यवस्थापन</h2>
-
-<input id="search"
-type="text"
-placeholder="🔍 नाम वा Member ID खोज्नुहोस्"
-oninput="loadMembers()">
-
-<input id="name" type="text" placeholder="सदस्यको नाम">
-<input id="position" type="text" placeholder="पद">
-<input id="phone" type="text" placeholder="फोन नम्बर">
+<div>
+<label>फोन नम्बर</label>
+<input id="phone" placeholder="फोन नम्बर">
+</div>
+<div>
+<label>Email</label>
 <input id="email" type="email" placeholder="Email">
-<input id="document_url"
-type="text"
-placeholder="Photo / Document URL">
-
-<button onclick="saveMember()">
-➕ सदस्य थप्नुहोस्
-</button>
-
-<div id="memberMsg"></div>
-<div id="membersList"></div>
-
+</div>
 </div>
 
-
-<!-- MONEY -->
-
-<div class="box no-print" id="money">
-
-<h2>💰 सदस्यको पैसा हिसाब</h2>
-
-<select id="member" onchange="loadMoney()">
-<option value="">सदस्य छान्नुहोस्</option>
-</select>
-
-
-<h3 style="margin-top:15px;">
-➕ नयाँ पैसा हिसाब थप्नुहोस्
-</h3>
-
-<select id="moneyCategory">
-
-<option value="income">
-पैसा जम्मा गरेको
-</option>
-
-<option value="expense">
-पैसा निकालेको
-</option>
-
-<option value="penalty">
-जरिवाना तिरेको
-</option>
-
-<option value="installment">
-महिनाको किस्ता हालेको
-</option>
-
-</select>
-
-<input
-type="number"
-id="amount"
-placeholder="रकम">
-
-<input
-type="date"
-id="record_date">
-
-<input
-type="text"
-id="description"
-placeholder="विवरण">
-
-<button onclick="saveMoney()">
-💾 पैसा Save गर्नुहोस्
-</button>
-
-<div id="moneyMsg"></div>
-
-
-<!-- FINAL EDIT -->
-
-<div id="extraBox"
-style="display:none;margin-top:18px;">
-
-<h3>✏️ अन्तिम ब्याज / जरिवाना मिलाउने</h3>
-
-<div class="money-extra">
-
-<div>
-<label><b>⚠️ अतिरिक्त जरिवाना</b></label>
-<input
-type="number"
-id="penalty"
-value="0"
-min="0"
-oninput="updateSheet()">
-</div>
-
-<div>
-<label><b>📝 ब्याज</b></label>
-<input
-type="number"
-id="interest"
-value="0"
-min="0"
-oninput="updateSheet()">
-</div>
-
-</div>
-
-<p style="font-size:13px;color:#666;margin-top:5px;">
-जरिवाना र ब्याज Admin ले आवश्यक परेको बेला आफैं Edit गर्न सक्नुहुन्छ।
-</p>
-
-</div>
-
-
-<!-- SUMMARY -->
-
-<div id="summary"
-class="summary"
-style="display:none;">
-
-<div>
-जम्मा
-<span id="totalIncome">रु. 0</span>
-</div>
-
-<div>
-निकालेको
-<span id="totalExpense">रु. 0</span>
-</div>
-
-<div>
-जरिवाना
-<span id="totalPenalty">रु. 0</span>
-</div>
-
-<div>
-किस्ता
-<span id="totalInstallment">रु. 0</span>
-</div>
-
-<div>
-बाँकी
-<span id="balance">रु. 0</span>
-</div>
-
-</div>
-
-
-<div class="help">
-<b>हिसाब कसरी राख्ने?</b><br>
-पैसा आएको भए <b>पैसा जम्मा गरेको</b> छान्नुहोस्।<br>
-पैसा निकाल्दा <b>पैसा निकालेको</b> छान्नुहोस्।<br>
-जरिवाना तिरेको रकमका लागि <b>जरिवाना तिरेको</b> छान्नुहोस्।<br>
-हरेक महिनाको रकमका लागि <b>महिनाको किस्ता हालेको</b> छान्नुहोस्।<br>
-ब्याज चाहिँ माथिको <b>ब्याज Edit</b> बाट Admin ले आफैं राख्न सक्नुहुन्छ।
-</div>
-
-
-<!-- DELETE OLD TEST -->
-
-<div class="zero-box">
-
-<b>🗑️ पुरानो Test हिसाब हटाउने</b>
-
-<p style="margin-top:5px;">
-हाल छानिएको सदस्यको सबै पैसा record हटाएर ० बाट नयाँ हिसाब सुरु गर्न सकिन्छ।
-</p>
-
-<button
-class="danger"
-onclick="deleteAllMoney()">
-🗑️ यो सदस्यको सबै पैसा हिसाब Delete गर्नुहोस्
-</button>
-
-</div>
-
-
-<!-- MONEY TABLE -->
-
-<div id="moneyRecords"></div>
-
-</div>
-
-
-<!-- PRINT SHEET -->
-
-<div id="printArea"
-class="print-area"
-style="display:none;">
-
-<div class="print-head">
-
-<h1>🤝 रसाली भाई समाज परिवार चौराठा</h1>
-
-<p>एकता • सहयोग • सेवा • भाइचारा</p>
-
-<p><b>सदस्यको पैसा हिसाब विवरण</b></p>
-
-</div>
-
-<div class="member-info">
-
-<img
-id="printPhoto"
-class="member-photo"
-src=""
-alt="सदस्यको फोटो">
-
-<div class="member-data">
-
-<div>
-<b>सदस्यको नाम:</b>
-<span id="printName">—</span>
-</div>
-
-<div>
-<b>Member ID:</b>
-<span id="printId">—</span>
-</div>
-
-<div>
-<b>पद:</b>
-<span id="printPosition">—</span>
-</div>
-
-<div>
-<b>फोन:</b>
-<span id="printPhone">—</span>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="sheet-wrap">
-
-<table class="money-sheet">
-
-<thead>
-
-<tr>
-<th>क्र.सं.</th>
-<th>मिति</th>
-<th>विवरण</th>
-<th>जम्मा</th>
-<th>निकालेको</th>
-<th>जरिवाना</th>
-<th>किस्ता</th>
-<th>ब्याज</th>
-<th>बाँकी</th>
-</tr>
-
-</thead>
-
-<tbody id="printTableBody"></tbody>
-
-</table>
-
-</div>
-
-
-<div class="final-total">
-
-<div class="total-line">
-<span>जम्मा रकम:</span>
-<span id="printIncome">रु. 0</span>
-</div>
-
-<div class="total-line">
-<span>निकालेको रकम:</span>
-<span id="printExpense">रु. 0</span>
-</div>
-
-<div class="total-line">
-<span>जरिवाना:</span>
-<span id="printPenalty">रु. 0</span>
-</div>
-
-<div class="total-line">
-<span>किस्ता:</span>
-<span id="printInstallment">रु. 0</span>
-</div>
-
-<div class="total-line">
-<span>ब्याज:</span>
-<span id="printInterest">रु. 0</span>
-</div>
-
-<div class="total-line">
-<span>बाँकी:</span>
-<span id="printBalance">रु. 0</span>
-</div>
-
-<div class="total-line total-final">
-<span>अन्तिम बाँकी:</span>
-<span id="printFinal">रु. 0</span>
-</div>
-
-</div>
-
-
-<p style="margin-top:25px;font-size:13px;">
-रसाली भाई समाज परिवार चौराठा
-</p>
-
-</div>
-
-
-<div class="no-print" style="margin-top:12px;">
-
-<button
-class="print-button"
-onclick="printMoneySheet()">
-🖨️ पैसा हिसाब Print गर्नुहोस्
-</button>
-
-</div>
-
-
-<!-- QUICK LINKS -->
-
-<div class="box no-print">
-
-<h2>⚙️ अन्य Admin काम</h2>
-
-<div class="footer-actions">
-
-<a href="notice.html">
-📢 सूचना व्यवस्थापन
-</a>
-
-<a href="Photo.html">
-📸 फोटो व्यवस्थापन
-</a>
-
-<a href="member-card.html">
-🪪 Member Card
-</a>
-
-<a href="index.html">
-🏠 Website हेर्नुहोस्
-</a>
-
-</div>
-
-</div>
-
-
-<div class="logout no-print">
-
-<button onclick="logout()">
-🚪 Admin Logout
-</button>
-
-</div>
-
-</div>
-
-
-<script>
-
-const URL =
-"https://hvcalffbwvbwekysukdo.supabase.co";
-
-const KEY =
-"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
-
-let editId = null;
-let currentMember = null;
-let currentMoneyData = [];
-
-
-/* ADMIN CHECK */
-
-const token =
-localStorage.getItem("rasali_access_token");
-
-const role =
-localStorage.getItem("rasali_role");
-
-if(!token || role !== "admin"){
-
-alert("🔐 Admin मात्रलाई अनुमति छ।");
-
-window.location.href="login.html";
-
-}
-
-
-/* TODAY */
-
-document.getElementById("record_date").value =
-new Date().toISOString().split("T")[0];
-
-
-/* LOAD MEMBERS */
-
-async function loadMembers(){
-
-const search =
-document.getElementById("search").value
-.trim().toLowerCase();
-
-const response =
-await fetch(
-URL+
-"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",
-{
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-const data =
-await response.json();
-
-if(!response.ok){
-
-document.getElementById("memberMsg").innerText =
-"❌ सदस्य निकाल्न सकिएन।";
-
-return;
-}
-
-const list =
-document.getElementById("membersList");
-
-list.innerHTML="";
-
-const select =
-document.getElementById("member");
-
-const oldValue =
-select.value;
-
-select.innerHTML =
-'<option value="">सदस्य छान्नुहोस्</option>';
-
-data.forEach(m=>{
-
-const text =
-(
-String(m.id)+" "+
-(m.name||"")+" "+
-(m.position||"")
-).toLowerCase();
-
-if(search && !text.includes(search)){
-return;
-}
-
-const div =
-document.createElement("div");
-
-div.className="member";
-
-div.innerHTML=`
-
-<strong>${m.name||""}</strong>
-<br>
-Member ID: ${m.id}
-<br>
-${m.position||""}
-<br>
-📞 ${m.phone||"—"}
-<br>
-✉️ ${m.email||"—"}
+<label>सदस्यको फोटो छान्नुहोस् (मोबाइल Gallery)</label>
+<input id="photoFile" type="file" accept="image/*" onchange="previewPhoto(event)">
+<img id="photoPreview" alt="फोटो पूर्वावलोकन">
+
+<label>फोटो / Document URL (वैकल्पिक)</label>
+<input id="document_url" placeholder="फोटोको URL">
 
 <div class="actions">
-
-<button
-class="edit"
-onclick="editMember(${m.id})">
-✏️ Edit
-</button>
-
-<button
-class="delete"
-onclick="deleteMember(${m.id})">
-🗑️ Delete
-</button>
-
+<button id="saveBtn" onclick="saveMember()">➕ सदस्य थप्नुहोस्</button>
+<button class="secondary" onclick="clearForm()">रिसेट</button>
 </div>
-`;
+<div id="memberMsg" class="msg">सदस्यको विवरण भर्नुहोस्।</div>
+</section>
 
-list.appendChild(div);
+<section>
+<h3>🔎 सदस्य खोज्नुहोस्</h3>
+<input id="searchMember" placeholder="नाम, फोन वा पदबाट खोज्नुहोस्" oninput="renderMembers()">
+<div id="membersList">सदस्य विवरण लोड हुँदैछ...</div>
+</section>
 
-const option =
-document.createElement("option");
+<section>
+<h3>💰 आम्दानी / खर्च हिसाब</h3>
+<div class="grid">
+<div>
+<label>सदस्य</label>
+<select id="moneyMember"></select>
+</div>
+<div>
+<label>कारोबार प्रकार</label>
+<select id="recordType">
+<option value="income">आम्दानी</option>
+<option value="expense">खर्च</option>
+<option value="penalty">जरिवाना</option>
+<option value="installment">किस्ता</option>
+</select>
+</div>
+<div>
+<label>रकम (रु.) *</label>
+<input id="amount" type="number" min="0" placeholder="रकम">
+</div>
+<div>
+<label>मिति</label>
+<input id="recordDate" type="date">
+</div>
+</div>
+<label>विवरण</label>
+<input id="description" placeholder="कारोबारको विवरण">
+<button onclick="saveMoney()">💾 हिसाब सुरक्षित गर्नुहोस्</button>
+<div id="moneyMsg" class="msg"></div>
+</section>
 
-option.value=m.id;
+<section>
+<h3>📒 पैसा हिसाब विवरण</h3>
+<div class="grid">
+<div class="stat">जम्मा आम्दानी<b id="totalIncome">रु. ०</b></div>
+<div class="stat">जम्मा खर्च<b id="totalExpense">रु. ०</b></div>
+<div class="stat">बाँकी रकम<b id="balance">रु. ०</b></div>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>मिति</th><th>सदस्य</th><th>प्रकार</th><th>रकम</th><th>विवरण</th><th>हटाउने</th>
+</tr>
+</thead>
+<tbody id="moneyList"></tbody>
+</table>
+</div>
+</section>
 
-option.textContent =
-m.name+" (ID: "+m.id+")";
+</main>
 
-select.appendChild(option);
+<footer>
+रसाली भाई समाज परिवार चौराठा<br>
+हामी माबै र भामसैनीका सन्तान
+</footer>
 
-});
+<script>
+const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const SUPABASE_KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
-if(oldValue){
-select.value=oldValue;
+const token=localStorage.getItem("rasali_access_token");
+const role=localStorage.getItem("rasali_role");
+
+if(!token || role!=="admin"){
+ alert("Admin मात्रलाई अनुमति छ");
+ location.href="login.html";
 }
 
+const headers={
+ "apikey":SUPABASE_KEY,
+ "Authorization":"Bearer "+token,
+ "Content-Type":"application/json"
+};
+
+let members=[];
+let moneyRecords=[];
+let editId=null;
+
+document.getElementById("recordDate").value=
+ new Date().toISOString().slice(0,10);
+
+function message(id,text){
+ document.getElementById(id).textContent=text;
 }
 
+function previewPhoto(event){
+ const file=event.target.files[0];
+ const img=document.getElementById("photoPreview");
+ if(!file){img.style.display="none";return}
+ if(!file.type.startsWith("image/")){
+  alert("कृपया फोटो फाइल मात्र छान्नुहोस्");
+  event.target.value="";
+  return;
+ }
+ if(file.size>5*1024*1024){
+  alert("फोटो ५ MB भन्दा सानो हुनुपर्छ");
+  event.target.value="";
+  return;
+ }
+ img.src=window.URL.createObjectURL(file);
+ img.style.display="block";
+}
 
-/* SAVE MEMBER */
+async function uploadMemberPhoto(file){
+ const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+ const path="members/"+Date.now()+"_"+safeName;
+ const encoded=path.split("/").map(encodeURIComponent).join("/");
+ const response=await fetch(
+  SUPABASE_URL+"/storage/v1/object/Photos/"+encoded,
+  {
+   method:"POST",
+   headers:{
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer "+token,
+    "Content-Type":file.type||"image/jpeg",
+    "x-upsert":"false"
+   },
+   body:file
+  }
+ );
+ if(!response.ok){
+  const error=await response.text();
+  throw new Error("फोटो अपलोड भएन: "+error);
+ }
+ return SUPABASE_URL+"/storage/v1/object/public/Photos/"+encoded;
+}
+
+async function loadMembers(){
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",
+   {headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  members=await response.json();
+  renderMembers();
+  updateMemberSelect();
+ }catch(error){
+  message("memberMsg","सदस्य लोड भएन: "+error.message);
+ }
+}
+
+function renderMembers(){
+ const q=document.getElementById("searchMember").value.toLowerCase();
+ const list=document.getElementById("membersList");
+ const filtered=members.filter(m=>
+  [m.name,m.position,m.phone,m.email].join(" ").toLowerCase().includes(q)
+ );
+ list.innerHTML="";
+ if(!filtered.length){
+  list.textContent="सदस्य भेटिएन।";
+  return;
+ }
+ filtered.forEach(m=>{
+  const card=document.createElement("div");
+  card.className="member";
+  const img=document.createElement("img");
+  img.src=m.document_url||"";
+  img.alt=m.name||"सदस्य";
+  img.onerror=()=>{img.style.display="none"};
+  const info=document.createElement("div");
+  info.className="member-info";
+  const name=document.createElement("strong");
+  name.textContent=m.name||"नाम छैन";
+  const details=document.createElement("div");
+  details.className="small";
+  details.textContent=(m.position||"सदस्य")+" | "+(m.phone||"फोन छैन");
+  info.append(name,details);
+  const actions=document.createElement("div");
+  actions.className="actions";
+  const edit=document.createElement("button");
+  edit.textContent="✏️ सम्पादन";
+  edit.onclick=()=>editMember(m.id);
+  const del=document.createElement("button");
+  del.textContent="🗑️ हटाउनुहोस्";
+  del.className="danger";
+  del.onclick=()=>deleteMember(m.id);
+  actions.append(edit,del);
+  card.append(img,info,actions);
+  list.append(card);
+ });
+}
+
+function updateMemberSelect(){
+ const select=document.getElementById("moneyMember");
+ select.innerHTML='<option value="">सदस्य छान्नुहोस्</option>';
+ members.forEach(m=>{
+  const option=document.createElement("option");
+  option.value=m.id;
+  option.textContent=m.name;
+  select.append(option);
+ });
+}
 
 async function saveMember(){
+ const name=document.getElementById("name").value.trim();
+ if(!name){alert("सदस्यको नाम लेख्नुहोस्");return}
+ const btn=document.getElementById("saveBtn");
+ btn.disabled=true;
+ btn.textContent="कृपया पर्खनुहोस्...";
+ try{
+  let photoUrl=document.getElementById("document_url").value.trim();
+  const file=document.getElementById("photoFile").files[0];
+  if(file)photoUrl=await uploadMemberPhoto(file);
 
-const name =
-document.getElementById("name").value.trim();
+  const payload={
+   name,
+   position:document.getElementById("position").value.trim(),
+   phone:document.getElementById("phone").value.trim(),
+   email:document.getElementById("email").value.trim(),
+   document_url:photoUrl
+  };
 
-const position =
-document.getElementById("position").value.trim();
+  const endpoint=SUPABASE_URL+"/rest/v1/members"+
+   (editId?("?id=eq."+encodeURIComponent(editId)):"");
+  const response=await fetch(endpoint,{
+   method:editId?"PATCH":"POST",
+   headers:{...headers,"Prefer":"return=representation"},
+   body:JSON.stringify(payload)
+  });
+  if(!response.ok)throw new Error(await response.text());
 
-const phone =
-document.getElementById("phone").value.trim();
-
-const email =
-document.getElementById("email").value.trim();
-
-const document_url =
-document.getElementById("document_url").value.trim();
-
-if(!name){
-
-document.getElementById("memberMsg").innerText =
-"❗ सदस्यको नाम लेख्नुहोस्।";
-
-return;
+  message("memberMsg",editId?"सदस्य विवरण अपडेट भयो।":"नयाँ सदस्य सफलतापूर्वक थपियो।");
+  clearForm();
+  await loadMembers();
+ }catch(error){
+  message("memberMsg","त्रुटि: "+error.message);
+ }finally{
+  btn.disabled=false;
+  btn.textContent=editId?"✏️ परिवर्तन सुरक्षित गर्नुहोस्":"➕ सदस्य थप्नुहोस्";
+ }
 }
 
-const body={
-name,
-position,
-phone,
-email,
-document_url
-};
-
-let response;
-
-if(editId){
-
-response =
-await fetch(
-URL+"/rest/v1/members?id=eq."+editId,
-{
-method:"PATCH",
-headers:{
-"Content-Type":"application/json",
-"apikey":KEY,
-"Authorization":"Bearer "+token,
-"Prefer":"return=minimal"
-},
-body:JSON.stringify(body)
-});
-
-}else{
-
-response =
-await fetch(
-URL+"/rest/v1/members",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":KEY,
-"Authorization":"Bearer "+token,
-"Prefer":"return=minimal"
-},
-body:JSON.stringify(body)
-});
-
+function editMember(id){
+ const m=members.find(x=>String(x.id)===String(id));
+ if(!m)return;
+ editId=m.id;
+ document.getElementById("name").value=m.name||"";
+ document.getElementById("position").value=m.position||"";
+ document.getElementById("phone").value=m.phone||"";
+ document.getElementById("email").value=m.email||"";
+ document.getElementById("document_url").value=m.document_url||"";
+ document.getElementById("photoFile").value="";
+ const preview=document.getElementById("photoPreview");
+ if(m.document_url){preview.src=m.document_url;preview.style.display="block"}
+ else preview.style.display="none";
+ document.getElementById("saveBtn").textContent="✏️ परिवर्तन सुरक्षित गर्नुहोस्";
+ message("memberMsg","सम्पादन गर्नुभयो। परिवर्तन सुरक्षित गर्नुहोस्।");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
-
-if(response.ok){
-
-document.getElementById("memberMsg").innerText =
-editId
-? "✅ सदस्य विवरण Update भयो।"
-: "✅ नयाँ सदस्य सफलतापूर्वक थपियो।";
-
-clearForm();
-
-editId=null;
-
-document.querySelector(
-'button[onclick="saveMember()"]'
-).innerText =
-"➕ सदस्य थप्नुहोस्";
-
-loadMembers();
-
-}else{
-
-const error =
-await response.text();
-
-document.getElementById("memberMsg").innerText =
-"❌ समस्या: "+error;
-
-}
-
-}
-
-
-/* EDIT MEMBER */
-
-async function editMember(id){
-
-const response =
-await fetch(
-URL+
-"/rest/v1/members?id=eq."+id+
-"&select=id,name,position,phone,email,document_url",
-{
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-const data =
-await response.json();
-
-if(!data.length)return;
-
-const m=data[0];
-
-document.getElementById("name").value=m.name||"";
-document.getElementById("position").value=m.position||"";
-document.getElementById("phone").value=m.phone||"";
-document.getElementById("email").value=m.email||"";
-document.getElementById("document_url").value=m.document_url||"";
-
-editId=id;
-
-document.querySelector(
-'button[onclick="saveMember()"]'
-).innerText =
-"💾 Update सदस्य";
-
-document.getElementById("members")
-.scrollIntoView({behavior:"smooth"});
-
-}
-
-
-/* DELETE MEMBER */
-
-async function deleteMember(id){
-
-if(!confirm("यो सदस्य Delete गर्ने हो?"))return;
-
-const response =
-await fetch(
-URL+"/rest/v1/members?id=eq."+id,
-{
-method:"DELETE",
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-if(response.ok){
-
-document.getElementById("memberMsg").innerText =
-"🗑️ सदस्य Delete भयो।";
-
-loadMembers();
-
-}else{
-
-const error =
-await response.text();
-
-document.getElementById("memberMsg").innerText =
-"❌ Delete हुन सकेन: "+error;
-
-}
-
-}
-
-
-/* CLEAR MEMBER FORM */
 
 function clearForm(){
-
-document.getElementById("name").value="";
-document.getElementById("position").value="";
-document.getElementById("phone").value="";
-document.getElementById("email").value="";
-document.getElementById("document_url").value="";
-
+ editId=null;
+ ["name","position","phone","email","document_url","photoFile"].forEach(id=>{
+  document.getElementById(id).value="";
+ });
+ document.getElementById("photoPreview").style.display="none";
+ document.getElementById("saveBtn").textContent="➕ सदस्य थप्नुहोस्";
 }
 
+async function deleteMember(id){
+ if(!confirm("यो सदस्य हटाउने निश्चित हो?"))return;
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/members?id=eq."+encodeURIComponent(id),
+   {method:"DELETE",headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  message("memberMsg","सदस्य हटाइयो।");
+  await loadMembers();
+ }catch(error){
+  alert("हटाउन सकिएन: "+error.message);
+ }
 
-/* CATEGORY TEXT */
-
-function categoryLabel(category){
-
-if(category==="income") return "पैसा जम्मा";
-if(category==="expense") return "पैसा निकालेको";
-if(category==="penalty") return "जरिवाना";
-if(category==="installment") return "किस्ता";
-
-return "पैसा";
 }
-
-
-/*
-Existing database has record_type = income / expense.
-To avoid changing the existing Supabase structure,
-special categories are saved inside description using a marker.
-*/
-
-function encodeDescription(category, description){
-
-const clean =
-(description||"").trim();
-
-if(category==="income"){
-return clean;
-}
-
-return "["+
-category.toUpperCase()+
-"] "+
-clean;
-}
-
-
-function detectCategory(record){
-
-const text =
-(record.description||"").trim();
-
-if(text.startsWith("[PENALTY]")){
-return "penalty";
-}
-
-if(text.startsWith("[INSTALLMENT]")){
-return "installment";
-}
-
-if(record.record_type==="expense"){
-return "expense";
-}
-
-return "income";
-}
-
-
-function cleanDescription(record){
-
-let text =
-(record.description||"").trim();
-
-text=text.replace(
-/^\[(PENALTY|INSTALLMENT)\]\s*/i,
-""
-);
-
-return text;
-}
-
-
-/* SAVE MONEY */
 
 async function saveMoney(){
-
-const member_id =
-document.getElementById("member").value;
-
-const category =
-document.getElementById("moneyCategory").value;
-
-const amount =
-document.getElementById("amount").value;
-
-const record_date =
-document.getElementById("record_date").value;
-
-const description =
-document.getElementById("description").value.trim();
-
-if(!member_id){
-
-document.getElementById("moneyMsg").innerText =
-"❗ सदस्य छान्नुहोस्।";
-
-return;
+ const amount=Number(document.getElementById("amount").value);
+ if(!amount||amount<=0){alert("सही रकम लेख्नुहोस्");return}
+ const payload={
+  member_id:document.getElementById("moneyMember").value||null,
+  record_type:document.getElementById("recordType").value,
+  amount,
+  record_date:document.getElementById("recordDate").value,
+  description:document.getElementById("description").value.trim()
+ };
+ try{
+  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records",{
+   method:"POST",
+   headers:{...headers,"Prefer":"return=representation"},
+   body:JSON.stringify(payload)
+  });
+  if(!response.ok)throw new Error(await response.text());
+  message("moneyMsg","पैसा हिसाब सुरक्षित भयो।");
+  document.getElementById("amount").value="";
+  document.getElementById("description").value="";
+  await loadMoney();
+ }catch(error){
+  message("moneyMsg","त्रुटि: "+error.message);
+ }
 }
 
-if(!amount || Number(amount)<=0){
-
-document.getElementById("moneyMsg").innerText =
-"❗ सही रकम लेख्नुहोस्।";
-
-return;
+function categoryName(type){
+ return {
+  income:"आम्दानी",expense:"खर्च",
+  penalty:"जरिवाना",installment:"किस्ता"
+ }[type]||type;
 }
-
-if(!record_date){
-
-document.getElementById("moneyMsg").innerText =
-"❗ मिति छान्नुहोस्।";
-
-return;
-}
-
-
-/*
-Income:
-पैसा जम्मा + जरिवाना + किस्ता are money received.
-
-Expense:
-पैसा निकालेको is money taken out.
-*/
-
-const record_type =
-category==="expense"
-? "expense"
-: "income";
-
-const finalDescription =
-encodeDescription(category,description);
-
-const response =
-await fetch(
-URL+"/rest/v1/money_records",
-{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"apikey":KEY,
-"Authorization":"Bearer "+token,
-"Prefer":"return=minimal"
-},
-body:JSON.stringify({
-
-member_id:Number(member_id),
-record_type,
-amount:Number(amount),
-record_date,
-description:finalDescription
-
-})
-});
-
-if(response.ok){
-
-document.getElementById("moneyMsg").innerText =
-"✅ "+categoryLabel(category)+" सफलतापूर्वक Save भयो।";
-
-document.getElementById("amount").value="";
-document.getElementById("description").value="";
-
-loadMoney();
-
-}else{
-
-const error =
-await response.text();
-
-document.getElementById("moneyMsg").innerText =
-"❌ Save हुन सकेन: "+error;
-
-}
-
-}
-
-
-/* EXTRA DATA */
-
-function getExtra(id){
-
-const key =
-"rasali_money_extra_"+id;
-
-try{
-
-return JSON.parse(
-localStorage.getItem(key)
-) || {
-penalty:0,
-interest:0
-};
-
-}catch(e){
-
-return {
-penalty:0,
-interest:0
-};
-
-}
-
-}
-
-
-function saveExtra(id){
-
-const penalty =
-Number(document.getElementById("penalty").value)||0;
-
-const interest =
-Number(document.getElementById("interest").value)||0;
-
-localStorage.setItem(
-"rasali_money_extra_"+id,
-JSON.stringify({
-penalty,
-interest
-})
-);
-
-}
-
-
-/* DELETE ONE RECORD */
-
-async function deleteMoneyRecord(id){
-
-if(!confirm(
-"यो पैसा हिसाब Delete गर्ने हो?"
-)){
-return;
-}
-
-const response =
-await fetch(
-URL+
-"/rest/v1/money_records?id=eq."+id,
-{
-method:"DELETE",
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-if(response.ok){
-
-document.getElementById("moneyMsg").innerText =
-"🗑️ पैसा record Delete भयो।";
-
-loadMoney();
-
-}else{
-
-const error =
-await response.text();
-
-document.getElementById("moneyMsg").innerText =
-"❌ Delete हुन सकेन: "+error;
-
-}
-
-}
-
-
-/* EDIT ONE RECORD */
-
-async function editMoneyRecord(id){
-
-const response =
-await fetch(
-URL+
-"/rest/v1/money_records?id=eq."+id+
-"&select=id,record_type,amount,record_date,description",
-{
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-const data =
-await response.json();
-
-if(!data.length){
-return;
-}
-
-const r=data[0];
-
-const category =
-detectCategory(r);
-
-document.getElementById("moneyCategory").value =
-category;
-
-document.getElementById("amount").value =
-r.amount||"";
-
-document.getElementById("record_date").value =
-r.record_date||"";
-
-document.getElementById("description").value =
-cleanDescription(r);
-
-const saveButton =
-document.querySelector(
-'button[onclick="saveMoney()"]'
-);
-
-saveButton.innerText =
-"💾 Update पैसा हिसाब";
-
-saveButton.onclick =
-function(){
-updateMoneyRecord(id);
-};
-
-document.getElementById("money")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-/* UPDATE RECORD */
-
-async function updateMoneyRecord(id){
-
-const category =
-document.getElementById("moneyCategory").value;
-
-const amount =
-Number(document.getElementById("amount").value)||0;
-
-const record_date =
-document.getElementById("record_date").value;
-
-const description =
-document.getElementById("description").value.trim();
-
-if(amount<=0){
-
-document.getElementById("moneyMsg").innerText =
-"❗ सही रकम लेख्नुहोस्।";
-
-return;
-}
-
-const record_type =
-category==="expense"
-? "expense"
-: "income";
-
-const finalDescription =
-encodeDescription(
-category,
-description
-);
-
-const response =
-await fetch(
-URL+
-"/rest/v1/money_records?id=eq."+id,
-{
-method:"PATCH",
-headers:{
-"Content-Type":"application/json",
-"apikey":KEY,
-"Authorization":"Bearer "+token,
-"Prefer":"return=minimal"
-},
-body:JSON.stringify({
-
-record_type,
-amount,
-record_date,
-description:finalDescription
-
-})
-});
-
-if(response.ok){
-
-document.getElementById("moneyMsg").innerText =
-"✅ पैसा हिसाब Update भयो।";
-
-resetMoneyButton();
-
-document.getElementById("amount").value="";
-document.getElementById("description").value="";
-
-loadMoney();
-
-}else{
-
-const error =
-await response.text();
-
-document.getElementById("moneyMsg").innerText =
-"❌ Update हुन सकेन: "+error;
-
-}
-
-}
-
-
-/* RESET MONEY BUTTON */
-
-function resetMoneyButton(){
-
-const button =
-document.querySelector(
-'button[onclick="updateMoneyRecord(id)"]'
-);
-
-const allButtons =
-document.querySelectorAll("button");
-
-allButtons.forEach(btn=>{
-
-if(btn.innerText.includes("Update पैसा हिसाब")){
-
-btn.innerText =
-"💾 पैसा Save गर्नुहोस्";
-
-btn.onclick =
-saveMoney;
-
-}
-
-});
-
-}
-
-
-/* DELETE ALL MEMBER MONEY */
-
-async function deleteAllMoney(){
-
-const member_id =
-document.getElementById("member").value;
-
-if(!member_id){
-
-alert("पहिले सदस्य छान्नुहोस्।");
-
-return;
-}
-
-if(!confirm(
-"⚠️ यस सदस्यको सबै पैसा हिसाब Delete गरेर ० बाट सुरु गर्ने हो?"
-)){
-
-return;
-}
-
-const response =
-await fetch(
-URL+
-"/rest/v1/money_records?member_id=eq."+member_id,
-{
-method:"DELETE",
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-if(response.ok){
-
-localStorage.removeItem(
-"rasali_money_extra_"+member_id
-);
-
-document.getElementById("moneyMsg").innerText =
-"✅ सबै पुरानो test हिसाब हटाइयो। अब ० बाट सुरु हुन्छ।";
-
-document.getElementById("penalty").value=0;
-document.getElementById("interest").value=0;
-
-loadMoney();
-
-}else{
-
-const error =
-await response.text();
-
-document.getElementById("moneyMsg").innerText =
-"❌ सबै record हटाउन सकिएन: "+error;
-
-}
-
-}
-
-
-/* LOAD MONEY */
 
 async function loadMoney(){
-
-const member_id =
-document.getElementById("member").value;
-
-const records =
-document.getElementById("moneyRecords");
-
-const summary =
-document.getElementById("summary");
-
-const extraBox =
-document.getElementById("extraBox");
-
-const printArea =
-document.getElementById("printArea");
-
-if(!member_id){
-
-records.innerHTML="";
-summary.style.display="none";
-extraBox.style.display="none";
-printArea.style.display="none";
-return;
-
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/money_records?select=id,member_id,record_type,amount,record_date,description&order=record_date.desc",
+   {headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  moneyRecords=await response.json();
+  renderMoney();
+ }catch(error){
+  message("moneyMsg","हिसाब लोड भएन: "+error.message);
+ }
 }
 
-
-/* MEMBER */
-
-const memberResponse =
-await fetch(
-URL+
-"/rest/v1/members?id=eq."+member_id+
-"&select=id,name,position,phone,email,document_url",
-{
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-const members =
-await memberResponse.json();
-
-currentMember =
-members.length
-? members[0]
-: null;
-
-
-/* MONEY */
-
-const response =
-await fetch(
-URL+
-"/rest/v1/money_records?member_id=eq."+
-member_id+
-"&select=id,record_type,amount,record_date,description&order=record_date.asc,id.asc",
-{
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token
-}
-});
-
-const data =
-await response.json();
-
-if(!response.ok){
-
-records.innerHTML =
-"❌ पैसा हिसाब निकाल्न सकिएन।";
-
-return;
+function renderMoney(){
+ const tbody=document.getElementById("moneyList");
+ tbody.innerHTML="";
+ let income=0,expense=0;
+ moneyRecords.forEach(r=>{
+  if(r.record_type==="income"||r.record_type==="installment")income+=Number(r.amount);
+  if(r.record_type==="expense"||r.record_type==="penalty")expense+=Number(r.amount);
+  const member=members.find(m=>String(m.id)===String(r.member_id));
+  const tr=document.createElement("tr");
+  const values=[
+   r.record_date||"",
+   member?member.name:"—",
+   categoryName(r.record_type),
+   "रु. "+Number(r.amount).toLocaleString("en-IN"),
+   r.description||""
+  ];
+  values.forEach(value=>{
+   const td=document.createElement("td");
+   td.textContent=value;
+   tr.append(td);
+  });
+  const td=document.createElement("td");
+  const btn=document.createElement("button");
+  btn.className="danger";
+  btn.textContent="हटाउनुहोस्";
+  btn.onclick=()=>deleteMoney(r.id);
+  td.append(btn);
+  tr.append(td);
+  tbody.append(tr);
+ });
+ document.getElementById("totalIncome").textContent="रु. "+income.toLocaleString("en-IN");
+ document.getElementById("totalExpense").textContent="रु. "+expense.toLocaleString("en-IN");
+ document.getElementById("balance").textContent="रु. "+(income-expense).toLocaleString("en-IN");
 }
 
-currentMoneyData=data;
-
-
-/* TOTALS */
-
-let income=0;
-let expense=0;
-let penaltyRecords=0;
-let installment=0;
-
-data.forEach(r=>{
-
-const amount =
-Number(r.amount)||0;
-
-const category =
-detectCategory(r);
-
-if(category==="income"){
-income+=amount;
+async function deleteMoney(id){
+ if(!confirm("यो हिसाब हटाउने निश्चित हो?"))return;
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/money_records?id=eq."+encodeURIComponent(id),
+   {method:"DELETE",headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  await loadMoney();
+ }catch(error){
+  alert("हिसाब हटाउन सकिएन: "+error.message);
+ }
 }
-
-if(category==="expense"){
-expense+=amount;
-}
-
-if(category==="penalty"){
-penaltyRecords+=amount;
-}
-
-if(category==="installment"){
-installment+=amount;
-}
-
-});
-
-
-/*
-जरिवाना र किस्ता society ले पाएको रकम भएकाले
-बाँकी रकममा add हुन्छ।
-निकालेको रकम subtract हुन्छ।
-*/
-
-const balance =
-income+penaltyRecords+installment-expense;
-
-
-const extra =
-getExtra(member_id);
-
-document.getElementById("penalty").value =
-extra.penalty;
-
-document.getElementById("interest").value =
-extra.interest;
-
-
-/* SUMMARY */
-
-document.getElementById("totalIncome").innerText =
-"रु. "+income.toLocaleString();
-
-document.getElementById("totalExpense").innerText =
-"रु. "+expense.toLocaleString();
-
-document.getElementById("totalPenalty").innerText =
-"रु. "+penaltyRecords.toLocaleString();
-
-document.getElementById("totalInstallment").innerText =
-"रु. "+installment.toLocaleString();
-
-document.getElementById("balance").innerText =
-"रु. "+balance.toLocaleString();
-
-summary.style.display="grid";
-extraBox.style.display="block";
-
-
-/* TABLE */
-
-records.innerHTML =
-"<h3 style='margin-top:20px;'>📋 Excel-जस्तो पैसा कारोबार</h3>";
-
-if(!data.length){
-
-records.innerHTML +=
-"<p style='text-align:center;padding:15px;'>अहिलेसम्म कुनै कारोबार छैन। सबै हिसाब ० बाट सुरु हुन्छ।</p>";
-
-}else{
-
-const table =
-document.createElement("div");
-
-table.className="sheet-wrap";
-
-table.innerHTML=`
-
-<table class="money-sheet">
-
-<thead>
-
-<tr>
-
-<th>क्र.सं.</th>
-<th>मिति</th>
-<th>विवरण</th>
-<th>प्रकार</th>
-<th>जम्मा</th>
-<th>निकालेको</th>
-<th>जरिवाना</th>
-<th>किस्ता</th>
-<th>बाँकी</th>
-<th>Action</th>
-
-</tr>
-
-</thead>
-
-<tbody id="adminMoneyBody"></tbody>
-
-</table>
-
-`;
-
-records.appendChild(table);
-
-let running=0;
-
-const body =
-document.getElementById("adminMoneyBody");
-
-
-data.forEach((r,index)=>{
-
-const amount =
-Number(r.amount)||0;
-
-const category =
-detectCategory(r);
-
-let incomeAmount=0;
-let expenseAmount=0;
-let penaltyAmount=0;
-let installmentAmount=0;
-
-if(category==="income"){
-
-incomeAmount=amount;
-running+=amount;
-
-}
-
-else if(category==="expense"){
-
-expenseAmount=amount;
-running-=amount;
-
-}
-
-else if(category==="penalty"){
-
-penaltyAmount=amount;
-running+=amount;
-
-}
-
-else if(category==="installment"){
-
-installmentAmount=amount;
-running+=amount;
-
-}
-
-
-const tr =
-document.createElement("tr");
-
-tr.innerHTML=`
-
-<td>${index+1}</td>
-
-<td>${r.record_date||"—"}</td>
-
-<td>${cleanDescription(r)||"—"}</td>
-
-<td>${categoryLabel(category)}</td>
-
-<td>
-${incomeAmount
-?"रु. "+incomeAmount.toLocaleString()
-:"—"}
-</td>
-
-<td>
-${expenseAmount
-?"रु. "+expenseAmount.toLocaleString()
-:"—"}
-</td>
-
-<td>
-${penaltyAmount
-?"रु. "+penaltyAmount.toLocaleString()
-:"—"}
-</td>
-
-<td>
-${installmentAmount
-?"रु. "+installmentAmount.toLocaleString()
-:"—"}
-</td>
-
-<td>
-रु. ${running.toLocaleString()}
-</td>
-
-<td class="record-actions">
-
-<button
-class="edit table-btn"
-onclick="editMoneyRecord(${r.id})">
-✏️ Edit
-</button>
-
-<button
-class="delete table-btn"
-onclick="deleteMoneyRecord(${r.id})">
-🗑️ Delete
-</button>
-
-</td>
-
-`;
-
-body.appendChild(tr);
-
-});
-
-}
-
-
-updateSheet();
-
-}
-
-
-/* UPDATE PRINT SHEET */
-
-function updateSheet(){
-
-const member_id =
-document.getElementById("member").value;
-
-if(!member_id || !currentMember){
-return;
-}
-
-
-let income=0;
-let expense=0;
-let penaltyRecords=0;
-let installment=0;
-
-
-currentMoneyData.forEach(r=>{
-
-const amount =
-Number(r.amount)||0;
-
-const category =
-detectCategory(r);
-
-if(category==="income"){
-income+=amount;
-}
-
-else if(category==="expense"){
-expense+=amount;
-}
-
-else if(category==="penalty"){
-penaltyRecords+=amount;
-}
-
-else if(category==="installment"){
-installment+=amount;
-}
-
-});
-
-
-const editablePenalty =
-Number(
-document.getElementById("penalty").value
-)||0;
-
-const interest =
-Number(
-document.getElementById("interest").value
-)||0;
-
-
-saveExtra(member_id);
-
-
-/*
-Penalty record र editable extra penalty
-दुवै देखाउने।
-*/
-
-const totalPenalty =
-penaltyRecords+editablePenalty;
-
-
-/*
-बाँकी:
-जम्मा + जरिवाना + किस्ता - निकालेको
-*/
-
-const balance =
-income+
-penaltyRecords+
-installment-
-expense;
-
-
-/*
-ब्याजलाई Admin ले अन्तिममा edit गरेर राख्ने।
-*/
-
-const finalBalance =
-balance+
-interest;
-
-
-/* MEMBER INFO */
-
-document.getElementById("printName").innerText =
-currentMember.name||"—";
-
-document.getElementById("printId").innerText =
-currentMember.id||"—";
-
-document.getElementById("printPosition").innerText =
-currentMember.position||"—";
-
-document.getElementById("printPhone").innerText =
-currentMember.phone||"—";
-
-
-const photo =
-currentMember.document_url;
-
-document.getElementById("printPhoto").src =
-photo &&
-(
-photo.startsWith("http://") ||
-photo.startsWith("https://")
-)
-? photo
-: "";
-
-
-/* PRINT TABLE */
-
-const body =
-document.getElementById("printTableBody");
-
-body.innerHTML="";
-
-let running=0;
-
-
-currentMoneyData.forEach((r,index)=>{
-
-const amount =
-Number(r.amount)||0;
-
-const category =
-detectCategory(r);
-
-let incomeAmount=0;
-let expenseAmount=0;
-let penaltyAmount=0;
-let installmentAmount=0;
-
-
-if(category==="income"){
-
-incomeAmount=amount;
-running+=amount;
-
-}
-
-else if(category==="expense"){
-
-expenseAmount=amount;
-running-=amount;
-
-}
-
-else if(category==="penalty"){
-
-penaltyAmount=amount;
-running+=amount;
-
-}
-
-else if(category==="installment"){
-
-installmentAmount=amount;
-running+=amount;
-
-}
-
-
-const tr =
-document.createElement("tr");
-
-tr.innerHTML=`
-
-<td>${index+1}</td>
-
-<td>${r.record_date||"—"}</td>
-
-<td>${cleanDescription(r)||"—"}</td>
-
-<td>${incomeAmount
-?"रु. "+incomeAmount.toLocaleString()
-:"—"}</td>
-
-<td>${expenseAmount
-?"रु. "+expenseAmount.toLocaleString()
-:"—"}</td>
-
-<td>${penaltyAmount
-?"रु. "+penaltyAmount.toLocaleString()
-:"—"}</td>
-
-<td>${installmentAmount
-?"रु. "+installmentAmount.toLocaleString()
-:"—"}</td>
-
-<td>—</td>
-
-<td>
-रु. ${running.toLocaleString()}
-</td>
-
-`;
-
-body.appendChild(tr);
-
-});
-
-
-/* FINAL TOTALS */
-
-document.getElementById("printIncome").innerText =
-"रु. "+income.toLocaleString();
-
-document.getElementById("printExpense").innerText =
-"रु. "+expense.toLocaleString();
-
-document.getElementById("printPenalty").innerText =
-"रु. "+totalPenalty.toLocaleString();
-
-document.getElementById("printInstallment").innerText =
-"रु. "+installment.toLocaleString();
-
-document.getElementById("printInterest").innerText =
-"रु. "+interest.toLocaleString();
-
-document.getElementById("printBalance").innerText =
-"रु. "+balance.toLocaleString();
-
-document.getElementById("printFinal").innerText =
-"रु. "+finalBalance.toLocaleString();
-
-document.getElementById("printArea").style.display="block";
-
-}
-
-
-/* PRINT */
-
-function printMoneySheet(){
-
-const member_id =
-document.getElementById("member").value;
-
-if(!member_id){
-
-alert("पहिले सदस्य छान्नुहोस्।");
-
-return;
-}
-
-updateSheet();
-
-setTimeout(()=>{
-
-window.print();
-
-},300);
-
-}
-
-
-/* LOGOUT */
 
 function logout(){
-
-localStorage.removeItem("rasali_access_token");
-localStorage.removeItem("rasali_user");
-localStorage.removeItem("rasali_member_id");
-localStorage.removeItem("rasali_role");
-
-window.location.href="login.html";
-
+ localStorage.removeItem("rasali_access_token");
+ localStorage.removeItem("rasali_user");
+ localStorage.removeItem("rasali_role");
+ location.href="login.html";
 }
 
-
-/* START */
-
-loadMembers();
-
+async function start(){
+ await loadMembers();
+ await loadMoney();
+}
+start();
 </script>
-
 </body>
-</html> 
+</html>
