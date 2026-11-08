@@ -82,18 +82,47 @@ button{
  overflow:hidden;color:#345;font-size:11px;
 }
 .photo img{width:100%;height:100%;object-fit:cover}
+
+/* FRONT MEMBER NAME */
 .member-name{
- margin:0 13px;padding:6px 5px;
- border-radius:20px;background:#103b70;color:white;
- text-align:center;font-size:18px;font-weight:bold;
+ margin:0 20px;
+ padding:6px 8px;
+ border-radius:20px;
+ background:#103b70;
+ color:white;
+ text-align:center;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ font-size:18px;
+ font-weight:700;
+ letter-spacing:.2px;
  overflow-wrap:anywhere;
 }
-.details{padding:7px 15px 38px}
-.details p{
- font-size:10px;line-height:1.25;
- margin:5px 0;overflow-wrap:anywhere;
+
+/* FRONT DETAILS - CENTERED AND COLOURED */
+.details{
+ padding:7px 23px 38px;
+ text-align:center;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
 }
-.details strong{color:#103b70}
+.details p{
+ font-size:10px;
+ line-height:1.25;
+ font-weight:700;
+ letter-spacing:.1px;
+ margin:6px 0;
+ text-align:center;
+ overflow-wrap:anywhere;
+ word-break:break-word;
+}
+.details strong{font-weight:700}
+
+/* Each line has its own colour */
+.details .detail-no{color:#c62828}
+.details .detail-position{color:#16834b}
+.details .detail-phone{color:#174e91}
+.details .detail-email{color:#7836a8}
+.details .detail-address{color:#555b63}
+
 .front-bottom{
  position:absolute;bottom:0;left:0;right:0;
  background:#103b70;color:white;
@@ -190,9 +219,26 @@ button{
  .logo{width:10mm;height:10mm;top:1mm;left:50%;transform:translateX(-50%)}
  .estd{font-size:5px}
  .photo{width:22mm;height:25mm;margin:1.5mm auto}
- .member-name{font-size:10px;padding:1mm}
- .details{padding:1mm 3mm 8mm}
- .details p{font-size:6px;line-height:1.2;margin:1mm 0}
+ .member-name{
+  font-size:10px;
+  padding:1mm 2mm;
+  margin:0 4mm;
+  font-weight:700;
+  letter-spacing:.1px;
+ }
+ .details{
+  padding:1.5mm 5mm 8mm;
+  text-align:center;
+ }
+ .details p{
+  font-size:6px;
+  line-height:1.2;
+  margin:1.3mm 0;
+  font-weight:700;
+  text-align:center;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+ }
  .front-bottom{font-size:5px;padding:1.5mm}
  .back-top{height:15mm;padding:2mm}
  .back-top h2{font-size:10px}
@@ -274,11 +320,11 @@ button{
 <div class="member-name" id="frontName">प्रबिन रसाली</div>
 
 <div class="details">
-<p><strong>सदस्य नं.:</strong> <span id="frontNo">RS-001</span></p>
-<p><strong>पद:</strong> <span id="frontPosition">सदस्य</span></p>
-<p><strong>सम्पर्क:</strong> <span id="frontPhone">-</span></p>
-<p><strong>इमेल:</strong> <span id="frontEmail">-</span></p>
-<p><strong>ठेगाना:</strong> <span id="frontAddress">चौराठा, दैलेख</span></p>
+<p class="detail-no">सदस्य नं.: <span id="frontNo">RS-001</span></p>
+<p class="detail-position">पद: <span id="frontPosition">सदस्य</span></p>
+<p class="detail-phone">सम्पर्क: <span id="frontPhone">-</span></p>
+<p class="detail-email">इमेल: <span id="frontEmail">-</span></p>
+<p class="detail-address">ठेगाना: <span id="frontAddress">चौराठा, दैलेख</span></p>
 </div>
 
 <div class="front-bottom">
