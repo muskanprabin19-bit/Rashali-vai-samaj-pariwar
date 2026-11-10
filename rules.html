@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>समाजका नीति तथा नियम - रसाली भाई समाज परिवार</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ padding:15px;
+ background:#eef3f8;
+ color:#24364b;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
+.container{max-width:850px;margin:auto}
+header{
+ background:linear-gradient(135deg,#174d83,#0877b9);
+ color:white;text-align:center;
+ padding:25px 15px;border-radius:13px;
+}
+header h1{font-size:23px;margin:5px}
+header h2{font-size:17px;margin:8px}
+header p{margin:5px;font-size:13px}
+.intro,.rule,.notice{
+ background:white;padding:17px;
+ border-radius:10px;margin-top:15px;
+ box-shadow:0 2px 9px #0001;
+}
+.intro h3{color:#174d83;margin-top:0}
+.rule{border-left:5px solid #174d83}
+.rule h3{color:#174d83;margin:0 0 12px}
+.point{
+ padding:10px 11px;
+ margin:7px 0;
+ background:#f4f7fb;
+ border-radius:7px;
+ line-height:1.8;
+ font-size:15px;
+}
+.number{
+ color:#bd2636;font-weight:bold;
+ margin-right:5px;
+}
+.notice{
+ text-align:center;color:#555;font-size:13px;
+ line-height:1.8;
+}
+.footer{
+ margin-top:20px;
+ background:#174d83;color:white;
+ text-align:center;padding:20px;
+ border-radius:10px;line-height:1.8;
+ font-weight:bold;
+}
+button{
+ background:#174d83;color:white;border:0;
+ padding:11px 18px;border-radius:7px;
+ font-weight:bold;font-size:14px;
+}
+#status{text-align:center;padding:20px;color:#555}
+@media print{
+ body{background:white;padding:0}
+ header,.footer{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ button{display:none}
+ .rule{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+ <h1>रसाली भाई समाज परिवार</h1>
+ <h2>चौराठा, दैलेख</h2>
+ <p>एकता • सहयोग • सेवा • भाइचारा</p>
+ <p>स्थापना: २०८२ | ESTD: 2082</p>
+ <p><b>RASHALI BHAI SAMAJ PARIWAR</b></p>
+ <p><b>CHAURATHA, DAILEKH</b></p>
+</header>
+
+<div class="intro">
+ <h3>समाजका नीति, नियम तथा व्यवस्था</h3>
+ <p>
+ रसाली भाई समाज परिवारमा आबद्ध सदस्य तथा इच्छुक व्यक्तिहरूले
+ समाजका नीति, नियम, सदस्यका अधिकार तथा कर्तव्य, बचत,
+ ऋण सेवा र अन्य व्यवस्थाहरू यहाँ अध्ययन गर्न सक्नुहुनेछ।
+ </p>
+ <p>
+ समाजको आधिकारिक रूपमा प्रकाशित नीति तथा नियमहरू
+ तल क्रमअनुसार प्रस्तुत गरिएका छन्।
+ </p>
+ <button onclick="window.print()">🖨️ नियमहरू Print / PDF</button>
+</div>
+
+<div id="status">समाजका नियमहरू लोड हुँदैछन्...</div>
+<div id="rules"></div>
+
+<div class="notice">
+ <b>महत्त्वपूर्ण जानकारी</b><br>
+ नियम तथा निर्णयहरू समाजको आधिकारिक स्वीकृतिअनुसार
+ प्रकाशित र अद्यावधिक गरिन्छन्। कुनै नियमबारे जानकारी
+ आवश्यक भए समाजको प्रशासनसँग सम्पर्क गर्नुहोस्।
+</div>
+
+<div class="footer">
+ रसाली भाई समाज परिवार<br>
+ चौराठा, दैलेख<br>
+ RASHALI BHAI SAMAJ PARIWAR<br>
+ CHAURATHA, DAILEKH<br>
+ एकता • सहयोग • सेवा • भाइचारा
+</div>
+
+</div>
+
+<script>
+const SUPABASE_URL =
+"https://hvcalffbwvbwekysukdo.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+
+const statusBox=document.getElementById("status");
+const rulesBox=document.getElementById("rules");
+
+async function loadPublicRules(){
+ try{
+  const response=await fetch(
+   SUPABASE_URL+
+   "/rest/v1/society_rules?select=rule_number,title,points,sort_order&is_published=eq.true&order=sort_order.asc,id.asc",
+   {
+    headers:{
+     "apikey":SUPABASE_KEY
+    }
+   }
+  );
+
+  if(!response.ok){
+   throw new Error("नियमहरू लोड गर्न सकिएन।");
+  }
+
+  const data=await response.json();
+  rulesBox.replaceChildren();
+
+  if(data.length===0){
+   statusBox.textContent=
+   "अहिलेसम्म कुनै नियम सार्वजनिक गरिएको छैन।";
+   return;
+  }
+
+  data.forEach(rule=>{
+   const card=document.createElement("section");
+   card.className="rule";
+
+   const heading=document.createElement("h3");
+   heading.textContent=
+   "नियम नं. "+rule.rule_number+" — "+rule.title;
+   card.appendChild(heading);
+
+   if(Array.isArray(rule.points) && rule.points.length){
+    rule.points.forEach((point,index)=>{
+     const item=document.createElement("div");
+     item.className="point";
+
+     const number=document.createElement("span");
+     number.className="number";
+     number.textContent=
+      "("+String.fromCharCode(0x0915+index)+")";
+
+     const content=document.createElement("span");
+     content.textContent=point;
+
+     item.append(number,content);
+     card.appendChild(item);
+    });
+   }else{
+    const empty=document.createElement("p");
+    empty.textContent="यस नियममा थप विवरण राखिएको छैन।";
+    card.appendChild(empty);
+   }
+
+   rulesBox.appendChild(card);
+  });
+
+  statusBox.textContent=
+   "समाजका "+data.length+" वटा प्रकाशित नियमहरू";
+ }catch(error){
+  statusBox.textContent=
+   "नियमहरू लोड गर्दा समस्या आयो। कृपया केही समयपछि फेरि प्रयास गर्नुहोस्।";
+  console.error(error);
+ }
+}
+
+loadPublicRules();
+</script>
+</body>
+</html>
