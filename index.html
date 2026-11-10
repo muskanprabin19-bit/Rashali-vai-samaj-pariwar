@@ -80,6 +80,9 @@ nav a:hover{background:#0879ed}
 .certificate-button{display:inline-block;margin-top:15px;background:#8b0000;color:white;padding:12px 25px;border-radius:8px;font-weight:bold}
 .greeting-card-home{background:linear-gradient(135deg,#fff,#f0f6ff);border:2px solid #b9d5f5}
 .greeting-button{display:inline-block;margin-top:15px;background:linear-gradient(135deg,#063b91,#0878e8);color:white;padding:12px 25px;border-radius:8px;font-weight:bold}
+.info-card{background:linear-gradient(135deg,#fff,#edf5ff);border:2px solid #b9d5f5}
+.info-button{display:inline-block;margin:8px 5px 0;background:#0757b9;color:white;padding:12px 20px;border-radius:8px;font-weight:bold}
+.rules-button{background:#a00020}
 footer{margin-top:35px;background:#063b91;color:white;text-align:center;padding:25px 15px}
 @media(max-width:600px){
 header h1{font-size:22px}.english{font-size:14px}.hero h2{font-size:22px}
@@ -129,6 +132,8 @@ nav,.topbar,header,footer,.no-print{display:none!important}
   <a href="#member">👥 सदस्य</a>
   <a href="#official">पदाधिकारी</a>
   <a href="#services">सेवा</a>
+  <a href="loan-information.html">📘 समाज परिचय तथा ऋण जानकारी</a>
+  <a href="rules.html">📖 नियमावली</a>
   <a href="#calendar">Calendar</a>
   <a href="#complaint">गुनासो</a>
   <a href="#contact">सम्पर्क</a>
@@ -143,6 +148,18 @@ nav,.topbar,header,footer,.no-print{display:none!important}
   <h2 id="welcomeTitle">रसाली भाई समाज परिवारमा हार्दिक स्वागत छ 🙏</h2>
   <p>हाम्रो समाजको उद्देश्य एकता, सहयोग, सेवा र भाइचारालाई अझ मजबुत बनाउनु हो।</p>
   <p>स्थापना: <b id="heroEstd">२०८२</b></p>
+</section>
+
+<!-- नयाँ सार्वजनिक जानकारी कार्ड -->
+<section class="section">
+  <h2 class="section-title">📘 समाज तथा ऋणसम्बन्धी जानकारी</h2>
+  <div class="card info-card">
+    <div style="font-size:42px;margin-bottom:8px">🤝📖</div>
+    <h3>समाजको परिचय, उद्देश्य तथा ऋण सेवा</h3>
+    <p>समाजको परिचय, उद्देश्य, सदस्यता, ऋण योग्यता, ब्याजदर, किस्ता तथा सार्वजनिक नियमहरू यहाँ पढ्नुहोस्।</p>
+    <a href="loan-information.html" class="info-button">📘 विस्तृत जानकारी पढ्नुहोस्</a>
+    <a href="rules.html" class="info-button rules-button">📖 सार्वजनिक नियमावली</a>
+  </div>
 </section>
 
 <section class="section">
@@ -241,7 +258,6 @@ nav,.topbar,header,footer,.no-print{display:none!important}
   <div class="card certificate-card"><h3>रसाली भाई समाज परिवारको सम्मानपत्र</h3><p>सम्मानित व्यक्तिको नाम, फोटो, विवरण र हस्ताक्षरसहित सम्मानपत्र तयार गर्न यहाँ जानुहोस्।</p><a href="samman-patra.html" class="certificate-button">🏅 सम्मानपत्र खोल्नुहोस्</a></div>
 </section>
 
-<!-- शुभकामना स्टुडियोको नयाँ भाग -->
 <section id="greetings" class="section">
   <h2 class="section-title">🎉 शुभकामना स्टुडियो</h2>
   <div class="card greeting-card-home">
@@ -307,7 +323,6 @@ function safeImageUrl(value){
   }catch(e){return "";}
 }
 
-/* ADMIN WEBSITE SETTINGS */
 async function loadWebsiteSettings(){
   try{
     const {data,error}=await supabaseClient
