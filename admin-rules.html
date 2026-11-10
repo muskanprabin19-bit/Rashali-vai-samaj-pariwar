@@ -1,1 +1,273 @@
 
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Rules - रसाली भाई समाज परिवार</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:15px;background:#eef2f7;color:#172b4d;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+.container{max-width:850px;margin:auto}
+header{background:#174d83;color:white;padding:20px;border-radius:12px;text-align:center}
+header h2{margin:5px}
+.card{background:white;padding:17px;border-radius:12px;margin-top:15px;box-shadow:0 2px 10px #0001}
+h3{color:#174d83;margin-top:0}
+label{display:block;font-weight:bold;margin:12px 0 5px}
+input,textarea{width:100%;padding:12px;border:1px solid #bbb;border-radius:7px;font-size:15px}
+textarea{min-height:120px;line-height:1.7}
+button{border:0;border-radius:7px;padding:11px 15px;font-size:14px;font-weight:bold;cursor:pointer;margin:5px 3px 5px 0;background:#174d83;color:white}
+.green{background:#168348}
+.red{background:#bd2636}
+.gray{background:#64748b}
+.rule{border:1px solid #ccd5df;border-radius:9px;padding:13px;margin:12px 0}
+.rule h4{margin:0 0 8px;color:#174d83}
+.status{font-size:13px;font-weight:bold}
+small{color:#666}
+#message{margin-top:12px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h2>रसाली भाई समाज परिवार</h2>
+<div>ADMIN RULE MANAGEMENT</div>
+<div>नीति तथा नियम व्यवस्थापन</div>
+</header>
+
+<div class="card">
+<h3>नयाँ नियम थप्नुहोस् / नियम सम्पादन गर्नुहोस्</h3>
+
+<form id="ruleForm">
+<input type="hidden" id="ruleId">
+
+<label>नियम नम्बर</label>
+<input id="ruleNumber" placeholder="जस्तै: १" required>
+
+<label>नियमको शीर्षक</label>
+<input id="ruleTitle" placeholder="जस्तै: सदस्यता सम्बन्धी व्यवस्था" required>
+
+<label>नियमका बुँदाहरू</label>
+<textarea id="rulePoints" placeholder="प्रत्येक नयाँ बुँदा नयाँ लाइनमा लेख्नुहोस्।
+
+उदाहरण:
+समूहमा आबद्ध हुनुपर्नेछ।
+कम्तीमा तीन महिना बचत गरेको हुनुपर्नेछ।
+समूहका नीति तथा नियम पालना गर्नुपर्नेछ।"></textarea>
+
+<small>जति वटा बुँदा आवश्यक छन्, प्रत्येक बुँदा छुट्टै लाइनमा लेख्नुहोस्।</small>
+
+<label>
+<input type="checkbox" id="published" style="width:auto">
+ वेबसाइटमा सार्वजनिक गर्ने
+</label>
+
+<button type="submit" class="green">💾 Save गर्नुहोस्</button>
+<button type="button" class="gray" onclick="resetForm()">नयाँ खाली फाराम</button>
+</form>
+
+<div id="message"></div>
+</div>
+
+<div class="card">
+<h3>प्रकाशित तथा सुरक्षित नियमहरू</h3>
+<button onclick="loadRules()">↻ Refresh</button>
+<div id="rulesList">नियमहरू लोड हुँदैछन्...</div>
+</div>
+
+</div>
+
+<script>
+const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const SUPABASE_KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+const ADMIN_EMAIL="bhaisamajrashali@gmail.com";
+
+const token=localStorage.getItem("rasali_access_token");
+const message=document.getElementById("message");
+const form=document.getElementById("ruleForm");
+
+function headers(extra={}){
+ return {
+  "apikey":SUPABASE_KEY,
+  "Authorization":"Bearer "+token,
+  "Content-Type":"application/json",
+  ...extra
+ };
+}
+
+function showMessage(text,color="#174d83"){
+ message.style.color=color;
+ message.textContent=text;
+}
+
+async function checkAdmin(){
+ if(!token){
+  alert("पहिले Admin Login गर्नुहोस्।");
+  location.href="login.html";
+  return false;
+ }
+ try{
+  const res=await fetch(SUPABASE_URL+"/auth/v1/user",{
+   headers:headers()
+  });
+  if(!res.ok) throw new Error();
+  const user=await res.json();
+  if((user.email||"").toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
+   alert("Admin मात्रलाई अनुमति छ।");
+   location.href="index.html";
+   return false;
+  }
+  return true;
+ }catch(e){
+  alert("Login समय समाप्त भयो। फेरि Login गर्नुहोस्।");
+  location.href="login.html";
+  return false;
+ }
+}
+
+async function loadRules(){
+ const list=document.getElementById("rulesList");
+ list.textContent="लोड हुँदैछ...";
+ try{
+  const res=await fetch(
+   SUPABASE_URL+"/rest/v1/society_rules?select=*&order=sort_order.asc,id.asc",
+   {headers:headers()}
+  );
+  const data=await res.json();
+  if(!res.ok) throw new Error(data.message||"नियम लोड भएन");
+  list.innerHTML="";
+  if(!data.length){
+   list.textContent="अहिलेसम्म कुनै नियम थपिएको छैन।";
+   return;
+  }
+  data.forEach(rule=>{
+   const box=document.createElement("div");
+   box.className="rule";
+   const title=document.createElement("h4");
+   title.textContent="नियम नं. "+rule.rule_number+" — "+rule.title;
+   const status=document.createElement("div");
+   status.className="status";
+   status.style.color=rule.is_published?"green":"#bd2636";
+   status.textContent=rule.is_published?"प्रकाशित":"अप्रकाशित";
+   const count=document.createElement("p");
+   count.textContent=(Array.isArray(rule.points)?rule.points.length:0)+" वटा बुँदा";
+   const edit=document.createElement("button");
+   edit.textContent="✏️ सम्पादन";
+   edit.onclick=()=>editRule(rule);
+   const publish=document.createElement("button");
+   publish.className="green";
+   publish.textContent=rule.is_published?"अप्रकाशित गर्नुहोस्":"प्रकाशित गर्नुहोस्";
+   publish.onclick=()=>togglePublish(rule);
+   const del=document.createElement("button");
+   del.className="red";
+   del.textContent="हटाउनुहोस्";
+   del.onclick=()=>deleteRule(rule.id);
+   box.append(title,status,count,edit,publish,del);
+   list.appendChild(box);
+  });
+ }catch(e){
+  list.textContent="समस्या: "+e.message;
+ }
+}
+
+function editRule(rule){
+ document.getElementById("ruleId").value=rule.id;
+ document.getElementById("ruleNumber").value=rule.rule_number;
+ document.getElementById("ruleTitle").value=rule.title;
+ document.getElementById("rulePoints").value=
+  Array.isArray(rule.points)?rule.points.join("\n"):"";
+ document.getElementById("published").checked=rule.is_published;
+ window.scrollTo({top:0,behavior:"smooth"});
+ showMessage("सम्पादनका लागि नियम खोलियो।");
+}
+
+function resetForm(){
+ form.reset();
+ document.getElementById("ruleId").value="";
+ showMessage("नयाँ नियम लेख्न तयार छ।");
+}
+
+form.addEventListener("submit",async function(e){
+ e.preventDefault();
+ const id=document.getElementById("ruleId").value;
+ const ruleNumber=document.getElementById("ruleNumber").value.trim();
+ const title=document.getElementById("ruleTitle").value.trim();
+ const points=document.getElementById("rulePoints").value
+  .split("\n").map(x=>x.trim()).filter(Boolean);
+ const isPublished=document.getElementById("published").checked;
+
+ if(!ruleNumber||!title){
+  showMessage("नियम नम्बर र शीर्षक भर्नुहोस्।","#bd2636");
+  return;
+ }
+ const payload={
+  rule_number:ruleNumber,
+  title:title,
+  points:points,
+  is_published:isPublished,
+  updated_at:new Date().toISOString()
+ };
+ try{
+  let res;
+  if(id){
+   res=await fetch(
+    SUPABASE_URL+"/rest/v1/society_rules?id=eq."+encodeURIComponent(id),
+    {method:"PATCH",headers:headers({"Prefer":"return=minimal"}),body:JSON.stringify(payload)}
+   );
+  }else{
+   res=await fetch(
+    SUPABASE_URL+"/rest/v1/society_rules",
+    {method:"POST",headers:headers({"Prefer":"return=minimal"}),body:JSON.stringify(payload)}
+   );
+  }
+  if(!res.ok){
+   const err=await res.json();
+   throw new Error(err.message||"Save हुन सकेन");
+  }
+  showMessage(id?"नियम सफलतापूर्वक सम्पादन भयो।":"नयाँ नियम सफलतापूर्वक थपियो।","green");
+  resetForm();
+  await loadRules();
+ }catch(e){
+  showMessage("त्रुटि: "+e.message,"#bd2636");
+ }
+});
+
+async function togglePublish(rule){
+ try{
+  const res=await fetch(
+   SUPABASE_URL+"/rest/v1/society_rules?id=eq."+encodeURIComponent(rule.id),
+   {
+    method:"PATCH",
+    headers:headers({"Prefer":"return=minimal"}),
+    body:JSON.stringify({
+     is_published:!rule.is_published,
+     updated_at:new Date().toISOString()
+    })
+   }
+  );
+  if(!res.ok) throw new Error("स्थिति परिवर्तन भएन");
+  await loadRules();
+ }catch(e){alert(e.message);}
+}
+
+async function deleteRule(id){
+ if(!confirm("यो नियम हटाउने निश्चित हो?"))return;
+ try{
+  const res=await fetch(
+   SUPABASE_URL+"/rest/v1/society_rules?id=eq."+encodeURIComponent(id),
+   {method:"DELETE",headers:headers()}
+  );
+  if(!res.ok) throw new Error("नियम हटाउन सकिएन");
+  await loadRules();
+  showMessage("नियम हटाइयो।","green");
+ }catch(e){alert(e.message);}
+}
+
+(async()=>{
+ if(await checkAdmin()) await loadRules();
+})();
+</script>
+</body>
+</html>
+
