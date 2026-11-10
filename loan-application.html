@@ -1,1 +1,522 @@
 
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ऋण आवेदन फाराम - रसाली भाई समाज परिवार</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ padding:15px;
+ background:#eaf0f7;
+ color:#172b4d;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
+.toolbar{
+ max-width:900px;
+ margin:0 auto 15px;
+ display:flex;
+ gap:8px;
+ flex-wrap:wrap;
+ justify-content:center;
+}
+button{
+ border:0;
+ padding:12px 20px;
+ border-radius:7px;
+ font-size:15px;
+ font-weight:bold;
+ color:white;
+ background:#0756a5;
+ cursor:pointer;
+}
+button.print{background:#168348}
+button.clear{background:#bd2636}
+.sheet{
+ max-width:900px;
+ margin:0 auto 20px;
+ background:white;
+ padding:28px;
+ border:2px solid #174d83;
+ box-shadow:0 3px 15px #0002;
+}
+.header{
+ text-align:center;
+ border-bottom:3px solid #174d83;
+ padding-bottom:12px;
+ margin-bottom:15px;
+}
+.logo{
+ width:65px;height:65px;
+ border:3px solid #174d83;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ margin:0 auto 7px;
+ font-size:30px;
+ font-weight:bold;
+ color:#174d83;
+}
+.header h2{
+ margin:5px 0;
+ color:#174d83;
+ font-size:22px;
+}
+.header h3{
+ margin:4px 0;
+ color:#bd2636;
+ font-size:17px;
+}
+.header p{margin:4px;font-size:13px}
+.form-title{
+ text-align:center;
+ color:#bd2636;
+ font-size:19px;
+ font-weight:bold;
+ margin:15px 0;
+ border:1px solid #bd2636;
+ padding:8px;
+}
+.section-title{
+ background:#174d83;
+ color:white;
+ padding:8px 10px;
+ font-weight:bold;
+ margin:17px 0 10px;
+ font-size:15px;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;
+}
+.field label{
+ display:block;
+ font-size:13px;
+ font-weight:bold;
+ margin-bottom:4px;
+}
+input,textarea{
+ width:100%;
+ border:1px solid #9aaabd;
+ border-radius:4px;
+ padding:9px;
+ font-size:14px;
+ background:#fff;
+ color:#111;
+}
+textarea{min-height:55px;resize:vertical}
+.photo-row{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ margin:12px 0;
+}
+.photo-box{
+ border:1px dashed #536b84;
+ min-height:105px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ padding:8px;
+ font-size:12px;
+ color:#536b84;
+}
+.note{
+ font-size:12px;
+ color:#555;
+ margin:7px 0;
+}
+.guarantor{
+ border:1px solid #9aaabd;
+ padding:10px;
+ margin:10px 0;
+ break-inside:avoid;
+}
+.guarantor h4{
+ margin:0 0 10px;
+ color:#174d83;
+}
+.signature-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:25px;
+ margin-top:30px;
+}
+.sign{
+ border-top:1px solid #333;
+ padding-top:7px;
+ text-align:center;
+ margin-top:30px;
+ font-size:13px;
+}
+.declaration{
+ border:1px solid #9aaabd;
+ padding:12px;
+ line-height:1.8;
+ font-size:13px;
+ margin-top:15px;
+}
+.footer{
+ text-align:center;
+ border-top:2px solid #174d83;
+ margin-top:25px;
+ padding-top:12px;
+ line-height:1.7;
+ font-weight:bold;
+ color:#174d83;
+}
+.admin-box{
+ border:2px solid #bd2636;
+ padding:12px;
+ margin-top:20px;
+}
+.admin-box h3{
+ text-align:center;
+ color:#bd2636;
+ margin:0 0 12px;
+}
+@media(max-width:600px){
+ body{padding:5px}
+ .sheet{padding:13px}
+ .grid{grid-template-columns:1fr}
+ .photo-row{grid-template-columns:1fr 1fr}
+ .header h2{font-size:18px}
+ .signature-grid{gap:12px}
+}
+@page{
+ size:A4;
+ margin:12mm;
+}
+@media print{
+ body{background:white;padding:0}
+ .toolbar{display:none!important}
+ .sheet{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:0;
+  border:0;
+  box-shadow:none;
+ }
+ input,textarea{
+  border:0;
+  border-bottom:1px solid #555;
+  border-radius:0;
+  padding:5px 2px;
+  background:transparent;
+  font-size:12px;
+  color:#000;
+ }
+ textarea{border:1px solid #777}
+ .section-title{
+  background:#174d83!important;
+  color:white!important;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+ }
+ .form-title{
+  color:#bd2636!important;
+  border-color:#bd2636!important;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+ }
+ .page-two{break-before:page}
+ .guarantor{break-inside:avoid}
+ .photo-box{min-height:85px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="toolbar">
+ <button class="print" onclick="window.print()">🖨️ फाराम Print / PDF</button>
+ <button onclick="saveForm()">💾 विवरण सुरक्षित</button>
+ <button class="clear" onclick="clearForm()">नयाँ फाराम</button>
+</div>
+
+<form id="loanForm">
+
+<!-- PAGE ONE -->
+<div class="sheet">
+
+ <div class="header">
+  <div class="logo">र</div>
+  <h2>रसाली भाई समाज परिवार</h2>
+  <h3>चौराठा, दैलेख</h3>
+  <p>एकता • सहयोग • सेवा • भाइचारा</p>
+  <p>स्थापना: २०८२ | ESTD: 2082</p>
+  <p><b>RASHALI BHAI SAMAJ PARIWAR</b></p>
+  <p><b>CHAURATHA, DAILEKH</b></p>
+ </div>
+
+ <div class="form-title">ऋण आवेदन तथा सदस्य विवरण फाराम</div>
+
+ <div class="grid">
+  <div class="field">
+   <label>आवेदन नं.</label>
+   <input name="application_no">
+  </div>
+  <div class="field">
+   <label>आवेदन मिति</label>
+   <input name="application_date" placeholder="२०८...">
+  </div>
+ </div>
+
+ <div class="section-title">१. ऋणी / आवेदकको व्यक्तिगत विवरण</div>
+
+ <div class="grid">
+  <div class="field">
+   <label>पूरा नामथर</label>
+   <input name="borrower_name">
+  </div>
+  <div class="field">
+   <label>सदस्य नं.</label>
+   <input name="member_no">
+  </div>
+  <div class="field">
+   <label>बुबाको नाम</label>
+   <input name="father_name">
+  </div>
+  <div class="field">
+   <label>बाजेको नाम</label>
+   <input name="grandfather_name">
+  </div>
+  <div class="field">
+   <label>मोबाइल नं.</label>
+   <input name="borrower_phone">
+  </div>
+  <div class="field">
+   <label>नागरिकता नं.</label>
+   <input name="citizenship_no">
+  </div>
+  <div class="field">
+   <label>स्थायी ठेगाना</label>
+   <input name="permanent_address">
+  </div>
+  <div class="field">
+   <label>हालको ठेगाना</label>
+   <input name="current_address">
+  </div>
+  <div class="field">
+   <label>पेशा / व्यवसाय</label>
+   <input name="occupation">
+  </div>
+  <div class="field">
+   <label>सम्पर्क व्यक्ति</label>
+   <input name="contact_person">
+  </div>
+ </div>
+
+ <div class="photo-row">
+  <div class="photo-box">आवेदकको पासपोर्ट साइज फोटो टाँस्ने ठाउँ</div>
+  <div class="photo-box">नागरिकताको अगाडिको प्रतिलिपि टाँस्ने ठाउँ</div>
+  <div class="photo-box">नागरिकताको पछाडिको प्रतिलिपि टाँस्ने ठाउँ</div>
+ </div>
+
+ <div class="section-title">२. ऋणसम्बन्धी विवरण</div>
+
+ <div class="grid">
+  <div class="field">
+   <label>माग गरेको ऋण रकम रु.</label>
+   <input name="loan_amount">
+  </div>
+  <div class="field">
+   <label>ऋण लिनुको उद्देश्य</label>
+   <input name="loan_purpose">
+  </div>
+  <div class="field">
+   <label>ऋण अवधि</label>
+   <input name="loan_duration" placeholder="महिना / वर्ष">
+  </div>
+  <div class="field">
+   <label>किस्ता तिर्ने प्रस्तावित अवधि</label>
+   <input name="installment">
+  </div>
+  <div class="field">
+   <label>प्रस्तावित वार्षिक ब्याजदर</label>
+   <input name="interest" value="२४% वार्षिक (समाजको निर्णयअनुसार)">
+  </div>
+  <div class="field">
+   <label>अन्य विवरण</label>
+   <input name="other_details">
+  </div>
+ </div>
+
+ <div class="note">
+  नोट: २४% वार्षिक ब्याजदर प्रस्तावित मात्र हो। समाजको औपचारिक निर्णय र स्वीकृत सर्तअनुसार मात्र लागू हुनेछ।
+ </div>
+
+ <div class="declaration">
+  <b>आवेदकको घोषणा:</b><br>
+  मैले यस फाराममा उल्लेख गरेका विवरण सत्य छन्। समाजको स्वीकृत नियम, ऋण सम्झौता, ब्याजदर तथा किस्ता भुक्तानीका सर्तहरू पालना गर्नेछु। गलत विवरण दिएको वा तोकिएको समयमा रकम भुक्तानी नगरेको अवस्थामा समाजको स्वीकृत नियमअनुसार हुने प्रक्रियामा सहमत छु।
+  <br><br>
+  आवेदकको हस्ताक्षर: __________________________
+  <br>
+  मिति: __________________
+ </div>
+
+ <div class="footer">
+  रसाली भाई समाज परिवार<br>
+  चौराठा, दैलेख<br>
+  RASHALI BHAI SAMAJ PARIWAR<br>
+  CHAURATHA, DAILEKH<br>
+  एकता • सहयोग • सेवा • भाइचारा
+ </div>
+</div>
+
+<!-- PAGE TWO -->
+<div class="sheet page-two">
+
+ <div class="header">
+  <h2>रसाली भाई समाज परिवार</h2>
+  <h3>ऋण जमानीकर्ता विवरण फाराम</h3>
+  <p>चौराठा, दैलेख | स्थापना: २०८२</p>
+ </div>
+
+ <div class="section-title">३. पाँच जना जमानीकर्ताको विवरण</div>
+ <p class="note">
+  ऋण आवेदनका लागि ठीक पाँच जना जमानीकर्ताको विवरण अनिवार्य रूपमा भर्नुहोस्।
+ </p>
+
+ <div id="guarantors"></div>
+
+ <div class="declaration">
+  <b>जमानीकर्ताहरूको सामूहिक घोषणा:</b><br>
+  हामीले माथि उल्लेखित ऋणीलाई चिनेका छौँ। ऋण सम्झौता र समाजको स्वीकृत नियमअनुसार जमानी बसेको कुरा बुझी आफ्नो सहमति दिएका छौँ। जमानीको दायित्व के-कस्तो हुने भन्ने कुरा लिखित सम्झौतामा स्पष्ट भएपछि मात्र हस्ताक्षर गर्नेछौँ।
+ </div>
+
+ <div class="section-title">४. समाजको प्रशासनिक प्रयोजनका लागि</div>
+
+ <div class="admin-box">
+  <h3>कार्यालय प्रयोजनका लागि मात्र</h3>
+  <div class="grid">
+   <div class="field">
+    <label>आवेदन जाँच गर्ने व्यक्तिको नाम</label>
+    <input name="checked_by">
+   </div>
+   <div class="field">
+    <label>जाँच मिति</label>
+    <input name="checked_date">
+   </div>
+   <div class="field">
+    <label>निर्णय</label>
+    <input name="decision" placeholder="स्वीकृत / अस्वीकृत / थप जाँच">
+   </div>
+   <div class="field">
+    <label>स्वीकृत ऋण रकम रु.</label>
+    <input name="approved_amount">
+   </div>
+   <div class="field">
+    <label>स्वीकृत ब्याजदर</label>
+    <input name="approved_interest">
+   </div>
+   <div class="field">
+    <label>किस्ता / भुक्तानी सर्त</label>
+    <input name="approved_terms">
+   </div>
+  </div>
+  <div class="field" style="margin-top:10px">
+   <label>निर्णय तथा कैफियत</label>
+   <textarea name="remarks"></textarea>
+  </div>
+ </div>
+
+ <div class="signature-grid">
+  <div class="sign">अध्यक्षको हस्ताक्षर<br>दीपक रसाली</div>
+  <div class="sign">कोषाध्यक्षको हस्ताक्षर<br>नरेश रसाली</div>
+  <div class="sign">संस्थापकको हस्ताक्षर<br>पदम रसाली</div>
+  <div class="sign">कार्यालयको छाप</div>
+ </div>
+
+ <div class="footer">
+  रसाली भाई समाज परिवार<br>
+  चौराठा, दैलेख<br>
+  RASHALI BHAI SAMAJ PARIWAR<br>
+  CHAURATHA, DAILEKH<br>
+  एकता • सहयोग • सेवा • भाइचारा
+ </div>
+</div>
+</form>
+
+<script>
+// पाँच जना जमानीकर्ताका लागि फाराम
+const guarantorArea = document.getElementById("guarantors");
+
+for(let i=1;i<=5;i++){
+ const box=document.createElement("div");
+ box.className="guarantor";
+ box.innerHTML=`
+  <h4>जमानीकर्ता नं. ${i}</h4>
+  <div class="grid">
+   <div class="field">
+    <label>पूरा नामथर</label>
+    <input name="g${i}_name">
+   </div>
+   <div class="field">
+    <label>मोबाइल नं.</label>
+    <input name="g${i}_phone">
+   </div>
+   <div class="field">
+    <label>ठेगाना</label>
+    <input name="g${i}_address">
+   </div>
+   <div class="field">
+    <label>नागरिकता नं.</label>
+    <input name="g${i}_citizenship">
+   </div>
+  </div>
+  <div class="photo-row">
+   <div class="photo-box">पासपोर्ट फोटो टाँस्ने ठाउँ</div>
+   <div class="photo-box">नागरिकता अगाडि टाँस्ने ठाउँ</div>
+   <div class="photo-box">नागरिकता पछाडि टाँस्ने ठाउँ</div>
+  </div>
+  <div class="sign">जमानीकर्ता नं. ${i} को हस्ताक्षर / औँठाछाप</div>
+ `;
+ guarantorArea.appendChild(box);
+}
+
+// मोबाइल ब्राउजरमा फारामको विवरण सुरक्षित गर्ने
+const form=document.getElementById("loanForm");
+const storageKey="rasali_loan_paper_form";
+
+function saveForm(){
+ const data={};
+ form.querySelectorAll("input,textarea").forEach(el=>{
+  if(el.name) data[el.name]=el.value;
+ });
+ localStorage.setItem(storageKey,JSON.stringify(data));
+ alert("फारामको विवरण यस मोबाइलमा सुरक्षित भयो।");
+}
+
+function loadForm(){
+ const saved=localStorage.getItem(storageKey);
+ if(!saved)return;
+ try{
+  const data=JSON.parse(saved);
+  form.querySelectorAll("input,textarea").forEach(el=>{
+   if(el.name && data[el.name]!==undefined){
+    el.value=data[el.name];
+   }
+  });
+ }catch(e){}
+}
+
+function clearForm(){
+ if(!confirm("सबै विवरण हटाएर नयाँ फाराम खोल्ने?"))return;
+ form.reset();
+ localStorage.removeItem(storageKey);
+}
+
+loadForm();
+</script>
+
+</body>
+</html>
+
