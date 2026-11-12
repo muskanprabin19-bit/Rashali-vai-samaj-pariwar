@@ -3,7 +3,7 @@
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>समाजका नियम | रसाली भाई समाज परिवार चौराठा</title>
 
 <style>
@@ -13,7 +13,7 @@ body{
  font-family:Arial,sans-serif;
  background:#f1f5f9;
  color:#172033;
- line-height:1.7;
+ line-height:1.8;
 }
 header{
  background:linear-gradient(120deg,#123c80,#b51f35);
@@ -61,7 +61,7 @@ header p{margin:4px 0}
 }
 .rule h3{
  color:#164b91;
- margin:0 0 8px;
+ margin:5px 0 8px;
  font-size:19px;
 }
 .category{
@@ -76,6 +76,11 @@ header p{margin:4px 0}
 .rule p{
  margin:5px 0;
  white-space:pre-wrap;
+ overflow-wrap:anywhere;
+}
+.rule-number{
+ color:#b51f35;
+ font-weight:bold;
 }
 .status{
  text-align:center;
@@ -107,6 +112,7 @@ footer{
 <div class="container">
 
 <div class="panel">
+
 <div class="nav">
 <a href="index.html">🏠 Home</a>
 <a href="index.html#contact">सम्पर्क</a>
@@ -143,11 +149,11 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
 
-const statusBox = document.getElementById("status");
-const rulesList = document.getElementById("rulesList");
+const statusBox=document.getElementById("status");
+const rulesList=document.getElementById("rulesList");
 
 function safe(value){
- return String(value ?? "").replace(/[&<>"']/g,function(c){
+ return String(value??"").replace(/[&<>"']/g,function(c){
   return {
    "&":"&amp;",
    "<":"&lt;",
@@ -160,13 +166,18 @@ function safe(value){
 
 async function loadPublicRules(){
 
+ statusBox.style.display="block";
+ statusBox.textContent="नियमहरू लोड हुँदैछन्...";
+
  try{
 
-  const url =
-   SUPABASE_URL +
-   "/rest/v1/society_rules?select=id,title,rule_text,category,sort_order&is_published=eq.true&order=sort_order.asc,id.asc";
+  const url=SUPABASE_URL+
+  "/rest/v1/society_rules"+
+  "?select=id,rule_number,title,rule_text,category,sort_order"+
+  "&is_published=eq.true"+
+  "&order=sort_order.asc,id.asc";
 
-  const response = await fetch(url,{
+  const response=await fetch(url,{
    method:"GET",
    headers:{
     "apikey":SUPABASE_KEY,
@@ -174,35 +185,46 @@ async function loadPublicRules(){
    }
   });
 
-  const data = await response.json();
+  const data=await response.json();
 
   if(!response.ok){
-   throw new Error(data.message || "नियम लोड हुन सकेन");
+   throw new Error(data.message||data.details||"नियम लोड हुन सकेन");
   }
 
-  if(!data || data.length===0){
-   statusBox.textContent =
+  if(!data||data.length===0){
+   rulesList.innerHTML="";
+   statusBox.textContent=
    "अहिलेसम्म सार्वजनिक गरिएका नियमहरू उपलब्ध छैनन्।";
    return;
   }
 
-  statusBox.style.display="none";
-
-  rulesList.innerHTML = data.map((rule,index)=>`
+  rulesList.innerHTML=data.map((rule,index)=>`
    <div class="rule">
-    <span class="category">${safe(rule.category || "सामान्य नियम")}</span>
-    <h3>${index+1}. ${safe(rule.title)}</h3>
-    <p>${safe(rule.rule_text)}</p>
+
+    <span class="category">
+     ${safe(rule.category||"सामान्य नियम")}
+    </span>
+
+    <h3>
+     <span class="rule-number">
+      नियम ${safe(rule.rule_number||index+1)}:
+     </span>
+     ${safe(rule.title)}
+    </h3>
+
+    <p>${safe(rule.rule_text||"")}</p>
+
    </div>
   `).join("");
 
+  statusBox.style.display="none";
+
  }catch(error){
 
-  statusBox.textContent =
+  statusBox.textContent=
   "नियम लोड गर्न समस्या भयो: "+error.message;
 
  }
-
 }
 
 loadPublicRules();
