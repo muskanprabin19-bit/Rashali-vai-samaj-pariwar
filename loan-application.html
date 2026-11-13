@@ -4,231 +4,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ऋण आवेदन फाराम - रसाली भाई समाज परिवार</title>
+<title>ऋण आवेदन तथा निकासा फाराम - रसाली भाई समाज परिवार</title>
 
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- padding:15px;
- background:#eaf0f7;
- color:#172b4d;
- font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ margin:0;padding:12px;background:#eaf0f7;
+ color:#172b4d;font-family:Arial,"Noto Sans Devanagari",sans-serif
 }
 .toolbar{
- max-width:900px;
- margin:0 auto 15px;
- display:flex;
- gap:8px;
- flex-wrap:wrap;
- justify-content:center;
+ max-width:900px;margin:0 auto 12px;display:flex;
+ gap:8px;justify-content:center;flex-wrap:wrap
 }
 button{
- border:0;
- padding:12px 20px;
- border-radius:7px;
- font-size:15px;
- font-weight:bold;
- color:white;
- background:#0756a5;
- cursor:pointer;
+ border:0;padding:12px 17px;border-radius:7px;
+ background:#0756a5;color:white;font-weight:bold;font-size:14px
 }
-button.print{background:#168348}
-button.clear{background:#bd2636}
+button.green{background:#168348}
+button.red{background:#bd2636}
 .sheet{
- max-width:900px;
- margin:0 auto 20px;
- background:white;
- padding:28px;
- border:2px solid #174d83;
- box-shadow:0 3px 15px #0002;
+ max-width:900px;margin:0 auto 18px;background:white;
+ padding:22px;border:2px solid #174d83;
+ box-shadow:0 3px 12px #0002
 }
 .header{
- text-align:center;
- border-bottom:3px solid #174d83;
- padding-bottom:12px;
- margin-bottom:15px;
+ text-align:center;border-bottom:3px solid #174d83;
+ padding-bottom:9px;margin-bottom:10px
 }
 .logo{
- width:65px;height:65px;
- border:3px solid #174d83;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- margin:0 auto 7px;
- font-size:30px;
- font-weight:bold;
- color:#174d83;
+ width:54px;height:54px;border:3px solid #174d83;
+ border-radius:50%;display:flex;align-items:center;
+ justify-content:center;margin:auto auto 5px;
+ font-size:27px;font-weight:bold;color:#174d83
 }
-.header h2{
- margin:5px 0;
- color:#174d83;
- font-size:22px;
-}
-.header h3{
- margin:4px 0;
- color:#bd2636;
- font-size:17px;
-}
-.header p{margin:4px;font-size:13px}
+.header h2{margin:3px;color:#174d83;font-size:21px}
+.header h3{margin:3px;color:#bd2636;font-size:16px}
+.header p{margin:3px;font-size:11px}
 .form-title{
- text-align:center;
- color:#bd2636;
- font-size:19px;
- font-weight:bold;
- margin:15px 0;
- border:1px solid #bd2636;
- padding:8px;
+ text-align:center;color:#bd2636;font-size:17px;
+ font-weight:bold;border:1px solid #bd2636;
+ padding:7px;margin:10px 0
 }
 .section-title{
- background:#174d83;
- color:white;
- padding:8px 10px;
- font-weight:bold;
- margin:17px 0 10px;
- font-size:15px;
+ background:#174d83;color:white;padding:6px 9px;
+ font-weight:bold;margin:10px 0 7px;font-size:13px;
+ -webkit-print-color-adjust:exact;print-color-adjust:exact
 }
 .grid{
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:12px;
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:7px 12px
 }
 .field label{
- display:block;
- font-size:13px;
- font-weight:bold;
- margin-bottom:4px;
+ display:block;font-size:11px;font-weight:bold;margin-bottom:3px
 }
 input,textarea{
- width:100%;
- border:1px solid #9aaabd;
- border-radius:4px;
- padding:9px;
- font-size:14px;
- background:#fff;
- color:#111;
+ width:100%;border:1px solid #9aaabd;border-radius:3px;
+ padding:6px;font-size:12px;background:white;color:#111
 }
-textarea{min-height:55px;resize:vertical}
-.photo-row{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
- margin:12px 0;
-}
+textarea{min-height:38px}
+.note{font-size:10px;color:#555;margin:5px 0;line-height:1.5}
+.photo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:8px 0}
 .photo-box{
- border:1px dashed #536b84;
- min-height:105px;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- padding:8px;
- font-size:12px;
- color:#536b84;
-}
-.note{
- font-size:12px;
- color:#555;
- margin:7px 0;
-}
-.guarantor{
- border:1px solid #9aaabd;
- padding:10px;
- margin:10px 0;
- break-inside:avoid;
-}
-.guarantor h4{
- margin:0 0 10px;
- color:#174d83;
-}
-.signature-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:25px;
- margin-top:30px;
-}
-.sign{
- border-top:1px solid #333;
- padding-top:7px;
- text-align:center;
- margin-top:30px;
- font-size:13px;
+ min-height:58px;border:1px dashed #536b84;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;padding:5px;font-size:10px;color:#536b84
 }
 .declaration{
- border:1px solid #9aaabd;
- padding:12px;
- line-height:1.8;
- font-size:13px;
- margin-top:15px;
+ border:1px solid #9aaabd;padding:8px;
+ font-size:11px;line-height:1.6;margin-top:8px
+}
+table{width:100%;border-collapse:collapse;font-size:10px}
+th,td{border:1px solid #8495a8;padding:4px;text-align:center}
+th{
+ background:#e4edf7;color:#174d83;
+ -webkit-print-color-adjust:exact;print-color-adjust:exact
+}
+table input{border:0;border-bottom:1px solid #aaa;padding:3px}
+.signature-grid{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:12px 25px;margin-top:14px
+}
+.sign{
+ border-top:1px solid #333;padding-top:5px;
+ text-align:center;margin-top:17px;font-size:11px
 }
 .footer{
- text-align:center;
- border-top:2px solid #174d83;
- margin-top:25px;
- padding-top:12px;
- line-height:1.7;
- font-weight:bold;
- color:#174d83;
+ text-align:center;border-top:2px solid #174d83;
+ margin-top:12px;padding-top:7px;line-height:1.5;
+ font-weight:bold;color:#174d83;font-size:11px
 }
-.admin-box{
- border:2px solid #bd2636;
- padding:12px;
- margin-top:20px;
+.guarantor{
+ border:1px solid #9aaabd;padding:7px;margin:7px 0;
+ break-inside:avoid
 }
-.admin-box h3{
- text-align:center;
- color:#bd2636;
- margin:0 0 12px;
+.guarantor h4{margin:0 0 6px;color:#174d83;font-size:12px}
+.guarantor .grid{gap:5px 9px}
+.guarantor input{padding:5px}
+.admin-box{border:2px solid #bd2636;padding:8px;margin-top:10px}
+.admin-box h3{text-align:center;color:#bd2636;margin:0 0 7px;font-size:14px}
+.public-message{
+ max-width:900px;margin:0 auto 12px;background:#fff;
+ border-left:4px solid #168348;padding:10px;font-size:13px
 }
+body:not(.admin) .admin-only{display:none!important}
+body:not(.admin) input,
+body:not(.admin) textarea{pointer-events:none}
 @media(max-width:600px){
- body{padding:5px}
- .sheet{padding:13px}
+ body{padding:4px}
+ .sheet{padding:10px}
  .grid{grid-template-columns:1fr}
- .photo-row{grid-template-columns:1fr 1fr}
  .header h2{font-size:18px}
- .signature-grid{gap:12px}
+ .photo-row{grid-template-columns:repeat(3,1fr)}
 }
-@page{
- size:A4;
- margin:12mm;
-}
+@page{size:A4;margin:9mm}
 @media print{
  body{background:white;padding:0}
- .toolbar{display:none!important}
+ .toolbar,.public-message{display:none!important}
  .sheet{
-  width:100%;
-  max-width:none;
-  margin:0;
-  padding:0;
-  border:0;
-  box-shadow:none;
+  width:100%;max-width:none;margin:0;padding:0;
+  border:0;box-shadow:none
  }
+ .page-two{break-before:page;page-break-before:always}
  input,textarea{
-  border:0;
-  border-bottom:1px solid #555;
-  border-radius:0;
-  padding:5px 2px;
-  background:transparent;
-  font-size:12px;
-  color:#000;
+  border:0;border-bottom:1px solid #555;
+  border-radius:0;padding:3px 1px;background:transparent;
+  color:#000;font-size:10px
  }
- textarea{border:1px solid #777}
- .section-title{
-  background:#174d83!important;
-  color:white!important;
-  -webkit-print-color-adjust:exact;
-  print-color-adjust:exact;
+ .section-title,.form-title,.header,.footer,th{
+  -webkit-print-color-adjust:exact;print-color-adjust:exact
  }
- .form-title{
-  color:#bd2636!important;
-  border-color:#bd2636!important;
-  -webkit-print-color-adjust:exact;
-  print-color-adjust:exact;
- }
- .page-two{break-before:page}
  .guarantor{break-inside:avoid}
- .photo-box{min-height:85px}
 }
 </style>
 </head>
@@ -236,9 +141,14 @@ textarea{min-height:55px;resize:vertical}
 <body>
 
 <div class="toolbar">
- <button class="print" onclick="window.print()">🖨️ फाराम Print / PDF</button>
- <button onclick="saveForm()">💾 विवरण सुरक्षित</button>
- <button class="clear" onclick="clearForm()">नयाँ फाराम</button>
+ <button class="green" onclick="window.print()">🖨️ फाराम Print / PDF</button>
+ <button class="admin-only" onclick="saveForm()">💾 विवरण सुरक्षित</button>
+ <button class="admin-only red" onclick="clearForm()">नयाँ फाराम</button>
+</div>
+
+<div class="public-message" id="publicMessage">
+ <b>खाली ऋण आवेदन तथा निकासा फाराम</b><br>
+ यो फाराम सबैले प्रिन्ट गरी हातले भर्न सक्नुहुन्छ।
 </div>
 
 <form id="loanForm">
@@ -253,10 +163,10 @@ textarea{min-height:55px;resize:vertical}
   <p>एकता • सहयोग • सेवा • भाइचारा</p>
   <p>स्थापना: २०८२ | ESTD: 2082</p>
   <p><b>RASHALI BHAI SAMAJ PARIWAR</b></p>
-  <p><b>CHAURATHA, DAILEKH</b></p>
+  <p>CHAURATHA, DAILEKH</p>
  </div>
 
- <div class="form-title">ऋण आवेदन तथा सदस्य विवरण फाराम</div>
+ <div class="form-title">ऋण आवेदन तथा ऋण निकासा फाराम</div>
 
  <div class="grid">
   <div class="field">
@@ -265,109 +175,97 @@ textarea{min-height:55px;resize:vertical}
   </div>
   <div class="field">
    <label>आवेदन मिति</label>
-   <input name="application_date" placeholder="२०८...">
+   <input name="application_date">
   </div>
  </div>
 
  <div class="section-title">१. ऋणी / आवेदकको व्यक्तिगत विवरण</div>
-
  <div class="grid">
-  <div class="field">
-   <label>पूरा नामथर</label>
-   <input name="borrower_name">
-  </div>
-  <div class="field">
-   <label>सदस्य नं.</label>
-   <input name="member_no">
-  </div>
-  <div class="field">
-   <label>बुबाको नाम</label>
-   <input name="father_name">
-  </div>
-  <div class="field">
-   <label>बाजेको नाम</label>
-   <input name="grandfather_name">
-  </div>
-  <div class="field">
-   <label>मोबाइल नं.</label>
-   <input name="borrower_phone">
-  </div>
-  <div class="field">
-   <label>नागरिकता नं.</label>
-   <input name="citizenship_no">
-  </div>
-  <div class="field">
-   <label>स्थायी ठेगाना</label>
-   <input name="permanent_address">
-  </div>
-  <div class="field">
-   <label>हालको ठेगाना</label>
-   <input name="current_address">
-  </div>
-  <div class="field">
-   <label>पेशा / व्यवसाय</label>
-   <input name="occupation">
-  </div>
-  <div class="field">
-   <label>सम्पर्क व्यक्ति</label>
-   <input name="contact_person">
-  </div>
+  <div class="field"><label>पूरा नामथर</label><input name="borrower_name"></div>
+  <div class="field"><label>सदस्य नं.</label><input name="member_no"></div>
+  <div class="field"><label>बुबाको नाम</label><input name="father_name"></div>
+  <div class="field"><label>बाजेको नाम</label><input name="grandfather_name"></div>
+  <div class="field"><label>मोबाइल नं.</label><input name="borrower_phone"></div>
+  <div class="field"><label>नागरिकता नं.</label><input name="citizenship_no"></div>
+  <div class="field"><label>स्थायी ठेगाना</label><input name="permanent_address"></div>
+  <div class="field"><label>हालको ठेगाना</label><input name="current_address"></div>
+  <div class="field"><label>पेशा / व्यवसाय</label><input name="occupation"></div>
+  <div class="field"><label>सम्पर्क व्यक्ति</label><input name="contact_person"></div>
  </div>
 
  <div class="photo-row">
-  <div class="photo-box">आवेदकको पासपोर्ट साइज फोटो टाँस्ने ठाउँ</div>
-  <div class="photo-box">नागरिकताको अगाडिको प्रतिलिपि टाँस्ने ठाउँ</div>
-  <div class="photo-box">नागरिकताको पछाडिको प्रतिलिपि टाँस्ने ठाउँ</div>
+  <div class="photo-box">आवेदकको फोटो</div>
+  <div class="photo-box">नागरिकता अगाडिको प्रतिलिपि</div>
+  <div class="photo-box">नागरिकता पछाडिको प्रतिलिपि</div>
  </div>
 
- <div class="section-title">२. ऋणसम्बन्धी विवरण</div>
-
+ <div class="section-title">२. सदस्यता तथा बचत विवरण</div>
  <div class="grid">
-  <div class="field">
-   <label>माग गरेको ऋण रकम रु.</label>
-   <input name="loan_amount">
-  </div>
-  <div class="field">
-   <label>ऋण लिनुको उद्देश्य</label>
-   <input name="loan_purpose">
-  </div>
-  <div class="field">
-   <label>ऋण अवधि</label>
-   <input name="loan_duration" placeholder="महिना / वर्ष">
-  </div>
-  <div class="field">
-   <label>किस्ता तिर्ने प्रस्तावित अवधि</label>
-   <input name="installment">
-  </div>
-  <div class="field">
-   <label>प्रस्तावित वार्षिक ब्याजदर</label>
-   <input name="interest" value="२४% वार्षिक (समाजको निर्णयअनुसार)">
-  </div>
-  <div class="field">
-   <label>अन्य विवरण</label>
-   <input name="other_details">
-  </div>
+  <div class="field"><label>सदस्य बनेको मिति</label><input name="member_date"></div>
+  <div class="field"><label>बचत सुरु मिति</label><input name="saving_date"></div>
+  <div class="field"><label>जम्मा बचत रकम रु.</label><input name="total_saving"></div>
+  <div class="field"><label>बचत अवधि</label><input name="saving_duration"></div>
  </div>
 
- <div class="note">
-  नोट: २४% वार्षिक ब्याजदर प्रस्तावित मात्र हो। समाजको औपचारिक निर्णय र स्वीकृत सर्तअनुसार मात्र लागू हुनेछ।
+ <div class="section-title">३. ऋण, साँवा, ब्याज तथा किस्ता विवरण</div>
+ <div class="grid">
+  <div class="field"><label>माग गरेको ऋण रकम रु.</label><input name="requested_amount"></div>
+  <div class="field"><label>स्वीकृत ऋण रकम रु.</label><input name="approved_amount"></div>
+  <div class="field"><label>ऋणको उद्देश्य</label><input name="loan_purpose"></div>
+  <div class="field"><label>ऋण अवधि</label><input name="loan_duration"></div>
+  <div class="field"><label>मासिक ब्याजदर</label><input name="interest_rate" value="२% मासिक"></div>
+  <div class="field"><label>वार्षिक साधारण ब्याजदर</label><input name="annual_interest" value="२४% वार्षिक"></div>
+  <div class="field"><label>मासिक साँवा किस्ता रु.</label><input name="principal_installment"></div>
+  <div class="field"><label>मासिक ब्याज रु.</label><input name="monthly_interest"></div>
+  <div class="field"><label>मासिक जम्मा किस्ता रु.</label><input name="total_installment"></div>
+  <div class="field"><label>किस्ता बुझाउने मिति</label><input name="installment_date"></div>
+  <div class="field"><label>पहिलो किस्ता मिति</label><input name="first_installment_date"></div>
+  <div class="field"><label>अन्तिम किस्ता मिति</label><input name="last_installment_date"></div>
  </div>
 
+ <p class="note">
+  समाजको स्वीकृत ब्याजदर: रु. ५०,००० साँवामा मासिक रु. १,००० ब्याज अर्थात् २% मासिक / २४% वार्षिक साधारण ब्याज। वास्तविक भुक्तानी स्वीकृत ऋण सम्झौता र निर्णयअनुसार हुनेछ।
+ </p>
+
+ <div class="section-title">४. किस्ता भुक्तानी तालिका</div>
+ <table>
+  <tr><th>किस्ता</th><th>बुझाउने मिति</th><th>साँवा रु.</th><th>ब्याज रु.</th><th>जम्मा रु.</th><th>बाँकी साँवा रु.</th></tr>
+  <tr><td>१</td><td><input name="date1"></td><td><input name="principal1"></td><td><input name="interest1"></td><td><input name="total1"></td><td><input name="balance1"></td></tr>
+  <tr><td>२</td><td><input name="date2"></td><td><input name="principal2"></td><td><input name="interest2"></td><td><input name="total2"></td><td><input name="balance2"></td></tr>
+  <tr><td>३</td><td><input name="date3"></td><td><input name="principal3"></td><td><input name="interest3"></td><td><input name="total3"></td><td><input name="balance3"></td></tr>
+  <tr><td>४</td><td><input name="date4"></td><td><input name="principal4"></td><td><input name="interest4"></td><td><input name="total4"></td><td><input name="balance4"></td></tr>
+  <tr><td>५</td><td><input name="date5"></td><td><input name="principal5"></td><td><input name="interest5"></td><td><input name="total5"></td><td><input name="balance5"></td></tr>
+  <tr><td>६</td><td><input name="date6"></td><td><input name="principal6"></td><td><input name="interest6"></td><td><input name="total6"></td><td><input name="balance6"></td></tr>
+ </table>
+ <p class="note">थप किस्ताहरू आवश्यक भएमा समाजको ऋण भुक्तानी अभिलेखमा निरन्तर विवरण राखिनेछ।</p>
+
+ <div class="section-title">५. ऋणका सर्त तथा बुझाइएको जानकारी</div>
  <div class="declaration">
-  <b>आवेदकको घोषणा:</b><br>
-  मैले यस फाराममा उल्लेख गरेका विवरण सत्य छन्। समाजको स्वीकृत नियम, ऋण सम्झौता, ब्याजदर तथा किस्ता भुक्तानीका सर्तहरू पालना गर्नेछु। गलत विवरण दिएको वा तोकिएको समयमा रकम भुक्तानी नगरेको अवस्थामा समाजको स्वीकृत नियमअनुसार हुने प्रक्रियामा सहमत छु।
+  आवेदकलाई ऋणको साँवा, ब्याजदर, ब्याज गणना विधि, किस्ता रकम, किस्ता बुझाउने मिति, ऋण अवधि तथा भुक्तानीका सर्तहरू स्पष्ट रूपमा बुझाइएको छ। आवेदकले समाजको स्वीकृत नियम र लिखित ऋण सम्झौताअनुसार रकम भुक्तानी गर्न मञ्जुर गरेको छ।
   <br><br>
-  आवेदकको हस्ताक्षर: __________________________
-  <br>
-  मिति: __________________
+  <b>ऋणीको हस्ताक्षर:</b> ______________________
+  <b>मिति:</b> ______________
+ </div>
+
+ <div class="section-title">६. ऋण निकासा तथा रकम बुझिलिएको प्रमाण</div>
+ <div class="grid">
+  <div class="field"><label>ऋण निकासा मिति</label><input name="disbursement_date"></div>
+  <div class="field"><label>निकासा गरिएको रकम रु.</label><input name="disbursed_amount"></div>
+  <div class="field"><label>रकम बुझाउने माध्यम</label><input name="payment_method" placeholder="नगद / बैंक / अन्य"></div>
+  <div class="field"><label>भौचर / कारोबार नं.</label><input name="transaction_no"></div>
+ </div>
+ <div class="declaration">
+  मैले समाजबाट स्वीकृत ऋण रकम रु. __________________
+  अक्षरेपी __________________________________________
+  बुझिलिएँ।
+  <br><br>
+  <b>ऋणीको हस्ताक्षर:</b> ______________________
+  <b>मिति:</b> ______________
  </div>
 
  <div class="footer">
-  रसाली भाई समाज परिवार<br>
-  चौराठा, दैलेख<br>
-  RASHALI BHAI SAMAJ PARIWAR<br>
-  CHAURATHA, DAILEKH<br>
-  एकता • सहयोग • सेवा • भाइचारा
+  रसाली भाई समाज परिवार • चौराठा, दैलेख<br>
+  RASHALI BHAI SAMAJ PARIWAR • CHOURATHA, DAILEKH
  </div>
 </div>
 
@@ -376,58 +274,40 @@ textarea{min-height:55px;resize:vertical}
 
  <div class="header">
   <h2>रसाली भाई समाज परिवार</h2>
-  <h3>ऋण जमानीकर्ता विवरण फाराम</h3>
-  <p>चौराठा, दैलेख | स्थापना: २०८२</p>
+  <h3>ऋण जमानीकर्ता तथा कार्यालय अभिलेख फाराम</h3>
+  <p>चौराठा, दैलेख | स्थापना: २०८२ | ESTD: 2082</p>
  </div>
 
- <div class="section-title">३. पाँच जना जमानीकर्ताको विवरण</div>
+ <div class="section-title">७. पाँच जना जमानीकर्ताको विवरण</div>
  <p class="note">
-  ऋण आवेदनका लागि ठीक पाँच जना जमानीकर्ताको विवरण अनिवार्य रूपमा भर्नुहोस्।
+  ऋण आवेदनका लागि पाँच जना जमानीकर्ताको विवरण, पहिचान र सहमति आवश्यक हुनेछ। जमानीको वास्तविक दायित्व लिखित सम्झौतामा स्पष्ट गरिनेछ।
  </p>
 
  <div id="guarantors"></div>
 
  <div class="declaration">
-  <b>जमानीकर्ताहरूको सामूहिक घोषणा:</b><br>
-  हामीले माथि उल्लेखित ऋणीलाई चिनेका छौँ। ऋण सम्झौता र समाजको स्वीकृत नियमअनुसार जमानी बसेको कुरा बुझी आफ्नो सहमति दिएका छौँ। जमानीको दायित्व के-कस्तो हुने भन्ने कुरा लिखित सम्झौतामा स्पष्ट भएपछि मात्र हस्ताक्षर गर्नेछौँ।
+  <b>जमानीकर्ताहरूको घोषणा:</b><br>
+  हामीले ऋणीलाई चिनेका छौँ। ऋणको रकम, अवधि, ब्याज र भुक्तानीका सर्तहरू बुझेर जमानी बसेका छौँ। जमानीको दायित्व लिखित ऋण सम्झौतामा स्पष्ट गरिएअनुसार हुनेछ।
  </div>
 
- <div class="section-title">४. समाजको प्रशासनिक प्रयोजनका लागि</div>
-
+ <div class="section-title">८. समाजको निर्णय तथा स्वीकृति</div>
  <div class="admin-box">
   <h3>कार्यालय प्रयोजनका लागि मात्र</h3>
   <div class="grid">
-   <div class="field">
-    <label>आवेदन जाँच गर्ने व्यक्तिको नाम</label>
-    <input name="checked_by">
-   </div>
-   <div class="field">
-    <label>जाँच मिति</label>
-    <input name="checked_date">
-   </div>
-   <div class="field">
-    <label>निर्णय</label>
-    <input name="decision" placeholder="स्वीकृत / अस्वीकृत / थप जाँच">
-   </div>
-   <div class="field">
-    <label>स्वीकृत ऋण रकम रु.</label>
-    <input name="approved_amount">
-   </div>
-   <div class="field">
-    <label>स्वीकृत ब्याजदर</label>
-    <input name="approved_interest">
-   </div>
-   <div class="field">
-    <label>किस्ता / भुक्तानी सर्त</label>
-    <input name="approved_terms">
-   </div>
+   <div class="field"><label>आवेदन जाँच गर्ने व्यक्तिको नाम</label><input name="checked_by"></div>
+   <div class="field"><label>जाँच मिति</label><input name="checked_date"></div>
+   <div class="field"><label>निर्णय</label><input name="decision" placeholder="स्वीकृत / अस्वीकृत"></div>
+   <div class="field"><label>स्वीकृत रकम रु.</label><input name="final_amount"></div>
+   <div class="field"><label>स्वीकृत ब्याजदर</label><input name="final_interest"></div>
+   <div class="field"><label>किस्ता / भुक्तानी सर्त</label><input name="final_terms"></div>
   </div>
-  <div class="field" style="margin-top:10px">
+  <div class="field" style="margin-top:7px">
    <label>निर्णय तथा कैफियत</label>
    <textarea name="remarks"></textarea>
   </div>
  </div>
 
+ <div class="section-title">९. समाजका पदाधिकारीको हस्ताक्षर</div>
  <div class="signature-grid">
   <div class="sign">अध्यक्षको हस्ताक्षर<br>दीपक रसाली</div>
   <div class="sign">कोषाध्यक्षको हस्ताक्षर<br>नरेश रसाली</div>
@@ -439,15 +319,28 @@ textarea{min-height:55px;resize:vertical}
   रसाली भाई समाज परिवार<br>
   चौराठा, दैलेख<br>
   RASHALI BHAI SAMAJ PARIWAR<br>
-  CHAURATHA, DAILEKH<br>
   एकता • सहयोग • सेवा • भाइचारा
  </div>
 </div>
 </form>
 
 <script>
-// पाँच जना जमानीकर्ताका लागि फाराम
-const guarantorArea = document.getElementById("guarantors");
+const role=localStorage.getItem("rasali_role");
+const token=localStorage.getItem("rasali_access_token");
+const isAdmin=!!token && role==="admin";
+
+if(isAdmin){
+ document.body.classList.add("admin");
+ document.getElementById("publicMessage").innerHTML=
+ "<b>Admin फाराम:</b> विवरण भर्नुहोस्, सुरक्षित गर्नुहोस् वा प्रिन्ट गर्नुहोस्।";
+}else{
+ document.querySelectorAll("#loanForm input,#loanForm textarea").forEach(el=>{
+  el.value="";
+  el.disabled=true;
+ });
+}
+
+const area=document.getElementById("guarantors");
 
 for(let i=1;i<=5;i++){
  const box=document.createElement("div");
@@ -455,60 +348,49 @@ for(let i=1;i<=5;i++){
  box.innerHTML=`
   <h4>जमानीकर्ता नं. ${i}</h4>
   <div class="grid">
-   <div class="field">
-    <label>पूरा नामथर</label>
-    <input name="g${i}_name">
-   </div>
-   <div class="field">
-    <label>मोबाइल नं.</label>
-    <input name="g${i}_phone">
-   </div>
-   <div class="field">
-    <label>ठेगाना</label>
-    <input name="g${i}_address">
-   </div>
-   <div class="field">
-    <label>नागरिकता नं.</label>
-    <input name="g${i}_citizenship">
-   </div>
+   <div class="field"><label>पूरा नामथर</label><input name="g${i}_name"></div>
+   <div class="field"><label>मोबाइल नं.</label><input name="g${i}_phone"></div>
+   <div class="field"><label>ठेगाना</label><input name="g${i}_address"></div>
+   <div class="field"><label>नागरिकता नं.</label><input name="g${i}_citizenship"></div>
   </div>
-  <div class="photo-row">
-   <div class="photo-box">पासपोर्ट फोटो टाँस्ने ठाउँ</div>
-   <div class="photo-box">नागरिकता अगाडि टाँस्ने ठाउँ</div>
-   <div class="photo-box">नागरिकता पछाडि टाँस्ने ठाउँ</div>
+  <div class="grid" style="margin-top:5px">
+   <div class="field"><label>फोटो / नागरिकता प्रतिलिपि</label><input name="g${i}_documents" placeholder="संलग्न / प्राप्त"></div>
+   <div class="field"><label>हस्ताक्षर / औँठाछाप</label><input name="g${i}_signature" placeholder="हस्ताक्षर गर्ने"></div>
   </div>
-  <div class="sign">जमानीकर्ता नं. ${i} को हस्ताक्षर / औँठाछाप</div>
  `;
- guarantorArea.appendChild(box);
+ area.appendChild(box);
 }
 
-// मोबाइल ब्राउजरमा फारामको विवरण सुरक्षित गर्ने
 const form=document.getElementById("loanForm");
 const storageKey="rasali_loan_paper_form";
 
 function saveForm(){
+ if(!isAdmin){
+  alert("यो सुविधा Admin का लागि मात्र हो।");
+  return;
+ }
  const data={};
  form.querySelectorAll("input,textarea").forEach(el=>{
-  if(el.name) data[el.name]=el.value;
+  if(el.name)data[el.name]=el.value;
  });
  localStorage.setItem(storageKey,JSON.stringify(data));
- alert("फारामको विवरण यस मोबाइलमा सुरक्षित भयो।");
+ alert("विवरण यस मोबाइल/ब्राउजरमा सुरक्षित भयो।");
 }
 
 function loadForm(){
+ if(!isAdmin)return;
  const saved=localStorage.getItem(storageKey);
  if(!saved)return;
  try{
   const data=JSON.parse(saved);
   form.querySelectorAll("input,textarea").forEach(el=>{
-   if(el.name && data[el.name]!==undefined){
-    el.value=data[el.name];
-   }
+   if(el.name && data[el.name]!==undefined)el.value=data[el.name];
   });
  }catch(e){}
 }
 
 function clearForm(){
+ if(!isAdmin)return;
  if(!confirm("सबै विवरण हटाएर नयाँ फाराम खोल्ने?"))return;
  form.reset();
  localStorage.removeItem(storageKey);
@@ -519,4 +401,4 @@ loadForm();
 
 </body>
 </html>
-
+ 
