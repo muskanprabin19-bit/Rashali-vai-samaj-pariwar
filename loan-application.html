@@ -1,149 +1,87 @@
-
+ 
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ऋण आवेदन तथा निकासा फाराम - रसाली भाई समाज परिवार</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ऋण आवेदन - रसाली भाई समाज परिवार</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;padding:12px;background:#eaf0f7;
- color:#172b4d;font-family:Arial,"Noto Sans Devanagari",sans-serif
-}
-.toolbar{
- max-width:900px;margin:0 auto 12px;display:flex;
- gap:8px;justify-content:center;flex-wrap:wrap
-}
-button{
- border:0;padding:12px 17px;border-radius:7px;
- background:#0756a5;color:white;font-weight:bold;font-size:14px
-}
+body{margin:0;padding:10px;background:#eaf0f7;color:#172b4d;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+.toolbar,.admin-panel{max-width:900px;margin:10px auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+button{border:0;border-radius:7px;padding:11px 15px;background:#0756a5;color:white;font-weight:bold;cursor:pointer}
 button.green{background:#168348}
 button.red{background:#bd2636}
-.sheet{
- max-width:900px;margin:0 auto 18px;background:white;
- padding:22px;border:2px solid #174d83;
- box-shadow:0 3px 12px #0002
-}
-.header{
- text-align:center;border-bottom:3px solid #174d83;
- padding-bottom:9px;margin-bottom:10px
-}
-.logo{
- width:54px;height:54px;border:3px solid #174d83;
- border-radius:50%;display:flex;align-items:center;
- justify-content:center;margin:auto auto 5px;
- font-size:27px;font-weight:bold;color:#174d83
-}
+button:disabled{opacity:.5}
+.sheet{max-width:900px;margin:0 auto 18px;background:white;padding:22px;border:2px solid #174d83;box-shadow:0 3px 12px #0002}
+.header{text-align:center;border-bottom:3px solid #174d83;padding-bottom:9px;margin-bottom:10px}
+.logo{width:54px;height:54px;border:3px solid #174d83;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 5px;font-size:27px;font-weight:bold;color:#174d83}
 .header h2{margin:3px;color:#174d83;font-size:21px}
 .header h3{margin:3px;color:#bd2636;font-size:16px}
 .header p{margin:3px;font-size:11px}
-.form-title{
- text-align:center;color:#bd2636;font-size:17px;
- font-weight:bold;border:1px solid #bd2636;
- padding:7px;margin:10px 0
-}
-.section-title{
- background:#174d83;color:white;padding:6px 9px;
- font-weight:bold;margin:10px 0 7px;font-size:13px;
- -webkit-print-color-adjust:exact;print-color-adjust:exact
-}
-.grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
- gap:7px 12px
-}
-.field label{
- display:block;font-size:11px;font-weight:bold;margin-bottom:3px
-}
-input,textarea{
- width:100%;border:1px solid #9aaabd;border-radius:3px;
- padding:6px;font-size:12px;background:white;color:#111
-}
-textarea{min-height:38px}
+.form-title{text-align:center;color:#bd2636;font-size:17px;font-weight:bold;border:1px solid #bd2636;padding:7px;margin:10px 0}
+.section-title{background:#174d83;color:white;padding:6px 9px;font-weight:bold;margin:10px 0 7px;font-size:13px;print-color-adjust:exact}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 12px}
+.field label{display:block;font-size:11px;font-weight:bold;margin-bottom:3px}
+input,textarea,select{width:100%;border:1px solid #9aaabd;border-radius:3px;padding:7px;font-size:12px;background:white;color:#111}
+textarea{min-height:40px}
 .note{font-size:10px;color:#555;margin:5px 0;line-height:1.5}
 .photo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:8px 0}
-.photo-box{
- min-height:58px;border:1px dashed #536b84;
- display:flex;align-items:center;justify-content:center;
- text-align:center;padding:5px;font-size:10px;color:#536b84
-}
-.declaration{
- border:1px solid #9aaabd;padding:8px;
- font-size:11px;line-height:1.6;margin-top:8px
-}
+.photo-box{border:1px dashed #536b84;padding:7px;font-size:10px;color:#536b84}
+.photo-box input{margin-top:6px}
+.declaration{border:1px solid #9aaabd;padding:8px;font-size:11px;line-height:1.6;margin-top:8px}
 table{width:100%;border-collapse:collapse;font-size:10px}
 th,td{border:1px solid #8495a8;padding:4px;text-align:center}
-th{
- background:#e4edf7;color:#174d83;
- -webkit-print-color-adjust:exact;print-color-adjust:exact
-}
+th{background:#e4edf7;color:#174d83;print-color-adjust:exact}
 table input{border:0;border-bottom:1px solid #aaa;padding:3px}
-.signature-grid{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:12px 25px;margin-top:14px
-}
-.sign{
- border-top:1px solid #333;padding-top:5px;
- text-align:center;margin-top:17px;font-size:11px
-}
-.footer{
- text-align:center;border-top:2px solid #174d83;
- margin-top:12px;padding-top:7px;line-height:1.5;
- font-weight:bold;color:#174d83;font-size:11px
-}
-.guarantor{
- border:1px solid #9aaabd;padding:7px;margin:7px 0;
- break-inside:avoid
-}
+.signature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 25px;margin-top:14px}
+.sign{border-top:1px solid #333;padding-top:5px;text-align:center;margin-top:17px;font-size:11px}
+.footer{text-align:center;border-top:2px solid #174d83;margin-top:12px;padding-top:7px;line-height:1.5;font-weight:bold;color:#174d83;font-size:11px}
+.guarantor{border:1px solid #9aaabd;padding:8px;margin:8px 0;break-inside:avoid}
 .guarantor h4{margin:0 0 6px;color:#174d83;font-size:12px}
 .guarantor .grid{gap:5px 9px}
-.guarantor input{padding:5px}
 .admin-box{border:2px solid #bd2636;padding:8px;margin-top:10px}
 .admin-box h3{text-align:center;color:#bd2636;margin:0 0 7px;font-size:14px}
-.public-message{
- max-width:900px;margin:0 auto 12px;background:#fff;
- border-left:4px solid #168348;padding:10px;font-size:13px
-}
-body:not(.admin) .admin-only{display:none!important}
-body:not(.admin) input,
-body:not(.admin) textarea{pointer-events:none}
+.public-message{max-width:900px;margin:0 auto 12px;background:white;border-left:4px solid #168348;padding:10px;font-size:13px}
+.admin-panel{background:white;padding:12px;border:1px solid #9aaabd;border-radius:8px}
+.admin-panel select{max-width:450px}
+.status{max-width:900px;margin:10px auto;padding:10px;background:white;border-radius:6px;font-size:13px}
+.status.error{color:#bd2636}
+.status.ok{color:#168348}
+.admin-only{display:none}
+body.admin .admin-only{display:flex}
+body.admin .admin-field{display:block}
+.upload-link{font-size:11px;color:#0756a5;word-break:break-all}
+.upload-group{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px}
+.upload-group label{font-size:10px;font-weight:bold}
+.upload-group input{font-size:10px}
+body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer-events:none}
 @media(max-width:600px){
  body{padding:4px}
  .sheet{padding:10px}
  .grid{grid-template-columns:1fr}
  .header h2{font-size:18px}
- .photo-row{grid-template-columns:repeat(3,1fr)}
+ .photo-row{grid-template-columns:1fr}
+ .upload-group{grid-template-columns:1fr}
 }
 @page{size:A4;margin:9mm}
 @media print{
  body{background:white;padding:0}
- .toolbar,.public-message{display:none!important}
- .sheet{
-  width:100%;max-width:none;margin:0;padding:0;
-  border:0;box-shadow:none
- }
+ .toolbar,.admin-panel,.public-message,.status,.admin-only{display:none!important}
+ .sheet{width:100%;max-width:none;margin:0;padding:0;border:0;box-shadow:none}
  .page-two{break-before:page;page-break-before:always}
- input,textarea{
-  border:0;border-bottom:1px solid #555;
-  border-radius:0;padding:3px 1px;background:transparent;
-  color:#000;font-size:10px
- }
- .section-title,.form-title,.header,.footer,th{
-  -webkit-print-color-adjust:exact;print-color-adjust:exact
- }
+ input,textarea,select{border:0;border-bottom:1px solid #555;border-radius:0;padding:3px;background:transparent;color:black;font-size:10px}
+ .section-title,.form-title,.header,.footer,th{print-color-adjust:exact}
  .guarantor{break-inside:avoid}
 }
 </style>
 </head>
-
 <body>
 
 <div class="toolbar">
- <button class="green" onclick="window.print()">🖨️ फाराम Print / PDF</button>
- <button class="admin-only" onclick="saveForm()">💾 विवरण सुरक्षित</button>
- <button class="admin-only red" onclick="clearForm()">नयाँ फाराम</button>
+ <button class="green" onclick="window.print()">🖨️ Print / PDF</button>
+ <button class="admin-only green" id="saveBtn" onclick="saveForm()">💾 विवरण सुरक्षित</button>
+ <button class="admin-only" onclick="newForm()">नयाँ फाराम</button>
 </div>
 
 <div class="public-message" id="publicMessage">
@@ -151,11 +89,19 @@ body:not(.admin) textarea{pointer-events:none}
  यो फाराम सबैले प्रिन्ट गरी हातले भर्न सक्नुहुन्छ।
 </div>
 
+<div class="admin-panel admin-only">
+ <select id="savedApplications">
+  <option value="">पुरानो आवेदन छान्नुहोस्</option>
+ </select>
+ <button class="green" onclick="openApplication()">आवेदन खोल्नुहोस्</button>
+ <button onclick="refreshApplications()">सूची Refresh</button>
+</div>
+
+<div id="status" class="status" style="display:none"></div>
+
 <form id="loanForm">
 
-<!-- PAGE ONE -->
 <div class="sheet">
-
  <div class="header">
   <div class="logo">र</div>
   <h2>रसाली भाई समाज परिवार</h2>
@@ -169,14 +115,8 @@ body:not(.admin) textarea{pointer-events:none}
  <div class="form-title">ऋण आवेदन तथा ऋण निकासा फाराम</div>
 
  <div class="grid">
-  <div class="field">
-   <label>आवेदन नं.</label>
-   <input name="application_no">
-  </div>
-  <div class="field">
-   <label>आवेदन मिति</label>
-   <input name="application_date">
-  </div>
+  <div class="field"><label>आवेदन नं.</label><input name="application_no"></div>
+  <div class="field"><label>आवेदन मिति</label><input name="application_date"></div>
  </div>
 
  <div class="section-title">१. ऋणी / आवेदकको व्यक्तिगत विवरण</div>
@@ -193,11 +133,13 @@ body:not(.admin) textarea{pointer-events:none}
   <div class="field"><label>सम्पर्क व्यक्ति</label><input name="contact_person"></div>
  </div>
 
- <div class="photo-row">
-  <div class="photo-box">आवेदकको फोटो</div>
-  <div class="photo-box">नागरिकता अगाडिको प्रतिलिपि</div>
-  <div class="photo-box">नागरिकता पछाडिको प्रतिलिपि</div>
+ <div class="section-title">आवेदकका फोटो तथा कागजात (Admin मात्र)</div>
+ <div class="upload-group admin-only">
+  <label>आवेदकको फोटो<input type="file" id="file_borrower_photo" accept="image/*"></label>
+  <label>नागरिकता अगाडि<input type="file" id="file_borrower_front" accept="image/*,.pdf"></label>
+  <label>नागरिकता पछाडि<input type="file" id="file_borrower_back" accept="image/*,.pdf"></label>
  </div>
+ <div id="borrowerFiles" class="note"></div>
 
  <div class="section-title">२. सदस्यता तथा बचत विवरण</div>
  <div class="grid">
@@ -222,29 +164,24 @@ body:not(.admin) textarea{pointer-events:none}
   <div class="field"><label>पहिलो किस्ता मिति</label><input name="first_installment_date"></div>
   <div class="field"><label>अन्तिम किस्ता मिति</label><input name="last_installment_date"></div>
  </div>
-
- <p class="note">
-  समाजको स्वीकृत ब्याजदर: रु. ५०,००० साँवामा मासिक रु. १,००० ब्याज अर्थात् २% मासिक / २४% वार्षिक साधारण ब्याज। वास्तविक भुक्तानी स्वीकृत ऋण सम्झौता र निर्णयअनुसार हुनेछ।
- </p>
+ <p class="note">समाजको स्वीकृत ब्याजदर: रु. ५०,००० साँवामा मासिक रु. १,००० ब्याज अर्थात् २% मासिक / २४% वार्षिक साधारण ब्याज। वास्तविक भुक्तानी लिखित ऋण सम्झौता र निर्णयअनुसार हुनेछ।</p>
 
  <div class="section-title">४. किस्ता भुक्तानी तालिका</div>
  <table>
-  <tr><th>किस्ता</th><th>बुझाउने मिति</th><th>साँवा रु.</th><th>ब्याज रु.</th><th>जम्मा रु.</th><th>बाँकी साँवा रु.</th></tr>
-  <tr><td>१</td><td><input name="date1"></td><td><input name="principal1"></td><td><input name="interest1"></td><td><input name="total1"></td><td><input name="balance1"></td></tr>
-  <tr><td>२</td><td><input name="date2"></td><td><input name="principal2"></td><td><input name="interest2"></td><td><input name="total2"></td><td><input name="balance2"></td></tr>
-  <tr><td>३</td><td><input name="date3"></td><td><input name="principal3"></td><td><input name="interest3"></td><td><input name="total3"></td><td><input name="balance3"></td></tr>
-  <tr><td>४</td><td><input name="date4"></td><td><input name="principal4"></td><td><input name="interest4"></td><td><input name="total4"></td><td><input name="balance4"></td></tr>
-  <tr><td>५</td><td><input name="date5"></td><td><input name="principal5"></td><td><input name="interest5"></td><td><input name="total5"></td><td><input name="balance5"></td></tr>
-  <tr><td>६</td><td><input name="date6"></td><td><input name="principal6"></td><td><input name="interest6"></td><td><input name="total6"></td><td><input name="balance6"></td></tr>
+ <tr><th>किस्ता</th><th>बुझाउने मिति</th><th>साँवा रु.</th><th>ब्याज रु.</th><th>जम्मा रु.</th><th>बाँकी साँवा रु.</th></tr>
+ <tr><td>१</td><td><input name="date1"></td><td><input name="principal1"></td><td><input name="interest1"></td><td><input name="total1"></td><td><input name="balance1"></td></tr>
+ <tr><td>२</td><td><input name="date2"></td><td><input name="principal2"></td><td><input name="interest2"></td><td><input name="total2"></td><td><input name="balance2"></td></tr>
+ <tr><td>३</td><td><input name="date3"></td><td><input name="principal3"></td><td><input name="interest3"></td><td><input name="total3"></td><td><input name="balance3"></td></tr>
+ <tr><td>४</td><td><input name="date4"></td><td><input name="principal4"></td><td><input name="interest4"></td><td><input name="total4"></td><td><input name="balance4"></td></tr>
+ <tr><td>५</td><td><input name="date5"></td><td><input name="principal5"></td><td><input name="interest5"></td><td><input name="total5"></td><td><input name="balance5"></td></tr>
+ <tr><td>६</td><td><input name="date6"></td><td><input name="principal6"></td><td><input name="interest6"></td><td><input name="total6"></td><td><input name="balance6"></td></tr>
  </table>
- <p class="note">थप किस्ताहरू आवश्यक भएमा समाजको ऋण भुक्तानी अभिलेखमा निरन्तर विवरण राखिनेछ।</p>
+ <p class="note">थप किस्ताहरू समाजको ऋण भुक्तानी अभिलेखमा राखिनेछ।</p>
 
  <div class="section-title">५. ऋणका सर्त तथा बुझाइएको जानकारी</div>
  <div class="declaration">
-  आवेदकलाई ऋणको साँवा, ब्याजदर, ब्याज गणना विधि, किस्ता रकम, किस्ता बुझाउने मिति, ऋण अवधि तथा भुक्तानीका सर्तहरू स्पष्ट रूपमा बुझाइएको छ। आवेदकले समाजको स्वीकृत नियम र लिखित ऋण सम्झौताअनुसार रकम भुक्तानी गर्न मञ्जुर गरेको छ।
-  <br><br>
-  <b>ऋणीको हस्ताक्षर:</b> ______________________
-  <b>मिति:</b> ______________
+ आवेदकलाई ऋणको साँवा, ब्याजदर, ब्याज गणना विधि, किस्ता रकम, किस्ता बुझाउने मिति, ऋण अवधि तथा भुक्तानीका सर्तहरू स्पष्ट रूपमा बुझाइएको छ। आवेदकले समाजको स्वीकृत नियम र लिखित ऋण सम्झौताअनुसार रकम भुक्तानी गर्न मञ्जुर गरेको छ।
+ <br><br>ऋणीको हस्ताक्षर: ______________________ मिति: ______________
  </div>
 
  <div class="section-title">६. ऋण निकासा तथा रकम बुझिलिएको प्रमाण</div>
@@ -255,23 +192,13 @@ body:not(.admin) textarea{pointer-events:none}
   <div class="field"><label>भौचर / कारोबार नं.</label><input name="transaction_no"></div>
  </div>
  <div class="declaration">
-  मैले समाजबाट स्वीकृत ऋण रकम रु. __________________
-  अक्षरेपी __________________________________________
-  बुझिलिएँ।
-  <br><br>
-  <b>ऋणीको हस्ताक्षर:</b> ______________________
-  <b>मिति:</b> ______________
+ मैले समाजबाट स्वीकृत ऋण रकम रु. __________________ अक्षरेपी ______________________________ बुझिलिएँ।
+ <br><br>ऋणीको हस्ताक्षर: ______________________ मिति: ______________
  </div>
-
- <div class="footer">
-  रसाली भाई समाज परिवार • चौराठा, दैलेख<br>
-  RASHALI BHAI SAMAJ PARIWAR • CHOURATHA, DAILEKH
- </div>
+ <div class="footer">रसाली भाई समाज परिवार • चौराठा, दैलेख<br>RASHALI BHAI SAMAJ PARIWAR • CHAURATHA, DAILEKH</div>
 </div>
 
-<!-- PAGE TWO -->
 <div class="sheet page-two">
-
  <div class="header">
   <h2>रसाली भाई समाज परिवार</h2>
   <h3>ऋण जमानीकर्ता तथा कार्यालय अभिलेख फाराम</h3>
@@ -279,15 +206,12 @@ body:not(.admin) textarea{pointer-events:none}
  </div>
 
  <div class="section-title">७. पाँच जना जमानीकर्ताको विवरण</div>
- <p class="note">
-  ऋण आवेदनका लागि पाँच जना जमानीकर्ताको विवरण, पहिचान र सहमति आवश्यक हुनेछ। जमानीको वास्तविक दायित्व लिखित सम्झौतामा स्पष्ट गरिनेछ।
- </p>
-
+ <p class="note">ऋण आवेदनका लागि पाँच जना जमानीकर्ताको विवरण, पहिचान र सहमति आवश्यक हुनेछ। जमानीको वास्तविक दायित्व लिखित सम्झौतामा स्पष्ट गरिनेछ।</p>
  <div id="guarantors"></div>
 
  <div class="declaration">
-  <b>जमानीकर्ताहरूको घोषणा:</b><br>
-  हामीले ऋणीलाई चिनेका छौँ। ऋणको रकम, अवधि, ब्याज र भुक्तानीका सर्तहरू बुझेर जमानी बसेका छौँ। जमानीको दायित्व लिखित ऋण सम्झौतामा स्पष्ट गरिएअनुसार हुनेछ।
+ <b>जमानीकर्ताहरूको घोषणा:</b><br>
+ हामीले ऋणीलाई चिनेका छौँ। ऋणको रकम, अवधि, ब्याज र भुक्तानीका सर्तहरू बुझेर जमानी बसेका छौँ। जमानीको दायित्व लिखित ऋण सम्झौतामा स्पष्ट गरिएअनुसार हुनेछ।
  </div>
 
  <div class="section-title">८. समाजको निर्णय तथा स्वीकृति</div>
@@ -301,10 +225,7 @@ body:not(.admin) textarea{pointer-events:none}
    <div class="field"><label>स्वीकृत ब्याजदर</label><input name="final_interest"></div>
    <div class="field"><label>किस्ता / भुक्तानी सर्त</label><input name="final_terms"></div>
   </div>
-  <div class="field" style="margin-top:7px">
-   <label>निर्णय तथा कैफियत</label>
-   <textarea name="remarks"></textarea>
-  </div>
+  <div class="field" style="margin-top:7px"><label>निर्णय तथा कैफियत</label><textarea name="remarks"></textarea></div>
  </div>
 
  <div class="section-title">९. समाजका पदाधिकारीको हस्ताक्षर</div>
@@ -314,91 +235,318 @@ body:not(.admin) textarea{pointer-events:none}
   <div class="sign">संस्थापकको हस्ताक्षर<br>पदम रसाली</div>
   <div class="sign">कार्यालयको छाप</div>
  </div>
-
- <div class="footer">
-  रसाली भाई समाज परिवार<br>
-  चौराठा, दैलेख<br>
-  RASHALI BHAI SAMAJ PARIWAR<br>
-  एकता • सहयोग • सेवा • भाइचारा
- </div>
+ <div class="footer">रसाली भाई समाज परिवार<br>चौराठा, दैलेख<br>RASHALI BHAI SAMAJ PARIWAR<br>एकता • सहयोग • सेवा • भाइचारा</div>
 </div>
 </form>
 
 <script>
-const role=localStorage.getItem("rasali_role");
+"use strict";
+
+const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const SUPABASE_KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+const BUCKET="loan-documents";
+
 const token=localStorage.getItem("rasali_access_token");
-const isAdmin=!!token && role==="admin";
-
-if(isAdmin){
- document.body.classList.add("admin");
- document.getElementById("publicMessage").innerHTML=
- "<b>Admin फाराम:</b> विवरण भर्नुहोस्, सुरक्षित गर्नुहोस् वा प्रिन्ट गर्नुहोस्।";
-}else{
- document.querySelectorAll("#loanForm input,#loanForm textarea").forEach(el=>{
-  el.value="";
-  el.disabled=true;
- });
-}
-
+const form=document.getElementById("loanForm");
+const statusBox=document.getElementById("status");
 const area=document.getElementById("guarantors");
 
-for(let i=1;i<=5;i++){
- const box=document.createElement("div");
- box.className="guarantor";
- box.innerHTML=`
-  <h4>जमानीकर्ता नं. ${i}</h4>
-  <div class="grid">
-   <div class="field"><label>पूरा नामथर</label><input name="g${i}_name"></div>
-   <div class="field"><label>मोबाइल नं.</label><input name="g${i}_phone"></div>
-   <div class="field"><label>ठेगाना</label><input name="g${i}_address"></div>
-   <div class="field"><label>नागरिकता नं.</label><input name="g${i}_citizenship"></div>
-  </div>
-  <div class="grid" style="margin-top:5px">
-   <div class="field"><label>फोटो / नागरिकता प्रतिलिपि</label><input name="g${i}_documents" placeholder="संलग्न / प्राप्त"></div>
-   <div class="field"><label>हस्ताक्षर / औँठाछाप</label><input name="g${i}_signature" placeholder="हस्ताक्षर गर्ने"></div>
-  </div>
- `;
- area.appendChild(box);
+let isAdmin=false;
+let currentUser=null;
+let currentApplicationId=null;
+let savedDocuments=[];
+
+function message(text,type="ok"){
+ statusBox.style.display="block";
+ statusBox.className="status "+type;
+ statusBox.textContent=text;
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
-const form=document.getElementById("loanForm");
-const storageKey="rasali_loan_paper_form";
+function headers(){
+ return {
+  "apikey":SUPABASE_KEY,
+  "Authorization":"Bearer "+token,
+  "Content-Type":"application/json"
+ };
+}
 
-function saveForm(){
- if(!isAdmin){
-  alert("यो सुविधा Admin का लागि मात्र हो।");
+async function api(path,options={}){
+ const response=await fetch(SUPABASE_URL+path,{
+  ...options,
+  headers:{...headers(),...(options.headers||{})}
+ });
+ const text=await response.text();
+ let data=null;
+ try{data=text?JSON.parse(text):null}catch(e){data=text}
+ if(!response.ok){
+  throw new Error(data?.message||data?.msg||data?.hint||data?.error_description||String(data));
+ }
+ return data;
+}
+
+function addGuarantors(){
+ for(let i=1;i<=5;i++){
+  const box=document.createElement("div");
+  box.className="guarantor";
+  box.innerHTML=`
+   <h4>जमानीकर्ता नं. ${i}</h4>
+   <div class="grid">
+    <div class="field"><label>पूरा नामथर</label><input name="g${i}_name"></div>
+    <div class="field"><label>मोबाइल नं.</label><input name="g${i}_phone"></div>
+    <div class="field"><label>ठेगाना</label><input name="g${i}_address"></div>
+    <div class="field"><label>नागरिकता नं.</label><input name="g${i}_citizenship"></div>
+   </div>
+   <div class="upload-group admin-only">
+    <label>जमानीकर्ता ${i} फोटो<input type="file" id="file_g${i}_photo" accept="image/*"></label>
+    <label>नागरिकता अगाडि<input type="file" id="file_g${i}_front" accept="image/*,.pdf"></label>
+    <label>नागरिकता पछाडि<input type="file" id="file_g${i}_back" accept="image/*,.pdf"></label>
+   </div>
+   <div class="note" id="docs_g${i}"></div>
+   <div class="field" style="margin-top:5px"><label>हस्ताक्षर / औँठाछाप</label><input name="g${i}_signature" placeholder="हस्ताक्षर गर्ने"></div>
+  `;
+  area.appendChild(box);
+ }
+}
+addGuarantors();
+
+function lockPublicForm(){
+ document.querySelectorAll("#loanForm input,#loanForm textarea,#loanForm select").forEach(el=>{
+  el.disabled=true;
+  if(el.type!=="file")el.value="";
+ });
+ document.getElementById("publicMessage").innerHTML=
+ "<b>खाली ऋण आवेदन तथा निकासा फाराम</b><br>यो फाराम सार्वजनिक रूपमा प्रिन्ट गर्न मात्र उपलब्ध छ।";
+}
+
+async function checkAdmin(){
+ if(!token){
+  lockPublicForm();
   return;
  }
+ try{
+  const user=await api("/auth/v1/user",{method:"GET"});
+  if(!user?.id)throw new Error("Login session भेटिएन।");
+
+  const result=await api("/rest/v1/rpc/is_rasali_admin",{
+   method:"POST",body:"{}"
+  });
+
+  if(result!==true){
+   lockPublicForm();
+   return;
+  }
+
+  currentUser=user;
+  isAdmin=true;
+  document.body.classList.add("admin");
+  document.querySelectorAll("#loanForm input,#loanForm textarea,#loanForm select").forEach(el=>el.disabled=false);
+  document.getElementById("publicMessage").innerHTML=
+   "<b>Admin फाराम:</b> विवरण भर्नुहोस्, कागजात Upload गर्नुहोस् र सुरक्षित गर्नुहोस्।";
+  await refreshApplications();
+ }catch(error){
+  console.error(error);
+  isAdmin=false;
+  lockPublicForm();
+  message("Admin अनुमति जाँच हुन सकेन। फेरि Login गर्नुहोस्।","error");
+ }
+}
+
+function collectData(){
  const data={};
- form.querySelectorAll("input,textarea").forEach(el=>{
+ form.querySelectorAll("input:not([type=file]),textarea,select").forEach(el=>{
   if(el.name)data[el.name]=el.value;
  });
- localStorage.setItem(storageKey,JSON.stringify(data));
- alert("विवरण यस मोबाइल/ब्राउजरमा सुरक्षित भयो।");
+ data.documents=savedDocuments;
+ return data;
 }
 
-function loadForm(){
- if(!isAdmin)return;
- const saved=localStorage.getItem(storageKey);
- if(!saved)return;
+function fillForm(data){
+ form.querySelectorAll("input:not([type=file]),textarea,select").forEach(el=>{
+  if(el.name)el.value=data[el.name]??"";
+ });
+ savedDocuments=Array.isArray(data.documents)?data.documents:[];
+ showDocuments();
+}
+
+const uploadFields=[
+ ["file_borrower_photo","आवेदकको फोटो"],
+ ["file_borrower_front","आवेदक नागरिकता अगाडि"],
+ ["file_borrower_back","आवेदक नागरिकता पछाडि"]
+];
+for(let i=1;i<=5;i++){
+ uploadFields.push(
+  [`file_g${i}_photo`,`जमानीकर्ता ${i} फोटो`],
+  [`file_g${i}_front`,`जमानीकर्ता ${i} नागरिकता अगाडि`],
+  [`file_g${i}_back`,`जमानीकर्ता ${i} नागरिकता पछाडि`]
+ );
+}
+
+function safeName(name){
+ return name.replace(/[^a-zA-Z0-9._-]/g,"_").slice(-90);
+}
+
+async function uploadFile(file,applicationId,label){
+ const path=applicationId+"/"+Date.now()+"_"+Math.random().toString(36).slice(2,8)+"_"+safeName(file.name);
+ const response=await fetch(
+  SUPABASE_URL+"/storage/v1/object/"+BUCKET+"/"+path,
+  {
+   method:"POST",
+   headers:{
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer "+token,
+    "Content-Type":file.type||"application/octet-stream",
+    "x-upsert":"false"
+   },
+   body:file
+  }
+ );
+ const result=await response.json().catch(()=>({}));
+ if(!response.ok)throw new Error(result.message||result.error||"Upload असफल: "+label);
+ return {label,path,name:file.name,type:file.type,size:file.size};
+}
+
+async function saveForm(){
+ if(!isAdmin){
+  message("Admin मात्रले सुरक्षित गर्न पाउँछ।","error");
+  return;
+ }
+ const button=document.getElementById("saveBtn");
+ button.disabled=true;
+ button.textContent="सुरक्षित हुँदैछ...";
+
  try{
-  const data=JSON.parse(saved);
-  form.querySelectorAll("input,textarea").forEach(el=>{
-   if(el.name && data[el.name]!==undefined)el.value=data[el.name];
+  let data=collectData();
+  const payload={
+   application_no:data.application_no.trim()||null,
+   applicant_name:data.borrower_name||null,
+   form_data:data,
+   status:"pending",
+   created_by:currentUser.id
+  };
+
+  if(currentApplicationId){
+   await api("/rest/v1/loan_applications?id=eq."+encodeURIComponent(currentApplicationId),{
+    method:"PATCH",
+    headers:{"Prefer":"return=minimal"},
+    body:JSON.stringify({
+     application_no:payload.application_no,
+     applicant_name:payload.applicant_name,
+     form_data:data,
+     updated_at:new Date().toISOString()
+    })
+   });
+  }else{
+   const inserted=await api("/rest/v1/loan_applications",{
+    method:"POST",
+    headers:{"Prefer":"return=representation"},
+    body:JSON.stringify(payload)
+   });
+   if(!inserted?.[0]?.id)throw new Error("नयाँ आवेदनको ID प्राप्त भएन।");
+   currentApplicationId=inserted[0].id;
+  }
+
+  let uploaded=0;
+  for(const [inputId,label] of uploadFields){
+   const input=document.getElementById(inputId);
+   const file=input?.files?.[0];
+   if(!file)continue;
+   const doc=await uploadFile(file,currentApplicationId,label);
+   savedDocuments.push(doc);
+   input.value="";
+   uploaded++;
+  }
+
+  data=collectData();
+
+  await api("/rest/v1/loan_applications?id=eq."+encodeURIComponent(currentApplicationId),{
+   method:"PATCH",
+   headers:{"Prefer":"return=minimal"},
+   body:JSON.stringify({
+    form_data:data,
+    updated_at:new Date().toISOString()
+   })
   });
- }catch(e){}
+
+  showDocuments();
+  await refreshApplications();
+  document.getElementById("savedApplications").value=currentApplicationId;
+  message("आवेदन Database मा सुरक्षित भयो। Upload भएका कागजात: "+uploaded+" वटा।","ok");
+
+ }catch(error){
+  console.error(error);
+  message("सुरक्षित गर्दा समस्या: "+error.message,"error");
+ }finally{
+  button.disabled=false;
+  button.textContent="💾 विवरण सुरक्षित";
+ }
 }
 
-function clearForm(){
+async function refreshApplications(){
  if(!isAdmin)return;
- if(!confirm("सबै विवरण हटाएर नयाँ फाराम खोल्ने?"))return;
- form.reset();
- localStorage.removeItem(storageKey);
+ try{
+  const rows=await api("/rest/v1/loan_applications?select=id,application_no,applicant_name,created_at&order=created_at.desc&limit=100");
+  const select=document.getElementById("savedApplications");
+  select.innerHTML='<option value="">पुरानो आवेदन छान्नुहोस्</option>';
+  rows.forEach(row=>{
+   const option=document.createElement("option");
+   option.value=row.id;
+   option.textContent=(row.application_no||"नम्बर छैन")+" - "+(row.applicant_name||"नाम छैन")+" ("+new Date(row.created_at).toLocaleDateString()+")";
+   select.appendChild(option);
+  });
+ }catch(error){
+  message("आवेदन सूची निकाल्न समस्या: "+error.message,"error");
+ }
 }
 
-loadForm();
-</script>
+async function openApplication(){
+ if(!isAdmin)return;
+ const id=document.getElementById("savedApplications").value;
+ if(!id){
+  message("पहिले आवेदन छान्नुहोस्।","error");
+  return;
+ }
+ try{
+  const rows=await api("/rest/v1/loan_applications?id=eq."+encodeURIComponent(id)+"&select=id,form_data");
+  if(!rows.length)throw new Error("आवेदन भेटिएन।");
+  currentApplicationId=rows[0].id;
+  fillForm(rows[0].form_data||{});
+  message("पुरानो आवेदन खोलियो। आवश्यक परिवर्तन गरेर सुरक्षित गर्न सक्नुहुन्छ।","ok");
+ }catch(error){
+  message("आवेदन खोल्न समस्या: "+error.message,"error");
+ }
+}
 
+function newForm(){
+ if(!isAdmin)return;
+ if(!confirm("नयाँ फाराम खोल्ने? सुरक्षित गरिसकेको पुरानो आवेदन Database मा रहनेछ।"))return;
+ form.reset();
+ currentApplicationId=null;
+ savedDocuments=[];
+ showDocuments();
+ document.getElementById("savedApplications").value="";
+ message("नयाँ आवेदन तयार भयो।","ok");
+}
+
+function showDocuments(){
+ const borrower=document.getElementById("borrowerFiles");
+ const guarantorDiv=[];
+ for(let i=1;i<=5;i++)guarantorDiv.push(document.getElementById("docs_g"+i));
+
+ borrower.innerHTML="";
+ guarantorDiv.forEach(el=>el.innerHTML="");
+
+ savedDocuments.forEach(doc=>{
+  const item=document.createElement("div");
+  item.textContent="✓ "+doc.label+" — "+doc.name;
+  item.className="upload-link";
+  let target=doc.label.startsWith("जमानीकर्ता")?
+   guarantorDiv[Number(doc.label.match(/\d+/)?.[0])-1]:borrower;
+  if(target)target.appendChild(item);
+ });
+}
+
+window.addEventListener("DOMContentLoaded",checkAdmin);
+</script>
 </body>
 </html>
- 
