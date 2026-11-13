@@ -1,10 +1,11 @@
- 
+
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ऋण आवेदन - रसाली भाई समाज परिवार</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;padding:10px;background:#eaf0f7;color:#172b4d;font-family:Arial,"Noto Sans Devanagari",sans-serif}
@@ -48,14 +49,20 @@ table input{border:0;border-bottom:1px solid #aaa;padding:3px}
 .status{max-width:900px;margin:10px auto;padding:10px;background:white;border-radius:6px;font-size:13px}
 .status.error{color:#bd2636}
 .status.ok{color:#168348}
+
+/* Admin controls */
 .admin-only{display:none}
-body.admin .admin-only{display:flex}
+body.admin .toolbar .admin-only{display:inline-block}
+body.admin .admin-panel.admin-only{display:flex}
+body.admin .upload-group.admin-only{display:grid}
 body.admin .admin-field{display:block}
+
 .upload-link{font-size:11px;color:#0756a5;word-break:break-all}
-.upload-group{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px}
+.upload-group{grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px}
 .upload-group label{font-size:10px;font-weight:bold}
 .upload-group input{font-size:10px}
 body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer-events:none}
+
 @media(max-width:600px){
  body{padding:4px}
  .sheet{padding:10px}
@@ -64,6 +71,7 @@ body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer
  .photo-row{grid-template-columns:1fr}
  .upload-group{grid-template-columns:1fr}
 }
+
 @page{size:A4;margin:9mm}
 @media print{
  body{background:white;padding:0}
@@ -76,6 +84,7 @@ body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer
 }
 </style>
 </head>
+
 <body>
 
 <div class="toolbar">
@@ -164,6 +173,7 @@ body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer
   <div class="field"><label>पहिलो किस्ता मिति</label><input name="first_installment_date"></div>
   <div class="field"><label>अन्तिम किस्ता मिति</label><input name="last_installment_date"></div>
  </div>
+
  <p class="note">समाजको स्वीकृत ब्याजदर: रु. ५०,००० साँवामा मासिक रु. १,००० ब्याज अर्थात् २% मासिक / २४% वार्षिक साधारण ब्याज। वास्तविक भुक्तानी लिखित ऋण सम्झौता र निर्णयअनुसार हुनेछ।</p>
 
  <div class="section-title">४. किस्ता भुक्तानी तालिका</div>
@@ -191,10 +201,12 @@ body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer
   <div class="field"><label>रकम बुझाउने माध्यम</label><input name="payment_method" placeholder="नगद / बैंक / अन्य"></div>
   <div class="field"><label>भौचर / कारोबार नं.</label><input name="transaction_no"></div>
  </div>
+
  <div class="declaration">
  मैले समाजबाट स्वीकृत ऋण रकम रु. __________________ अक्षरेपी ______________________________ बुझिलिएँ।
  <br><br>ऋणीको हस्ताक्षर: ______________________ मिति: ______________
  </div>
+
  <div class="footer">रसाली भाई समाज परिवार • चौराठा, दैलेख<br>RASHALI BHAI SAMAJ PARIWAR • CHAURATHA, DAILEKH</div>
 </div>
 
@@ -235,8 +247,10 @@ body:not(.admin) input,body:not(.admin) textarea,body:not(.admin) select{pointer
   <div class="sign">संस्थापकको हस्ताक्षर<br>पदम रसाली</div>
   <div class="sign">कार्यालयको छाप</div>
  </div>
+
  <div class="footer">रसाली भाई समाज परिवार<br>चौराठा, दैलेख<br>RASHALI BHAI SAMAJ PARIWAR<br>एकता • सहयोग • सेवा • भाइचारा</div>
 </div>
+
 </form>
 
 <script>
@@ -276,12 +290,28 @@ async function api(path,options={}){
   ...options,
   headers:{...headers(),...(options.headers||{})}
  });
- const text=await response.text();
+
+ const responseText=await response.text();
  let data=null;
- try{data=text?JSON.parse(text):null}catch(e){data=text}
- if(!response.ok){
-  throw new Error(data?.message||data?.msg||data?.hint||data?.error_description||String(data));
+
+ try{
+  data=responseText?JSON.parse(responseText):null;
+ }catch(e){
+  data=responseText;
  }
+
+ if(!response.ok){
+  const errorMessage=
+   data?.message||
+   data?.msg||
+   data?.hint||
+   data?.details||
+   data?.error_description||
+   (typeof data==="string"?data:"Supabase request failed");
+
+  throw new Error(errorMessage);
+ }
+
  return data;
 }
 
@@ -289,48 +319,69 @@ function addGuarantors(){
  for(let i=1;i<=5;i++){
   const box=document.createElement("div");
   box.className="guarantor";
+
   box.innerHTML=`
    <h4>जमानीकर्ता नं. ${i}</h4>
+
    <div class="grid">
     <div class="field"><label>पूरा नामथर</label><input name="g${i}_name"></div>
     <div class="field"><label>मोबाइल नं.</label><input name="g${i}_phone"></div>
     <div class="field"><label>ठेगाना</label><input name="g${i}_address"></div>
     <div class="field"><label>नागरिकता नं.</label><input name="g${i}_citizenship"></div>
    </div>
+
    <div class="upload-group admin-only">
     <label>जमानीकर्ता ${i} फोटो<input type="file" id="file_g${i}_photo" accept="image/*"></label>
     <label>नागरिकता अगाडि<input type="file" id="file_g${i}_front" accept="image/*,.pdf"></label>
     <label>नागरिकता पछाडि<input type="file" id="file_g${i}_back" accept="image/*,.pdf"></label>
    </div>
+
    <div class="note" id="docs_g${i}"></div>
-   <div class="field" style="margin-top:5px"><label>हस्ताक्षर / औँठाछाप</label><input name="g${i}_signature" placeholder="हस्ताक्षर गर्ने"></div>
+
+   <div class="field" style="margin-top:5px">
+    <label>हस्ताक्षर / औँठाछाप</label>
+    <input name="g${i}_signature" placeholder="हस्ताक्षर गर्ने">
+   </div>
   `;
+
   area.appendChild(box);
  }
 }
+
 addGuarantors();
 
 function lockPublicForm(){
- document.querySelectorAll("#loanForm input,#loanForm textarea,#loanForm select").forEach(el=>{
+ document.querySelectorAll(
+  "#loanForm input,#loanForm textarea,#loanForm select"
+ ).forEach(el=>{
   el.disabled=true;
   if(el.type!=="file")el.value="";
  });
+
  document.getElementById("publicMessage").innerHTML=
- "<b>खाली ऋण आवेदन तथा निकासा फाराम</b><br>यो फाराम सार्वजनिक रूपमा प्रिन्ट गर्न मात्र उपलब्ध छ।";
+  "<b>खाली ऋण आवेदन तथा निकासा फाराम</b><br>"+
+  "यो फाराम सार्वजनिक रूपमा प्रिन्ट गर्न मात्र उपलब्ध छ।";
 }
 
 async function checkAdmin(){
+
  if(!token){
   lockPublicForm();
   return;
  }
- try{
-  const user=await api("/auth/v1/user",{method:"GET"});
-  if(!user?.id)throw new Error("Login session भेटिएन।");
 
-  const result=await api("/rest/v1/rpc/is_rasali_admin",{
-   method:"POST",body:"{}"
-  });
+ try{
+
+  const user=await api("/auth/v1/user",{method:"GET"});
+
+  if(!user?.id){
+   throw new Error("Login session भेटिएन।");
+  }
+
+  const result=await api(
+   "/rest/v1/rpc/is_rasali_admin",
+   {method:"POST",body:"{}"}
+  );
 
   if(result!==true){
    lockPublicForm();
@@ -339,33 +390,60 @@ async function checkAdmin(){
 
   currentUser=user;
   isAdmin=true;
+
   document.body.classList.add("admin");
-  document.querySelectorAll("#loanForm input,#loanForm textarea,#loanForm select").forEach(el=>el.disabled=false);
+
+  document.querySelectorAll(
+   "#loanForm input,#loanForm textarea,#loanForm select"
+  ).forEach(el=>el.disabled=false);
+
   document.getElementById("publicMessage").innerHTML=
    "<b>Admin फाराम:</b> विवरण भर्नुहोस्, कागजात Upload गर्नुहोस् र सुरक्षित गर्नुहोस्।";
+
   await refreshApplications();
+
  }catch(error){
+
   console.error(error);
   isAdmin=false;
   lockPublicForm();
-  message("Admin अनुमति जाँच हुन सकेन। फेरि Login गर्नुहोस्।","error");
+
+  message(
+   "Admin अनुमति जाँच हुन सकेन। फेरि Login गर्नुहोस्। "+
+   error.message,
+   "error"
+  );
  }
 }
 
 function collectData(){
+
  const data={};
- form.querySelectorAll("input:not([type=file]),textarea,select").forEach(el=>{
+
+ form.querySelectorAll(
+  "input:not([type=file]),textarea,select"
+ ).forEach(el=>{
   if(el.name)data[el.name]=el.value;
  });
+
  data.documents=savedDocuments;
+
  return data;
 }
 
 function fillForm(data){
- form.querySelectorAll("input:not([type=file]),textarea,select").forEach(el=>{
-  if(el.name)el.value=data[el.name]??"";
+
+ form.querySelectorAll(
+  "input:not([type=file]),textarea,select"
+ ).forEach(el=>{
+  if(el.name){
+   el.value=data[el.name]??"";
+  }
  });
+
  savedDocuments=Array.isArray(data.documents)?data.documents:[];
+
+ // पुरानो आवेदनमा नाम नभए Database को applicant_name प्रयोग हुन्छ
  showDocuments();
 }
 
@@ -374,6 +452,7 @@ const uploadFields=[
  ["file_borrower_front","आवेदक नागरिकता अगाडि"],
  ["file_borrower_back","आवेदक नागरिकता पछाडि"]
 ];
+
 for(let i=1;i<=5;i++){
  uploadFields.push(
   [`file_g${i}_photo`,`जमानीकर्ता ${i} फोटो`],
@@ -387,7 +466,13 @@ function safeName(name){
 }
 
 async function uploadFile(file,applicationId,label){
- const path=applicationId+"/"+Date.now()+"_"+Math.random().toString(36).slice(2,8)+"_"+safeName(file.name);
+
+ const path=
+  applicationId+"/"+
+  Date.now()+"_"+
+  Math.random().toString(36).slice(2,8)+"_"+
+  safeName(file.name);
+
  const response=await fetch(
   SUPABASE_URL+"/storage/v1/object/"+BUCKET+"/"+path,
   {
@@ -401,152 +486,368 @@ async function uploadFile(file,applicationId,label){
    body:file
   }
  );
+
  const result=await response.json().catch(()=>({}));
- if(!response.ok)throw new Error(result.message||result.error||"Upload असफल: "+label);
- return {label,path,name:file.name,type:file.type,size:file.size};
+
+ if(!response.ok){
+  throw new Error(
+   result.message||
+   result.error||
+   "Upload असफल: "+label
+  );
+ }
+
+ return {
+  label,
+  path,
+  name:file.name,
+  type:file.type,
+  size:file.size
+ };
+}
+
+async function getApplicationById(id){
+
+ const rows=await api(
+  "/rest/v1/loan_applications?id=eq."+
+  encodeURIComponent(id)+
+  "&select=id,application_no,applicant_name,form_data"
+ );
+
+ return rows.length?rows[0]:null;
+}
+
+async function getApplicationByNumber(number){
+
+ if(!number)return null;
+
+ const rows=await api(
+  "/rest/v1/loan_applications?application_no=eq."+
+  encodeURIComponent(number)+
+  "&select=id,application_no,applicant_name,form_data"
+ );
+
+ return rows.length?rows[0]:null;
 }
 
 async function saveForm(){
+
  if(!isAdmin){
   message("Admin मात्रले सुरक्षित गर्न पाउँछ।","error");
   return;
  }
+
  const button=document.getElementById("saveBtn");
+
  button.disabled=true;
  button.textContent="सुरक्षित हुँदैछ...";
 
  try{
+
   let data=collectData();
+
+  const select=document.getElementById("savedApplications");
+
+  // Dropdown मा छानिएको पुरानो आवेदन भए त्यसैलाई Update गर्ने
+  if(!currentApplicationId && select.value){
+   currentApplicationId=select.value;
+  }
+
+  let existing=null;
+
+  if(currentApplicationId){
+   existing=await getApplicationById(currentApplicationId);
+  }
+
+  // ID नभए आवेदन नम्बरबाट पुरानो रेकर्ड खोज्ने
+  const applicationNo=(data.application_no||"").trim();
+
+  if(!existing && applicationNo){
+   existing=await getApplicationByNumber(applicationNo);
+
+   if(existing){
+    currentApplicationId=existing.id;
+   }
+  }
+
+  // पुरानो Database रेकर्डबाट नाम पुनः प्राप्त गर्ने
+  const borrowerName=
+   (data.borrower_name||"").trim()||
+   existing?.applicant_name||
+   existing?.form_data?.borrower_name||
+   "";
+
+  if(!borrowerName){
+   throw new Error("आवेदकको पूरा नाम भर्नुहोस्।");
+  }
+
+  data.borrower_name=borrowerName;
+
   const payload={
-   application_no:data.application_no.trim()||null,
-   applicant_name:data.borrower_name||null,
+   application_no:applicationNo||null,
+   applicant_name:borrowerName,
    form_data:data,
-   status:"pending",
-   created_by:currentUser.id
+   status:"pending"
   };
 
   if(currentApplicationId){
-   await api("/rest/v1/loan_applications?id=eq."+encodeURIComponent(currentApplicationId),{
-    method:"PATCH",
-    headers:{"Prefer":"return=minimal"},
-    body:JSON.stringify({
-     application_no:payload.application_no,
-     applicant_name:payload.applicant_name,
-     form_data:data,
-     updated_at:new Date().toISOString()
-    })
-   });
+
+   // पुरानो आवेदन Update
+   await api(
+    "/rest/v1/loan_applications?id=eq."+
+    encodeURIComponent(currentApplicationId),
+    {
+     method:"PATCH",
+     headers:{"Prefer":"return=minimal"},
+     body:JSON.stringify({
+      ...payload,
+      updated_at:new Date().toISOString()
+     })
+    }
+   );
+
   }else{
-   const inserted=await api("/rest/v1/loan_applications",{
-    method:"POST",
-    headers:{"Prefer":"return=representation"},
-    body:JSON.stringify(payload)
-   });
-   if(!inserted?.[0]?.id)throw new Error("नयाँ आवेदनको ID प्राप्त भएन।");
+
+   // नयाँ आवेदन मात्र Insert
+   const inserted=await api(
+    "/rest/v1/loan_applications",
+    {
+     method:"POST",
+     headers:{"Prefer":"return=representation"},
+     body:JSON.stringify({
+      ...payload,
+      created_by:currentUser.id
+     })
+    }
+   );
+
+   if(!inserted?.[0]?.id){
+    throw new Error("नयाँ आवेदनको ID प्राप्त भएन।");
+   }
+
    currentApplicationId=inserted[0].id;
   }
 
+  // छानिएका फाइलहरू Private Storage मा Upload
   let uploaded=0;
+
   for(const [inputId,label] of uploadFields){
+
    const input=document.getElementById(inputId);
    const file=input?.files?.[0];
+
    if(!file)continue;
-   const doc=await uploadFile(file,currentApplicationId,label);
+
+   const doc=await uploadFile(
+    file,
+    currentApplicationId,
+    label
+   );
+
    savedDocuments.push(doc);
+
    input.value="";
    uploaded++;
   }
 
+  // Upload भएका कागजातको path form_data मा सुरक्षित गर्ने
   data=collectData();
 
-  await api("/rest/v1/loan_applications?id=eq."+encodeURIComponent(currentApplicationId),{
-   method:"PATCH",
-   headers:{"Prefer":"return=minimal"},
-   body:JSON.stringify({
-    form_data:data,
-    updated_at:new Date().toISOString()
-   })
-  });
+  await api(
+   "/rest/v1/loan_applications?id=eq."+
+   encodeURIComponent(currentApplicationId),
+   {
+    method:"PATCH",
+    headers:{"Prefer":"return=minimal"},
+    body:JSON.stringify({
+     form_data:data,
+     updated_at:new Date().toISOString()
+    })
+   }
+  );
 
   showDocuments();
+
   await refreshApplications();
-  document.getElementById("savedApplications").value=currentApplicationId;
-  message("आवेदन Database मा सुरक्षित भयो। Upload भएका कागजात: "+uploaded+" वटा।","ok");
+
+  document.getElementById("savedApplications").value=
+   currentApplicationId;
+
+  message(
+   "आवेदन सफलतापूर्वक सुरक्षित भयो। Upload भएका कागजात: "+
+   uploaded+" वटा।",
+   "ok"
+  );
 
  }catch(error){
+
   console.error(error);
-  message("सुरक्षित गर्दा समस्या: "+error.message,"error");
+
+  message(
+   "सुरक्षित गर्दा समस्या: "+error.message,
+   "error"
+  );
+
  }finally{
+
   button.disabled=false;
   button.textContent="💾 विवरण सुरक्षित";
+
  }
 }
 
 async function refreshApplications(){
+
  if(!isAdmin)return;
+
  try{
-  const rows=await api("/rest/v1/loan_applications?select=id,application_no,applicant_name,created_at&order=created_at.desc&limit=100");
+
+  const rows=await api(
+   "/rest/v1/loan_applications"+
+   "?select=id,application_no,applicant_name,created_at"+
+   "&order=created_at.desc&limit=100"
+  );
+
   const select=document.getElementById("savedApplications");
-  select.innerHTML='<option value="">पुरानो आवेदन छान्नुहोस्</option>';
+  const previousValue=select.value;
+
+  select.innerHTML=
+   '<option value="">पुरानो आवेदन छान्नुहोस्</option>';
+
   rows.forEach(row=>{
+
    const option=document.createElement("option");
+
    option.value=row.id;
-   option.textContent=(row.application_no||"नम्बर छैन")+" - "+(row.applicant_name||"नाम छैन")+" ("+new Date(row.created_at).toLocaleDateString()+")";
+
+   option.textContent=
+    (row.application_no||"नम्बर छैन")+
+    " - "+
+    (row.applicant_name||"नाम छैन")+
+    " ("+
+    new Date(row.created_at).toLocaleDateString()+
+    ")";
+
    select.appendChild(option);
   });
+
+  if(previousValue){
+   select.value=previousValue;
+  }
+
  }catch(error){
-  message("आवेदन सूची निकाल्न समस्या: "+error.message,"error");
+
+  message(
+   "आवेदन सूची निकाल्न समस्या: "+error.message,
+   "error"
+  );
  }
 }
 
 async function openApplication(){
+
  if(!isAdmin)return;
+
  const id=document.getElementById("savedApplications").value;
+
  if(!id){
   message("पहिले आवेदन छान्नुहोस्।","error");
   return;
  }
+
  try{
-  const rows=await api("/rest/v1/loan_applications?id=eq."+encodeURIComponent(id)+"&select=id,form_data");
-  if(!rows.length)throw new Error("आवेदन भेटिएन।");
-  currentApplicationId=rows[0].id;
-  fillForm(rows[0].form_data||{});
-  message("पुरानो आवेदन खोलियो। आवश्यक परिवर्तन गरेर सुरक्षित गर्न सक्नुहुन्छ।","ok");
+
+  const row=await getApplicationById(id);
+
+  if(!row){
+   throw new Error("आवेदन भेटिएन।");
+  }
+
+  currentApplicationId=row.id;
+
+  const data=row.form_data||{};
+
+  // Database का मुख्य Column बाट आवेदन नम्बर र नाम भर्ने
+  if(!data.application_no){
+   data.application_no=row.application_no||"";
+  }
+
+  if(!data.borrower_name){
+   data.borrower_name=row.applicant_name||"";
+  }
+
+  fillForm(data);
+
+  message(
+   "पुरानो आवेदन खोलियो। विवरण जाँच गरेर आवश्यक परिवर्तन गर्न सक्नुहुन्छ।",
+   "ok"
+  );
+
  }catch(error){
-  message("आवेदन खोल्न समस्या: "+error.message,"error");
+
+  message(
+   "आवेदन खोल्न समस्या: "+error.message,
+   "error"
+  );
  }
 }
 
 function newForm(){
+
  if(!isAdmin)return;
- if(!confirm("नयाँ फाराम खोल्ने? सुरक्षित गरिसकेको पुरानो आवेदन Database मा रहनेछ।"))return;
+
+ if(!confirm(
+  "नयाँ फाराम खोल्ने? पुरानो आवेदन Database मा सुरक्षित रहनेछ।"
+ ))return;
+
  form.reset();
+
  currentApplicationId=null;
  savedDocuments=[];
+
  showDocuments();
+
  document.getElementById("savedApplications").value="";
+
  message("नयाँ आवेदन तयार भयो।","ok");
 }
 
 function showDocuments(){
+
  const borrower=document.getElementById("borrowerFiles");
  const guarantorDiv=[];
- for(let i=1;i<=5;i++)guarantorDiv.push(document.getElementById("docs_g"+i));
+
+ for(let i=1;i<=5;i++){
+  guarantorDiv.push(document.getElementById("docs_g"+i));
+ }
 
  borrower.innerHTML="";
  guarantorDiv.forEach(el=>el.innerHTML="");
 
  savedDocuments.forEach(doc=>{
+
   const item=document.createElement("div");
+
   item.textContent="✓ "+doc.label+" — "+doc.name;
   item.className="upload-link";
-  let target=doc.label.startsWith("जमानीकर्ता")?
-   guarantorDiv[Number(doc.label.match(/\d+/)?.[0])-1]:borrower;
+
+  let target=borrower;
+
+  if(doc.label.startsWith("जमानीकर्ता")){
+
+   const match=doc.label.match(/\d+/);
+   const index=match?Number(match[0])-1:-1;
+
+   target=guarantorDiv[index]||borrower;
+  }
+
   if(target)target.appendChild(item);
  });
 }
 
 window.addEventListener("DOMContentLoaded",checkAdmin);
 </script>
+
 </body>
 </html>
+ 
