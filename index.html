@@ -60,39 +60,10 @@ nav a:hover{background:var(--red)}
 .greeting-card-home{background:#f0f6ff;border:2px solid #b9d5f5}
 .greeting-button{background:linear-gradient(120deg,var(--blue),var(--blue2))}
 
-/* COLORFUL SERVICE BUTTONS */
-.service-box{
- background:linear-gradient(135deg,#e8f3ff,#fff);
- border:2px solid #cbdff7;
- border-radius:20px;
- padding:18px;
- box-shadow:0 5px 18px #092e6315;
-}
-.service-buttons{
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:13px;
-}
-.service-btn{
- min-height:115px;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- gap:8px;
- padding:14px 7px;
- border-radius:14px;
- color:white;
- text-align:center;
- font-weight:800;
- font-size:14px;
- box-shadow:0 5px 12px #0002;
- transition:.2s;
-}
-.service-btn:hover{
- transform:translateY(-4px);
- box-shadow:0 8px 18px #0003;
-}
+.service-box{background:linear-gradient(135deg,#e8f3ff,#fff);border:2px solid #cbdff7;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.service-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.service-btn{min-height:115px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:14px 7px;border-radius:14px;color:white;text-align:center;font-weight:800;font-size:14px;box-shadow:0 5px 12px #0002;transition:.2s}
+.service-btn:hover{transform:translateY(-4px);box-shadow:0 8px 18px #0003}
 .service-btn .btn-icon{font-size:32px;line-height:1.2}
 .service-btn:nth-child(8n+1){background:#198754}
 .service-btn:nth-child(8n+2){background:#7c3aed}
@@ -103,22 +74,7 @@ nav a:hover{background:var(--red)}
 .service-btn:nth-child(8n+7){background:#c02675}
 .service-btn:nth-child(8n){background:#475569}
 
-/* CONTACT BUTTONS */
-.contact-box{
- min-height:155px;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- gap:9px;
- padding:18px 8px;
- border-radius:16px;
- color:white;
- text-align:center;
- font-weight:bold;
- box-shadow:0 5px 15px #0002;
- transition:.2s;
-}
+.contact-box{min-height:155px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;padding:18px 8px;border-radius:16px;color:white;text-align:center;font-weight:bold;box-shadow:0 5px 15px #0002;transition:.2s}
 .contact-box:hover{transform:translateY(-4px);box-shadow:0 8px 18px #0003}
 .contact-icon{font-size:38px;line-height:1.2}
 .contact-box h3{color:white}
@@ -127,7 +83,6 @@ nav a:hover{background:var(--red)}
 .whatsapp-box{background:linear-gradient(135deg,#047857,#10b981)}
 .email-box{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}
 
-/* MEMBER DIRECTORY */
 .member-section{background:linear-gradient(135deg,#e8f3ff,#f7fbff);padding:18px;border-radius:18px;border:1px solid #c8dcf6}
 .member-layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:16px;align-items:start}
 .directory-panel,.side-panel{background:white;border:1px solid #cbdff7;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
@@ -176,6 +131,22 @@ nav a:hover{background:var(--red)}
 .login-box{background:linear-gradient(120deg,var(--blue),var(--blue2));color:white}
 .login-box h2{color:white}
 .login-box a{display:inline-block;margin-top:12px;background:white;color:var(--blue);padding:10px 25px;border-radius:25px;font-weight:bold}
+
+/* MUSEUM PREVIEW */
+.museum-home{background:linear-gradient(135deg,#eaf3ff,#fff);border:2px solid #c7daf4}
+.museum-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}
+.museum-item{background:white;border:1px solid #d8e5f4;border-radius:13px;padding:15px;text-align:center}
+.museum-item .museum-icon{font-size:38px}
+.museum-item h3{font-size:16px;margin:6px 0;color:var(--blue)}
+.museum-item p{font-size:13px}
+.museum-link{display:inline-block;margin-top:15px;background:var(--blue);color:white;padding:11px 22px;border-radius:9px;font-weight:bold}
+
+/* EXCHANGE PREVIEW */
+.exchange-home{background:linear-gradient(135deg,#eaf8f1,#fff);border:2px solid #b8e2cb}
+.exchange-currencies{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:14px 0}
+.exchange-currencies span{background:#e7f2ff;color:var(--blue);padding:7px 13px;border-radius:20px;font-weight:bold;font-size:13px}
+.exchange-link{display:inline-block;margin-top:10px;background:#087b48;color:white;padding:11px 22px;border-radius:9px;font-weight:bold}
+
 footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)}
 footer h3{font-size:21px}
 
@@ -191,6 +162,7 @@ footer h3{font-size:21px}
  .member-tools{flex-direction:column;align-items:stretch}
  .search-area{width:100%}
  .member-count{width:100%}
+ .museum-gallery{grid-template-columns:1fr}
 }
 @media(max-width:600px){
  header{padding:15px 7px}
@@ -270,6 +242,8 @@ footer h3{font-size:21px}
  <a href="voucher.html">📄 भौचर</a>
  <a href="samman-patra.html">🏅 सम्मानपत्र</a>
  <a href="greetings.html">🎉 शुभकामना</a>
+ <a href="museum.html">🏛️ इतिहास संग्रहालय</a>
+ <a href="money-exchange.html">💱 Money Exchange</a>
  <a href="login.html">🔐 Login</a>
 </nav>
 
@@ -303,65 +277,79 @@ footer h3{font-size:21px}
  </div>
 </section>
 
-<!-- COLORFUL SERVICE SHORTCUTS -->
 <section id="services" class="section">
  <h2 class="section-title">🌟 हाम्रा सेवा तथा सुविधाहरू</h2>
  <div class="service-box">
   <div class="service-buttons">
 
-   <a href="#member" class="service-btn">
-    <span class="btn-icon">👥</span><span>सदस्य सूची</span>
-   </a>
-
-   <a href="loan-information.html" class="service-btn">
-    <span class="btn-icon">💰</span><span>ऋण सेवा</span>
-   </a>
-
-   <a href="loan-application.html" class="service-btn">
-    <span class="btn-icon">📝</span><span>ऋण आवेदन फाराम</span>
-   </a>
-
-   <a href="rules.html" class="service-btn">
-    <span class="btn-icon">📖</span><span>नियमावली</span>
-   </a>
-
-   <a href="voucher.html" class="service-btn">
-    <span class="btn-icon">📄</span><span>आम्दानी खर्च भौचर</span>
-   </a>
-
-   <a href="samman-patra.html" class="service-btn">
-    <span class="btn-icon">🏅</span><span>सम्मानपत्र</span>
-   </a>
-
-   <a href="greetings.html" class="service-btn">
-    <span class="btn-icon">🎉</span><span>शुभकामना स्टुडियो</span>
-   </a>
-
-   <a href="#notice" class="service-btn">
-    <span class="btn-icon">📢</span><span>समाजका सूचना</span>
-   </a>
-
-   <a href="#calendar" class="service-btn">
-    <span class="btn-icon">📅</span><span>क्यालेन्डर</span>
-   </a>
-
-   <a href="#complaint" class="service-btn">
-    <span class="btn-icon">📝</span><span>गुनासो तथा सुझाव</span>
-   </a>
-
-   <a href="#official" class="service-btn">
-    <span class="btn-icon">🤝</span><span>पदाधिकारी</span>
-   </a>
-
-   <a href="#contact" class="service-btn">
-    <span class="btn-icon">📞</span><span>सम्पर्क</span>
-   </a>
-
-   <a href="login.html" class="service-btn">
-    <span class="btn-icon">🔐</span><span>सदस्य Login</span>
-   </a>
+   <a href="#member" class="service-btn"><span class="btn-icon">👥</span><span>सदस्य सूची</span></a>
+   <a href="loan-information.html" class="service-btn"><span class="btn-icon">💰</span><span>ऋण सेवा</span></a>
+   <a href="loan-application.html" class="service-btn"><span class="btn-icon">📝</span><span>ऋण आवेदन फाराम</span></a>
+   <a href="rules.html" class="service-btn"><span class="btn-icon">📖</span><span>नियमावली</span></a>
+   <a href="voucher.html" class="service-btn"><span class="btn-icon">📄</span><span>आम्दानी खर्च भौचर</span></a>
+   <a href="samman-patra.html" class="service-btn"><span class="btn-icon">🏅</span><span>सम्मानपत्र</span></a>
+   <a href="greetings.html" class="service-btn"><span class="btn-icon">🎉</span><span>शुभकामना स्टुडियो</span></a>
+   <a href="#notice" class="service-btn"><span class="btn-icon">📢</span><span>समाजका सूचना</span></a>
+   <a href="#calendar" class="service-btn"><span class="btn-icon">📅</span><span>क्यालेन्डर</span></a>
+   <a href="#complaint" class="service-btn"><span class="btn-icon">📝</span><span>गुनासो तथा सुझाव</span></a>
+   <a href="#official" class="service-btn"><span class="btn-icon">🤝</span><span>पदाधिकारी</span></a>
+   <a href="#contact" class="service-btn"><span class="btn-icon">📞</span><span>सम्पर्क</span></a>
+   <a href="login.html" class="service-btn"><span class="btn-icon">🔐</span><span>सदस्य Login</span></a>
+   <a href="museum.html" class="service-btn"><span class="btn-icon">🏛️</span><span>इतिहास संग्रहालय</span></a>
+   <a href="money-exchange.html" class="service-btn"><span class="btn-icon">💱</span><span>Money Exchange Rate</span></a>
 
   </div>
+ </div>
+</section>
+
+<!-- DIGITAL HISTORY AND MEMORIES MUSEUM -->
+<section id="museum" class="section">
+ <h2 class="section-title">🏛️ इतिहास तथा सम्झना संग्रहालय</h2>
+ <div class="card museum-home">
+  <div style="font-size:55px">🏛️📸🎥</div>
+  <h3>हाम्रो इतिहास, हाम्रो पहिचान</h3>
+  <p>रसाली भाई समाज परिवार चौराठाका पुराना तथा नयाँ तस्बिर, भिडियो, ऐतिहासिक कागजात र महत्वपूर्ण सम्झनाहरू सुरक्षित राख्ने डिजिटल संग्रहालय।</p>
+
+  <div class="museum-gallery">
+   <div class="museum-item">
+    <div class="museum-icon">📸</div>
+    <h3>पुराना तस्बिरहरू</h3>
+    <p>समाजका ऐतिहासिक तथा सम्झनायोग्य फोटोहरू।</p>
+   </div>
+   <div class="museum-item">
+    <div class="museum-icon">🎥</div>
+    <h3>भिडियो संग्रह</h3>
+    <p>बैठक, भेला, समारोह र कार्यक्रमका भिडियोहरू।</p>
+   </div>
+   <div class="museum-item">
+    <div class="museum-icon">📜</div>
+    <h3>ऐतिहासिक कागजात</h3>
+    <p>समाजका पुराना निर्णय, अभिलेख र दस्तावेजहरू।</p>
+   </div>
+  </div>
+
+  <p style="margin-top:15px">समाजको स्थापना २०८२ देखि अहिलेसम्मका महत्वपूर्ण घटनाहरूको समयरेखा पनि यहाँ राखिनेछ।</p>
+  <a href="museum.html" class="museum-link">🏛️ विस्तृत संग्रहालय खोल्नुहोस्</a>
+ </div>
+</section>
+
+<!-- MONEY EXCHANGE RATE -->
+<section id="exchange" class="section">
+ <h2 class="section-title">💱 Money Exchange Rate</h2>
+ <div class="card exchange-home">
+  <div style="font-size:48px">💱🌍</div>
+  <h3>विदेशी मुद्रा विनिमय जानकारी</h3>
+  <p>विदेशमा रहेका सदस्य तथा परिवारका लागि विभिन्न देशका मुद्राको नेपाली रुपैयाँसँगको विनिमय दर हेर्न र रकम हिसाब गर्न सकिने छुट्टै सुविधा।</p>
+  <div class="exchange-currencies">
+   <span>🇸🇦 SAR</span>
+   <span>🇺🇸 USD</span>
+   <span>🇦🇪 AED</span>
+   <span>🇶🇦 QAR</span>
+   <span>🇰🇼 KWD</span>
+   <span>🇳🇵 NPR</span>
+  </div>
+  <p style="font-size:12px;color:#64748b">विनिमय दर सम्बन्धित बैंक तथा सेवा प्रदायकअनुसार फरक हुन सक्छ।</p>
+  <a href="money-exchange.html" class="exchange-link">💱 Exchange Rate खोल्नुहोस्</a>
  </div>
 </section>
 
@@ -485,29 +473,18 @@ footer h3{font-size:21px}
  </div>
 </section>
 
-<!-- CONTACT BUTTONS -->
 <section id="contact" class="section">
  <h2 class="section-title">📞 हामीसँग सम्पर्क गर्नुहोस्</h2>
  <div class="grid">
-
   <a class="contact-box call-box" href="tel:+9779766850626">
-   <span class="contact-icon">📞</span>
-   <h3>Call गर्नुहोस्</h3>
-   <p>9766850626</p>
+   <span class="contact-icon">📞</span><h3>Call गर्नुहोस्</h3><p>9766850626</p>
   </a>
-
   <a class="contact-box whatsapp-box" href="https://wa.me/9779766850626" target="_blank" rel="noopener">
-   <span class="contact-icon">💬</span>
-   <h3>WhatsApp गर्नुहोस्</h3>
-   <p>9766850626</p>
+   <span class="contact-icon">💬</span><h3>WhatsApp गर्नुहोस्</h3><p>9766850626</p>
   </a>
-
   <a class="contact-box email-box" href="mailto:Bhaisamajrashali@gmail.com">
-   <span class="contact-icon">✉️</span>
-   <h3>Email पठाउनुहोस्</h3>
-   <p>Bhaisamajrashali@gmail.com</p>
+   <span class="contact-icon">✉️</span><h3>Email पठाउनुहोस्</h3><p>Bhaisamajrashali@gmail.com</p>
   </a>
-
  </div>
 </section>
 
@@ -544,9 +521,7 @@ function safeImageUrl(value){
  try{
   const url=new URL(value);
   return url.protocol==="https:"?url.href:"";
- }catch(e){
-  return "";
- }
+ }catch(e){return ""}
 }
 
 async function loadWebsiteSettings(){
@@ -595,7 +570,6 @@ async function loadWebsiteSettings(){
     if(fallback)document.getElementById(fallback).style.display="none";
    }
   });
-
  }catch(error){
   console.error("Website settings error:",error);
  }
@@ -625,18 +599,12 @@ function renderMembers(data){
     alt="${name}"
     style="display:${photo?'block':'none'}"
     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-
    <div class="member-avatar" style="display:${photo?'none':'flex'}">${firstLetter}</div>
-
    <h3>${name}</h3>
    <div class="member-position">👤 ${position}</div>
    <div class="member-id">सदस्य ID: ${id}</div>
-
    ${phone?`<div class="member-phone">📞 ${phone}</div>`:""}
-
-   <button class="detail-button" onclick="showMemberDetails(decodeURIComponent('${encodedId}'))">
-    👁 विवरण हेर्नुहोस्
-   </button>
+   <button class="detail-button" onclick="showMemberDetails(decodeURIComponent('${encodedId}'))">👁 विवरण हेर्नुहोस्</button>
   </div>`;
  }).join("");
 }
@@ -656,7 +624,6 @@ async function loadMembers(){
   allMembers=data||[];
   count.innerText="👥 जम्मा सदस्य संख्या: "+allMembers.length;
   renderMembers(allMembers);
-
  }catch(error){
   console.error("Member loading error:",error);
   count.innerText="सदस्य विवरण उपलब्ध भएन";
@@ -666,12 +633,10 @@ async function loadMembers(){
 
 function searchMembers(){
  const query=document.getElementById("memberSearch").value.trim().toLowerCase();
-
  const filtered=allMembers.filter(member=>
   [member.name,member.position,member.id,member.phone]
    .some(value=>String(value||"").toLowerCase().includes(query))
  );
-
  renderMembers(filtered);
 }
 
@@ -736,7 +701,6 @@ async function loadNotices(){
     <p>${escapeHTML(notice.Content)}</p>
    </div>
   `).join("");
-
  }catch(error){
   console.error("Notice error:",error);
   list.innerHTML='<div class="error">सूचना लोड गर्न समस्या भयो।</div>';
