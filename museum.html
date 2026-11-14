@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>इतिहास तथा सम्झना संग्रहालय | रसाली भाई समाज परिवार</title>
+<meta name="description" content="रसाली भाई समाज परिवार चौराठाको इतिहास, सम्झना, फोटो, भिडियो तथा ऐतिहासिक कागजातहरूको डिजिटल संग्रहालय।">
+
+<style>
+:root{
+  --blue:#123d78;
+  --blue2:#1762a8;
+  --red:#c62828;
+  --gold:#d9a441;
+  --light:#f3f7fc;
+  --dark:#18263b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Noto Sans Devanagari","Segoe UI",Arial,sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  line-height:1.7;
+}
+header{
+  background:linear-gradient(120deg,#102e60,#1762a8);
+  color:white;
+  padding:25px 15px;
+  text-align:center;
+  border-bottom:5px solid var(--red);
+}
+.logo{
+  width:85px;height:85px;
+  border-radius:50%;
+  border:3px solid white;
+  object-fit:contain;
+  background:white;
+  padding:5px;
+}
+header h1{margin:8px 0 2px;font-size:25px}
+header p{margin:3px 0;color:#e5efff}
+.tagline{font-weight:bold;color:#ffe2a0!important}
+nav{
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  padding:12px;
+  box-shadow:0 3px 12px #00000012;
+}
+nav a{
+  text-decoration:none;
+  color:var(--blue);
+  font-weight:bold;
+  padding:7px 13px;
+  border-radius:20px;
+  font-size:14px;
+}
+nav a:hover{background:#e8effa}
+.hero{
+  background:linear-gradient(120deg,#102e60dd,#1762a8dd);
+  color:white;
+  text-align:center;
+  padding:55px 18px;
+}
+.hero h2{font-size:30px;margin:0 0 10px}
+.hero p{max-width:720px;margin:auto;color:#edf4ff}
+.container{max-width:1100px;margin:auto;padding:25px 16px}
+.section-title{
+  text-align:center;
+  color:var(--blue);
+  font-size:25px;
+  margin:12px 0 5px;
+}
+.section-sub{text-align:center;color:#66758a;margin:0 0 25px}
+.intro{
+  background:white;
+  border-radius:15px;
+  padding:22px;
+  box-shadow:0 4px 16px #102e6010;
+  border-left:5px solid var(--red);
+  margin-bottom:25px;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:22px 0;
+}
+.stat{
+  background:white;
+  border-radius:13px;
+  padding:18px 8px;
+  text-align:center;
+  box-shadow:0 3px 12px #0000000b;
+}
+.stat strong{display:block;color:var(--blue);font-size:23px}
+.stat span{font-size:13px;color:#68778a}
+.tabs{
+  display:flex;gap:9px;justify-content:center;
+  flex-wrap:wrap;margin:20px 0;
+}
+.tab{
+  border:1px solid #cbd8e9;
+  background:white;color:var(--blue);
+  padding:9px 17px;border-radius:22px;
+  font-weight:bold;cursor:pointer;
+}
+.tab.active{background:var(--blue);color:white}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
+}
+.item{
+  background:white;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 15px #00000010;
+}
+.item-visual{
+  height:155px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#dce9fa,#edf3fc);
+  color:var(--blue);font-size:42px;
+}
+.item-content{padding:15px}
+.item-content h3{margin:0 0 5px;color:var(--blue);font-size:17px}
+.item-content p{margin:0;color:#68778a;font-size:14px}
+.empty{
+  background:white;border:1px dashed #aebed2;
+  padding:30px 15px;border-radius:14px;
+  text-align:center;color:#68778a;
+}
+.empty .symbol{font-size:40px}
+.timeline{max-width:750px;margin:25px auto}
+.event{
+  position:relative;
+  padding:0 0 25px 28px;
+  border-left:3px solid #cbd8e9;
+  margin-left:12px;
+}
+.event:before{
+  content:"";position:absolute;
+  width:15px;height:15px;border-radius:50%;
+  background:var(--red);left:-9px;top:5px;
+}
+.event h3{margin:0;color:var(--blue)}
+.event p{margin:5px 0;color:#68778a}
+.note{
+  background:#fff6e5;border:1px solid #f0d69b;
+  border-radius:12px;padding:15px;margin-top:20px;
+  color:#75551b;font-size:14px;
+}
+footer{
+  background:#102e60;color:white;text-align:center;
+  padding:25px 15px;margin-top:35px;
+}
+footer p{margin:4px}
+.back{
+  display:inline-block;background:var(--red);color:white;
+  padding:10px 20px;border-radius:25px;
+  text-decoration:none;font-weight:bold;margin-top:15px;
+}
+@media(max-width:700px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .hero h2{font-size:24px}
+}
+@media(max-width:430px){
+  .gallery{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .stat strong{font-size:19px}
+  header h1{font-size:21px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <!-- आफ्नो वास्तविक लोगोको URL भए तलको src मा राख्नुहोस् -->
+  <img class="logo" src="logo.png" alt="समाजको लोगो"
+       onerror="this.style.display='none'">
+
+  <h1>रसाली भाई समाज परिवार चौराठा</h1>
+  <p>चौराठा, दैलेख, नेपाल</p>
+  <p class="tagline">एकता • सहयोग • सेवा • भाइचारा</p>
+  <p>स्थापना: २०८२ | ESTD: 2082</p>
+</header>
+
+<nav>
+  <a href="index.html">मुख्य पृष्ठ</a>
+  <a href="#parichaya">परिचय</a>
+  <a href="#timeline">इतिहास</a>
+  <a href="#photos">फोटो संग्रह</a>
+  <a href="#videos">भिडियो संग्रह</a>
+  <a href="#documents">कागजात</a>
+</nav>
+
+<section class="hero">
+  <h2>हाम्रो इतिहास, हाम्रो पहिचान</h2>
+  <p>
+    हाम्रा पुर्खाको सम्झना, समाजका महत्वपूर्ण क्षण,
+    ऐतिहासिक दस्तावेज र भावी पुस्ताका लागि अमूल्य
+    सम्झनाहरू सुरक्षित राख्ने डिजिटल संग्रहालय।
+  </p>
+</section>
+
+<main class="container">
+
+  <section id="parichaya">
+    <h2 class="section-title">डिजिटल इतिहास तथा सम्झना संग्रहालय</h2>
+    <p class="section-sub">हिजोका सम्झना, आजको एकता र भोलिको इतिहास</p>
+
+    <div class="intro">
+      <h3>रसाली भाई समाज परिवारको सम्झना घर</h3>
+      <p>
+        यस डिजिटल संग्रहालयको उद्देश्य रसाली भाई समाज परिवार
+        चौराठाको इतिहास, सामाजिक गतिविधि, पुराना तथा नयाँ
+        तस्बिर, भिडियो र महत्वपूर्ण कागजातहरू एकै ठाउँमा
+        सुरक्षित राख्नु हो।
+      </p>
+      <p>
+        हाम्रा अग्रजहरूको योगदान र समाजका महत्वपूर्ण
+        उपलब्धिहरू भावी पुस्तासम्म पुर्‍याउनु हाम्रो लक्ष्य हो।
+      </p>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <strong>२०८२</strong>
+      <span>स्थापना वर्ष</span>
+    </div>
+    <div class="stat">
+      <strong>∞</strong>
+      <span>सम्झनाको यात्रा</span>
+    </div>
+    <div class="stat">
+      <strong>१</strong>
+      <span>हाम्रो परिवार</span>
+    </div>
+  </div>
+
+  <section id="timeline">
+    <h2 class="section-title">समाजको ऐतिहासिक समयरेखा</h2>
+    <p class="section-sub">महत्वपूर्ण घटनाहरूको अभिलेख</p>
+
+    <div class="timeline">
+      <div class="event">
+        <h3>२०८२ — समाजको स्थापना</h3>
+        <p>
+          रसाली भाई समाज परिवार चौराठाको स्थापना।
+          यस वर्षदेखि समाजको इतिहास र गतिविधिहरू
+          अभिलेख राख्ने यात्रा सुरु भएको हो।
+        </p>
+      </div>
+      <div class="event">
+        <h3>आगामी ऐतिहासिक गतिविधिहरू</h3>
+        <p>
+          समाजका बैठक, कार्यक्रम, सामाजिक सेवा,
+          निर्णय तथा उपलब्धिहरू यहाँ क्रमशः थपिनेछन्।
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <h2 class="section-title">फोटो संग्रह</h2>
+    <p class="section-sub">समाजका पुराना तथा नयाँ तस्बिरहरू</p>
+
+    <div class="empty">
+      <div class="symbol">📷</div>
+      <h3>फोटो संग्रह तयार हुँदैछ</h3>
+      <p>
+        समाजका आधिकारिक तस्बिरहरू Admin बाट सुरक्षित रूपमा
+        अपलोड भएपछि यहाँ देखिनेछन्।
+      </p>
+    </div>
+  </section>
+
+  <section id="videos" style="margin-top:45px">
+    <h2 class="section-title">भिडियो संग्रह</h2>
+    <p class="section-sub">समाजका कार्यक्रम तथा ऐतिहासिक भिडियोहरू</p>
+
+    <div class="empty">
+      <div class="symbol">🎥</div>
+      <h3>भिडियो संग्रह तयार हुँदैछ</h3>
+      <p>
+        समाजका कार्यक्रम, बैठक तथा महत्वपूर्ण क्षणका
+        भिडियोहरू यहाँ राखिनेछन्।
+      </p>
+    </div>
+  </section>
+
+  <section id="documents" style="margin-top:45px">
+    <h2 class="section-title">ऐतिहासिक कागजात संग्रह</h2>
+    <p class="section-sub">समाजका महत्वपूर्ण अभिलेखहरू</p>
+
+    <div class="empty">
+      <div class="symbol">📜</div>
+      <h3>कागजात संग्रह तयार हुँदैछ</h3>
+      <p>
+        समाजका पुराना निर्णय, स्थापना सम्बन्धी कागजात,
+        नियमावली तथा महत्वपूर्ण अभिलेखहरू यहाँ राखिनेछन्।
+      </p>
+    </div>
+  </section>
+
+  <div class="note">
+    <strong>महत्वपूर्ण सूचना:</strong>
+    यो संग्रहालयको सार्वजनिक पेजको पहिलो चरण हो।
+    फोटो, भिडियो र कागजात अपलोड तथा व्यवस्थापन गर्ने
+    Admin सुविधा र सुरक्षित Supabase भण्डारण अर्को चरणमा
+    जोडिनेछ। हाल यस पेजमा वास्तविक अपलोड सुविधा सक्रिय छैन।
+  </div>
+
+  <div style="text-align:center">
+    <a class="back" href="index.html">← मुख्य वेबसाइटमा फर्कनुहोस्</a>
+  </div>
+
+</main>
+
+<footer>
+  <h3>रसाली भाई समाज परिवार चौराठा</h3>
+  <p>चौराठा, दैलेख, नेपाल</p>
+  <p>एकता • सहयोग • सेवा • भाइचारा</p>
+  <p>हामी माबै र भामसैनीका सन्तान</p>
+  <p>© २०८२ — रसाली भाई समाज परिवार</p>
+</footer>
+
+</body>
+</html>
