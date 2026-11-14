@@ -59,15 +59,25 @@ nav a:hover{background:#e8effa}
 }
 .stat strong{display:block;color:var(--blue);font-size:23px}
 .stat span{font-size:13px;color:#68778a}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:17px;
+}
 .item{
   background:white;border-radius:14px;overflow:hidden;
   box-shadow:0 4px 15px #00000010;
 }
-.item img{width:100%;height:210px;object-fit:cover;display:block;background:#e5edf7}
+.item img{
+  width:100%;height:210px;object-fit:cover;display:block;background:#e5edf7;
+}
+.item video{
+  width:100%;display:block;background:#101820;
+  max-height:320px;aspect-ratio:16/9;
+}
 .item-content{padding:15px}
 .item-content h3{margin:0 0 5px;color:var(--blue);font-size:17px}
-.item-content p{margin:0;color:#68778a;font-size:14px;white-space:pre-wrap}
+.item-content p{
+  margin:0;color:#68778a;font-size:14px;white-space:pre-wrap;
+}
 .item-date{font-size:12px;color:#8994a3;margin-top:7px}
 .empty{
   background:white;border:1px dashed #aebed2;padding:30px 15px;
@@ -95,6 +105,11 @@ nav a:hover{background:#e8effa}
   border-top:5px solid var(--red);
 }
 .admin-panel h2{color:var(--blue);margin-top:0}
+.admin-section{
+  border:1px solid #dce5f1;border-radius:12px;
+  padding:15px;margin:18px 0;
+}
+.admin-section h3{color:var(--blue);margin-top:0}
 .field{margin:12px 0}
 .field label{display:block;font-weight:bold;margin-bottom:5px}
 .field input,.field textarea{
@@ -200,7 +215,6 @@ footer p{margin:4px}
 <section id="photos">
   <h2 class="section-title">फोटो संग्रह</h2>
   <p class="section-sub">समाजका पुराना तथा नयाँ तस्बिरहरू</p>
-
   <div id="gallery" class="gallery"></div>
   <div id="galleryEmpty" class="empty">
     <div class="symbol">📷</div>
@@ -210,50 +224,80 @@ footer p{margin:4px}
   <p id="photoCount" class="section-sub"></p>
 </section>
 
-<!-- Admin Upload Panel -->
+<!-- ADMIN CONTROL -->
 <section id="adminPanel" class="admin-panel">
   <h2>🔐 संग्रहालय Admin नियन्त्रण</h2>
-  <p>Admin खाताबाट फोटो थप्न र हटाउन सक्नुहुन्छ।</p>
-
+  <p>Admin खाताबाट फोटो तथा भिडियो थप्न र हटाउन सक्नुहुन्छ।</p>
   <div id="adminStatus" class="status"></div>
 
-  <form id="uploadForm">
-    <div class="field">
-      <label for="photoTitle">फोटोको शीर्षक *</label>
-      <input id="photoTitle" type="text" maxlength="150"
-             placeholder="जस्तै: समाजको पहिलो भेला" required>
-    </div>
+  <!-- PHOTO UPLOAD -->
+  <div class="admin-section">
+    <h3>📷 फोटो अपलोड</h3>
+    <form id="uploadForm">
+      <div class="field">
+        <label for="photoTitle">फोटोको शीर्षक *</label>
+        <input id="photoTitle" type="text" maxlength="150"
+               placeholder="जस्तै: समाजको पहिलो भेला" required>
+      </div>
+      <div class="field">
+        <label for="photoDescription">फोटोको विवरण</label>
+        <textarea id="photoDescription" maxlength="2000"
+          placeholder="यो फोटो कहिले र कुन अवसरमा खिचिएको हो?"></textarea>
+      </div>
+      <div class="field">
+        <label for="photoDate">फोटोको मिति (ऐच्छिक)</label>
+        <input id="photoDate" type="date">
+      </div>
+      <div class="field">
+        <label for="photoFile">फोटो छान्नुहोस् *</label>
+        <input id="photoFile" type="file"
+          accept="image/jpeg,image/png,image/webp" required>
+        <small>JPG, PNG वा WEBP मात्र। अधिकतम १० MB।</small>
+      </div>
+      <button id="uploadButton" class="btn" type="submit">📤 फोटो अपलोड गर्नुहोस्</button>
+    </form>
+  </div>
 
-    <div class="field">
-      <label for="photoDescription">फोटोको विवरण</label>
-      <textarea id="photoDescription" maxlength="2000"
-        placeholder="यो फोटो कहिले र कुन अवसरमा खिचिएको हो?"></textarea>
-    </div>
-
-    <div class="field">
-      <label for="photoDate">फोटोको मिति (ऐच्छिक)</label>
-      <input id="photoDate" type="date">
-    </div>
-
-    <div class="field">
-      <label for="photoFile">फोटो छान्नुहोस् *</label>
-      <input id="photoFile" type="file"
-        accept="image/jpeg,image/png,image/webp" required>
-      <small>JPG, PNG वा WEBP मात्र। अधिकतम १० MB।</small>
-    </div>
-
-    <button id="uploadButton" class="btn" type="submit">📤 फोटो अपलोड गर्नुहोस्</button>
-  </form>
+  <!-- VIDEO UPLOAD -->
+  <div class="admin-section">
+    <h3>🎥 भिडियो अपलोड</h3>
+    <form id="videoForm">
+      <div class="field">
+        <label for="videoTitle">भिडियोको शीर्षक *</label>
+        <input id="videoTitle" type="text" maxlength="150"
+          placeholder="जस्तै: समाजको वार्षिक भेला" required>
+      </div>
+      <div class="field">
+        <label for="videoDescription">भिडियोको विवरण</label>
+        <textarea id="videoDescription" maxlength="2000"
+          placeholder="भिडियोमा के छ? कुन कार्यक्रमको हो?"></textarea>
+      </div>
+      <div class="field">
+        <label for="videoDate">भिडियोको मिति (ऐच्छिक)</label>
+        <input id="videoDate" type="date">
+      </div>
+      <div class="field">
+        <label for="videoFile">भिडियो छान्नुहोस् *</label>
+        <input id="videoFile" type="file"
+          accept="video/mp4,video/webm,video/quicktime" required>
+        <small>MP4, WEBM वा MOV मात्र। अधिकतम १०० MB। सम्भव भएसम्म ५ मिनेटसम्मको भिडियो राख्नुहोस्।</small>
+      </div>
+      <button id="videoButton" class="btn" type="submit">🎬 भिडियो अपलोड गर्नुहोस्</button>
+    </form>
+  </div>
 </section>
 
+<!-- PUBLIC VIDEO GALLERY -->
 <section id="videos" style="margin-top:45px">
   <h2 class="section-title">भिडियो संग्रह</h2>
   <p class="section-sub">समाजका कार्यक्रम तथा ऐतिहासिक भिडियोहरू</p>
-  <div class="empty">
+  <div id="videoGallery" class="gallery"></div>
+  <div id="videoEmpty" class="empty">
     <div class="symbol">🎥</div>
     <h3>भिडियो संग्रह तयार हुँदैछ</h3>
-    <p>भिडियो अपलोड सुविधा अर्को चरणमा थपिनेछ।</p>
+    <p>Admin बाट भिडियो अपलोड भएपछि यहाँ देखिनेछ।</p>
   </div>
+  <p id="videoCount" class="section-sub"></p>
 </section>
 
 <section id="documents" style="margin-top:45px">
@@ -268,7 +312,7 @@ footer p{margin:4px}
 
 <div class="note">
   <strong>महत्वपूर्ण सूचना:</strong>
-  फोटोहरू सार्वजनिक रूपमा हेर्न सकिन्छ। फोटो थप्ने र हटाउने सुविधा समाजको Admin खातामा मात्र उपलब्ध हुन्छ। भिडियो तथा कागजात सुविधा अर्को चरणमा थपिनेछ।
+  फोटो तथा भिडियो सार्वजनिक रूपमा हेर्न सकिन्छ। फोटो र भिडियो थप्ने तथा हटाउने सुविधा समाजको Admin खातामा मात्र उपलब्ध हुन्छ। कागजात सुविधा अर्को चरणमा थपिनेछ।
 </div>
 
 <div style="text-align:center">
@@ -288,15 +332,20 @@ footer p{margin:4px}
 <script>
 const SUPABASE_URL = "https://hvcalffbwvbwekysukdo.supabase.co";
 const SUPABASE_KEY = "sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
-const BUCKET = "museum-photos";
+const PHOTO_BUCKET = "museum-photos";
+const VIDEO_BUCKET = "museum-videos";
 const ADMIN_EMAIL = "bhaisamajrashali@gmail.com";
 
 const gallery = document.getElementById("gallery");
 const galleryEmpty = document.getElementById("galleryEmpty");
+const videoGallery = document.getElementById("videoGallery");
+const videoEmpty = document.getElementById("videoEmpty");
 const adminPanel = document.getElementById("adminPanel");
 const adminStatus = document.getElementById("adminStatus");
 const uploadForm = document.getElementById("uploadForm");
+const videoForm = document.getElementById("videoForm");
 const uploadButton = document.getElementById("uploadButton");
+const videoButton = document.getElementById("videoButton");
 
 let accessToken = localStorage.getItem("rasali_access_token") || "";
 let isAdmin = false;
@@ -326,12 +375,17 @@ function safeFileName(name) {
   return name.normalize("NFKD")
     .replace(/[^a-zA-Z0-9._-]/g, "_")
     .replace(/_+/g, "_")
-    .slice(-90) || "photo.jpg";
+    .slice(-90) || "file";
 }
 
-function publicPhotoURL(path) {
+function publicFileURL(bucket, path) {
   return SUPABASE_URL + "/storage/v1/object/public/" +
-    BUCKET + "/" + path.split("/").map(encodeURIComponent).join("/");
+    bucket + "/" + path.split("/").map(encodeURIComponent).join("/");
+}
+
+function formatDate(date) {
+  if (!date) return "";
+  return new Date(date + "T00:00:00").toLocaleDateString("ne-NP");
 }
 
 async function checkAdmin() {
@@ -352,6 +406,7 @@ async function checkAdmin() {
   }
 }
 
+/* PHOTO LIST */
 async function loadPhotos() {
   gallery.innerHTML = "";
   galleryEmpty.style.display = "block";
@@ -363,9 +418,7 @@ async function loadPhotos() {
       { headers: headers() }
     );
 
-    if (!response.ok) {
-      throw new Error(await response.text());
-    }
+    if (!response.ok) throw new Error(await response.text());
 
     const photos = await response.json();
 
@@ -377,18 +430,16 @@ async function loadPhotos() {
       const card = document.createElement("article");
       card.className = "item";
 
-      const dateText = photo.event_date
-        ? new Date(photo.event_date + "T00:00:00").toLocaleDateString("ne-NP")
-        : "";
+      const dateText = formatDate(photo.event_date);
 
       card.innerHTML = `
-        <img src="${publicPhotoURL(photo.storage_path)}"
+        <img src="${publicFileURL(PHOTO_BUCKET, photo.storage_path)}"
              alt="${escapeHTML(photo.title)}" loading="lazy">
         <div class="item-content">
           <h3>${escapeHTML(photo.title)}</h3>
           <p>${escapeHTML(photo.description || "")}</p>
           ${dateText ? `<div class="item-date">मिति: ${escapeHTML(dateText)}</div>` : ""}
-          ${isAdmin ? `<button class="delete-btn" data-id="${photo.id}" data-path="${escapeHTML(photo.storage_path)}">फोटो हटाउनुहोस्</button>` : ""}
+          ${isAdmin ? `<button class="delete-btn" data-action="photo" data-id="${photo.id}" data-path="${escapeHTML(photo.storage_path)}">फोटो हटाउनुहोस्</button>` : ""}
         </div>
       `;
 
@@ -403,6 +454,58 @@ async function loadPhotos() {
   }
 }
 
+/* VIDEO LIST */
+async function loadVideos() {
+  videoGallery.innerHTML = "";
+  videoEmpty.style.display = "block";
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/museum_videos?select=id,title,description,event_date,storage_path,created_at&order=created_at.desc",
+      { headers: headers() }
+    );
+
+    if (!response.ok) throw new Error(await response.text());
+
+    const videos = await response.json();
+
+    videoEmpty.style.display = videos.length ? "none" : "block";
+    document.getElementById("videoCount").textContent =
+      "जम्मा भिडियो: " + videos.length;
+
+    videos.forEach(video => {
+      const card = document.createElement("article");
+      card.className = "item";
+
+      const dateText = formatDate(video.event_date);
+      const videoURL = publicFileURL(VIDEO_BUCKET, video.storage_path);
+
+      card.innerHTML = `
+        <video controls playsinline preload="metadata">
+          <source src="${videoURL}">
+          तपाईंको ब्राउजरले यो भिडियो चलाउन सकेन।
+        </video>
+        <div class="item-content">
+          <h3>${escapeHTML(video.title)}</h3>
+          <p>${escapeHTML(video.description || "")}</p>
+          ${dateText ? `<div class="item-date">मिति: ${escapeHTML(dateText)}</div>` : ""}
+          ${isAdmin ? `<button class="delete-btn" data-action="video" data-id="${video.id}" data-path="${escapeHTML(video.storage_path)}">भिडियो हटाउनुहोस्</button>` : ""}
+        </div>
+      `;
+
+      videoGallery.appendChild(card);
+    });
+
+  } catch (error) {
+    videoEmpty.style.display = "block";
+    videoEmpty.innerHTML =
+      "<div class='symbol'>⚠️</div><h3>भिडियो लोड हुन सकेन</h3><p>" +
+      escapeHTML(error.message) + "</p>";
+  }
+}
+
+/* PHOTO UPLOAD */
 async function uploadPhoto(event) {
   event.preventDefault();
 
@@ -421,9 +524,7 @@ async function uploadPhoto(event) {
     return;
   }
 
-  const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-
-  if (!allowedTypes.includes(file.type)) {
+  if (!["image/jpeg","image/png","image/webp"].includes(file.type)) {
     showStatus("JPG, PNG वा WEBP फोटो मात्र राख्न मिल्छ।", "error");
     return;
   }
@@ -441,7 +542,7 @@ async function uploadPhoto(event) {
   try {
     const uploadResponse = await fetch(
       SUPABASE_URL + "/storage/v1/object/" +
-      BUCKET + "/" + filePath.split("/").map(encodeURIComponent).join("/"),
+      PHOTO_BUCKET + "/" + filePath.split("/").map(encodeURIComponent).join("/"),
       {
         method: "POST",
         headers: {
@@ -459,7 +560,7 @@ async function uploadPhoto(event) {
     }
 
     const record = {
-      title: title,
+      title,
       description: description || null,
       event_date: eventDate || null,
       storage_path: filePath
@@ -478,9 +579,8 @@ async function uploadPhoto(event) {
     );
 
     if (!saveResponse.ok) {
-      // विवरण सुरक्षित नभए अपलोड गरिएको फोटो हटाउने प्रयास
       await fetch(
-        SUPABASE_URL + "/storage/v1/object/" + BUCKET + "/" +
+        SUPABASE_URL + "/storage/v1/object/" + PHOTO_BUCKET + "/" +
         filePath.split("/").map(encodeURIComponent).join("/"),
         {
           method: "DELETE",
@@ -490,7 +590,6 @@ async function uploadPhoto(event) {
           }
         }
       );
-
       throw new Error("फोटोको विवरण सुरक्षित भएन: " + await saveResponse.text());
     }
 
@@ -506,12 +605,123 @@ async function uploadPhoto(event) {
   }
 }
 
+/* VIDEO UPLOAD */
+async function uploadVideo(event) {
+  event.preventDefault();
+
+  if (!isAdmin || !accessToken) {
+    showStatus("Admin Login आवश्यक छ।", "error");
+    return;
+  }
+
+  const title = document.getElementById("videoTitle").value.trim();
+  const description = document.getElementById("videoDescription").value.trim();
+  const eventDate = document.getElementById("videoDate").value;
+  const file = document.getElementById("videoFile").files[0];
+
+  if (!title || !file) {
+    showStatus("भिडियोको शीर्षक र भिडियो छान्नुहोस्।", "error");
+    return;
+  }
+
+  const allowedTypes = [
+    "video/mp4",
+    "video/webm",
+    "video/quicktime"
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    showStatus("MP4, WEBM वा MOV भिडियो मात्र राख्न मिल्छ।", "error");
+    return;
+  }
+
+  if (file.size > 100 * 1024 * 1024) {
+    showStatus("भिडियो १०० MB भन्दा ठूलो हुनु हुँदैन।", "error");
+    return;
+  }
+
+  videoButton.disabled = true;
+  videoButton.textContent = "भिडियो अपलोड हुँदैछ...";
+
+  const filePath = Date.now() + "_" + safeFileName(file.name);
+
+  try {
+    showStatus("भिडियो अपलोड हुँदैछ। कृपया अपलोड पूरा नभएसम्म पेज बन्द नगर्नुहोस्।", "ok");
+
+    const uploadResponse = await fetch(
+      SUPABASE_URL + "/storage/v1/object/" +
+      VIDEO_BUCKET + "/" +
+      filePath.split("/").map(encodeURIComponent).join("/"),
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + accessToken,
+          "Content-Type": file.type,
+          "x-upsert": "false"
+        },
+        body: file
+      }
+    );
+
+    if (!uploadResponse.ok) {
+      throw new Error("भिडियो अपलोड भएन: " + await uploadResponse.text());
+    }
+
+    const record = {
+      title,
+      description: description || null,
+      event_date: eventDate || null,
+      storage_path: filePath
+    };
+
+    const saveResponse = await fetch(
+      SUPABASE_URL + "/rest/v1/museum_videos",
+      {
+        method: "POST",
+        headers: {
+          ...headers(accessToken),
+          "Prefer": "return=representation"
+        },
+        body: JSON.stringify(record)
+      }
+    );
+
+    if (!saveResponse.ok) {
+      await fetch(
+        SUPABASE_URL + "/storage/v1/object/" + VIDEO_BUCKET + "/" +
+        filePath.split("/").map(encodeURIComponent).join("/"),
+        {
+          method: "DELETE",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + accessToken
+          }
+        }
+      );
+
+      throw new Error("भिडियोको विवरण सुरक्षित भएन: " + await saveResponse.text());
+    }
+
+    videoForm.reset();
+    showStatus("भिडियो सफलतापूर्वक अपलोड भयो। अब सबैले हेर्न सक्नुहुन्छ।", "ok");
+    await loadVideos();
+
+  } catch (error) {
+    showStatus(error.message, "error");
+  } finally {
+    videoButton.disabled = false;
+    videoButton.textContent = "🎬 भिडियो अपलोड गर्नुहोस्";
+  }
+}
+
+/* DELETE PHOTO */
 async function deletePhoto(id, path) {
   if (!isAdmin || !confirm("यो फोटो स्थायी रूपमा हटाउने हो?")) return;
 
   try {
     const deleteFile = await fetch(
-      SUPABASE_URL + "/storage/v1/object/" + BUCKET + "/" +
+      SUPABASE_URL + "/storage/v1/object/" + PHOTO_BUCKET + "/" +
       path.split("/").map(encodeURIComponent).join("/"),
       {
         method: "DELETE",
@@ -546,24 +756,75 @@ async function deletePhoto(id, path) {
   }
 }
 
+/* DELETE VIDEO */
+async function deleteVideo(id, path) {
+  if (!isAdmin || !confirm("यो भिडियो स्थायी रूपमा हटाउने हो?")) return;
+
+  try {
+    const deleteFile = await fetch(
+      SUPABASE_URL + "/storage/v1/object/" + VIDEO_BUCKET + "/" +
+      path.split("/").map(encodeURIComponent).join("/"),
+      {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + accessToken
+        }
+      }
+    );
+
+    if (!deleteFile.ok) {
+      throw new Error("भिडियो फाइल हटाउन सकिएन: " + await deleteFile.text());
+    }
+
+    const deleteRecord = await fetch(
+      SUPABASE_URL + "/rest/v1/museum_videos?id=eq." + encodeURIComponent(id),
+      {
+        method: "DELETE",
+        headers: headers(accessToken)
+      }
+    );
+
+    if (!deleteRecord.ok) {
+      throw new Error("भिडियोको विवरण हटाउन सकिएन: " + await deleteRecord.text());
+    }
+
+    showStatus("भिडियो सफलतापूर्वक हटाइयो।", "ok");
+    await loadVideos();
+
+  } catch (error) {
+    showStatus(error.message, "error");
+  }
+}
+
+/* DELETE BUTTON EVENTS */
 gallery.addEventListener("click", event => {
   const button = event.target.closest(".delete-btn");
-  if (button) {
+  if (button && button.dataset.action === "photo") {
     deletePhoto(button.dataset.id, button.dataset.path);
   }
 });
 
-uploadForm.addEventListener("submit", uploadPhoto);
+videoGallery.addEventListener("click", event => {
+  const button = event.target.closest(".delete-btn");
+  if (button && button.dataset.action === "video") {
+    deleteVideo(button.dataset.id, button.dataset.path);
+  }
+});
 
+uploadForm.addEventListener("submit", uploadPhoto);
+videoForm.addEventListener("submit", uploadVideo);
+
+/* START */
 async function startMuseum() {
   isAdmin = await checkAdmin();
 
   if (isAdmin) {
     adminPanel.style.display = "block";
-    showStatus("Admin Login सफल भयो। फोटो अपलोड गर्न सक्नुहुन्छ।", "ok");
+    showStatus("Admin Login सफल भयो। फोटो र भिडियो अपलोड गर्न सक्नुहुन्छ।", "ok");
   }
 
-  await loadPhotos();
+  await Promise.all([loadPhotos(), loadVideos()]);
 }
 
 startMuseum();
