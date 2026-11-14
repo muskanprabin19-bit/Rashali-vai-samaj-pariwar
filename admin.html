@@ -9,80 +9,47 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#edf3f9;
- color:#172033;
+ margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ background:#edf3f9;color:#172033;
 }
 header{
  background:linear-gradient(135deg,#123b70,#0879b9);
- color:white;
- padding:25px 12px;
- text-align:center;
+ color:white;padding:25px 12px;text-align:center;
  border-radius:0 0 22px 22px;
 }
 header h2{margin:0 0 8px;font-size:23px}
 header p{margin:5px;font-size:14px}
 .topbar{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:10px;
- padding:12px 15px;
- background:#082b52;
+ display:flex;justify-content:space-between;align-items:center;
+ gap:10px;padding:12px 15px;background:#082b52;
 }
 .topbar a,.topbar button{
- color:#123b70;
- background:white;
- text-decoration:none;
- border:0;
- padding:10px 14px;
- border-radius:9px;
- font-weight:bold;
+ color:#123b70;background:white;text-decoration:none;
+ border:0;padding:10px 14px;border-radius:9px;font-weight:bold;
 }
 main{max-width:1100px;margin:20px auto;padding:12px}
 .welcome{
- background:white;
- border-radius:15px;
- padding:18px;
- margin-bottom:18px;
- box-shadow:0 3px 12px #0001;
+ background:white;border-radius:15px;padding:18px;
+ margin-bottom:18px;box-shadow:0 3px 12px #0001;
 }
 .welcome h3{margin:0 0 7px;color:#123b70}
 .welcome p{margin:0;color:#64748b;font-size:14px}
-
 .dashboard-grid{
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:13px;
- margin-bottom:22px;
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:13px;margin-bottom:22px;
 }
 .dash-card{
- background:white;
- border:1px solid #e0e8f1;
- border-radius:16px;
- min-height:125px;
- padding:17px 8px;
- text-align:center;
- text-decoration:none;
- color:#172033;
+ background:white;border:1px solid #e0e8f1;
+ border-radius:16px;min-height:125px;padding:17px 8px;
+ text-align:center;text-decoration:none;color:#172033;
  box-shadow:0 3px 12px #0000000c;
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- gap:8px;
- transition:.2s;
+ display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:8px;transition:.2s;
 }
 .dash-card:active{transform:scale(.97)}
 .dash-icon{
- width:53px;
- height:53px;
- border-radius:16px;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:29px;
+ width:53px;height:53px;border-radius:16px;
+ display:flex;align-items:center;justify-content:center;font-size:29px;
 }
 .dash-card strong{font-size:15px;color:#123b70}
 .dash-card small{font-size:11px;color:#64748b}
@@ -92,121 +59,75 @@ main{max-width:1100px;margin:20px auto;padding:12px}
 .purple{background:#f0eaff}
 .red{background:#ffe9e9}
 .teal{background:#dff7f6}
-
 section.admin-section{
- background:white;
- border-radius:15px;
- padding:18px;
- margin-bottom:20px;
- box-shadow:0 3px 12px #0001;
+ background:white;border-radius:15px;padding:18px;
+ margin-bottom:20px;box-shadow:0 3px 12px #0001;
  scroll-margin-top:12px;
 }
 h3{color:#123b70;margin-top:0}
 input,select,textarea{
- width:100%;
- padding:12px;
- margin:6px 0 12px;
- border:1px solid #cbd5e1;
- border-radius:8px;
- font-size:15px;
+ width:100%;padding:12px;margin:6px 0 12px;
+ border:1px solid #cbd5e1;border-radius:8px;font-size:15px;
 }
+textarea{min-height:85px;resize:vertical}
 button{
- border:0;
- border-radius:8px;
- padding:11px 15px;
- background:#1263ad;
- color:white;
- font-weight:bold;
- cursor:pointer;
+ border:0;border-radius:8px;padding:11px 15px;
+ background:#1263ad;color:white;font-weight:bold;cursor:pointer;
 }
 button:disabled{opacity:.6}
 button.danger{background:#c62828}
 button.secondary{background:#64748b}
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
  gap:10px;
 }
 .member{
- border:1px solid #dbe3ed;
- border-radius:12px;
- padding:12px;
- margin:9px 0;
- display:flex;
- align-items:center;
- gap:12px;
- flex-wrap:wrap;
+ border:1px solid #dbe3ed;border-radius:12px;padding:12px;
+ margin:9px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
 }
 .member img{
- width:65px;height:65px;
- object-fit:cover;
- border-radius:50%;
- background:#e2e8f0;
+ width:65px;height:65px;object-fit:cover;
+ border-radius:50%;background:#e2e8f0;
 }
 .member-info{flex:1;min-width:150px}
 .member-info strong{font-size:17px}
 .small{font-size:13px;color:#64748b}
 .preview{
- width:100px;height:100px;
- object-fit:cover;
- border-radius:12px;
- display:none;
- margin:5px 0 12px;
+ width:100px;height:100px;object-fit:cover;
+ border-radius:12px;display:none;margin:5px 0 12px;
 }
 .header-preview{
- width:95px;height:95px;
- object-fit:cover;
- border-radius:12px;
- background:#e2e8f0;
- margin:5px 0 12px;
+ width:95px;height:95px;object-fit:cover;
+ border-radius:12px;background:#e2e8f0;margin:5px 0 12px;
 }
 .msg{
- padding:10px;
- margin:8px 0;
- border-radius:8px;
- background:#eff6ff;
- overflow-wrap:anywhere;
+ padding:10px;margin:8px 0;border-radius:8px;
+ background:#eff6ff;overflow-wrap:anywhere;
 }
-table{
- width:100%;
- border-collapse:collapse;
- min-width:600px;
-}
-th,td{
- padding:9px;
- border:1px solid #ddd;
- text-align:left;
-}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:9px;border:1px solid #ddd;text-align:left}
 th{background:#eaf2fb}
 .table-wrap{overflow-x:auto}
 .actions{display:flex;gap:6px;flex-wrap:wrap}
-.stat{
- background:#eaf2fb;
- padding:14px;
- border-radius:10px;
- text-align:center;
-}
-.stat b{
- display:block;
- font-size:22px;
- color:#123b70;
-}
+.stat{background:#eaf2fb;padding:14px;border-radius:10px;text-align:center}
+.stat b{display:block;font-size:22px;color:#123b70}
 .backtop{
- display:inline-block;
- margin-bottom:14px;
- color:#1263ad;
- text-decoration:none;
- font-weight:bold;
+ display:inline-block;margin-bottom:14px;
+ color:#1263ad;text-decoration:none;font-weight:bold;
 }
-hr{
- border:0;
- border-top:1px solid #e2e8f0;
- margin:18px 0;
+hr{border:0;border-top:1px solid #e2e8f0;margin:18px 0}
+footer{text-align:center;padding:22px;color:#64748b}
+.museum-item{
+ border:1px solid #dbe3ed;border-radius:12px;
+ padding:12px;margin:10px 0;
 }
-footer{
- text-align:center;
- padding:22px;
- color:#64748b;
+.museum-item img{
+ width:100%;max-width:240px;height:160px;
+ object-fit:cover;border-radius:9px;
+}
+.museum-item video{
+ width:100%;max-width:420px;border-radius:9px;
+ background:#111;display:block;margin:8px 0;
 }
 @media(min-width:650px){
  .dashboard-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -236,7 +157,6 @@ footer{
  <p>तलको आइकन छानेर समाजको सम्बन्धित व्यवस्थापन पेज खोल्नुहोस्।</p>
 </div>
 
-<!-- ADMIN DASHBOARD ICONS -->
 <div class="dashboard-grid">
 
  <a class="dash-card" href="#settings">
@@ -321,6 +241,12 @@ footer{
   <span class="dash-icon teal">📈</span>
   <strong>सदस्य Dashboard</strong>
   <small>सदस्य पेज खोल्ने</small>
+ </a>
+
+ <a class="dash-card" href="#museum-admin">
+  <span class="dash-icon teal">🏛️</span>
+  <strong>डिजिटल संग्रहालय</strong>
+  <small>फोटो, भिडियो थप्ने र हटाउने</small>
  </a>
 
 </div>
@@ -486,17 +412,77 @@ footer{
  <table>
   <thead>
    <tr>
-    <th>मिति</th>
-    <th>सदस्य</th>
-    <th>प्रकार</th>
-    <th>रकम</th>
-    <th>विवरण</th>
-    <th>हटाउने</th>
+    <th>मिति</th><th>सदस्य</th><th>प्रकार</th>
+    <th>रकम</th><th>विवरण</th><th>हटाउने</th>
    </tr>
   </thead>
   <tbody id="moneyList"></tbody>
  </table>
 </div>
+</section>
+
+<!-- DIGITAL MUSEUM ADMIN -->
+<section class="admin-section" id="museum-admin">
+
+<a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
+
+<h3>🏛️ डिजिटल इतिहास तथा सम्झना संग्रहालय</h3>
+<p class="small">
+यहाँबाट थपिएका फोटो तथा भिडियो सार्वजनिक संग्रहालयमा देखिनेछन्।
+</p>
+
+<hr>
+
+<h3>📷 नयाँ फोटो अपलोड</h3>
+
+<label>फोटोको शीर्षक *</label>
+<input id="museumPhotoTitle" placeholder="फोटोको शीर्षक">
+
+<label>फोटोको विवरण</label>
+<textarea id="museumPhotoDescription" placeholder="फोटोको विवरण"></textarea>
+
+<label>फोटोको मिति</label>
+<input id="museumPhotoDate" type="date">
+
+<label>फोटो छान्नुहोस् (JPG, PNG, WEBP - अधिकतम १० MB)</label>
+<input id="museumPhotoFile" type="file" accept="image/jpeg,image/png,image/webp">
+
+<button id="museumPhotoBtn" onclick="uploadMuseumPhoto()">
+📤 फोटो अपलोड गर्नुहोस्
+</button>
+<div id="museumPhotoMsg" class="msg"></div>
+
+<hr>
+
+<h3>🎥 नयाँ भिडियो अपलोड</h3>
+
+<label>भिडियोको शीर्षक *</label>
+<input id="museumVideoTitle" placeholder="भिडियोको शीर्षक">
+
+<label>भिडियोको विवरण</label>
+<textarea id="museumVideoDescription" placeholder="भिडियोको विवरण"></textarea>
+
+<label>भिडियोको मिति</label>
+<input id="museumVideoDate" type="date">
+
+<label>भिडियो छान्नुहोस् (MP4, WEBM, MOV - अधिकतम १०० MB)</label>
+<input id="museumVideoFile" type="file" accept="video/mp4,video/webm,video/quicktime">
+
+<button id="museumVideoBtn" onclick="uploadMuseumVideo()">
+🎬 भिडियो अपलोड गर्नुहोस्
+</button>
+<div id="museumVideoMsg" class="msg"></div>
+
+<hr>
+
+<h3>📸 अपलोड भएका फोटोहरू</h3>
+<div id="museumAdminPhotos">फोटो लोड हुँदैछ...</div>
+
+<hr>
+
+<h3>🎥 अपलोड भएका भिडियोहरू</h3>
+<div id="museumAdminVideos">भिडियो लोड हुँदैछ...</div>
+
 </section>
 
 </main>
@@ -1003,6 +989,313 @@ async function deleteMoney(id){
  }
 }
 
+/* DIGITAL MUSEUM MANAGEMENT */
+
+async function museumUpload(file,bucket){
+
+ if(!file)throw new Error("पहिले फाइल छान्नुहोस्।");
+
+ const isPhoto=bucket==="museum-photos";
+
+ if(isPhoto){
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+   throw new Error("JPG, PNG वा WEBP फोटो मात्र छान्नुहोस्।");
+  }
+  if(file.size>10*1024*1024){
+   throw new Error("फोटो १० MB भन्दा सानो हुनुपर्छ।");
+  }
+ }else{
+  if(!["video/mp4","video/webm","video/quicktime"].includes(file.type)){
+   throw new Error("MP4, WEBM वा MOV भिडियो मात्र छान्नुहोस्।");
+  }
+  if(file.size>100*1024*1024){
+   throw new Error("भिडियो १०० MB भन्दा सानो हुनुपर्छ।");
+  }
+ }
+
+ const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+ const path=Date.now()+"_"+safeName;
+ const encoded=path.split("/").map(encodeURIComponent).join("/");
+
+ const response=await fetch(
+  SUPABASE_URL+"/storage/v1/object/"+bucket+"/"+encoded,
+  {
+   method:"POST",
+   headers:{
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer "+token,
+    "Content-Type":file.type,
+    "x-upsert":"false"
+   },
+   body:file
+  }
+ );
+
+ if(!response.ok){
+  throw new Error("फाइल अपलोड भएन: "+await response.text());
+ }
+
+ return path;
+}
+
+async function uploadMuseumPhoto(){
+
+ const title=document.getElementById("museumPhotoTitle").value.trim();
+ const file=document.getElementById("museumPhotoFile").files[0];
+
+ if(!title){
+  alert("फोटोको शीर्षक लेख्नुहोस्।");
+  return;
+ }
+
+ const btn=document.getElementById("museumPhotoBtn");
+ btn.disabled=true;
+ btn.textContent="अपलोड हुँदैछ...";
+
+ try{
+  const path=await museumUpload(file,"museum-photos");
+
+  const payload={
+   title:title,
+   description:document.getElementById("museumPhotoDescription").value.trim(),
+   event_date:document.getElementById("museumPhotoDate").value||null,
+   storage_path:path
+  };
+
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/museum_items",
+   {
+    method:"POST",
+    headers:{...headers,"Prefer":"return=representation"},
+    body:JSON.stringify(payload)
+   }
+  );
+
+  if(!response.ok)throw new Error(await response.text());
+
+  document.getElementById("museumPhotoTitle").value="";
+  document.getElementById("museumPhotoDescription").value="";
+  document.getElementById("museumPhotoDate").value="";
+  document.getElementById("museumPhotoFile").value="";
+
+  message("museumPhotoMsg","✅ फोटो सफलतापूर्वक सुरक्षित भयो।");
+  await loadMuseumAdmin();
+
+ }catch(error){
+  message("museumPhotoMsg","❌ त्रुटि: "+error.message);
+ }finally{
+  btn.disabled=false;
+  btn.textContent="📤 फोटो अपलोड गर्नुहोस्";
+ }
+}
+
+async function uploadMuseumVideo(){
+
+ const title=document.getElementById("museumVideoTitle").value.trim();
+ const file=document.getElementById("museumVideoFile").files[0];
+
+ if(!title){
+  alert("भिडियोको शीर्षक लेख्नुहोस्।");
+  return;
+ }
+
+ const btn=document.getElementById("museumVideoBtn");
+ btn.disabled=true;
+ btn.textContent="अपलोड हुँदैछ...";
+
+ try{
+  const path=await museumUpload(file,"museum-videos");
+
+  const payload={
+   title:title,
+   description:document.getElementById("museumVideoDescription").value.trim(),
+   event_date:document.getElementById("museumVideoDate").value||null,
+   storage_path:path
+  };
+
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/museum_videos",
+   {
+    method:"POST",
+    headers:{...headers,"Prefer":"return=representation"},
+    body:JSON.stringify(payload)
+   }
+  );
+
+  if(!response.ok)throw new Error(await response.text());
+
+  document.getElementById("museumVideoTitle").value="";
+  document.getElementById("museumVideoDescription").value="";
+  document.getElementById("museumVideoDate").value="";
+  document.getElementById("museumVideoFile").value="";
+
+  message("museumVideoMsg","✅ भिडियो सफलतापूर्वक सुरक्षित भयो।");
+  await loadMuseumAdmin();
+
+ }catch(error){
+  message("museumVideoMsg","❌ त्रुटि: "+error.message);
+ }finally{
+  btn.disabled=false;
+  btn.textContent="🎬 भिडियो अपलोड गर्नुहोस्";
+ }
+}
+
+function museumPublicUrl(bucket,path){
+ return SUPABASE_URL+
+  "/storage/v1/object/public/"+bucket+"/"+
+  path.split("/").map(encodeURIComponent).join("/");
+}
+
+async function loadMuseumAdmin(){
+ await loadMuseumPhotos();
+ await loadMuseumVideos();
+}
+
+async function loadMuseumPhotos(){
+
+ const list=document.getElementById("museumAdminPhotos");
+
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/museum_items?select=id,title,description,event_date,storage_path&order=created_at.desc",
+   {headers}
+  );
+
+  if(!response.ok)throw new Error(await response.text());
+
+  const data=await response.json();
+  list.innerHTML="";
+
+  if(!data.length){
+   list.textContent="अहिलेसम्म फोटो छैन।";
+   return;
+  }
+
+  data.forEach(item=>{
+   const card=document.createElement("div");
+   card.className="museum-item";
+
+   const img=document.createElement("img");
+   img.src=museumPublicUrl("museum-photos",item.storage_path);
+   img.alt=item.title;
+
+   const title=document.createElement("p");
+   const strong=document.createElement("strong");
+   strong.textContent=item.title;
+   title.append(strong);
+
+   const detail=document.createElement("p");
+   detail.className="small";
+   detail.textContent=(item.description||"")+" | "+(item.event_date||"मिति छैन");
+
+   const btn=document.createElement("button");
+   btn.className="danger";
+   btn.textContent="🗑️ फोटो हटाउनुहोस्";
+   btn.onclick=()=>deleteMuseumItem(
+    "museum_items","museum-photos",item.id,item.storage_path
+   );
+
+   card.append(img,title,detail,btn);
+   list.append(card);
+  });
+
+ }catch(error){
+  list.textContent="फोटो लोड भएन: "+error.message;
+ }
+}
+
+async function loadMuseumVideos(){
+
+ const list=document.getElementById("museumAdminVideos");
+
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/museum_videos?select=id,title,description,event_date,storage_path&order=created_at.desc",
+   {headers}
+  );
+
+  if(!response.ok)throw new Error(await response.text());
+
+  const data=await response.json();
+  list.innerHTML="";
+
+  if(!data.length){
+   list.textContent="अहिलेसम्म भिडियो छैन।";
+   return;
+  }
+
+  data.forEach(item=>{
+   const card=document.createElement("div");
+   card.className="museum-item";
+
+   const video=document.createElement("video");
+   video.controls=true;
+   video.playsInline=true;
+   video.preload="metadata";
+   video.src=museumPublicUrl("museum-videos",item.storage_path);
+
+   const title=document.createElement("p");
+   const strong=document.createElement("strong");
+   strong.textContent=item.title;
+   title.append(strong);
+
+   const detail=document.createElement("p");
+   detail.className="small";
+   detail.textContent=(item.description||"")+" | "+(item.event_date||"मिति छैन");
+
+   const btn=document.createElement("button");
+   btn.className="danger";
+   btn.textContent="🗑️ भिडियो हटाउनुहोस्";
+   btn.onclick=()=>deleteMuseumItem(
+    "museum_videos","museum-videos",item.id,item.storage_path
+   );
+
+   card.append(video,title,detail,btn);
+   list.append(card);
+  });
+
+ }catch(error){
+  list.textContent="भिडियो लोड भएन: "+error.message;
+ }
+}
+
+async function deleteMuseumItem(table,bucket,id,path){
+
+ if(!confirm("यो सामग्री सधैँका लागि हटाउने निश्चित हो?"))return;
+
+ try{
+  const storageResponse=await fetch(
+   SUPABASE_URL+"/storage/v1/object/"+bucket,
+   {
+    method:"DELETE",
+    headers,
+    body:JSON.stringify({prefixes:[path]})
+   }
+  );
+
+  if(!storageResponse.ok){
+   throw new Error("Storage बाट फाइल हटेन: "+await storageResponse.text());
+  }
+
+  const dbResponse=await fetch(
+   SUPABASE_URL+"/rest/v1/"+table+"?id=eq."+encodeURIComponent(id),
+   {method:"DELETE",headers}
+  );
+
+  if(!dbResponse.ok){
+   throw new Error("रेकर्ड हटेन: "+await dbResponse.text());
+  }
+
+  alert("✅ सामग्री हटाइयो।");
+  await loadMuseumAdmin();
+
+ }catch(error){
+  alert("❌ हटाउन सकिएन: "+error.message);
+ }
+}
+
+/* LOGOUT */
+
 function logout(){
  localStorage.removeItem("rasali_access_token");
  localStorage.removeItem("rasali_user");
@@ -1010,13 +1303,17 @@ function logout(){
  location.href="login.html";
 }
 
+/* START */
+
 async function start(){
  await loadSettings();
  await loadMembers();
  await loadMoney();
+ await loadMuseumAdmin();
 }
 
 start();
+
 </script>
 
 </body>
