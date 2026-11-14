@@ -139,6 +139,22 @@ nav a:hover{background:var(--red)}
 .museum-item .museum-icon{font-size:38px}
 .museum-item h3{font-size:16px;margin:6px 0;color:var(--blue)}
 .museum-item p{font-size:13px}
+
+/* LIVE MUSEUM MEDIA */
+.museum-live-section{margin-top:25px;text-align:left}
+.museum-live-title{font-size:20px;color:var(--blue);font-weight:800;border-bottom:3px solid var(--red);padding-bottom:7px;margin:22px 0 13px}
+.museum-live-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.museum-live-card{background:#fff;border:1px solid #d8e5f4;border-radius:13px;padding:10px;box-shadow:0 4px 12px #092e6312;overflow:hidden}
+.museum-live-card img{display:block;width:100%;height:210px;object-fit:cover;border-radius:9px;background:#edf4fc}
+.museum-live-card video{display:block;width:100%;max-height:260px;border-radius:9px;background:#111}
+.museum-live-card h4{color:var(--blue);font-size:15px;margin:9px 2px 4px}
+.museum-live-card p{font-size:13px;color:#46566d;overflow-wrap:anywhere;margin:4px 2px}
+.museum-live-date{font-size:11px;color:#718096;margin:5px 2px}
+.museum-live-status{background:#fff;padding:15px;border-radius:10px;text-align:center;color:#64748b}
+.museum-live-empty{background:#f8fbff;border:1px dashed #b9cce4;padding:15px;border-radius:10px;text-align:center;color:#64748b}
+.museum-open-link{display:inline-block;margin-top:14px;background:var(--blue);color:white;padding:10px 20px;border-radius:9px;font-weight:bold}
+.museum-live-error{background:#fff1f1;color:#a00000;padding:12px;border-radius:10px;font-size:13px}
+
 .museum-link{display:inline-block;margin-top:15px;background:var(--blue);color:white;padding:11px 22px;border-radius:9px;font-weight:bold}
 
 /* EXCHANGE PREVIEW */
@@ -163,6 +179,7 @@ footer h3{font-size:21px}
  .search-area{width:100%}
  .member-count{width:100%}
  .museum-gallery{grid-template-columns:1fr}
+ .museum-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:600px){
  header{padding:15px 7px}
@@ -190,6 +207,8 @@ footer h3{font-size:21px}
  .service-btn{min-height:105px;font-size:13px}
  .service-btn .btn-icon{font-size:30px}
  .contact-box{min-height:140px}
+ .museum-live-grid{grid-template-columns:1fr}
+ .museum-live-card img{height:230px}
 }
 @media(max-width:350px){
  .member-grid{grid-template-columns:1fr}
@@ -281,7 +300,6 @@ footer h3{font-size:21px}
  <h2 class="section-title">🌟 हाम्रा सेवा तथा सुविधाहरू</h2>
  <div class="service-box">
   <div class="service-buttons">
-
    <a href="#member" class="service-btn"><span class="btn-icon">👥</span><span>सदस्य सूची</span></a>
    <a href="loan-information.html" class="service-btn"><span class="btn-icon">💰</span><span>ऋण सेवा</span></a>
    <a href="loan-application.html" class="service-btn"><span class="btn-icon">📝</span><span>ऋण आवेदन फाराम</span></a>
@@ -297,7 +315,6 @@ footer h3{font-size:21px}
    <a href="login.html" class="service-btn"><span class="btn-icon">🔐</span><span>सदस्य Login</span></a>
    <a href="museum.html" class="service-btn"><span class="btn-icon">🏛️</span><span>इतिहास संग्रहालय</span></a>
    <a href="money-exchange.html" class="service-btn"><span class="btn-icon">💱</span><span>Money Exchange Rate</span></a>
-
   </div>
  </div>
 </section>
@@ -326,6 +343,11 @@ footer h3{font-size:21px}
     <h3>ऐतिहासिक कागजात</h3>
     <p>समाजका पुराना निर्णय, अभिलेख र दस्तावेजहरू।</p>
    </div>
+  </div>
+
+  <!-- ADMIN बाट अपलोड भएका वास्तविक फोटो र भिडियो यहीँ देखिन्छन् -->
+  <div id="museumLiveMedia" class="museum-live-section">
+   <div class="museum-live-status">⏳ संग्रहालयका फोटो तथा भिडियो लोड हुँदैछन्...</div>
   </div>
 
   <p style="margin-top:15px">समाजको स्थापना २०८२ देखि अहिलेसम्मका महत्वपूर्ण घटनाहरूको समयरेखा पनि यहाँ राखिनेछ।</p>
@@ -524,6 +546,152 @@ function safeImageUrl(value){
  }catch(e){return ""}
 }
 
+/* Supabase Storage को सार्वजनिक फाइल URL बनाउने */
+function museumPublicUrl(bucket,path){
+ if(!path)return "";
+ const cleanPath=String(path).replace(/^\/+/,"");
+ const encodedPath=cleanPath.split("/").map(part=>encodeURIComponent(part)).join("/");
+ return SUPABASE_URL+"/storage/v1/object/public/"+bucket+"/"+encodedPath;
+}
+
+/* संग्रहालयका फोटो तथा भिडियो मुख्य पेजमा देखाउने */
+async function loadMuseumMedia(){
+ const area=document.getElementById("museumLiveMedia");
+ if(!area)return;
+
+ area.innerHTML='<div class="museum-live-status">⏳ संग्रहालयका फोटो तथा भिडियो लोड हुँदैछन्...</div>';
+
+ try{
+  const [photoResult,videoResult]=await Promise.all([
+   supabaseClient
+    .from("museum_items")
+    .select("id,title,description,event_date,storage_path,created_at")
+    .order("created_at",{ascending:false}),
+   supabaseClient
+    .from("museum_videos")
+    .select("id,title,description,event_date,storage_path,created_at")
+    .order("created_at",{ascending:false})
+  ]);
+
+  if(photoResult.error)throw new Error("फोटो तालिका: "+photoResult.error.message);
+  if(videoResult.error)throw new Error("भिडियो तालिका: "+videoResult.error.message);
+
+  const photos=photoResult.data||[];
+  const videos=videoResult.data||[];
+
+  area.innerHTML="";
+
+  const photoTitle=document.createElement("h3");
+  photoTitle.className="museum-live-title";
+  photoTitle.textContent="📸 Admin बाट राखिएका वास्तविक फोटोहरू";
+  area.appendChild(photoTitle);
+
+  if(photos.length){
+   const photoGrid=document.createElement("div");
+   photoGrid.className="museum-live-grid";
+
+   photos.forEach(item=>{
+    const card=document.createElement("article");
+    card.className="museum-live-card";
+
+    const image=document.createElement("img");
+    image.src=museumPublicUrl("museum-photos",item.storage_path);
+    image.alt=item.title||"समाजको ऐतिहासिक फोटो";
+    image.loading="lazy";
+    image.onerror=function(){
+     this.alt="फोटो खोल्न सकिएन";
+     this.style.display="none";
+     const errorText=document.createElement("p");
+     errorText.textContent="फोटो फाइल खोल्न सकिएन। Storage path जाँच गर्नुहोस्।";
+     card.insertBefore(errorText,card.children[1]||null);
+    };
+
+    const title=document.createElement("h4");
+    title.textContent=item.title||"ऐतिहासिक फोटो";
+
+    const description=document.createElement("p");
+    description.textContent=item.description||"";
+
+    const date=document.createElement("div");
+    date.className="museum-live-date";
+    date.textContent=item.event_date?"📅 "+item.event_date:"";
+
+    card.append(image,title,description,date);
+    photoGrid.appendChild(card);
+   });
+
+   area.appendChild(photoGrid);
+  }else{
+   const empty=document.createElement("div");
+   empty.className="museum-live-empty";
+   empty.textContent="अहिलेसम्म संग्रहालयमा फोटो अपलोड गरिएको छैन।";
+   area.appendChild(empty);
+  }
+
+  const videoTitle=document.createElement("h3");
+  videoTitle.className="museum-live-title";
+  videoTitle.textContent="🎥 Admin बाट राखिएका भिडियोहरू";
+  area.appendChild(videoTitle);
+
+  if(videos.length){
+   const videoGrid=document.createElement("div");
+   videoGrid.className="museum-live-grid";
+
+   videos.forEach(item=>{
+    const card=document.createElement("article");
+    card.className="museum-live-card";
+
+    const video=document.createElement("video");
+    video.src=museumPublicUrl("museum-videos",item.storage_path);
+    video.controls=true;
+    video.preload="metadata";
+    video.playsInline=true;
+
+    video.onerror=function(){
+     this.style.display="none";
+     const errorText=document.createElement("p");
+     errorText.textContent="यो भिडियो खोल्न सकिएन। भिडियो फाइल वा Storage path जाँच गर्नुहोस्।";
+     card.insertBefore(errorText,card.children[0]||null);
+    };
+
+    const title=document.createElement("h4");
+    title.textContent=item.title||"समाजको भिडियो";
+
+    const description=document.createElement("p");
+    description.textContent=item.description||"";
+
+    const date=document.createElement("div");
+    date.className="museum-live-date";
+    date.textContent=item.event_date?"📅 "+item.event_date:"";
+
+    card.append(video,title,description,date);
+    videoGrid.appendChild(card);
+   });
+
+   area.appendChild(videoGrid);
+  }else{
+   const empty=document.createElement("div");
+   empty.className="museum-live-empty";
+   empty.textContent="अहिलेसम्म संग्रहालयमा भिडियो अपलोड गरिएको छैन।";
+   area.appendChild(empty);
+  }
+
+  const openLink=document.createElement("a");
+  openLink.className="museum-open-link";
+  openLink.href="museum.html";
+  openLink.textContent="🏛️ सबै फोटो तथा भिडियो हेर्नुहोस्";
+  area.appendChild(openLink);
+
+ }catch(error){
+  console.error("Museum loading error:",error);
+  area.innerHTML="";
+  const errorBox=document.createElement("div");
+  errorBox.className="museum-live-error";
+  errorBox.textContent="संग्रहालयका सामग्री लोड हुन सकेनन्। कृपया Supabase को museum_items, museum_videos तालिका र सार्वजनिक Storage अनुमति जाँच गर्नुहोस्। विवरण: "+error.message;
+  area.appendChild(errorBox);
+ }
+}
+
 async function loadWebsiteSettings(){
  try{
   const {data,error}=await supabaseClient
@@ -708,9 +876,11 @@ async function loadNotices(){
  }
 }
 
+/* वेबसाइटका सबै सामग्री लोड गर्ने */
 loadWebsiteSettings();
 loadMembers();
 loadNotices();
+loadMuseumMedia();
 </script>
 
 </body>
