@@ -1,168 +1,131 @@
-
+ 
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>इतिहास तथा सम्झना संग्रहालय | रसाली भाई समाज परिवार</title>
-<meta name="description" content="रसाली भाई समाज परिवार चौराठाको इतिहास, सम्झना, फोटो, भिडियो तथा ऐतिहासिक कागजातहरूको डिजिटल संग्रहालय।">
+<meta name="description" content="रसाली भाई समाज परिवार चौराठाको डिजिटल संग्रहालय।">
 
 <style>
 :root{
-  --blue:#123d78;
-  --blue2:#1762a8;
-  --red:#c62828;
-  --gold:#d9a441;
-  --light:#f3f7fc;
-  --dark:#18263b;
+  --blue:#123d78;--blue2:#1762a8;--red:#c62828;
+  --light:#f3f7fc;--dark:#18263b;
 }
 *{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:"Noto Sans Devanagari","Segoe UI",Arial,sans-serif;
-  background:var(--light);
-  color:var(--dark);
-  line-height:1.7;
+  margin:0;font-family:"Noto Sans Devanagari","Segoe UI",Arial,sans-serif;
+  background:var(--light);color:var(--dark);line-height:1.7;
 }
 header{
   background:linear-gradient(120deg,#102e60,#1762a8);
-  color:white;
-  padding:25px 15px;
-  text-align:center;
+  color:white;padding:25px 15px;text-align:center;
   border-bottom:5px solid var(--red);
 }
 .logo{
-  width:85px;height:85px;
-  border-radius:50%;
-  border:3px solid white;
-  object-fit:contain;
-  background:white;
-  padding:5px;
+  width:85px;height:85px;border-radius:50%;
+  border:3px solid white;object-fit:contain;background:white;padding:5px;
 }
 header h1{margin:8px 0 2px;font-size:25px}
 header p{margin:3px 0;color:#e5efff}
 .tagline{font-weight:bold;color:#ffe2a0!important}
 nav{
-  background:#fff;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:12px;
-  box-shadow:0 3px 12px #00000012;
+  background:white;display:flex;justify-content:center;
+  flex-wrap:wrap;gap:8px;padding:12px;box-shadow:0 3px 12px #00000012;
 }
 nav a{
-  text-decoration:none;
-  color:var(--blue);
-  font-weight:bold;
-  padding:7px 13px;
-  border-radius:20px;
-  font-size:14px;
+  text-decoration:none;color:var(--blue);font-weight:bold;
+  padding:7px 13px;border-radius:20px;font-size:14px;
 }
 nav a:hover{background:#e8effa}
 .hero{
   background:linear-gradient(120deg,#102e60dd,#1762a8dd);
-  color:white;
-  text-align:center;
-  padding:55px 18px;
+  color:white;text-align:center;padding:48px 18px;
 }
 .hero h2{font-size:30px;margin:0 0 10px}
 .hero p{max-width:720px;margin:auto;color:#edf4ff}
 .container{max-width:1100px;margin:auto;padding:25px 16px}
-.section-title{
-  text-align:center;
-  color:var(--blue);
-  font-size:25px;
-  margin:12px 0 5px;
-}
+.section-title{text-align:center;color:var(--blue);font-size:25px;margin:12px 0 5px}
 .section-sub{text-align:center;color:#66758a;margin:0 0 25px}
 .intro{
-  background:white;
-  border-radius:15px;
-  padding:22px;
-  box-shadow:0 4px 16px #102e6010;
-  border-left:5px solid var(--red);
+  background:white;border-radius:15px;padding:22px;
+  box-shadow:0 4px 16px #102e6010;border-left:5px solid var(--red);
   margin-bottom:25px;
 }
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:22px 0;
-}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
 .stat{
-  background:white;
-  border-radius:13px;
-  padding:18px 8px;
-  text-align:center;
-  box-shadow:0 3px 12px #0000000b;
+  background:white;border-radius:13px;padding:18px 8px;
+  text-align:center;box-shadow:0 3px 12px #0000000b;
 }
 .stat strong{display:block;color:var(--blue);font-size:23px}
 .stat span{font-size:13px;color:#68778a}
-.tabs{
-  display:flex;gap:9px;justify-content:center;
-  flex-wrap:wrap;margin:20px 0;
-}
-.tab{
-  border:1px solid #cbd8e9;
-  background:white;color:var(--blue);
-  padding:9px 17px;border-radius:22px;
-  font-weight:bold;cursor:pointer;
-}
-.tab.active{background:var(--blue);color:white}
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:17px;
-}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
 .item{
   background:white;border-radius:14px;overflow:hidden;
   box-shadow:0 4px 15px #00000010;
 }
-.item-visual{
-  height:155px;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#dce9fa,#edf3fc);
-  color:var(--blue);font-size:42px;
-}
+.item img{width:100%;height:210px;object-fit:cover;display:block;background:#e5edf7}
 .item-content{padding:15px}
 .item-content h3{margin:0 0 5px;color:var(--blue);font-size:17px}
-.item-content p{margin:0;color:#68778a;font-size:14px}
+.item-content p{margin:0;color:#68778a;font-size:14px;white-space:pre-wrap}
+.item-date{font-size:12px;color:#8994a3;margin-top:7px}
 .empty{
-  background:white;border:1px dashed #aebed2;
-  padding:30px 15px;border-radius:14px;
-  text-align:center;color:#68778a;
+  background:white;border:1px dashed #aebed2;padding:30px 15px;
+  border-radius:14px;text-align:center;color:#68778a;
 }
 .empty .symbol{font-size:40px}
 .timeline{max-width:750px;margin:25px auto}
 .event{
-  position:relative;
-  padding:0 0 25px 28px;
-  border-left:3px solid #cbd8e9;
-  margin-left:12px;
+  position:relative;padding:0 0 25px 28px;
+  border-left:3px solid #cbd8e9;margin-left:12px;
 }
 .event:before{
-  content:"";position:absolute;
-  width:15px;height:15px;border-radius:50%;
-  background:var(--red);left:-9px;top:5px;
+  content:"";position:absolute;width:15px;height:15px;
+  border-radius:50%;background:var(--red);left:-9px;top:5px;
 }
 .event h3{margin:0;color:var(--blue)}
 .event p{margin:5px 0;color:#68778a}
 .note{
-  background:#fff6e5;border:1px solid #f0d69b;
-  border-radius:12px;padding:15px;margin-top:20px;
-  color:#75551b;font-size:14px;
+  background:#fff6e5;border:1px solid #f0d69b;border-radius:12px;
+  padding:15px;margin-top:25px;color:#75551b;font-size:14px;
+}
+.admin-panel{
+  display:none;background:white;border-radius:15px;padding:20px;
+  margin:25px 0;box-shadow:0 4px 16px #102e6010;
+  border-top:5px solid var(--red);
+}
+.admin-panel h2{color:var(--blue);margin-top:0}
+.field{margin:12px 0}
+.field label{display:block;font-weight:bold;margin-bottom:5px}
+.field input,.field textarea{
+  width:100%;padding:12px;border:1px solid #cbd8e9;
+  border-radius:9px;font:inherit;background:#fff;
+}
+.field textarea{min-height:85px;resize:vertical}
+.btn{
+  border:0;border-radius:25px;padding:11px 19px;
+  color:white;background:var(--blue);font-weight:bold;
+  cursor:pointer;font:inherit;margin:5px 4px 5px 0;
+}
+.btn-red{background:var(--red)}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.status{padding:10px;border-radius:9px;margin:12px 0;display:none}
+.status.ok{display:block;background:#e8f7ed;color:#176b35}
+.status.error{display:block;background:#fff0f0;color:#a51f1f}
+.delete-btn{
+  background:var(--red);color:white;border:0;border-radius:18px;
+  padding:7px 13px;margin-top:10px;cursor:pointer;font-weight:bold;
+}
+.back{
+  display:inline-block;background:var(--red);color:white;
+  padding:10px 20px;border-radius:25px;text-decoration:none;
+  font-weight:bold;margin-top:15px;
 }
 footer{
   background:#102e60;color:white;text-align:center;
   padding:25px 15px;margin-top:35px;
 }
 footer p{margin:4px}
-.back{
-  display:inline-block;background:var(--red);color:white;
-  padding:10px 20px;border-radius:25px;
-  text-decoration:none;font-weight:bold;margin-top:15px;
-}
 @media(max-width:700px){
   .gallery{grid-template-columns:repeat(2,1fr)}
   .hero h2{font-size:24px}
@@ -179,10 +142,8 @@ footer p{margin:4px}
 <body>
 
 <header>
-  <!-- आफ्नो वास्तविक लोगोको URL भए तलको src मा राख्नुहोस् -->
   <img class="logo" src="logo.png" alt="समाजको लोगो"
        onerror="this.style.display='none'">
-
   <h1>रसाली भाई समाज परिवार चौराठा</h1>
   <p>चौराठा, दैलेख, नेपाल</p>
   <p class="tagline">एकता • सहयोग • सेवा • भाइचारा</p>
@@ -200,125 +161,119 @@ footer p{margin:4px}
 
 <section class="hero">
   <h2>हाम्रो इतिहास, हाम्रो पहिचान</h2>
-  <p>
-    हाम्रा पुर्खाको सम्झना, समाजका महत्वपूर्ण क्षण,
-    ऐतिहासिक दस्तावेज र भावी पुस्ताका लागि अमूल्य
-    सम्झनाहरू सुरक्षित राख्ने डिजिटल संग्रहालय।
-  </p>
+  <p>हाम्रा पुर्खाको सम्झना, समाजका महत्वपूर्ण क्षण, ऐतिहासिक दस्तावेज र भावी पुस्ताका लागि अमूल्य सम्झनाहरू सुरक्षित राख्ने डिजिटल संग्रहालय।</p>
 </section>
 
 <main class="container">
 
-  <section id="parichaya">
-    <h2 class="section-title">डिजिटल इतिहास तथा सम्झना संग्रहालय</h2>
-    <p class="section-sub">हिजोका सम्झना, आजको एकता र भोलिको इतिहास</p>
+<section id="parichaya">
+  <h2 class="section-title">डिजिटल इतिहास तथा सम्झना संग्रहालय</h2>
+  <p class="section-sub">हिजोका सम्झना, आजको एकता र भोलिको इतिहास</p>
+  <div class="intro">
+    <h3>रसाली भाई समाज परिवारको सम्झना घर</h3>
+    <p>यस डिजिटल संग्रहालयको उद्देश्य रसाली भाई समाज परिवार चौराठाको इतिहास, सामाजिक गतिविधि, पुराना तथा नयाँ तस्बिर, भिडियो र महत्वपूर्ण कागजातहरू एकै ठाउँमा सुरक्षित राख्नु हो।</p>
+    <p>हाम्रा अग्रजहरूको योगदान र समाजका महत्वपूर्ण उपलब्धिहरू भावी पुस्तासम्म पुर्‍याउनु हाम्रो लक्ष्य हो।</p>
+  </div>
+</section>
 
-    <div class="intro">
-      <h3>रसाली भाई समाज परिवारको सम्झना घर</h3>
-      <p>
-        यस डिजिटल संग्रहालयको उद्देश्य रसाली भाई समाज परिवार
-        चौराठाको इतिहास, सामाजिक गतिविधि, पुराना तथा नयाँ
-        तस्बिर, भिडियो र महत्वपूर्ण कागजातहरू एकै ठाउँमा
-        सुरक्षित राख्नु हो।
-      </p>
-      <p>
-        हाम्रा अग्रजहरूको योगदान र समाजका महत्वपूर्ण
-        उपलब्धिहरू भावी पुस्तासम्म पुर्‍याउनु हाम्रो लक्ष्य हो।
-      </p>
-    </div>
-  </section>
+<div class="stats">
+  <div class="stat"><strong>२०८२</strong><span>स्थापना वर्ष</span></div>
+  <div class="stat"><strong>∞</strong><span>सम्झनाको यात्रा</span></div>
+  <div class="stat"><strong>१</strong><span>हाम्रो परिवार</span></div>
+</div>
 
-  <div class="stats">
-    <div class="stat">
-      <strong>२०८२</strong>
-      <span>स्थापना वर्ष</span>
+<section id="timeline">
+  <h2 class="section-title">समाजको ऐतिहासिक समयरेखा</h2>
+  <p class="section-sub">महत्वपूर्ण घटनाहरूको अभिलेख</p>
+  <div class="timeline">
+    <div class="event">
+      <h3>२०८२ — समाजको स्थापना</h3>
+      <p>रसाली भाई समाज परिवार चौराठाको स्थापना। यस वर्षदेखि समाजको इतिहास र गतिविधिहरू अभिलेख राख्ने यात्रा सुरु भएको हो।</p>
     </div>
-    <div class="stat">
-      <strong>∞</strong>
-      <span>सम्झनाको यात्रा</span>
-    </div>
-    <div class="stat">
-      <strong>१</strong>
-      <span>हाम्रो परिवार</span>
+    <div class="event">
+      <h3>आगामी ऐतिहासिक गतिविधिहरू</h3>
+      <p>समाजका बैठक, कार्यक्रम, सामाजिक सेवा, निर्णय तथा उपलब्धिहरू यहाँ क्रमशः थपिनेछन्।</p>
     </div>
   </div>
+</section>
 
-  <section id="timeline">
-    <h2 class="section-title">समाजको ऐतिहासिक समयरेखा</h2>
-    <p class="section-sub">महत्वपूर्ण घटनाहरूको अभिलेख</p>
+<section id="photos">
+  <h2 class="section-title">फोटो संग्रह</h2>
+  <p class="section-sub">समाजका पुराना तथा नयाँ तस्बिरहरू</p>
 
-    <div class="timeline">
-      <div class="event">
-        <h3>२०८२ — समाजको स्थापना</h3>
-        <p>
-          रसाली भाई समाज परिवार चौराठाको स्थापना।
-          यस वर्षदेखि समाजको इतिहास र गतिविधिहरू
-          अभिलेख राख्ने यात्रा सुरु भएको हो।
-        </p>
-      </div>
-      <div class="event">
-        <h3>आगामी ऐतिहासिक गतिविधिहरू</h3>
-        <p>
-          समाजका बैठक, कार्यक्रम, सामाजिक सेवा,
-          निर्णय तथा उपलब्धिहरू यहाँ क्रमशः थपिनेछन्।
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="photos">
-    <h2 class="section-title">फोटो संग्रह</h2>
-    <p class="section-sub">समाजका पुराना तथा नयाँ तस्बिरहरू</p>
-
-    <div class="empty">
-      <div class="symbol">📷</div>
-      <h3>फोटो संग्रह तयार हुँदैछ</h3>
-      <p>
-        समाजका आधिकारिक तस्बिरहरू Admin बाट सुरक्षित रूपमा
-        अपलोड भएपछि यहाँ देखिनेछन्।
-      </p>
-    </div>
-  </section>
-
-  <section id="videos" style="margin-top:45px">
-    <h2 class="section-title">भिडियो संग्रह</h2>
-    <p class="section-sub">समाजका कार्यक्रम तथा ऐतिहासिक भिडियोहरू</p>
-
-    <div class="empty">
-      <div class="symbol">🎥</div>
-      <h3>भिडियो संग्रह तयार हुँदैछ</h3>
-      <p>
-        समाजका कार्यक्रम, बैठक तथा महत्वपूर्ण क्षणका
-        भिडियोहरू यहाँ राखिनेछन्।
-      </p>
-    </div>
-  </section>
-
-  <section id="documents" style="margin-top:45px">
-    <h2 class="section-title">ऐतिहासिक कागजात संग्रह</h2>
-    <p class="section-sub">समाजका महत्वपूर्ण अभिलेखहरू</p>
-
-    <div class="empty">
-      <div class="symbol">📜</div>
-      <h3>कागजात संग्रह तयार हुँदैछ</h3>
-      <p>
-        समाजका पुराना निर्णय, स्थापना सम्बन्धी कागजात,
-        नियमावली तथा महत्वपूर्ण अभिलेखहरू यहाँ राखिनेछन्।
-      </p>
-    </div>
-  </section>
-
-  <div class="note">
-    <strong>महत्वपूर्ण सूचना:</strong>
-    यो संग्रहालयको सार्वजनिक पेजको पहिलो चरण हो।
-    फोटो, भिडियो र कागजात अपलोड तथा व्यवस्थापन गर्ने
-    Admin सुविधा र सुरक्षित Supabase भण्डारण अर्को चरणमा
-    जोडिनेछ। हाल यस पेजमा वास्तविक अपलोड सुविधा सक्रिय छैन।
+  <div id="gallery" class="gallery"></div>
+  <div id="galleryEmpty" class="empty">
+    <div class="symbol">📷</div>
+    <h3>फोटो संग्रह तयार हुँदैछ</h3>
+    <p>Admin बाट पहिलो फोटो अपलोड भएपछि यहाँ देखिनेछ।</p>
   </div>
+  <p id="photoCount" class="section-sub"></p>
+</section>
 
-  <div style="text-align:center">
-    <a class="back" href="index.html">← मुख्य वेबसाइटमा फर्कनुहोस्</a>
+<!-- Admin Upload Panel -->
+<section id="adminPanel" class="admin-panel">
+  <h2>🔐 संग्रहालय Admin नियन्त्रण</h2>
+  <p>Admin खाताबाट फोटो थप्न र हटाउन सक्नुहुन्छ।</p>
+
+  <div id="adminStatus" class="status"></div>
+
+  <form id="uploadForm">
+    <div class="field">
+      <label for="photoTitle">फोटोको शीर्षक *</label>
+      <input id="photoTitle" type="text" maxlength="150"
+             placeholder="जस्तै: समाजको पहिलो भेला" required>
+    </div>
+
+    <div class="field">
+      <label for="photoDescription">फोटोको विवरण</label>
+      <textarea id="photoDescription" maxlength="2000"
+        placeholder="यो फोटो कहिले र कुन अवसरमा खिचिएको हो?"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="photoDate">फोटोको मिति (ऐच्छिक)</label>
+      <input id="photoDate" type="date">
+    </div>
+
+    <div class="field">
+      <label for="photoFile">फोटो छान्नुहोस् *</label>
+      <input id="photoFile" type="file"
+        accept="image/jpeg,image/png,image/webp" required>
+      <small>JPG, PNG वा WEBP मात्र। अधिकतम १० MB।</small>
+    </div>
+
+    <button id="uploadButton" class="btn" type="submit">📤 फोटो अपलोड गर्नुहोस्</button>
+  </form>
+</section>
+
+<section id="videos" style="margin-top:45px">
+  <h2 class="section-title">भिडियो संग्रह</h2>
+  <p class="section-sub">समाजका कार्यक्रम तथा ऐतिहासिक भिडियोहरू</p>
+  <div class="empty">
+    <div class="symbol">🎥</div>
+    <h3>भिडियो संग्रह तयार हुँदैछ</h3>
+    <p>भिडियो अपलोड सुविधा अर्को चरणमा थपिनेछ।</p>
   </div>
+</section>
+
+<section id="documents" style="margin-top:45px">
+  <h2 class="section-title">ऐतिहासिक कागजात संग्रह</h2>
+  <p class="section-sub">समाजका महत्वपूर्ण अभिलेखहरू</p>
+  <div class="empty">
+    <div class="symbol">📜</div>
+    <h3>कागजात संग्रह तयार हुँदैछ</h3>
+    <p>नियमावली, निर्णय तथा महत्वपूर्ण अभिलेखहरू अर्को चरणमा राखिनेछन्।</p>
+  </div>
+</section>
+
+<div class="note">
+  <strong>महत्वपूर्ण सूचना:</strong>
+  फोटोहरू सार्वजनिक रूपमा हेर्न सकिन्छ। फोटो थप्ने र हटाउने सुविधा समाजको Admin खातामा मात्र उपलब्ध हुन्छ। भिडियो तथा कागजात सुविधा अर्को चरणमा थपिनेछ।
+</div>
+
+<div style="text-align:center">
+  <a class="back" href="index.html">← मुख्य वेबसाइटमा फर्कनुहोस्</a>
+</div>
 
 </main>
 
@@ -329,6 +284,290 @@ footer p{margin:4px}
   <p>हामी माबै र भामसैनीका सन्तान</p>
   <p>© २०८२ — रसाली भाई समाज परिवार</p>
 </footer>
+
+<script>
+const SUPABASE_URL = "https://hvcalffbwvbwekysukdo.supabase.co";
+const SUPABASE_KEY = "sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+const BUCKET = "museum-photos";
+const ADMIN_EMAIL = "bhaisamajrashali@gmail.com";
+
+const gallery = document.getElementById("gallery");
+const galleryEmpty = document.getElementById("galleryEmpty");
+const adminPanel = document.getElementById("adminPanel");
+const adminStatus = document.getElementById("adminStatus");
+const uploadForm = document.getElementById("uploadForm");
+const uploadButton = document.getElementById("uploadButton");
+
+let accessToken = localStorage.getItem("rasali_access_token") || "";
+let isAdmin = false;
+
+function headers(token = "") {
+  const h = {
+    "apikey": SUPABASE_KEY,
+    "Content-Type": "application/json"
+  };
+  if (token) h.Authorization = "Bearer " + token;
+  return h;
+}
+
+function showStatus(message, type = "ok") {
+  adminStatus.textContent = message;
+  adminStatus.className = "status " + type;
+}
+
+function escapeHTML(value = "") {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#039;"
+  })[char]);
+}
+
+function safeFileName(name) {
+  return name.normalize("NFKD")
+    .replace(/[^a-zA-Z0-9._-]/g, "_")
+    .replace(/_+/g, "_")
+    .slice(-90) || "photo.jpg";
+}
+
+function publicPhotoURL(path) {
+  return SUPABASE_URL + "/storage/v1/object/public/" +
+    BUCKET + "/" + path.split("/").map(encodeURIComponent).join("/");
+}
+
+async function checkAdmin() {
+  if (!accessToken) return false;
+
+  try {
+    const response = await fetch(SUPABASE_URL + "/auth/v1/user", {
+      headers: headers(accessToken)
+    });
+
+    if (!response.ok) return false;
+
+    const user = await response.json();
+    return (user.email || "").toLowerCase() === ADMIN_EMAIL;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
+async function loadPhotos() {
+  gallery.innerHTML = "";
+  galleryEmpty.style.display = "block";
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/museum_items?select=id,title,description,event_date,storage_path,created_at&order=created_at.desc",
+      { headers: headers() }
+    );
+
+    if (!response.ok) {
+      throw new Error(await response.text());
+    }
+
+    const photos = await response.json();
+
+    galleryEmpty.style.display = photos.length ? "none" : "block";
+    document.getElementById("photoCount").textContent =
+      "जम्मा फोटो: " + photos.length;
+
+    photos.forEach(photo => {
+      const card = document.createElement("article");
+      card.className = "item";
+
+      const dateText = photo.event_date
+        ? new Date(photo.event_date + "T00:00:00").toLocaleDateString("ne-NP")
+        : "";
+
+      card.innerHTML = `
+        <img src="${publicPhotoURL(photo.storage_path)}"
+             alt="${escapeHTML(photo.title)}" loading="lazy">
+        <div class="item-content">
+          <h3>${escapeHTML(photo.title)}</h3>
+          <p>${escapeHTML(photo.description || "")}</p>
+          ${dateText ? `<div class="item-date">मिति: ${escapeHTML(dateText)}</div>` : ""}
+          ${isAdmin ? `<button class="delete-btn" data-id="${photo.id}" data-path="${escapeHTML(photo.storage_path)}">फोटो हटाउनुहोस्</button>` : ""}
+        </div>
+      `;
+
+      gallery.appendChild(card);
+    });
+
+  } catch (error) {
+    galleryEmpty.style.display = "block";
+    galleryEmpty.innerHTML =
+      "<div class='symbol'>⚠️</div><h3>फोटो लोड हुन सकेन</h3><p>" +
+      escapeHTML(error.message) + "</p>";
+  }
+}
+
+async function uploadPhoto(event) {
+  event.preventDefault();
+
+  if (!isAdmin || !accessToken) {
+    showStatus("Admin Login आवश्यक छ।", "error");
+    return;
+  }
+
+  const title = document.getElementById("photoTitle").value.trim();
+  const description = document.getElementById("photoDescription").value.trim();
+  const eventDate = document.getElementById("photoDate").value;
+  const file = document.getElementById("photoFile").files[0];
+
+  if (!title || !file) {
+    showStatus("फोटोको शीर्षक र फोटो छान्नुहोस्।", "error");
+    return;
+  }
+
+  const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+  if (!allowedTypes.includes(file.type)) {
+    showStatus("JPG, PNG वा WEBP फोटो मात्र राख्न मिल्छ।", "error");
+    return;
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    showStatus("फोटो १० MB भन्दा सानो हुनुपर्छ।", "error");
+    return;
+  }
+
+  uploadButton.disabled = true;
+  uploadButton.textContent = "अपलोड हुँदैछ...";
+
+  const filePath = Date.now() + "_" + safeFileName(file.name);
+
+  try {
+    const uploadResponse = await fetch(
+      SUPABASE_URL + "/storage/v1/object/" +
+      BUCKET + "/" + filePath.split("/").map(encodeURIComponent).join("/"),
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + accessToken,
+          "Content-Type": file.type,
+          "x-upsert": "false"
+        },
+        body: file
+      }
+    );
+
+    if (!uploadResponse.ok) {
+      throw new Error("फोटो अपलोड भएन: " + await uploadResponse.text());
+    }
+
+    const record = {
+      title: title,
+      description: description || null,
+      event_date: eventDate || null,
+      storage_path: filePath
+    };
+
+    const saveResponse = await fetch(
+      SUPABASE_URL + "/rest/v1/museum_items",
+      {
+        method: "POST",
+        headers: {
+          ...headers(accessToken),
+          "Prefer": "return=representation"
+        },
+        body: JSON.stringify(record)
+      }
+    );
+
+    if (!saveResponse.ok) {
+      // विवरण सुरक्षित नभए अपलोड गरिएको फोटो हटाउने प्रयास
+      await fetch(
+        SUPABASE_URL + "/storage/v1/object/" + BUCKET + "/" +
+        filePath.split("/").map(encodeURIComponent).join("/"),
+        {
+          method: "DELETE",
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + accessToken
+          }
+        }
+      );
+
+      throw new Error("फोटोको विवरण सुरक्षित भएन: " + await saveResponse.text());
+    }
+
+    uploadForm.reset();
+    showStatus("फोटो सफलतापूर्वक अपलोड भयो।", "ok");
+    await loadPhotos();
+
+  } catch (error) {
+    showStatus(error.message, "error");
+  } finally {
+    uploadButton.disabled = false;
+    uploadButton.textContent = "📤 फोटो अपलोड गर्नुहोस्";
+  }
+}
+
+async function deletePhoto(id, path) {
+  if (!isAdmin || !confirm("यो फोटो स्थायी रूपमा हटाउने हो?")) return;
+
+  try {
+    const deleteFile = await fetch(
+      SUPABASE_URL + "/storage/v1/object/" + BUCKET + "/" +
+      path.split("/").map(encodeURIComponent).join("/"),
+      {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + accessToken
+        }
+      }
+    );
+
+    if (!deleteFile.ok) {
+      throw new Error("फोटो हटाउन सकिएन: " + await deleteFile.text());
+    }
+
+    const deleteRecord = await fetch(
+      SUPABASE_URL + "/rest/v1/museum_items?id=eq." + encodeURIComponent(id),
+      {
+        method: "DELETE",
+        headers: headers(accessToken)
+      }
+    );
+
+    if (!deleteRecord.ok) {
+      throw new Error("फोटोको विवरण हटाउन सकिएन: " + await deleteRecord.text());
+    }
+
+    showStatus("फोटो हटाइयो।", "ok");
+    await loadPhotos();
+
+  } catch (error) {
+    showStatus(error.message, "error");
+  }
+}
+
+gallery.addEventListener("click", event => {
+  const button = event.target.closest(".delete-btn");
+  if (button) {
+    deletePhoto(button.dataset.id, button.dataset.path);
+  }
+});
+
+uploadForm.addEventListener("submit", uploadPhoto);
+
+async function startMuseum() {
+  isAdmin = await checkAdmin();
+
+  if (isAdmin) {
+    adminPanel.style.display = "block";
+    showStatus("Admin Login सफल भयो। फोटो अपलोड गर्न सक्नुहुन्छ।", "ok");
+  }
+
+  await loadPhotos();
+}
+
+startMuseum();
+</script>
 
 </body>
 </html>
