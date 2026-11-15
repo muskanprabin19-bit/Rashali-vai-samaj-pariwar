@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123f80">
+<title>रसाली परिवार वंशावली</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ background:#f0f5fb;color:#172033;
+}
+header{
+ background:linear-gradient(120deg,#073b91,#0878e8);
+ color:white;text-align:center;padding:25px 12px;
+}
+header h1{margin:0 0 8px;font-size:25px}
+header p{margin:5px;font-size:14px}
+.container{max-width:1050px;margin:auto;padding:15px}
+.search{
+ width:100%;padding:13px;border:1px solid #cbd5e1;
+ border-radius:10px;font-size:16px;margin:12px 0;
+}
+.section-title{
+ color:#123f80;border-bottom:2px solid #dbeafe;
+ padding-bottom:8px;margin-top:22px;
+}
+.member-list{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:13px;
+}
+.member-card{
+ background:white;border:1px solid #dbe5f0;
+ border-radius:13px;padding:16px;text-align:center;
+ box-shadow:0 3px 12px #0000000b;
+}
+.avatar{
+ width:70px;height:70px;border-radius:12px;
+ background:#dbeafe;color:#123f80;
+ display:flex;align-items:center;justify-content:center;
+ font-size:29px;font-weight:bold;margin:0 auto 10px;
+}
+.member-card h3{margin:5px 0;color:#123f80}
+.member-card p{font-size:13px;color:#64748b}
+button{
+ border:0;border-radius:8px;padding:10px 14px;
+ cursor:pointer;font-weight:bold;font-size:14px;
+}
+.view-btn{background:#0d6efd;color:white}
+.print-btn{background:#198754;color:white}
+.back-btn{background:#64748b;color:white}
+.hidden{display:none!important}
+.profile{
+ background:white;border:1px solid #dbe5f0;
+ border-radius:14px;padding:20px;margin-top:18px;
+ box-shadow:0 4px 15px #0000000b;
+}
+.profile-head{text-align:center;border-bottom:2px solid #dbeafe;padding-bottom:15px}
+.profile-head h2{color:#123f80;margin:8px}
+.profile-photo{
+ width:95px;height:95px;border-radius:12px;
+ background:#e5efff;color:#123f80;
+ display:flex;align-items:center;justify-content:center;
+ font-size:40px;margin:auto;font-weight:bold;
+}
+.info-grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:10px;margin-top:15px;
+}
+.info{
+ background:#f5f8fc;border:1px solid #e2e8f0;
+ border-radius:9px;padding:12px;overflow-wrap:anywhere;
+}
+.info small{display:block;color:#64748b;margin-bottom:5px}
+.info strong{color:#172033}
+.family-title{
+ color:#123f80;margin-top:22px;padding-bottom:7px;
+ border-bottom:1px solid #dbeafe;
+}
+.family-list{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:10px;
+}
+.family-item{
+ background:#f8fafc;border:1px solid #e2e8f0;
+ border-radius:9px;padding:12px;
+}
+.family-item b{display:block;color:#123f80;margin-bottom:5px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+footer{
+ background:#123f80;color:white;text-align:center;
+ padding:18px;margin-top:30px;font-size:13px;
+}
+.empty{text-align:center;padding:25px;color:#64748b}
+@media(max-width:550px){
+ header h1{font-size:21px}
+ .info-grid,.family-list{grid-template-columns:1fr}
+ .profile{padding:13px}
+}
+@media print{
+ body{background:white}
+ header,.search-area,.member-list,.actions,.section-title,
+ footer,.no-print{display:none!important}
+ .container{max-width:100%;padding:0}
+ #profile{display:block!important;border:0;box-shadow:none;margin:0;padding:10px}
+ .info,.family-item{break-inside:avoid}
+ .profile-head{margin-bottom:15px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <h1>🌳 रसाली परिवार वंशावली</h1>
+ <p>रसाली भाई समाज परिवार चौराठा</p>
+ <p>चौराठा, दैलेख, नेपाल</p>
+ <p>एकता • सेवा • समर्पण</p>
+</header>
+
+<div class="container">
+
+ <div class="search-area">
+  <input class="search" id="searchInput"
+   placeholder="🔍 सदस्यको नाम खोज्नुहोस्..."
+   oninput="searchMembers()">
+ </div>
+
+ <div id="listSection">
+  <h2 class="section-title">परिवारका सदस्यहरू</h2>
+  <div class="member-list" id="memberList"></div>
+ </div>
+
+ <div id="profile" class="profile hidden"></div>
+
+</div>
+
+<footer>
+ <b>रसाली भाई समाज परिवार चौराठा</b>
+ <p>हामी माबै र भामसैनीका सन्तान</p>
+ <p>Digital Family Tree & Family Archive</p>
+</footer>
+
+<script>
+
+/* ==================================
+   परिवारका सदस्यहरूको विवरण
+   नयाँ सदस्य थप्दा यसै सूचीमा थप्नुहोस्।
+   ================================== */
+
+const families = [
+
+ {
+  id:"RS-001",
+  name:"प्रबिन रसाली",
+  position:"परिवार सदस्य",
+  photo:"",
+  father:"बुबाको नाम पछि राख्ने",
+  mother:"आमाको नाम पछि राख्ने",
+  spouse:"श्रीमतीको नाम पछि राख्ने",
+  grandfather:"हजुरबुबाको नाम पछि राख्ने",
+  grandmother:"हजुरआमाको नाम पछि राख्ने",
+  birth:"",
+  permanentAddress:"चौराठा, दैलेख, नेपाल",
+  currentAddress:"",
+  phone:"",
+  sons:[],
+  daughters:[],
+  brothers:[],
+  sisters:[],
+  notes:"परिवारको थप विवरण पछि राखिनेछ।"
+ }
+
+];
+
+/* सदस्यको सूची देखाउने */
+
+function renderMembers(data){
+ const list=document.getElementById("memberList");
+
+ if(!data.length){
+  list.innerHTML='<div class="empty">सदस्य भेटिएन।</div>';
+  return;
+ }
+
+ list.innerHTML=data.map(member=>{
+  const letter=(member.name||"र").trim().charAt(0);
+
+  return `
+   <div class="member-card">
+    <div class="avatar">${escapeHTML(letter)}</div>
+    <h3>${escapeHTML(member.name)}</h3>
+    <p>सदस्य ID: ${escapeHTML(member.id)}</p>
+    <button class="view-btn" onclick="openProfile('${escapeHTML(member.id)}')">
+     परिवार हेर्नुहोस्
+    </button>
+   </div>
+  `;
+ }).join("");
+}
+
+/* HTML सुरक्षित देखाउने */
+
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,function(char){
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[char];
+ });
+}
+
+/* नाम खोज्ने */
+
+function searchMembers(){
+ const keyword=document.getElementById("searchInput").value.trim().toLowerCase();
+
+ const filtered=families.filter(member=>
+  (member.name||"").toLowerCase().includes(keyword) ||
+  (member.id||"").toLowerCase().includes(keyword)
+ );
+
+ renderMembers(filtered);
+}
+
+/* परिवारको विवरण देखाउने */
+
+function openProfile(id){
+ const member=families.find(item=>item.id===id);
+ if(!member)return;
+
+ document.getElementById("listSection").classList.add("hidden");
+ document.querySelector(".search-area").classList.add("hidden");
+
+ const profile=document.getElementById("profile");
+ profile.classList.remove("hidden");
+
+ function info(label,value){
+  return `
+   <div class="info">
+    <small>${label}</small>
+    <strong>${escapeHTML(value||"विवरण उपलब्ध छैन")}</strong>
+   </div>
+  `;
+ }
+
+ function familyItems(title,items){
+  return `
+   <h3 class="family-title">${title}</h3>
+   <div class="family-list">
+    ${
+     items&&items.length
+     ?items.map((person,index)=>`
+       <div class="family-item">
+        <b>${title} ${index+1}</b>
+        ${escapeHTML(person)}
+       </div>
+      `).join("")
+     :'<div class="family-item">नाम थप्न बाँकी छ</div>'
+    }
+   </div>
+  `;
+ }
+
+ profile.innerHTML=`
+  <div class="actions no-print">
+   <button class="back-btn" onclick="backToList()">← सदस्य सूची</button>
+   <button class="print-btn" onclick="printFamily()">🖨 PDF / Print</button>
+  </div>
+
+  <div class="profile-head">
+   <div class="profile-photo">
+    ${escapeHTML((member.name||"र").trim().charAt(0))}
+   </div>
+   <h2>${escapeHTML(member.name)}</h2>
+   <p>${escapeHTML(member.position||"परिवार सदस्य")}</p>
+   <p>सदस्य ID: ${escapeHTML(member.id)}</p>
+  </div>
+
+  <h3 class="family-title">व्यक्तिगत विवरण</h3>
+  <div class="info-grid">
+   ${info("पूरा नाम",member.name)}
+   ${info("जन्म मिति",member.birth)}
+   ${info("स्थायी ठेगाना",member.permanentAddress)}
+   ${info("हालको ठेगाना",member.currentAddress)}
+   ${info("सम्पर्क नम्बर",member.phone)}
+  </div>
+
+  <h3 class="family-title">अभिभावक तथा पुर्खा</h3>
+  <div class="info-grid">
+   ${info("बुबाको नाम",member.father)}
+   ${info("आमाको नाम",member.mother)}
+   ${info("हजुरबुबाको नाम",member.grandfather)}
+   ${info("हजुरआमाको नाम",member.grandmother)}
+  </div>
+
+  <h3 class="family-title">वैवाहिक विवरण</h3>
+  <div class="info-grid">
+   ${info("श्रीमान् / श्रीमती",member.spouse)}
+  </div>
+
+  ${familyItems("छोराहरू",member.sons)}
+  ${familyItems("छोरीहरू",member.daughters)}
+  ${familyItems("दाजुभाइहरू",member.brothers)}
+  ${familyItems("दिदीबहिनीहरू",member.sisters)}
+
+  <h3 class="family-title">थप जानकारी</h3>
+  <div class="info">${escapeHTML(member.notes||"थप विवरण छैन")}</div>
+
+  <p style="text-align:center;margin-top:25px;font-size:12px;color:#64748b">
+   रसाली भाई समाज परिवार चौराठा
+  </p>
+ `;
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* सूचीमा फर्कने */
+
+function backToList(){
+ document.getElementById("profile").classList.add("hidden");
+ document.getElementById("listSection").classList.remove("hidden");
+ document.querySelector(".search-area").classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* हाल खोलिएको परिवार मात्र PDF / Print */
+
+function printFamily(){
+ window.print();
+}
+
+/* सुरुमा सूची देखाउने */
+
+renderMembers(families);
+
+</script>
+</body>
+</html>
