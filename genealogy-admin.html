@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>वंशावली व्यवस्थापन | रसाली भाई समाज परिवार</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#edf3f9;color:#172033}
+header{background:linear-gradient(135deg,#123b70,#0879b9);color:white;text-align:center;padding:22px 12px}
+header h2{margin:0 0 7px}
+.topbar{background:#082b52;padding:12px;display:flex;justify-content:space-between;gap:10px}
+.topbar a{background:white;color:#123b70;text-decoration:none;padding:10px;border-radius:8px;font-weight:bold}
+main{max-width:950px;margin:18px auto;padding:12px}
+.card{background:white;border-radius:14px;padding:17px;margin-bottom:17px;box-shadow:0 3px 12px #0001}
+h3{color:#123b70;margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+label{display:block;font-size:14px;font-weight:bold;margin-top:8px}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px}
+textarea{min-height:75px}
+button{border:0;border-radius:8px;padding:11px 14px;background:#1263ad;color:white;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6}
+.danger{background:#c62828}
+.secondary{background:#64748b}
+.green{background:#198754}
+.msg{padding:10px;background:#eff6ff;border-radius:8px;margin-top:10px;overflow-wrap:anywhere}
+.member{border:1px solid #dbe3ed;border-radius:11px;padding:12px;margin:9px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.member img{width:65px;height:65px;object-fit:cover;border-radius:10px;background:#e2e8f0}
+.member-info{flex:1;min-width:150px}
+.member-info small{display:block;color:#64748b;margin-top:5px}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+.preview{width:90px;height:90px;object-fit:cover;border-radius:10px;display:none;margin:5px 0}
+.checkrow{display:flex;align-items:center;gap:9px;margin:10px 0}
+.checkrow input{width:auto;margin:0}
+.relation{padding:10px;border:1px solid #dbe3ed;border-radius:9px;margin:8px 0;display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.small{font-size:13px;color:#64748b}
+footer{text-align:center;padding:20px;color:#64748b}
+</style>
+</head>
+<body>
+
+<header>
+<h2>🌳 वंशावली व्यवस्थापन</h2>
+<p>रसाली भाई समाज परिवार चौराठा</p>
+<p>ADMIN CONTROL CENTER</p>
+</header>
+
+<div class="topbar">
+<a href="admin.html">← Admin Dashboard</a>
+<a href="banshawali.html">🌳 सार्वजनिक वंशावली</a>
+</div>
+
+<main>
+
+<section class="card">
+<h3>👤 परिवार सदस्यको विवरण</h3>
+<input type="hidden" id="editId">
+
+<div class="grid">
+<div>
+<label>सदस्यको पूरा नाम *</label>
+<input id="full_name" placeholder="पूरा नाम">
+</div>
+<div>
+<label>सदस्य कोड</label>
+<input id="member_code" placeholder="जस्तै RS-001">
+</div>
+<div>
+<label>लिङ्ग</label>
+<select id="gender">
+<option value="">छान्नुहोस्</option>
+<option value="पुरुष">पुरुष</option>
+<option value="महिला">महिला</option>
+<option value="अन्य">अन्य</option>
+</select>
+</div>
+<div>
+<label>जन्म मिति</label>
+<input id="birth_date" type="date">
+</div>
+<div>
+<label>फोन नम्बर</label>
+<input id="phone" placeholder="सम्पर्क नम्बर">
+</div>
+<div>
+<label>स्थायी ठेगाना</label>
+<input id="permanent_address" placeholder="स्थायी ठेगाना">
+</div>
+<div>
+<label>हालको ठेगाना</label>
+<input id="current_address" placeholder="हाल बसोबास गर्ने ठेगाना">
+</div>
+</div>
+
+<label>सदस्यको फोटो छान्नुहोस्</label>
+<input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp">
+<img id="photoPreview" class="preview" alt="फोटो पूर्वावलोकन">
+
+<label>फोटो URL (वैकल्पिक)</label>
+<input id="photo_url" placeholder="फोटो URL">
+
+<label>थप जानकारी</label>
+<textarea id="notes" placeholder="परिवारसम्बन्धी थप विवरण"></textarea>
+
+<div class="checkrow">
+<input type="checkbox" id="is_public">
+<label for="is_public">यो सदस्यको विवरण सार्वजनिक वंशावलीमा देखाउने</label>
+</div>
+
+<div class="actions">
+<button id="saveBtn" onclick="saveMember()">💾 सदस्य सुरक्षित गर्नुहोस्</button>
+<button class="secondary" onclick="clearForm()">रिसेट</button>
+</div>
+<div id="formMsg" class="msg">नयाँ सदस्यको विवरण भर्नुहोस्।</div>
+</section>
+
+<section class="card" id="relationSection">
+<h3>👨‍👩‍👧‍👦 नाता सम्बन्ध व्यवस्थापन</h3>
+<p class="small">पहिले सदस्य सुरक्षित गर्नुहोस्। त्यसपछि सो सदस्यको बुबा, आमा, श्रीमान्/श्रीमती, छोराछोरी तथा दाजुभाइ-दिदीबहिनी जोड्न सकिन्छ।</p>
+
+<label>कुन सदस्यको नाता थप्ने?</label>
+<select id="relationMember" onchange="loadRelations()">
+<option value="">सदस्य छान्नुहोस्</option>
+</select>
+
+<div class="grid">
+<div>
+<label>नाताको प्रकार</label>
+<select id="relationType">
+<option value="father">बुबा</option>
+<option value="mother">आमा</option>
+<option value="spouse">श्रीमान् / श्रीमती</option>
+<option value="son">छोरा</option>
+<option value="daughter">छोरी</option>
+<option value="brother">दाजुभाइ</option>
+<option value="sister">दिदीबहिनी</option>
+</select>
+</div>
+<div>
+<label>सम्बन्धित सदस्य</label>
+<select id="relatedMember">
+<option value="">सदस्य छान्नुहोस्</option>
+</select>
+</div>
+</div>
+
+<button onclick="addRelation()">➕ नाता थप्नुहोस्</button>
+<div id="relationMsg" class="msg"></div>
+
+<h3 style="margin-top:20px">हाल जोडिएका नाताहरू</h3>
+<div id="relationList">पहिले सदस्य छान्नुहोस्।</div>
+</section>
+
+<section class="card">
+<h3>🔎 परिवारका सदस्यहरू</h3>
+<input id="search" placeholder="नाम वा सदस्य कोड खोज्नुहोस्" oninput="renderMembers()">
+<div id="memberList">सदस्य लोड हुँदैछन्...</div>
+</section>
+
+</main>
+
+<footer>
+रसाली भाई समाज परिवार चौराठा<br>
+हामी माबै र भामसैनीका सन्तान
+</footer>
+
+<script>
+const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
+const SUPABASE_KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
+const token=localStorage.getItem("rasali_access_token");
+const role=localStorage.getItem("rasali_role");
+const ADMIN_EMAIL="bhaisamajrashali@gmail.com";
+
+if(!token || role!=="admin"){
+ alert("Admin मात्रलाई अनुमति छ।");
+ location.href="login.html";
+}
+
+const headers={
+ "apikey":SUPABASE_KEY,
+ "Authorization":"Bearer "+token,
+ "Content-Type":"application/json"
+};
+
+let members=[];
+let relations=[];
+
+const relationNames={
+ father:"बुबा",
+ mother:"आमा",
+ spouse:"श्रीमान् / श्रीमती",
+ son:"छोरा",
+ daughter:"छोरी",
+ brother:"दाजुभाइ",
+ sister:"दिदीबहिनी"
+};
+
+function msg(id,text){
+ document.getElementById(id).textContent=text;
+}
+
+async function uploadGenealogyPhoto(file){
+ if(!file)return null;
+ if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
+  throw new Error("JPG, PNG वा WEBP फोटो मात्र छान्नुहोस्।");
+ }
+ if(file.size>5*1024*1024){
+  throw new Error("फोटो ५ MB भन्दा सानो हुनुपर्छ।");
+ }
+
+ const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+ const path="genealogy/"+Date.now()+"_"+safe;
+ const encoded=path.split("/").map(encodeURIComponent).join("/");
+
+ const response=await fetch(
+  SUPABASE_URL+"/storage/v1/object/Photos/"+encoded,
+  {
+   method:"POST",
+   headers:{
+    "apikey":SUPABASE_KEY,
+    "Authorization":"Bearer "+token,
+    "Content-Type":file.type,
+    "x-upsert":"false"
+   },
+   body:file
+  }
+ );
+
+ if(!response.ok)throw new Error("फोटो अपलोड भएन: "+await response.text());
+
+ return SUPABASE_URL+"/storage/v1/object/public/Photos/"+encoded;
+}
+
+document.getElementById("photoFile").addEventListener("change",function(){
+ const file=this.files[0];
+ const img=document.getElementById("photoPreview");
+ if(!file){img.style.display="none";return;}
+ img.src=URL.createObjectURL(file);
+ img.style.display="block";
+});
+
+async function loadMembers(){
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/genealogy_members?select=*&order=created_at.desc",
+   {headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  members=await response.json();
+  renderMembers();
+  updateRelationSelects();
+ }catch(error){
+  msg("formMsg","सदस्य लोड भएन: "+error.message);
+ }
+}
+
+function renderMembers(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const list=document.getElementById("memberList");
+ const filtered=members.filter(m=>
+  [m.full_name,m.member_code,m.phone].join(" ").toLowerCase().includes(q)
+ );
+ list.innerHTML="";
+
+ if(!filtered.length){
+  list.textContent="सदस्य भेटिएन।";
+  return;
+ }
+
+ filtered.forEach(m=>{
+  const card=document.createElement("div");
+  card.className="member";
+
+  const img=document.createElement("img");
+  img.src=m.photo_url||"";
+  img.alt=m.full_name;
+  if(!m.photo_url)img.style.display="none";
+  img.onerror=()=>img.style.display="none";
+
+  const info=document.createElement("div");
+  info.className="member-info";
+
+  const name=document.createElement("strong");
+  name.textContent=m.full_name;
+
+  const small=document.createElement("small");
+  small.textContent=(m.member_code||"कोड छैन")+" · "+(m.is_public?"सार्वजनिक":"निजी");
+
+  info.append(name,small);
+
+  const actions=document.createElement("div");
+  actions.className="actions";
+
+  const edit=document.createElement("button");
+  edit.textContent="✏️ सम्पादन";
+  edit.onclick=()=>editMember(m.id);
+
+  const relation=document.createElement("button");
+  relation.className="green";
+  relation.textContent="👨‍👩‍👧 नाता";
+  relation.onclick=()=>{
+   document.getElementById("relationMember").value=m.id;
+   loadRelations();
+   document.getElementById("relationSection").scrollIntoView({behavior:"smooth"});
+  };
+
+  const del=document.createElement("button");
+  del.className="danger";
+  del.textContent="हटाउनुहोस्";
+  del.onclick=()=>deleteMember(m.id);
+
+  actions.append(edit,relation,del);
+  card.append(img,info,actions);
+  list.append(card);
+ });
+}
+
+function updateRelationSelects(){
+ const current=document.getElementById("relationMember").value;
+ const a=document.getElementById("relationMember");
+ const b=document.getElementById("relatedMember");
+
+ a.innerHTML='<option value="">सदस्य छान्नुहोस्</option>';
+ b.innerHTML='<option value="">सम्बन्धित सदस्य छान्नुहोस्</option>';
+
+ members.forEach(m=>{
+  const label=(m.member_code?m.member_code+" - ":"")+m.full_name;
+  const op1=new Option(label,m.id);
+  const op2=new Option(label,m.id);
+  a.add(op1);
+  b.add(op2);
+ });
+
+ if(members.some(m=>String(m.id)===String(current)))a.value=current;
+}
+
+async function saveMember(){
+ const name=document.getElementById("full_name").value.trim();
+ if(!name){alert("सदस्यको नाम लेख्नुहोस्।");return;}
+
+ const btn=document.getElementById("saveBtn");
+ btn.disabled=true;
+ btn.textContent="सुरक्षित हुँदैछ...";
+
+ try{
+  let photo=document.getElementById("photo_url").value.trim();
+  const file=document.getElementById("photoFile").files[0];
+  if(file)photo=await uploadGenealogyPhoto(file);
+
+  const code=document.getElementById("member_code").value.trim();
+
+  const payload={
+   full_name:name,
+   member_code:code||null,
+   gender:document.getElementById("gender").value||null,
+   birth_date:document.getElementById("birth_date").value||null,
+   phone:document.getElementById("phone").value.trim()||null,
+   permanent_address:document.getElementById("permanent_address").value.trim()||null,
+   current_address:document.getElementById("current_address").value.trim()||null,
+   photo_url:photo||null,
+   notes:document.getElementById("notes").value.trim()||null,
+   is_public:document.getElementById("is_public").checked
+  };
+
+  const id=document.getElementById("editId").value;
+  const url=SUPABASE_URL+"/rest/v1/genealogy_members"+(id?"?id=eq."+encodeURIComponent(id):"");
+
+  const response=await fetch(url,{
+   method:id?"PATCH":"POST",
+   headers:{...headers,"Prefer":"return=representation"},
+   body:JSON.stringify(payload)
+  });
+
+  if(!response.ok)throw new Error(await response.text());
+
+  const result=await response.json();
+  if(!result.length)throw new Error("सदस्य सुरक्षित भएको पुष्टि भएन।");
+
+  const saved=result[0];
+  msg("formMsg",id?"✅ सदस्य विवरण परिवर्तन भयो।":"✅ नयाँ सदस्य सुरक्षित भयो।");
+
+  clearForm();
+  await loadMembers();
+  document.getElementById("relationMember").value=saved.id;
+  await loadRelations();
+
+ }catch(error){
+  msg("formMsg","त्रुटि: "+error.message);
+ }finally{
+  btn.disabled=false;
+  btn.textContent="💾 सदस्य सुरक्षित गर्नुहोस्";
+ }
+}
+
+function editMember(id){
+ const m=members.find(x=>String(x.id)===String(id));
+ if(!m)return;
+
+ document.getElementById("editId").value=m.id;
+ document.getElementById("full_name").value=m.full_name||"";
+ document.getElementById("member_code").value=m.member_code||"";
+ document.getElementById("gender").value=m.gender||"";
+ document.getElementById("birth_date").value=m.birth_date||"";
+ document.getElementById("phone").value=m.phone||"";
+ document.getElementById("permanent_address").value=m.permanent_address||"";
+ document.getElementById("current_address").value=m.current_address||"";
+ document.getElementById("photo_url").value=m.photo_url||"";
+ document.getElementById("notes").value=m.notes||"";
+ document.getElementById("is_public").checked=!!m.is_public;
+
+ document.getElementById("photoFile").value="";
+ const img=document.getElementById("photoPreview");
+ if(m.photo_url){img.src=m.photo_url;img.style.display="block";}
+ else img.style.display="none";
+
+ msg("formMsg","सम्पादन गर्नुभयो। परिवर्तन सुरक्षित गर्नुहोस्।");
+ document.querySelector(".card").scrollIntoView({behavior:"smooth"});
+}
+
+function clearForm(){
+ document.getElementById("editId").value="";
+ ["full_name","member_code","gender","birth_date","phone","permanent_address","current_address","photo_url","notes","photoFile"].forEach(id=>{
+  document.getElementById(id).value="";
+ });
+ document.getElementById("is_public").checked=false;
+ document.getElementById("photoPreview").style.display="none";
+ msg("formMsg","नयाँ सदस्यको विवरण भर्नुहोस्।");
+}
+
+async function deleteMember(id){
+ if(!confirm("यो सदस्य र यससँग जोडिएका नाताहरू हटाउने निश्चित हो?"))return;
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/genealogy_members?id=eq."+encodeURIComponent(id),
+   {method:"DELETE",headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  msg("formMsg","सदस्य हटाइयो।");
+  await loadMembers();
+  document.getElementById("relationList").textContent="सदस्य हटाइयो।";
+ }catch(error){
+  alert("हटाउन सकिएन: "+error.message);
+ }
+}
+
+async function loadRelations(){
+ const id=document.getElementById("relationMember").value;
+ const list=document.getElementById("relationList");
+ list.innerHTML="";
+
+ if(!id){list.textContent="पहिले सदस्य छान्नुहोस्।";return;}
+
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/genealogy_relationships?member_id=eq."+encodeURIComponent(id)+"&select=*",
+   {headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+
+  relations=await response.json();
+
+  if(!relations.length){
+   list.textContent="अहिलेसम्म नाता थपिएको छैन।";
+   return;
+  }
+
+  relations.forEach(r=>{
+   const person=members.find(m=>String(m.id)===String(r.related_member_id));
+   const row=document.createElement("div");
+   row.className="relation";
+
+   const label=document.createElement("span");
+   label.textContent=(relationNames[r.relationship_type]||r.relationship_type)+" : "+(person?person.full_name:"सदस्य उपलब्ध छैन");
+
+   const del=document.createElement("button");
+   del.className="danger";
+   del.textContent="हटाउनुहोस्";
+   del.onclick=()=>deleteRelation(r.id);
+
+   row.append(label,del);
+   list.append(row);
+  });
+ }catch(error){
+  list.textContent="नाता लोड भएन: "+error.message;
+ }
+}
+
+async function addRelation(){
+ const memberId=document.getElementById("relationMember").value;
+ const relatedId=document.getElementById("relatedMember").value;
+ const type=document.getElementById("relationType").value;
+
+ if(!memberId){alert("पहिले मुख्य सदस्य छान्नुहोस्।");return;}
+ if(!relatedId){alert("सम्बन्धित सदस्य छान्नुहोस्।");return;}
+ if(memberId===relatedId){alert("एउटै सदस्यलाई आफैँसँग जोड्न मिल्दैन।");return;}
+
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/genealogy_relationships",
+   {
+    method:"POST",
+    headers:{...headers,"Prefer":"return=representation"},
+    body:JSON.stringify({
+     member_id:memberId,
+     related_member_id:relatedId,
+     relationship_type:type
+    })
+   }
+  );
+  if(!response.ok)throw new Error(await response.text());
+
+  msg("relationMsg","✅ नाता सफलतापूर्वक थपियो।");
+  await loadRelations();
+ }catch(error){
+  msg("relationMsg","नाता थप्न सकिएन: "+error.message);
+ }
+}
+
+async function deleteRelation(id){
+ if(!confirm("यो नाता हटाउने निश्चित हो?"))return;
+ try{
+  const response=await fetch(
+   SUPABASE_URL+"/rest/v1/genealogy_relationships?id=eq."+encodeURIComponent(id),
+   {method:"DELETE",headers}
+  );
+  if(!response.ok)throw new Error(await response.text());
+  await loadRelations();
+ }catch(error){
+  alert("नाता हटाउन सकिएन: "+error.message);
+ }
+}
+
+async function start(){
+ await loadMembers();
+}
+
+start();
+</script>
+</body>
+</html>
