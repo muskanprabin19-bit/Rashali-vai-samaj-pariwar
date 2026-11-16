@@ -6,51 +6,64 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="google-site-verification" content="icK5EiiPhVS7FPlMgAXuZuyJoTqJJMnMNVHILkI-8vI">
 <title>रसाली भाई समाज परिवार चौराठा</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{font-family:"Noto Sans Devanagari",Arial,sans-serif;background:#edf4fc;color:#192b49;line-height:1.7}
 a{text-decoration:none}
 :root{--blue:#073b91;--blue2:#0878e8;--red:#c01832;--shadow:0 5px 18px #092e6315}
 
+/* TOP HEADER */
 .topbar{background:var(--blue);color:white;text-align:center;padding:7px;font-size:13px}
 header{
  background:linear-gradient(120deg,#e8f1ff,#fff,#fcecef);
- border-bottom:4px solid var(--red);
+ border-bottom:5px solid var(--red);
  padding:12px 10px 20px;
  text-align:center;
  overflow:hidden;
+ position:relative;
 }
+header:before,header:after{
+ content:"";
+ position:absolute;
+ width:190px;height:190px;
+ border:22px solid #0878e80b;
+ border-radius:50%;
+ pointer-events:none;
+}
+header:before{top:-130px;left:-90px}
+header:after{bottom:-145px;right:-80px}
 
 /* घुमाउरो समाजको नाम */
 .arch-title{
  display:block;
  width:min(100%,900px);
  height:auto;
- margin:0 auto 0;
+ margin:0 auto -4px;
  overflow:visible;
+ position:relative;
+ z-index:1;
 }
 .arch-title text{
  font-family:"Noto Sans Devanagari",Arial,sans-serif;
  font-size:62px;
- font-weight:800;
+ font-weight:900;
  fill:var(--blue);
-}
-.arch-title .arch-shadow{
- fill:none;
- stroke:#ffffff;
+ stroke:#fff;
  stroke-width:2px;
  paint-order:stroke;
+ stroke-linejoin:round;
 }
-
 .header-images{
  display:flex;
  align-items:center;
  justify-content:center;
- gap:24px;
+ gap:25px;
  margin:0 auto 8px;
+ position:relative;
+ z-index:2;
 }
 .header-side-wrap{
  display:flex;
@@ -60,8 +73,7 @@ header{
  width:125px;
 }
 .header-side{
- width:100px;
- height:100px;
+ width:100px;height:100px;
  object-fit:cover;
  border-radius:50%;
  border:4px solid var(--red);
@@ -69,8 +81,7 @@ header{
  box-shadow:0 4px 12px #092e6325;
 }
 .logo{
- width:125px;
- height:125px;
+ width:125px;height:125px;
  object-fit:contain;
  border-radius:50%;
  background:white;
@@ -79,29 +90,22 @@ header{
  box-shadow:0 4px 14px #092e6330;
 }
 .logo-fallback{
- width:125px;
- height:125px;
+ width:125px;height:125px;
  border-radius:50%;
- background:white;
- color:var(--blue);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:45px;
- border:5px solid var(--blue);
+ background:white;color:var(--blue);
+ display:flex;align-items:center;justify-content:center;
+ font-size:45px;border:5px solid var(--blue);
  box-shadow:0 4px 14px #092e6330;
 }
-.header-side-name{font-weight:bold;font-size:14px;color:var(--blue)}
-.english{font-size:18px;font-weight:800;color:var(--red)}
+.header-side-name{font-weight:900;font-size:14px;color:var(--blue)}
+.english{font-size:18px;font-weight:900;color:var(--red)}
 #siteAddress{font-size:14px;color:#394b66}
-.tagline{font-weight:bold;color:var(--red);margin-top:5px}
-.estd{display:inline-block;margin-top:9px;background:var(--blue);color:white;padding:5px 20px;border-radius:25px;font-weight:bold}
+.tagline{font-weight:900;color:var(--red);margin-top:5px}
+.estd{display:inline-block;margin-top:9px;background:var(--blue);color:white;padding:5px 20px;border-radius:25px;font-weight:900}
 
-/* HOME MENU - RECTANGULAR DESIGN */
+/* NAVIGATION */
 nav{
- position:sticky;
- top:0;
- z-index:1000;
+ position:sticky;top:0;z-index:1000;
  background:linear-gradient(120deg,#073b91,#0878e8);
  padding:12px 10px;
  display:grid;
@@ -111,35 +115,16 @@ nav{
  box-shadow:0 4px 14px #0002;
 }
 nav a{
- width:100%;
- min-width:0;
- min-height:52px;
- height:auto;
- border-radius:8px;
- background:#ffffff;
- color:#073b91;
- display:flex;
- flex-direction:row;
- justify-content:center;
- align-items:center;
- gap:6px;
- text-align:center;
- padding:9px 5px;
- font-size:11px;
- font-weight:800;
- line-height:1.35;
- border:1px solid #dbeafe;
- border-left:4px solid #0878e8;
- box-shadow:0 3px 8px #0002;
- transition:.2s;
+ width:100%;min-width:0;min-height:48px;
+ border-radius:8px;background:#fff;color:#073b91;
+ display:flex;flex-direction:row;justify-content:center;align-items:center;
+ gap:6px;text-align:center;padding:9px 5px;
+ font-size:11px;font-weight:900;line-height:1.35;
+ border:1px solid #dbeafe;border-left:4px solid #0878e8;
+ box-shadow:0 3px 8px #0002;transition:.2s;
 }
 nav a span{display:inline-block}
-nav a:hover{
- transform:translateY(-3px);
- background:#fff0f0;
- border-color:#dc3545;
- color:#c01832;
-}
+nav a:hover{transform:translateY(-3px);background:#fff0f0;border-color:#dc3545;color:#c01832}
 nav a:nth-child(17n+1){border-left-color:#0d6efd;background:#f0f6ff}
 nav a:nth-child(17n+2){border-left-color:#198754;background:#effcf4}
 nav a:nth-child(17n+3){border-left-color:#7c3aed;background:#f6f1ff}
@@ -159,12 +144,18 @@ nav a:nth-child(17n+16){border-left-color:#0e7490;background:#ecfeff}
 nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 
 .container{max-width:1450px;margin:auto;padding:18px 15px}
-.hero{background:linear-gradient(120deg,#073b91,#0878e8);color:white;border-radius:18px;padding:40px 18px;text-align:center;margin-top:10px;box-shadow:var(--shadow)}
+.hero{
+ background:linear-gradient(120deg,#073b91,#0878e8);
+ color:white;border-radius:18px;padding:40px 18px;
+ text-align:center;margin-top:10px;box-shadow:var(--shadow);
+ position:relative;overflow:hidden;
+}
+.hero:after{content:"🤝";position:absolute;right:25px;top:10px;font-size:75px;opacity:.12}
 .hero h2{font-size:28px;margin-bottom:10px}
 .hero p{font-size:15px}
-.hero-tag{display:inline-block;background:white;color:var(--blue);padding:6px 18px;border-radius:30px;margin-top:14px;font-weight:bold}
+.hero-tag{display:inline-block;background:white;color:var(--blue);padding:6px 18px;border-radius:30px;margin-top:14px;font-weight:900}
 .section{margin-top:36px}
-.section-title{text-align:center;color:var(--blue);font-size:24px;margin-bottom:19px;font-weight:800}
+.section-title{text-align:center;color:var(--blue);font-size:24px;margin-bottom:19px;font-weight:900}
 .section-title:after{content:"";display:block;width:65px;height:4px;background:var(--red);margin:8px auto 0;border-radius:5px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .card{background:white;border-radius:15px;padding:20px;box-shadow:var(--shadow);text-align:center;border:1px solid #e2eaf5}
@@ -172,11 +163,11 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .deity{font-size:60px;margin-bottom:8px}
 .service-icon{font-size:40px;margin-bottom:8px}
 .official-card img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:4px solid var(--blue2);margin-bottom:9px}
-.position{color:var(--red);font-weight:bold;margin-top:5px}
+.position{color:var(--red);font-weight:900;margin-top:5px}
 .founder{background:linear-gradient(135deg,#fff8df,#fff);border:2px solid #e4c76d}
 .founder-photo{width:140px;height:140px;object-fit:cover;border-radius:50%;border:5px solid #dfbd50;margin-bottom:10px}
 .info-card{background:linear-gradient(135deg,#fff,#edf5ff);border:2px solid #b9d5f5}
-.info-button,.voucher-button,.certificate-button,.greeting-button{display:inline-block;margin:10px 5px 0;background:var(--blue);color:white;padding:11px 18px;border-radius:8px;font-weight:bold}
+.info-button,.voucher-button,.certificate-button,.greeting-button{display:inline-block;margin:10px 5px 0;background:var(--blue);color:white;padding:11px 18px;border-radius:8px;font-weight:900}
 .rules-button{background:var(--red)}
 .voucher-card{background:#f0f6fc;border:2px solid #d5e3f1}
 .certificate-card{background:#fff8e5;border:2px solid #d8bd69}
@@ -186,7 +177,7 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 
 .service-box{background:linear-gradient(135deg,#e8f3ff,#fff);border:2px solid #cbdff7;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
 .service-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.service-btn{min-height:115px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:14px 7px;border-radius:14px;color:white;text-align:center;font-weight:800;font-size:14px;box-shadow:0 5px 12px #0002;transition:.2s}
+.service-btn{min-height:115px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:14px 7px;border-radius:14px;color:white;text-align:center;font-weight:900;font-size:14px;box-shadow:0 5px 12px #0002;transition:.2s}
 .service-btn:hover{transform:translateY(-4px);box-shadow:0 8px 18px #0003}
 .service-btn .btn-icon{font-size:32px;line-height:1.2}
 .service-btn:nth-child(8n+1){background:#198754}
@@ -198,7 +189,7 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .service-btn:nth-child(8n+7){background:#c02675}
 .service-btn:nth-child(8n){background:#475569}
 
-.contact-box{min-height:155px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;padding:18px 8px;border-radius:16px;color:white;text-align:center;font-weight:bold;box-shadow:0 5px 15px #0002;transition:.2s}
+.contact-box{min-height:155px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;padding:18px 8px;border-radius:16px;color:white;text-align:center;font-weight:900;box-shadow:0 5px 15px #0002;transition:.2s}
 .contact-box:hover{transform:translateY(-4px);box-shadow:0 8px 18px #0003}
 .contact-icon{font-size:38px;line-height:1.2}
 .contact-box h3{color:white}
@@ -207,30 +198,29 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .whatsapp-box{background:linear-gradient(135deg,#047857,#10b981)}
 .email-box{background:linear-gradient(135deg,#1d4ed8,#3b82f6)}
 
+/* MEMBER DIRECTORY */
 .member-section{background:linear-gradient(135deg,#e8f3ff,#f7fbff);padding:18px;border-radius:18px;border:1px solid #c8dcf6}
 .member-layout{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:16px;align-items:start}
 .directory-panel,.side-panel{background:white;border:1px solid #cbdff7;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-.member-banner,.side-title{background:linear-gradient(100deg,#073b91,#0878e8);color:white;padding:13px 16px;font-weight:bold}
+.member-banner,.side-title{background:linear-gradient(100deg,#073b91,#0878e8);color:white;padding:13px 16px;font-weight:900}
 .member-banner{display:flex;justify-content:center;align-items:center;text-align:center}
 .member-banner h2{font-size:22px}
-.member-subtitle{text-align:center;color:var(--blue);font-weight:bold;padding:9px}
-.member-count{background:#e8f2ff;color:var(--blue);padding:8px 14px;border-radius:25px;text-align:center;font-weight:800;width:max-content;max-width:100%;margin:0 auto 12px}
+.member-subtitle{text-align:center;color:var(--blue);font-weight:900;padding:9px}
+.member-count{background:#e8f2ff;color:var(--blue);padding:8px 14px;border-radius:25px;text-align:center;font-weight:900;width:max-content;max-width:100%;margin:0 auto 12px}
 .member-tools{display:flex;gap:10px;padding:0 12px 12px;align-items:center}
 .search-area{display:flex;gap:7px;flex:1;min-width:0}
 .search-area input{width:100%;min-width:0;padding:11px 13px;border:1px solid #bdcce0;border-radius:25px;font-family:inherit;font-size:13px;outline:none}
 .search-area input:focus{border-color:var(--blue2)}
-.search-area button{background:var(--blue);color:white;border:0;padding:9px 17px;border-radius:25px;font-family:inherit;font-weight:bold;cursor:pointer}
+.search-area button{background:var(--blue);color:white;border:0;padding:9px 17px;border-radius:25px;font-family:inherit;font-weight:900;cursor:pointer}
 .member-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;padding:10px}
 .member-card{background:white;border:1px solid #d3e1f1;border-radius:13px;padding:10px 7px;text-align:center;box-shadow:0 3px 10px #102d5012;transition:.2s;min-width:0}
 .member-card:hover{transform:translateY(-3px);box-shadow:0 7px 18px #102d5020}
-.member-photo,.member-avatar{
- width:88px;height:88px;object-fit:cover;border-radius:8px !important;margin:0 auto 7px;border:3px solid var(--blue2);
-}
-.member-avatar{background:#e0f2fe;color:#075985;font-size:35px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.member-photo,.member-avatar{width:88px;height:88px;object-fit:cover;border-radius:8px!important;margin:0 auto 7px;border:3px solid var(--blue2)}
+.member-avatar{background:#e0f2fe;color:#075985;font-size:35px;font-weight:900;display:flex;align-items:center;justify-content:center}
 .member-card h3{color:var(--blue);font-size:15px;line-height:1.5;overflow-wrap:anywhere}
-.member-position{display:inline-block;background:#e5efff;color:var(--blue);padding:3px 8px;border-radius:20px;font-weight:bold;font-size:11px;margin:4px 0}
+.member-position{display:inline-block;background:#e5efff;color:var(--blue);padding:3px 8px;border-radius:20px;font-weight:900;font-size:11px;margin:4px 0}
 .member-id,.member-phone{font-size:11px;color:#596b83;overflow-wrap:anywhere}
-.detail-button{width:100%;margin-top:8px;background:linear-gradient(100deg,var(--blue),var(--blue2));color:white;border:0;padding:8px 3px;border-radius:8px;font-family:inherit;font-size:11px;font-weight:bold;cursor:pointer}
+.detail-button{width:100%;margin-top:8px;background:linear-gradient(100deg,var(--blue),var(--blue2));color:white;border:0;padding:8px 3px;border-radius:8px;font-family:inherit;font-size:11px;font-weight:900;cursor:pointer}
 .detail-button:hover{background:var(--red)}
 .member-sidebar{display:grid;gap:14px}
 .side-title{font-size:16px}
@@ -239,14 +229,14 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .side-notice:last-child{border:0}
 .side-notice h4{font-size:13px;color:var(--blue);margin-bottom:3px}
 .side-notice p{font-size:12px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.all-notices{display:block;text-align:center;color:var(--blue);font-size:13px;font-weight:bold;padding:8px}
+.all-notices{display:block;text-align:center;color:var(--blue);font-size:13px;font-weight:900;padding:8px}
 .side-login{text-align:center;font-size:13px}
-.side-login a{display:block;background:#08a64a;color:white;padding:9px;border-radius:22px;margin-top:9px;font-weight:bold}
+.side-login a{display:block;background:#08a64a;color:white;padding:9px;border-radius:22px;margin-top:9px;font-weight:900}
 .loading,.empty,.error{background:white;padding:22px;border-radius:12px;text-align:center;color:#64748b;grid-column:1/-1}
 .error{color:#a00000;background:#fff0f0}
 .member-modal{display:none;position:fixed;inset:0;z-index:3000;background:#0009;padding:18px;align-items:center;justify-content:center}
 .modal-box{background:white;width:100%;max-width:430px;max-height:90vh;overflow:auto;padding:23px;border-radius:16px;text-align:center}
-.modal-box img{width:115px;height:115px;border-radius:8px !important;object-fit:cover;border:4px solid var(--blue2);margin-bottom:10px}
+.modal-box img{width:115px;height:115px;border-radius:8px!important;object-fit:cover;border:4px solid var(--blue2);margin-bottom:10px}
 .modal-info{text-align:left;margin-top:15px;line-height:2}
 .close-button{background:var(--red);color:white;border:0;padding:10px 25px;border-radius:8px;margin-top:15px;cursor:pointer;font-family:inherit}
 .notice{border-left:5px solid var(--red);text-align:left;margin-bottom:12px}
@@ -256,9 +246,9 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .signature{display:none}
 .login-box{background:linear-gradient(120deg,var(--blue),var(--blue2));color:white}
 .login-box h2{color:white}
-.login-box a{display:inline-block;margin-top:12px;background:white;color:var(--blue);padding:10px 25px;border-radius:25px;font-weight:bold}
+.login-box a{display:inline-block;margin-top:12px;background:white;color:var(--blue);padding:10px 25px;border-radius:25px;font-weight:900}
 
-/* MUSEUM PREVIEW */
+/* MUSEUM */
 .museum-home{background:linear-gradient(135deg,#eaf3ff,#fff);border:2px solid #c7daf4}
 .museum-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}
 .museum-item{background:white;border:1px solid #d8e5f4;border-radius:13px;padding:15px;text-align:center}
@@ -266,7 +256,7 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .museum-item h3{font-size:16px;margin:6px 0;color:var(--blue)}
 .museum-item p{font-size:13px}
 .museum-live-section{margin-top:25px;text-align:left}
-.museum-live-title{font-size:20px;color:var(--blue);font-weight:800;border-bottom:3px solid var(--red);padding-bottom:7px;margin:22px 0 13px}
+.museum-live-title{font-size:20px;color:var(--blue);font-weight:900;border-bottom:3px solid var(--red);padding-bottom:7px;margin:22px 0 13px}
 .museum-live-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 .museum-live-card{background:#fff;border:1px solid #d8e5f4;border-radius:13px;padding:10px;box-shadow:0 4px 12px #092e6312;overflow:hidden}
 .museum-live-card img{display:block;width:100%;height:210px;object-fit:cover;border-radius:9px;background:#edf4fc}
@@ -276,15 +266,15 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .museum-live-date{font-size:11px;color:#718096;margin:5px 2px}
 .museum-live-status{background:#fff;padding:15px;border-radius:10px;text-align:center;color:#64748b}
 .museum-live-empty{background:#f8fbff;border:1px dashed #b9cce4;padding:15px;border-radius:10px;text-align:center;color:#64748b}
-.museum-open-link{display:inline-block;margin-top:14px;background:var(--blue);color:white;padding:10px 20px;border-radius:9px;font-weight:bold}
+.museum-open-link{display:inline-block;margin-top:14px;background:var(--blue);color:white;padding:10px 20px;border-radius:9px;font-weight:900}
 .museum-live-error{background:#fff1f1;color:#a00000;padding:12px;border-radius:10px;font-size:13px}
-.museum-link{display:inline-block;margin-top:15px;background:var(--blue);color:white;padding:11px 22px;border-radius:9px;font-weight:bold}
+.museum-link{display:inline-block;margin-top:15px;background:var(--blue);color:white;padding:11px 22px;border-radius:9px;font-weight:900}
 
-/* EXCHANGE PREVIEW */
+/* MONEY EXCHANGE */
 .exchange-home{background:linear-gradient(135deg,#eaf8f1,#fff);border:2px solid #b8e2cb}
 .exchange-currencies{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:14px 0}
-.exchange-currencies span{background:#e7f2ff;color:var(--blue);padding:7px 13px;border-radius:20px;font-weight:bold;font-size:13px}
-.exchange-link{display:inline-block;margin-top:10px;background:#087b48;color:white;padding:11px 22px;border-radius:9px;font-weight:bold}
+.exchange-currencies span{background:#e7f2ff;color:var(--blue);padding:7px 13px;border-radius:20px;font-weight:900;font-size:13px}
+.exchange-link{display:inline-block;margin-top:10px;background:#087b48;color:white;padding:11px 22px;border-radius:9px;font-weight:900}
 
 footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)}
 footer h3{font-size:21px}
@@ -366,13 +356,9 @@ footer h3{font-size:21px}
 <div class="topbar" id="topbarTitle">🤝 रसाली भाई समाज परिवार चौराठा</div>
 
 <header>
-
- <!-- घुमाउरो समाजको नाम -->
  <svg class="arch-title" viewBox="0 0 1000 220" role="img" aria-label="रसाली भाई समाज परिवार चौराठा">
-  <defs>
-   <path id="titleArchPath" d="M45,190 Q500,-45 955,190"/>
-  </defs>
-  <text class="arch-shadow">
+  <defs><path id="titleArchPath" d="M45,190 Q500,-45 955,190"/></defs>
+  <text>
    <textPath id="siteTitle" href="#titleArchPath" startOffset="50%" text-anchor="middle">रसाली भाई समाज परिवार चौराठा</textPath>
   </text>
  </svg>
@@ -382,10 +368,8 @@ footer h3{font-size:21px}
    <img id="mabaiImage" class="header-side" src="" alt="माबै देवता" style="display:none">
    <span id="mabaiName" class="header-side-name">माबै देवता</span>
   </div>
-
   <div id="logoFallback" class="logo-fallback">🤝</div>
   <img id="siteLogo" class="logo" src="" alt="समाज लोगो" style="display:none">
-
   <div class="header-side-wrap">
    <img id="bhamsainiImage" class="header-side" src="" alt="भामसैनी देवी" style="display:none">
    <span id="bhamsainiName" class="header-side-name">भामसैनी देवी</span>
@@ -471,42 +455,25 @@ footer h3{font-size:21px}
  </div>
 </section>
 
-<!-- DIGITAL HISTORY AND MEMORIES MUSEUM -->
 <section id="museum" class="section">
  <h2 class="section-title">🏛️ इतिहास तथा सम्झना संग्रहालय</h2>
  <div class="card museum-home">
   <div style="font-size:55px">🏛️📸🎥</div>
   <h3>हाम्रो इतिहास, हाम्रो पहिचान</h3>
   <p>रसाली भाई समाज परिवार चौराठाका पुराना तथा नयाँ तस्बिर, भिडियो, ऐतिहासिक कागजात र महत्वपूर्ण सम्झनाहरू सुरक्षित राख्ने डिजिटल संग्रहालय।</p>
-
   <div class="museum-gallery">
-   <div class="museum-item">
-    <div class="museum-icon">📸</div>
-    <h3>पुराना तस्बिरहरू</h3>
-    <p>समाजका ऐतिहासिक तथा सम्झनायोग्य फोटोहरू।</p>
-   </div>
-   <div class="museum-item">
-    <div class="museum-icon">🎥</div>
-    <h3>भिडियो संग्रह</h3>
-    <p>बैठक, भेला, समारोह र कार्यक्रमका भिडियोहरू।</p>
-   </div>
-   <div class="museum-item">
-    <div class="museum-icon">📜</div>
-    <h3>ऐतिहासिक कागजात</h3>
-    <p>समाजका पुराना निर्णय, अभिलेख र दस्तावेजहरू।</p>
-   </div>
+   <div class="museum-item"><div class="museum-icon">📸</div><h3>पुराना तस्बिरहरू</h3><p>समाजका ऐतिहासिक तथा सम्झनायोग्य फोटोहरू।</p></div>
+   <div class="museum-item"><div class="museum-icon">🎥</div><h3>भिडियो संग्रह</h3><p>बैठक, भेला, समारोह र कार्यक्रमका भिडियोहरू।</p></div>
+   <div class="museum-item"><div class="museum-icon">📜</div><h3>ऐतिहासिक कागजात</h3><p>समाजका पुराना निर्णय, अभिलेख र दस्तावेजहरू।</p></div>
   </div>
-
   <div id="museumLiveMedia" class="museum-live-section">
    <div class="museum-live-status">⏳ संग्रहालयका फोटो तथा भिडियो लोड हुँदैछन्...</div>
   </div>
-
   <p style="margin-top:15px">समाजको स्थापना २०८२ देखि अहिलेसम्मका महत्वपूर्ण घटनाहरूको समयरेखा पनि यहाँ राखिनेछ।</p>
   <a href="museum.html" class="museum-link">🏛️ विस्तृत संग्रहालय खोल्नुहोस्</a>
  </div>
 </section>
 
-<!-- MONEY EXCHANGE RATE -->
 <section id="exchange" class="section">
  <h2 class="section-title">💱 Money Exchange Rate</h2>
  <div class="card exchange-home">
@@ -514,12 +481,8 @@ footer h3{font-size:21px}
   <h3>विदेशी मुद्रा विनिमय जानकारी</h3>
   <p>विदेशमा रहेका सदस्य तथा परिवारका लागि विभिन्न देशका मुद्राको नेपाली रुपैयाँसँगको विनिमय दर हेर्न र रकम हिसाब गर्न सकिने छुट्टै सुविधा।</p>
   <div class="exchange-currencies">
-   <span>🇸🇦 SAR</span>
-   <span>🇺🇸 USD</span>
-   <span>🇦🇪 AED</span>
-   <span>🇶🇦 QAR</span>
-   <span>🇰🇼 KWD</span>
-   <span>🇳🇵 NPR</span>
+   <span>🇸🇦 SAR</span><span>🇺🇸 USD</span><span>🇦🇪 AED</span>
+   <span>🇶🇦 QAR</span><span>🇰🇼 KWD</span><span>🇳🇵 NPR</span>
   </div>
   <p style="font-size:12px;color:#64748b">विनिमय दर सम्बन्धित बैंक तथा सेवा प्रदायकअनुसार फरक हुन सक्छ।</p>
   <a href="money-exchange.html" class="exchange-link">💱 Exchange Rate खोल्नुहोस्</a>
@@ -566,9 +529,7 @@ footer h3{font-size:21px}
     </div>
    </div>
    <div id="memberCount" class="member-count">⏳ सदस्य संख्या गणना हुँदैछ...</div>
-   <div id="membersList" class="member-grid">
-    <div class="loading">⏳ सदस्यहरूको विवरण लोड हुँदैछ...</div>
-   </div>
+   <div id="membersList" class="member-grid"><div class="loading">⏳ सदस्यहरूको विवरण लोड हुँदैछ...</div></div>
   </div>
 
   <aside class="member-sidebar">
@@ -639,10 +600,12 @@ footer h3{font-size:21px}
  <h2 class="section-title">📄 आधिकारिक कागज</h2>
  <div class="paper">
   <h2>रसाली भाई समाज परिवार चौराठा</h2>
-  <p>एकता • सहयोग • सेवा • भाइचारा</p><p>स्थापना: <b>२०८२</b></p><hr style="margin:20px 0">
+  <p>एकता • सहयोग • सेवा • भाइचारा</p>
+  <p>स्थापना: <b>२०८२</b></p>
+  <hr style="margin:20px 0">
   <p>यस समाजका सदस्यहरूबीच आपसी सहयोग, एकता र भाइचारा कायम राख्ने उद्देश्यले यो समाज स्थापना गरिएको हो।</p>
   <div class="signature"><br><br><p>________________________</p><p><b>पदम रसाली</b></p><p>संस्थापक</p></div>
-  <button class="no-print" onclick="window.print()" style="margin-top:20px;padding:10px 22px;border:0;border-radius:20px;background:#0757b9;color:white;font-weight:bold;cursor:pointer">🖨️ Print</button>
+  <button class="no-print" onclick="window.print()" style="margin-top:20px;padding:10px 22px;border:0;border-radius:20px;background:#0757b9;color:white;font-weight:900;cursor:pointer">🖨️ Print</button>
  </div>
 </section>
 
@@ -671,7 +634,6 @@ footer h3{font-size:21px}
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
 const SUPABASE_KEY="sb_publishable_RPyiwpSS_6UumZ19I_dK9A_ey234mnO";
@@ -697,7 +659,6 @@ function safeImageUrl(value){
  }catch(e){return ""}
 }
 
-/* Supabase Storage को सार्वजनिक फाइल URL बनाउने */
 function museumPublicUrl(bucket,path){
  if(!path)return "";
  const cleanPath=String(path).replace(/^\/+/,"");
@@ -705,32 +666,22 @@ function museumPublicUrl(bucket,path){
  return SUPABASE_URL+"/storage/v1/object/public/"+bucket+"/"+encodedPath;
 }
 
-/* संग्रहालयका फोटो तथा भिडियो मुख्य पेजमा देखाउने */
+/* संग्रहालयका फोटो र भिडियो */
 async function loadMuseumMedia(){
  const area=document.getElementById("museumLiveMedia");
  if(!area)return;
-
  area.innerHTML='<div class="museum-live-status">⏳ संग्रहालयका फोटो तथा भिडियो लोड हुँदैछन्...</div>';
 
  try{
   const [photoResult,videoResult]=await Promise.all([
-   supabaseClient
-    .from("museum_items")
-    .select("id,title,description,event_date,storage_path,created_at")
-    .order("created_at",{ascending:false}),
-   supabaseClient
-    .from("museum_videos")
-    .select("id,title,description,event_date,storage_path,created_at")
-    .order("created_at",{ascending:false})
+   supabaseClient.from("museum_items").select("id,title,description,event_date,storage_path,created_at").order("created_at",{ascending:false}),
+   supabaseClient.from("museum_videos").select("id,title,description,event_date,storage_path,created_at").order("created_at",{ascending:false})
   ]);
 
-  if(photoResult.error)throw new Error("फोटो तालिका: "+photoResult.error.message);
-  if(videoResult.error)throw new Error("भिडियो तालिका: "+videoResult.error.message);
-
-  const photos=photoResult.data||[];
-  const videos=videoResult.data||[];
-
   area.innerHTML="";
+
+  const photos=photoResult.error?[]:(photoResult.data||[]);
+  const videos=videoResult.error?[]:(videoResult.data||[]);
 
   const photoTitle=document.createElement("h3");
   photoTitle.className="museum-live-title";
@@ -740,42 +691,29 @@ async function loadMuseumMedia(){
   if(photos.length){
    const photoGrid=document.createElement("div");
    photoGrid.className="museum-live-grid";
-
    photos.forEach(item=>{
     const card=document.createElement("article");
     card.className="museum-live-card";
-
     const image=document.createElement("img");
     image.src=museumPublicUrl("museum-photos",item.storage_path);
     image.alt=item.title||"समाजको ऐतिहासिक फोटो";
     image.loading="lazy";
-    image.onerror=function(){
-     this.alt="फोटो खोल्न सकिएन";
-     this.style.display="none";
-     const errorText=document.createElement("p");
-     errorText.textContent="फोटो फाइल खोल्न सकिएन। Storage path जाँच गर्नुहोस्।";
-     card.insertBefore(errorText,card.children[1]||null);
-    };
-
+    image.onerror=function(){this.style.display="none";};
     const title=document.createElement("h4");
     title.textContent=item.title||"ऐतिहासिक फोटो";
-
     const description=document.createElement("p");
     description.textContent=item.description||"";
-
     const date=document.createElement("div");
     date.className="museum-live-date";
     date.textContent=item.event_date?"📅 "+item.event_date:"";
-
     card.append(image,title,description,date);
     photoGrid.appendChild(card);
    });
-
    area.appendChild(photoGrid);
   }else{
    const empty=document.createElement("div");
    empty.className="museum-live-empty";
-   empty.textContent="अहिलेसम्म संग्रहालयमा फोटो अपलोड गरिएको छैन।";
+   empty.textContent=photoResult.error?"फोटो लोड गर्न सकिएन।":"अहिलेसम्म संग्रहालयमा फोटो अपलोड गरिएको छैन।";
    area.appendChild(empty);
   }
 
@@ -787,43 +725,30 @@ async function loadMuseumMedia(){
   if(videos.length){
    const videoGrid=document.createElement("div");
    videoGrid.className="museum-live-grid";
-
    videos.forEach(item=>{
     const card=document.createElement("article");
     card.className="museum-live-card";
-
     const video=document.createElement("video");
     video.src=museumPublicUrl("museum-videos",item.storage_path);
     video.controls=true;
     video.preload="metadata";
     video.playsInline=true;
-
-    video.onerror=function(){
-     this.style.display="none";
-     const errorText=document.createElement("p");
-     errorText.textContent="यो भिडियो खोल्न सकिएन। भिडियो फाइल वा Storage path जाँच गर्नुहोस्।";
-     card.insertBefore(errorText,card.children[0]||null);
-    };
-
+    video.onerror=function(){this.style.display="none";};
     const title=document.createElement("h4");
     title.textContent=item.title||"समाजको भिडियो";
-
     const description=document.createElement("p");
     description.textContent=item.description||"";
-
     const date=document.createElement("div");
     date.className="museum-live-date";
     date.textContent=item.event_date?"📅 "+item.event_date:"";
-
     card.append(video,title,description,date);
     videoGrid.appendChild(card);
    });
-
    area.appendChild(videoGrid);
   }else{
    const empty=document.createElement("div");
    empty.className="museum-live-empty";
-   empty.textContent="अहिलेसम्म संग्रहालयमा भिडियो अपलोड गरिएको छैन।";
+   empty.textContent=videoResult.error?"भिडियो लोड गर्न सकिएन।":"अहिलेसम्म संग्रहालयमा भिडियो अपलोड गरिएको छैन।";
    area.appendChild(empty);
   }
 
@@ -835,14 +760,11 @@ async function loadMuseumMedia(){
 
  }catch(error){
   console.error("Museum loading error:",error);
-  area.innerHTML="";
-  const errorBox=document.createElement("div");
-  errorBox.className="museum-live-error";
-  errorBox.textContent="संग्रहालयका सामग्री लोड हुन सकेनन्। कृपया Supabase को museum_items, museum_videos तालिका र सार्वजनिक Storage अनुमति जाँच गर्नुहोस्। विवरण: "+error.message;
-  area.appendChild(errorBox);
+  area.innerHTML='<div class="museum-live-error">संग्रहालयका सामग्री लोड हुन सकेनन्। Supabase को तालिका र Storage अनुमति जाँच गर्नुहोस्।</div>';
  }
 }
 
+/* Admin बाट सम्पादन गरिएको वेबसाइटको शीर्षक, लोगो र देवताको फोटो */
 async function loadWebsiteSettings(){
  try{
   const {data,error}=await supabaseClient
@@ -894,7 +816,7 @@ async function loadWebsiteSettings(){
  }
 }
 
-/* सदस्यको पहिलो अक्षरका लागि फरक-फरक रङ */
+/* सदस्यका फोटो नभए रंगीन अक्षर */
 const avatarColors=[
  {background:"#e0f2fe",color:"#075985",border:"#0284c7"},
  {background:"#dcfce7",color:"#166534",border:"#16a34a"},
@@ -910,7 +832,6 @@ const avatarColors=[
 
 function renderMembers(data){
  const list=document.getElementById("membersList");
-
  if(!data.length){
   list.innerHTML='<div class="empty">🔍 खोजिएको सदस्य भेटिएन।</div>';
   return;
@@ -927,24 +848,17 @@ function renderMembers(data){
 
   const colorKey=String(member.id||member.name||"0");
   let colorNumber=0;
-  for(let i=0;i<colorKey.length;i++){
-   colorNumber+=colorKey.charCodeAt(i);
-  }
+  for(let i=0;i<colorKey.length;i++)colorNumber+=colorKey.charCodeAt(i);
   const avatarColor=avatarColors[colorNumber%avatarColors.length];
 
   return `
   <div class="member-card">
-   <img class="member-photo"
-    src="${photo?escapeHTML(photo):''}"
-    alt="${name}"
+   <img class="member-photo" src="${photo?escapeHTML(photo):''}" alt="${name}"
     style="display:${photo?'block':'none'}"
     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-
-   <div class="member-avatar"
-    style="display:${photo?'none':'flex'};background:${avatarColor.background};color:${avatarColor.color};border-color:${avatarColor.border}">
+   <div class="member-avatar" style="display:${photo?'none':'flex'};background:${avatarColor.background};color:${avatarColor.color};border-color:${avatarColor.border}">
     ${firstLetter}
    </div>
-
    <h3>${name}</h3>
    <div class="member-position">👤 ${position}</div>
    <div class="member-id">सदस्य ID: ${id}</div>
@@ -957,15 +871,12 @@ function renderMembers(data){
 async function loadMembers(){
  const list=document.getElementById("membersList");
  const count=document.getElementById("memberCount");
-
  try{
   const {data,error}=await supabaseClient
    .from("members")
    .select("id,name,position,phone,email,document_url")
    .order("id",{ascending:true});
-
   if(error)throw error;
-
   allMembers=data||[];
   count.innerText="👥 जम्मा सदस्य संख्या: "+allMembers.length;
   renderMembers(allMembers);
@@ -1007,7 +918,6 @@ function showMemberDetails(id){
    <p><b>Email:</b> ${email}</p>
    <p><b>ठेगाना:</b> चौराठा, दैलेख, नेपाल</p>
   </div>`;
-
  document.getElementById("memberModal").style.display="flex";
 }
 
@@ -1018,13 +928,11 @@ function closeMemberDetails(){
 async function loadNotices(){
  const list=document.getElementById("noticeList");
  const side=document.getElementById("sideNoticeList");
-
  try{
   const {data,error}=await supabaseClient
    .from("Notices")
    .select("*")
    .order("Id",{ascending:false});
-
   if(error)throw error;
 
   if(!data||data.length===0){
@@ -1037,15 +945,13 @@ async function loadNotices(){
    <div class="card notice">
     <h3>📢 ${escapeHTML(notice.Title)}</h3>
     <p>${escapeHTML(notice.Content)}</p>
-   </div>
-  `).join("");
+   </div>`).join("");
 
   side.innerHTML=data.slice(0,4).map(notice=>`
    <div class="side-notice">
     <h4>📢 ${escapeHTML(notice.Title)}</h4>
     <p>${escapeHTML(notice.Content)}</p>
-   </div>
-  `).join("");
+   </div>`).join("");
  }catch(error){
   console.error("Notice error:",error);
   list.innerHTML='<div class="error">सूचना लोड गर्न समस्या भयो।</div>';
@@ -1053,7 +959,7 @@ async function loadNotices(){
  }
 }
 
-/* वेबसाइटका सबै सामग्री लोड गर्ने */
+/* सबै सामग्री लोड */
 loadWebsiteSettings();
 loadMembers();
 loadNotices();
