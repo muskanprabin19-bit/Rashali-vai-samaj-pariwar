@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 <html lang="ne">
 <head>
@@ -39,47 +39,54 @@ button:disabled{opacity:.5}
 .qr{width:85px;height:85px;object-fit:contain}
 .cardbottom{display:flex;justify-content:space-between;align-items:end;border-top:1px solid #9bb6d0;padding-top:8px;font-size:11px}
 .picturebox{text-align:center;margin-top:12px;border:1px solid #7299c2;padding:8px;background:#e9f3fc;font-size:13px}
-.message{padding:9px;margin:9px 0;text-align:center;font-weight:bold;color:#174d80}
+.message{padding:9px;margin:9px 0;text-align:center;font-weight:bold;color:#174d80;overflow-wrap:anywhere}
 .member-list{background:#fff;border:1px solid #8caaca;max-height:240px;overflow:auto;margin-top:12px}
 .member-row{padding:9px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;gap:8px;cursor:pointer}
 .member-row:hover{background:#e4f1ff}
 .member-row small{color:#52718f}
-.table{width:100%;border-collapse:collapse;background:white}
+.table-wrap{overflow-x:auto;background:#fff;margin-top:12px}
+.table{width:100%;min-width:760px;border-collapse:collapse;background:white}
 .table th,.table td{border:1px solid #9db6d0;padding:9px;text-align:left;font-size:13px}
 .table th{background:#b9d4f0}
 .hidden{display:none!important}
 .note{background:#fff;padding:20px;text-align:center;border:1px solid #9db6d0;color:#526b83}
 .footer{text-align:center;color:#315d86;font-size:12px;padding:15px}
+.billing-box{background:#edf6ff;border:1px solid #91b0d0;padding:12px;margin:10px 0}
+.billing-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.billing-grid .full{grid-column:1/-1}
+.billing-grid label{font-size:13px;font-weight:bold;display:block;margin-bottom:4px;color:#174d80}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.summary div{background:#fff;border:1px solid #9db6d0;padding:10px;text-align:center}
+.summary b{display:block;color:#07549a;font-size:18px;margin-top:5px}
+.status-paid{color:#08783b;font-weight:bold}
+.status-unpaid{color:#b32626;font-weight:bold}
+.status-partial{color:#a05b00;font-weight:bold}
+.small-btn{padding:5px 8px;font-size:12px;margin:2px}
 @media(max-width:760px){
-body{padding:5px}
-.manager{padding:8px}
-.layout{grid-template-columns:1fr}
-.fields{grid-template-columns:1fr}
+body{padding:5px}.manager{padding:8px}
+.layout{grid-template-columns:1fr}.fields{grid-template-columns:1fr}
 .field{grid-template-columns:105px minmax(0,1fr)}
-.field.full{grid-column:auto}
-.searchbar{grid-template-columns:1fr}
-.main{padding:8px}
-.tabs{display:grid;grid-template-columns:1fr 1fr}
-.tab{min-width:0}
-.member-card{max-width:100%}
+.field.full{grid-column:auto}.searchbar{grid-template-columns:1fr}
+.main{padding:8px}.tabs{display:grid;grid-template-columns:1fr 1fr}
+.tab{min-width:0}.member-card{max-width:100%}
+.billing-grid{grid-template-columns:1fr}
+.billing-grid .full{grid-column:auto}
+.summary{grid-template-columns:1fr 1fr}
 }
 @media print{
-body{background:white;padding:0}
-.no-print{display:none!important}
+body{background:white;padding:0}.no-print{display:none!important}
 .manager{border:0;box-shadow:none;background:white}
-.main{border:0;background:white}
-.layout{grid-template-columns:1fr 300px}
+.main{border:0;background:white}.layout{grid-template-columns:1fr 300px}
 .member-card{box-shadow:none}
 }
 </style>
 </head>
 <body>
 <div class="manager">
-
 <div class="brand">रसाली भाई समाज परिवार चौराठा · दैलेख</div>
 <div class="heading">MEMBERSHIP MANAGER</div>
 
-<div class="searchbar no-print">
+<div class="searchbar no-print" id="searchArea">
 <div>
 <label>Enter Member Name</label>
 <input id="searchName" list="memberOptions" placeholder="सदस्यको नाम खोज्नुहोस्">
@@ -91,7 +98,7 @@ body{background:white;padding:0}
 </div>
 </div>
 
-<div class="actions no-print">
+<div class="actions no-print" id="mainActions">
 <button onclick="newMember()">＋ New Member</button>
 <button onclick="saveMember()">✓ Save Member</button>
 <button class="danger" onclick="deleteMember()">▣ Delete Member</button>
@@ -105,69 +112,21 @@ body{background:white;padding:0}
 </div>
 
 <div class="main">
-
 <section id="general">
 <div class="layout">
-
 <div>
 <div class="fields">
-
-<div class="field full">
-<label>Member Name</label>
-<input id="name" placeholder="सदस्यको पूरा नाम">
+<div class="field full"><label>Member Name</label><input id="name" placeholder="सदस्यको पूरा नाम"></div>
+<div class="field"><label>Member ID</label><input id="memberId" readonly placeholder="Database ID"></div>
+<div class="field"><label>Member Status</label><select id="status"><option>Active</option><option>Inactive</option><option>Pending</option></select></div>
+<div class="field full"><label>Address</label><input id="address" placeholder="ठेगाना"></div>
+<div class="field"><label>Position</label><input id="position" placeholder="पद / जिम्मेवारी"></div>
+<div class="field"><label>Phone</label><input id="phone" placeholder="फोन नम्बर"></div>
+<div class="field full"><label>Email</label><input id="email" type="email" placeholder="Email"></div>
+<div class="field full"><label>Photo URL</label><input id="photoUrl" placeholder="फोटो URL"></div>
+<div class="field full"><label>Choose Photo</label><input id="photoFile" type="file" accept="image/*"></div>
+<div class="field full"><label>Member Notes</label><textarea id="notes" placeholder="सदस्यबारे थप जानकारी"></textarea></div>
 </div>
-
-<div class="field">
-<label>Member ID</label>
-<input id="memberId" readonly placeholder="Database ID">
-</div>
-
-<div class="field">
-<label>Member Status</label>
-<select id="status">
-<option>Active</option>
-<option>Inactive</option>
-<option>Pending</option>
-</select>
-</div>
-
-<div class="field full">
-<label>Address</label>
-<input id="address" placeholder="ठेगाना">
-</div>
-
-<div class="field">
-<label>Position</label>
-<input id="position" placeholder="पद / जिम्मेवारी">
-</div>
-
-<div class="field">
-<label>Phone</label>
-<input id="phone" placeholder="फोन नम्बर">
-</div>
-
-<div class="field full">
-<label>Email</label>
-<input id="email" type="email" placeholder="Email">
-</div>
-
-<div class="field full">
-<label>Photo URL</label>
-<input id="photoUrl" placeholder="फोटो URL">
-</div>
-
-<div class="field full">
-<label>Choose Photo</label>
-<input id="photoFile" type="file" accept="image/*">
-</div>
-
-<div class="field full">
-<label>Member Notes</label>
-<textarea id="notes" placeholder="सदस्यबारे थप जानकारी"></textarea>
-</div>
-
-</div>
-
 <div class="actions no-print">
 <button class="light" onclick="clearFields()">✖ Clear Form</button>
 <button onclick="loadMembers()">↻ Refresh Members</button>
@@ -175,10 +134,7 @@ body{background:white;padding:0}
 </div>
 
 <div>
-<div class="actions no-print">
-<button onclick="window.print()">▤ Print ID</button>
-</div>
-
+<div class="actions no-print"><button onclick="window.print()">▤ Print ID</button></div>
 <div class="member-card">
 <div class="cardtop">
 <div>
@@ -190,32 +146,70 @@ body{background:white;padding:0}
 </div>
 <div class="cardid" id="cardId">RS-000</div>
 <div class="cardbottom">
-<div>
-<b>रसाली भाई समाज परिवार</b><br>
-चौराठा, दैलेख<br>
-एकता • सेवा • समर्पण
-</div>
+<div><b>रसाली भाई समाज परिवार</b><br>चौराठा, दैलेख<br>एकता • सेवा • समर्पण</div>
 <img id="qr" class="qr" alt="Member QR">
 </div>
 </div>
-
-<div class="picturebox">
-<b>Member Picture</b>
-<div id="pictureName">फोटो उपलब्ध छैन</div>
+<div class="picturebox"><b>Member Picture</b><div id="pictureName">फोटो उपलब्ध छैन</div></div>
 </div>
 </div>
-
-</div>
-
 <div class="member-list no-print" id="memberList"></div>
 </section>
 
 <section id="billing" class="hidden">
-<h3>Billing History</h3>
-<div class="note">
-<h3>सदस्यको आर्थिक विवरण</h3>
-<p>बचत, ऋण, ब्याज, किस्ता र भुक्तानी इतिहास यहाँ देखाइनेछ।</p>
-<p>वास्तविक विवरणका लागि Finance Database सँग अर्को चरणमा जोड्नेछौँ।</p>
+<h3>Billing History - सदस्यको आर्थिक विवरण</h3>
+<div id="billingMember" class="billing-box">सदस्य छान्नुहोस्।</div>
+
+<div class="summary">
+<div>कुल रकम<b id="totalAmount">रु. ०</b></div>
+<div>तिरेको रकम<b id="totalPaid">रु. ०</b></div>
+<div>बाँकी रकम<b id="totalDue">रु. ०</b></div>
+</div>
+
+<div id="billingForm" class="billing-box hidden no-print">
+<h3 id="billingFormTitle">नयाँ हिसाब थप्नुहोस्</h3>
+<div class="billing-grid">
+<div><label>हिसाबको प्रकार</label>
+<select id="billCategory">
+<option value="savings">बचत</option>
+<option value="loan">ऋण</option>
+<option value="installment">किस्ता</option>
+<option value="interest">ब्याज</option>
+<option value="penalty">जरिवाना</option>
+</select></div>
+<div><label>आर्थिक वर्ष</label><input id="billYear" placeholder="जस्तै २०८३/८४"></div>
+<div><label>नेपाली महिना</label>
+<select id="billMonth">
+<option>बैशाख</option><option>जेठ</option><option>असार</option>
+<option>साउन</option><option>भदौ</option><option>असोज</option>
+<option>कात्तिक</option><option>मंसिर</option><option>पुस</option>
+<option>माघ</option><option>फागुन</option><option>चैत</option>
+</select></div>
+<div><label>जम्मा तिर्नुपर्ने रकम (रु.)</label><input id="billAmount" type="number" min="0" step="0.01" placeholder="०"></div>
+<div><label>तिरेको रकम (रु.)</label><input id="billPaid" type="number" min="0" step="0.01" placeholder="०"></div>
+<div><label>भुक्तानी मिति</label><input id="billDate" type="date"></div>
+<div><label>तिर्नुपर्ने अन्तिम मिति</label><input id="billDueDate" type="date"></div>
+<div class="full"><label>विवरण</label><textarea id="billDescription" placeholder="कुन महिनाको बचत, किस्ता वा अन्य विवरण..."></textarea></div>
+</div>
+<div class="actions">
+<button onclick="saveBilling()">✓ हिसाब सुरक्षित गर्नुहोस्</button>
+<button class="light" onclick="clearBillingForm()">नयाँ हिसाब</button>
+<button class="danger" id="cancelEdit" onclick="cancelBillingEdit()" style="display:none">सम्पादन रद्द</button>
+</div>
+</div>
+
+<div class="actions no-print">
+<button class="light" onclick="loadBilling()">↻ हिसाब Refresh</button>
+<button onclick="window.print()">▤ Print Billing</button>
+</div>
+<div class="table-wrap">
+<table class="table">
+<thead><tr>
+<th>आर्थिक वर्ष</th><th>महिना</th><th>प्रकार</th><th>जम्मा</th>
+<th>तिरेको</th><th>बाँकी</th><th>स्थिति</th><th>भुक्तानी मिति</th><th class="no-print">कार्य</th>
+</tr></thead>
+<tbody id="billingRows"><tr><td colspan="9">सदस्य छान्नुहोस्।</td></tr></tbody>
+</table>
 </div>
 </section>
 
@@ -223,18 +217,14 @@ body{background:white;padding:0}
 <h3>Scan In/Out History</h3>
 <div class="note">
 <h3>सदस्य प्रवेश तथा बहिर्गमन</h3>
-<p>QR Scan गरेर प्रवेश र बाहिरिएको समय रेकर्ड गर्ने सुविधा यहाँ जोडिनेछ।</p>
-<p>यसका लागि छुट्टै सुरक्षित Attendance Database आवश्यक हुनेछ।</p>
+<p>QR Scan गरेर प्रवेश र बाहिरिएको समय रेकर्ड गर्ने सुविधा अर्को चरणमा जोडिनेछ।</p>
+<p>यसका लागि सुरक्षित Attendance Database र छुट्टै जाँच प्रक्रिया आवश्यक हुन्छ।</p>
 </div>
 </section>
 
 <div id="message" class="message"></div>
 </div>
-
-<div class="footer">
-रसाली भाई समाज परिवार चौराठा<br>
-एकता • सेवा • समर्पण
-</div>
+<div class="footer">रसाली भाई समाज परिवार चौराठा<br>एकता • सेवा • समर्पण</div>
 </div>
 
 <script>
@@ -246,38 +236,36 @@ const isAdmin=!!token && role==="admin";
 
 let members=[];
 let selected=null;
+let billingRecords=[];
+let editingBillingId=null;
+let currentUserId=null;
 
-function headers(admin=false){
+function headers(){
 return {
 "apikey":KEY,
-"Authorization":"Bearer "+(admin?token:KEY),
+"Authorization":"Bearer "+(token||KEY),
 "Content-Type":"application/json"
 };
 }
-
 function msg(t){document.getElementById("message").textContent=t;}
-
 function val(id){return document.getElementById(id).value.trim();}
-
 function safe(s){
 return String(s??"").replace(/[&<>"']/g,c=>({
 "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
 }[c]));
 }
-
-function photoURL(u){
-return /^https?:\/\//i.test(String(u||""))?u:"";
-}
+function photoURL(u){return /^https?:\/\//i.test(String(u||""))?u:"";}
 
 function showTab(id,button){
 ["general","billing","history"].forEach(x=>
-document.getElementById(x).classList.toggle("hidden",x!==id)
-);
+document.getElementById(x).classList.toggle("hidden",x!==id));
 document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
 button.classList.add("active");
+if(id==="billing")loadBilling();
 }
 
 async function loadMembers(){
+if(!isAdmin){msg("सदस्य Login जाँच हुँदैछ...");return;}
 msg("सदस्य विवरण लोड हुँदैछ...");
 try{
 const r=await fetch(URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",{headers:headers()});
@@ -286,9 +274,7 @@ members=await r.json();
 const options=document.getElementById("memberOptions");
 options.innerHTML="";
 members.forEach(m=>{
-const o=document.createElement("option");
-o.value=m.name||"";
-options.appendChild(o);
+const o=document.createElement("option");o.value=m.name||"";options.appendChild(o);
 });
 renderList();
 msg("सदस्य सूची लोड भयो। जम्मा सदस्य: "+members.length);
@@ -296,14 +282,11 @@ msg("सदस्य सूची लोड भयो। जम्मा सद�
 }
 
 function renderList(){
-const box=document.getElementById("memberList");
-box.innerHTML="";
+const box=document.getElementById("memberList");box.innerHTML="";
 members.forEach(m=>{
-const row=document.createElement("div");
-row.className="member-row";
+const row=document.createElement("div");row.className="member-row";
 row.innerHTML="<span><b>"+safe(m.name)+"</b><br><small>RS-"+safe(m.id)+" · "+safe(m.position||"सदस्य")+"</small></span><span>खोल्नुहोस् ›</span>";
-row.onclick=()=>selectMember(m);
-box.appendChild(row);
+row.onclick=()=>selectMember(m);box.appendChild(row);
 });
 }
 
@@ -318,7 +301,9 @@ document.getElementById("photoUrl").value=m.document_url||"";
 updateCard();
 document.getElementById("searchName").value=m.name||"";
 document.getElementById("searchId").value="RS-"+m.id;
+document.getElementById("billingMember").textContent="सदस्य: "+(m.name||"")+" · RS-"+m.id;
 msg("सदस्य विवरण खोलियो।");
+loadBilling();
 }
 
 function updateCard(){
@@ -350,24 +335,18 @@ if(m)selectMember(m);
 });
 document.getElementById("searchId").addEventListener("change",()=>{
 const id=val("searchId").replace(/^RS-/i,"");
-const m=members.find(x=>String(x.id)===id);
-if(m)selectMember(m);
+const m=members.find(x=>String(x.id)===id);if(m)selectMember(m);
 });
 
 function newMember(){
-selected=null;
-clearFields();
-document.getElementById("name").focus();
+if(!isAdmin)return;
+selected=null;clearFields();document.getElementById("name").focus();
 msg("नयाँ सदस्यको विवरण भर्नुहोस्।");
 }
-
 function clearFields(){
 selected=null;
-["name","memberId","position","phone","email","photoUrl","photoFile","address","notes","searchName","searchId"].forEach(id=>{
-document.getElementById(id).value="";
-});
-document.getElementById("status").value="Active";
-updateCard();
+["name","memberId","position","phone","email","photoUrl","photoFile","address","notes","searchName","searchId"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("status").value="Active";updateCard();
 }
 
 async function uploadPhoto(file){
@@ -377,14 +356,7 @@ if(file.size>5*1024*1024)throw new Error("फोटो ५ MB भन्दा �
 const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
 const path="members/"+Date.now()+"-"+Math.random().toString(36).slice(2)+"."+ext;
 const r=await fetch(URL+"/storage/v1/object/Photos/"+path,{
-method:"POST",
-headers:{
-"apikey":KEY,
-"Authorization":"Bearer "+token,
-"Content-Type":file.type,
-"x-upsert":"true"
-},
-body:file
+method:"POST",headers:{"apikey":KEY,"Authorization":"Bearer "+token,"Content-Type":file.type,"x-upsert":"true"},body:file
 });
 if(!r.ok)throw new Error(await r.text());
 return URL+"/storage/v1/object/public/Photos/"+path;
@@ -394,34 +366,17 @@ async function saveMember(){
 if(!isAdmin){msg("Admin Login आवश्यक छ।");return;}
 if(!val("name")){msg("सदस्यको नाम लेख्नुहोस्।");return;}
 try{
-let photo=val("photoUrl");
-const file=document.getElementById("photoFile").files[0];
+let photo=val("photoUrl");const file=document.getElementById("photoFile").files[0];
 if(file)photo=await uploadPhoto(file);
-const body={
-name:val("name"),
-position:val("position"),
-phone:val("phone"),
-email:val("email"),
-document_url:photo
-};
+const body={name:val("name"),position:val("position"),phone:val("phone"),email:val("email"),document_url:photo};
 let r;
 if(selected){
-r=await fetch(URL+"/rest/v1/members?id=eq."+encodeURIComponent(selected.id),{
-method:"PATCH",
-headers:{...headers(true),"Prefer":"return=minimal"},
-body:JSON.stringify(body)
-});
+r=await fetch(URL+"/rest/v1/members?id=eq."+encodeURIComponent(selected.id),{method:"PATCH",headers:{...headers(),"Prefer":"return=minimal"},body:JSON.stringify(body)});
 }else{
-r=await fetch(URL+"/rest/v1/members",{
-method:"POST",
-headers:{...headers(true),"Prefer":"return=minimal"},
-body:JSON.stringify(body)
-});
+r=await fetch(URL+"/rest/v1/members",{method:"POST",headers:{...headers(),"Prefer":"return=minimal"},body:JSON.stringify(body)});
 }
 if(!r.ok)throw new Error(await r.text());
-msg("सदस्य विवरण सुरक्षित भयो।");
-clearFields();
-await loadMembers();
+msg("सदस्य विवरण सुरक्षित भयो।");clearFields();await loadMembers();
 }catch(e){msg("त्रुटि: "+e.message);}
 }
 
@@ -430,20 +385,172 @@ if(!isAdmin){msg("Admin Login आवश्यक छ।");return;}
 if(!selected){msg("पहिले सदस्य छान्नुहोस्।");return;}
 if(!confirm("यो सदस्य हटाउने हो?"))return;
 try{
-const r=await fetch(URL+"/rest/v1/members?id=eq."+encodeURIComponent(selected.id),{
-method:"DELETE",headers:headers(true)
-});
+const r=await fetch(URL+"/rest/v1/members?id=eq."+encodeURIComponent(selected.id),{method:"DELETE",headers:headers()});
 if(!r.ok)throw new Error(await r.text());
-msg("सदस्य हटाइयो।");
-clearFields();
-await loadMembers();
+msg("सदस्य हटाइयो।");clearFields();await loadMembers();
 }catch(e){msg("Delete भएन: "+e.message);}
 }
 
-if(!isAdmin){
-msg("यो पेज Admin का लागि हो। कृपया Admin Login गरेर आउनुहोस्।");
+const categoryNames={savings:"बचत",loan:"ऋण",installment:"किस्ता",interest:"ब्याज",penalty:"जरिवाना"};
+function money(n){return "रु. "+Number(n||0).toLocaleString("en-IN",{maximumFractionDigits:2});}
+function paymentStatus(amount,paid){
+if(Number(paid)<=0)return "unpaid";
+if(Number(paid)>=Number(amount))return "paid";
+return "partial";
+}
+function statusNepali(s){
+return s==="paid"?"तिरेको":s==="partial"?"आंशिक":"नतिरेको";
+}
+
+async function loadBilling(){
+const rows=document.getElementById("billingRows");
+if(!selected){
+rows.innerHTML='<tr><td colspan="9">पहिले सदस्य छान्नुहोस्।</td></tr>';
+return;
+}
+rows.innerHTML='<tr><td colspan="9">हिसाब लोड हुँदैछ...</td></tr>';
+try{
+const q=URL+"/rest/v1/member_billing_records?select=*&member_id=eq."+encodeURIComponent(selected.id)+"&order=fiscal_year.desc,nepali_month.asc";
+const r=await fetch(q,{headers:headers()});
+if(!r.ok)throw new Error(await r.text());
+billingRecords=await r.json();
+renderBilling();
+}catch(e){
+rows.innerHTML='<tr><td colspan="9">हिसाब लोड भएन।</td></tr>';
+msg("Billing त्रुटि: "+e.message);
+}
+}
+
+function renderBilling(){
+const rows=document.getElementById("billingRows");rows.innerHTML="";
+let total=0,paid=0,due=0;
+if(!billingRecords.length){
+rows.innerHTML='<tr><td colspan="9">यस सदस्यको हिसाब अहिलेसम्म राखिएको छैन।</td></tr>';
 }else{
+billingRecords.forEach(b=>{
+const amount=Number(b.amount||0),p=Number(b.paid_amount||0),d=Math.max(amount-p,0);
+total+=amount;paid+=p;due+=d;
+const status=paymentStatus(amount,p);
+const tr=document.createElement("tr");
+tr.innerHTML=
+"<td>"+safe(b.fiscal_year)+"</td>"+
+"<td>"+safe(b.nepali_month)+"</td>"+
+"<td>"+safe(categoryNames[b.category]||b.category)+"</td>"+
+"<td>"+money(amount)+"</td><td>"+money(p)+"</td><td>"+money(d)+"</td>"+
+'<td class="status-'+status+'">'+statusNepali(status)+"</td>"+
+"<td>"+safe(b.payment_date||"—")+"</td>"+
+'<td class="no-print">'+(isAdmin?
+'<button class="small-btn" onclick="editBilling('+Number(b.id)+')">Edit</button><button class="small-btn danger" onclick="deleteBilling('+Number(b.id)+')">Delete</button>':
+"—")+"</td>";
+rows.appendChild(tr);
+});
+}
+document.getElementById("totalAmount").textContent=money(total);
+document.getElementById("totalPaid").textContent=money(paid);
+document.getElementById("totalDue").textContent=money(due);
+document.getElementById("billingForm").classList.toggle("hidden",!isAdmin);
+}
+
+function clearBillingForm(){
+editingBillingId=null;
+["billYear","billAmount","billPaid","billDate","billDueDate","billDescription"].forEach(id=>document.getElementById(id).value="");
+document.getElementById("billCategory").value="savings";
+document.getElementById("billMonth").value="बैशाख";
+document.getElementById("billingFormTitle").textContent="नयाँ हिसाब थप्नुहोस्";
+document.getElementById("cancelEdit").style.display="none";
+}
+function cancelBillingEdit(){clearBillingForm();}
+
+function editBilling(id){
+if(!isAdmin)return;
+const b=billingRecords.find(x=>Number(x.id)===Number(id));if(!b)return;
+editingBillingId=b.id;
+document.getElementById("billCategory").value=b.category;
+document.getElementById("billYear").value=b.fiscal_year||"";
+document.getElementById("billMonth").value=b.nepali_month||"बैशाख";
+document.getElementById("billAmount").value=b.amount||0;
+document.getElementById("billPaid").value=b.paid_amount||0;
+document.getElementById("billDate").value=b.payment_date||"";
+document.getElementById("billDueDate").value=b.due_date||"";
+document.getElementById("billDescription").value=b.description||"";
+document.getElementById("billingFormTitle").textContent="हिसाब सच्याउनुहोस्";
+document.getElementById("cancelEdit").style.display="inline-block";
+document.getElementById("billingForm").scrollIntoView({behavior:"smooth"});
+}
+
+async function saveBilling(){
+if(!isAdmin){msg("हिसाब राख्न Admin Login आवश्यक छ।");return;}
+if(!selected){msg("पहिले सदस्य छान्नुहोस्।");return;}
+const amount=Number(val("billAmount")),paid=Number(val("billPaid")||0);
+if(!val("billYear")){msg("आर्थिक वर्ष लेख्नुहोस्।");return;}
+if(!Number.isFinite(amount)||amount<=0){msg("सही जम्मा रकम लेख्नुहोस्।");return;}
+if(!Number.isFinite(paid)||paid<0||paid>amount){msg("तिरेको रकम शून्य वा जम्मा रकमभन्दा कम/बराबर हुनुपर्छ।");return;}
+const body={
+member_id:selected.id,
+category:val("billCategory"),
+fiscal_year:val("billYear"),
+nepali_month:val("billMonth"),
+amount:amount,
+paid_amount:paid,
+payment_status:paymentStatus(amount,paid),
+payment_date:val("billDate")||null,
+due_date:val("billDueDate")||null,
+description:val("billDescription")||null
+};
+try{
+let r;
+if(editingBillingId){
+r=await fetch(URL+"/rest/v1/member_billing_records?id=eq."+encodeURIComponent(editingBillingId),{
+method:"PATCH",headers:{...headers(),"Prefer":"return=minimal"},body:JSON.stringify(body)
+});
+}else{
+r=await fetch(URL+"/rest/v1/member_billing_records",{
+method:"POST",headers:{...headers(),"Prefer":"return=minimal"},body:JSON.stringify(body)
+});
+}
+if(!r.ok)throw new Error(await r.text());
+msg("सदस्यको Billing हिसाब सुरक्षित भयो।");
+clearBillingForm();await loadBilling();
+}catch(e){msg("हिसाब सुरक्षित भएन: "+e.message);}
+}
+
+async function deleteBilling(id){
+if(!isAdmin)return;
+if(!confirm("यो Billing विवरण हटाउने हो?"))return;
+try{
+const r=await fetch(URL+"/rest/v1/member_billing_records?id=eq."+encodeURIComponent(id),{method:"DELETE",headers:headers()});
+if(!r.ok)throw new Error(await r.text());
+msg("Billing विवरण हटाइयो।");await loadBilling();
+}catch(e){msg("हटाउन सकिएन: "+e.message);}
+}
+
+/* Member login: सदस्यको Supabase Auth ID लाई members.auth_user_id सँग मिलाउने */
+async function loadOwnMember(){
+if(!token){msg("कृपया आफ्नो Member Login गरेर आउनुहोस्।");return;}
+try{
+const ur=await fetch(URL+"/auth/v1/user",{headers:headers()});
+if(!ur.ok)throw new Error("Login प्रमाणित भएन। कृपया फेरि Login गर्नुहोस्।");
+const user=await ur.json();currentUserId=user.id;
+const q=URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&auth_user_id=eq."+encodeURIComponent(user.id);
+const r=await fetch(q,{headers:headers()});
+if(!r.ok)throw new Error(await r.text());
+const found=await r.json();
+if(!found.length)throw new Error("यो Login खाता कुनै सदस्यसँग जोडिएको छैन। Admin लाई सम्पर्क गर्नुहोस्।");
+selected=found[0];
+document.getElementById("searchArea").classList.add("hidden");
+document.getElementById("mainActions").classList.add("hidden");
+document.getElementById("memberList").classList.add("hidden");
+document.querySelectorAll(".tabs .tab").forEach((b,i)=>{if(i!==1)b.classList.add("hidden");});
+selectMember(found[0]);
+showTab("billing",document.querySelectorAll(".tabs .tab")[1]);
+msg("स्वागत छ "+(selected.name||"सदस्य")+"। तपाईंको आफ्नै हिसाब मात्र देखाइएको छ।");
+}catch(e){msg("सदस्य Login त्रुटि: "+e.message);}
+}
+
+if(isAdmin){
 loadMembers();
+}else{
+loadOwnMember();
 }
 </script>
 </body>
