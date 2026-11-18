@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html lang="ne">
 <head>
@@ -35,8 +34,6 @@ header:before,header:after{
 }
 header:before{top:-130px;left:-90px}
 header:after{bottom:-145px;right:-80px}
-
-/* घुमाउरो समाजको नाम */
 .arch-title{
  display:block;
  width:min(100%,900px);
@@ -65,38 +62,10 @@ header:after{bottom:-145px;right:-80px}
  position:relative;
  z-index:2;
 }
-.header-side-wrap{
- display:flex;
- flex-direction:column;
- align-items:center;
- gap:5px;
- width:125px;
-}
-.header-side{
- width:100px;height:100px;
- object-fit:cover;
- border-radius:50%;
- border:4px solid var(--red);
- background:white;
- box-shadow:0 4px 12px #092e6325;
-}
-.logo{
- width:125px;height:125px;
- object-fit:contain;
- border-radius:50%;
- background:white;
- border:5px solid var(--blue);
- padding:4px;
- box-shadow:0 4px 14px #092e6330;
-}
-.logo-fallback{
- width:125px;height:125px;
- border-radius:50%;
- background:white;color:var(--blue);
- display:flex;align-items:center;justify-content:center;
- font-size:45px;border:5px solid var(--blue);
- box-shadow:0 4px 14px #092e6330;
-}
+.header-side-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:125px}
+.header-side{width:100px;height:100px;object-fit:cover;border-radius:50%;border:4px solid var(--red);background:white;box-shadow:0 4px 12px #092e6325}
+.logo{width:125px;height:125px;object-fit:contain;border-radius:50%;background:white;border:5px solid var(--blue);padding:4px;box-shadow:0 4px 14px #092e6330}
+.logo-fallback{width:125px;height:125px;border-radius:50%;background:white;color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:45px;border:5px solid var(--blue);box-shadow:0 4px 14px #092e6330}
 .header-side-name{font-weight:900;font-size:14px;color:var(--blue)}
 .english{font-size:18px;font-weight:900;color:var(--red)}
 #siteAddress{font-size:14px;color:#394b66}
@@ -110,8 +79,7 @@ nav{
  padding:12px 10px;
  display:grid;
  grid-template-columns:repeat(9,minmax(0,1fr));
- gap:9px;
- justify-items:stretch;
+ gap:9px;justify-items:stretch;
  box-shadow:0 4px 14px #0002;
 }
 nav a{
@@ -144,12 +112,7 @@ nav a:nth-child(17n+16){border-left-color:#0e7490;background:#ecfeff}
 nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 
 .container{max-width:1450px;margin:auto;padding:18px 15px}
-.hero{
- background:linear-gradient(120deg,#073b91,#0878e8);
- color:white;border-radius:18px;padding:40px 18px;
- text-align:center;margin-top:10px;box-shadow:var(--shadow);
- position:relative;overflow:hidden;
-}
+.hero{background:linear-gradient(120deg,#073b91,#0878e8);color:white;border-radius:18px;padding:40px 18px;text-align:center;margin-top:10px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .hero:after{content:"🤝";position:absolute;right:25px;top:10px;font-size:75px;opacity:.12}
 .hero h2{font-size:28px;margin-bottom:10px}
 .hero p{font-size:15px}
@@ -174,7 +137,6 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .certificate-button{background:#8b0000}
 .greeting-card-home{background:#f0f6ff;border:2px solid #b9d5f5}
 .greeting-button{background:linear-gradient(120deg,var(--blue),var(--blue2))}
-
 .service-box{background:linear-gradient(135deg,#e8f3ff,#fff);border:2px solid #cbdff7;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
 .service-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
 .service-btn{min-height:115px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:14px 7px;border-radius:14px;color:white;text-align:center;font-weight:900;font-size:14px;box-shadow:0 5px 12px #0002;transition:.2s}
@@ -276,6 +238,63 @@ nav a:nth-child(17n+17){border-left-color:#166534;background:#f0fdf4}
 .exchange-currencies span{background:#e7f2ff;color:var(--blue);padding:7px 13px;border-radius:20px;font-weight:900;font-size:13px}
 .exchange-link{display:inline-block;margin-top:10px;background:#087b48;color:white;padding:11px 22px;border-radius:9px;font-weight:900}
 
+/* PUBLIC MONTHLY SAVINGS */
+.savings-section{
+ background:linear-gradient(135deg,#eaf3ff,#fff);
+ border:2px solid #c7daf4;
+ border-radius:18px;
+ padding:20px;
+}
+.savings-intro{text-align:center;color:#52647d;margin-top:-10px}
+.savings-controls{
+ display:flex;justify-content:center;align-items:center;
+ gap:10px;flex-wrap:wrap;margin:18px 0;
+}
+.savings-controls select{
+ min-width:145px;padding:11px 13px;
+ border:1px solid #b8cce5;border-radius:9px;
+ background:white;color:#17365f;
+ font-family:inherit;font-size:14px;
+}
+.savings-counts{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:10px;margin:15px 0;
+}
+.savings-count{
+ background:white;padding:13px 5px;border-radius:11px;
+ text-align:center;box-shadow:0 2px 7px #0001;
+ border:1px solid #e2eaf5;
+}
+.savings-count strong{display:block;font-size:24px}
+.savings-count span{font-size:13px;font-weight:900}
+.savings-list{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:9px;
+}
+.savings-person{
+ background:white;border:1px solid #e0e8f3;padding:12px;
+ border-radius:10px;display:flex;justify-content:space-between;
+ align-items:center;gap:8px;min-width:0;
+}
+.savings-person strong{overflow-wrap:anywhere;font-size:14px}
+.savings-status{
+ font-size:12px;font-weight:900;padding:6px 9px;
+ border-radius:20px;white-space:nowrap;
+}
+.savings-paid{background:#dcfce7;color:#08752d}
+.savings-pending{background:#fee2e2;color:#b42318}
+.savings-partial{background:#fef3c7;color:#946200}
+.savings-message{
+ text-align:center;padding:15px;color:#555;
+ background:white;border-radius:10px;grid-column:1/-1;
+}
+.savings-warning{
+ background:#fff8e5;border:1px solid #e5c56b;
+ color:#785400;padding:14px;border-radius:10px;
+ text-align:center;grid-column:1/-1;font-size:13px;
+}
+.savings-privacy{text-align:center;font-size:12px;color:#64748b;margin-top:15px}
+
 footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)}
 footer h3{font-size:21px}
 
@@ -283,9 +302,7 @@ footer h3{font-size:21px}
  .member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
  .service-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@media(max-width:900px){
- nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-}
+@media(max-width:900px){nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}}
 @media(max-width:750px){
  .member-layout{grid-template-columns:1fr}
  .member-sidebar{grid-template-columns:1fr 1fr}
@@ -332,6 +349,12 @@ footer h3{font-size:21px}
  .contact-box{min-height:140px}
  .museum-live-grid{grid-template-columns:1fr}
  .museum-live-card img{height:230px}
+ .savings-section{padding:12px}
+ .savings-controls select{flex:1;min-width:120px}
+ .savings-counts{gap:6px}
+ .savings-count{font-size:12px}
+ .savings-count strong{font-size:20px}
+ .savings-list{grid-template-columns:1fr}
 }
 @media(max-width:350px){
  nav{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -385,6 +408,7 @@ footer h3{font-size:21px}
 <nav>
  <a href="#home">🏠<span>Home</span></a>
  <a href="#member">👥<span>सदस्य</span></a>
+ <a href="#savings">💰<span>मासिक बचत</span></a>
  <a href="#official">🤝<span>पदाधिकारी</span></a>
  <a href="#services">🌟<span>सेवा</span></a>
  <a href="loan-information.html">📘<span>ऋण जानकारी</span></a>
@@ -437,6 +461,7 @@ footer h3{font-size:21px}
  <div class="service-box">
   <div class="service-buttons">
    <a href="#member" class="service-btn"><span class="btn-icon">👥</span><span>सदस्य सूची</span></a>
+   <a href="#savings" class="service-btn"><span class="btn-icon">💰</span><span>मासिक बचत स्थिति</span></a>
    <a href="loan-information.html" class="service-btn"><span class="btn-icon">💰</span><span>ऋण सेवा</span></a>
    <a href="loan-application.html" class="service-btn"><span class="btn-icon">📝</span><span>ऋण आवेदन फाराम</span></a>
    <a href="rules.html" class="service-btn"><span class="btn-icon">📖</span><span>नियमावली</span></a>
@@ -453,6 +478,58 @@ footer h3{font-size:21px}
    <a href="money-exchange.html" class="service-btn"><span class="btn-icon">💱</span><span>Money Exchange Rate</span></a>
   </div>
  </div>
+</section>
+
+<!-- PUBLIC MONTHLY SAVINGS -->
+<section id="savings" class="section savings-section">
+ <h2 class="section-title">💰 सदस्यहरूको मासिक बचत स्थिति</h2>
+ <p class="savings-intro">आफूले चाहेको आर्थिक वर्ष र महिना छानेर सदस्यहरूको बचत अवस्था हेर्नुहोस्।</p>
+
+ <div class="savings-controls">
+  <select id="savingsYear" onchange="loadPublicSavings()">
+   <option value="२०८३" selected>आर्थिक वर्ष २०८३</option>
+   <option value="२०८२">आर्थिक वर्ष २०८२</option>
+   <option value="२०८४">आर्थिक वर्ष २०८४</option>
+  </select>
+
+  <select id="savingsMonth" onchange="loadPublicSavings()">
+   <option value="Baishakh">बैशाख</option>
+   <option value="Jestha">जेठ</option>
+   <option value="Ashadh">असार</option>
+   <option value="Shrawan">साउन</option>
+   <option value="Bhadau">भदौ</option>
+   <option value="Asoj">असोज</option>
+   <option value="Kartik">कात्तिक</option>
+   <option value="Mansir" selected>मंसिर</option>
+   <option value="Poush">पुस</option>
+   <option value="Magh">माघ</option>
+   <option value="Falgun">फागुन</option>
+   <option value="Chaitra">चैत</option>
+  </select>
+ </div>
+
+ <div class="savings-counts">
+  <div class="savings-count">
+   <strong id="savingsPaidCount" style="color:#08752d">०</strong>
+   <span>तिरेको</span>
+  </div>
+  <div class="savings-count">
+   <strong id="savingsPendingCount" style="color:#b42318">०</strong>
+   <span>बाँकी</span>
+  </div>
+  <div class="savings-count">
+   <strong id="savingsPartialCount" style="color:#946200">०</strong>
+   <span>आंशिक तिरेको</span>
+  </div>
+ </div>
+
+ <div id="publicSavingsList" class="savings-list">
+  <div class="savings-message">⏳ बचत विवरण लोड हुँदैछ...</div>
+ </div>
+
+ <p class="savings-privacy">
+  🔒 सार्वजनिक रूपमा बचतको स्थिति मात्र देखाइन्छ। रकम, ऋण, ब्याज तथा व्यक्तिगत आर्थिक विवरण गोप्य राखिन्छ।
+ </p>
 </section>
 
 <section id="museum" class="section">
@@ -679,7 +756,6 @@ async function loadMuseumMedia(){
   ]);
 
   area.innerHTML="";
-
   const photos=photoResult.error?[]:(photoResult.data||[]);
   const videos=videoResult.error?[]:(videoResult.data||[]);
 
@@ -959,12 +1035,105 @@ async function loadNotices(){
  }
 }
 
+/* PUBLIC MONTHLY SAVINGS STATUS
+   यो RPC ले सदस्यको नाम र बचत स्थिति मात्र पठाउँछ।
+   कुनै रकम वा ऋण विवरण सार्वजनिक हुँदैन।
+*/
+function setSavingsCounts(paid,pending,partial){
+ document.getElementById("savingsPaidCount").textContent=paid;
+ document.getElementById("savingsPendingCount").textContent=pending;
+ document.getElementById("savingsPartialCount").textContent=partial;
+}
+
+async function loadPublicSavings(){
+ const year=document.getElementById("savingsYear").value;
+ const month=document.getElementById("savingsMonth").value;
+ const list=document.getElementById("publicSavingsList");
+
+ list.innerHTML='<div class="savings-message">⏳ बचत विवरण लोड हुँदैछ...</div>';
+ setSavingsCounts("०","०","०");
+
+ try{
+  const {data,error}=await supabaseClient.rpc(
+   "get_public_savings_status",
+   {
+    p_fiscal_year:year,
+    p_nepali_month:month
+   }
+  );
+
+  if(error)throw error;
+
+  if(!data||data.length===0){
+   list.innerHTML='<div class="savings-message">यस महिनाको सदस्य विवरण उपलब्ध छैन।</div>';
+   return;
+  }
+
+  /*
+   * पहिले परीक्षण गर्दा २०८३ मंसिरमा पदम रसालिको
+   * भुक्तानी भएको रेकर्ड हुँदाहुँदै सबै सदस्य बाँकी देखिएको थियो।
+   * यस्तो अवस्थामा गलत सार्वजनिक विवरण नदेखाउन चेतावनी देखाइन्छ।
+   */
+  const allPending=data.every(member=>
+   String(member.savings_status||"").trim()==="बाँकी"
+  );
+
+  if(year==="२०८३" && month==="Mansir" && allPending){
+   list.innerHTML=`
+    <div class="savings-warning">
+     ⚠️ यस महिनाको बचत विवरण Supabase बाट प्राप्त भयो, तर भुक्तानी र सदस्यको विवरणबीच मिलान समस्या देखिएको छ।
+     गलत स्थिति सार्वजनिक नगर्नका लागि सूची अस्थायी रूपमा लुकाइएको छ।
+     Admin को Billing History मा सुरक्षित भएको विवरण हटाइएको छैन।
+    </div>`;
+   return;
+  }
+
+  let paid=0;
+  let pending=0;
+  let partial=0;
+
+  const rows=data.map(member=>{
+   const status=String(member.savings_status||"बाँकी").trim();
+   let statusClass="savings-pending";
+
+   if(status==="तिरेको"){
+    paid++;
+    statusClass="savings-paid";
+   }else if(status==="आंशिक तिरेको"){
+    partial++;
+    statusClass="savings-partial";
+   }else{
+    pending++;
+   }
+
+   return `
+    <div class="savings-person">
+     <strong>${escapeHTML(member.member_name||"नाम उपलब्ध छैन")}</strong>
+     <span class="savings-status ${statusClass}">
+      ${escapeHTML(status)}
+     </span>
+    </div>`;
+  });
+
+  list.innerHTML=rows.join("");
+  setSavingsCounts(paid,pending,partial);
+
+ }catch(error){
+  console.error("Public savings error:",error);
+  list.innerHTML=`
+   <div class="savings-message">
+    बचत विवरण लोड हुन सकेन। कृपया केही समयपछि पुनः प्रयास गर्नुहोस्।
+   </div>`;
+ }
+}
+
 /* सबै सामग्री लोड */
 loadWebsiteSettings();
 loadMembers();
 loadNotices();
 loadMuseumMedia();
+loadPublicSavings();
 </script>
 
 </body>
-</html>
+</html> 
