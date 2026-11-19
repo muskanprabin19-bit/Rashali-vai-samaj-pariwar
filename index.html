@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -17,7 +16,8 @@ a{text-decoration:none}
 .topbar{background:var(--blue);color:white;text-align:center;padding:7px;font-size:13px}
 header{background:linear-gradient(120deg,#e8f1ff,#fff,#fcecef);border-bottom:5px solid var(--red);padding:12px 10px 20px;text-align:center;overflow:hidden;position:relative}
 header:before,header:after{content:"";position:absolute;width:190px;height:190px;border:22px solid #0878e80b;border-radius:50%;pointer-events:none}
-header:before{top:-130px;left:-90px}header:after{bottom:-145px;right:-80px}
+header:before{top:-130px;left:-90px}
+header:after{bottom:-145px;right:-80px}
 .arch-title{display:block;width:min(100%,900px);height:auto;margin:0 auto -4px;overflow:visible;position:relative;z-index:1}
 .arch-title text{font-family:"Noto Sans Devanagari",Arial,sans-serif;font-size:62px;font-weight:900;fill:var(--blue);stroke:#fff;stroke-width:2px;paint-order:stroke;stroke-linejoin:round}
 .header-images{display:flex;align-items:center;justify-content:center;gap:25px;margin:0 auto 8px;position:relative;z-index:2}
@@ -35,12 +35,21 @@ header:before{top:-130px;left:-90px}header:after{bottom:-145px;right:-80px}
 nav{position:relative;z-index:1;background:linear-gradient(120deg,#073b91,#0878e8);padding:12px 10px;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px 10px;justify-items:stretch;box-shadow:0 4px 14px #0002}
 nav a{width:100%;min-width:0;min-height:42px;border-radius:7px;background:transparent;color:#fff;display:flex;justify-content:center;align-items:center;gap:5px;text-align:center;padding:7px 3px;font-size:11px;font-weight:900;line-height:1.35}
 nav a:hover{transform:translateY(-2px);color:#ffe082;text-decoration:underline}
-nav a:nth-child(9n+1){color:#fff}nav a:nth-child(9n+2){color:#b9f6ca}nav a:nth-child(9n+3){color:#ffe082}nav a:nth-child(9n+4){color:#ffb4c2}nav a:nth-child(9n+5){color:#b3e5fc}nav a:nth-child(9n+6){color:#e1bee7}nav a:nth-child(9n+7){color:#fff59d}nav a:nth-child(9n+8){color:#a7ffeb}nav a:nth-child(9n){color:#ffd1a9}
+nav a:nth-child(9n+1){color:#fff}
+nav a:nth-child(9n+2){color:#b9f6ca}
+nav a:nth-child(9n+3){color:#ffe082}
+nav a:nth-child(9n+4){color:#ffb4c2}
+nav a:nth-child(9n+5){color:#b3e5fc}
+nav a:nth-child(9n+6){color:#e1bee7}
+nav a:nth-child(9n+7){color:#fff59d}
+nav a:nth-child(9n+8){color:#a7ffeb}
+nav a:nth-child(9n){color:#ffd1a9}
 
 .container{max-width:1450px;margin:auto;padding:18px 15px}
 .hero{background:linear-gradient(120deg,#073b91,#0878e8);color:white;border-radius:18px;padding:40px 18px;text-align:center;margin-top:10px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .hero:after{content:"🤝";position:absolute;right:25px;top:10px;font-size:75px;opacity:.12}
-.hero h2{font-size:28px;margin-bottom:10px}.hero p{font-size:15px}
+.hero h2{font-size:28px;margin-bottom:10px}
+.hero p{font-size:15px}
 .hero-tag{display:inline-block;background:white;color:var(--blue);padding:6px 18px;border-radius:30px;margin-top:14px;font-weight:900}
 .section{margin-top:36px}
 .section-title{text-align:center;color:var(--blue);font-size:24px;margin-bottom:19px;font-weight:900}
@@ -48,7 +57,8 @@ nav a:nth-child(9n+1){color:#fff}nav a:nth-child(9n+2){color:#b9f6ca}nav a:nth-c
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .card{background:white;border-radius:15px;padding:20px;box-shadow:var(--shadow);text-align:center;border:1px solid #e2eaf5}
 .card h3{color:var(--blue);margin-bottom:7px}
-.deity{font-size:60px;margin-bottom:8px}.service-icon{font-size:40px;margin-bottom:8px}
+.deity{font-size:60px;margin-bottom:8px}
+.service-icon{font-size:40px;margin-bottom:8px}
 .info-card{background:linear-gradient(135deg,#fff,#edf5ff);border:2px solid #b9d5f5}
 .info-button,.voucher-button,.certificate-button,.greeting-button{display:inline-block;margin:10px 5px 0;background:var(--blue);color:white;padding:11px 18px;border-radius:8px;font-weight:900}
 .rules-button{background:var(--red)}
@@ -57,23 +67,56 @@ nav a:nth-child(9n+1){color:#fff}nav a:nth-child(9n+2){color:#b9f6ca}nav a:nth-c
 .service-btn{min-height:115px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;padding:14px 7px;border-radius:14px;color:white;text-align:center;font-weight:900;font-size:14px;box-shadow:0 5px 12px #0002;transition:.2s}
 .service-btn:hover{transform:translateY(-4px);box-shadow:0 8px 18px #0003}
 .service-btn .btn-icon{font-size:32px;line-height:1.2}
-.service-btn:nth-child(8n+1){background:#198754}.service-btn:nth-child(8n+2){background:#7c3aed}.service-btn:nth-child(8n+3){background:#d97706}.service-btn:nth-child(8n+4){background:#dc3545}.service-btn:nth-child(8n+5){background:#0878e8}.service-btn:nth-child(8n+6){background:#0d9488}.service-btn:nth-child(8n+7){background:#c02675}.service-btn:nth-child(8n){background:#475569}
+.service-btn:nth-child(8n+1){background:#198754}
+.service-btn:nth-child(8n+2){background:#7c3aed}
+.service-btn:nth-child(8n+3){background:#d97706}
+.service-btn:nth-child(8n+4){background:#dc3545}
+.service-btn:nth-child(8n+5){background:#0878e8}
+.service-btn:nth-child(8n+6){background:#0d9488}
+.service-btn:nth-child(8n+7){background:#c02675}
+.service-btn:nth-child(8n){background:#475569}
 
-/* Founder and officials */
+/* Founder */
 .founder-section{background:linear-gradient(135deg,#fff8df,#fff);border:2px solid #e4c76d;border-radius:18px;padding:20px;box-shadow:var(--shadow)}
 .founder-card{max-width:430px;margin:auto;background:#fff;border:2px solid #e4c76d;border-radius:18px;padding:22px;text-align:center;box-shadow:0 5px 16px #a17b241c}
 .founder-photo,.official-photo{width:125px;height:125px;object-fit:cover;border-radius:50%;border:4px solid var(--blue2);margin:0 auto 9px;display:block;background:#eaf3ff}
 .founder-photo{width:145px;height:145px;border:5px solid #dfbd50}
 .founder-avatar,.official-avatar{width:125px;height:125px;border-radius:50%;margin:0 auto 9px;display:flex;align-items:center;justify-content:center;font-size:45px;font-weight:900;background:#e0f2fe;color:#075985;border:4px solid var(--blue2)}
 .founder-avatar{width:145px;height:145px;border:5px solid #dfbd50}
-.official-card{min-width:0}
-.official-card h3{overflow-wrap:anywhere}
-.position{color:var(--red);font-weight:900;margin-top:5px}
+
+/* पदाधिकारी: ६ जना एउटै लाइनमा */
+.official-card{
+ flex:0 0 calc((100% - 40px)/6);
+ min-width:105px;
+ padding:10px 5px!important;
+ border-radius:11px;
+}
+.official-card h3{font-size:13px;line-height:1.5;overflow-wrap:anywhere;margin-bottom:2px}
+.official-card .official-avatar,
+.official-card img{
+ width:62px;
+ height:62px;
+ font-size:25px;
+ border-width:3px;
+ margin:0 auto 5px;
+}
+.position{color:var(--red);font-weight:900;margin-top:3px;font-size:12px;line-height:1.5}
 .official-empty{background:#f8fbff;border:1px dashed #a9bfdc;border-radius:14px;padding:18px;text-align:center;color:#536783}
-.official-status{font-size:12px;color:#64748b;margin-top:5px}
-.official-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
-.official-card .official-avatar{width:120px;height:120px;font-size:40px}
-.official-card img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:4px solid var(--blue2);margin:0 auto 9px;display:block}
+.official-status{font-size:10px;color:#64748b;margin-top:3px;line-height:1.4}
+.official-grid{
+ display:flex;
+ flex-wrap:nowrap;
+ gap:8px;
+ width:100%;
+ overflow-x:auto;
+ overflow-y:hidden;
+ padding:5px 2px 13px;
+ -webkit-overflow-scrolling:touch;
+ scrollbar-width:thin;
+}
+.official-grid .official-card{flex-shrink:0}
+.official-grid::-webkit-scrollbar{height:5px}
+.official-grid::-webkit-scrollbar-thumb{background:#9bb9dc;border-radius:10px}
 
 /* Member directory */
 .member-section{background:linear-gradient(135deg,#e8f3ff,#f7fbff);padding:18px;border-radius:18px;border:1px solid #c8dcf6}
@@ -98,7 +141,8 @@ nav a:nth-child(9n+1){color:#fff}nav a:nth-child(9n+2){color:#b9f6ca}nav a:nth-c
 .member-id,.member-phone{font-size:11px;color:#596b83;overflow-wrap:anywhere}
 .detail-button{width:100%;margin-top:8px;background:linear-gradient(100deg,var(--blue),var(--blue2));color:white;border:0;padding:8px 3px;border-radius:8px;font-family:inherit;font-size:11px;font-weight:900;cursor:pointer}
 .member-sidebar{display:grid;gap:14px}
-.side-title{font-size:16px}.side-content{padding:12px}
+.side-title{font-size:16px}
+.side-content{padding:12px}
 .side-notice{padding:8px 0;border-bottom:1px solid #e1eaf5;text-align:left}
 .side-notice:last-child{border:0}
 .side-notice h4{font-size:13px;color:var(--blue);margin-bottom:3px}
@@ -153,18 +197,22 @@ nav a:nth-child(9n+1){color:#fff}nav a:nth-child(9n+2){color:#b9f6ca}nav a:nth-c
 .savings-controls select{min-width:145px;padding:11px 13px;border:1px solid #b8cce5;border-radius:9px;background:white;color:#17365f;font-family:inherit;font-size:14px}
 .savings-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0}
 .savings-count{background:white;padding:13px 5px;border-radius:11px;text-align:center;box-shadow:0 2px 7px #0001;border:1px solid #e2eaf5}
-.savings-count strong{display:block;font-size:24px}.savings-count span{font-size:13px;font-weight:900}
+.savings-count strong{display:block;font-size:24px}
+.savings-count span{font-size:13px;font-weight:900}
 .savings-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
 .savings-person{background:white;border:1px solid #e0e8f3;padding:12px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;min-width:0}
 .savings-person strong{overflow-wrap:anywhere;font-size:14px}
 .savings-status{font-size:12px;font-weight:900;padding:6px 9px;border-radius:20px;white-space:nowrap}
-.savings-paid{background:#dcfce7;color:#08752d}.savings-pending{background:#fee2e2;color:#b42318}.savings-partial{background:#fef3c7;color:#946200}
+.savings-paid{background:#dcfce7;color:#08752d}
+.savings-pending{background:#fee2e2;color:#b42318}
+.savings-partial{background:#fef3c7;color:#946200}
 .savings-message{text-align:center;padding:15px;color:#555;background:white;border-radius:10px;grid-column:1/-1}
 .savings-warning{background:#fff8e5;border:1px solid #e5c56b;color:#785400;padding:14px;border-radius:10px;text-align:center;grid-column:1/-1;font-size:13px}
 .savings-privacy{text-align:center;font-size:12px;color:#64748b;margin-top:15px}
 .contact-box{min-height:155px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;padding:18px 8px;border-radius:16px;color:white;text-align:center;font-weight:900;box-shadow:0 5px 15px #0002;transition:.2s}
 .contact-box:hover{transform:translateY(-4px)}
-.contact-icon{font-size:38px;line-height:1.2}.contact-box h3,.contact-box p{color:white}
+.contact-icon{font-size:38px;line-height:1.2}
+.contact-box h3,.contact-box p{color:white}
 .contact-box p{font-size:13px;overflow-wrap:anywhere}
 .call-box{background:linear-gradient(135deg,#15803d,#22c55e)}
 .whatsapp-box{background:linear-gradient(135deg,#047857,#10b981)}
@@ -178,48 +226,89 @@ nav a:nth-child(9n+1){color:#fff}nav a:nth-child(9n+2){color:#b9f6ca}nav a:nth-c
 .login-box h2{color:white}
 .login-box a{display:inline-block;margin-top:12px;background:white;color:var(--blue);padding:10px 25px;border-radius:25px;font-weight:900}
 footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)}
-footer h3{font-size:21px}
-@media(max-width:1100px){.member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.service-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:900px){nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}}
+
+@media(max-width:1100px){
+ .member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .service-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+ nav{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+}
 @media(max-width:750px){
-.member-layout{grid-template-columns:1fr}.member-sidebar{grid-template-columns:1fr 1fr}
-.member-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.member-banner h2{font-size:19px}.member-tools{flex-direction:column;align-items:stretch}
-.search-area{width:100%}.member-count{width:100%}
-.museum-gallery{grid-template-columns:1fr}.museum-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .member-layout{grid-template-columns:1fr}
+ .member-sidebar{grid-template-columns:1fr 1fr}
+ .member-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .member-banner h2{font-size:19px}
+ .member-tools{flex-direction:column;align-items:stretch}
+ .search-area{width:100%}
+ .member-count{width:100%}
+ .museum-gallery{grid-template-columns:1fr}
+ .museum-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:600px){
-header{padding:9px 5px 15px}.arch-title{width:100%;margin-bottom:0}.arch-title text{font-size:65px}
-.header-images{gap:8px;margin-bottom:7px}.header-side-wrap{width:88px}
-.header-side{width:67px;height:67px;border-width:3px}
-.logo,.logo-fallback{width:88px;height:88px;border-width:4px}
-.header-side-name{font-size:11px}.english{font-size:14px}#siteAddress{font-size:12px}
-.tagline{font-size:13px}.estd{font-size:12px;padding:4px 15px}
-nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:9px 6px}
-nav a{min-height:42px;font-size:10px;padding:7px 3px;gap:4px;border-radius:7px}
-.hero{padding:28px 12px}.hero h2{font-size:21px}.section-title{font-size:21px}
-.container{padding:12px 8px}.member-section{padding:9px}
-.member-card{padding:10px 5px}.member-photo,.member-avatar{width:82px;height:82px}
-.member-avatar{font-size:31px}.member-card h3{font-size:14px}
-.member-position{font-size:10px}.member-id,.member-phone{font-size:10px}
-.detail-button{font-size:10px;padding:8px 2px}
-.member-sidebar{grid-template-columns:1fr}
-.service-box{padding:10px}.service-buttons{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.service-btn{min-height:105px;font-size:13px}.service-btn .btn-icon{font-size:30px}
-.contact-box{min-height:140px}.museum-live-grid{grid-template-columns:1fr}
-.museum-live-card img{height:230px}.savings-section{padding:12px}
-.savings-controls select{flex:1;min-width:120px}.savings-counts{gap:6px}
-.savings-count{font-size:12px}.savings-count strong{font-size:20px}
-.savings-list{grid-template-columns:1fr}
+ header{padding:9px 5px 15px}
+ .arch-title{width:100%;margin-bottom:0}
+ .arch-title text{font-size:65px}
+ .header-images{gap:8px;margin-bottom:7px}
+ .header-side-wrap{width:88px}
+ .header-side{width:67px;height:67px;border-width:3px}
+ .logo,.logo-fallback{width:88px;height:88px;border-width:4px}
+ .header-side-name{font-size:11px}
+ .english{font-size:14px}
+ #siteAddress{font-size:12px}
+ .tagline{font-size:13px}
+ .estd{font-size:12px;padding:4px 15px}
+ nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:9px 6px}
+ nav a{min-height:42px;font-size:10px;padding:7px 3px;gap:4px;border-radius:7px}
+ .hero{padding:28px 12px}
+ .hero h2{font-size:21px}
+ .section-title{font-size:21px}
+ .container{padding:12px 8px}
+ .member-section{padding:9px}
+ .member-card{padding:10px 5px}
+ .member-photo,.member-avatar{width:82px;height:82px}
+ .member-avatar{font-size:31px}
+ .member-card h3{font-size:14px}
+ .member-position{font-size:10px}
+ .member-id,.member-phone{font-size:10px}
+ .detail-button{font-size:10px;padding:8px 2px}
+ .member-sidebar{grid-template-columns:1fr}
+ .service-box{padding:10px}
+ .service-buttons{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .service-btn{min-height:105px;font-size:13px}
+ .service-btn .btn-icon{font-size:30px}
+ .contact-box{min-height:140px}
+ .museum-live-grid{grid-template-columns:1fr}
+ .museum-live-card img{height:230px}
+ .savings-section{padding:12px}
+ .savings-controls select{flex:1;min-width:120px}
+ .savings-counts{gap:6px}
+ .savings-count{font-size:12px}
+ .savings-count strong{font-size:20px}
+ .savings-list{grid-template-columns:1fr}
+
+ /* मोबाइलमा पनि ६ पदाधिकारी एउटै तेर्सो लाइनमा */
+ .official-grid{gap:6px}
+ .official-card{flex:0 0 105px;min-width:105px}
+ .official-card .official-avatar,.official-card img{width:55px;height:55px}
+ .official-card h3{font-size:12px}
+ .official-card .position{font-size:11px}
 }
 @media(max-width:350px){
-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
-.member-grid{grid-template-columns:1fr}.service-buttons{grid-template-columns:1fr 1fr}
-.header-side-wrap{width:78px}.header-side{width:59px;height:59px}
-.logo,.logo-fallback{width:78px;height:78px}.header-images{gap:5px}
-.header-side-name{font-size:10px}
+ nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .member-grid{grid-template-columns:1fr}
+ .service-buttons{grid-template-columns:1fr 1fr}
+ .header-side-wrap{width:78px}
+ .header-side{width:59px;height:59px}
+ .logo,.logo-fallback{width:78px;height:78px}
+ .header-images{gap:5px}
+ .header-side-name{font-size:10px}
 }
-@media print{nav,.topbar,header,footer,.no-print{display:none!important}.signature{display:block;margin-top:70px;text-align:left}.paper{border:2px solid #000}}
+@media print{
+ nav,.topbar,header,footer,.no-print{display:none!important}
+ .signature{display:block;margin-top:70px;text-align:left}
+ .paper{border:2px solid #000}
+}
 </style>
 </head>
 
@@ -271,6 +360,7 @@ nav{grid-template-columns:repeat(2,minmax(0,1fr))}
 </nav>
 
 <main id="home" class="container">
+
 <section class="hero">
  <h2 id="welcomeTitle">रसाली भाई समाज परिवारमा हार्दिक स्वागत छ 🙏</h2>
  <p>हाम्रो समाजको उद्देश्य एकता, सहयोग, सेवा र भाइचारालाई अझ मजबुत बनाउनु हो।</p>
@@ -319,7 +409,7 @@ nav{grid-template-columns:repeat(2,minmax(0,1fr))}
  </div>
 </section>
 
-<!-- संस्थापक: Admin बाट लोड -->
+<!-- संस्थापक: सबैभन्दा माथि छुट्टै -->
 <section id="founder" class="section founder-section">
  <h2 class="section-title">🌟 समाजका संस्थापक</h2>
  <div id="founderDisplay">
@@ -327,7 +417,7 @@ nav{grid-template-columns:repeat(2,minmax(0,1fr))}
  </div>
 </section>
 
-<!-- सबै पदाधिकारी: Admin बाट लोड -->
+<!-- संस्थापकको ठीक मुनि ६ जना पदाधिकारी एउटै लाइनमा -->
 <section id="official" class="section">
  <h2 class="section-title">🤝 समाजका पदाधिकारीहरू</h2>
  <div id="officialsDisplay" class="official-grid">
@@ -335,7 +425,7 @@ nav{grid-template-columns:repeat(2,minmax(0,1fr))}
  </div>
 </section>
 
-<!-- सदस्य सूची संस्थापक तथा पदाधिकारीपछि -->
+<!-- पदाधिकारीपछि सदस्य सूची -->
 <section id="member" class="section member-section">
  <div class="member-layout">
   <div class="directory-panel">
@@ -533,11 +623,13 @@ async function loadWebsiteSettings(){
   const {data,error}=await supabaseClient.from("website_settings")
    .select("logo_url,mabai_url,bhamsaini_url,mabai_name,bhamsaini_name,site_title,site_title_english,tagline,address,estd")
    .eq("id",1).maybeSingle();
-  if(error)throw error;if(!data)return;
+  if(error)throw error;
+  if(!data)return;
 
   const setText=(id,value)=>{
    if(value!==null&&value!==undefined&&String(value).trim()!==""){
-    const el=document.getElementById(id);if(el)el.textContent=value;
+    const el=document.getElementById(id);
+    if(el)el.textContent=value;
    }
   };
   setText("siteTitle",data.site_title);
@@ -556,11 +648,15 @@ async function loadWebsiteSettings(){
   [["logo_url","siteLogo","logoFallback"],["mabai_url","mabaiImage",null],["bhamsaini_url","bhamsainiImage",null]].forEach(([field,id,fallback])=>{
    const url=safeImageUrl(data[field]);
    if(url){
-    const img=document.getElementById(id);img.src=url;img.style.display="block";
+    const img=document.getElementById(id);
+    img.src=url;
+    img.style.display="block";
     if(fallback)document.getElementById(fallback).style.display="none";
    }
   });
- }catch(error){console.error("Website settings error:",error);}
+ }catch(error){
+  console.error("Website settings error:",error);
+ }
 }
 
 /* संस्थापक र पदाधिकारी Supabase बाट */
@@ -577,11 +673,13 @@ function officialPhotoHTML(url,name,isFounder){
 async function loadOfficials(){
  const founderArea=document.getElementById("founderDisplay");
  const officialsArea=document.getElementById("officialsDisplay");
+
  try{
   const {data,error}=await supabaseClient.from("society_officials")
    .select("id,name,position,photo_url,display_order,is_founder,is_active")
    .eq("is_active",true)
    .order("display_order",{ascending:true});
+
   if(error)throw error;
 
   const records=data||[];
@@ -638,7 +736,11 @@ const avatarColors=[
 
 function renderMembers(data){
  const list=document.getElementById("membersList");
- if(!data.length){list.innerHTML='<div class="empty">🔍 खोजिएको सदस्य भेटिएन।</div>';return;}
+ if(!data.length){
+  list.innerHTML='<div class="empty">🔍 खोजिएको सदस्य भेटिएन।</div>';
+  return;
+ }
+
  list.innerHTML=data.map(member=>{
   const name=escapeHTML(member.name||"नाम उपलब्ध छैन");
   const position=escapeHTML(member.position||"सदस्य");
@@ -648,12 +750,15 @@ function renderMembers(data){
   const firstLetter=escapeHTML(String(member.name||"👤").trim().charAt(0)||"👤");
   const encodedId=encodeURIComponent(String(member.id));
   const colorKey=String(member.id||member.name||"0");
-  let colorNumber=0;for(let i=0;i<colorKey.length;i++)colorNumber+=colorKey.charCodeAt(i);
+  let colorNumber=0;
+  for(let i=0;i<colorKey.length;i++)colorNumber+=colorKey.charCodeAt(i);
   const avatarColor=avatarColors[colorNumber%avatarColors.length];
+
   return `<div class="member-card">
    <img class="member-photo" src="${photo?escapeHTML(photo):''}" alt="${name}" style="display:${photo?'block':'none'}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
    <div class="member-avatar" style="display:${photo?'none':'flex'};background:${avatarColor.background};color:${avatarColor.color};border-color:${avatarColor.border}">${firstLetter}</div>
-   <h3>${name}</h3><div class="member-position">👤 ${position}</div>
+   <h3>${name}</h3>
+   <div class="member-position">👤 ${position}</div>
    <div class="member-id">सदस्य ID: ${id}</div>
    ${phone?`<div class="member-phone">📞 ${phone}</div>`:""}
    <button class="detail-button" onclick="showMemberDetails(decodeURIComponent('${encodedId}'))">👁 विवरण हेर्नुहोस्</button>
@@ -664,10 +769,14 @@ function renderMembers(data){
 async function loadMembers(){
  const list=document.getElementById("membersList");
  const count=document.getElementById("memberCount");
+
  try{
   const {data,error}=await supabaseClient.from("members")
-   .select("id,name,position,phone,email,document_url").order("id",{ascending:true});
+   .select("id,name,position,phone,email,document_url")
+   .order("id",{ascending:true});
+
   if(error)throw error;
+
   allMembers=data||[];
   count.innerText="👥 जम्मा सदस्य संख्या: "+allMembers.length;
   renderMembers(allMembers);
@@ -677,44 +786,70 @@ async function loadMembers(){
   list.innerHTML='<div class="error">सदस्य विवरण लोड गर्न समस्या भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।</div>';
  }
 }
+
 function searchMembers(){
  const query=document.getElementById("memberSearch").value.trim().toLowerCase();
- const filtered=allMembers.filter(member=>[member.name,member.position,member.id,member.phone].some(value=>String(value||"").toLowerCase().includes(query)));
+ const filtered=allMembers.filter(member=>
+  [member.name,member.position,member.id,member.phone]
+   .some(value=>String(value||"").toLowerCase().includes(query))
+ );
  renderMembers(filtered);
 }
+
 function showMemberDetails(id){
- const member=allMembers.find(m=>String(m.id)===String(id));if(!member)return;
+ const member=allMembers.find(m=>String(m.id)===String(id));
+ if(!member)return;
+
  const name=escapeHTML(member.name||"नाम उपलब्ध छैन");
  const position=escapeHTML(member.position||"सदस्य");
  const phone=escapeHTML(member.phone||"उपलब्ध छैन");
  const email=escapeHTML(member.email||"उपलब्ध छैन");
  const memberId=escapeHTML(member.id);
  const photo=safeImageUrl(member.document_url);
+
  document.getElementById("modalContent").innerHTML=`
   ${photo?`<img src="${escapeHTML(photo)}" alt="${name}" onerror="this.style.display='none'">`:""}
-  <h2 style="color:#0757b9">${name}</h2><p style="color:#0757b9;font-weight:bold">${position}</p>
+  <h2 style="color:#0757b9">${name}</h2>
+  <p style="color:#0757b9;font-weight:bold">${position}</p>
   <div class="modal-info">
-   <p><b>सदस्य ID:</b> ${memberId}</p><p><b>पद:</b> ${position}</p>
-   <p><b>फोन:</b> ${phone}</p><p><b>Email:</b> ${email}</p>
+   <p><b>सदस्य ID:</b> ${memberId}</p>
+   <p><b>पद:</b> ${position}</p>
+   <p><b>फोन:</b> ${phone}</p>
+   <p><b>Email:</b> ${email}</p>
    <p><b>ठेगाना:</b> चौराठा, दैलेख, नेपाल</p>
   </div>`;
+
  document.getElementById("memberModal").style.display="flex";
 }
-function closeMemberDetails(){document.getElementById("memberModal").style.display="none";}
+
+function closeMemberDetails(){
+ document.getElementById("memberModal").style.display="none";
+}
 
 /* सूचना */
 async function loadNotices(){
  const list=document.getElementById("noticeList");
  const side=document.getElementById("sideNoticeList");
+
  try{
-  const {data,error}=await supabaseClient.from("Notices").select("*").order("Id",{ascending:false});
+  const {data,error}=await supabaseClient.from("Notices")
+   .select("*").order("Id",{ascending:false});
+
   if(error)throw error;
+
   if(!data||data.length===0){
    list.innerHTML='<div class="empty">📢 हाल कुनै सूचना छैन।</div>';
-   side.innerHTML='<p>हाल कुनै सूचना छैन।</p>';return;
+   side.innerHTML='<p>हाल कुनै सूचना छैन।</p>';
+   return;
   }
-  list.innerHTML=data.map(notice=>`<div class="card notice"><h3>📢 ${escapeHTML(notice.Title)}</h3><p>${escapeHTML(notice.Content)}</p></div>`).join("");
-  side.innerHTML=data.slice(0,4).map(notice=>`<div class="side-notice"><h4>📢 ${escapeHTML(notice.Title)}</h4><p>${escapeHTML(notice.Content)}</p></div>`).join("");
+
+  list.innerHTML=data.map(notice=>
+   `<div class="card notice"><h3>📢 ${escapeHTML(notice.Title)}</h3><p>${escapeHTML(notice.Content)}</p></div>`
+  ).join("");
+
+  side.innerHTML=data.slice(0,4).map(notice=>
+   `<div class="side-notice"><h4>📢 ${escapeHTML(notice.Title)}</h4><p>${escapeHTML(notice.Content)}</p></div>`
+  ).join("");
  }catch(error){
   console.error("Notice error:",error);
   list.innerHTML='<div class="error">सूचना लोड गर्न समस्या भयो।</div>';
@@ -724,55 +859,114 @@ async function loadNotices(){
 
 /* संग्रहालयका फोटो तथा भिडियो */
 async function loadMuseumMedia(){
- const area=document.getElementById("museumLiveMedia");if(!area)return;
+ const area=document.getElementById("museumLiveMedia");
+ if(!area)return;
+
  area.innerHTML='<div class="museum-live-status">⏳ संग्रहालयका फोटो तथा भिडियो लोड हुँदैछन्...</div>';
+
  try{
   const [photoResult,videoResult]=await Promise.all([
-   supabaseClient.from("museum_items").select("id,title,description,event_date,storage_path,created_at").order("created_at",{ascending:false}),
-   supabaseClient.from("museum_videos").select("id,title,description,event_date,storage_path,created_at").order("created_at",{ascending:false})
+   supabaseClient.from("museum_items")
+    .select("id,title,description,event_date,storage_path,created_at")
+    .order("created_at",{ascending:false}),
+   supabaseClient.from("museum_videos")
+    .select("id,title,description,event_date,storage_path,created_at")
+    .order("created_at",{ascending:false})
   ]);
+
   area.innerHTML="";
   const photos=photoResult.error?[]:(photoResult.data||[]);
   const videos=videoResult.error?[]:(videoResult.data||[]);
 
   const photoTitle=document.createElement("h3");
-  photoTitle.className="museum-live-title";photoTitle.textContent="📸 Admin बाट राखिएका वास्तविक फोटोहरू";area.appendChild(photoTitle);
+  photoTitle.className="museum-live-title";
+  photoTitle.textContent="📸 Admin बाट राखिएका वास्तविक फोटोहरू";
+  area.appendChild(photoTitle);
+
   if(photos.length){
-   const photoGrid=document.createElement("div");photoGrid.className="museum-live-grid";
+   const photoGrid=document.createElement("div");
+   photoGrid.className="museum-live-grid";
+
    photos.forEach(item=>{
-    const card=document.createElement("article");card.className="museum-live-card";
-    const image=document.createElement("img");image.src=museumPublicUrl("museum-photos",item.storage_path);
-    image.alt=item.title||"समाजको ऐतिहासिक फोटो";image.loading="lazy";image.onerror=function(){this.style.display="none";};
-    const title=document.createElement("h4");title.textContent=item.title||"ऐतिहासिक फोटो";
-    const description=document.createElement("p");description.textContent=item.description||"";
-    const date=document.createElement("div");date.className="museum-live-date";date.textContent=item.event_date?"📅 "+item.event_date:"";
-    card.append(image,title,description,date);photoGrid.appendChild(card);
+    const card=document.createElement("article");
+    card.className="museum-live-card";
+
+    const image=document.createElement("img");
+    image.src=museumPublicUrl("museum-photos",item.storage_path);
+    image.alt=item.title||"समाजको ऐतिहासिक फोटो";
+    image.loading="lazy";
+    image.onerror=function(){this.style.display="none";};
+
+    const title=document.createElement("h4");
+    title.textContent=item.title||"ऐतिहासिक फोटो";
+
+    const description=document.createElement("p");
+    description.textContent=item.description||"";
+
+    const date=document.createElement("div");
+    date.className="museum-live-date";
+    date.textContent=item.event_date?"📅 "+item.event_date:"";
+
+    card.append(image,title,description,date);
+    photoGrid.appendChild(card);
    });
+
    area.appendChild(photoGrid);
   }else{
-   const empty=document.createElement("div");empty.className="museum-live-empty";
-   empty.textContent=photoResult.error?"फोटो लोड गर्न सकिएन।":"अहिलेसम्म संग्रहालयमा फोटो अपलोड गरिएको छैन।";area.appendChild(empty);
+   const empty=document.createElement("div");
+   empty.className="museum-live-empty";
+   empty.textContent=photoResult.error?"फोटो लोड गर्न सकिएन।":"अहिलेसम्म संग्रहालयमा फोटो अपलोड गरिएको छैन।";
+   area.appendChild(empty);
   }
 
-  const videoTitle=document.createElement("h3");videoTitle.className="museum-live-title";videoTitle.textContent="🎥 Admin बाट राखिएका भिडियोहरू";area.appendChild(videoTitle);
+  const videoTitle=document.createElement("h3");
+  videoTitle.className="museum-live-title";
+  videoTitle.textContent="🎥 Admin बाट राखिएका भिडियोहरू";
+  area.appendChild(videoTitle);
+
   if(videos.length){
-   const videoGrid=document.createElement("div");videoGrid.className="museum-live-grid";
+   const videoGrid=document.createElement("div");
+   videoGrid.className="museum-live-grid";
+
    videos.forEach(item=>{
-    const card=document.createElement("article");card.className="museum-live-card";
-    const video=document.createElement("video");video.src=museumPublicUrl("museum-videos",item.storage_path);
-    video.controls=true;video.preload="metadata";video.playsInline=true;video.onerror=function(){this.style.display="none";};
-    const title=document.createElement("h4");title.textContent=item.title||"समाजको भिडियो";
-    const description=document.createElement("p");description.textContent=item.description||"";
-    const date=document.createElement("div");date.className="museum-live-date";date.textContent=item.event_date?"📅 "+item.event_date:"";
-    card.append(video,title,description,date);videoGrid.appendChild(card);
+    const card=document.createElement("article");
+    card.className="museum-live-card";
+
+    const video=document.createElement("video");
+    video.src=museumPublicUrl("museum-videos",item.storage_path);
+    video.controls=true;
+    video.preload="metadata";
+    video.playsInline=true;
+    video.onerror=function(){this.style.display="none";};
+
+    const title=document.createElement("h4");
+    title.textContent=item.title||"समाजको भिडियो";
+
+    const description=document.createElement("p");
+    description.textContent=item.description||"";
+
+    const date=document.createElement("div");
+    date.className="museum-live-date";
+    date.textContent=item.event_date?"📅 "+item.event_date:"";
+
+    card.append(video,title,description,date);
+    videoGrid.appendChild(card);
    });
+
    area.appendChild(videoGrid);
   }else{
-   const empty=document.createElement("div");empty.className="museum-live-empty";
-   empty.textContent=videoResult.error?"भिडियो लोड गर्न सकिएन।":"अहिलेसम्म संग्रहालयमा भिडियो अपलोड गरिएको छैन।";area.appendChild(empty);
+   const empty=document.createElement("div");
+   empty.className="museum-live-empty";
+   empty.textContent=videoResult.error?"भिडियो लोड गर्न सकिएन।":"अहिलेसम्म संग्रहालयमा भिडियो अपलोड गरिएको छैन।";
+   area.appendChild(empty);
   }
-  const openLink=document.createElement("a");openLink.className="museum-open-link";openLink.href="museum.html";
-  openLink.textContent="🏛️ सबै फोटो तथा भिडियो हेर्नुहोस्";area.appendChild(openLink);
+
+  const openLink=document.createElement("a");
+  openLink.className="museum-open-link";
+  openLink.href="museum.html";
+  openLink.textContent="🏛️ सबै फोटो तथा भिडियो हेर्नुहोस्";
+  area.appendChild(openLink);
+
  }catch(error){
   console.error("Museum loading error:",error);
   area.innerHTML='<div class="museum-live-error">संग्रहालयका सामग्री लोड हुन सकेनन्। Supabase को तालिका र Storage अनुमति जाँच गर्नुहोस्।</div>';
@@ -785,33 +979,62 @@ function setSavingsCounts(paid,pending,partial){
  document.getElementById("savingsPendingCount").textContent=pending;
  document.getElementById("savingsPartialCount").textContent=partial;
 }
+
 async function loadPublicSavings(){
  const year=document.getElementById("savingsYear").value;
  const month=document.getElementById("savingsMonth").value;
  const list=document.getElementById("publicSavingsList");
+
  list.innerHTML='<div class="savings-message">⏳ बचत विवरण लोड हुँदैछ...</div>';
  setSavingsCounts("०","०","०");
+
  try{
-  const {data,error}=await supabaseClient.rpc("get_public_savings_status",{p_fiscal_year:year,p_nepali_month:month});
+  const {data,error}=await supabaseClient.rpc(
+   "get_public_savings_status",
+   {p_fiscal_year:year,p_nepali_month:month}
+  );
+
   if(error)throw error;
+
   if(!data||data.length===0){
-   list.innerHTML='<div class="savings-message">यस महिनाको सदस्य विवरण उपलब्ध छैन।</div>';return;
+   list.innerHTML='<div class="savings-message">यस महिनाको सदस्य विवरण उपलब्ध छैन।</div>';
+   return;
   }
-  const allPending=data.every(member=>String(member.savings_status||"").trim()==="बाँकी");
+
+  const allPending=data.every(member=>
+   String(member.savings_status||"").trim()==="बाँकी"
+  );
+
   if(year==="२०८३"&&month==="Mansir"&&allPending){
    list.innerHTML='<div class="savings-warning">⚠️ यस महिनाको बचत विवरण Supabase बाट प्राप्त भयो, तर भुक्तानी र सदस्यको विवरणबीच मिलान समस्या देखिएको छ। गलत स्थिति सार्वजनिक नगर्नका लागि सूची अस्थायी रूपमा लुकाइएको छ। Admin को Billing History मा सुरक्षित भएको विवरण हटाइएको छैन।</div>';
    return;
   }
+
   let paid=0,pending=0,partial=0;
+
   const rows=data.map(member=>{
    const status=String(member.savings_status||"बाँकी").trim();
    let statusClass="savings-pending";
-   if(status==="तिरेको"){paid++;statusClass="savings-paid";}
-   else if(status==="आंशिक तिरेको"){partial++;statusClass="savings-partial";}
-   else{pending++;}
-   return `<div class="savings-person"><strong>${escapeHTML(member.member_name||"नाम उपलब्ध छैन")}</strong><span class="savings-status ${statusClass}">${escapeHTML(status)}</span></div>`;
+
+   if(status==="तिरेको"){
+    paid++;
+    statusClass="savings-paid";
+   }else if(status==="आंशिक तिरेको"){
+    partial++;
+    statusClass="savings-partial";
+   }else{
+    pending++;
+   }
+
+   return `<div class="savings-person">
+    <strong>${escapeHTML(member.member_name||"नाम उपलब्ध छैन")}</strong>
+    <span class="savings-status ${statusClass}">${escapeHTML(status)}</span>
+   </div>`;
   });
-  list.innerHTML=rows.join("");setSavingsCounts(paid,pending,partial);
+
+  list.innerHTML=rows.join("");
+  setSavingsCounts(paid,pending,partial);
+
  }catch(error){
   console.error("Public savings error:",error);
   list.innerHTML='<div class="savings-message">बचत विवरण लोड हुन सकेन। कृपया केही समयपछि पुनः प्रयास गर्नुहोस्।</div>';
@@ -828,4 +1051,3 @@ loadPublicSavings();
 </script>
 </body>
 </html>
- 
