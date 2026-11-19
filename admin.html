@@ -1,109 +1,46 @@
- 
+
 <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Admin Dashboard - रसाली भाई समाज परिवार</title>
-
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;
- background:#edf3f9;color:#172033;
-}
-header{
- background:linear-gradient(135deg,#123b70,#0879b9);
- color:white;padding:25px 12px;text-align:center;
- border-radius:0 0 22px 22px;
-}
+body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#edf3f9;color:#172033}
+header{background:linear-gradient(135deg,#123b70,#0879b9);color:white;padding:25px 12px;text-align:center;border-radius:0 0 22px 22px}
 header h2{margin:0 0 8px;font-size:23px}
 header p{margin:5px;font-size:14px}
-.topbar{
- display:flex;justify-content:space-between;align-items:center;
- gap:10px;padding:12px 15px;background:#082b52;
-}
-.topbar a,.topbar button{
- color:#123b70;background:white;text-decoration:none;
- border:0;padding:10px 14px;border-radius:9px;font-weight:bold;
-}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 15px;background:#082b52}
+.topbar a,.topbar button{color:#123b70;background:white;text-decoration:none;border:0;padding:10px 14px;border-radius:9px;font-weight:bold}
 main{max-width:1100px;margin:20px auto;padding:12px}
-.welcome{
- background:white;border-radius:15px;padding:18px;
- margin-bottom:18px;box-shadow:0 3px 12px #0001;
-}
+.welcome{background:white;border-radius:15px;padding:18px;margin-bottom:18px;box-shadow:0 3px 12px #0001}
 .welcome h3{margin:0 0 7px;color:#123b70}
 .welcome p{margin:0;color:#64748b;font-size:14px}
-.dashboard-grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
- gap:13px;margin-bottom:22px;
-}
-.dash-card{
- background:white;border:1px solid #e0e8f1;
- border-radius:16px;min-height:125px;padding:17px 8px;
- text-align:center;text-decoration:none;color:#172033;
- box-shadow:0 3px 12px #0000000c;
- display:flex;flex-direction:column;align-items:center;
- justify-content:center;gap:8px;transition:.2s;
-}
+.dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-bottom:22px}
+.dash-card{background:white;border:1px solid #e0e8f1;border-radius:16px;min-height:125px;padding:17px 8px;text-align:center;text-decoration:none;color:#172033;box-shadow:0 3px 12px #0000000c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .dash-card:active{transform:scale(.97)}
-.dash-icon{
- width:53px;height:53px;border-radius:16px;
- display:flex;align-items:center;justify-content:center;font-size:29px;
-}
+.dash-icon{width:53px;height:53px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:29px}
 .dash-card strong{font-size:15px;color:#123b70}
 .dash-card small{font-size:11px;color:#64748b}
-.blue{background:#e4f1ff}
-.green{background:#e2f8ed}
-.orange{background:#fff1dc}
-.purple{background:#f0eaff}
-.red{background:#ffe9e9}
-.teal{background:#dff7f6}
-section.admin-section{
- background:white;border-radius:15px;padding:18px;
- margin-bottom:20px;box-shadow:0 3px 12px #0001;
- scroll-margin-top:12px;
-}
+.blue{background:#e4f1ff}.green{background:#e2f8ed}.orange{background:#fff1dc}.purple{background:#f0eaff}.red{background:#ffe9e9}.teal{background:#dff7f6}
+section.admin-section{background:white;border-radius:15px;padding:18px;margin-bottom:20px;box-shadow:0 3px 12px #0001;scroll-margin-top:12px}
 h3{color:#123b70;margin-top:0}
-input,select,textarea{
- width:100%;padding:12px;margin:6px 0 12px;
- border:1px solid #cbd5e1;border-radius:8px;font-size:15px;
-}
+input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:15px}
 textarea{min-height:85px;resize:vertical}
-button{
- border:0;border-radius:8px;padding:11px 15px;
- background:#1263ad;color:white;font-weight:bold;cursor:pointer;
-}
+button{border:0;border-radius:8px;padding:11px 15px;background:#1263ad;color:white;font-weight:bold;cursor:pointer}
 button:disabled{opacity:.6}
 button.danger{background:#c62828}
 button.secondary{background:#64748b}
-.grid{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:10px;
-}
-.member{
- border:1px solid #dbe3ed;border-radius:12px;padding:12px;
- margin:9px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-}
-.member img{
- width:65px;height:65px;object-fit:cover;
- border-radius:50%;background:#e2e8f0;
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.member{border:1px solid #dbe3ed;border-radius:12px;padding:12px;margin:9px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.member img{width:65px;height:65px;object-fit:cover;border-radius:50%;background:#e2e8f0}
 .member-info{flex:1;min-width:150px}
 .member-info strong{font-size:17px}
 .small{font-size:13px;color:#64748b}
-.preview{
- width:100px;height:100px;object-fit:cover;
- border-radius:12px;display:none;margin:5px 0 12px;
-}
-.header-preview{
- width:95px;height:95px;object-fit:cover;
- border-radius:12px;background:#e2e8f0;margin:5px 0 12px;
-}
-.msg{
- padding:10px;margin:8px 0;border-radius:8px;
- background:#eff6ff;overflow-wrap:anywhere;
-}
+.preview{width:100px;height:100px;object-fit:cover;border-radius:12px;display:none;margin:5px 0 12px}
+.header-preview{width:95px;height:95px;object-fit:cover;border-radius:12px;background:#e2e8f0;margin:5px 0 12px}
+.msg{padding:10px;margin:8px 0;border-radius:8px;background:#eff6ff;overflow-wrap:anywhere}
 table{width:100%;border-collapse:collapse;min-width:600px}
 th,td{padding:9px;border:1px solid #ddd;text-align:left}
 th{background:#eaf2fb}
@@ -111,158 +48,55 @@ th{background:#eaf2fb}
 .actions{display:flex;gap:6px;flex-wrap:wrap}
 .stat{background:#eaf2fb;padding:14px;border-radius:10px;text-align:center}
 .stat b{display:block;font-size:22px;color:#123b70}
-.backtop{
- display:inline-block;margin-bottom:14px;
- color:#1263ad;text-decoration:none;font-weight:bold;
-}
+.backtop{display:inline-block;margin-bottom:14px;color:#1263ad;text-decoration:none;font-weight:bold}
 hr{border:0;border-top:1px solid #e2e8f0;margin:18px 0}
 footer{text-align:center;padding:22px;color:#64748b}
-.museum-item{
- border:1px solid #dbe3ed;border-radius:12px;
- padding:12px;margin:10px 0;
-}
-.museum-item img{
- width:100%;max-width:240px;height:160px;
- object-fit:cover;border-radius:9px;
-}
-.museum-item video{
- width:100%;max-width:420px;border-radius:9px;
- background:#111;display:block;margin:8px 0;
-}
-@media(min-width:650px){
- .dashboard-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
- header h2{font-size:27px}
-}
+.museum-item{border:1px solid #dbe3ed;border-radius:12px;padding:12px;margin:10px 0}
+.museum-item img{width:100%;max-width:240px;height:160px;object-fit:cover;border-radius:9px}
+.museum-item video{width:100%;max-width:420px;border-radius:9px;background:#111;display:block;margin:8px 0}
+.official-hint{padding:12px;background:#f0f6ff;border-radius:10px;color:#315477;font-size:13px;line-height:1.7}
+@media(min-width:650px){.dashboard-grid{grid-template-columns:repeat(4,minmax(0,1fr))}header h2{font-size:27px}}
 </style>
 </head>
-
 <body>
 
 <header>
- <h2>रसाली भाई समाज परिवार चौराठा</h2>
- <p><b>ADMIN CONTROL CENTER</b></p>
- <p>एकता • सहयोग • सेवा • भाइचारा</p>
- <p>स्थापना: २०८२ | ESTD: 2082</p>
+<h2>रसाली भाई समाज परिवार चौराठा</h2>
+<p><b>ADMIN CONTROL CENTER</b></p>
+<p>एकता • सेवा • समर्पण</p>
+<p>स्थापना: २०८२ | ESTD: 2082</p>
 </header>
 
 <div class="topbar">
- <a href="index.html">🏠 मुख्य वेबसाइट</a>
- <button onclick="logout()">🚪 Logout</button>
+<a href="index.html">🏠 मुख्य वेबसाइट</a>
+<button onclick="logout()">🚪 Logout</button>
 </div>
 
 <main>
-
 <div class="welcome">
- <h3>👋 स्वागत छ, Admin जी!</h3>
- <p>तलको आइकन छानेर समाजको सम्बन्धित व्यवस्थापन पेज खोल्नुहोस्।</p>
+<h3>👋 स्वागत छ, Admin जी!</h3>
+<p>तलको आइकन छानेर समाजको सम्बन्धित व्यवस्थापन पेज खोल्नुहोस्।</p>
 </div>
 
 <div class="dashboard-grid">
-
- <a class="dash-card" href="#settings">
-  <span class="dash-icon blue">🎨</span>
-  <strong>वेबसाइट डिजाइन</strong>
-  <small>लोगो, फोटो र शीर्षक</small>
- </a>
-
- <a class="dash-card" href="#members">
-  <span class="dash-icon green">👥</span>
-  <strong>सदस्य व्यवस्थापन</strong>
-  <small>थप्ने, सम्पादन, हटाउने</small>
- </a>
-
- <a class="dash-card" href="#member-list">
-  <span class="dash-icon purple">🔎</span>
-  <strong>सदस्य खोजी</strong>
-  <small>सदस्य विवरण हेर्ने</small>
- </a>
-
- <a class="dash-card" href="#money-entry">
-  <span class="dash-icon orange">💰</span>
-  <strong>पैसा हिसाब</strong>
-  <small>आम्दानी, खर्च र किस्ता</small>
- </a>
-
- <a class="dash-card" href="#money-report">
-  <span class="dash-icon green">📊</span>
-  <strong>हिसाब विवरण</strong>
-  <small>जम्मा रकम र कारोबार</small>
- </a>
-
- <a class="dash-card" href="admin-rules.html">
-  <span class="dash-icon blue">📚</span>
-  <strong>नियम व्यवस्थापन</strong>
-  <small>नियम थप्ने र प्रकाशित गर्ने</small>
- </a>
-
- <a class="dash-card" href="loan-application.html">
-  <span class="dash-icon orange">📝</span>
-  <strong>ऋण आवेदन</strong>
-  <small>आवेदन फारम भर्ने र प्रिन्ट</small>
- </a>
-
- <a class="dash-card" href="voucher.html">
-  <span class="dash-icon teal">🧾</span>
-  <strong>भौचर व्यवस्थापन</strong>
-  <small>आम्दानी / खर्च भौचर</small>
- </a>
-
- <a class="dash-card" href="notice.html">
-  <span class="dash-icon red">📢</span>
-  <strong>सूचना व्यवस्थापन</strong>
-  <small>समाजका सूचना हेर्ने</small>
- </a>
-
- <a class="dash-card" href="Photo.html">
-  <span class="dash-icon purple">📷</span>
-  <strong>फोटो व्यवस्थापन</strong>
-  <small>समाजका फोटो</small>
- </a>
-
- <a class="dash-card" href="member-card.html">
-  <span class="dash-icon blue">🪪</span>
-  <strong>Member ID Card</strong>
-  <small>सदस्य परिचयपत्र</small>
- </a>
-
- <a class="dash-card" href="members-list.html">
-  <span class="dash-icon green">📋</span>
-  <strong>सार्वजनिक सदस्य सूची</strong>
-  <small>सदस्यहरूको विवरण</small>
- </a>
-
- <a class="dash-card" href="rules.html">
-  <span class="dash-icon orange">📖</span>
-  <strong>सार्वजनिक नियमावली</strong>
-  <small>सबैले हेर्न मिल्ने नियम</small>
- </a>
-
- <a class="dash-card" href="dashboard.html">
-  <span class="dash-icon teal">📈</span>
-  <strong>सदस्य Dashboard</strong>
-  <small>सदस्य पेज खोल्ने</small>
- </a>
-
- <a class="dash-card" href="#museum-admin">
-  <span class="dash-icon teal">🏛️</span>
-  <strong>डिजिटल संग्रहालय</strong>
-  <small>फोटो, भिडियो थप्ने र हटाउने</small>
- </a>
-
- <!-- GENEALOGY MANAGEMENT -->
- <a class="dash-card" href="genealogy-admin.html">
-  <span class="dash-icon purple">🌳</span>
-  <strong>वंशावली व्यवस्थापन</strong>
-  <small>परिवार विवरण र नाता सम्बन्ध</small>
- </a>
-
- <!-- MEMBERSHIP MANAGER - NEW -->
- <a class="dash-card" href="membership-manager.html">
-  <span class="dash-icon blue">👥</span>
-  <strong>Membership Manager</strong>
-  <small>सदस्य विवरण, बिलिङ तथा हाजिरी व्यवस्थापन</small>
- </a>
-
+<a class="dash-card" href="#settings"><span class="dash-icon blue">🎨</span><strong>वेबसाइट डिजाइन</strong><small>लोगो, फोटो र शीर्षक</small></a>
+<a class="dash-card" href="#members"><span class="dash-icon green">👥</span><strong>सदस्य व्यवस्थापन</strong><small>थप्ने, सम्पादन, हटाउने</small></a>
+<a class="dash-card" href="#member-list"><span class="dash-icon purple">🔎</span><strong>सदस्य खोजी</strong><small>सदस्य विवरण हेर्ने</small></a>
+<a class="dash-card" href="#officials-admin"><span class="dash-icon purple">🏅</span><strong>संस्थापक तथा पदाधिकारी</strong><small>नाम, पद र फोटो व्यवस्थापन</small></a>
+<a class="dash-card" href="#money-entry"><span class="dash-icon orange">💰</span><strong>पैसा हिसाब</strong><small>आम्दानी, खर्च र किस्ता</small></a>
+<a class="dash-card" href="#money-report"><span class="dash-icon green">📊</span><strong>हिसाब विवरण</strong><small>जम्मा रकम र कारोबार</small></a>
+<a class="dash-card" href="admin-rules.html"><span class="dash-icon blue">📚</span><strong>नियम व्यवस्थापन</strong><small>नियम थप्ने र प्रकाशित गर्ने</small></a>
+<a class="dash-card" href="loan-application.html"><span class="dash-icon orange">📝</span><strong>ऋण आवेदन</strong><small>आवेदन फारम भर्ने र प्रिन्ट</small></a>
+<a class="dash-card" href="voucher.html"><span class="dash-icon teal">🧾</span><strong>भौचर व्यवस्थापन</strong><small>आम्दानी / खर्च भौचर</small></a>
+<a class="dash-card" href="notice.html"><span class="dash-icon red">📢</span><strong>सूचना व्यवस्थापन</strong><small>समाजका सूचना हेर्ने</small></a>
+<a class="dash-card" href="Photo.html"><span class="dash-icon purple">📷</span><strong>फोटो व्यवस्थापन</strong><small>समाजका फोटो</small></a>
+<a class="dash-card" href="member-card.html"><span class="dash-icon blue">🪪</span><strong>Member ID Card</strong><small>सदस्य परिचयपत्र</small></a>
+<a class="dash-card" href="members-list.html"><span class="dash-icon green">📋</span><strong>सार्वजनिक सदस्य सूची</strong><small>सदस्यहरूको विवरण</small></a>
+<a class="dash-card" href="rules.html"><span class="dash-icon orange">📖</span><strong>सार्वजनिक नियमावली</strong><small>सबैले हेर्न मिल्ने नियम</small></a>
+<a class="dash-card" href="dashboard.html"><span class="dash-icon teal">📈</span><strong>सदस्य Dashboard</strong><small>सदस्य पेज खोल्ने</small></a>
+<a class="dash-card" href="#museum-admin"><span class="dash-icon teal">🏛️</span><strong>डिजिटल संग्रहालय</strong><small>फोटो, भिडियो थप्ने र हटाउने</small></a>
+<a class="dash-card" href="genealogy-admin.html"><span class="dash-icon purple">🌳</span><strong>वंशावली व्यवस्थापन</strong><small>परिवार विवरण र नाता सम्बन्ध</small></a>
+<a class="dash-card" href="membership-manager.html"><span class="dash-icon blue">👥</span><strong>Membership Manager</strong><small>सदस्य विवरण, बिलिङ तथा हाजिरी व्यवस्थापन</small></a>
 </div>
 
 <!-- WEBSITE SETTINGS -->
@@ -270,100 +104,94 @@ footer{text-align:center;padding:22px;color:#64748b}
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>🎨 वेबसाइटको मुख्य डिजाइन तथा शीर्षक व्यवस्थापन</h3>
 <p class="small">यहाँ परिवर्तन गरेका विवरण Supabase मा सुरक्षित हुनेछन्।</p>
-
 <div class="grid">
- <div>
-  <label>माबैको फोटो छान्नुहोस्</label>
-  <input type="file" id="mabaiFile" accept="image/*">
-  <img id="mabaiPreview" class="header-preview" alt="माबै फोटो">
-  <label>माबै फोटो URL</label>
-  <input id="mabai_url" placeholder="माबै फोटो URL">
-  <label>माबैको नाम</label>
-  <input id="mabai_name" placeholder="माबै">
- </div>
-
- <div>
-  <label>मुख्य गोलो लोगो छान्नुहोस्</label>
-  <input type="file" id="logoFile" accept="image/*">
-  <img id="logoPreview" class="header-preview" alt="मुख्य लोगो">
-  <label>मुख्य लोगो URL</label>
-  <input id="logo_url" placeholder="लोगो URL">
- </div>
-
- <div>
-  <label>भामसैनीको फोटो छान्नुहोस्</label>
-  <input type="file" id="bhamsainiFile" accept="image/*">
-  <img id="bhamsainiPreview" class="header-preview" alt="भामसैनी फोटो">
-  <label>भामसैनी फोटो URL</label>
-  <input id="bhamsaini_url" placeholder="भामसैनी फोटो URL">
-  <label>भामसैनीको नाम</label>
-  <input id="bhamsaini_name" placeholder="भामसैनी">
- </div>
+<div>
+<label>माबैको फोटो छान्नुहोस्</label><input type="file" id="mabaiFile" accept="image/*">
+<img id="mabaiPreview" class="header-preview" alt="माबै फोटो">
+<label>माबै फोटो URL</label><input id="mabai_url" placeholder="माबै फोटो URL">
+<label>माबैको नाम</label><input id="mabai_name" placeholder="माबै">
 </div>
-
+<div>
+<label>मुख्य गोलो लोगो छान्नुहोस्</label><input type="file" id="logoFile" accept="image/*">
+<img id="logoPreview" class="header-preview" alt="मुख्य लोगो">
+<label>मुख्य लोगो URL</label><input id="logo_url" placeholder="लोगो URL">
+</div>
+<div>
+<label>भामसैनीको फोटो छान्नुहोस्</label><input type="file" id="bhamsainiFile" accept="image/*">
+<img id="bhamsainiPreview" class="header-preview" alt="भामसैनी फोटो">
+<label>भामसैनी फोटो URL</label><input id="bhamsaini_url" placeholder="भामसैनी फोटो URL">
+<label>भामसैनीको नाम</label><input id="bhamsaini_name" placeholder="भामसैनी">
+</div>
+</div>
 <hr>
-
 <div class="grid">
- <div>
-  <label>नेपाली वेबसाइट शीर्षक</label>
-  <input id="site_title" placeholder="रसाली भाई समाज परिवार चौराठा">
- </div>
- <div>
-  <label>English Website Title</label>
-  <input id="site_title_english" placeholder="RASHALI BHAI SAMAJ PARIWAR">
- </div>
- <div>
-  <label>वेबसाइटको नारा</label>
-  <input id="tagline" placeholder="एकता • सहयोग • सेवा • भाइचारा">
- </div>
- <div>
-  <label>ठेगाना</label>
-  <input id="address" placeholder="चौराठा, दैलेख">
- </div>
- <div>
-  <label>स्थापना वर्ष</label>
-  <input id="estd" placeholder="२०८२">
- </div>
+<div><label>नेपाली वेबसाइट शीर्षक</label><input id="site_title" placeholder="रसाली भाई समाज परिवार चौराठा"></div>
+<div><label>English Website Title</label><input id="site_title_english" placeholder="RASHALI BHAI SAMAJ PARIWAR"></div>
+<div><label>वेबसाइटको नारा</label><input id="tagline" placeholder="एकता • सेवा • समर्पण"></div>
+<div><label>ठेगाना</label><input id="address" placeholder="चौराठा, दैलेख"></div>
+<div><label>स्थापना वर्ष</label><input id="estd" placeholder="२०८२"></div>
 </div>
-
 <button id="settingsBtn" onclick="saveSettings()">💾 वेबसाइटको विवरण सुरक्षित गर्नुहोस्</button>
 <div id="settingsMsg" class="msg">वेबसाइटको विवरण लोड हुँदैछ...</div>
+</section>
+
+<!-- OFFICIALS MANAGEMENT -->
+<section class="admin-section" id="officials-admin">
+<a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
+<h3>🏅 संस्थापक तथा पदाधिकारी व्यवस्थापन</h3>
+<div class="official-hint">
+संस्थापकलाई Homepage मा सबैभन्दा माथि देखाइनेछ। पदाधिकारीहरू त्यसको तल देखाइनेछन्।
+पदम रसालीलाई संस्थापक र उपाध्यक्ष दुवै पदमा छुट्टाछुट्टै थप्न सकिन्छ।
+नाम, फोटो र पद पछि पनि सम्पादन गर्न सकिन्छ।
+</div>
+<input type="hidden" id="officialId">
+<label>नाम *</label>
+<input id="officialName" placeholder="पूरा नाम">
+<label>पद छान्नुहोस् *</label>
+<select id="officialPosition">
+<option value="संस्थापक">संस्थापक</option>
+<option value="अध्यक्ष">अध्यक्ष</option>
+<option value="उपाध्यक्ष">उपाध्यक्ष</option>
+<option value="सचिव">सचिव</option>
+<option value="उपसचिव">उपसचिव</option>
+<option value="प्रस्तावक">प्रस्तावक</option>
+<option value="कोषाध्यक्ष">कोषाध्यक्ष</option>
+</select>
+<label>फोटो छान्नुहोस् (मोबाइल Gallery)</label>
+<input type="file" id="officialPhoto" accept="image/*">
+<img id="officialPreview" class="preview" alt="पदाधिकारी फोटो">
+<label>फोटो URL (वैकल्पिक)</label>
+<input id="officialPhotoUrl" placeholder="फोटो URL">
+<label>देखिने क्रम (सानो अंक पहिले)</label>
+<input type="number" id="officialOrder" value="1" min="1">
+<div class="actions">
+<button id="officialSaveBtn" onclick="saveOfficial()">💾 सुरक्षित गर्नुहोस्</button>
+<button class="secondary" onclick="clearOfficialForm()">रिसेट</button>
+</div>
+<div id="officialMsg" class="msg">नयाँ विवरण भर्नुहोस्।</div>
+<hr>
+<h3>📋 संस्थापक तथा पदाधिकारी सूची</h3>
+<div id="officialsList">विवरण लोड हुँदैछ...</div>
 </section>
 
 <!-- MEMBER MANAGEMENT -->
 <section class="admin-section" id="members">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>👥 सदस्य व्यवस्थापन</h3>
-
 <div class="grid">
- <div>
-  <label>सदस्यको नाम *</label>
-  <input id="name" placeholder="पूरा नाम">
- </div>
- <div>
-  <label>पद</label>
-  <input id="position" placeholder="जस्तै: सदस्य">
- </div>
- <div>
-  <label>फोन नम्बर</label>
-  <input id="phone" placeholder="फोन नम्बर">
- </div>
- <div>
-  <label>Email</label>
-  <input id="email" type="email" placeholder="Email">
- </div>
+<div><label>सदस्यको नाम *</label><input id="name" placeholder="पूरा नाम"></div>
+<div><label>पद</label><input id="position" placeholder="जस्तै: सदस्य"></div>
+<div><label>फोन नम्बर</label><input id="phone" placeholder="फोन नम्बर"></div>
+<div><label>Email</label><input id="email" type="email" placeholder="Email"></div>
 </div>
-
-<label>सदस्यको फोटो छान्नुहोस् (मोबाइल Gallery)</label>
+<label>सदस्यको फोटो छान्नुहोस्</label>
 <input id="photoFile" type="file" accept="image/*" onchange="previewPhoto(event)">
 <img id="photoPreview" class="preview" alt="फोटो पूर्वावलोकन">
-
 <label>फोटो / Document URL (वैकल्पिक)</label>
 <input id="document_url" placeholder="फोटोको URL">
-
 <div class="actions">
- <button id="saveBtn" onclick="saveMember()">➕ सदस्य थप्नुहोस्</button>
- <button class="secondary" onclick="clearForm()">रिसेट</button>
+<button id="saveBtn" onclick="saveMember()">➕ सदस्य थप्नुहोस्</button>
+<button class="secondary" onclick="clearForm()">रिसेट</button>
 </div>
 <div id="memberMsg" class="msg">सदस्यको विवरण भर्नुहोस्।</div>
 </section>
@@ -380,33 +208,16 @@ footer{text-align:center;padding:22px;color:#64748b}
 <section class="admin-section" id="money-entry">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>💰 आम्दानी / खर्च हिसाब</h3>
-
 <div class="grid">
- <div>
-  <label>सदस्य</label>
-  <select id="moneyMember"></select>
- </div>
- <div>
-  <label>कारोबार प्रकार</label>
-  <select id="recordType">
-   <option value="income">आम्दानी</option>
-   <option value="expense">खर्च</option>
-   <option value="penalty">जरिवाना</option>
-   <option value="installment">किस्ता</option>
-  </select>
- </div>
- <div>
-  <label>रकम (रु.) *</label>
-  <input id="amount" type="number" min="0" placeholder="रकम">
- </div>
- <div>
-  <label>मिति</label>
-  <input id="recordDate" type="date">
- </div>
+<div><label>सदस्य</label><select id="moneyMember"></select></div>
+<div><label>कारोबार प्रकार</label>
+<select id="recordType">
+<option value="income">आम्दानी</option><option value="expense">खर्च</option><option value="penalty">जरिवाना</option><option value="installment">किस्ता</option>
+</select></div>
+<div><label>रकम (रु.) *</label><input id="amount" type="number" min="0" placeholder="रकम"></div>
+<div><label>मिति</label><input id="recordDate" type="date"></div>
 </div>
-
-<label>विवरण</label>
-<input id="description" placeholder="कारोबारको विवरण">
+<label>विवरण</label><input id="description" placeholder="कारोबारको विवरण">
 <button onclick="saveMoney()">💾 हिसाब सुरक्षित गर्नुहोस्</button>
 <div id="moneyMsg" class="msg"></div>
 </section>
@@ -415,101 +226,52 @@ footer{text-align:center;padding:22px;color:#64748b}
 <section class="admin-section" id="money-report">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>📒 पैसा हिसाब विवरण</h3>
-
 <div class="grid">
- <div class="stat">जम्मा आम्दानी<b id="totalIncome">रु. ०</b></div>
- <div class="stat">जम्मा खर्च<b id="totalExpense">रु. ०</b></div>
- <div class="stat">बाँकी रकम<b id="balance">रु. ०</b></div>
+<div class="stat">जम्मा आम्दानी<b id="totalIncome">रु. ०</b></div>
+<div class="stat">जम्मा खर्च<b id="totalExpense">रु. ०</b></div>
+<div class="stat">बाँकी रकम<b id="balance">रु. ०</b></div>
 </div>
-
 <div class="table-wrap">
- <table>
-  <thead>
-   <tr>
-    <th>मिति</th><th>सदस्य</th><th>प्रकार</th>
-    <th>रकम</th><th>विवरण</th><th>हटाउने</th>
-   </tr>
-  </thead>
-  <tbody id="moneyList"></tbody>
- </table>
+<table>
+<thead><tr><th>मिति</th><th>सदस्य</th><th>प्रकार</th><th>रकम</th><th>विवरण</th><th>हटाउने</th></tr></thead>
+<tbody id="moneyList"></tbody>
+</table>
 </div>
 </section>
 
-<!-- DIGITAL MUSEUM ADMIN -->
+<!-- DIGITAL MUSEUM -->
 <section class="admin-section" id="museum-admin">
-
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
-
 <h3>🏛️ डिजिटल इतिहास तथा सम्झना संग्रहालय</h3>
-<p class="small">
-यहाँबाट थपिएका फोटो तथा भिडियो सार्वजनिक संग्रहालयमा देखिनेछन्।
-</p>
-
+<p class="small">यहाँबाट थपिएका फोटो तथा भिडियो सार्वजनिक संग्रहालयमा देखिनेछन्।</p>
 <hr>
-
 <h3>📷 नयाँ फोटो अपलोड</h3>
-
-<label>फोटोको शीर्षक *</label>
-<input id="museumPhotoTitle" placeholder="फोटोको शीर्षक">
-
-<label>फोटोको विवरण</label>
-<textarea id="museumPhotoDescription" placeholder="फोटोको विवरण"></textarea>
-
-<label>फोटोको मिति</label>
-<input id="museumPhotoDate" type="date">
-
-<label>फोटो छान्नुहोस् (JPG, PNG, WEBP - अधिकतम १० MB)</label>
-<input id="museumPhotoFile" type="file" accept="image/jpeg,image/png,image/webp">
-
-<button id="museumPhotoBtn" onclick="uploadMuseumPhoto()">
-📤 फोटो अपलोड गर्नुहोस्
-</button>
+<label>फोटोको शीर्षक *</label><input id="museumPhotoTitle" placeholder="फोटोको शीर्षक">
+<label>फोटोको विवरण</label><textarea id="museumPhotoDescription" placeholder="फोटोको विवरण"></textarea>
+<label>फोटोको मिति</label><input id="museumPhotoDate" type="date">
+<label>फोटो छान्नुहोस् (JPG, PNG, WEBP - अधिकतम १० MB)</label><input id="museumPhotoFile" type="file" accept="image/jpeg,image/png,image/webp">
+<button id="museumPhotoBtn" onclick="uploadMuseumPhoto()">📤 फोटो अपलोड गर्नुहोस्</button>
 <div id="museumPhotoMsg" class="msg"></div>
-
 <hr>
-
 <h3>🎥 नयाँ भिडियो अपलोड</h3>
-
-<label>भिडियोको शीर्षक *</label>
-<input id="museumVideoTitle" placeholder="भिडियोको शीर्षक">
-
-<label>भिडियोको विवरण</label>
-<textarea id="museumVideoDescription" placeholder="भिडियोको विवरण"></textarea>
-
-<label>भिडियोको मिति</label>
-<input id="museumVideoDate" type="date">
-
-<label>भिडियो छान्नुहोस् (MP4, WEBM, MOV - अधिकतम १०० MB)</label>
-<input id="museumVideoFile" type="file" accept="video/mp4,video/webm,video/quicktime">
-
-<button id="museumVideoBtn" onclick="uploadMuseumVideo()">
-🎬 भिडियो अपलोड गर्नुहोस्
-</button>
+<label>भिडियोको शीर्षक *</label><input id="museumVideoTitle" placeholder="भिडियोको शीर्षक">
+<label>भिडियोको विवरण</label><textarea id="museumVideoDescription" placeholder="भिडियोको विवरण"></textarea>
+<label>भिडियोको मिति</label><input id="museumVideoDate" type="date">
+<label>भिडियो छान्नुहोस् (MP4, WEBM, MOV - अधिकतम १०० MB)</label><input id="museumVideoFile" type="file" accept="video/mp4,video/webm,video/quicktime">
+<button id="museumVideoBtn" onclick="uploadMuseumVideo()">🎬 भिडियो अपलोड गर्नुहोस्</button>
 <div id="museumVideoMsg" class="msg"></div>
-
 <hr>
-
-<h3>📸 अपलोड भएका फोटोहरू</h3>
-<div id="museumAdminPhotos">फोटो लोड हुँदैछ...</div>
-
+<h3>📸 अपलोड भएका फोटोहरू</h3><div id="museumAdminPhotos">फोटो लोड हुँदैछ...</div>
 <hr>
-
-<h3>🎥 अपलोड भएका भिडियोहरू</h3>
-<div id="museumAdminVideos">भिडियो लोड हुँदैछ...</div>
-
+<h3>🎥 अपलोड भएका भिडियोहरू</h3><div id="museumAdminVideos">भिडियो लोड हुँदैछ...</div>
 </section>
-
 </main>
 
-<footer>
-रसाली भाई समाज परिवार चौराठा<br>
-हामी माबै र भामसैनीका सन्तान
-</footer>
+<footer>रसाली भाई समाज परिवार चौराठा<br>हामी माबै र भामसैनीका सन्तान</footer>
 
 <script>
 const SUPABASE_URL="https://hvcalffbwvbwekysukdo.supabase.co";
 const SUPABASE_KEY="sb_publishable_H1JXNd85d9TMWjKO6xWlTg_OZWv8Plt";
-
 const token=localStorage.getItem("rasali_access_token");
 const role=localStorage.getItem("rasali_role");
 
@@ -526,6 +288,7 @@ const headers={
 
 let members=[];
 let moneyRecords=[];
+let officials=[];
 let editId=null;
 
 document.getElementById("recordDate").value=new Date().toISOString().slice(0,10);
@@ -565,22 +328,14 @@ async function uploadPhoto(file,folder){
  if(!file)return null;
  if(!file.type.startsWith("image/"))throw new Error("फोटो फाइल मात्र छान्नुहोस्");
  if(file.size>5*1024*1024)throw new Error("फोटो ५ MB भन्दा सानो हुनुपर्छ");
-
  const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
  const path=folder+"/"+Date.now()+"_"+safeName;
  const encoded=path.split("/").map(encodeURIComponent).join("/");
-
  const response=await fetch(SUPABASE_URL+"/storage/v1/object/Photos/"+encoded,{
   method:"POST",
-  headers:{
-   "apikey":SUPABASE_KEY,
-   "Authorization":"Bearer "+token,
-   "Content-Type":file.type||"image/jpeg",
-   "x-upsert":"false"
-  },
+  headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+token,"Content-Type":file.type||"image/jpeg","x-upsert":"false"},
   body:file
  });
-
  if(!response.ok)throw new Error("फोटो अपलोड भएन: "+await response.text());
  return SUPABASE_URL+"/storage/v1/object/public/Photos/"+encoded;
 }
@@ -589,397 +344,284 @@ async function loadSettings(){
  try{
   const response=await fetch(SUPABASE_URL+"/rest/v1/website_settings?id=eq.1&select=*",{headers});
   if(!response.ok)throw new Error(await response.text());
-
   const rows=await response.json();
   if(!rows.length)throw new Error("website_settings मा id=1 को विवरण भेटिएन");
-
   const s=rows[0];
-
   ["logo_url","mabai_url","bhamsaini_url","mabai_name","bhamsaini_name","site_title","site_title_english","tagline","address","estd"].forEach(id=>{
    document.getElementById(id).value=s[id]||"";
   });
-
   showPreview("mabaiFile","mabaiPreview",s.mabai_url);
   showPreview("logoFile","logoPreview",s.logo_url);
   showPreview("bhamsainiFile","bhamsainiPreview",s.bhamsaini_url);
-
   message("settingsMsg","वेबसाइटको हालको विवरण लोड भयो।");
- }catch(error){
-  message("settingsMsg","विवरण लोड भएन: "+error.message);
- }
+ }catch(error){message("settingsMsg","विवरण लोड भएन: "+error.message);}
 }
 
 async function saveSettings(){
  const btn=document.getElementById("settingsBtn");
- btn.disabled=true;
- btn.textContent="सुरक्षित हुँदैछ...";
-
+ btn.disabled=true;btn.textContent="सुरक्षित हुँदैछ...";
  try{
   const payload={};
-
   ["logo_url","mabai_url","bhamsaini_url","mabai_name","bhamsaini_name","site_title","site_title_english","tagline","address","estd"].forEach(id=>{
    payload[id]=document.getElementById(id).value.trim();
   });
-
   const mabai=await uploadPhoto(document.getElementById("mabaiFile").files[0],"header");
   const logo=await uploadPhoto(document.getElementById("logoFile").files[0],"header");
   const bhamsaini=await uploadPhoto(document.getElementById("bhamsainiFile").files[0],"header");
-
   if(mabai)payload.mabai_url=mabai;
   if(logo)payload.logo_url=logo;
   if(bhamsaini)payload.bhamsaini_url=bhamsaini;
-
   const response=await fetch(SUPABASE_URL+"/rest/v1/website_settings?id=eq.1",{
-   method:"PATCH",
+   method:"PATCH",headers:{...headers,"Prefer":"return=representation"},body:JSON.stringify(payload)
+  });
+  if(!response.ok)throw new Error(await response.text());
+  const result=await response.json();
+  if(!result.length)throw new Error("सेटिङ सुरक्षित भएको पुष्टि भएन।");
+  ["mabaiFile","logoFile","bhamsainiFile"].forEach(id=>document.getElementById(id).value="");
+  await loadSettings();
+  message("settingsMsg","✅ वेबसाइटको विवरण सफलतापूर्वक सुरक्षित भयो।");
+ }catch(error){message("settingsMsg","त्रुटि: "+error.message);}
+ finally{btn.disabled=false;btn.textContent="💾 वेबसाइटको विवरण सुरक्षित गर्नुहोस्";}
+}
+
+/* FOUNDER AND OFFICIALS */
+document.getElementById("officialPhoto").addEventListener("change",function(){
+ const file=this.files[0],preview=document.getElementById("officialPreview");
+ if(!file){preview.style.display="none";return;}
+ if(!file.type.startsWith("image/")){alert("फोटो फाइल मात्र छान्नुहोस्।");this.value="";return;}
+ if(file.size>5*1024*1024){alert("फोटो ५ MB भन्दा सानो हुनुपर्छ।");this.value="";return;}
+ preview.src=URL.createObjectURL(file);preview.style.display="block";
+});
+
+async function loadOfficials(){
+ const list=document.getElementById("officialsList");
+ try{
+  const response=await fetch(SUPABASE_URL+"/rest/v1/society_officials?select=*&order=display_order.asc,id.asc",{headers});
+  if(!response.ok)throw new Error(await response.text());
+  officials=await response.json();
+  renderOfficials();
+ }catch(error){list.textContent="पदाधिकारी लोड भएन: "+error.message;}
+}
+
+function renderOfficials(){
+ const list=document.getElementById("officialsList");
+ list.innerHTML="";
+ if(!officials.length){list.textContent="अहिलेसम्म संस्थापक वा पदाधिकारी थपिएको छैन।";return;}
+ officials.forEach(person=>{
+  const card=document.createElement("div");card.className="member";
+  const img=document.createElement("img");img.src=person.photo_url||"";img.alt=person.name;
+  img.onerror=()=>{img.style.display="none";};
+  const info=document.createElement("div");info.className="member-info";
+  const name=document.createElement("strong");name.textContent=person.name||"नाम छैन";
+  const detail=document.createElement("div");detail.className="small";
+  detail.textContent=(person.position||"")+(person.is_founder?" • संस्थापक":"")+" • क्रम: "+(person.display_order||0);
+  info.append(name,detail);
+  const actions=document.createElement("div");actions.className="actions";
+  const edit=document.createElement("button");edit.textContent="✏️ सम्पादन";edit.onclick=()=>editOfficial(person.id);
+  const del=document.createElement("button");del.textContent="🗑️ हटाउनुहोस्";del.className="danger";del.onclick=()=>deleteOfficial(person.id);
+  actions.append(edit,del);card.append(img,info,actions);list.append(card);
+ });
+}
+
+async function saveOfficial(){
+ const id=document.getElementById("officialId").value;
+ const name=document.getElementById("officialName").value.trim();
+ const position=document.getElementById("officialPosition").value;
+ const file=document.getElementById("officialPhoto").files[0];
+ const btn=document.getElementById("officialSaveBtn");
+ if(!name){alert("नाम लेख्नुहोस्।");return;}
+ btn.disabled=true;btn.textContent="सुरक्षित हुँदैछ...";
+ try{
+  let photoUrl=document.getElementById("officialPhotoUrl").value.trim();
+  if(file)photoUrl=await uploadPhoto(file,"officials");
+  const payload={
+   name,position,photo_url:photoUrl||null,
+   display_order:Number(document.getElementById("officialOrder").value)||1,
+   is_founder:position==="संस्थापक",is_active:true
+  };
+  const endpoint=SUPABASE_URL+"/rest/v1/society_officials"+(id?"?id=eq."+encodeURIComponent(id):"");
+  const response=await fetch(endpoint,{
+   method:id?"PATCH":"POST",
    headers:{...headers,"Prefer":"return=representation"},
    body:JSON.stringify(payload)
   });
-
   if(!response.ok)throw new Error(await response.text());
-
-  const result=await response.json();
-  if(!result.length)throw new Error("सेटिङ सुरक्षित भएको पुष्टि भएन।");
-
-  ["mabaiFile","logoFile","bhamsainiFile"].forEach(id=>{
-   document.getElementById(id).value="";
-  });
-
-  await loadSettings();
-  message("settingsMsg","✅ वेबसाइटको विवरण सफलतापूर्वक सुरक्षित भयो।");
-
- }catch(error){
-  message("settingsMsg","त्रुटि: "+error.message);
- }finally{
-  btn.disabled=false;
-  btn.textContent="💾 वेबसाइटको विवरण सुरक्षित गर्नुहोस्";
- }
+  message("officialMsg","✅ विवरण सुरक्षित भयो।");
+  clearOfficialForm();await loadOfficials();
+ }catch(error){message("officialMsg","त्रुटि: "+error.message);}
+ finally{btn.disabled=false;btn.textContent="💾 सुरक्षित गर्नुहोस्";}
 }
 
+function editOfficial(id){
+ const p=officials.find(x=>String(x.id)===String(id));if(!p)return;
+ document.getElementById("officialId").value=p.id;
+ document.getElementById("officialName").value=p.name||"";
+ document.getElementById("officialPosition").value=p.position||"संस्थापक";
+ document.getElementById("officialPhotoUrl").value=p.photo_url||"";
+ document.getElementById("officialOrder").value=p.display_order||1;
+ document.getElementById("officialPhoto").value="";
+ const preview=document.getElementById("officialPreview");
+ if(p.photo_url){preview.src=p.photo_url;preview.style.display="block";}else{preview.style.display="none";}
+ document.getElementById("officialSaveBtn").textContent="✏️ परिवर्तन सुरक्षित गर्नुहोस्";
+ document.getElementById("officialMsg").textContent="सम्पादन गर्नुभयो। परिवर्तन सुरक्षित गर्नुहोस्।";
+ document.getElementById("officials-admin").scrollIntoView({behavior:"smooth"});
+}
+
+function clearOfficialForm(){
+ document.getElementById("officialId").value="";
+ document.getElementById("officialName").value="";
+ document.getElementById("officialPosition").value="संस्थापक";
+ document.getElementById("officialPhoto").value="";
+ document.getElementById("officialPhotoUrl").value="";
+ document.getElementById("officialOrder").value="1";
+ document.getElementById("officialPreview").style.display="none";
+ document.getElementById("officialSaveBtn").textContent="💾 सुरक्षित गर्नुहोस्";
+}
+
+async function deleteOfficial(id){
+ if(!confirm("यो विवरण हटाउने निश्चित हो?"))return;
+ try{
+  const response=await fetch(SUPABASE_URL+"/rest/v1/society_officials?id=eq."+encodeURIComponent(id),{method:"DELETE",headers});
+  if(!response.ok)throw new Error(await response.text());
+  message("officialMsg","विवरण हटाइयो।");await loadOfficials();
+ }catch(error){alert("हटाउन सकिएन: "+error.message);}
+}
+
+/* MEMBERS */
 function previewPhoto(event){
- const file=event.target.files[0];
- const img=document.getElementById("photoPreview");
-
- if(!file){img.style.display="none";return}
-
- if(!file.type.startsWith("image/")){
-  alert("कृपया फोटो फाइल मात्र छान्नुहोस्");
-  event.target.value="";
-  return;
- }
-
- if(file.size>5*1024*1024){
-  alert("फोटो ५ MB भन्दा सानो हुनुपर्छ");
-  event.target.value="";
-  return;
- }
-
- img.src=URL.createObjectURL(file);
- img.style.display="block";
+ const file=event.target.files[0],img=document.getElementById("photoPreview");
+ if(!file){img.style.display="none";return;}
+ if(!file.type.startsWith("image/")){alert("कृपया फोटो फाइल मात्र छान्नुहोस्");event.target.value="";return;}
+ if(file.size>5*1024*1024){alert("फोटो ५ MB भन्दा सानो हुनुपर्छ");event.target.value="";return;}
+ img.src=URL.createObjectURL(file);img.style.display="block";
 }
-
-async function uploadMemberPhoto(file){
- return await uploadPhoto(file,"members");
-}
+async function uploadMemberPhoto(file){return await uploadPhoto(file,"members");}
 
 async function loadMembers(){
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",
-   {headers}
-  );
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/members?select=id,name,position,phone,email,document_url&order=id.asc",{headers});
   if(!response.ok)throw new Error(await response.text());
-
-  members=await response.json();
-  renderMembers();
-  updateMemberSelect();
-
- }catch(error){
-  message("memberMsg","सदस्य लोड भएन: "+error.message);
- }
+  members=await response.json();renderMembers();updateMemberSelect();
+ }catch(error){message("memberMsg","सदस्य लोड भएन: "+error.message);}
 }
 
 function renderMembers(){
  const q=document.getElementById("searchMember").value.toLowerCase();
- const list=document.getElementById("membersList");
-
- const filtered=members.filter(m=>
-  [m.name,m.position,m.phone,m.email].join(" ").toLowerCase().includes(q)
- );
-
- list.innerHTML="";
-
- if(!filtered.length){
-  list.textContent="सदस्य भेटिएन।";
-  return;
- }
-
+ const list=document.getElementById("membersList");list.innerHTML="";
+ const filtered=members.filter(m=>[m.name,m.position,m.phone,m.email,m.id].join(" ").toLowerCase().includes(q));
+ if(!filtered.length){list.textContent="सदस्य भेटिएन।";return;}
  filtered.forEach(m=>{
-  const card=document.createElement("div");
-  card.className="member";
-
-  const img=document.createElement("img");
-  img.src=m.document_url||"";
-  img.alt=m.name||"सदस्य";
-  img.onerror=()=>{img.style.display="none"};
-
-  const info=document.createElement("div");
-  info.className="member-info";
-
-  const name=document.createElement("strong");
-  name.textContent=m.name||"नाम छैन";
-
-  const details=document.createElement("div");
-  details.className="small";
-  details.textContent=(m.position||"सदस्य")+" | "+(m.phone||"फोन छैन");
-
+  const card=document.createElement("div");card.className="member";
+  const img=document.createElement("img");img.src=m.document_url||"";img.alt=m.name||"सदस्य";img.onerror=()=>img.style.display="none";
+  const info=document.createElement("div");info.className="member-info";
+  const name=document.createElement("strong");name.textContent=m.name||"नाम छैन";
+  const details=document.createElement("div");details.className="small";details.textContent=(m.position||"सदस्य")+" | "+(m.phone||"फोन छैन");
   info.append(name,details);
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-
-  const edit=document.createElement("button");
-  edit.textContent="✏️ सम्पादन";
-  edit.onclick=()=>editMember(m.id);
-
-  const del=document.createElement("button");
-  del.textContent="🗑️ हटाउनुहोस्";
-  del.className="danger";
-  del.onclick=()=>deleteMember(m.id);
-
-  actions.append(edit,del);
-  card.append(img,info,actions);
-  list.append(card);
+  const actions=document.createElement("div");actions.className="actions";
+  const edit=document.createElement("button");edit.textContent="✏️ सम्पादन";edit.onclick=()=>editMember(m.id);
+  const del=document.createElement("button");del.textContent="🗑️ हटाउनुहोस्";del.className="danger";del.onclick=()=>deleteMember(m.id);
+  actions.append(edit,del);card.append(img,info,actions);list.append(card);
  });
 }
 
 function updateMemberSelect(){
- const select=document.getElementById("moneyMember");
- select.innerHTML='<option value="">सदस्य छान्नुहोस्</option>';
-
- members.forEach(m=>{
-  const option=document.createElement("option");
-  option.value=m.id;
-  option.textContent=m.name;
-  select.append(option);
- });
+ const select=document.getElementById("moneyMember");select.innerHTML='<option value="">सदस्य छान्नुहोस्</option>';
+ members.forEach(m=>{const option=document.createElement("option");option.value=m.id;option.textContent=m.name;select.append(option);});
 }
 
 async function saveMember(){
- const name=document.getElementById("name").value.trim();
-
- if(!name){
-  alert("सदस्यको नाम लेख्नुहोस्");
-  return;
- }
-
- const btn=document.getElementById("saveBtn");
- const isEdit=editId!==null;
-
- btn.disabled=true;
- btn.textContent="कृपया पर्खनुहोस्...";
-
+ const name=document.getElementById("name").value.trim();if(!name){alert("सदस्यको नाम लेख्नुहोस्");return;}
+ const btn=document.getElementById("saveBtn"),isEdit=editId!==null;
+ btn.disabled=true;btn.textContent="कृपया पर्खनुहोस्...";
  try{
   let photoUrl=document.getElementById("document_url").value.trim();
-  const file=document.getElementById("photoFile").files[0];
-
-  if(file)photoUrl=await uploadMemberPhoto(file);
-
-  const payload={
-   name,
-   position:document.getElementById("position").value.trim(),
-   phone:document.getElementById("phone").value.trim(),
-   email:document.getElementById("email").value.trim(),
-   document_url:photoUrl
-  };
-
-  const endpoint=SUPABASE_URL+"/rest/v1/members"+
-   (isEdit?"?id=eq."+encodeURIComponent(editId):"");
-
-  const response=await fetch(endpoint,{
-   method:isEdit?"PATCH":"POST",
-   headers:{...headers,"Prefer":"return=representation"},
-   body:JSON.stringify(payload)
-  });
-
+  const file=document.getElementById("photoFile").files[0];if(file)photoUrl=await uploadMemberPhoto(file);
+  const payload={name,position:document.getElementById("position").value.trim(),phone:document.getElementById("phone").value.trim(),email:document.getElementById("email").value.trim(),document_url:photoUrl};
+  const endpoint=SUPABASE_URL+"/rest/v1/members"+(isEdit?"?id=eq."+encodeURIComponent(editId):"");
+  const response=await fetch(endpoint,{method:isEdit?"PATCH":"POST",headers:{...headers,"Prefer":"return=representation"},body:JSON.stringify(payload)});
   if(!response.ok)throw new Error(await response.text());
-
   message("memberMsg",isEdit?"सदस्य विवरण अपडेट भयो।":"नयाँ सदस्य सफलतापूर्वक थपियो।");
-
-  clearForm();
-  await loadMembers();
-
- }catch(error){
-  message("memberMsg","त्रुटि: "+error.message);
- }finally{
-  btn.disabled=false;
-  btn.textContent="➕ सदस्य थप्नुहोस्";
- }
+  clearForm();await loadMembers();
+ }catch(error){message("memberMsg","त्रुटि: "+error.message);}
+ finally{btn.disabled=false;btn.textContent="➕ सदस्य थप्नुहोस्";}
 }
 
 function editMember(id){
- const m=members.find(x=>String(x.id)===String(id));
- if(!m)return;
-
+ const m=members.find(x=>String(x.id)===String(id));if(!m)return;
  editId=m.id;
-
  document.getElementById("name").value=m.name||"";
  document.getElementById("position").value=m.position||"";
  document.getElementById("phone").value=m.phone||"";
  document.getElementById("email").value=m.email||"";
  document.getElementById("document_url").value=m.document_url||"";
  document.getElementById("photoFile").value="";
-
  const preview=document.getElementById("photoPreview");
-
- if(m.document_url){
-  preview.src=m.document_url;
-  preview.style.display="block";
- }else{
-  preview.style.display="none";
- }
-
+ if(m.document_url){preview.src=m.document_url;preview.style.display="block";}else{preview.style.display="none";}
  document.getElementById("saveBtn").textContent="✏️ परिवर्तन सुरक्षित गर्नुहोस्";
  message("memberMsg","सम्पादन गर्नुभयो। परिवर्तन सुरक्षित गर्नुहोस्।");
-
  document.getElementById("members").scrollIntoView({behavior:"smooth"});
 }
 
 function clearForm(){
  editId=null;
-
- ["name","position","phone","email","document_url","photoFile"].forEach(id=>{
-  document.getElementById(id).value="";
- });
-
+ ["name","position","phone","email","document_url","photoFile"].forEach(id=>document.getElementById(id).value="");
  document.getElementById("photoPreview").style.display="none";
  document.getElementById("saveBtn").textContent="➕ सदस्य थप्नुहोस्";
 }
 
 async function deleteMember(id){
  if(!confirm("यो सदस्य हटाउने निश्चित हो?"))return;
-
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/members?id=eq."+encodeURIComponent(id),
-   {method:"DELETE",headers}
-  );
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/members?id=eq."+encodeURIComponent(id),{method:"DELETE",headers});
   if(!response.ok)throw new Error(await response.text());
-
-  message("memberMsg","सदस्य हटाइयो।");
-  await loadMembers();
-
- }catch(error){
-  alert("हटाउन सकिएन: "+error.message);
- }
+  message("memberMsg","सदस्य हटाइयो।");await loadMembers();
+ }catch(error){alert("हटाउन सकिएन: "+error.message);}
 }
 
+/* MONEY */
 async function saveMoney(){
  const amount=Number(document.getElementById("amount").value);
-
- if(!amount||amount<=0){
-  alert("सही रकम लेख्नुहोस्");
-  return;
- }
-
+ if(!amount||amount<=0){alert("सही रकम लेख्नुहोस्");return;}
  const payload={
   member_id:document.getElementById("moneyMember").value||null,
   record_type:document.getElementById("recordType").value,
-  amount,
-  record_date:document.getElementById("recordDate").value,
+  amount,record_date:document.getElementById("recordDate").value,
   description:document.getElementById("description").value.trim()
  };
-
  try{
-  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records",{
-   method:"POST",
-   headers:{...headers,"Prefer":"return=representation"},
-   body:JSON.stringify(payload)
-  });
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records",{method:"POST",headers:{...headers,"Prefer":"return=representation"},body:JSON.stringify(payload)});
   if(!response.ok)throw new Error(await response.text());
-
-  message("moneyMsg","पैसा हिसाब सुरक्षित भयो।");
-
-  document.getElementById("amount").value="";
-  document.getElementById("description").value="";
-
+  message("moneyMsg","पैसा हिसाब सुरक्षित भयो。");
+  document.getElementById("amount").value="";document.getElementById("description").value="";
   await loadMoney();
-
- }catch(error){
-  message("moneyMsg","त्रुटि: "+error.message);
- }
+ }catch(error){message("moneyMsg","त्रुटि: "+error.message);}
 }
 
-function categoryName(type){
- return {
-  income:"आम्दानी",
-  expense:"खर्च",
-  penalty:"जरिवाना",
-  installment:"किस्ता"
- }[type]||type;
-}
+function categoryName(type){return {income:"आम्दानी",expense:"खर्च",penalty:"जरिवाना",installment:"किस्ता"}[type]||type;}
 
 async function loadMoney(){
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/money_records?select=id,member_id,record_type,amount,record_date,description&order=record_date.desc",
-   {headers}
-  );
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records?select=id,member_id,record_type,amount,record_date,description&order=record_date.desc",{headers});
   if(!response.ok)throw new Error(await response.text());
-
-  moneyRecords=await response.json();
-  renderMoney();
-
- }catch(error){
-  message("moneyMsg","हिसाब लोड भएन: "+error.message);
- }
+  moneyRecords=await response.json();renderMoney();
+ }catch(error){message("moneyMsg","हिसाब लोड भएन: "+error.message);}
 }
 
 function renderMoney(){
- const tbody=document.getElementById("moneyList");
- tbody.innerHTML="";
-
+ const tbody=document.getElementById("moneyList");tbody.innerHTML="";
  let income=0,expense=0;
-
  moneyRecords.forEach(r=>{
-  if(r.record_type==="income"||r.record_type==="installment"){
-   income+=Number(r.amount);
-  }
-
-  if(r.record_type==="expense"||r.record_type==="penalty"){
-   expense+=Number(r.amount);
-  }
-
+  if(r.record_type==="income"||r.record_type==="installment")income+=Number(r.amount);
+  if(r.record_type==="expense"||r.record_type==="penalty")expense+=Number(r.amount);
   const member=members.find(m=>String(m.id)===String(r.member_id));
   const tr=document.createElement("tr");
-
-  [
-   r.record_date||"",
-   member?member.name:"—",
-   categoryName(r.record_type),
-   "रु. "+Number(r.amount).toLocaleString("en-IN"),
-   r.description||""
-  ].forEach(value=>{
-   const td=document.createElement("td");
-   td.textContent=value;
-   tr.append(td);
+  [r.record_date||"",member?member.name:"—",categoryName(r.record_type),"रु. "+Number(r.amount).toLocaleString("en-IN"),r.description||""].forEach(value=>{
+   const td=document.createElement("td");td.textContent=value;tr.append(td);
   });
-
-  const td=document.createElement("td");
-  const btn=document.createElement("button");
-
-  btn.className="danger";
-  btn.textContent="हटाउनुहोस्";
-  btn.onclick=()=>deleteMoney(r.id);
-
-  td.append(btn);
-  tr.append(td);
-  tbody.append(tr);
+  const td=document.createElement("td"),btn=document.createElement("button");
+  btn.className="danger";btn.textContent="हटाउनुहोस्";btn.onclick=()=>deleteMoney(r.id);
+  td.append(btn);tr.append(td);tbody.append(tr);
  });
-
  document.getElementById("totalIncome").textContent="रु. "+income.toLocaleString("en-IN");
  document.getElementById("totalExpense").textContent="रु. "+expense.toLocaleString("en-IN");
  document.getElementById("balance").textContent="रु. "+(income-expense).toLocaleString("en-IN");
@@ -987,329 +629,121 @@ function renderMoney(){
 
 async function deleteMoney(id){
  if(!confirm("यो हिसाब हटाउने निश्चित हो?"))return;
-
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/money_records?id=eq."+encodeURIComponent(id),
-   {method:"DELETE",headers}
-  );
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/money_records?id=eq."+encodeURIComponent(id),{method:"DELETE",headers});
   if(!response.ok)throw new Error(await response.text());
-
   await loadMoney();
-
- }catch(error){
-  alert("हिसाब हटाउन सकिएन: "+error.message);
- }
+ }catch(error){alert("हिसाब हटाउन सकिएन: "+error.message);}
 }
 
-/* DIGITAL MUSEUM MANAGEMENT */
-
+/* DIGITAL MUSEUM */
 async function museumUpload(file,bucket){
-
  if(!file)throw new Error("पहिले फाइल छान्नुहोस्।");
-
  const isPhoto=bucket==="museum-photos";
-
  if(isPhoto){
-  if(!["image/jpeg","image/png","image/webp"].includes(file.type)){
-   throw new Error("JPG, PNG वा WEBP फोटो मात्र छान्नुहोस्।");
-  }
-  if(file.size>10*1024*1024){
-   throw new Error("फोटो १० MB भन्दा सानो हुनुपर्छ।");
-  }
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type))throw new Error("JPG, PNG वा WEBP फोटो मात्र छान्नुहोस्।");
+  if(file.size>10*1024*1024)throw new Error("फोटो १० MB भन्दा सानो हुनुपर्छ।");
  }else{
-  if(!["video/mp4","video/webm","video/quicktime"].includes(file.type)){
-   throw new Error("MP4, WEBM वा MOV भिडियो मात्र छान्नुहोस्।");
-  }
-  if(file.size>100*1024*1024){
-   throw new Error("भिडियो १०० MB भन्दा सानो हुनुपर्छ।");
-  }
+  if(!["video/mp4","video/webm","video/quicktime"].includes(file.type))throw new Error("MP4, WEBM वा MOV भिडियो मात्र छान्नुहोस्।");
+  if(file.size>100*1024*1024)throw new Error("भिडियो १०० MB भन्दा सानो हुनुपर्छ।");
  }
-
- const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
- const path=Date.now()+"_"+safeName;
+ const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_"),path=Date.now()+"_"+safeName;
  const encoded=path.split("/").map(encodeURIComponent).join("/");
-
- const response=await fetch(
-  SUPABASE_URL+"/storage/v1/object/"+bucket+"/"+encoded,
-  {
-   method:"POST",
-   headers:{
-    "apikey":SUPABASE_KEY,
-    "Authorization":"Bearer "+token,
-    "Content-Type":file.type,
-    "x-upsert":"false"
-   },
-   body:file
-  }
- );
-
- if(!response.ok){
-  throw new Error("फाइल अपलोड भएन: "+await response.text());
- }
-
+ const response=await fetch(SUPABASE_URL+"/storage/v1/object/"+bucket+"/"+encoded,{
+  method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+token,"Content-Type":file.type,"x-upsert":"false"},body:file
+ });
+ if(!response.ok)throw new Error("फाइल अपलोड भएन: "+await response.text());
  return path;
 }
 
 async function uploadMuseumPhoto(){
-
- const title=document.getElementById("museumPhotoTitle").value.trim();
- const file=document.getElementById("museumPhotoFile").files[0];
-
- if(!title){
-  alert("फोटोको शीर्षक लेख्नुहोस्।");
-  return;
- }
-
- const btn=document.getElementById("museumPhotoBtn");
- btn.disabled=true;
- btn.textContent="अपलोड हुँदैछ...";
-
+ const title=document.getElementById("museumPhotoTitle").value.trim(),file=document.getElementById("museumPhotoFile").files[0];
+ if(!title){alert("फोटोको शीर्षक लेख्नुहोस्।");return;}
+ const btn=document.getElementById("museumPhotoBtn");btn.disabled=true;btn.textContent="अपलोड हुँदैछ...";
  try{
   const path=await museumUpload(file,"museum-photos");
-
-  const payload={
-   title:title,
-   description:document.getElementById("museumPhotoDescription").value.trim(),
-   event_date:document.getElementById("museumPhotoDate").value||null,
-   storage_path:path
-  };
-
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/museum_items",
-   {
-    method:"POST",
-    headers:{...headers,"Prefer":"return=representation"},
-    body:JSON.stringify(payload)
-   }
-  );
-
+  const payload={title,description:document.getElementById("museumPhotoDescription").value.trim(),event_date:document.getElementById("museumPhotoDate").value||null,storage_path:path};
+  const response=await fetch(SUPABASE_URL+"/rest/v1/museum_items",{method:"POST",headers:{...headers,"Prefer":"return=representation"},body:JSON.stringify(payload)});
   if(!response.ok)throw new Error(await response.text());
-
-  document.getElementById("museumPhotoTitle").value="";
-  document.getElementById("museumPhotoDescription").value="";
-  document.getElementById("museumPhotoDate").value="";
-  document.getElementById("museumPhotoFile").value="";
-
-  message("museumPhotoMsg","✅ फोटो सफलतापूर्वक सुरक्षित भयो।");
-  await loadMuseumAdmin();
-
- }catch(error){
-  message("museumPhotoMsg","❌ त्रुटि: "+error.message);
- }finally{
-  btn.disabled=false;
-  btn.textContent="📤 फोटो अपलोड गर्नुहोस्";
- }
+  ["museumPhotoTitle","museumPhotoDescription","museumPhotoDate","museumPhotoFile"].forEach(id=>document.getElementById(id).value="");
+  message("museumPhotoMsg","✅ फोटो सफलतापूर्वक सुरक्षित भयो।");await loadMuseumAdmin();
+ }catch(error){message("museumPhotoMsg","❌ त्रुटि: "+error.message);}
+ finally{btn.disabled=false;btn.textContent="📤 फोटो अपलोड गर्नुहोस्";}
 }
 
 async function uploadMuseumVideo(){
-
- const title=document.getElementById("museumVideoTitle").value.trim();
- const file=document.getElementById("museumVideoFile").files[0];
-
- if(!title){
-  alert("भिडियोको शीर्षक लेख्नुहोस्।");
-  return;
- }
-
- const btn=document.getElementById("museumVideoBtn");
- btn.disabled=true;
- btn.textContent="अपलोड हुँदैछ...";
-
+ const title=document.getElementById("museumVideoTitle").value.trim(),file=document.getElementById("museumVideoFile").files[0];
+ if(!title){alert("भिडियोको शीर्षक लेख्नुहोस्।");return;}
+ const btn=document.getElementById("museumVideoBtn");btn.disabled=true;btn.textContent="अपलोड हुँदैछ...";
  try{
   const path=await museumUpload(file,"museum-videos");
-
-  const payload={
-   title:title,
-   description:document.getElementById("museumVideoDescription").value.trim(),
-   event_date:document.getElementById("museumVideoDate").value||null,
-   storage_path:path
-  };
-
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/museum_videos",
-   {
-    method:"POST",
-    headers:{...headers,"Prefer":"return=representation"},
-    body:JSON.stringify(payload)
-   }
-  );
-
+  const payload={title,description:document.getElementById("museumVideoDescription").value.trim(),event_date:document.getElementById("museumVideoDate").value||null,storage_path:path};
+  const response=await fetch(SUPABASE_URL+"/rest/v1/museum_videos",{method:"POST",headers:{...headers,"Prefer":"return=representation"},body:JSON.stringify(payload)});
   if(!response.ok)throw new Error(await response.text());
-
-  document.getElementById("museumVideoTitle").value="";
-  document.getElementById("museumVideoDescription").value="";
-  document.getElementById("museumVideoDate").value="";
-  document.getElementById("museumVideoFile").value="";
-
-  message("museumVideoMsg","✅ भिडियो सफलतापूर्वक सुरक्षित भयो।");
-  await loadMuseumAdmin();
-
- }catch(error){
-  message("museumVideoMsg","❌ त्रुटि: "+error.message);
- }finally{
-  btn.disabled=false;
-  btn.textContent="🎬 भिडियो अपलोड गर्नुहोस्";
- }
+  ["museumVideoTitle","museumVideoDescription","museumVideoDate","museumVideoFile"].forEach(id=>document.getElementById(id).value="");
+  message("museumVideoMsg","✅ भिडियो सफलतापूर्वक सुरक्षित भयो।");await loadMuseumAdmin();
+ }catch(error){message("museumVideoMsg","❌ त्रुटि: "+error.message);}
+ finally{btn.disabled=false;btn.textContent="🎬 भिडियो अपलोड गर्नुहोस्";}
 }
 
 function museumPublicUrl(bucket,path){
- return SUPABASE_URL+
-  "/storage/v1/object/public/"+bucket+"/"+
-  path.split("/").map(encodeURIComponent).join("/");
+ return SUPABASE_URL+"/storage/v1/object/public/"+bucket+"/"+path.split("/").map(encodeURIComponent).join("/");
 }
 
-async function loadMuseumAdmin(){
- await loadMuseumPhotos();
- await loadMuseumVideos();
-}
+async function loadMuseumAdmin(){await loadMuseumPhotos();await loadMuseumVideos();}
 
 async function loadMuseumPhotos(){
-
  const list=document.getElementById("museumAdminPhotos");
-
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/museum_items?select=id,title,description,event_date,storage_path&order=created_at.desc",
-   {headers}
-  );
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/museum_items?select=id,title,description,event_date,storage_path&order=created_at.desc",{headers});
   if(!response.ok)throw new Error(await response.text());
-
-  const data=await response.json();
-  list.innerHTML="";
-
-  if(!data.length){
-   list.textContent="अहिलेसम्म फोटो छैन।";
-   return;
-  }
-
+  const data=await response.json();list.innerHTML="";
+  if(!data.length){list.textContent="अहिलेसम्म फोटो छैन।";return;}
   data.forEach(item=>{
-   const card=document.createElement("div");
-   card.className="museum-item";
-
-   const img=document.createElement("img");
-   img.src=museumPublicUrl("museum-photos",item.storage_path);
-   img.alt=item.title;
-
-   const title=document.createElement("p");
-   const strong=document.createElement("strong");
-   strong.textContent=item.title;
-   title.append(strong);
-
-   const detail=document.createElement("p");
-   detail.className="small";
-   detail.textContent=(item.description||"")+" | "+(item.event_date||"मिति छैन");
-
-   const btn=document.createElement("button");
-   btn.className="danger";
-   btn.textContent="🗑️ फोटो हटाउनुहोस्";
-   btn.onclick=()=>deleteMuseumItem(
-    "museum_items","museum-photos",item.id,item.storage_path
-   );
-
-   card.append(img,title,detail,btn);
-   list.append(card);
+   const card=document.createElement("div");card.className="museum-item";
+   const img=document.createElement("img");img.src=museumPublicUrl("museum-photos",item.storage_path);img.alt=item.title;
+   const title=document.createElement("p"),strong=document.createElement("strong");strong.textContent=item.title;title.append(strong);
+   const detail=document.createElement("p");detail.className="small";detail.textContent=(item.description||"")+" | "+(item.event_date||"मिति छैन");
+   const btn=document.createElement("button");btn.className="danger";btn.textContent="🗑️ फोटो हटाउनुहोस्";
+   btn.onclick=()=>deleteMuseumItem("museum_items","museum-photos",item.id,item.storage_path);
+   card.append(img,title,detail,btn);list.append(card);
   });
-
- }catch(error){
-  list.textContent="फोटो लोड भएन: "+error.message;
- }
+ }catch(error){list.textContent="फोटो लोड भएन: "+error.message;}
 }
 
 async function loadMuseumVideos(){
-
  const list=document.getElementById("museumAdminVideos");
-
  try{
-  const response=await fetch(
-   SUPABASE_URL+"/rest/v1/museum_videos?select=id,title,description,event_date,storage_path&order=created_at.desc",
-   {headers}
-  );
-
+  const response=await fetch(SUPABASE_URL+"/rest/v1/museum_videos?select=id,title,description,event_date,storage_path&order=created_at.desc",{headers});
   if(!response.ok)throw new Error(await response.text());
-
-  const data=await response.json();
-  list.innerHTML="";
-
-  if(!data.length){
-   list.textContent="अहिलेसम्म भिडियो छैन।";
-   return;
-  }
-
+  const data=await response.json();list.innerHTML="";
+  if(!data.length){list.textContent="अहिलेसम्म भिडियो छैन।";return;}
   data.forEach(item=>{
-   const card=document.createElement("div");
-   card.className="museum-item";
-
-   const video=document.createElement("video");
-   video.controls=true;
-   video.playsInline=true;
-   video.preload="metadata";
-   video.src=museumPublicUrl("museum-videos",item.storage_path);
-
-   const title=document.createElement("p");
-   const strong=document.createElement("strong");
-   strong.textContent=item.title;
-   title.append(strong);
-
-   const detail=document.createElement("p");
-   detail.className="small";
-   detail.textContent=(item.description||"")+" | "+(item.event_date||"मिति छैन");
-
-   const btn=document.createElement("button");
-   btn.className="danger";
-   btn.textContent="🗑️ भिडियो हटाउनुहोस्";
-   btn.onclick=()=>deleteMuseumItem(
-    "museum_videos","museum-videos",item.id,item.storage_path
-   );
-
-   card.append(video,title,detail,btn);
-   list.append(card);
+   const card=document.createElement("div");card.className="museum-item";
+   const video=document.createElement("video");video.controls=true;video.playsInline=true;video.preload="metadata";video.src=museumPublicUrl("museum-videos",item.storage_path);
+   const title=document.createElement("p"),strong=document.createElement("strong");strong.textContent=item.title;title.append(strong);
+   const detail=document.createElement("p");detail.className="small";detail.textContent=(item.description||"")+" | "+(item.event_date||"मिति छैन");
+   const btn=document.createElement("button");btn.className="danger";btn.textContent="🗑️ भिडियो हटाउनुहोस्";
+   btn.onclick=()=>deleteMuseumItem("museum_videos","museum-videos",item.id,item.storage_path);
+   card.append(video,title,detail,btn);list.append(card);
   });
-
- }catch(error){
-  list.textContent="भिडियो लोड भएन: "+error.message;
- }
+ }catch(error){list.textContent="भिडियो लोड भएन: "+error.message;}
 }
 
 async function deleteMuseumItem(table,bucket,id,path){
-
  if(!confirm("यो सामग्री सधैँका लागि हटाउने निश्चित हो?"))return;
-
  try{
-  const storageResponse=await fetch(
-   SUPABASE_URL+"/storage/v1/object/"+bucket,
-   {
-    method:"DELETE",
-    headers,
-    body:JSON.stringify({prefixes:[path]})
-   }
-  );
-
-  if(!storageResponse.ok){
-   throw new Error("Storage बाट फाइल हटेन: "+await storageResponse.text());
-  }
-
-  const dbResponse=await fetch(
-   SUPABASE_URL+"/rest/v1/"+table+"?id=eq."+encodeURIComponent(id),
-   {method:"DELETE",headers}
-  );
-
-  if(!dbResponse.ok){
-   throw new Error("रेकर्ड हटेन: "+await dbResponse.text());
-  }
-
-  alert("✅ सामग्री हटाइयो।");
-  await loadMuseumAdmin();
-
- }catch(error){
-  alert("❌ हटाउन सकिएन: "+error.message);
- }
+  const storageResponse=await fetch(SUPABASE_URL+"/storage/v1/object/"+bucket,{
+   method:"DELETE",headers,body:JSON.stringify({prefixes:[path]})
+  });
+  if(!storageResponse.ok)throw new Error("Storage बाट फाइल हटेन: "+await storageResponse.text());
+  const dbResponse=await fetch(SUPABASE_URL+"/rest/v1/"+table+"?id=eq."+encodeURIComponent(id),{method:"DELETE",headers});
+  if(!dbResponse.ok)throw new Error("रेकर्ड हटेन: "+await dbResponse.text());
+  alert("✅ सामग्री हटाइयो।");await loadMuseumAdmin();
+ }catch(error){alert("❌ हटाउन सकिएन: "+error.message);}
 }
 
 /* LOGOUT */
-
 function logout(){
  localStorage.removeItem("rasali_access_token");
  localStorage.removeItem("rasali_user");
@@ -1318,17 +752,15 @@ function logout(){
 }
 
 /* START */
-
 async function start(){
  await loadSettings();
  await loadMembers();
  await loadMoney();
  await loadMuseumAdmin();
+ await loadOfficials();
 }
-
 start();
-
 </script>
-
 </body>
 </html>
+ 
