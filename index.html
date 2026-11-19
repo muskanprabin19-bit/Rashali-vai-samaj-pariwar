@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -85,35 +86,13 @@ nav a:nth-child(9n){color:#ffd1a9}
 .founder-avatar{width:145px;height:145px;border:5px solid #dfbd50}
 
 /* पदाधिकारी: ६ जना एउटै लाइनमा */
-.official-card{
- flex:0 0 calc((100% - 40px)/6);
- min-width:105px;
- padding:10px 5px!important;
- border-radius:11px;
-}
+.official-card{flex:0 0 calc((100% - 40px)/6);min-width:105px;padding:10px 5px!important;border-radius:11px}
 .official-card h3{font-size:13px;line-height:1.5;overflow-wrap:anywhere;margin-bottom:2px}
-.official-card .official-avatar,
-.official-card img{
- width:62px;
- height:62px;
- font-size:25px;
- border-width:3px;
- margin:0 auto 5px;
-}
+.official-card .official-avatar,.official-card img{width:62px;height:62px;font-size:25px;border-width:3px;margin:0 auto 5px}
 .position{color:var(--red);font-weight:900;margin-top:3px;font-size:12px;line-height:1.5}
 .official-empty{background:#f8fbff;border:1px dashed #a9bfdc;border-radius:14px;padding:18px;text-align:center;color:#536783}
 .official-status{font-size:10px;color:#64748b;margin-top:3px;line-height:1.4}
-.official-grid{
- display:flex;
- flex-wrap:nowrap;
- gap:8px;
- width:100%;
- overflow-x:auto;
- overflow-y:hidden;
- padding:5px 2px 13px;
- -webkit-overflow-scrolling:touch;
- scrollbar-width:thin;
-}
+.official-grid{display:flex;flex-wrap:nowrap;gap:8px;width:100%;overflow-x:auto;overflow-y:hidden;padding:5px 2px 13px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 .official-grid .official-card{flex-shrink:0}
 .official-grid::-webkit-scrollbar{height:5px}
 .official-grid::-webkit-scrollbar-thumb{background:#9bb9dc;border-radius:10px}
@@ -286,8 +265,6 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  .savings-count{font-size:12px}
  .savings-count strong{font-size:20px}
  .savings-list{grid-template-columns:1fr}
-
- /* मोबाइलमा पनि ६ पदाधिकारी एउटै तेर्सो लाइनमा */
  .official-grid{gap:6px}
  .official-card{flex:0 0 105px;min-width:105px}
  .official-card .official-avatar,.official-card img{width:55px;height:55px}
@@ -368,6 +345,60 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  <p style="margin-top:12px">स्थापना: <b id="heroEstd">२०८२</b></p>
 </section>
 
+<!-- संस्थापक: स्वागत सन्देशको ठीक तल -->
+<section id="founder" class="section founder-section">
+ <h2 class="section-title">🌟 समाजका संस्थापक</h2>
+ <div id="founderDisplay">
+  <div class="official-empty">⏳ संस्थापकको विवरण लोड हुँदैछ...</div>
+ </div>
+</section>
+
+<!-- पदाधिकारी: संस्थापकको ठीक तल, ६ जना एउटै लाइनमा -->
+<section id="official" class="section">
+ <h2 class="section-title">🤝 समाजका पदाधिकारीहरू</h2>
+ <div id="officialsDisplay" class="official-grid">
+  <div class="official-empty">⏳ पदाधिकारीहरूको विवरण लोड हुँदैछ...</div>
+ </div>
+</section>
+
+<!-- सदस्य सूची: पदाधिकारीको ठीक तल -->
+<section id="member" class="section member-section">
+ <div class="member-layout">
+  <div class="directory-panel">
+   <div class="member-banner"><h2>👥 सदस्य सूची (Member Directory)</h2></div>
+   <div class="member-subtitle">हाम्रो समाज, हाम्रो शक्ति</div>
+   <div class="member-tools">
+    <div class="search-area">
+     <input type="search" id="memberSearch" placeholder="🔍 नाम, सदस्य नम्बर वा पद खोज्नुहोस्..." oninput="searchMembers()">
+     <button onclick="searchMembers()">खोज्नुहोस्</button>
+    </div>
+   </div>
+   <div id="memberCount" class="member-count">⏳ सदस्य संख्या गणना हुँदैछ...</div>
+   <div id="membersList" class="member-grid"><div class="loading">⏳ सदस्यहरूको विवरण लोड हुँदैछ...</div></div>
+  </div>
+  <aside class="member-sidebar">
+   <div class="side-panel">
+    <div class="side-title">📢 ताजा सूचना</div>
+    <div class="side-content" id="sideNoticeList"><p class="loading">सूचना लोड हुँदैछ...</p></div>
+    <a class="all-notices" href="#notice">सबै सूचना हेर्नुहोस् →</a>
+   </div>
+   <div class="side-panel">
+    <div class="side-title">🔐 सदस्य / Admin Login</div>
+    <div class="side-content side-login">
+     <p>आफ्नो विवरण तथा समाजको व्यवस्थापन प्रणाली प्रयोग गर्न Login गर्नुहोस्।</p>
+     <a href="login.html">Login गर्नुहोस् →</a>
+    </div>
+   </div>
+  </aside>
+ </div>
+</section>
+
+<div id="memberModal" class="member-modal" onclick="if(event.target===this)closeMemberDetails()">
+ <div class="modal-box"><div id="modalContent"></div><button class="close-button" onclick="closeMemberDetails()">बन्द गर्नुहोस्</button></div>
+</div>
+
+<!-- बाँकी वेबसाइटका सेक्सनहरू सदस्य सूचीपछि सुरु हुन्छन् -->
+
 <section class="section">
  <h2 class="section-title">📘 समाज तथा ऋणसम्बन्धी जानकारी</h2>
  <div class="card info-card">
@@ -408,58 +439,6 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
   </div>
  </div>
 </section>
-
-<!-- संस्थापक: सबैभन्दा माथि छुट्टै -->
-<section id="founder" class="section founder-section">
- <h2 class="section-title">🌟 समाजका संस्थापक</h2>
- <div id="founderDisplay">
-  <div class="official-empty">⏳ संस्थापकको विवरण लोड हुँदैछ...</div>
- </div>
-</section>
-
-<!-- संस्थापकको ठीक मुनि ६ जना पदाधिकारी एउटै लाइनमा -->
-<section id="official" class="section">
- <h2 class="section-title">🤝 समाजका पदाधिकारीहरू</h2>
- <div id="officialsDisplay" class="official-grid">
-  <div class="official-empty">⏳ पदाधिकारीहरूको विवरण लोड हुँदैछ...</div>
- </div>
-</section>
-
-<!-- पदाधिकारीपछि सदस्य सूची -->
-<section id="member" class="section member-section">
- <div class="member-layout">
-  <div class="directory-panel">
-   <div class="member-banner"><h2>👥 सदस्य सूची (Member Directory)</h2></div>
-   <div class="member-subtitle">हाम्रो समाज, हाम्रो शक्ति</div>
-   <div class="member-tools">
-    <div class="search-area">
-     <input type="search" id="memberSearch" placeholder="🔍 नाम, सदस्य नम्बर वा पद खोज्नुहोस्..." oninput="searchMembers()">
-     <button onclick="searchMembers()">खोज्नुहोस्</button>
-    </div>
-   </div>
-   <div id="memberCount" class="member-count">⏳ सदस्य संख्या गणना हुँदैछ...</div>
-   <div id="membersList" class="member-grid"><div class="loading">⏳ सदस्यहरूको विवरण लोड हुँदैछ...</div></div>
-  </div>
-  <aside class="member-sidebar">
-   <div class="side-panel">
-    <div class="side-title">📢 ताजा सूचना</div>
-    <div class="side-content" id="sideNoticeList"><p class="loading">सूचना लोड हुँदैछ...</p></div>
-    <a class="all-notices" href="#notice">सबै सूचना हेर्नुहोस् →</a>
-   </div>
-   <div class="side-panel">
-    <div class="side-title">🔐 सदस्य / Admin Login</div>
-    <div class="side-content side-login">
-     <p>आफ्नो विवरण तथा समाजको व्यवस्थापन प्रणाली प्रयोग गर्न Login गर्नुहोस्।</p>
-     <a href="login.html">Login गर्नुहोस् →</a>
-    </div>
-   </div>
-  </aside>
- </div>
-</section>
-
-<div id="memberModal" class="member-modal" onclick="if(event.target===this)closeMemberDetails()">
- <div class="modal-box"><div id="modalContent"></div><button class="close-button" onclick="closeMemberDetails()">बन्द गर्नुहोस्</button></div>
-</div>
 
 <!-- सार्वजनिक मासिक बचत -->
 <section id="savings" class="section savings-section">
@@ -641,8 +620,15 @@ async function loadWebsiteSettings(){
   setText("bhamsainiName",data.bhamsaini_name);
 
   if(data.estd){
-   document.getElementById("siteEstd").textContent="स्थापना: "+data.estd+" | ESTD "+data.estd;
-   document.getElementById("heroEstd").textContent=data.estd;
+   /* Admin मा ESTD दोहोरिएर लेखिएको भए पनि वेबसाइटमा एकपटक मात्र देखाउने */
+   const cleanEstd=String(data.estd)
+    .replace(/स्थापना\s*:/gi,"")
+    .replace(/\|\s*ESTD\s*/gi," ")
+    .replace(/ESTD/gi,"")
+    .replace(/\s+/g," ")
+    .trim();
+   document.getElementById("siteEstd").textContent="स्थापना: "+cleanEstd+" | ESTD 2082";
+   document.getElementById("heroEstd").textContent=cleanEstd;
   }
 
   [["logo_url","siteLogo","logoFallback"],["mabai_url","mabaiImage",null],["bhamsaini_url","bhamsainiImage",null]].forEach(([field,id,fallback])=>{
@@ -699,6 +685,18 @@ async function loadOfficials(){
   }else{
    founderArea.innerHTML='<div class="official-empty">संस्थापकको विवरण हाल उपलब्ध छैन।</div>';
   }
+
+  /* पदको निर्धारित क्रम: अध्यक्ष, उपाध्यक्ष, सचिव, उपसचिव, प्रस्तावक, कोषाध्यक्ष */
+  const positionOrder=["अध्यक्ष","उपाध्यक्ष","सचिव","उपसचिव","प्रस्तावक","कोषाध्यक्ष"];
+  officials.sort((a,b)=>{
+   const pa=String(a.position||"").replace(/\s/g,"");
+   const pb=String(b.position||"").replace(/\s/g,"");
+   const ia=positionOrder.findIndex(p=>pa.includes(p));
+   const ib=positionOrder.findIndex(p=>pb.includes(p));
+   const ra=ia===-1?99:ia;
+   const rb=ib===-1?99:ib;
+   return ra-rb || Number(a.display_order||0)-Number(b.display_order||0);
+  });
 
   if(officials.length){
    officialsArea.innerHTML=officials.map(item=>{
@@ -1051,3 +1049,4 @@ loadPublicSavings();
 </script>
 </body>
 </html>
+ 
