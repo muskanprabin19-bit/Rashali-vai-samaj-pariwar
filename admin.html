@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 <html lang="ne">
 <head>
@@ -99,7 +99,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 <a class="dash-card" href="membership-manager.html"><span class="dash-icon blue">👥</span><strong>Membership Manager</strong><small>सदस्य विवरण, बिलिङ तथा हाजिरी व्यवस्थापन</small></a>
 </div>
 
-<!-- WEBSITE SETTINGS -->
 <section class="admin-section" id="settings">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>🎨 वेबसाइटको मुख्य डिजाइन तथा शीर्षक व्यवस्थापन</h3>
@@ -135,7 +134,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div id="settingsMsg" class="msg">वेबसाइटको विवरण लोड हुँदैछ...</div>
 </section>
 
-<!-- OFFICIALS MANAGEMENT -->
 <section class="admin-section" id="officials-admin">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>🏅 संस्थापक तथा पदाधिकारी व्यवस्थापन</h3>
@@ -143,9 +141,10 @@ footer{text-align:center;padding:22px;color:#64748b}
 संस्थापकलाई Homepage मा सबैभन्दा माथि देखाइनेछ। पदाधिकारीहरू त्यसको तल देखाइनेछन्।
 पदम रसालीलाई संस्थापक र उपाध्यक्ष दुवै पदमा छुट्टाछुट्टै थप्न सकिन्छ।
 नाम, फोटो र पद पछि पनि सम्पादन गर्न सकिन्छ।
+<br><b>सचिव र उपसचिवको नाम पछि राख्न सकिनेछ। अहिले खाली राखेर पनि सुरक्षित गर्न मिल्छ।</b>
 </div>
 <input type="hidden" id="officialId">
-<label>नाम *</label>
+<label>नाम (सचिव/उपसचिवका लागि खाली राख्न मिल्छ)</label>
 <input id="officialName" placeholder="पूरा नाम">
 <label>पद छान्नुहोस् *</label>
 <select id="officialPosition">
@@ -174,7 +173,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div id="officialsList">विवरण लोड हुँदैछ...</div>
 </section>
 
-<!-- MEMBER MANAGEMENT -->
 <section class="admin-section" id="members">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>👥 सदस्य व्यवस्थापन</h3>
@@ -196,7 +194,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div id="memberMsg" class="msg">सदस्यको विवरण भर्नुहोस्।</div>
 </section>
 
-<!-- MEMBER SEARCH -->
 <section class="admin-section" id="member-list">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>🔎 सदस्य खोज्नुहोस्</h3>
@@ -204,7 +201,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div id="membersList">सदस्य विवरण लोड हुँदैछ...</div>
 </section>
 
-<!-- MONEY ENTRY -->
 <section class="admin-section" id="money-entry">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>💰 आम्दानी / खर्च हिसाब</h3>
@@ -222,7 +218,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div id="moneyMsg" class="msg"></div>
 </section>
 
-<!-- MONEY REPORT -->
 <section class="admin-section" id="money-report">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>📒 पैसा हिसाब विवरण</h3>
@@ -239,7 +234,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 </div>
 </section>
 
-<!-- DIGITAL MUSEUM -->
 <section class="admin-section" id="museum-admin">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
 <h3>🏛️ डिजिटल इतिहास तथा सम्झना संग्रहालय</h3>
@@ -409,7 +403,7 @@ function renderOfficials(){
  if(!officials.length){list.textContent="अहिलेसम्म संस्थापक वा पदाधिकारी थपिएको छैन।";return;}
  officials.forEach(person=>{
   const card=document.createElement("div");card.className="member";
-  const img=document.createElement("img");img.src=person.photo_url||"";img.alt=person.name;
+  const img=document.createElement("img");img.src=person.photo_url||"";img.alt=person.name||person.position;
   img.onerror=()=>{img.style.display="none";};
   const info=document.createElement("div");info.className="member-info";
   const name=document.createElement("strong");name.textContent=person.name||"नाम छैन";
@@ -429,7 +423,14 @@ async function saveOfficial(){
  const position=document.getElementById("officialPosition").value;
  const file=document.getElementById("officialPhoto").files[0];
  const btn=document.getElementById("officialSaveBtn");
- if(!name){alert("नाम लेख्नुहोस्।");return;}
+
+ // सचिव र उपसचिवका लागि नाम खाली राख्न अनुमति
+ const blankNameAllowed=position==="सचिव"||position==="उपसचिव";
+ if(!name&&!blankNameAllowed){
+  alert("यो पदका लागि नाम लेख्नुहोस्।");
+  return;
+ }
+
  btn.disabled=true;btn.textContent="सुरक्षित हुँदैछ...";
  try{
   let photoUrl=document.getElementById("officialPhotoUrl").value.trim();
@@ -591,7 +592,7 @@ async function saveMoney(){
  try{
   const response=await fetch(SUPABASE_URL+"/rest/v1/money_records",{method:"POST",headers:{...headers,"Prefer":"return=representation"},body:JSON.stringify(payload)});
   if(!response.ok)throw new Error(await response.text());
-  message("moneyMsg","पैसा हिसाब सुरक्षित भयो。");
+  message("moneyMsg","पैसा हिसाब सुरक्षित भयो।");
   document.getElementById("amount").value="";document.getElementById("description").value="";
   await loadMoney();
  }catch(error){message("moneyMsg","त्रुटि: "+error.message);}
@@ -763,4 +764,3 @@ start();
 </script>
 </body>
 </html>
- 
