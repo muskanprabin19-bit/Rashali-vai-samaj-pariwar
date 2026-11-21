@@ -55,6 +55,32 @@ footer{text-align:center;padding:22px;color:#64748b}
 .museum-item img{width:100%;max-width:240px;height:160px;object-fit:cover;border-radius:9px}
 .museum-item video{width:100%;max-width:420px;border-radius:9px;background:#111;display:block;margin:8px 0}
 .official-hint{padding:12px;background:#f0f6ff;border-radius:10px;color:#315477;font-size:13px;line-height:1.7}
+
+/* CHAT INBOX */
+.chat-layout{display:grid;grid-template-columns:minmax(220px,0.8fr) minmax(0,1.5fr);gap:14px}
+.chat-panel{border:1px solid #dbe3ed;border-radius:12px;overflow:hidden;min-width:0}
+.chat-panel-title{background:#eaf2fb;padding:12px;font-weight:bold;color:#123b70}
+.chat-conversation-list{max-height:520px;overflow-y:auto}
+.chat-conversation{padding:13px;border-bottom:1px solid #e2e8f0;cursor:pointer;background:white}
+.chat-conversation.active{background:#e8f3ff;border-left:4px solid #1263ad}
+.chat-conversation strong{display:block;color:#123b70;margin-bottom:5px}
+.chat-conversation small{color:#64748b;overflow-wrap:anywhere}
+.chat-messages{height:390px;overflow-y:auto;padding:12px;background:#f7faff;display:flex;flex-direction:column;gap:10px}
+.chat-bubble{max-width:85%;padding:11px 13px;border-radius:13px;overflow-wrap:anywhere;white-space:pre-wrap}
+.chat-bubble.visitor{align-self:flex-start;background:white;border:1px solid #dbe3ed}
+.chat-bubble.admin{align-self:flex-end;background:#dceeff;border:1px solid #c5e0fa}
+.chat-bubble small{display:block;margin-top:6px;color:#64748b;font-size:10px}
+.chat-compose{padding:12px;border-top:1px solid #e2e8f0}
+.chat-compose textarea{min-height:75px;margin-bottom:7px}
+.chat-empty{padding:20px;text-align:center;color:#64748b}
+.chat-unread{display:inline-block;background:#c62828;color:white;border-radius:20px;padding:2px 7px;font-size:11px;margin-left:5px}
+@media(max-width:650px){
+ .dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ header h2{font-size:23px}
+ .chat-layout{grid-template-columns:1fr}
+ .chat-conversation-list{max-height:250px}
+ .chat-messages{height:350px}
+}
 @media(min-width:650px){.dashboard-grid{grid-template-columns:repeat(4,minmax(0,1fr))}header h2{font-size:27px}}
 </style>
 </head>
@@ -97,7 +123,37 @@ footer{text-align:center;padding:22px;color:#64748b}
 <a class="dash-card" href="#museum-admin"><span class="dash-icon teal">🏛️</span><strong>डिजिटल संग्रहालय</strong><small>फोटो, भिडियो थप्ने र हटाउने</small></a>
 <a class="dash-card" href="genealogy-admin.html"><span class="dash-icon purple">🌳</span><strong>वंशावली व्यवस्थापन</strong><small>परिवार विवरण र नाता सम्बन्ध</small></a>
 <a class="dash-card" href="membership-manager.html"><span class="dash-icon blue">👥</span><strong>Membership Manager</strong><small>सदस्य विवरण, बिलिङ तथा हाजिरी व्यवस्थापन</small></a>
+<a class="dash-card" href="#chat-inbox"><span class="dash-icon green">💬</span><strong>Chat Inbox</strong><small>सन्देश पढ्ने र जवाफ दिने</small></a>
 </div>
+
+<section class="admin-section" id="chat-inbox">
+<a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
+<h3>💬 सदस्य तथा आगन्तुक Chat Inbox</h3>
+<p class="small">वेबसाइटबाट आएका सन्देश हेर्नुहोस् र यहीँबाट जवाफ पठाउनुहोस्।</p>
+<div class="actions">
+<button onclick="loadChatInbox()">🔄 Inbox Refresh</button>
+</div>
+<div id="chatStatus" class="msg">सन्देश लोड हुँदैछ...</div>
+<div class="chat-layout">
+ <div class="chat-panel">
+  <div class="chat-panel-title">📥 कुराकानी सूची</div>
+  <div id="chatConversationList" class="chat-conversation-list">
+   <div class="chat-empty">कुराकानी लोड हुँदैछ...</div>
+  </div>
+ </div>
+ <div class="chat-panel">
+  <div class="chat-panel-title" id="activeChatTitle">💬 कुराकानी छान्नुहोस्</div>
+  <div id="chatMessages" class="chat-messages">
+   <div class="chat-empty">बायाँबाट कुनै कुराकानी छान्नुहोस्।</div>
+  </div>
+  <div class="chat-compose">
+   <textarea id="chatReply" placeholder="यहाँ आफ्नो जवाफ लेख्नुहोस्..." disabled></textarea>
+   <button id="chatSendBtn" onclick="sendChatReply()" disabled>📨 जवाफ पठाउनुहोस्</button>
+   <button class="secondary" onclick="loadActiveChat()" id="chatReloadBtn" disabled>🔄 सन्देश Refresh</button>
+  </div>
+ </div>
+</div>
+</section>
 
 <section class="admin-section" id="settings">
 <a class="backtop" href="#">↑ Admin Dashboard मा फर्कनुहोस्</a>
@@ -285,6 +341,7 @@ let moneyRecords=[];
 let officials=[];
 let editId=null;
 
+/* COMMON */
 document.getElementById("recordDate").value=new Date().toISOString().slice(0,10);
 
 function message(id,text){
@@ -334,6 +391,7 @@ async function uploadPhoto(file,folder){
  return SUPABASE_URL+"/storage/v1/object/public/Photos/"+encoded;
 }
 
+/* WEBSITE SETTINGS */
 async function loadSettings(){
  try{
   const response=await fetch(SUPABASE_URL+"/rest/v1/website_settings?id=eq.1&select=*",{headers});
@@ -423,14 +481,8 @@ async function saveOfficial(){
  const position=document.getElementById("officialPosition").value;
  const file=document.getElementById("officialPhoto").files[0];
  const btn=document.getElementById("officialSaveBtn");
-
- // सचिव र उपसचिवका लागि नाम खाली राख्न अनुमति
  const blankNameAllowed=position==="सचिव"||position==="उपसचिव";
- if(!name&&!blankNameAllowed){
-  alert("यो पदका लागि नाम लेख्नुहोस्।");
-  return;
- }
-
+ if(!name&&!blankNameAllowed){alert("यो पदका लागि नाम लेख्नुहोस्।");return;}
  btn.disabled=true;btn.textContent="सुरक्षित हुँदैछ...";
  try{
   let photoUrl=document.getElementById("officialPhotoUrl").value.trim();
@@ -744,6 +796,166 @@ async function deleteMuseumItem(table,bucket,id,path){
  }catch(error){alert("❌ हटाउन सकिएन: "+error.message);}
 }
 
+/* CHAT INBOX */
+let activeChatId=null;
+let chatConversations=[];
+let chatMessages=[];
+
+function chatField(obj,names,fallback=""){
+ for(const name of names){
+  if(obj && obj[name]!==undefined && obj[name]!==null && obj[name]!=="")return obj[name];
+ }
+ return fallback;
+}
+
+function chatDate(value){
+ if(!value)return "";
+ const date=new Date(value);
+ return isNaN(date.getTime())?String(value):date.toLocaleString("ne-NP");
+}
+
+async function loadChatInbox(){
+ const list=document.getElementById("chatConversationList");
+ message("chatStatus","कुराकानी लोड हुँदैछ...");
+ list.innerHTML='<div class="chat-empty">लोड हुँदैछ...</div>';
+ try{
+  const response=await fetch(SUPABASE_URL+"/rest/v1/chat_conversations?select=*&order=created_at.desc",{headers});
+  if(!response.ok)throw new Error(await response.text());
+  chatConversations=await response.json();
+  renderChatConversations();
+  message("chatStatus","✅ "+chatConversations.length+" वटा कुराकानी भेटिए।");
+  if(activeChatId!==null){
+   const stillExists=chatConversations.some(c=>String(c.id)===String(activeChatId));
+   if(stillExists)await loadActiveChat();
+   else{
+    activeChatId=null;
+    document.getElementById("activeChatTitle").textContent="💬 कुराकानी छान्नुहोस्";
+    document.getElementById("chatMessages").innerHTML='<div class="chat-empty">बायाँबाट कुनै कुराकानी छान्नुहोस्।</div>';
+   }
+  }
+ }catch(error){
+  list.textContent="Inbox लोड भएन: "+error.message;
+  message("chatStatus","❌ Chat Inbox त्रुटि: "+error.message);
+ }
+}
+
+function renderChatConversations(){
+ const list=document.getElementById("chatConversationList");
+ list.innerHTML="";
+ if(!chatConversations.length){
+  list.innerHTML='<div class="chat-empty">अहिलेसम्म कुनै कुराकानी आएको छैन।</div>';
+  return;
+ }
+ chatConversations.forEach(c=>{
+  const item=document.createElement("div");
+  item.className="chat-conversation"+(String(c.id)===String(activeChatId)?" active":"");
+  const name=document.createElement("strong");
+  name.textContent=chatField(c,["visitor_name","name","full_name","customer_name","user_name"],"नाम नखुलेको आगन्तुक");
+  const email=document.createElement("small");
+  email.textContent=chatField(c,["visitor_email","email","user_email"],"");
+  const status=document.createElement("small");
+  status.style.display="block";
+  status.textContent="स्थिति: "+chatField(c,["status"],"खुला");
+  const date=document.createElement("small");
+  date.style.display="block";
+  date.textContent=chatDate(chatField(c,["last_message_at","updated_at","created_at"],""));
+  item.append(name,email,status,date);
+  item.onclick=()=>openChat(c.id);
+  list.append(item);
+ });
+}
+
+async function openChat(id){
+ activeChatId=id;
+ renderChatConversations();
+ const conversation=chatConversations.find(c=>String(c.id)===String(id));
+ const name=conversation?chatField(conversation,["visitor_name","name","full_name","customer_name","user_name"],"आगन्तुक"):"आगन्तुक";
+ document.getElementById("activeChatTitle").textContent="💬 "+name;
+ document.getElementById("chatReply").disabled=false;
+ document.getElementById("chatSendBtn").disabled=false;
+ document.getElementById("chatReloadBtn").disabled=false;
+ await loadActiveChat();
+}
+
+async function loadActiveChat(){
+ if(activeChatId===null)return;
+ const box=document.getElementById("chatMessages");
+ box.innerHTML='<div class="chat-empty">सन्देश लोड हुँदैछ...</div>';
+ try{
+  let response=await fetch(SUPABASE_URL+"/rest/v1/chat_messages?select=*&conversation_id=eq."+encodeURIComponent(activeChatId)+"&order=created_at.asc",{headers});
+  if(!response.ok){
+   response=await fetch(SUPABASE_URL+"/rest/v1/chat_messages?select=*&conversation_id=eq."+encodeURIComponent(activeChatId),{headers});
+  }
+  if(!response.ok)throw new Error(await response.text());
+  chatMessages=await response.json();
+  box.innerHTML="";
+  if(!chatMessages.length){
+   box.innerHTML='<div class="chat-empty">यो कुराकानीमा अहिलेसम्म सन्देश छैन।</div>';
+   return;
+  }
+  chatMessages.forEach(m=>{
+   const sender=String(chatField(m,["sender_role","sender","role","sender_type","created_by"],"visitor")).toLowerCase();
+   const isAdmin=sender.includes("admin")||sender.includes("staff");
+   const bubble=document.createElement("div");
+   bubble.className="chat-bubble "+(isAdmin?"admin":"visitor");
+   const body=document.createElement("div");
+   body.textContent=chatField(m,["message","content","body","text","message_text"],"[सन्देशको सामग्री भेटिएन]");
+   const meta=document.createElement("small");
+   meta.textContent=(isAdmin?"Admin":"आगन्तुक")+" • "+chatDate(chatField(m,["created_at","sent_at","timestamp"],""));
+   bubble.append(body,meta);
+   box.append(bubble);
+  });
+  box.scrollTop=box.scrollHeight;
+ }catch(error){
+  box.textContent="सन्देश लोड भएन: "+error.message;
+  message("chatStatus","❌ सन्देश लोड भएन: "+error.message);
+ }
+}
+
+async function sendChatReply(){
+ if(activeChatId===null){alert("पहिले कुराकानी छान्नुहोस्।");return;}
+ const input=document.getElementById("chatReply");
+ const textValue=input.value.trim();
+ if(!textValue){alert("जवाफ लेख्नुहोस्।");return;}
+ const btn=document.getElementById("chatSendBtn");
+ btn.disabled=true;btn.textContent="पठाउँदै...";
+ try{
+  /*
+   * पहिला सामान्य column नामहरू प्रयोग गरिन्छ।
+   * Database को column फरक भए अर्को मिल्ने ढाँचा प्रयास हुन्छ।
+   */
+  const payloads=[
+   {conversation_id:activeChatId,sender_role:"admin",message:textValue},
+   {conversation_id:activeChatId,sender:"admin",message:textValue},
+   {conversation_id:activeChatId,sender_role:"admin",content:textValue},
+   {conversation_id:activeChatId,sender:"admin",content:textValue},
+   {conversation_id:activeChatId,role:"admin",message:textValue},
+   {conversation_id:activeChatId,sender_type:"admin",message:textValue},
+   {conversation_id:activeChatId,sender_role:"admin",body:textValue},
+   {conversation_id:activeChatId,sender:"admin",body:textValue}
+  ];
+  let saved=false,lastError="";
+  for(const payload of payloads){
+   const response=await fetch(SUPABASE_URL+"/rest/v1/chat_messages",{
+    method:"POST",
+    headers:{...headers,"Prefer":"return=representation"},
+    body:JSON.stringify(payload)
+   });
+   if(response.ok){saved=true;break;}
+   lastError=await response.text();
+  }
+  if(!saved)throw new Error(lastError||"सन्देश सुरक्षित भएन।");
+  input.value="";
+  message("chatStatus","✅ जवाफ पठाइयो।");
+  await loadActiveChat();
+  await loadChatInbox();
+ }catch(error){
+  message("chatStatus","❌ जवाफ पठाउन सकिएन: "+error.message);
+ }finally{
+  btn.disabled=false;btn.textContent="📨 जवाफ पठाउनुहोस्";
+ }
+}
+
 /* LOGOUT */
 function logout(){
  localStorage.removeItem("rasali_access_token");
@@ -759,6 +971,7 @@ async function start(){
  await loadMoney();
  await loadMuseumAdmin();
  await loadOfficials();
+ await loadChatInbox();
 }
 start();
 </script>
