@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -85,7 +84,7 @@ nav a:nth-child(9n){color:#ffd1a9}
 .founder-avatar,.official-avatar{width:125px;height:125px;border-radius:50%;margin:0 auto 9px;display:flex;align-items:center;justify-content:center;font-size:45px;font-weight:900;background:#e0f2fe;color:#075985;border:4px solid var(--blue2)}
 .founder-avatar{width:145px;height:145px;border:5px solid #dfbd50}
 
-/* पदाधिकारी: ६ जना एउटै लाइनमा */
+/* पदाधिकारी */
 .official-card{flex:0 0 calc((100% - 40px)/6);min-width:105px;padding:10px 5px!important;border-radius:11px}
 .official-card h3{font-size:13px;line-height:1.5;overflow-wrap:anywhere;margin-bottom:2px}
 .official-card .official-avatar,.official-card img{width:62px;height:62px;font-size:25px;border-width:3px;margin:0 auto 5px}
@@ -204,6 +203,20 @@ nav a:nth-child(9n){color:#ffd1a9}
 .login-box{background:linear-gradient(120deg,var(--blue),var(--blue2));color:white}
 .login-box h2{color:white}
 .login-box a{display:inline-block;margin-top:12px;background:white;color:var(--blue);padding:10px 25px;border-radius:25px;font-weight:900}
+
+/* नयाँ Chat सुविधा */
+.chat-home{background:linear-gradient(135deg,#e8f7ff,#fff);border:2px solid #a9d9f5}
+.chat-form{max-width:650px;margin:18px auto 0;text-align:left}
+.chat-form label{display:block;font-weight:900;color:#173b70;margin:12px 0 5px}
+.chat-form input,.chat-form textarea{width:100%;padding:12px;border:1px solid #bfd1e5;border-radius:9px;font-family:inherit;font-size:14px;background:#fff;color:#192b49}
+.chat-form textarea{min-height:125px;resize:vertical}
+.chat-send{display:block;width:100%;margin-top:15px;padding:13px;border:0;border-radius:10px;background:linear-gradient(120deg,#0878e8,#073b91);color:white;font-family:inherit;font-weight:900;font-size:16px;cursor:pointer}
+.chat-send:disabled{opacity:.6;cursor:wait}
+.chat-status{margin-top:12px;padding:11px;border-radius:9px;text-align:center;font-weight:700;display:none}
+.chat-status.success{display:block;background:#dcfce7;color:#166534}
+.chat-status.failure{display:block;background:#fee2e2;color:#991b1b}
+.chat-status.info{display:block;background:#e0f2fe;color:#075985}
+
 footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)}
 
 @media(max-width:1100px){
@@ -326,6 +339,7 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  <a href="rules.html">📖<span>नियमावली</span></a>
  <a href="#calendar">📅<span>Calendar</span></a>
  <a href="#notice">📢<span>सूचना</span></a>
+ <a href="#chat">💬<span>सन्देश</span></a>
  <a href="#complaint">✍️<span>गुनासो</span></a>
  <a href="#contact">📞<span>सम्पर्क</span></a>
  <a href="voucher.html">📄<span>भौचर</span></a>
@@ -345,23 +359,16 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  <p style="margin-top:12px">स्थापना: <b id="heroEstd">२०८२</b></p>
 </section>
 
-<!-- संस्थापक: स्वागत सन्देशको ठीक तल -->
 <section id="founder" class="section founder-section">
  <h2 class="section-title">🌟 समाजका संस्थापक</h2>
- <div id="founderDisplay">
-  <div class="official-empty">⏳ संस्थापकको विवरण लोड हुँदैछ...</div>
- </div>
+ <div id="founderDisplay"><div class="official-empty">⏳ संस्थापकको विवरण लोड हुँदैछ...</div></div>
 </section>
 
-<!-- पदाधिकारी: संस्थापकको ठीक तल, ६ जना एउटै लाइनमा -->
 <section id="official" class="section">
  <h2 class="section-title">🤝 समाजका पदाधिकारीहरू</h2>
- <div id="officialsDisplay" class="official-grid">
-  <div class="official-empty">⏳ पदाधिकारीहरूको विवरण लोड हुँदैछ...</div>
- </div>
+ <div id="officialsDisplay" class="official-grid"><div class="official-empty">⏳ पदाधिकारीहरूको विवरण लोड हुँदैछ...</div></div>
 </section>
 
-<!-- सदस्य सूची: पदाधिकारीको ठीक तल -->
 <section id="member" class="section member-section">
  <div class="member-layout">
   <div class="directory-panel">
@@ -396,8 +403,6 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
 <div id="memberModal" class="member-modal" onclick="if(event.target===this)closeMemberDetails()">
  <div class="modal-box"><div id="modalContent"></div><button class="close-button" onclick="closeMemberDetails()">बन्द गर्नुहोस्</button></div>
 </div>
-
-<!-- बाँकी वेबसाइटका सेक्सनहरू सदस्य सूचीपछि सुरु हुन्छन् -->
 
 <section class="section">
  <h2 class="section-title">📘 समाज तथा ऋणसम्बन्धी जानकारी</h2>
@@ -436,11 +441,11 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
    <a href="login.html" class="service-btn"><span class="btn-icon">🔐</span><span>सदस्य Login</span></a>
    <a href="museum.html" class="service-btn"><span class="btn-icon">🏛️</span><span>इतिहास संग्रहालय</span></a>
    <a href="money-exchange.html" class="service-btn"><span class="btn-icon">💱</span><span>Money Exchange Rate</span></a>
+   <a href="#chat" class="service-btn"><span class="btn-icon">💬</span><span>हामीलाई सन्देश पठाउनुहोस्</span></a>
   </div>
  </div>
 </section>
 
-<!-- सार्वजनिक मासिक बचत -->
 <section id="savings" class="section savings-section">
  <h2 class="section-title">💰 सदस्यहरूको मासिक बचत स्थिति</h2>
  <p class="savings-intro">आफूले चाहेको आर्थिक वर्ष र महिना छानेर सदस्यहरूको बचत अवस्था हेर्नुहोस्।</p>
@@ -519,6 +524,30 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
 <section id="complaint" class="section">
  <h2 class="section-title">📝 गुनासो तथा सुझाव</h2>
  <div class="card complaint-box"><h3>गुनासो / सुझाव</h3><p>समाजसँग सम्बन्धित कुनै गुनासो वा सुझाव भएमा सम्पर्क गर्नुहोस्।</p></div>
+</section>
+
+<!-- सदस्य तथा आगन्तुक Chat Form -->
+<section id="chat" class="section">
+ <h2 class="section-title">💬 हामीलाई सन्देश पठाउनुहोस्</h2>
+ <div class="card chat-home">
+  <div style="font-size:48px">💬🤝</div>
+  <h3>रसाली भाई समाज परिवारसँग कुरा गर्नुहोस्</h3>
+  <p>तपाईंको प्रश्न, सुझाव वा सन्देश यहाँ पठाउनुहोस्। समाजका Admin ले सन्देश हेरेर जवाफ दिनुहुनेछ।</p>
+
+  <form id="publicChatForm" class="chat-form" onsubmit="sendPublicChat(event)">
+   <label for="chatVisitorName">तपाईंको नाम *</label>
+   <input type="text" id="chatVisitorName" maxlength="100" placeholder="आफ्नो नाम लेख्नुहोस्" required>
+
+   <label for="chatVisitorEmail">Email (वैकल्पिक)</label>
+   <input type="email" id="chatVisitorEmail" maxlength="150" placeholder="आफ्नो Email लेख्नुहोस्">
+
+   <label for="chatVisitorMessage">तपाईंको सन्देश *</label>
+   <textarea id="chatVisitorMessage" maxlength="3000" placeholder="यहाँ आफ्नो सन्देश लेख्नुहोस्..." required></textarea>
+
+   <button type="submit" id="chatSubmitButton" class="chat-send">📨 सन्देश पठाउनुहोस्</button>
+   <div id="publicChatStatus" class="chat-status" role="status" aria-live="polite"></div>
+  </form>
+ </div>
 </section>
 
 <section class="section">
@@ -620,7 +649,6 @@ async function loadWebsiteSettings(){
   setText("bhamsainiName",data.bhamsaini_name);
 
   if(data.estd){
-   /* Admin मा ESTD दोहोरिएर लेखिएको भए पनि वेबसाइटमा एकपटक मात्र देखाउने */
    const cleanEstd=String(data.estd)
     .replace(/स्थापना\s*:/gi,"")
     .replace(/\|\s*ESTD\s*/gi," ")
@@ -686,7 +714,6 @@ async function loadOfficials(){
    founderArea.innerHTML='<div class="official-empty">संस्थापकको विवरण हाल उपलब्ध छैन।</div>';
   }
 
-  /* पदको निर्धारित क्रम: अध्यक्ष, उपाध्यक्ष, सचिव, उपसचिव, प्रस्तावक, कोषाध्यक्ष */
   const positionOrder=["अध्यक्ष","उपाध्यक्ष","सचिव","उपसचिव","प्रस्तावक","कोषाध्यक्ष"];
   officials.sort((a,b)=>{
    const pa=String(a.position||"").replace(/\s/g,"");
@@ -1039,6 +1066,79 @@ async function loadPublicSavings(){
  }
 }
 
+/* सार्वजनिक Chat: कुराकानी सुरु गरेर सन्देश सुरक्षित गर्ने */
+function showPublicChatStatus(message,type){
+ const status=document.getElementById("publicChatStatus");
+ status.textContent=message;
+ status.className="chat-status "+type;
+}
+
+async function sendPublicChat(event){
+ event.preventDefault();
+
+ const name=document.getElementById("chatVisitorName").value.trim();
+ const email=document.getElementById("chatVisitorEmail").value.trim();
+ const message=document.getElementById("chatVisitorMessage").value.trim();
+ const button=document.getElementById("chatSubmitButton");
+
+ if(!name||!message){
+  showPublicChatStatus("कृपया आफ्नो नाम र सन्देश लेख्नुहोस्।","failure");
+  return;
+ }
+
+ if(message.length<2){
+  showPublicChatStatus("कृपया अलि विस्तृत सन्देश लेख्नुहोस्।","failure");
+  return;
+ }
+
+ button.disabled=true;
+ button.textContent="⏳ सन्देश पठाउँदै...";
+ showPublicChatStatus("तपाईंको सन्देश सुरक्षित हुँदैछ...","info");
+
+ try{
+  /* पहिले नयाँ कुराकानी तयार गर्ने */
+  const {data:conversation,error:conversationError}=await supabaseClient
+   .from("chat_conversations")
+   .insert({
+    visitor_name:name,
+    visitor_email:email||null,
+    status:"open",
+    last_message_at:new Date().toISOString()
+   })
+   .select("id")
+   .single();
+
+  if(conversationError)throw conversationError;
+  if(!conversation||!conversation.id){
+   throw new Error("कुराकानी ID प्राप्त भएन।");
+  }
+
+  /* त्यसपछि सदस्यको सन्देश सुरक्षित गर्ने */
+  const {error:messageError}=await supabaseClient
+   .from("chat_messages")
+   .insert({
+    conversation_id:conversation.id,
+    sender_role:"visitor",
+    message:message
+   });
+
+  if(messageError)throw messageError;
+
+  document.getElementById("chatVisitorMessage").value="";
+  showPublicChatStatus("✅ तपाईंको सन्देश सफलतापूर्वक पठाइयो। समाजका Admin ले जवाफ दिनुहुनेछ।","success");
+
+ }catch(error){
+  console.error("Public chat send error:",error);
+  showPublicChatStatus(
+   "❌ सन्देश पठाउन सकिएन। समस्या: "+(error.message||"Supabase अनुमति वा तालिकाको विवरण जाँच गर्नुहोस्।"),
+   "failure"
+  );
+ }finally{
+  button.disabled=false;
+  button.textContent="📨 सन्देश पठाउनुहोस्";
+ }
+}
+
 /* सबै सामग्री लोड */
 loadWebsiteSettings();
 loadOfficials();
@@ -1049,4 +1149,3 @@ loadPublicSavings();
 </script>
 </body>
 </html>
- 
