@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+ 
+<!DOCTYPE html>
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
@@ -12,28 +13,117 @@
 html{scroll-behavior:smooth;scroll-padding-top:20px}
 body{font-family:"Noto Sans Devanagari",Arial,sans-serif;background:#edf4fc;color:#192b49;line-height:1.7}
 a{text-decoration:none}
-:root{--blue:#073b91;--blue2:#0878e8;--red:#c01832;--shadow:0 5px 18px #092e6315}
-.topbar{background:var(--blue);color:white;text-align:center;padding:7px;font-size:13px}
-header{background:linear-gradient(120deg,#e8f1ff,#fff,#fcecef);border-bottom:5px solid var(--red);padding:12px 10px 20px;text-align:center;overflow:hidden;position:relative}
-header:before,header:after{content:"";position:absolute;width:190px;height:190px;border:22px solid #0878e80b;border-radius:50%;pointer-events:none}
-header:before{top:-130px;left:-90px}
-header:after{bottom:-145px;right:-80px}
-.arch-title{display:block;width:min(100%,900px);height:auto;margin:0 auto -4px;overflow:visible;position:relative;z-index:1}
-.arch-title text{font-family:"Noto Sans Devanagari",Arial,sans-serif;font-size:62px;font-weight:900;fill:var(--blue);stroke:#fff;stroke-width:2px;paint-order:stroke;stroke-linejoin:round}
-.header-images{display:flex;align-items:center;justify-content:center;gap:25px;margin:0 auto 8px;position:relative;z-index:2}
-.header-side-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:125px}
-.header-side{width:100px;height:100px;object-fit:cover;border-radius:50%;border:4px solid var(--red);background:white;box-shadow:0 4px 12px #092e6325}
-.logo{width:125px;height:125px;object-fit:contain;border-radius:50%;background:white;border:5px solid var(--blue);padding:4px;box-shadow:0 4px 14px #092e6330}
-.logo-fallback{width:125px;height:125px;border-radius:50%;background:white;color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:45px;border:5px solid var(--blue);box-shadow:0 4px 14px #092e6330}
+:root{--blue:#073b91;--blue2:#0878e8;--red:#c01832;--green:#16834b;--shadow:0 5px 18px #092e6315}
+
+/* Top bar */
+.topbar{
+ background:linear-gradient(100deg,#073b91,#0878e8,#073b91);
+ color:white;text-align:center;padding:8px;font-size:13px;
+ font-weight:900;letter-spacing:.2px
+}
+
+/* नयाँ Header */
+header{
+ background:
+  radial-gradient(ellipse at 50% 0%,#ffffff 0%,#eaf6ff 48%,transparent 75%),
+  linear-gradient(135deg,#d8edff 0%,#ffffff 48%,#e5f6e9 100%);
+ border-bottom:6px solid var(--red);
+ padding:15px 10px 38px;
+ text-align:center;overflow:hidden;position:relative;
+ isolation:isolate;
+}
+header:before{
+ content:"";position:absolute;z-index:-1;bottom:0;left:0;width:100%;height:100px;
+ background:linear-gradient(145deg,transparent 30%,#b8dfc4 30.5%,#78bd8a 65%,transparent 65.5%);
+ clip-path:polygon(0 100%,0 72%,13% 28%,24% 73%,38% 18%,52% 76%,67% 30%,82% 78%,93% 38%,100% 72%,100% 100%);
+ opacity:.55;pointer-events:none
+}
+header:after{
+ content:"";position:absolute;z-index:-1;bottom:-2px;left:-5%;width:110%;height:37px;
+ background:linear-gradient(90deg,#0878e8,#b8e6c5,#0878e8);
+ border-radius:50% 50% 0 0 / 55% 55% 0 0;
+ opacity:.75;pointer-events:none
+}
+.header-landscape{
+ position:absolute;z-index:-1;bottom:0;left:0;width:100%;height:90px;
+ pointer-events:none;overflow:hidden
+}
+.header-landscape span{
+ position:absolute;bottom:0;width:55%;height:75px;
+ background:linear-gradient(145deg,#b3dbb7,#5ca978);
+ clip-path:polygon(0 100%,22% 38%,36% 65%,58% 8%,78% 63%,100% 30%,100% 100%);
+ opacity:.42
+}
+.header-landscape span:first-child{left:-8%}
+.header-landscape span:last-child{right:-8%;transform:scaleX(-1);opacity:.32}
+
+.arch-title{
+ display:block;width:min(100%,900px);height:auto;margin:0 auto -4px;
+ overflow:visible;position:relative;z-index:1
+}
+.arch-title text{
+ font-family:"Noto Sans Devanagari",Arial,sans-serif;
+ font-size:62px;font-weight:900;fill:var(--blue);
+ stroke:#fff;stroke-width:3px;paint-order:stroke;stroke-linejoin:round;
+ filter:drop-shadow(0 3px 2px #073b9120)
+}
+.header-images{
+ display:flex;align-items:center;justify-content:center;gap:25px;
+ margin:0 auto 8px;position:relative;z-index:2
+}
+.header-side-wrap{
+ display:flex;flex-direction:column;align-items:center;gap:5px;width:125px
+}
+.header-side{
+ width:100px;height:100px;object-fit:cover;border-radius:50%;
+ border:4px solid var(--red);background:white;
+ box-shadow:0 5px 15px #092e6330
+}
+.logo{
+ width:125px;height:125px;object-fit:contain;border-radius:50%;
+ background:white;border:5px solid var(--blue);padding:4px;
+ box-shadow:0 5px 18px #092e6335
+}
+.logo-fallback{
+ width:125px;height:125px;border-radius:50%;background:white;color:var(--blue);
+ display:flex;align-items:center;justify-content:center;font-size:45px;
+ border:5px solid var(--blue);box-shadow:0 5px 18px #092e6335
+}
 .header-side-name{font-weight:900;font-size:14px;color:var(--blue)}
-.english{font-size:18px;font-weight:900;color:var(--red)}
-#siteAddress{font-size:14px;color:#394b66}
-.tagline{font-weight:900;color:var(--red);margin-top:5px}
-.estd{display:inline-block;margin-top:9px;background:var(--blue);color:white;padding:5px 20px;border-radius:25px;font-weight:900}
+.english{
+ font-size:18px;font-weight:900;color:var(--red);
+ text-shadow:0 1px 0 white;position:relative;z-index:2
+}
+#siteAddress{font-size:14px;color:#263e5d;font-weight:700;position:relative;z-index:2}
+.tagline{
+ display:table;margin:7px auto 0;font-weight:900;color:#087b48;
+ background:#ffffffd9;border:1px solid #b7dfc5;
+ padding:3px 17px;border-radius:30px;position:relative;z-index:2
+}
+.estd{
+ display:inline-block;margin-top:9px;
+ background:linear-gradient(100deg,var(--blue),var(--blue2));
+ color:white;padding:6px 23px;border-radius:25px;
+ font-weight:900;box-shadow:0 4px 10px #073b9130;
+ position:relative;z-index:2
+}
 
 /* Navigation */
-nav{position:relative;z-index:1;background:linear-gradient(120deg,#073b91,#0878e8);padding:12px 10px;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:9px 10px;justify-items:stretch;box-shadow:0 4px 14px #0002}
-nav a{width:100%;min-width:0;min-height:42px;border-radius:7px;background:transparent;color:#fff;display:flex;justify-content:center;align-items:center;gap:5px;text-align:center;padding:7px 3px;font-size:11px;font-weight:900;line-height:1.35}
+nav{
+ position:relative;z-index:1;
+ background:linear-gradient(120deg,#073b91,#0878e8);
+ padding:12px 10px;display:grid;
+ grid-template-columns:repeat(9,minmax(0,1fr));
+ gap:9px 10px;justify-items:stretch;
+ box-shadow:0 4px 14px #0002
+}
+nav a{
+ width:100%;min-width:0;min-height:42px;border-radius:7px;
+ background:transparent;color:#fff;display:flex;
+ justify-content:center;align-items:center;gap:5px;
+ text-align:center;padding:7px 3px;font-size:11px;
+ font-weight:900;line-height:1.35;transition:.2s
+}
 nav a:hover{transform:translateY(-2px);color:#ffe082;text-decoration:underline}
 nav a:nth-child(9n+1){color:#fff}
 nav a:nth-child(9n+2){color:#b9f6ca}
@@ -46,7 +136,11 @@ nav a:nth-child(9n+8){color:#a7ffeb}
 nav a:nth-child(9n){color:#ffd1a9}
 
 .container{max-width:1450px;margin:auto;padding:18px 15px}
-.hero{background:linear-gradient(120deg,#073b91,#0878e8);color:white;border-radius:18px;padding:40px 18px;text-align:center;margin-top:10px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero{
+ background:linear-gradient(120deg,#073b91,#0878e8);
+ color:white;border-radius:18px;padding:40px 18px;text-align:center;
+ margin-top:10px;box-shadow:var(--shadow);position:relative;overflow:hidden
+}
 .hero:after{content:"🤝";position:absolute;right:25px;top:10px;font-size:75px;opacity:.12}
 .hero h2{font-size:28px;margin-bottom:10px}
 .hero p{font-size:15px}
@@ -77,7 +171,7 @@ nav a:nth-child(9n){color:#ffd1a9}
 .service-btn:nth-child(8n){background:#475569}
 
 /* Founder */
-.founder-section{background:linear-gradient(135deg,#fff8df,#fff);border:2px solid #e4c76d;border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+.founder-section{background:linear-gradient(135deg,#fff8df,#fff);border:2px solid #e4c76d;border-radius:18px;padding:20px}
 .founder-card{max-width:430px;margin:auto;background:#fff;border:2px solid #e4c76d;border-radius:18px;padding:22px;text-align:center;box-shadow:0 5px 16px #a17b241c}
 .founder-photo,.official-photo{width:125px;height:125px;object-fit:cover;border-radius:50%;border:4px solid var(--blue2);margin:0 auto 9px;display:block;background:#eaf3ff}
 .founder-photo{width:145px;height:145px;border:5px solid #dfbd50}
@@ -204,7 +298,7 @@ nav a:nth-child(9n){color:#ffd1a9}
 .login-box h2{color:white}
 .login-box a{display:inline-block;margin-top:12px;background:white;color:var(--blue);padding:10px 25px;border-radius:25px;font-weight:900}
 
-/* नयाँ Chat सुविधा */
+/* Chat */
 .chat-home{background:linear-gradient(135deg,#e8f7ff,#fff);border:2px solid #a9d9f5}
 .chat-form{max-width:650px;margin:18px auto 0;text-align:left}
 .chat-form label{display:block;font-weight:900;color:#173b70;margin:12px 0 5px}
@@ -217,7 +311,10 @@ nav a:nth-child(9n){color:#ffd1a9}
 .chat-status.failure{display:block;background:#fee2e2;color:#991b1b}
 .chat-status.info{display:block;background:#e0f2fe;color:#075985}
 
-footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)}
+footer{
+ margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));
+ color:white;text-align:center;padding:28px 15px;border-top:5px solid var(--red)
+}
 
 @media(max-width:1100px){
  .member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -238,7 +335,7 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  .museum-live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:600px){
- header{padding:9px 5px 15px}
+ header{padding:9px 5px 32px}
  .arch-title{width:100%;margin-bottom:0}
  .arch-title text{font-size:65px}
  .header-images{gap:8px;margin-bottom:7px}
@@ -248,7 +345,7 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  .header-side-name{font-size:11px}
  .english{font-size:14px}
  #siteAddress{font-size:12px}
- .tagline{font-size:13px}
+ .tagline{font-size:12px;padding:3px 12px}
  .estd{font-size:12px;padding:4px 15px}
  nav{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:9px 6px}
  nav a{min-height:42px;font-size:10px;padding:7px 3px;gap:4px;border-radius:7px}
@@ -306,10 +403,13 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
 <div class="topbar" id="topbarTitle">🤝 रसाली भाई समाज परिवार चौराठा</div>
 
 <header>
+ <div class="header-landscape" aria-hidden="true"><span></span><span></span></div>
+
  <svg class="arch-title" viewBox="0 0 1000 220" role="img" aria-label="रसाली भाई समाज परिवार चौराठा">
   <defs><path id="titleArchPath" d="M45,190 Q500,-45 955,190"/></defs>
   <text><textPath id="siteTitle" href="#titleArchPath" startOffset="50%" text-anchor="middle">रसाली भाई समाज परिवार चौराठा</textPath></text>
  </svg>
+
  <div class="header-images">
   <div class="header-side-wrap">
    <img id="mabaiImage" class="header-side" src="" alt="माबै देवता" style="display:none">
@@ -322,10 +422,11 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
    <span id="bhamsainiName" class="header-side-name">भामसैनी देवी</span>
   </div>
  </div>
+
  <div class="english" id="siteTitleEnglish">RASHALI BHAI SAMAJ PARIWAR</div>
- <div id="siteAddress">चौराठा, दैलेख, नेपाल</div>
- <div class="tagline" id="siteTagline">एकता • सेवा • समर्पण</div>
- <div class="estd" id="siteEstd">स्थापना: २०८२ | ESTD 2082</div>
+ <div id="siteAddress">चौराठा, दैलेख</div>
+ <div class="tagline" id="siteTagline">एकता • भाई समाज सेवा</div>
+ <div class="estd" id="siteEstd">स्थापना: २०८२</div>
 </header>
 
 <nav>
@@ -355,7 +456,7 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
 <section class="hero">
  <h2 id="welcomeTitle">रसाली भाई समाज परिवारमा हार्दिक स्वागत छ 🙏</h2>
  <p>हाम्रो समाजको उद्देश्य एकता, सहयोग, सेवा र भाइचारालाई अझ मजबुत बनाउनु हो।</p>
- <div class="hero-tag">एकता • सेवा • समर्पण</div>
+ <div class="hero-tag">एकता • भाई समाज सेवा</div>
  <p style="margin-top:12px">स्थापना: <b id="heroEstd">२०८२</b></p>
 </section>
 
@@ -526,7 +627,6 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
  <div class="card complaint-box"><h3>गुनासो / सुझाव</h3><p>समाजसँग सम्बन्धित कुनै गुनासो वा सुझाव भएमा सम्पर्क गर्नुहोस्।</p></div>
 </section>
 
-<!-- सदस्य तथा आगन्तुक Chat Form -->
 <section id="chat" class="section">
  <h2 class="section-title">💬 हामीलाई सन्देश पठाउनुहोस्</h2>
  <div class="card chat-home">
@@ -577,7 +677,7 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
 <section class="section">
  <h2 class="section-title">📄 आधिकारिक कागज</h2>
  <div class="paper">
-  <h2>रसाली भाई समाज परिवार चौराठा</h2><p>एकता • सहयोग • सेवा • भाइचारा</p><p>स्थापना: <b>२०८२</b></p>
+  <h2>रसाली भाई समाज परिवार चौराठा</h2><p>एकता • भाई समाज सेवा</p><p>स्थापना: <b>२०८२</b></p>
   <hr style="margin:20px 0">
   <p>यस समाजका सदस्यहरूबीच आपसी सहयोग, एकता र भाइचारा कायम राख्ने उद्देश्यले यो समाज स्थापना गरिएको हो।</p>
   <div class="signature"><br><br><p>________________________</p><p><b>पदम रसाली</b></p><p>संस्थापक</p></div>
@@ -597,7 +697,7 @@ footer{margin-top:40px;background:linear-gradient(120deg,#062d70,var(--blue));co
 
 <footer>
  <h3>🤝 रसाली भाई समाज परिवार चौराठा</h3>
- <p>एकता • सेवा • समर्पण</p>
+ <p>एकता • भाई समाज सेवा</p>
  <p>हामी माबै र भामसैनीका सन्तान</p>
  <p style="margin-top:8px">© २०८२ रसाली भाई समाज परिवार</p>
 </footer>
@@ -640,14 +740,28 @@ async function loadWebsiteSettings(){
     if(el)el.textContent=value;
    }
   };
+
+  /* समाजको नाम र अंग्रेजी नाम Admin बाट आउने पुरानै व्यवस्था */
   setText("siteTitle",data.site_title);
   setText("topbarTitle",data.site_title);
   setText("siteTitleEnglish",data.site_title_english);
-  setText("siteAddress",data.address);
-  setText("siteTagline",data.tagline);
+
+  /* ठेगानाबाट नेपाल शब्द हटाएर देखाउने */
+  if(data.address){
+   const cleanAddress=String(data.address)
+    .replace(/,\s*नेपाल\s*$/,"")
+    .replace(/\s+नेपाल\s*$/,"")
+    .trim();
+   setText("siteAddress",cleanAddress);
+  }
+
+  /* Header को हालको स्वीकृत नारा */
+  document.getElementById("siteTagline").textContent="एकता • भाई समाज सेवा";
+
   setText("mabaiName",data.mabai_name);
   setText("bhamsainiName",data.bhamsaini_name);
 
+  /* स्थापना वर्षमा ESTD शब्द नदेखाउने */
   if(data.estd){
    const cleanEstd=String(data.estd)
     .replace(/स्थापना\s*:/gi,"")
@@ -655,7 +769,8 @@ async function loadWebsiteSettings(){
     .replace(/ESTD/gi,"")
     .replace(/\s+/g," ")
     .trim();
-   document.getElementById("siteEstd").textContent="स्थापना: "+cleanEstd+" | ESTD 2082";
+
+   document.getElementById("siteEstd").textContent="स्थापना: "+cleanEstd;
    document.getElementById("heroEstd").textContent=cleanEstd;
   }
 
@@ -841,7 +956,7 @@ function showMemberDetails(id){
    <p><b>पद:</b> ${position}</p>
    <p><b>फोन:</b> ${phone}</p>
    <p><b>Email:</b> ${email}</p>
-   <p><b>ठेगाना:</b> चौराठा, दैलेख, नेपाल</p>
+   <p><b>ठेगाना:</b> चौराठा, दैलेख</p>
   </div>`;
 
  document.getElementById("memberModal").style.display="flex";
@@ -1096,7 +1211,6 @@ async function sendPublicChat(event){
  showPublicChatStatus("तपाईंको सन्देश सुरक्षित हुँदैछ...","info");
 
  try{
-  /* पहिले नयाँ कुराकानी तयार गर्ने */
   const {data:conversation,error:conversationError}=await supabaseClient
    .from("chat_conversations")
    .insert({
@@ -1113,7 +1227,6 @@ async function sendPublicChat(event){
    throw new Error("कुराकानी ID प्राप्त भएन।");
   }
 
-  /* त्यसपछि सदस्यको सन्देश सुरक्षित गर्ने */
   const {error:messageError}=await supabaseClient
    .from("chat_messages")
    .insert({
